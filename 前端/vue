@@ -30,7 +30,7 @@
 
 
   <title>
-tt - 前端 |
+vue - 前端 |
 Monkey's Blog = Monkey's Blog</title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,7 +58,7 @@ Monkey's Blog = Monkey's Blog</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">tt
+  <h1 itemprop="name headline">vue
   </h1>
   
 <div class="meta">
@@ -100,12 +100,12 @@ Monkey's Blog = Monkey's Blog</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
         </ul>
       </div>
     </header>
@@ -775,7 +775,7 @@ Monkey's Blog = Monkey's Blog</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2021-08-18 11:08:10" itemprop="dateModified" datetime="2021-08-18T11:08:10+08:00">2021-08-18</time>
+    <time title="修改时间：2021-08-18 11:11:59" itemprop="dateModified" datetime="2021-08-18T11:11:59+08:00">2021-08-18</time>
   </span>
 </div>
 
@@ -788,7 +788,7 @@ Monkey's Blog = Monkey's Blog</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/%E5%89%8D%E7%AB%AF/vue" title="tt">http://example.com/前端/vue</a>
+    <a href="http://example.com/%E5%89%8D%E7%AB%AF/vue" title="vue">http://example.com/前端/vue</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -807,7 +807,7 @@ Monkey's Blog = Monkey's Blog</title>
     <div class="item left">
       
 
-  <a href="/uncategorized/456465" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciub8ja1j20zk0m81ky.jpg" title="456465">
+  <a href="/uncategorized/456465" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuv0socj20zk0m8qes.jpg" title="456465">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>456465</h3>
@@ -817,7 +817,7 @@ Monkey's Blog = Monkey's Blog</title>
     <div class="item right">
       
 
-  <a href="/Diary/tt" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclize41wj20zk0m87gk.jpg" title="tt">
+  <a href="/Diary/tt" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeun65urj20zk0m81ii.jpg" title="tt">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> Diary</span>
   <h3>tt</h3>
@@ -843,7 +843,7 @@ Monkey's Blog = Monkey's Blog</title>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li class="active"><a href="/%E5%89%8D%E7%AB%AF/vue" rel="bookmark" title="tt">tt</a></li>
+          <li class="active"><a href="/%E5%89%8D%E7%AB%AF/vue" rel="bookmark" title="vue">vue</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -959,6 +959,15 @@ Monkey's Blog = Monkey's Blog</title>
 <div class="breadcrumb">
 </div>
 
+    <span><a href="/uncategorized/456465" title="456465">456465</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
     <span><a href="/uncategorized/hello-world" title="Hello World">Hello World</a></span>
   </li>
 
@@ -969,16 +978,7 @@ Monkey's Blog = Monkey's Blog</title>
 <a href="/categories/%E5%89%8D%E7%AB%AF/" title="分类于 前端">前端</a>
 </div>
 
-    <span><a href="/%E5%89%8D%E7%AB%AF/vue" title="tt">tt</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/uncategorized/456465" title="456465">456465</a></span>
+    <span><a href="/%E5%89%8D%E7%AB%AF/vue" title="vue">vue</a></span>
   </li>
 
   </ul>
@@ -1011,8 +1011,8 @@ Monkey's Blog = Monkey's Blog</title>
   var LOCAL = {
     path: '前端/vue',
     favicon: {
-      show: "（●´3｀●）やれやれだぜ",
-      hide: "(´Д｀)大変だ！"
+      show: "monkey's blog",
+      hide: "monkey's blog"
     },
     search : {
       placeholder: "文章搜索",
