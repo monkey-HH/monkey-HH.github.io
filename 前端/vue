@@ -3,7 +3,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -62,11 +62,11 @@ Monkey's Blog = Monkey's Blog</title>
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2021-08-18 09:28:32">
+  <span class="item" title="Created: 2021-08-18 09:28:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <span class="text">发表于</span>
+    <span class="text">Posted on</span>
     <time itemprop="dateCreated datePublished" datetime="2021-08-18T09:28:32+08:00">2021-08-18</time>
   </span>
 </div>
@@ -77,7 +77,7 @@ Monkey's Blog = Monkey's Blog</title>
         <nav id="nav">
   <div class="inner">
     <div class="toggle">
-      <div class="lines" aria-label="切换导航栏">
+      <div class="lines" aria-label="Toggle navigation bar">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -100,12 +100,12 @@ Monkey's Blog = Monkey's Blog</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,12 +130,12 @@ Monkey's Blog = Monkey's Blog</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="item" rel="index" title="分类于 前端"><span itemprop="name">前端</span></a>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="item" rel="index" title="In 前端"><span itemprop="name">前端</span></a>
 <meta itemprop="position" content="1" /></span>
 </div>
 
-    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
   <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/%E5%89%8D%E7%AB%AF/vue">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -774,8 +774,8 @@ Monkey's Blog = Monkey's Blog</title>
     <span class="icon">
       <i class="ic i-calendar-check"></i>
     </span>
-    <span class="text">更新于</span>
-    <time title="修改时间：2021-08-18 11:11:59" itemprop="dateModified" datetime="2021-08-18T11:11:59+08:00">2021-08-18</time>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-08-18 11:11:59" itemprop="dateModified" datetime="2021-08-18T11:11:59+08:00">2021-08-18</time>
   </span>
 </div>
 
@@ -784,14 +784,14 @@ Monkey's Blog = Monkey's Blog</title>
 <div id="copyright">
 <ul>
   <li class="author">
-    <strong>本文作者： </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>Monkey's Blog
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>Monkey's Blog
   </li>
   <li class="link">
-    <strong>本文链接：</strong>
+    <strong>Post link: </strong>
     <a href="https://monkeyhh.top/%E5%89%8D%E7%AB%AF/vue" title="vue">https://monkeyhh.top/前端/vue</a>
   </li>
   <li class="license">
-    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
   </li>
 </ul>
 </div>
@@ -807,8 +807,8 @@ Monkey's Blog = Monkey's Blog</title>
     <div class="item left">
       
 
-  <a href="/uncategorized/456465" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclj61ylzj20zk0m8b29.jpg" title="456465">
-  <span class="type">上一篇</span>
+  <a href="/uncategorized/456465" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="456465">
+  <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>456465</h3>
   </a>
@@ -817,8 +817,8 @@ Monkey's Blog = Monkey's Blog</title>
     <div class="item right">
       
 
-  <a href="/Diary/tt" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeudstjqj20zk0m8k3r.jpg" title="tt">
-  <span class="type">下一篇</span>
+  <a href="/Diary/tt" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="tt">
+  <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Diary</span>
   <h3>tt</h3>
   </a>
@@ -838,15 +838,15 @@ Monkey's Blog = Monkey's Blog</title>
 
   <div class="panels">
     <div class="inner">
-      <div class="contents panel pjax" data-title="文章目录">
+      <div class="contents panel pjax" data-title="Contents">
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue2-%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">Vue2 学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-js%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">Vue.js是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-js%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">Vue.js的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-js%E4%BC%98%E7%82%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text">Vue.js优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.3.</span> <span class="toc-text">Vue安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue-Devtools"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">Vue Devtools</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vue%E5%BC%95%E5%85%A5"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">Vue引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HelloWorld%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">HelloWorld项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue%E7%89%B9%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">vue特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">模板语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B-HTML"><span class="toc-number">1.3.2.</span> <span class="toc-text">原始 HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Attribute"><span class="toc-number">1.3.3.</span> <span class="toc-text">Attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-JavaScript-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.3.4.</span> <span class="toc-text">使用 JavaScript 表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.5.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.6.</span> <span class="toc-text">动态参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0%E7%9A%84%E5%80%BC%E7%9A%84%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.3.6.1.</span> <span class="toc-text">对动态参数的值的约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%BA%A6%E6%9D%9F"><span class="toc-number">1.3.6.2.</span> <span class="toc-text">对动态参数表达式的约束</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">1.3.7.</span> <span class="toc-text">修饰符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86%EF%BC%88%E6%B7%B1%E5%85%A5%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">数据代理（深入响应式原理）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-number">2.</span> <span class="toc-text">Vue3快速上手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Vue3%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.</span> <span class="toc-text">1.Vue3简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Vue3%E5%B8%A6%E6%9D%A5%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">2.2.</span> <span class="toc-text">2.Vue3带来了什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%80%A7%E8%83%BD%E7%9A%84%E6%8F%90%E5%8D%87"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.性能的提升</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%BA%90%E7%A0%81%E7%9A%84%E5%8D%87%E7%BA%A7"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.源码的升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8B%A5%E6%8A%B1TypeScript"><span class="toc-number">2.2.3.</span> <span class="toc-text">3.拥抱TypeScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%96%B0%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">2.2.4.</span> <span class="toc-text">4.新的特性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BAVue3-0%E5%B7%A5%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">一、创建Vue3.0工程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-vue-cli-%E5%88%9B%E5%BB%BA"><span class="toc-number">3.1.</span> <span class="toc-text">1.使用 vue-cli 创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-vite-%E5%88%9B%E5%BB%BA"><span class="toc-number">3.2.</span> <span class="toc-text">2.使用 vite 创建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8-Composition-API"><span class="toc-number">4.</span> <span class="toc-text">二、常用 Composition API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8B%89%E5%BC%80%E5%BA%8F%E5%B9%95%E7%9A%84setup"><span class="toc-number">4.1.</span> <span class="toc-text">1.拉开序幕的setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ref%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">2.ref函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-reactive%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.</span> <span class="toc-text">3.reactive函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Vue3-0%E4%B8%AD%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="toc-number">4.4.</span> <span class="toc-text">4.Vue3.0中的响应式原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue2-x%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F"><span class="toc-number">4.4.1.</span> <span class="toc-text">vue2.x的响应式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue3-0%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F"><span class="toc-number">4.4.2.</span> <span class="toc-text">Vue3.0的响应式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-reactive%E5%AF%B9%E6%AF%94ref"><span class="toc-number">4.5.</span> <span class="toc-text">5.reactive对比ref</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-setup%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">4.6.</span> <span class="toc-text">6.setup的两个注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E4%B8%8E%E7%9B%91%E8%A7%86"><span class="toc-number">4.7.</span> <span class="toc-text">7.计算属性与监视</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-computed%E5%87%BD%E6%95%B0"><span class="toc-number">4.7.1.</span> <span class="toc-text">1.computed函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-watch%E5%87%BD%E6%95%B0"><span class="toc-number">4.7.2.</span> <span class="toc-text">2.watch函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-watchEffect%E5%87%BD%E6%95%B0"><span class="toc-number">4.7.3.</span> <span class="toc-text">3.watchEffect函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.8.</span> <span class="toc-text">8.生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%87%AA%E5%AE%9A%E4%B9%89hook%E5%87%BD%E6%95%B0"><span class="toc-number">4.9.</span> <span class="toc-text">9.自定义hook函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-toRef"><span class="toc-number">4.10.</span> <span class="toc-text">10.toRef</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B6%E5%AE%83-Composition-API"><span class="toc-number">5.</span> <span class="toc-text">三、其它 Composition API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-shallowReactive-%E4%B8%8E-shallowRef"><span class="toc-number">5.1.</span> <span class="toc-text">1.shallowReactive 与 shallowRef</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-readonly-%E4%B8%8E-shallowReadonly"><span class="toc-number">5.2.</span> <span class="toc-text">2.readonly 与 shallowReadonly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-toRaw-%E4%B8%8E-markRaw"><span class="toc-number">5.3.</span> <span class="toc-text">3.toRaw 与 markRaw</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-customRef"><span class="toc-number">5.4.</span> <span class="toc-text">4.customRef</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-provide-%E4%B8%8E-inject"><span class="toc-number">5.5.</span> <span class="toc-text">5.provide 与 inject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%88%A4%E6%96%AD"><span class="toc-number">5.6.</span> <span class="toc-text">6.响应式数据的判断</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Composition-API-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">6.</span> <span class="toc-text">四、Composition API 的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Options-API-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">6.1.</span> <span class="toc-text">1.Options API 存在的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Composition-API-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">6.2.</span> <span class="toc-text">2.Composition API 的优势</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%96%B0%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">五、新的组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Fragment"><span class="toc-number">7.1.</span> <span class="toc-text">1.Fragment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Teleport"><span class="toc-number">7.2.</span> <span class="toc-text">2.Teleport</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Suspense"><span class="toc-number">7.3.</span> <span class="toc-text">3.Suspense</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%85%B6%E4%BB%96"><span class="toc-number">8.</span> <span class="toc-text">六、其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80API%E7%9A%84%E8%BD%AC%E7%A7%BB"><span class="toc-number">8.1.</span> <span class="toc-text">1.全局API的转移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%B6%E4%BB%96%E6%94%B9%E5%8F%98"><span class="toc-number">8.2.</span> <span class="toc-text">2.其他改变</span></a></li></ol></li></ol>
       </div>
-      <div class="related panel pjax" data-title="系列文章">
+      <div class="related panel pjax" data-title="Related">
         <ul>
           <li class="active"><a href="/%E5%89%8D%E7%AB%AF/vue" rel="bookmark" title="vue">vue</a></li>
         </ul>
       </div>
-      <div class="overview panel" data-title="站点概览">
+      <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="image" itemprop="image" alt="Monkey-HH"
       data-src="/images/avatar.jpg">
@@ -858,13 +858,13 @@ Monkey's Blog = Monkey's Blog</title>
     <div class="item posts">
       <a href="/archives/">
         <span class="count">4</span>
-        <span class="name">文章</span>
+        <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
         <span class="count">2</span>
-        <span class="name">分类</span>
+        <span class="name">categories</span>
       </a>
     </div>
 </nav>
@@ -877,38 +877,38 @@ Monkey's Blog = Monkey's Blog</title>
   
     
   <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
   </li>
 
         
   <li class="item dropdown">
-      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
     <ul class="submenu">
 
         
   <li class="item">
-    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
   </li>
 
         
   <li class="item">
-    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
   </li>
 
         
   <li class="item">
-    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
   </li>
 
   </ul>
     
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
   </li>
 
     
   <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
 
@@ -920,12 +920,12 @@ Monkey's Blog = Monkey's Blog</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/uncategorized/456465" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+        <a href="/uncategorized/456465" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/Diary/tt" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+        <a href="/Diary/tt" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -941,16 +941,15 @@ Monkey's Blog = Monkey's Blog</title>
         <div class="widgets">
           
 <div class="rpost pjax">
-  <h2>随机文章</h2>
+  <h2>Random Posts</h2>
   <ul>
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Diary/" title="分类于 Diary">Diary</a>
 </div>
 
-    <span><a href="/Diary/tt" title="tt">tt</a></span>
+    <span><a href="/uncategorized/456465" title="456465">456465</a></span>
   </li>
 
       
@@ -966,16 +965,17 @@ Monkey's Blog = Monkey's Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/Diary/" title="In Diary">Diary</a>
 </div>
 
-    <span><a href="/uncategorized/456465" title="456465">456465</a></span>
+    <span><a href="/Diary/tt" title="tt">tt</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E5%89%8D%E7%AB%AF/" title="分类于 前端">前端</a>
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
 </div>
 
     <span><a href="/%E5%89%8D%E7%AB%AF/vue" title="vue">vue</a></span>
@@ -984,7 +984,7 @@ Monkey's Blog = Monkey's Blog</title>
   </ul>
 </div>
 <div>
-  <h2>最新评论</h2>
+  <h2>Recent Comments</h2>
   <ul class="leancloud-recent-comment"></ul>
 </div>
 
@@ -992,7 +992,7 @@ Monkey's Blog = Monkey's Blog</title>
         <div class="status">
   <div class="copyright">
     
-    &copy; 2010 – 
+    &copy; 
     <span itemprop="copyrightYear">2021</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
@@ -1000,7 +1000,7 @@ Monkey's Blog = Monkey's Blog</title>
     <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
   </div>
   <div class="powered-by">
-    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
   </div>
 </div>
 
@@ -1011,15 +1011,15 @@ Monkey's Blog = Monkey's Blog</title>
   var LOCAL = {
     path: '前端/vue',
     favicon: {
-      show: "monkey's blog",
-      hide: "monkey's blog"
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
     },
     search : {
-      placeholder: "文章搜索",
-      empty: "关于 「 ${query} 」，什么也没搜到",
-      stats: "${time} ms 内找到 ${hits} 条结果"
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
     },
-    valine: true,fancybox: true,copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
     ignores : [
       function(uri) {
         return uri.includes('#');

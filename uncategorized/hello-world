@@ -3,7 +3,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -62,11 +62,11 @@ Monkey's Blog = Monkey's Blog</title>
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2021-08-09 08:12:34">
+  <span class="item" title="Created: 2021-08-09 08:12:34">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <span class="text">发表于</span>
+    <span class="text">Posted on</span>
     <time itemprop="dateCreated datePublished" datetime="2021-08-09T08:12:34+08:00">2021-08-09</time>
   </span>
 </div>
@@ -77,7 +77,7 @@ Monkey's Blog = Monkey's Blog</title>
         <nav id="nav">
   <div class="inner">
     <div class="toggle">
-      <div class="lines" aria-label="切换导航栏">
+      <div class="lines" aria-label="Toggle navigation bar">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -100,12 +100,12 @@ Monkey's Blog = Monkey's Blog</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,10 +130,10 @@ Monkey's Blog = Monkey's Blog</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">首页</a></span>
+<span><a href="/">Home</a></span>
 </div>
 
-    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
   <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/uncategorized/hello-world">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -175,14 +175,14 @@ Monkey's Blog = Monkey's Blog</title>
 <div id="copyright">
 <ul>
   <li class="author">
-    <strong>本文作者： </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>Monkey's Blog
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>Monkey's Blog
   </li>
   <li class="link">
-    <strong>本文链接：</strong>
+    <strong>Post link: </strong>
     <a href="https://monkeyhh.top/uncategorized/hello-world" title="Hello World">https://monkeyhh.top/uncategorized/hello-world</a>
   </li>
   <li class="license">
-    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
   </li>
 </ul>
 </div>
@@ -200,8 +200,8 @@ Monkey's Blog = Monkey's Blog</title>
     <div class="item right">
       
 
-  <a href="/uncategorized/456465" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclg5ms2rj20zk0m8u0x.jpg" title="456465">
-  <span class="type">下一篇</span>
+  <a href="/uncategorized/456465" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipet4bz0yj20zk0m8e81.jpg" title="456465">
+  <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>456465</h3>
   </a>
@@ -221,12 +221,12 @@ Monkey's Blog = Monkey's Blog</title>
 
   <div class="panels">
     <div class="inner">
-      <div class="contents panel pjax" data-title="文章目录">
+      <div class="contents panel pjax" data-title="Contents">
           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
       </div>
-      <div class="related panel pjax" data-title="系列文章">
+      <div class="related panel pjax" data-title="Related">
       </div>
-      <div class="overview panel" data-title="站点概览">
+      <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="image" itemprop="image" alt="Monkey-HH"
       data-src="/images/avatar.jpg">
@@ -238,13 +238,13 @@ Monkey's Blog = Monkey's Blog</title>
     <div class="item posts">
       <a href="/archives/">
         <span class="count">4</span>
-        <span class="name">文章</span>
+        <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
         <span class="count">2</span>
-        <span class="name">分类</span>
+        <span class="name">categories</span>
       </a>
     </div>
 </nav>
@@ -257,38 +257,38 @@ Monkey's Blog = Monkey's Blog</title>
   
     
   <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
   </li>
 
         
   <li class="item dropdown">
-      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
     <ul class="submenu">
 
         
   <li class="item">
-    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>Archives</a>
   </li>
 
         
   <li class="item">
-    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
   </li>
 
         
   <li class="item">
-    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
   </li>
 
   </ul>
     
   <li class="item">
-    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
   </li>
 
     
   <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
 
@@ -319,16 +319,16 @@ Monkey's Blog = Monkey's Blog</title>
         <div class="widgets">
           
 <div class="rpost pjax">
-  <h2>随机文章</h2>
+  <h2>Random Posts</h2>
   <ul>
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Diary/" title="分类于 Diary">Diary</a>
+<a href="/categories/%E5%89%8D%E7%AB%AF/" title="In 前端">前端</a>
 </div>
 
-    <span><a href="/Diary/tt" title="tt">tt</a></span>
+    <span><a href="/%E5%89%8D%E7%AB%AF/vue" title="vue">vue</a></span>
   </li>
 
       
@@ -344,25 +344,25 @@ Monkey's Blog = Monkey's Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/Diary/" title="In Diary">Diary</a>
 </div>
 
-    <span><a href="/uncategorized/hello-world" title="Hello World">Hello World</a></span>
+    <span><a href="/Diary/tt" title="tt">tt</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E5%89%8D%E7%AB%AF/" title="分类于 前端">前端</a>
 </div>
 
-    <span><a href="/%E5%89%8D%E7%AB%AF/vue" title="vue">vue</a></span>
+    <span><a href="/uncategorized/hello-world" title="Hello World">Hello World</a></span>
   </li>
 
   </ul>
 </div>
 <div>
-  <h2>最新评论</h2>
+  <h2>Recent Comments</h2>
   <ul class="leancloud-recent-comment"></ul>
 </div>
 
@@ -370,7 +370,7 @@ Monkey's Blog = Monkey's Blog</title>
         <div class="status">
   <div class="copyright">
     
-    &copy; 2010 – 
+    &copy; 
     <span itemprop="copyrightYear">2021</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
@@ -378,7 +378,7 @@ Monkey's Blog = Monkey's Blog</title>
     <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
   </div>
   <div class="powered-by">
-    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
   </div>
 </div>
 
@@ -389,15 +389,15 @@ Monkey's Blog = Monkey's Blog</title>
   var LOCAL = {
     path: 'uncategorized/hello-world',
     favicon: {
-      show: "monkey's blog",
-      hide: "monkey's blog"
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
     },
     search : {
-      placeholder: "文章搜索",
-      empty: "关于 「 ${query} 」，什么也没搜到",
-      stats: "${time} ms 内找到 ${hits} 条结果"
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
     },
-    valine: true,fancybox: true,copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
     ignores : [
       function(uri) {
         return uri.includes('#');
