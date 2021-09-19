@@ -1,0 +1,594 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="JavaScript" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE">
+
+
+
+  <title>
+原型和原型链 - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">原型和原型链
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-04-20 09:28:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-04-20T09:28:32+08:00">2021-04-20</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>3.7k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>3 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202108221807344.jpeg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>原型和原型链是很常见的面试题目啦，重要性不言而喻，话不多说，直接开搞！</p>
+<h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><ol>
+<li>显式原型（又叫原型）：prototype</li>
+</ol>
+<p>每个class/函数都有显示原型prototype，它默认指向一个Object空对象（即称为原型对象）</p>
+<p>原型对象中一个属性constructor，它指向函数对象</p>
+<ol start="2">
+<li>隐式原型：__proto__</li>
+</ol>
+<p>每个实例都有隐式原型__proto__</p>
+<p>实例的__proto__指向创建这个实例的构造函数的prototype。</p>
+<ol start="3">
+<li>每个原型都有一个constructor属性指会对应的构造函数</li>
+</ol>
+<p>下面上图，后面一系列的讲解都是基于这张图，这个图非常重要，一定要仔细弄清楚每一个点，检验标准就是能默写出来。笔者将通过4条规则介绍完原型链。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109160937209.png" alt="c7b6ea12284706f1e4ee4a4168e5248597b228a884288508b54cc879ccccc134"></p>
+<h1 id="规则1"><a href="#规则1" class="headerlink" title="规则1"></a>规则1</h1><p>实例对象的隐式原型 <code>__proto__</code> 属性值所指对象 === 它的构造函数的显式原型 <code>prototype</code> 属性所指对象</p>
+<p>例如图中的①和②指向同一个对象，⑥和⑦指向同一个对象，⑩和⑫指向同一个对象，⑩和⑬指向同一个对象。</p>
+<h1 id="规则2"><a href="#规则2" class="headerlink" title="规则2"></a>规则2</h1><p>“某构造函数的<code>prototype</code> 属性所指对象” 的  <code>constructor</code>属性 === 该构造函数的原型对象===该构造函数本身</p>
+<p>例如图中的②和③绕圈圈。⑦和⑧绕圈圈。⑩和⑪绕圈圈。</p>
+<h1 id="规则3"><a href="#规则3" class="headerlink" title="规则3"></a>规则3</h1><p>Object的原型对象是原型链尽头</p>
+<p>通俗的解释一下：任何对象的原型链顶端最终都指向Object.prototype,Object.prototype再往上已经没有东西了，所以指向null。</p>
+<p>例如图中的⑤</p>
+<p>函数的显示原型指向的对象默认是空Object实例对象(但Object不满足)</p>
+<p>且要注意一点：A instanceof B  为true === “B的原型”在 “A的原型链”上</p>
+<p>所以，Object的原型就是Object.prototype，我在我之上？显然不成立的嘛</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Foo.prototype <span class="keyword">instanceof</span> <span class="built_in">Object</span>) <span class="comment">// true</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype <span class="keyword">instanceof</span> <span class="built_in">Object</span>) <span class="comment">// false</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">Function</span>.prototype <span class="keyword">instanceof</span> <span class="built_in">Object</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="规则4"><a href="#规则4" class="headerlink" title="规则4"></a>规则4</h1><p>所有函数都是Function的实例(包含Function本身和Object)</p>
+<p>通俗的解释一下：Function是所有函数(function)的父亲，所有函数都是它的实例，而Function也是一个函数，所以Function是Function的实例对象。Object也是一个函数，所以Object是Function的实例对象。</p>
+<p>也就是图中所示的⑫和==⑬==</p>
+<p>⑫其实很奇怪，但Function既是构造函数，也是自己的实例，所以其__proto__和prototype都</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.prototype == <span class="built_in">Function</span>.__proto__)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>疑问一：Object是函数吗？是的</p>
+<p>浏览器console.log(Object)</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109152134227.png" alt="image-20210915213413186"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.__proto__ == <span class="built_in">Function</span>.prototype)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.constructor == <span class="built_in">Function</span>)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>疑问二：函数为什么是Function的实例？用一个例子来解释</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常见的函数定义方式1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//常见的函数定义方式2</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//常见的函数定义方式3</span></span><br><span class="line"><span class="keyword">let</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&quot;num1&quot;</span>,<span class="string">&quot;num2&quot;</span>,<span class="string">&quot;return num1 + num2&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109152127110.png" alt="image-20210915212720050"></p>
+<p>以上三种方式是定义函数的常见三种方法，后两种其实是定义了匿名函数，把引用给了sum变量而已，除了细微的区别，可以说等价的，可以看到每个函数都是Function的实例。</p>
+<p>如果觉得上面这个说服力不大，可以看下面的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum <span class="keyword">instanceof</span> <span class="built_in">Function</span>)<span class="comment">//true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h1><p>上面有提到的规则，笔者在这里顺便提一下Object、Function和其他对象的关系吧，从大局到小细节的总结。</p>
+<p>一、根据规则3，一切对象(基础数据类型、引用类型、函数)都最终继承自Object对象</p>
+<p>可以看看下面的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> abc = <span class="number">1</span></span><br><span class="line"><span class="built_in">console</span>.log(abc.__proto__.__proto__ == <span class="built_in">Object</span>.prototype)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.prototype.__proto__== <span class="built_in">Object</span>.prototype)<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(Foo.prototype.__proto__ ==  <span class="built_in">Object</span>.prototype)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>从图里来看的话，Foo函数的原型指向了Object的原型，即④</p>
+<p>从图里来看的话，Function函数的原型指向了Object的原型，即⑭</p>
+<p>二、显然，只要是构造函数，都会有两个原型属性__proto__和prototype，就好像图例的Foo、Object、Function。</p>
+<p>它们的prototype属性都指向自己本身的原型，而__proto__则统一指向Function的原型（因为一切都是Function的实例）。</p>
+<p>就好像图里面Foo函数的②、Object函数的⑦、Function函数的⑩都指向了自己的原型。</p>
+<p>就好像图里面Foo函数的⑬、Object函数的⑨、Function函数的⑫都指向了Function的原型。</p>
+<p>三、由①中提到的构造函数构造的对象实例，都会有__proto__指向该构造函数的原型。</p>
+<p>就好像图里面Foo构造函数的实例f1 f2的①，指向了Foo构造函数的原型</p>
+<p>就好像图里面Object构造函数的实例o1 o2的⑥，指向了Object构造函数的原型</p>
+<h1 id="题目测试"><a href="#题目测试" class="headerlink" title="题目测试"></a>题目测试</h1><p>1.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> A = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">A.prototype.n = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> A();</span><br><span class="line">A.prototype = &#123;</span><br><span class="line">  <span class="attr">n</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">m</span>: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(b.n);</span><br><span class="line"><span class="built_in">console</span>.log(b.m);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(c.n);</span><br><span class="line"><span class="built_in">console</span>.log(c.m);</span><br><span class="line"></span><br><span class="line"><span class="comment">///////</span></span><br><span class="line">b.n -&gt; <span class="number">1</span></span><br><span class="line">b.m -&gt; <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line">c.n -&gt; <span class="number">2</span>;</span><br><span class="line">c.m -&gt; <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;b&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</span><br><span class="line"></span><br><span class="line">f.a();</span><br><span class="line">f.b();</span><br><span class="line"></span><br><span class="line">F.a();</span><br><span class="line">F.b();</span><br><span class="line"></span><br><span class="line"><span class="comment">/////////////</span></span><br><span class="line">f.a() -&gt; a</span><br><span class="line">f.b() -&gt; f.b is not a <span class="function"><span class="keyword">function</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">F</span>.<span class="title">a</span>(<span class="params"></span>) -&gt; <span class="title">a</span></span></span><br><span class="line"><span class="function"><span class="title">F</span>.<span class="title">b</span>(<span class="params"></span>) -&gt; <span class="title">b</span></span></span><br></pre></td></tr></table></figure>
+
+<p>3.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;Tom&#x27;</span>);</span><br><span class="line"></span><br><span class="line">问题<span class="number">1</span>：<span class="number">1.</span> p.__proto__等于什么？</span><br><span class="line"></span><br><span class="line">问题<span class="number">2</span>：Person.__proto__等于什么？</span><br><span class="line"><span class="comment">///////////</span></span><br><span class="line"></span><br><span class="line">答案<span class="number">1</span>：Person.prototype</span><br><span class="line">答案<span class="number">2</span>：<span class="built_in">Function</span>.prototype</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>4.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;&#125;,</span><br><span class="line">F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.prototype.a = <span class="string">&#x27;value a&#x27;</span>;</span><br><span class="line"><span class="built_in">Function</span>.prototype.b = <span class="string">&#x27;value b&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo.a);</span><br><span class="line"><span class="built_in">console</span>.log(foo.b);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(F.a);</span><br><span class="line"><span class="built_in">console</span>.log(F.b);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">///////////////</span></span><br><span class="line">foo.a =&gt; value a</span><br><span class="line">foo.b =&gt; <span class="literal">undefined</span></span><br><span class="line">F.a =&gt; value a</span><br><span class="line">F.b =&gt; value b</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
+<li>红宝书</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTAzNzgyMjI5MjEzMTk3I2hlYWRpbmctMg==">https://juejin.cn/post/6844903782229213197#heading-2</span></li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/JavaScript/" rel="tag"><i class="ic i-tag"></i> JavaScript</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-09-19 23:19:32" itemprop="dateModified" datetime="2021-09-19T23:19:32+08:00">2021-09-19</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">https://monkeyhh.top/FrontEnd/FrontEnd/原形与原型链</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202108221807344.jpeg" title="解决跨域问题">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> FrontEnd</span>
+  <h3>解决跨域问题</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202108221807344.jpeg" title="JavaScript事件循环">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> FrontEnd</span>
+  <h3>JavaScript事件循环</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">基础概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%84%E5%88%991"><span class="toc-number">3.</span> <span class="toc-text">规则1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%84%E5%88%992"><span class="toc-number">4.</span> <span class="toc-text">规则2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%84%E5%88%993"><span class="toc-number">5.</span> <span class="toc-text">规则3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%84%E5%88%994"><span class="toc-number">6.</span> <span class="toc-text">规则4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">小总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%B5%8B%E8%AF%95"><span class="toc-number">8.</span> <span class="toc-text">题目测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">9.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="解决跨域问题">解决跨域问题</a></li><li class="active"><a href="/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="原型和原型链">原型和原型链</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器原理介绍">浏览器原理介绍</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/FrontEnd/vue" rel="bookmark" title="vue">vue</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">8</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">2</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript事件循环">JavaScript事件循环</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Diary/" title="In Diary">Diary</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Diary/test/" title="In test">test</a>
+</div>
+
+    <span><a href="/Diary/test/Diary/tt" title="tt">tt</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/test/" title="In test">test</a>
+</div>
+
+    <span><a href="/test/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">76k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">1:09</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/FrontEnd/原形与原型链',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
