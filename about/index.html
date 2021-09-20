@@ -29,7 +29,7 @@
 
 
 
-  <title>about |
+  <title>index |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -57,7 +57,7 @@ Monkey's Blog = </title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">about
+  <h1 itemprop="name headline">index
   </h1>
 
           </div>
@@ -88,12 +88,12 @@ Monkey's Blog = </title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhfehz7j20zk0m8u0x.jpg"></li>
         </ul>
       </div>
     </header>
@@ -331,6 +331,22 @@ Monkey's Blog = </title>
 <p>每个主题的配置不一样，建议直接去对应的主题的介绍栏里找作者写的配置文章。</p>
 <p>如果官网上没找到，就去github里搜主题名字，进去一般会有作者的博客。</p>
 <p>⭐提一嘴，如果有遇到什么bug，建议养成去github对应项目下看issues，这里是最直接作者能回答问题的地方。</p>
+<h2 id="增加评论功能"><a href="#增加评论功能" class="headerlink" title="增加评论功能"></a>增加评论功能</h2><p>这里使用的是valine，一般很多hexo的主题都内置了valine，不用自己折腾，只需要配置LeanCloud应用的app id和app key。</p>
+<p>首先先进去这个网站<span class="exturl" data-url="aHR0cHM6Ly9jb25zb2xlLmxlYW5jbG91ZC5jbi9yZWdpc3Rlcg==">注册 · LeanCloud</span>，注册一个LeanCloud账号，登陆后创建应用</p>
+<p>这里我测试使用过国际版注册，想着不用实名制方便很多，但是怎么着就是整不了</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201529320.png" alt="image-20210920152925247"></p>
+<p>名字自己定</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201529051.png" alt="image-20210920152953990"></p>
+<p>然后点击那个“⚙”进入控制台，创建这两个Class，Comment和Counter</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201530056.png" alt="image-20210920153038992"></p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201531843.png" alt="image-20210920153152778"></p>
+<p>然后点击设置-&gt;安全中心，将自己的域名添加上去</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201533598.png" alt="image-20210920153304505"></p>
+<p>最后设置-&gt;应用凭证，将这两个信息配置到自己主题的配置文件中，具体如何配置，每个主题方式不同，不过可以找valine相关配置。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201534941.png" alt="image-20210920153404856"></p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201535664.png" alt="image-20210920153516620"></p>
+<p>最后重新三部曲就完事啦。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201535579.png" alt="image-20210920153547521"></p>
 
   </div>
 
@@ -342,9 +358,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-09-20 10:00:45" itemprop="dateModified" datetime="2021-09-20T10:00:45+08:00">2021-09-20</time>
+    <time title="Modified: 2021-09-20 15:45:53" itemprop="dateModified" datetime="2021-09-20T15:45:53+08:00">2021-09-20</time>
   </span>
-  <span id="about/" class="item leancloud_visitors" data-flag-title="about" title="Views">
+  <span id="about/" class="item leancloud_visitors" data-flag-title="index" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -363,7 +379,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/about/index.html" title="about">https://monkeyhh.top/about/index.html</a>
+    <a href="https://monkeyhh.top/about/index.html" title="index">https://monkeyhh.top/about/index.html</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -389,7 +405,7 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">3.</span> <span class="toc-text">阶段一：使用Hexo搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%AE%89%E8%A3%85hexo"><span class="toc-number">3.2.</span> <span class="toc-text">1安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E5%BB%BAGithub%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text">2.新建Github个人仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0Github"><span class="toc-number">3.4.</span> <span class="toc-text">3.将hexo部署到Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%BE%E7%BD%AE%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">4.设置个人网站的域名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%BA%8C%EF%BC%9Ahexo%E8%BF%9B%E9%98%B6%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">阶段二：hexo进阶设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">hexo基本配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%EF%BC%88Scaffold%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">模版（Scaffold）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Front-matter"><span class="toc-number">4.3.</span> <span class="toc-text">Front-matter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2"><span class="toc-number">4.4.</span> <span class="toc-text">主题更换</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">3.</span> <span class="toc-text">阶段一：使用Hexo搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%AE%89%E8%A3%85hexo"><span class="toc-number">3.2.</span> <span class="toc-text">1安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E5%BB%BAGithub%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text">2.新建Github个人仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0Github"><span class="toc-number">3.4.</span> <span class="toc-text">3.将hexo部署到Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%BE%E7%BD%AE%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">4.设置个人网站的域名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%BA%8C%EF%BC%9Ahexo%E8%BF%9B%E9%98%B6%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">阶段二：hexo进阶设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">hexo基本配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%EF%BC%88Scaffold%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">模版（Scaffold）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Front-matter"><span class="toc-number">4.3.</span> <span class="toc-text">Front-matter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2"><span class="toc-number">4.4.</span> <span class="toc-text">主题更换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="toc-number">4.5.</span> <span class="toc-text">增加评论功能</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -499,30 +515,10 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/test/" title="In test">test</a>
-</div>
-
-    <span><a href="/test/hello-world" title="hello-world">hello-world</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
   </li>
 
       
@@ -542,6 +538,26 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
+    <span><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/test/" title="In test">test</a>
+</div>
+
+    <span><a href="/test/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
     <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
   </li>
 
@@ -552,7 +568,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
