@@ -27,12 +27,12 @@
   <meta name="keywords" content="JavaScript" />
 
 
-<link rel="canonical" href="https://monkeyhh.top/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE">
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE">
 
 
 
   <title>
-原型和原型链 - FrontEnd |
+JavaScript原型和原型链 - FrontEnd |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,7 +60,7 @@ Monkey's Blog = </title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">原型和原型链
+  <h1 itemprop="name headline">JavaScript原型和原型链
   </h1>
   
 <div class="meta">
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202108221807344.jpeg">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
       </div>
     </header>
     <div id="waves">
@@ -146,7 +146,7 @@ Monkey's Blog = </title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -262,7 +262,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-09-19 23:19:32" itemprop="dateModified" datetime="2021-09-19T23:19:32+08:00">2021-09-19</time>
+    <time title="Modified: 2021-09-20 10:19:43" itemprop="dateModified" datetime="2021-09-20T10:19:43+08:00">2021-09-20</time>
   </span>
 </div>
 
@@ -275,7 +275,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">https://monkeyhh.top/FrontEnd/FrontEnd/原形与原型链</a>
+    <a href="https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript原形与原型链</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -294,7 +294,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202108221807344.jpeg" title="解决跨域问题">
+  <a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="解决跨域问题">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> FrontEnd</span>
   <h3>解决跨域问题</h3>
@@ -304,7 +304,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202108221807344.jpeg" title="JavaScript事件循环">
+  <a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript事件循环">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> FrontEnd</span>
   <h3>JavaScript事件循环</h3>
@@ -330,7 +330,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="解决跨域问题">解决跨域问题</a></li><li class="active"><a href="/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="原型和原型链">原型和原型链</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器原理介绍">浏览器原理介绍</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/FrontEnd/vue" rel="bookmark" title="vue">vue</a></li>
+          <li><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="解决跨域问题">解决跨域问题</a></li><li class="active"><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型和原型链">JavaScript原型和原型链</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器原理介绍">浏览器原理介绍</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/FrontEnd/vue" rel="bookmark" title="vue">vue</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -444,16 +444,6 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
     <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
   </li>
 
@@ -474,7 +464,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
@@ -494,7 +484,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript事件循环">JavaScript事件循环</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
   </li>
 
       
@@ -505,6 +495,16 @@ Monkey's Blog = </title>
 </div>
 
     <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
   </ul>
@@ -547,7 +547,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'FrontEnd/FrontEnd/原形与原型链',
+    path: 'FrontEnd/FrontEnd/JavaScript原形与原型链',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
