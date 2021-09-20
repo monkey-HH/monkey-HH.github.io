@@ -88,12 +88,12 @@ Monkey's Blog = </title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
         </ul>
       </div>
     </header>
@@ -131,7 +131,206 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p>啊实打实的</p>
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>以前都是自己写着笔记，想着建一个博客，但是又有点懒，后来吃同学安利，了解到了hexo博客，于是就想着整个hexo博客吧，期间踩了不少坑，记录一下建站过程。</p>
+<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <span class="exturl" data-url="aHR0cDovL2RhcmluZ2ZpcmViYWxsLm5ldC9wcm9qZWN0cy9tYXJrZG93bi8=">Markdown</span>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<p>Hexo官网的文档已经有好几年的历史了，上面的文档对于新手来说比较难读懂。</p>
+<h1 id="阶段一：使用Hexo搭建个人博客"><a href="#阶段一：使用Hexo搭建个人博客" class="headerlink" title="阶段一：使用Hexo搭建个人博客"></a>阶段一：使用Hexo搭建个人博客</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>搭建个人博客需要提前整好这两个环境，后面才能搞起来，如果没有学习过，建议学习一下后安装环境。</p>
+<ol>
+<li>Git，Git 是目前世界上最先进的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。我们这次个人博客的搭建就是基于 github pages。可以看廖雪峰的网站，写得挺详细的。</li>
+<li>Node.js环境， Chrome V8 引擎的 JavaScript 运行环境。Node.js 的包管理器 npm, 是全球最大的开源库生态系统。我们所使用到的 hexo，就是基于 nodejs 编写的，需要使用到 nodejs 的包管理器 npm一个基于。可以看一下菜鸟教程。</li>
+</ol>
+<h2 id="1安装hexo"><a href="#1安装hexo" class="headerlink" title="1安装hexo"></a>1安装hexo</h2><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<p>接着使用<strong>管理员身份</strong>打开cmd命令行工具，不然下面这个例子可能安装不了hexo，可能会报没有权限新建文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>接着通过cd命令进入到自己要安装博客的位置，初始化一下自己的hexo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>新建完成后，指定文件夹目录下有：</p>
+<ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>_config.yml: 博客的配置文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├──node_modules npm install后生成的依赖包</span><br><span class="line">├── _config.yml  博客的配置文件，详细可以看https://hexo.io/zh-cn/docs/configuration</span><br><span class="line">├── package.json  npm包的目录</span><br><span class="line">├── scaffolds 生成文章的一些模板，</span><br><span class="line">├── source 用来存放你的文章</span><br><span class="line">|   ├── _drafts 草稿</span><br><span class="line">|   └── _posts 正式文章</span><br><span class="line">└── themes 存放主题的文件</span><br></pre></td></tr></table></figure>
+
+<p>这里放一张package.json的截图，这些都是基本必备的包</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200927694.png" alt="image-20210920092753637"></p>
+<p>打开hexo的服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器输入localhost:4000就可以看到你生成的博客了。</p>
+<p>大概长这样：<br><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200034061.jpeg" alt="img"><br>使用ctrl+c可以把服务关掉。</p>
+<h2 id="2-新建Github个人仓库"><a href="#2-新建Github个人仓库" class="headerlink" title="2.新建Github个人仓库"></a>2.新建Github个人仓库</h2><p>事实上，gitee也有 pages功能，但是需要上传个人身份证信息，比较麻烦，但是因为gitee在国内，所以整出来的 pages访问理论上会比github pages的快，看自己选择吧，这里用github pages做例子。</p>
+<p>首先，你先要有一个GitHub账户，去注册一个吧。</p>
+<p>注册完登录后，在GitHub.com中右上角点击+号，看到一个New repository，新建仓库</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200034629.png" alt="image-20210920003444584"></p>
+<p>创建一个和你用户名相同的仓库，后面加.github.io，只有这样，将来要部署到GitHub page的时候，才会被识别，也就是xxxx.github.io，其中xxx就是你注册GitHub的用户名。我这里是已经建过了。</p>
+<p>⭐这里要注意得创建公开仓库。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200036345.png" alt="image-20210920003610303"></p>
+<h2 id="3-将hexo部署到Github"><a href="#3-将hexo部署到Github" class="headerlink" title="3.将hexo部署到Github"></a>3.将hexo部署到Github</h2><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的GitHub账户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+
+<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+
+<p>然后，⭐这里称为三部曲，记住哦，后面会用三部曲指代这个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>其中 hexo clean清除了hexo generate生成的文件，也可以不加。<br>hexo generate 顾名思义，生成静态文件，可以用 hexo g缩写，会在项目文件里生成可以部署用的文件。</p>
+<p>hexo deploy 部署文章，可以用hexo d缩写</p>
+<p>然后点开仓库的 setting-&gt;github pages，选择我们刚刚的分支，点击 save，开启 pages 服务 过一会你就可以在 <span class="exturl" data-url="aHR0cHM6Ly95b3VybmFtZS5naXRodWIuaW8v">https://yourname.github.io</span> 上面看见你的博客了，这里我绑定了一个域名，后面会讲。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200040564.png" alt="image-20210920004023470"></p>
+<h2 id="4-设置个人网站的域名"><a href="#4-设置个人网站的域名" class="headerlink" title="4.设置个人网站的域名"></a>4.设置个人网站的域名</h2><p>去常见的服务器厂商，比如腾讯云或者阿里云买一个，然后进入控制台配置解析</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200042546.png" alt="image-20210920004222501"></p>
+<p>然后添加这两个解析记录，其中第一行的记录值IP可以用ping命令PING你的github主页域名获得</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200044970.png" alt="image-20210920004419906"></p>
+<p>然后登录Github去配置github pages域名，在箭头指向的位置填自己的域名，需要过一会儿才生效。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200046476.png" alt="image-20210920004635367"></p>
+<p>然后在你的博客文件source中创建一个名为CNAME文件，不要后缀。写上你的域名。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200047406.png" alt="image-20210920004737372"></p>
+<p>然后重新执行上面提到的三条命令，重新部署。</p>
+<h1 id="阶段二：hexo进阶设置"><a href="#阶段二：hexo进阶设置" class="headerlink" title="阶段二：hexo进阶设置"></a>阶段二：hexo进阶设置</h1><h2 id="hexo基本配置"><a href="#hexo基本配置" class="headerlink" title="hexo基本配置"></a>hexo基本配置</h2><p>在文件根目录下的_config.yml，就是整个hexo框架的配置文件了。可以在里面修改大部分的配置。详细可参考官方的配置描述<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvY29uZmlndXJhdGlvbiVFMyU4MCU4Mg==">https://hexo.io/zh-cn/docs/configuration。</span></p>
+<p><strong>网站</strong>.<br><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200948166.png" alt="image-20210920094840105"></p>
+<p><strong>网址</strong></p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200949444.png" alt="image-20210920094904392"></p>
+<p>在这里，你需要把url改成你的网站域名。</p>
+<p>permalink，也就是你生成某个文章时的那个链接格式。</p>
+<p>比如我新建一个文章叫temp.md，那么这个时候他自动生成的地址就是<span class="exturl" data-url="aHR0cDovL3lvdXJzaXRlLmNvbS8yMDE4LzA5LzA1L3RlbXAlRTMlODAlODI=">http://yoursite.com/2018/09/05/temp。</span></p>
+<p>以下是官方给出的示例，关于链接的变量还有很多，需要的可以去官网上查找 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3poLWNuL2RvY3MvcGVybWFsaW5rcw==">永久链接</span> 。</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>结果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:year/:month/:day/:title/</td>
+<td>2013/07/14/hello-world</td>
+</tr>
+<tr>
+<td>:year-:month-:day-:title.html</td>
+<td>2013-07-14-hello-world.html</td>
+</tr>
+<tr>
+<td>:category/:title</td>
+<td>foo/bar/hello-world</td>
+</tr>
+</tbody></table>
+<p>还有更多的配置可以去看前面给出的链接，一般默认就可以了。</p>
+<h2 id="模版（Scaffold）"><a href="#模版（Scaffold）" class="headerlink" title="模版（Scaffold）"></a>模版（Scaffold）</h2><p>/souce/scaffolds里默认有这三个模板，这三个模板可以打开修改的，这里只讲怎么用模板</p>
+<ul>
+<li>draft.md是草稿的模板，新建后的草稿会放在/source/_drafts里</li>
+<li>post.md是新文章的模板，新建后的文章会放在/source/_posts里</li>
+<li>page.md是页面的模板，新建后的页面会放在/source/里，和上面两个不同，这个不是新建文章的，而是新建一个页面的，可以通过配置把新建出来的页面加到页面的导航栏中。</li>
+</ul>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200935211.png" alt="image-20210920093503164"></p>
+<p>在新建文章时，Hexo 会根据 <code>scaffolds</code> 文件夹内相对应的文件来建立文件，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post &quot;asdx&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109200940948.png" alt="image-20210920094029904"></p>
+<p>可以看到对应目录下生成了一篇新文章，这时候再三部曲，就可以看到了自己新建的文章了</p>
+<p>刚刚提到了 Hexo 的一种特殊布局：<code>draft</code>，这种布局在建立时会被保存到 <code>source/_drafts</code> 文件夹，您可通过 <code>publish</code> 命令将草稿移动到 <code>source/_posts</code> 文件夹，该命令的使用方式与 <code>new</code> 十分类似，您也可在命令中指定 <code>layout</code> 来指定布局。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>草稿默认不会显示在页面中，您可在执行时加上 <code>--draft</code> 参数，或是把 <code>render_drafts</code> 参数设为 <code>true</code> 来预览草稿。</p>
+<p>那么可不可以不用上面的命令呢？可以，直接把自己写的markdown文件放到 <code>source/_posts</code> 文件夹</p>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><p>Front-matter 是每一个markdown文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量。</p>
+<p>⭐非常重要，特别是categories信息，直接指定文章的分类！</p>
+<p>举例来说：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: 2013/7/13 20:46:25</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>以下是预先定义的参数，您可在模板中使用这些参数值并加以利用。</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>layout</code></td>
+<td align="left">布局</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0"><code>config.default_layout</code></a></td>
+</tr>
+<tr>
+<td align="left"><code>title</code></td>
+<td align="left">标题</td>
+<td align="left">文章的文件名</td>
+</tr>
+<tr>
+<td align="left"><code>date</code></td>
+<td align="left">建立日期</td>
+<td align="left">文件建立日期</td>
+</tr>
+<tr>
+<td align="left"><code>updated</code></td>
+<td align="left">更新日期</td>
+<td align="left">文件更新日期</td>
+</tr>
+<tr>
+<td align="left"><code>comments</code></td>
+<td align="left">开启文章的评论功能</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left"><code>tags</code></td>
+<td align="left">标签（不适用于分页）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>categories</code></td>
+<td align="left">分类（不适用于分页）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>permalink</code></td>
+<td align="left">覆盖文章网址</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>excerpt</code></td>
+<td align="left">Page excerpt in plain text. Use <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdGFnLXBsdWdpbnMjUG9zdC1FeGNlcnB0">this plugin</span> to format the text</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>disableNunjucks</code></td>
+<td align="left">Disable rendering of Nunjucks tag <code>&#123;&#123; &#125;&#125;</code>/<code>&#123;% %&#125;</code> and <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdGFnLXBsdWdpbnM=">tag plugins</span> when enabled</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>lang</code></td>
+<td align="left">Set the language to override <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvaW50ZXJuYXRpb25hbGl6YXRpb24jUGF0aA==">auto-detection</span></td>
+<td align="left">Inherited from <code>_config.yml</code></td>
+</tr>
+</tbody></table>
+<p>只有文章支持分类和标签，您可以在 Front-matter 中设置。在其他系统中，分类和标签听起来很接近，但是在 Hexo 中两者有着明显的差别：分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Diary</span><br><span class="line">tags:</span><br><span class="line">- PS3</span><br><span class="line">- Games</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>分类方法的分歧</strong></p>
+<p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - Diary</span><br><span class="line">  - Life</span><br></pre></td></tr></table></figure>
+
+<p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
+<p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [Diary, PlayStation]</span><br><span class="line">- [Diary, Games]</span><br><span class="line">- [Life]</span><br></pre></td></tr></table></figure>
+
+<p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
+</blockquote>
+<h2 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h2><p>创建 Hexo 主题非常容易，在官网的主题中，选择你喜欢的一个主题进行修改就可以啦。<span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL3RoZW1lcy8=">点这里</span></p>
+<p>下载好之后将文件夹放在 <code>themes</code> 文件夹内，并修改 <code>_config.yml</code> 内的 <code>theme</code> 设定，即可切换主题。</p>
+<p>注意：文件夹名字和theme设定要一样</p>
+<p>每个主题的配置不一样，建议直接去对应的主题的介绍栏里找作者写的配置文章。</p>
+<p>如果官网上没找到，就去github里搜主题名字，进去一般会有作者的博客。</p>
+<p>⭐提一嘴，如果有遇到什么bug，建议养成去github对应项目下看issues，这里是最直接作者能回答问题的地方。</p>
 
   </div>
 
@@ -143,7 +342,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-08-17 23:08:05" itemprop="dateModified" datetime="2021-08-17T23:08:05+08:00">2021-08-17</time>
+    <time title="Modified: 2021-09-20 10:00:45" itemprop="dateModified" datetime="2021-09-20T10:00:45+08:00">2021-09-20</time>
   </span>
 </div>
 
@@ -182,6 +381,7 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo"><span class="toc-number">2.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="toc-number">3.</span> <span class="toc-text">阶段一：使用Hexo搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%AE%89%E8%A3%85hexo"><span class="toc-number">3.2.</span> <span class="toc-text">1安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E5%BB%BAGithub%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text">2.新建Github个人仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B0%86hexo%E9%83%A8%E7%BD%B2%E5%88%B0Github"><span class="toc-number">3.4.</span> <span class="toc-text">3.将hexo部署到Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%BE%E7%BD%AE%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">4.设置个人网站的域名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%BA%8C%EF%BC%9Ahexo%E8%BF%9B%E9%98%B6%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">阶段二：hexo进阶设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">hexo基本配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%EF%BC%88Scaffold%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">模版（Scaffold）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Front-matter"><span class="toc-number">4.3.</span> <span class="toc-text">Front-matter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2"><span class="toc-number">4.4.</span> <span class="toc-text">主题更换</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -196,13 +396,13 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">8</span>
+        <span class="count">7</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">4</span>
+        <span class="count">2</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -291,22 +491,10 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Diary/" title="In Diary">Diary</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/Diary/test/" title="In test">test</a>
-</div>
-
-    <span><a href="/Diary/test/Diary/tt" title="tt">tt</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+    <span><a href="/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
   </li>
 
       
@@ -317,6 +505,26 @@ Monkey's Blog = </title>
 </div>
 
     <span><a href="/test/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
@@ -346,27 +554,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
     <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
   </li>
 
   </ul>
