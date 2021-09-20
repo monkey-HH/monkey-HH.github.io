@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="https://monkeyhh.top/test/hello-world">
+<link rel="canonical" href="https://monkeyhh.top/uncategorized/hello-world">
 
 
 
   <title>
-hello-world - test |
+hello-world |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -115,12 +115,12 @@ Monkey's Blog = </title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
         </ul>
       </div>
     </header>
@@ -145,13 +145,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/test/" itemprop="item" rel="index" title="In test"><span itemprop="name">test</span></a>
-<meta itemprop="position" content="1" /></span>
+<span><a href="/">Home</a></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/test/hello-world">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/uncategorized/hello-world">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -190,9 +188,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-09-19 23:15:16" itemprop="dateModified" datetime="2021-09-19T23:15:16+08:00">2021-09-19</time>
+    <time title="Modified: 2021-09-20 16:01:12" itemprop="dateModified" datetime="2021-09-20T16:01:12+08:00">2021-09-20</time>
   </span>
-  <span id="test/hello-world" class="item leancloud_visitors" data-flag-title="hello-world" title="Views">
+  <span id="uncategorized/hello-world" class="item leancloud_visitors" data-flag-title="hello-world" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -211,7 +209,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/test/hello-world" title="hello-world">https://monkeyhh.top/test/hello-world</a>
+    <a href="https://monkeyhh.top/uncategorized/hello-world" title="hello-world">https://monkeyhh.top/uncategorized/hello-world</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -265,9 +263,6 @@ Monkey's Blog = </title>
           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
-        <ul>
-          <li class="active"><a href="/test/hello-world" rel="bookmark" title="hello-world">hello-world</a></li>
-        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -286,7 +281,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">2</span>
+        <span class="count">1</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -380,7 +375,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+    <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
   </li>
 
       
@@ -391,16 +386,6 @@ Monkey's Blog = </title>
 </div>
 
     <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
@@ -427,20 +412,29 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
+    <span><a href="/uncategorized/hello-world" title="hello-world">hello-world</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/test/" title="In test">test</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/test/hello-world" title="hello-world">hello-world</a></span>
+    <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+</div>
+
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
   </ul>
@@ -483,7 +477,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'test/hello-world',
+    path: 'uncategorized/hello-world',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

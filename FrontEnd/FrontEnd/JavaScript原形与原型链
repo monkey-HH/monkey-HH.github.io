@@ -312,9 +312,9 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/test/hello-world" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeybxm1pj20zk0m8niv.jpg" title="hello-world">
+  <a href="/uncategorized/hello-world" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclffsa1cj20zk0m811l.jpg" title="hello-world">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> test</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
   <h3>hello-world</h3>
   </a>
 
@@ -358,7 +358,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">2</span>
+        <span class="count">1</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -427,7 +427,7 @@ Monkey's Blog = </title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/test/hello-world" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/uncategorized/hello-world" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -452,7 +452,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
   </li>
 
       
@@ -482,7 +482,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
   </li>
 
       
@@ -499,10 +499,9 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/test/" title="In test">test</a>
 </div>
 
-    <span><a href="/test/hello-world" title="hello-world">hello-world</a></span>
+    <span><a href="/uncategorized/hello-world" title="hello-world">hello-world</a></span>
   </li>
 
       
