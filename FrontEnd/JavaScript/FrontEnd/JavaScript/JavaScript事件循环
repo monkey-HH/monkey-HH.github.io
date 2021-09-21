@@ -27,12 +27,12 @@
   <meta name="keywords" content="JavaScript" />
 
 
-<link rel="canonical" href="https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF">
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF">
 
 
 
   <title>
-JavaScript事件循环 - FrontEnd |
+JavaScript事件循环 - JavaScript - FrontEnd |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -141,12 +141,15 @@ Monkey's Blog = </title>
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
 <span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
 <meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/JavaScript/" itemprop="item" rel="index" title="In JavaScript"><span itemprop="name">JavaScript</span></a>
+<meta itemprop="position" content="2" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -490,16 +493,17 @@ Monkey's Blog = </title>
 <li>循环往复，直到两个queue中的任务都取完。</li>
 </ol>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/eventloop-1.png" alt="eventloop-1"></p>
-<p>⚠看到这里，有的读者可能会和我一样，产生一个疑问，微任务队列的优先级不是高于任务队列吗？为什么图里是先执行宏任务，再执行微任务，是不是，哪里出了问题？</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109210104051.jpeg" alt="image"></p>
+<p>⚠看到这里，有的读者可能会和我一样，产生一个疑问，微任务队列的优先级不是高于任务队列吗？为什么图里是先执行宏任务，再执行微任务，是不是，哪里出了问题？记住结论：<u><strong>微任务的优先级比宏任务高，但是宏任务才会触发新一轮的tick</strong></u></p>
 <p>比如说下面一个例子，产生了这个误解的读者可能会觉得结果是</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script start&#x27;</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script end&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误的结果</span></span><br><span class="line">script start</span><br><span class="line">script end</span><br><span class="line"><span class="built_in">setTimeout</span></span><br><span class="line">promise1</span><br><span class="line">promise2</span><br><span class="line"></span><br><span class="line"><span class="comment">//真实的结果</span></span><br><span class="line">script start</span><br><span class="line">script end</span><br><span class="line">promise1</span><br><span class="line">promise2</span><br><span class="line"><span class="built_in">setTimeout</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script start&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script end&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误的结果</span></span><br><span class="line">script start</span><br><span class="line">script end</span><br><span class="line"><span class="built_in">setTimeout</span></span><br><span class="line">promise1</span><br><span class="line">promise2</span><br><span class="line"></span><br><span class="line"><span class="comment">//真实的结果</span></span><br><span class="line">script start</span><br><span class="line">script end</span><br><span class="line">promise1</span><br><span class="line">promise2</span><br><span class="line"><span class="built_in">setTimeout</span></span><br></pre></td></tr></table></figure>
 
 <p>那么下面再解释一下子哈</p>
 <p>最最最开始的时候，宏任务和微任务队列都是空的，然后把script加入到了宏任务队列</p>
 <p>然后走图的流程script先作为一个宏任务执行，先输出了“script start”，这里相信不会有疑问</p>
 <p>随后，把setTimeout放入宏任务，promise的两个then放入微任务</p>
-<p>随后，执行最后一条语句，输出“script end”</p>
-<p>然后，看图，执行完一个宏任务之后，就会去查微任务队列里有没有任务，欸，发现有，然后就执行输出了promise的两条语句，后面的就不用我解释啦，详细的过程可以去看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84MDA3NDI3NA==">https://zhuanlan.zhihu.com/p/80074274</span></p>
+<p>随后，执行最后一条语句，输出“script end”，这时候的一个宏任务即script就执行完了</p>
+<p>然后，看模型图，执行完一个宏任务之后，就会去查微任务队列里有没有任务，欸，发现有，然后就执行输出了promise的两条语句，后面的就不用我解释啦，详细的过程可以去看<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84MDA3NDI3NA==">https://zhuanlan.zhihu.com/p/80074274</span></p>
 <p>其实产生了这个疑问的读者忽略了一点，script整体代码也是一个宏任务，看一下下面两个例子加深一下印象</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 脚本 1 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="comment">// 同步</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="string">&#x27;start1&#x27;</span>)</span></span><br><span class="line"><span class="javascript">	<span class="comment">// 异步宏</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;timer1&#x27;</span>), <span class="number">0</span>)</span></span><br><span class="line"><span class="javascript">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="comment">// 同步</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(<span class="string">&#x27;p1&#x27;</span>)</span></span><br><span class="line"><span class="javascript">		resolve()</span></span><br><span class="line"><span class="javascript">	&#125;).then(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="comment">// 异步微</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(<span class="string">&#x27;then1&#x27;</span>)</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript">	<span class="comment">// 同步</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="string">&#x27;end1&#x27;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 脚本 2 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="comment">// 同步</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="string">&#x27;start2&#x27;</span>)</span></span><br><span class="line"><span class="javascript">	<span class="comment">// 异步宏</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;timer2&#x27;</span>), <span class="number">0</span>)</span></span><br><span class="line"><span class="javascript">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="comment">// 同步</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(<span class="string">&#x27;p2&#x27;</span>)</span></span><br><span class="line"><span class="javascript">		resolve()</span></span><br><span class="line"><span class="javascript">	&#125;).then(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="comment">// 异步微</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(<span class="string">&#x27;then2&#x27;</span>)</span></span><br><span class="line"><span class="javascript">	&#125;)</span></span><br><span class="line"><span class="javascript">	<span class="comment">// 同步</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="string">&#x27;end2&#x27;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -610,9 +614,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-09-20 10:18:31" itemprop="dateModified" datetime="2021-09-20T10:18:31+08:00">2021-09-20</time>
+    <time title="Modified: 2021-09-21 15:09:53" itemprop="dateModified" datetime="2021-09-21T15:09:53+08:00">2021-09-21</time>
   </span>
-  <span id="FrontEnd/FrontEnd/JavaScript事件循环" class="item leancloud_visitors" data-flag-title="JavaScript事件循环" title="Views">
+  <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript事件循环" class="item leancloud_visitors" data-flag-title="JavaScript事件循环" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -631,7 +635,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">https://monkeyhh.top/FrontEnd/FrontEnd/JavaScript事件循环</a>
+    <a href="https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript事件循环</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -650,22 +654,14 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器原理介绍">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器原理介绍">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> FrontEnd</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>浏览器原理介绍</h3>
   </a>
 
     </div>
     <div class="item right">
-      
-
-  <a href="/FrontEnd/FrontEnd/vue" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202108221807344.jpeg" title="vue">
-  <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> FrontEnd</span>
-  <h3>vue</h3>
-  </a>
-
     </div>
 </div>
 
@@ -686,7 +682,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript数据类型">JavaScript数据类型</a></li><li><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="解决跨域问题">解决跨域问题</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="原型和原型链">原型和原型链</a></li><li><a href="/FrontEnd/FrontEnd/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" rel="bookmark" title="JavaScript作用域与作用域链">JavaScript作用域与作用域链</a></li><li><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器原理介绍">浏览器原理介绍</a></li><li class="active"><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/FrontEnd/vue" rel="bookmark" title="vue">vue</a></li>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript数据类型">JavaScript数据类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="原型和原型链">原型和原型链</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -700,13 +696,13 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">8</span>
+        <span class="count">7</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">1</span>
+        <span class="count">4</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -770,12 +766,10 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/FrontEnd/vue" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -800,7 +794,17 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" title="JavaScript作用域与作用域链">JavaScript作用域与作用域链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
+</div>
+
+    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
   </li>
 
       
@@ -808,9 +812,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
   </li>
 
       
@@ -818,9 +824,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
   </li>
 
       
@@ -828,9 +836,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
@@ -838,18 +848,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/uncategorized/hello-world" title="hello-world">hello-world</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
   </li>
 
       
@@ -857,19 +860,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" title="JavaScript作用域与作用域链">JavaScript作用域与作用域链</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
   </li>
 
   </ul>
@@ -894,13 +889,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">87k words</span>
+    <span title="Symbols count total">71k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">1:19</span>
+    <span title="Reading time total">1:05</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
@@ -912,7 +907,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'FrontEnd/FrontEnd/JavaScript事件循环',
+    path: 'FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript事件循环',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

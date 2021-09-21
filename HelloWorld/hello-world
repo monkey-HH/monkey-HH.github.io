@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="https://monkeyhh.top/uncategorized/hello-world">
+<link rel="canonical" href="https://monkeyhh.top/HelloWorld/hello-world">
 
 
 
   <title>
-hello-world |
+hello-world - HelloWorld |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -115,12 +115,12 @@ Monkey's Blog = </title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeudstjqj20zk0m8k3r.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu7txpzj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclg5ms2rj20zk0m8u0x.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -145,11 +145,13 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/HelloWorld/" itemprop="item" rel="index" title="In HelloWorld"><span itemprop="name">HelloWorld</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/uncategorized/hello-world">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/HelloWorld/hello-world">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -188,9 +190,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-09-20 16:06:13" itemprop="dateModified" datetime="2021-09-20T16:06:13+08:00">2021-09-20</time>
+    <time title="Modified: 2021-09-21 15:11:50" itemprop="dateModified" datetime="2021-09-21T15:11:50+08:00">2021-09-21</time>
   </span>
-  <span id="uncategorized/hello-world" class="item leancloud_visitors" data-flag-title="hello-world" title="Views">
+  <span id="HelloWorld/hello-world" class="item leancloud_visitors" data-flag-title="hello-world" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -209,7 +211,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/uncategorized/hello-world" title="hello-world">https://monkeyhh.top/uncategorized/hello-world</a>
+    <a href="https://monkeyhh.top/HelloWorld/hello-world" title="hello-world">https://monkeyhh.top/HelloWorld/hello-world</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -230,9 +232,9 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript数据类型">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript数据类型">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> FrontEnd</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>JavaScript数据类型</h3>
   </a>
 
@@ -255,6 +257,9 @@ Monkey's Blog = </title>
           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/HelloWorld/hello-world" rel="bookmark" title="hello-world">hello-world</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -267,13 +272,13 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">8</span>
+        <span class="count">7</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">1</span>
+        <span class="count">4</span>
         <span class="name">categories</span>
       </a>
     </div>
@@ -362,9 +367,46 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/uncategorized/hello-world" title="hello-world">hello-world</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
+</div>
+
+    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
   </li>
 
       
@@ -374,7 +416,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+    <span><a href="/FrontEnd/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" title="JavaScript作用域与作用域链">JavaScript作用域与作用域链</a></span>
   </li>
 
       
@@ -382,9 +424,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
@@ -392,49 +436,11 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/vue" title="vue">vue</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" title="JavaScript作用域与作用域链">JavaScript作用域与作用域链</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-</div>
-
-    <span><a href="/FrontEnd/FrontEnd/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="原型和原型链">原型和原型链</a></span>
   </li>
 
   </ul>
@@ -459,13 +465,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">87k words</span>
+    <span title="Symbols count total">71k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">1:19</span>
+    <span title="Reading time total">1:05</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
@@ -477,7 +483,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'uncategorized/hello-world',
+    path: 'HelloWorld/hello-world',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
