@@ -399,7 +399,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">7</span>
+        <span class="count">8</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -498,6 +498,30 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" title="JavaScript中的this">JavaScript中的this</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
@@ -513,7 +537,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
@@ -542,34 +566,22 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
 </div>
 
     <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
   </li>
 
   </ul>
@@ -594,13 +606,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">71k words</span>
+    <span title="Symbols count total">82k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">1:05</span>
+    <span title="Reading time total">1:14</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
