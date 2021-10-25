@@ -1,0 +1,787 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="CSS" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8">
+
+
+
+  <title>
+CSS选择器 - CSS - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">CSS选择器
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-05-01 12:01:30">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-05-01T12:01:30+08:00">2021-05-01</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>10k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>9 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109231754245.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/CSS/" itemprop="item" rel="index" title="In CSS"><span itemprop="name">CSS</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文主要是阅读《CSS选择器世界》这一书籍后的笔记，主要观点都是从书中阅读而来，该书主要给有一定CSS的基础的同学食用。</p>
+<p>看完还是收获良多，在以前自己写的项目中，基本写过的CSS代码就不想重新看多一回，因为自己写得太乱了，维护起来十分困难，在本书中学习到了很多很好的观念，写出来供大家交流分享。</p>
+<h1 id="CSS选择器基本概念"><a href="#CSS选择器基本概念" class="headerlink" title="CSS选择器基本概念"></a>CSS选择器基本概念</h1><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h3 id="元素选择器（通配符选择器和标签选择器）"><a href="#元素选择器（通配符选择器和标签选择器）" class="headerlink" title="元素选择器（通配符选择器和标签选择器）"></a>元素选择器（通配符选择器和标签选择器）</h3><p>元素选择器有两个不同于其他选择器的语法：</p>
+<ul>
+<li>元素选择器是唯一不能<strong>重复自身</strong>的选择器。即类似于span*span无效。其他的如.cc.cc有效，且这是提高优先级的一个方式。</li>
+<li>级联使用的时候必须<strong>元素选择器写在最前面</strong>。例如[type]*、[type=”radio”]input无效。</li>
+</ul>
+<p>注：<strong>通配符选择器不匹配伪元素</strong>，其他所有类型的标签元素都可以。</p>
+<h3 id="广义属性选择器（ID、类、狭义属性选择器）"><a href="#广义属性选择器（ID、类、狭义属性选择器）" class="headerlink" title="广义属性选择器（ID、类、狭义属性选择器）"></a>广义属性选择器（ID、类、狭义属性选择器）</h3><blockquote>
+<p>我们平常提到的属性选择器指的是[type= “radio”]这类选择器，实际上，这是一-种简称，指的是“属性值匹配选择器”。实际上，在正式文档中，类选择器和ID选择器都属于属性选择器，因为本质上类选择器是HTML元素中class的属性值，ID选择器是HTML元素中id的属性值。</p>
+</blockquote>
+<p>前两者没什么好说的，注意ID不能重复就是了。</p>
+<p>重点讲讲狭义属性选择器，注意这些属性选择符（除了第一个）都可以在右中括号前面加个i，表示忽略属性值大小写。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109242323929.png" alt="image-20210924232353835"></p>
+<h4 id="直接匹配选择器"><a href="#直接匹配选择器" class="headerlink" title="直接匹配选择器"></a>直接匹配选择器</h4><h5 id="attr"><a href="#attr" class="headerlink" title="[attr]"></a>[attr]</h5><p>[attr]表示只要包含指定的属性就匹配，尤其适用于一些HTML布尔属性，这些布尔属性只要有属性值，无论值的内容是什么，都认为这些属性的值是true。例如，下面所有的输入框的写法都是禁用的: </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">disabled</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">disabled</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">disabled</span>=<span class="string">&quot;disabled&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">disabled</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">disabled</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="attr-”val”"><a href="#attr-”val”" class="headerlink" title="[attr=”val”]"></a>[attr=”val”]</h5><p>这个没什么好说的，就是属性值完全匹配选择器。</p>
+<h5 id="attr-”val”-1"><a href="#attr-”val”-1" class="headerlink" title="[attr~=”val”]"></a>[attr~=”val”]</h5><p>属性值单词完全匹配选择器，专门用来匹配属性中的单词。</p>
+<p>比如某个属性有多个用<strong>空格隔开</strong>的值，其中一个值能对的上则匹配成功。</p>
+<h5 id="attr-”val”-2"><a href="#attr-”val”-2" class="headerlink" title="[attr|=”val”]"></a>[attr|=”val”]</h5><p>[attr |=”val”]是属性值起始片段完全匹配选择器，表示具有attr属性的元素，只匹配这俩开头的</p>
+<ol>
+<li><p>val</p>
+</li>
+<li><p>val-</p>
+</li>
+</ol>
+<p>|=用于连接需要匹配的属性和属性内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--匹配--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">attr</span>=<span class="string">&quot;val&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--匹配--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">attr</span>=<span class="string">&quot;val-ue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--匹配--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">attr</span>=<span class="string">&quot;val-ue bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--不匹配--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">attr</span>=<span class="string">&quot;value&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 不匹配--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">attr</span>=<span class="string">&quot;val bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--不匹配--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">attr</span>=<span class="string">&quot;bar val-ue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>用的不多</p>
+<h4 id="正则匹配选择器"><a href="#正则匹配选择器" class="headerlink" title="正则匹配选择器"></a>正则匹配选择器</h4><h5 id="attr-”val”-3"><a href="#attr-”val”-3" class="headerlink" title="[attr^=”val”]"></a>[attr^=”val”]</h5><p>val开头的attr属性的元素会被匹配</p>
+<h5 id="attr-”val”-4"><a href="#attr-”val”-4" class="headerlink" title="[attr$=”val”]"></a>[attr$=”val”]</h5><p>val结尾的attr属性的元素会被匹配</p>
+<h5 id="attr-”val”-5"><a href="#attr-”val”-5" class="headerlink" title="[attr*=”val”]"></a>[attr*=”val”]</h5><p>含有val的attr属性的元素会被匹配</p>
+<h4 id="CSS属性选择器搜索过滤技术"><a href="#CSS属性选择器搜索过滤技术" class="headerlink" title="CSS属性选择器搜索过滤技术"></a>CSS属性选择器搜索过滤技术</h4><p>我们可以借助属性选择器来辅助我们实现搜索过滤效果，如通讯录、城市列表，这样做性能高，代码少。</p>
+<p>例子可以看<span class="exturl" data-url="aHR0cHM6Ly9kZW1vLmNzc3dvcmxkLmNuL3NlbGVjdG9yLzYvMy0xLnBocA==">https://demo.cssworld.cn/selector/6/3-1.php</span></p>
+<h2 id="选择符"><a href="#选择符" class="headerlink" title="选择符"></a>选择符</h2><h3 id="后代选择符空格"><a href="#后代选择符空格" class="headerlink" title="后代选择符空格(   )"></a>后代选择符空格(   )</h3><p>后代选择符是很常见的，从IE6时代就支持了，但是还是不少人对此有几个错误的认识。</p>
+<h4 id="误解1"><a href="#误解1" class="headerlink" title="误解1"></a>误解1</h4><p>看以下代码，猜猜1和2的颜色是什么</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;lightblue&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;darkblue&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>1. 颜色是？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;darkblue&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;lightblue&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>2. 颜色是？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">	<span class="selector-class">.lightblue</span> &#123; <span class="attribute">color</span>: lightblue; &#125;</span></span><br><span class="line"><span class="css">	<span class="selector-class">.darkblue</span> &#123; <span class="attribute">color</span>: darkblue; &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个问题很简单，因为color具有继承特性,所以文字的颜色<u>由<strong>DOM最深</strong>的赋色元素</u>决定，所以因此1和2的颜色分别是深蓝色和浅蓝色。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109242119455.png" alt="image-20210924211944421" style="zoom:50%;" />
+
+<p>再来看下面代码，再看颜色是什么，注意，此时的选择器多了个后代选择符</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;lightblue&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;darkblue&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>1. 颜色是？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;darkblue&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;lightblue&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>2. 颜色是？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">	<span class="selector-class">.lightblue</span> <span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: lightblue; &#125;</span></span><br><span class="line"><span class="css">	<span class="selector-class">.darkblue</span> <span class="selector-tag">p</span> &#123; <span class="attribute">color</span>: darkblue; &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>两个都是深蓝色</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109242121224.png" alt="image-20210924212134184" style="zoom:50%;" />
+
+<p><u>当<strong>包含后代选择符</strong>的时候，整个选择器的优先级与祖先元素的<strong>DOM层级没有任何关系</strong>，这时要<strong>看落地元素的优先级</strong>。</u></p>
+<p>这俩选择器平级，由于“后来居上”原则，所以都是深蓝色。</p>
+<h4 id="误解2"><a href="#误解2" class="headerlink" title="误解2"></a>误解2</h4><p>看代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>= <span class="string">&quot;myId&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;lonely&quot;</span>&gt;</span>单身 如我<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;outer&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inner&quot;</span>&gt;</span>内外开花<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="comment">// 1.长度是?</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;#myId div div&#x27;</span>).length;</span></span><br><span class="line"><span class="javascript">	<span class="comment">// 2.长度是?</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">document</span>.querySelector(<span class="string">&#x27;#myId&#x27;</span>).querySelectorAll(<span class="string">&#x27;div div&#x27;</span>).length;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>答案是1 和 3。why？为什么不是1和1？</p>
+<p><strong><u>CSS选择器是独立于整个页面的。</u></strong></p>
+<p>querySelectorAll里面的选择器同样也是<u>全局特性</u>。document . querySelector(‘ #myId’) .querySelectorAll ( ‘div div’ )翻译过来的意思就是:查询#myId元素的子元素,选择所有同时满足<u>整个页面下</u>div div 选择器条件的DOM元素。</p>
+<p>此时我们再仔细看看原始的HTML结构会发现，在<u>全局视野</u>下，div. lonely、div.outer、div. inner全部都满足div div 这个选择器条件，于是，最终返回的长度为3。如果我们在浏览器控制台输出所有NodeList，也是这个结果:<br>NodeList (3) [div .lonely, div .outer, div. inner]</p>
+<p>当然了如果不想要全局匹配，可以用:scope伪类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27; #myId&#x27;</span>).querySelectorA1l(<span class="string">&#x27;:scope div div&#x27;</span>).length;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="子选择符箭头-gt"><a href="#子选择符箭头-gt" class="headerlink" title="子选择符箭头( &gt; )"></a>子选择符箭头( &gt; )</h3><p>也常用，IE7浏览器开始支持，和后代选择符的区别：&gt;只会匹配儿子，空格则不仅仅匹配儿子，所有后代都匹配。</p>
+<p>能不用子选择符就尽量不用，虽然它的性能优于后代选择符，但与其日后带来的维护成本比，这实在不值一提。</p>
+<p>因为一旦使用了子选择符，元素的<strong>层级关系就被强制绑定</strong>了，日后需要维护或者需求发生变化的时候一旦调整了层级关系，整个样式就失效了，这时还要对CSS代码进行同步调整，增加了维护成本。建议用后代选择符代替。</p>
+<p>适合使用子选择符的场景通常有以下几个</p>
+<ul>
+<li><p>状态类名控制。例如使用.active 类名进行状态切换，会遇到祖先和后代都存在.active切换的场景，此时子选择符是必需的，以免影响后代元素，例子可以看“CSS选择器设计的最佳实践”-“选择器类型”-“CSS交互变化样式”里的例子</p>
+</li>
+<li><p>便签受限。例如当<li>标签重复嵌套，同时我们无法修改标签名称或者设置类名的时候(例如WordPress中的第三方小工具)，就需要使用子选择符进行精确控制。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.widget</span> &gt; <span class="number">1</span>i&#123;&#125;</span><br><span class="line"><span class="selector-class">.widget</span> &gt; <span class="selector-tag">li</span> <span class="selector-tag">li</span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>层级位置与动态判断。例如一个时间选择组件的HTML通常会放在<body>元素下，作为<body>的子元素，以绝对定位浮层的形式呈现。但有时候其需要以静态布局嵌在页面的某个位置，这时如果我们不方便修改组件源码，则可以借助子选择符快速打一一个补丁:</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:not</span>(<span class="selector-tag">body</span>)&gt;<span class="selector-class">.cs-date-panel-x</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>意思就是当组件容器不是<body>子元素的时候取消绝对定位。</p>
+<h3 id="相邻兄弟选择符记号"><a href="#相邻兄弟选择符记号" class="headerlink" title="相邻兄弟选择符记号( + )"></a>相邻兄弟选择符记号( + )</h3><p>选择后面的<strong>一个弟弟</strong>。</p>
+<p>此处要注意的一个点是：在判断兄弟的时候，会<strong>忽略文本节点</strong>（纯文字，没标签）和<strong>注释节点</strong>（HTML标签）。</p>
+<h4 id="模拟实现-first-child"><a href="#模拟实现-first-child" class="headerlink" title="模拟实现:first-child"></a>模拟实现:first-child</h4><p>要求：li的第一个不变色</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cs-g1&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span>&gt;</span>使用: first-child实现<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;cs-li&quot;</span>&gt;</span>列表内容 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;cs-li&quot;</span>&gt;</span>列表内容 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;cs-li&quot;</span>&gt;</span>列表内容3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;cs-g2&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span>&gt;</span>使用相邻兄弟选择符实现<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;cs-li&quot;</span>&gt;</span>列表内容 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;cs-li&quot;</span>&gt;</span>列表内容2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;cs-li&quot;</span>&gt;</span>列表内容 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-class">.cs-g1</span> <span class="selector-class">.cs-li</span><span class="selector-pseudo">:not</span>(<span class="selector-pseudo">:first</span>-child) &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">color</span>: skyblue;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.cs-g2</span> <span class="selector-class">.cs-li</span> + <span class="selector-class">.cs-li</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">color</span>: skyblue;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109242231406.png" alt="image-20210924223135342"></p>
+<p>可以明显看到，相邻兄弟选择符实现的方法第一个列表元素的颜色依然是黑色，而非天蓝色，说明正确匹配了非首列表元素，而:first-child 的所有列表元素都是天蓝色，匹配失败。可见，相邻兄弟选择符的适用性要更广一 些。</p>
+<p>这里为啥前者失效，因为列表内容123都不是其父节点的子节点，所以不行</p>
+<h4 id="是众多高级选择器技术的核心"><a href="#是众多高级选择器技术的核心" class="headerlink" title="+是众多高级选择器技术的核心"></a>+是众多高级选择器技术的核心</h4><p>相邻兄弟选择符最硬核的应用还是配合诸多伪类低成本实现很多实用的交互效果，是众多高级选择器技术的核心。</p>
+<p>举个简单的例子，当我们聚焦输入框的时候，如果希望后面的提示文字显示，则可以借助相邻兄弟选择符轻松实现，原理很简单，把提示文字预先埋在输入框的后面，当触发focus 行为的时候，让提示文字显示即可，HTML和CSS如下:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">用户名: <span class="tag">&lt;<span class="name">input</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;cs-tips&quot;</span>&gt;</span>不超过10个字符&lt;/ span&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-class">.cs-tips</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">color</span>: gray;</span></span><br><span class="line"><span class="css">	<span class="attribute">margin-left</span>: <span class="number">1</span> <span class="number">5px</span>;</span></span><br><span class="line"><span class="css">	<span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="css">	<span class="attribute">visibility</span>: hidden;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-pseudo">:focus</span> + <span class="selector-class">.cs-tips</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">visibility</span>: visible;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109242236282.png" alt="image-20210924223606226"></p>
+<h3 id="随后兄弟选择符弯弯"><a href="#随后兄弟选择符弯弯" class="headerlink" title="随后兄弟选择符弯弯( ~ )"></a>随后兄弟选择符弯弯( ~ )</h3><p>和+的区别：+指匹配一个弟弟，~匹配所有弟弟</p>
+<p>这里没什么好展开说的，说说怎么选哥哥节点吧</p>
+<h4 id="为什么没有前面兄弟选择符"><a href="#为什么没有前面兄弟选择符" class="headerlink" title="为什么没有前面兄弟选择符"></a>为什么没有前面兄弟选择符</h4><p>DOM渲染规则：浏览器解析HTML文档是从前往后，由外及里进行的，所以我们时常会看到页面先出现头<br>部然后再出现主体内容的情况。</p>
+<p>但是，如果CSS支持了前面兄弟选择符或者父元素选择符,那就必须要等页面所有子元素<strong>加载完毕才能渲染HTML文档</strong>。因为所谓“前面兄弟选择符”，就是后面的DOM元素影响前面的DOM元素,如果后面的元素还没被加载并处理，又如何影响前面的元素样式呢?如果CSS真的支持这样的选择符，网页呈现<strong>速度必然会大大减慢</strong>，浏览器会出现长时间的白板，这会造成不好的体验。</p>
+<h4 id="如何实现前面兄弟选择符"><a href="#如何实现前面兄弟选择符" class="headerlink" title="如何实现前面兄弟选择符"></a>如何实现前面兄弟选择符</h4><p>兄弟选择符只能选择后面的元素，但是这个“后面”仅仅指代码层面的后面，而不是视觉层面的后面。也就是说，我们要实现前面兄弟选择符的效果，可以把这个“前面的元素”的相关代码依然放在后面，但是视觉上将它呈现在前面就可以了。</p>
+<p>有四种方法，详细可以看<span class="exturl" data-url="aHR0cHM6Ly9kZW1vLmNzc3dvcmxkLmNuL3NlbGVjdG9yLzQvNC0yLnBocA==">https://demo.cssworld.cn/selector/4/4-2.php</span></p>
+<h3 id="选择符双管道"><a href="#选择符双管道" class="headerlink" title="选择符双管道( || )"></a>选择符双管道( || )</h3><h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><p>此部分在书中占有3/5的篇幅，介绍了不少，建议看看原作，这里由于篇幅原因不多做解释了，以后有时间再总结一下。又是挖坑的一天</p>
+<h2 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h2><p><strong>伪类</strong>选择元素基于的是当前元素处于的状态，或者说元素当前所具有的特性，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；当状态改变时，它又会失去这个样式。由此可以看出，它的功能和class有些类似，但它是基于文档之外的抽象，所以叫<strong>伪类</strong>。</p>
+<p>与伪类针对特殊状态的元素不同的是，<strong>伪元素</strong>是对元素中的特定内容进行操作，它所操作的层次比伪类更深了一层，也因此它的动态性比伪类要低得多。实际上，设计伪元素的目的就是去选取诸如元素内容第一个字（母）、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫<strong>伪元素</strong></p>
+<h1 id="CSS优先级规则"><a href="#CSS优先级规则" class="headerlink" title="CSS优先级规则"></a>CSS优先级规则</h1><p>CSS优先级划分为0~5这6个等级，其中前4个等级由CSS选择器决定，后2个等级由书写形式和特定语法决定。</p>
+<ul>
+<li><p>0级：通配选择器<em>、选择符、逻辑组合伪类。*<em>权重为0，0，0，0</em></em></p>
+<ul>
+<li>*</li>
+<li>选择符：+、&gt;、~、空格、||</li>
+<li>逻辑组合伪类：:not()、:is()、:where等</li>
+</ul>
+</li>
+<li><p>1级：标签选择器，例如body{}。<strong>权重为0，0，0，1</strong></p>
+</li>
+<li><p>2级：类选择器、属性选择器、伪类。<strong>权重为0，0，1，0</strong></p>
+<p>例如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.foo</span>&#123;<span class="attribute">color</span>:<span class="number">#666</span>&#125;</span><br><span class="line"><span class="selector-attr">[foo]</span>&#123;<span class="attribute">color</span>:<span class="number">#666</span>&#125;</span><br><span class="line"><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#666</span>&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>3级：ID选择器。<strong>权重为0，1，0，0</strong></p>
+</li>
+<li><p>4级：style属性内联。<strong>权重为1，0，0，0</strong></p>
+</li>
+<li><p>5级：!important。<strong>权重拉满</strong></p>
+<blockquote>
+<p><strong>注</strong>：书上其实是按照0级0、1级1，2级10等等以此类推的顺序来算权重，但个人认为其有一个不严谨之处为：这样子似乎用10个1级选择器能顶一个2级选择器，但事实上不同等级的选择器无法越级</p>
+</blockquote>
+<p>上面这样子用逗号隔开不是代表二进制，而是他们的权重是在哪一位。</p>
+<p>那么如何比较大小呢，从左到右比较，相同的话就比较下一位，只要有高一位的大就是大，后面的低位不用看了。比如0，1，0，0大于0，0，9999，0。下面给出一些例子：</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>计算值</th>
+<th>计算细则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*{ }</td>
+<td>0,0,0,0</td>
+<td>1个0级选择器</td>
+</tr>
+<tr>
+<td>dialog{  }</td>
+<td>0,0,0,1</td>
+<td>标签选择器是1级选择器</td>
+</tr>
+<tr>
+<td>ul&gt;li{}</td>
+<td>0,0,0,2</td>
+<td>2个1级选择器，&gt;是0级选择器</td>
+</tr>
+<tr>
+<td>li&gt;ol+ol{}</td>
+<td>0,0,0,3</td>
+<td>3个1级选择器，&gt;和+是0级选择器</td>
+</tr>
+<tr>
+<td>.foo{}</td>
+<td>0,0,1,0</td>
+<td>类选择器是2级选择器</td>
+</tr>
+<tr>
+<td>li.foo.bar{}</td>
+<td>0,0,2,1</td>
+<td>2个2级选择器、1个1级选择器</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>“后来居上原则”：当两个选择器权重相同的时候，后面的选择器优先级更高，会覆盖掉前一个</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="CSS选择器设计的最佳实践"><a href="#CSS选择器设计的最佳实践" class="headerlink" title="CSS选择器设计的最佳实践"></a>CSS选择器设计的最佳实践</h1><p>作者注：以下是作者认为的最佳实践，并不是说一定要遵守。</p>
+<h2 id="选择器命名"><a href="#选择器命名" class="headerlink" title="选择器命名"></a>选择器命名</h2><ul>
+<li><p>命名建议用小写，且不要用拼音。</p>
+</li>
+<li><p>中间可以使用“-”符号</p>
+</li>
+<li><p>设置统一的前缀，可以避免多个CSS文件之间的样式冲突，例如</p>
+<ul>
+<li>.monkey-header{}</li>
+<li>.monkey-logo{}</li>
+<li>.monkey-logo-a{}</li>
+</ul>
+</li>
+</ul>
+<p>并且，选择器命名有两种方式，一种是面向属性的命名(如.tj{text-align:justify})，一种是面向语义的命名（如.header{}）。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109242023485.png" alt="image-20210924202300400"></p>
+<p>针对这两种命名，究竟该如何取舍?作者的观点是：如果是小项目，则直接采用面向语义的命名方式；如果是多人合作的大项目，则两种方式都采用，因为项目越大，面向属性的命名的价值越能得到体现。</p>
+<p>作者将页面归纳为下面几块：公用结构、公用模块、UI组件、精致布局和一些细枝末节。</p>
+<p>其中，前四者（就是除了细枝末节）都不适合使用面向属性的类名，前3个属于页面公用内容，如果使用了面向属性的类名，日后维护起来会很不方便，因为这些内容散布在项目的各个角落，一旦需要修改，则需要找到所有散布的HTML代码，显然维护成本很高。精致布局也不适合使用面向属性的类名，因为面向属性的类名属性单一，无法完全驾驭精致的样式布局，还需要额外的语义化的类名，既然需要新的类名，也就没有使用面向属性类名的必要。</p>
+<p>那么细枝末节指的什么？值得是比如说设置两个按钮之间的间距、某段文字的字号、文字超出宽度后以…显示以及一些特殊场景的微调。</p>
+<h2 id="选择器类型"><a href="#选择器类型" class="headerlink" title="选择器类型"></a>选择器类型</h2><p>将CSS分为3个部分：CSS重置样式、CSS基础样式、CSS交互变化样式。</p>
+<blockquote>
+<p>无论哪种样式，都没有理由使用ID选择器，如果要用就用属性选择器[id=”someId”]{}。</p>
+<p>原因一：优先级太高。如果想改样式，必然要用到ID选择器覆盖，这样就使得项目<strong>优先级混乱</strong>。</p>
+<p>原因二：和JavaScript耦合。实际开发中，ID主要用在JavaScript中，以方便DOM元素快速获取它，如果同时和样式关联，它的可维护性就大打折扣。如果ID变化，必须同时修改CSS和JavaScript。</p>
+</blockquote>
+<h3 id="CSS重置样式"><a href="#CSS重置样式" class="headerlink" title="CSS重置样式"></a>CSS重置样式</h3><p>CSS重置样式可以使用<u>标签选择器</u>或者<u>属性选择器</u>等；一般就是页面初始化的那部分，例如</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>,<span class="selector-tag">p</span>&#123;&#125;</span><br><span class="line"><span class="selector-attr">[type=<span class="string">&quot;radio&quot;</span>]</span>,</span><br><span class="line"><span class="selector-attr">[type=<span class="string">&quot;checkbox&quot;</span>]</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="CSS基础样式"><a href="#CSS基础样式" class="headerlink" title="CSS基础样式"></a>CSS基础样式</h3><p>CSS基础样式就是正常HTML结构要使用的CSS代码了，占了CSS中的绝大部分。</p>
+<p>CSS基础样式代码编写的要点是：<strong>全部使用类选择器</strong>，<strong>没有嵌套层级</strong>，<strong>没有标签选择器</strong>。</p>
+<p>不要嵌套层级的原因如下</p>
+<ul>
+<li>渲染性能糟糕。例如，.box&gt;div看起来似乎还好，但其实<strong>CSS选择其实从右往左进行匹配渲染的</strong>，该选择器是先匹配页面所有的div元素，再匹配.box类名元素，如果此时页面有成千上万的div标签，同时这样的低效选择器又很多，则会带来明显的可感知的性能渲染问题。</li>
+<li>优先级混乱。一旦嵌套多了，<strong>选择器的优先级高</strong>，再想要覆盖代码，这时候很容易覆盖无效，因为很可能优先级干不过它了，就会导致优先级覆盖无效的问题。</li>
+<li>样式布局可维护性查。如果一个层级中用了很多的嵌套，此时会出现一个问题，页面结构就“定死”了，因为当采用了这个嵌套的方案，HTML结构改动时，涉及的要修改CSS代码将会非常非常多。</li>
+</ul>
+<h3 id="CSS交互变化样式"><a href="#CSS交互变化样式" class="headerlink" title="CSS交互变化样式"></a>CSS交互变化样式</h3><p>页面交互总是伴随着各种<strong>状态变化</strong>，包括禁用状态、选中状态、激活状态等。大多数前端人员在实现这些交互效果的时候是没有什么规范或者准则的。例如，一个常见的点击“更多”从而显示全部文字内容的交互:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;content&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cs-content&quot;</span>&gt;</span></span><br><span class="line">文字内容...</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:&quot;</span> <span class="attr">id</span>=<span class="string">&quot;more&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cs-content-more&quot;</span>&gt;</span>更多<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.cs-content</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">60px</span>;</span></span><br><span class="line"><span class="css">		<span class="attribute">line-height</span>: <span class="number">20px</span>;	</span></span><br><span class="line"><span class="css">        <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里可以看到默认显示3行文字，点击更多按钮才会显示更多文字内容。一般情况下我们会用这样两种方法：</p>
+<p>①用JavaScript一步搞定。此时CSS和JavaScript此时就会有交叉关系，这样就增加了潜在的维护成本，需求一变，两者都要改，增加了人力成本和开发周期。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">more.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	content.style.height = <span class="string">&#x27; auto&#x27;</span> ;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>②用CSS类名控制。我们一看.height-auto就知道样式和高度的auto有关，似乎很满足语义化的要求，但是类名的添加是在JavaScript中完成，本质上没有区别，并且<strong>命名过于随意</strong>，还得每个开发人员自己想类名，语义化其实也不强。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.height-auto</span>&#123;</span><br><span class="line">	<span class="attribute">height</span>:auto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">more.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	content.className += <span class="string">&#x27;height-auto&#x27;</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这两者都能实现效果，但是均有不足之处。最佳实践方法就是使用. active、. checked等这种状态类名进行交互控制。</p>
+<p>欸，这时候就可以用到<strong>状态</strong>了，啥意思，比如用active表示点击了展开。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cs-content</span> &#123;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: max-height . <span class="number">5s</span>;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.cs-content</span><span class="selector-class">.active</span> &#123;</span><br><span class="line">	<span class="attribute">height</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.active</span> &gt; <span class="selector-class">.cs-content-more</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">more.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	content.className += <span class="string">&#x27;active&#x27;</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这样子明显语义性更强，CSS和JavaScript的耦合性更低（与直接改style属性的方式相比），</p>
+<p>而且是项目中所有的页面交互都使用这个状态类名进行交互控制，<strong>没错，是所有!</strong><br>但这样做难道不会造成样式冲突吗?不会，大家只要遵循下面这条准则即可:</p>
+<p><strong>.active状态类名自身绝对不能有CSS样式!</strong></p>
+<p><strong>.active状态类名自身绝对不能有CSS样式!</strong></p>
+<p><strong>.active状态类名自身绝对不能有CSS样式!</strong></p>
+<p>那么用一张图总结一下</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109242110167.png" alt="image-20210924211012069"></p>
+<p>图中的对号表示需要使用与遵循的，问号表示可以使用也可以不使用的，禁止符号表示不建议使用的。大家可以根据自己项目的实际情况制定更优的选择器设计策略。</p>
+<p>注：最后的红区里的是面向属性命名的意思。</p>
+
+      <div class="tags">
+          <a href="/tags/CSS/" rel="tag"><i class="ic i-tag"></i> CSS</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-25 18:41:59" itemprop="dateModified" datetime="2021-10-25T18:41:59+08:00">2021-10-25</time>
+  </span>
+  <span id="FrontEnd/CSS/FrontEnd/CSS/CSS选择器" class="item leancloud_visitors" data-flag-title="CSS选择器" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS选择器</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201018875.jpg" title="JavaScript事件循环">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>JavaScript事件循环</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器本地存储介绍">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>浏览器本地存储介绍</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS%E9%80%89%E6%8B%A9%E5%99%A8%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">CSS选择器基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88%E9%80%9A%E9%85%8D%E7%AC%A6%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">元素选择器（通配符选择器和标签选择器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88ID%E3%80%81%E7%B1%BB%E3%80%81%E7%8B%AD%E4%B9%89%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">广义属性选择器（ID、类、狭义属性选择器）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%8C%B9%E9%85%8D%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">直接匹配选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#attr"><span class="toc-number">2.1.2.1.1.</span> <span class="toc-text">[attr]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#attr-%E2%80%9Dval%E2%80%9D"><span class="toc-number">2.1.2.1.2.</span> <span class="toc-text">[attr&#x3D;”val”]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#attr-%E2%80%9Dval%E2%80%9D-1"><span class="toc-number">2.1.2.1.3.</span> <span class="toc-text">[attr~&#x3D;”val”]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#attr-%E2%80%9Dval%E2%80%9D-2"><span class="toc-number">2.1.2.1.4.</span> <span class="toc-text">[attr|&#x3D;”val”]</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">正则匹配选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#attr-%E2%80%9Dval%E2%80%9D-3"><span class="toc-number">2.1.2.2.1.</span> <span class="toc-text">[attr^&#x3D;”val”]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#attr-%E2%80%9Dval%E2%80%9D-4"><span class="toc-number">2.1.2.2.2.</span> <span class="toc-text">[attr$&#x3D;”val”]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#attr-%E2%80%9Dval%E2%80%9D-5"><span class="toc-number">2.1.2.2.3.</span> <span class="toc-text">[attr*&#x3D;”val”]</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%90%9C%E7%B4%A2%E8%BF%87%E6%BB%A4%E6%8A%80%E6%9C%AF"><span class="toc-number">2.1.2.3.</span> <span class="toc-text">CSS属性选择器搜索过滤技术</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">选择符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E4%BB%A3%E9%80%89%E6%8B%A9%E7%AC%A6%E7%A9%BA%E6%A0%BC"><span class="toc-number">2.2.1.</span> <span class="toc-text">后代选择符空格(   )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AF%E8%A7%A31"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">误解1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AF%E8%A7%A32"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">误解2</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E9%80%89%E6%8B%A9%E7%AC%A6%E7%AE%AD%E5%A4%B4-gt"><span class="toc-number">2.2.2.</span> <span class="toc-text">子选择符箭头( &gt; )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E9%82%BB%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6%E8%AE%B0%E5%8F%B7"><span class="toc-number">2.2.3.</span> <span class="toc-text">相邻兄弟选择符记号( + )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0-first-child"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">模拟实现:first-child</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E4%BC%97%E5%A4%9A%E9%AB%98%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8%E6%8A%80%E6%9C%AF%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">+是众多高级选择器技术的核心</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E5%90%8E%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6%E5%BC%AF%E5%BC%AF"><span class="toc-number">2.2.4.</span> <span class="toc-text">随后兄弟选择符弯弯( ~ )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E5%89%8D%E9%9D%A2%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6"><span class="toc-number">2.2.4.1.</span> <span class="toc-text">为什么没有前面兄弟选择符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%89%8D%E9%9D%A2%E5%85%84%E5%BC%9F%E9%80%89%E6%8B%A9%E7%AC%A6"><span class="toc-number">2.2.4.2.</span> <span class="toc-text">如何实现前面兄弟选择符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%AC%A6%E5%8F%8C%E7%AE%A1%E9%81%93"><span class="toc-number">2.2.5.</span> <span class="toc-text">选择符双管道( || )</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">伪类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">2.4.</span> <span class="toc-text">伪元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS%E4%BC%98%E5%85%88%E7%BA%A7%E8%A7%84%E5%88%99"><span class="toc-number">3.</span> <span class="toc-text">CSS优先级规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS%E9%80%89%E6%8B%A9%E5%99%A8%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">4.</span> <span class="toc-text">CSS选择器设计的最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%E5%91%BD%E5%90%8D"><span class="toc-number">4.1.</span> <span class="toc-text">选择器命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.2.</span> <span class="toc-text">选择器类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS%E9%87%8D%E7%BD%AE%E6%A0%B7%E5%BC%8F"><span class="toc-number">4.2.1.</span> <span class="toc-text">CSS重置样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS%E5%9F%BA%E7%A1%80%E6%A0%B7%E5%BC%8F"><span class="toc-number">4.2.2.</span> <span class="toc-text">CSS基础样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS%E4%BA%A4%E4%BA%92%E5%8F%98%E5%8C%96%E6%A0%B7%E5%BC%8F"><span class="toc-number">4.2.3.</span> <span class="toc-text">CSS交互变化样式</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" rel="bookmark" title="CSS选择器">CSS选择器</a></li><li><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" rel="bookmark" title="CSS布局总结">CSS布局总结</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">15</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">3</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" title="JavaScript中的this">JavaScript中的this</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/uncategorized/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="Untitled">Untitled</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">157k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">2:22</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/CSS/FrontEnd/CSS/CSS选择器',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

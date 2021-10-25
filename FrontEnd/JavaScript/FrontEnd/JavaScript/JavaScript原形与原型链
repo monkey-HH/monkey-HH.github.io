@@ -64,12 +64,12 @@ Monkey's Blog = </title>
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2021-04-20 09:28:32">
+  <span class="item" title="Created: 2021-04-05 09:28:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2021-04-20T09:28:32+08:00">2021-04-20</time>
+    <time itemprop="dateCreated datePublished" datetime="2021-04-05T09:28:32+08:00">2021-04-05</time>
   </span>
   <span class="item" title="Symbols count in article">
     <span class="icon">
@@ -168,23 +168,23 @@ Monkey's Blog = </title>
 <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><ol>
 <li>显式原型（又叫原型）：prototype</li>
 </ol>
-<p>每个class/函数都有显示原型prototype，它默认指向一个Object空对象（即称为原型对象）</p>
-<p>原型对象中一个属性constructor，它指向函数对象</p>
+<p>每个构造函数都有一个属性指向其原型对象：prototype</p>
+<p>原型有一个属性指回构造函数：constructor</p>
 <ol start="2">
 <li>隐式原型：__proto__</li>
 </ol>
-<p>每个实例都有隐式原型__proto__</p>
-<p>实例的__proto__指向创建这个实例的构造函数的prototype。</p>
+<p>实例对象都有__proto__属性指向其构造函数的原型</p>
 <ol start="3">
 <li>每个原型都有一个constructor属性指会对应的构造函数</li>
 </ol>
 <p>下面上图，后面一系列的讲解都是基于这张图，这个图非常重要，一定要仔细弄清楚每一个点，检验标准就是能默写出来。笔者将通过4条规则介绍完原型链。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109160937209.png" alt="c7b6ea12284706f1e4ee4a4168e5248597b228a884288508b54cc879ccccc134"></p>
-<h1 id="规则1"><a href="#规则1" class="headerlink" title="规则1"></a>规则1</h1><p>实例对象的隐式原型 <code>__proto__</code> 属性值所指对象 === 它的构造函数的显式原型 <code>prototype</code> 属性所指对象</p>
-<p>例如图中的①和②指向同一个对象，⑥和⑦指向同一个对象，⑩和⑫指向同一个对象，⑩和⑬指向同一个对象。</p>
-<h1 id="规则2"><a href="#规则2" class="headerlink" title="规则2"></a>规则2</h1><p>“某构造函数的<code>prototype</code> 属性所指对象” 的  <code>constructor</code>属性 === 该构造函数的原型对象===该构造函数本身</p>
+<h1 id="规则1"><a href="#规则1" class="headerlink" title="规则1"></a>规则1</h1><p><strong>实例对象的隐式原型 <code>__proto__</code> 属性值所指对象 === 它的构造函数的显式原型 <code>prototype</code> 属性所指对象</strong></p>
+<p>例如图中的①和②指向同一个对象，⑥和⑦指向同一个对象，⑩和⑫指向同一个对象，⑩和⑬指向同一个对象，<u>④和⑭指向同一对象。</u></p>
+<p>⭐④和⑭指向同一对象，因为所有的原型对象都是通过Object()这一个构造函数实例化出来的对象。</p>
+<h1 id="规则2"><a href="#规则2" class="headerlink" title="规则2"></a>规则2</h1><p><strong>构造函数 <code>prototype</code> 属性指向原型，原型<code>constructor</code>属性指回构造函数</strong></p>
 <p>例如图中的②和③绕圈圈。⑦和⑧绕圈圈。⑩和⑪绕圈圈。</p>
-<h1 id="规则3"><a href="#规则3" class="headerlink" title="规则3"></a>规则3</h1><p>Object的原型对象是原型链尽头</p>
+<h1 id="规则3"><a href="#规则3" class="headerlink" title="规则3"></a>规则3</h1><p><strong>Object的原型对象是原型链尽头</strong></p>
 <p>通俗的解释一下：任何对象的原型链顶端最终都指向Object.prototype,Object.prototype再往上已经没有东西了，所以指向null。</p>
 <p>例如图中的⑤</p>
 <p>函数的显示原型指向的对象默认是空Object实例对象(但Object不满足)</p>
@@ -194,7 +194,7 @@ Monkey's Blog = </title>
 
 
 
-<h1 id="规则4"><a href="#规则4" class="headerlink" title="规则4"></a>规则4</h1><p>所有函数都是Function的实例(包含Function本身和Object)</p>
+<h1 id="规则4"><a href="#规则4" class="headerlink" title="规则4"></a>规则4</h1><p><strong>所有构造函数都是Function的实例(包含Function本身和Object)</strong></p>
 <p>通俗的解释一下：Function是所有函数(function)的父亲，所有函数都是它的实例，而Function也是一个函数，所以Function是Function的实例对象。Object也是一个函数，所以Object是Function的实例对象。</p>
 <p>也就是图中所示的⑫和==⑬==</p>
 <p>⑫其实很奇怪，但Function既是构造函数，也是自己的实例，所以其__proto__和prototype都</p>
@@ -214,6 +214,8 @@ Monkey's Blog = </title>
 <p>以上三种方式是定义函数的常见三种方法，后两种其实是定义了匿名函数，把引用给了sum变量而已，除了细微的区别，可以说等价的，可以看到每个函数都是Function的实例。</p>
 <p>如果觉得上面这个说服力不大，可以看下面的代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum <span class="keyword">instanceof</span> <span class="built_in">Function</span>)<span class="comment">//true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 
 
 
@@ -265,7 +267,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-09-21 17:33:34" itemprop="dateModified" datetime="2021-09-21T17:33:34+08:00">2021-09-21</time>
+    <time title="Modified: 2021-10-25 18:39:04" itemprop="dateModified" datetime="2021-10-25T18:39:04+08:00">2021-10-25</time>
   </span>
   <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript原形与原型链" class="item leancloud_visitors" data-flag-title="JavaScript原型和原型链" title="Views">
       <span class="icon">
@@ -305,20 +307,20 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="解决跨域问题">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript数据类型">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> Browser</span>
-  <h3>解决跨域问题</h3>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>JavaScript数据类型</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript作用域与作用域链">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript执行上下文">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
-  <h3>JavaScript作用域与作用域链</h3>
+  <h3>JavaScript执行上下文</h3>
   </a>
 
     </div>
@@ -341,7 +343,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript数据类型">JavaScript数据类型</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型和原型链">JavaScript原型和原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" rel="bookmark" title="JavaScript作用域与作用域链">JavaScript作用域与作用域链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" rel="bookmark" title="JavaScript中的this">JavaScript中的this</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript数据类型">JavaScript数据类型</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型和原型链">JavaScript原型和原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" rel="bookmark" title="JavaScript中的this">JavaScript中的this</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -355,19 +357,19 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">8</span>
+        <span class="count">15</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">4</span>
+        <span class="count">5</span>
         <span class="name">categories</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">2</span>
+        <span class="count">3</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -425,12 +427,12 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -452,48 +454,57 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
+</div>
+
+    <span><a href="/uncategorized/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
     <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" title="JavaScript中的this">JavaScript中的this</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE" title="JavaScript作用域与作用域链">JavaScript作用域与作用域链</a></span>
   </li>
 
       
@@ -524,10 +535,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
   </li>
 
       
@@ -564,13 +587,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">82k words</span>
+    <span title="Symbols count total">157k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">1:14</span>
+    <span title="Reading time total">2:22</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

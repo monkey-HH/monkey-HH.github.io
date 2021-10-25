@@ -1,0 +1,775 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Browser" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2">
+
+
+
+  <title>
+浏览器Web安全攻防 - Browser - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">浏览器Web安全攻防
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-05-15 09:28:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-05-15T09:28:32+08:00">2021-05-15</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>6.9k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>6 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Browser/" itemprop="item" rel="index" title="In Browser"><span itemprop="name">Browser</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>互联网上的攻击大都将 Web 站点作为目标。本文主要讲讲常见的一些网络安全问题。</p>
+<h1 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1><p><code>XSS</code> 全称是 <code>Cross Site Scripting</code>(即<code>跨站脚本攻击</code>)，为了不和CSS弄混，所以叫<code>XSS</code>，攻击者旨在通过在合法网页或 Web 应用程序中“注入”恶意代码，在受害者的 Web 浏览器中执行恶意脚本。</p>
+<p><strong>攻击目的</strong>：</p>
+<ul>
+<li>窃取用户Cookie，则攻击者很容易窃取Cookie里的隐私甚至冒充用户。</li>
+<li>对Dom进行读取和修改。</li>
+<li>现代浏览器中的 JavaScript 可以使用 HTML5 API。例如，它可以访问用户的地理位置、网络摄像头、麦克风，甚至是用户文件系统中的特定文件。</li>
+<li>……</li>
+</ul>
+<p><strong>经典场景</strong>：论坛、留言板、博客系统、评论、社交网络等。</p>
+<h2 id="XSS中的“攻”"><a href="#XSS中的“攻”" class="headerlink" title="XSS中的“攻”"></a>XSS中的“攻”</h2><h3 id="存储型XSS-持久性XSS"><a href="#存储型XSS-持久性XSS" class="headerlink" title="存储型XSS /持久性XSS"></a>存储型XSS /持久性XSS</h3><p><code>存储型</code>即在攻击者利用网站的漏洞，将恶意脚本代码上传到“服务器的数据库中”，当受害者访问执行恶意代码的网页或 Web 应用程序时，就会发生实际攻击。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110151713895.png" alt="image-20211015171328632" style="zoom:50%;" />
+
+<p>在一个网站中，用户可以发布文章，并且网站没有对用户的输入进行校验或者过滤，攻击者在文章正文中写入恶意代码，当受害者浏览到这篇文章标题并且点击进去，其包含恶意代码的内容被发送到受害者的浏览器并执行。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110151714812.png" alt="image-20211015171434733" style="zoom: 60%;" />
+
+
+
+<h3 id="反射型XSS-非持久性XSS"><a href="#反射型XSS-非持久性XSS" class="headerlink" title="反射型XSS/非持久性XSS"></a>反射型XSS/非持久性XSS</h3><p><code>反射型XSS</code>不涉及数据库，从URL上攻击。</p>
+<p><code>反射型XSS</code>与<code>存储型XSS</code>的区别在于不会将恶意脚本存储到数据库中。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110151713895.png" alt="image-20211015171328632" style="zoom:50%;" />
+
+<p>某个网站中，将搜索内容作为了URL的一部分，并且将该搜索参数设置到了HTML的一部分。</p>
+<p>那我就可以通过精心设置的搜索参数，如下面的非法URL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.mywebsite.com/search.asp?search=&lt;script&gt;alert(&#x27;XSS&#x27;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里面的服务器端会拿到<code>search</code>参数，然后将内容返回给浏览器端，浏览器将这些内容作为HTML的一部分解析，发现是一个脚本，直接执行，这样就被攻击了。</p>
+<h3 id="基于-DOM-的-XSS"><a href="#基于-DOM-的-XSS" class="headerlink" title="基于 DOM 的 XSS"></a>基于 DOM 的 XSS</h3><p>DOM XSS  代表基于文档对象模型的跨站点脚本，利用客户端代码中对 DOM 对象和属性的不当操作。</p>
+<p><strong>特点</strong>:</p>
+<ul>
+<li>不需要服务器的参与</li>
+<li>恶意攻击的发起+执行，全在浏览器完成</li>
+</ul>
+<p>如果 Web 应用程序在没有适当清理的情况下将数据写入文档对象模型，则基于 DOM 的 XSS 攻击是可能的。攻击者可以操纵这些数据在网页上包含 XSS 内容，例如恶意 JavaScript 代码。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110151713895.png" alt="image-20211015171328632" style="zoom:50%;" />
+
+<p>以下是基于 DOM 的跨站点脚本漏洞的基本示例，假设有一个网页有代码如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> content = <span class="keyword">new</span> URL( location.href ).searchParams.get( <span class="string">&quot;param&quot;</span> );</span><br><span class="line"><span class="keyword">const</span> div = <span class="built_in">document</span>.createElement( <span class="string">&quot;div&quot;</span>)</span><br><span class="line"><span class="comment">//😈😈存在CSRF漏洞处</span></span><br><span class="line">div.innerHTML = content ;</span><br><span class="line"><span class="built_in">document</span>.body.append(div);</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，该页面是根据URL的参数定制，利用URL中的参数，将URL中的参数植入DOM中。</p>
+<p>这时候，我给一个非法的URL，那恶意代码就直接植入了</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host/path/?param=&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="XSS中的“防”"><a href="#XSS中的“防”" class="headerlink" title="XSS中的“防”"></a>XSS中的“防”</h2><p>明白了三种<code>XSS</code>攻击的原理，我们能发现一个共同点: 都是让恶意脚本直接能在浏览器中执行。</p>
+<p>那么要防范它，就是要避免这些脚本代码的执行。</p>
+<p>为了完成这一点，必须做到<strong>一个信念，两个利用</strong>。</p>
+<h3 id="一个信念"><a href="#一个信念" class="headerlink" title="一个信念"></a>一个信念</h3><p>千万不要相信任何用户的输入！</p>
+<p>无论是在前端和服务端，都要对用户的输入进行<strong>转码</strong>或者<strong>过滤</strong>。</p>
+<p>如:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">&#x27;你完蛋了&#x27;</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>转码后变为:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt;script&amp;gt;alert(&amp;#<span class="number">39</span>;你完蛋了&amp;#<span class="number">39</span>;)&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样的代码在 html 解析的过程中是无法执行的。</p>
+<p>当然也可以利用关键词过滤的方式，将恶意代码直接删除。</p>
+<p><strong>前端</strong></p>
+<ol>
+<li><p>主流框架默认防御XSS (因为使用那些框架已经不需要我们手动操作DOM了)</p>
+</li>
+<li><p>google-closure-library（如果需要可以使用这个第三方库）</p>
+</li>
+</ol>
+<p><strong>服务端</strong></p>
+<ol>
+<li>DOMPurify</li>
+</ol>
+<p>如果用户一定要有这样的需求，必须动态生成DOM，那要注意几个地方做好过滤</p>
+<ol>
+<li> string -&gt; DOM，要对String进行过滤</li>
+</ol>
+<blockquote>
+<p>new DOMParser()</p>
+</blockquote>
+<ol start="2">
+<li>用户上传svg，可以内嵌script标签，所以对用户上传的所有svg文件，也要进行过滤</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">&#x27;xss&#x27;</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>用户可以自定义跳转链接的话，对跳转的链接也要进行过滤</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:alert(&#x27;xss&#x27;)&quot; &gt;点我&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>自定义样式</li>
+</ol>
+<p>这种方式很厉害，通过一个表单，用户点击到指定的按钮，就会添加一个样式，这个样式修改背景图片url，这个url就是一个恶意链接，当用户选中就会将用户选中的信息带到恶意第三方，用户信息就泄露了</p>
+<p>所以要尽量不要让用户自定义修改样式，如果非要这样，一定要做好过滤</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110152249238.png" alt="image-20211015224937153"></p>
+<h3 id="利用-CSP内容安全策略"><a href="#利用-CSP内容安全策略" class="headerlink" title="利用 CSP内容安全策略"></a>利用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRUUC9DU1A=">CSP内容安全策略</span></h3><p>CSP，是一个附加的安全层，有助于检测和缓解某些类型的攻击，包括跨站点脚本 ( <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9Dcm9zcy1zaXRlX3NjcmlwdGluZw==">XSS</span> ) 和数据注入攻击。</p>
+<p>它的核心思想就是服务器决定浏览器加载哪些资源，具体来说可以完成以下功能:</p>
+<ul>
+<li>来自安全源的脚本可以执行，否则直接报错</li>
+<li>禁止外域提交，网站被攻击后，用户的数据不会泄露到外域。</li>
+<li>对 eval + inline script 说🚫</li>
+<li>合理使用上报可以及时发现 XSS，利于尽快修复问题。</li>
+</ul>
+<p>该实现基于名为的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9IVFRQ">HTTP</span>标头<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy"><code>Content-Security-Policy</code></a>。</p>
+<p>或者使用meta标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span> <span class="attr">content</span>= <span class="string">&quot;script-srcself&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="利用-HttpOnly"><a href="#利用-HttpOnly" class="headerlink" title="利用 HttpOnly"></a>利用 HttpOnly</h3><p>很多 XSS 攻击脚本都是用来窃取Cookie， 而设置 Cookie 的 HttpOnly 属性后，JavaScript 便无法读取 Cookie 的值。这样也能很好的防范 XSS 攻击。</p>
+<p>但是它真的安全吗？答案是否定的，HttpOnly只是不能读取cookie，但是我们还是可以写入cookie啊，这样就会产生别的问题，比如session fixation attack（会话固定攻击）。</p>
+<p>会话固定攻击（session fixation attack）是利用应用系统在服务器的会话ID固定不变机制，借助他人用相同的会话ID获取认证和授权，然后利用该会话ID劫持他人的会话以成功冒充他人，造成会话固定攻击。</p>
+<h2 id="XSS问题与解答"><a href="#XSS问题与解答" class="headerlink" title="XSS问题与解答"></a>XSS问题与解答</h2><p>1.XSS防范是后端RD的责任，后端RD应该在所有用户提交数据的接口，对敏感字符进行转义，才能进行下一步操作。</p>
+<blockquote>
+<p>不正确。因为：</p>
+<ul>
+<li>防范存储型和反射型 XSS 是后端 RD 的责任。而 DOM 型 XSS 攻击不发生在后端，是前端 RD 的责任。防范 XSS 是需要后端 RD 和前端 RD 共同参与的系统工程。</li>
+<li>转义应该在输出 HTML 时进行，而不是在提交用户输入时。</li>
+</ul>
+</blockquote>
+<p>2.所有要插入到页面上的数据，都要通过一一个敏感字符过滤函数的转义，过滤掉通用的敏感字符后，就可以插入到页面中。</p>
+<blockquote>
+<p>不正确。 不同的上下文，如 HTML 属性、HTML 文字内容、HTML 注释、跳转链接、内联 JavaScript 字符串、内联 CSS 样式表等，所需要的转义规则不一致。 业务 RD 需要选取合适的转义库，并针对不同的上下文调用不同的转义规则。</p>
+</blockquote>
+<h1 id="CSRF攻击"><a href="#CSRF攻击" class="headerlink" title="CSRF攻击"></a>CSRF攻击</h1><p>CSRF(Cross-site request forgery)，即跨站请求伪造，攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的<strong>登录凭证</strong>，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。</p>
+<p><strong>攻击特点</strong>：</p>
+<ul>
+<li>攻击一般发起在第三方网站，而不是被攻击的网站。</li>
+<li>攻击利用受害者在被攻击网站的登录凭证，冒充受害者提交操作。而不是直接窃取数据。</li>
+<li>整个过程攻击者并不能获取到受害者的登录凭证，仅仅是“冒用”。</li>
+</ul>
+<p><strong>攻击目的</strong>：让无辜的受害者在不知不觉中向受害者有权访问的网站提交恶意制作的 Web 请求，以达到各种目的。</p>
+<p><strong>经典场景</strong>：</p>
+<ul>
+<li><p>受害者登录a.com，并保留了登录凭证（Cookie）。</p>
+</li>
+<li><p>攻击者引诱受害者访问了b.com（比如说直接QQ给你发个消息、钓鱼邮件）</p>
+</li>
+<li><p>b.com向 a.com发送了一个请求：a.com/act=xx。浏览器会…</p>
+</li>
+<li><p>a.com接收到请求后，对请求进行验证，并确认是受害者的凭证，误以为是受害者自己发送的请求。</p>
+</li>
+<li><p>a.com以受害者的名义执行了act=xx。</p>
+</li>
+<li><p>攻击完成，攻击者在受害者不知情的情况下，冒充受害者，让a.com执行了自己定义的操作。</p>
+</li>
+</ul>
+<h2 id="CSRF中的“攻”"><a href="#CSRF中的“攻”" class="headerlink" title="CSRF中的“攻”"></a>CSRF中的“攻”</h2><p>那么有用进入了b.com之后，具体怎么发送请求呢？下面讲讲有哪些方法。</p>
+<h3 id="1-GET-请求的CSRF"><a href="#1-GET-请求的CSRF" class="headerlink" title="1.  GET 请求的CSRF"></a>1.  GET 请求的CSRF</h3><p>黑客网页里面可能有一段这样的代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;http://a.com/withdraw?amount=10000&amp;for=hacker&quot;</span> &gt; </span><br></pre></td></tr></table></figure>
+
+<p>进入页面后自动发送 get 请求，值得注意的是，这个请求会自动带上关于 a.com 的Cookie 信息(这里是假定你已经在 xxx.com 中登录过)。</p>
+<p>假如服务器端没有相应的验证机制，它可能认为发请求的是一个正常的用户，因为携带了相应的 cookie，然后进行相应的各种操作，可以是转账汇款以及其他的恶意操作。</p>
+<h3 id="2-POST-请求的CSRF"><a href="#2-POST-请求的CSRF" class="headerlink" title="2.  POST 请求的CSRF"></a>2.  POST 请求的CSRF</h3><p>黑客可能自己填了一个表单，写了一段自动提交的脚本。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;https://a.com/info&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> <span class="attr">value</span>=<span class="string">&quot;hhh&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;count&quot;</span> <span class="attr">value</span>=<span class="string">&quot;100&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.getElementById(<span class="string">&#x27;hacker-form&#x27;</span>).submit();</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>同样也会携带相应的用户 cookie 信息，让服务器误以为是一个正常的用户在操作，让各种恶意的操作变为可能。</p>
+<h3 id="3-链接类型的CSRF"><a href="#3-链接类型的CSRF" class="headerlink" title="3. 链接类型的CSRF"></a>3. 链接类型的CSRF</h3><p>在黑客的网站上，可能会放上一个链接（例如图片广告等），驱使用户来点击:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://a.com/info?user=hhh&amp;count=100&quot;</span> <span class="attr">taget</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>点击就送一百万！<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>点击后，自动发送 get 请求，接下来和<code>自动发 GET 请求</code>部分同理。</p>
+<p>这就是<code>CSRF</code>攻击的原理。和<code>XSS</code>攻击对比，CSRF 攻击并不需要将恶意代码注入用户当前页面的<code>html</code>文档中，而是跳转到新的页面，利用服务器的<strong>验证漏洞</strong>和<strong>用户之前的登录状态</strong>来模拟用户进行操作。</p>
+<h2 id="CSRF中的“防”"><a href="#CSRF中的“防”" class="headerlink" title="CSRF中的“防”"></a>CSRF中的“防”</h2><p>CSRF通常从第三方网站发起，被攻击的网站无法防止攻击发生，只能通过增强自己网站针对CSRF的防护能力来提升安全性。</p>
+<p>上文中讲了CSRF的两个特点：</p>
+<ul>
+<li>CSRF（通常）发生在第三方域名。</li>
+<li>CSRF攻击者不能获取到Cookie等信息，只是使用。</li>
+</ul>
+<p>针对这两点，我们可以专门制定防护策略，如下：</p>
+<ul>
+<li>阻止不明外域的访问<ul>
+<li>同源检测</li>
+<li>Samesite Cookie</li>
+</ul>
+</li>
+<li>请求来自“合法”来源，则放行<ul>
+<li>CSRF Token</li>
+<li>双重Cookie验证</li>
+</ul>
+</li>
+</ul>
+<p>以下我们对各种防护方法做详细说明：</p>
+<h3 id="1-同源检测"><a href="#1-同源检测" class="headerlink" title="1. 同源检测"></a>1. 同源检测</h3><p>这就需要要用到请求头中的两个字段: <strong>Origin</strong>和<strong>Referer</strong>。</p>
+<p>其中，<strong>Origin</strong>只包含域名信息，而<strong>Referer</strong>包含了<code>具体</code>的 URL 路径。</p>
+<p>当然，这两者都是可以伪造的，通过 Ajax 中自定义请求头即可，安全性略差。</p>
+<h3 id="2-利用Cookie的SameSite属性"><a href="#2-利用Cookie的SameSite属性" class="headerlink" title="2. 利用Cookie的SameSite属性"></a>2. 利用Cookie的SameSite属性</h3><p><code>CSRF攻击</code>中重要的一环就是自动发送目标站点下的 <code>Cookie</code>，然后就是这一份 Cookie 模拟了用户的身份。因此在<code>Cookie</code>上面下文章是防范的不二之选。</p>
+<p>恰好，在 Cookie 当中有一个关键的字段，可以对请求中 Cookie 的携带作一些限制，这个字段就是<code>SameSite</code>。</p>
+<p><code>SameSite</code>可以设置为三个值，<code>Strict</code>、<code>Lax</code>和<code>None</code>。</p>
+<p><strong>a.</strong> 在<code>Strict</code>模式下，浏览器完全禁止第三方请求携带Cookie。比如请求<code>sanyuan.com</code>网站只能在<code>sanyuan.com</code>域名当中请求才能携带 Cookie，在其他网站请求都不能。</p>
+<p><strong>b.</strong> 在<code>Lax</code>模式，就宽松一点了，但是只能在 <code>get 方法提交表单</code>况或者<code>a 标签发送 get 请求</code>的情况下可以携带 Cookie，其他情况均不能。</p>
+<p><strong>c.</strong> 在<code>None</code>模式下，也就是默认模式，请求会自动携带上 Cookie。</p>
+<h3 id="3-CSRF-Token"><a href="#3-CSRF-Token" class="headerlink" title="3. CSRF Token"></a>3. CSRF Token</h3><p>前面讲到CSRF的另一个特征是，攻击者无法直接窃取到用户的信息（Cookie，Header，网站内容等），仅仅是冒用Cookie中的信息。</p>
+<p>而CSRF攻击之所以能够成功，是因为服务器误把攻击者发送的请求当成了用户自己的请求。那么我们可以要求所有的用户<u>请求都携带一个CSRF攻击者无法获取到的Token</u>。服务器通过校验请求是否携带正确的Token，来把正常的请求和攻击的请求区分开，也可以防范CSRF的攻击。</p>
+<p>❗当然了这个token是不能放在Cookie里的，不然就没意义了。</p>
+<blockquote>
+<p><strong>分布式环境下</strong>：</p>
+<p>如果用session存token的的话，由于session是默认在单机环境下的，当用Nginx等进行负载均衡的时候，用户的多次HTTP请求可能不会到同一台服务器，而token无法在分布式环境下共享的话，就无法进行校验。因此可以使用Encrypted Token Pattern方式，这种方法的Token是一个计算出来的结果，而非随机生成的字符串。这样在校验时无需再去读取存储的Token，只用再次计算一次即可。</p>
+</blockquote>
+<h2 id="CSRF与-XSS-区别"><a href="#CSRF与-XSS-区别" class="headerlink" title="CSRF与 XSS 区别"></a>CSRF与 XSS 区别</h2><ul>
+<li><strong>通常来说 CSRF 是由 XSS 实现的，CSRF 时常也被称为 XSRF（CSRF 实现的方式还可以是直接通过命令行发起请求等）。</strong></li>
+<li>本质上讲，XSS 是代码注入问题，<strong>CSRF 是 HTTP 问题。</strong> XSS 是内容没有过滤导致浏览器将攻击者的输入当代码执行。<strong>CSRF 则是因为浏览器在发送 HTTP 请求时候自动带上 cookie，而一般网站的 session 都存在 cookie里面(Token验证可以避免)。</strong></li>
+</ul>
+<h1 id="注入Injection"><a href="#注入Injection" class="headerlink" title="注入Injection"></a>注入Injection</h1><h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><blockquote>
+<p>SQL注入即是指<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vYmFpa2UuYmFpZHUuY29tL2l0ZW0vd2ViJUU1JUJBJTk0JUU3JTk0JUE4JUU3JUE4JThCJUU1JUJBJThGLzI0OTgwOTA=">web应用程序</span>对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vYmFpa2UuYmFpZHUuY29tL2l0ZW0vU1FMJUU4JUFGJUFEJUU1JThGJUE1LzU3MTQ4OTU=">SQL语句</span>，在管理员不知情的情况下实现非法操作，以此来实现欺骗<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vYmFpa2UuYmFpZHUuY29tL2l0ZW0vJUU2JTk1JUIwJUU2JThEJUFFJUU1JUJBJTkzJUU2JTlDJThEJUU1JThBJUExJUU1JTk5JUE4LzYxMzgxOA==">数据库服务器</span>执行非授权的任意查询，从而进一步得到相应的数据信息。</p>
+</blockquote>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110152332251.png" alt="image-20211015233241159" style="zoom: 33%;" />
+
+<p>例如，下方例子中，如果用户传入的table_name为book;DROP TABLE  book。那么就做了两条SQL语句，后面一条把表给删除了。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a,b,c <span class="keyword">FROM</span> $&#123; table_name &#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以要进行过滤</p>
+<h1 id="DOS"><a href="#DOS" class="headerlink" title="DOS"></a>DOS</h1><p>通过某种方式(构造特定请求)，导致服务器资源被显著消耗，来不及响应更多请求，导致请求挤压，进而雪崩效应。</p>
+<h2 id="DDOS"><a href="#DDOS" class="headerlink" title="DDOS"></a>DDOS</h2><p>如果攻击者从单个主机发起攻击，则将被归类为 DoS 攻击。事实上，任何针对可用性的攻击都将被归类为DOS。另一方面，如果攻击者使用<u>多个系统</u>同时对远程主机发起攻击，这将被归类为 DDoS 攻击（Distributed DoS 、分布式DOS攻击）。</p>
+<p>例如     SYN FLOOD攻击，具体原理可以看我的另一篇文章“TCP和UDP笔记”，简单来说就是利用TCP的第一次握手后，该连接会加入到“半连接队列”，短时间大量发SYN，会使得该队列直接拉满，无法处理正常的请求。</p>
+<p><strong>防御措施</strong>：</p>
+<p>对一些恶意攻击代码使用负载均衡、API网关进行过滤，对一些恶意流量使用CDN、自动扩容、非核心服务降级进行扛量</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110160001722.png" alt="image-20211016000103649" style="zoom:33%;" />
+
+<h1 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h1><p>也就是HTTP是传输过程是明文传输的，所以如果有个中间人，直接窃取信息，很不安全。解决方案就是HTTPS。相关原理可以看我的HTTP相关文章。</p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vd2FzcC5vcmcvd3d3LWNvbW11bml0eS9hdHRhY2tzL3hzcy8=">Cross Site Scripting (XSS) ——OWASP</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jaGVhdHNoZWV0c2VyaWVzLm93YXNwLm9yZy9jaGVhdHNoZWV0cy9Dcm9zcy1TaXRlX1JlcXVlc3RfRm9yZ2VyeV9QcmV2ZW50aW9uX0NoZWF0X1NoZWV0Lmh0bWw=">Cross-Site Request Forgery Prevention Cheat Sheet  ——OWASP</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTAzNjg1MTIyNzAzMzY3">前端安全系列（一）：如何防止XSS攻击？——美团技术团队</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTAzNjg5NzAyODY2OTUy">前端安全系列之二：如何防止CSRF攻击？——美团技术团队</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN1bmV0aXguY29tL3dlYnNpdGVzZWN1cml0eS9jcm9zcy1zaXRlLXNjcmlwdGluZy8=">Cross-site Scripting (XSS)  ——Acunetix</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTA0MDIxMzA4NzM1NTAy">三元同学的博客</span></li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/Browser/" rel="tag"><i class="ic i-tag"></i> Browser</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-10-25 18:43:40" itemprop="dateModified" datetime="2021-10-25T18:43:40+08:00">2021-10-25</time>
+  </span>
+  <span id="FrontEnd/Browser/FrontEnd/Browser/浏览器Web安全攻防" class="item leancloud_visitors" data-flag-title="浏览器Web安全攻防" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/浏览器Web安全攻防</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx29mstj20zk0m8hdt.jpg" title="CSS布局总结">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> CSS</span>
+  <h3>CSS布局总结</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器原理介绍">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>浏览器原理介绍</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS%E6%94%BB%E5%87%BB"><span class="toc-number">2.</span> <span class="toc-text">XSS攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS%E4%B8%AD%E7%9A%84%E2%80%9C%E6%94%BB%E2%80%9D"><span class="toc-number">2.1.</span> <span class="toc-text">XSS中的“攻”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%9E%8BXSS-%E6%8C%81%E4%B9%85%E6%80%A7XSS"><span class="toc-number">2.1.1.</span> <span class="toc-text">存储型XSS &#x2F;持久性XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8BXSS-%E9%9D%9E%E6%8C%81%E4%B9%85%E6%80%A7XSS"><span class="toc-number">2.1.2.</span> <span class="toc-text">反射型XSS&#x2F;非持久性XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-DOM-%E7%9A%84-XSS"><span class="toc-number">2.1.3.</span> <span class="toc-text">基于 DOM 的 XSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS%E4%B8%AD%E7%9A%84%E2%80%9C%E9%98%B2%E2%80%9D"><span class="toc-number">2.2.</span> <span class="toc-text">XSS中的“防”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%BF%A1%E5%BF%B5"><span class="toc-number">2.2.1.</span> <span class="toc-text">一个信念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-CSP%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">2.2.2.</span> <span class="toc-text">利用 CSP内容安全策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-HttpOnly"><span class="toc-number">2.2.3.</span> <span class="toc-text">利用 HttpOnly</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E7%AD%94"><span class="toc-number">2.3.</span> <span class="toc-text">XSS问题与解答</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSRF%E6%94%BB%E5%87%BB"><span class="toc-number">3.</span> <span class="toc-text">CSRF攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSRF%E4%B8%AD%E7%9A%84%E2%80%9C%E6%94%BB%E2%80%9D"><span class="toc-number">3.1.</span> <span class="toc-text">CSRF中的“攻”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-GET-%E8%AF%B7%E6%B1%82%E7%9A%84CSRF"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.  GET 请求的CSRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-POST-%E8%AF%B7%E6%B1%82%E7%9A%84CSRF"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.  POST 请求的CSRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%93%BE%E6%8E%A5%E7%B1%BB%E5%9E%8B%E7%9A%84CSRF"><span class="toc-number">3.1.3.</span> <span class="toc-text">3. 链接类型的CSRF</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSRF%E4%B8%AD%E7%9A%84%E2%80%9C%E9%98%B2%E2%80%9D"><span class="toc-number">3.2.</span> <span class="toc-text">CSRF中的“防”</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%8C%E6%BA%90%E6%A3%80%E6%B5%8B"><span class="toc-number">3.2.1.</span> <span class="toc-text">1. 同源检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%A9%E7%94%A8Cookie%E7%9A%84SameSite%E5%B1%9E%E6%80%A7"><span class="toc-number">3.2.2.</span> <span class="toc-text">2. 利用Cookie的SameSite属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CSRF-Token"><span class="toc-number">3.2.3.</span> <span class="toc-text">3. CSRF Token</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSRF%E4%B8%8E-XSS-%E5%8C%BA%E5%88%AB"><span class="toc-number">3.3.</span> <span class="toc-text">CSRF与 XSS 区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5Injection"><span class="toc-number">4.</span> <span class="toc-text">注入Injection</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">4.1.</span> <span class="toc-text">SQL注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOS"><span class="toc-number">5.</span> <span class="toc-text">DOS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DDOS"><span class="toc-number">5.1.</span> <span class="toc-text">DDOS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="toc-number">6.</span> <span class="toc-text">中间人攻击</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">7.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="解决跨域问题">解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器本地存储介绍">浏览器本地存储介绍</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器原理介绍">浏览器原理介绍</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">15</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">3</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/uncategorized/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="Untitled">Untitled</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
+</div>
+
+    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">157k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">2:22</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/Browser/FrontEnd/Browser/浏览器Web安全攻防',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
