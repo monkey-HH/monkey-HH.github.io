@@ -27,7 +27,7 @@
   <meta name="keywords" content="Computer-Networking,HTTP,HTTPS" />
 
 
-<link rel="canonical" href="https://monkeyhh.top/Computer-Networking/Computer%20Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
+<link rel="canonical" href="https://monkeyhh.top/Computer-Networking/Computer-Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
 
 
 
@@ -146,7 +146,7 @@ Monkey's Blog = </title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/Computer-Networking/Computer%20Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/Computer-Networking/Computer-Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -1125,7 +1125,7 @@ Monkey's Blog = </title>
     <span class="text">Edited on</span>
     <time title="Modified: 2021-11-02 08:36:28" itemprop="dateModified" datetime="2021-11-02T08:36:28+08:00">2021-11-02</time>
   </span>
-  <span id="Computer-Networking/Computer Networking/HTTP基础知识点" class="item leancloud_visitors" data-flag-title="HTTP基础知识点" title="Views">
+  <span id="Computer-Networking/Computer-Networking/HTTP基础知识点" class="item leancloud_visitors" data-flag-title="HTTP基础知识点" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -1144,7 +1144,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/Computer-Networking/Computer%20Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">https://monkeyhh.top/Computer-Networking/Computer Networking/HTTP基础知识点</a>
+    <a href="https://monkeyhh.top/Computer-Networking/Computer-Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">https://monkeyhh.top/Computer-Networking/Computer-Networking/HTTP基础知识点</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -1173,7 +1173,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/Computer-Networking/Computer%20Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhtuo6nj20zk0m8ttm.jpg" title="TCP和UDP基础知识点">
+  <a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111020852730.png" title="TCP和UDP基础知识点">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Computer-Networking</span>
   <h3>TCP和UDP基础知识点</h3>
@@ -1199,7 +1199,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li class="active"><a href="/Computer-Networking/Computer%20Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="HTTP基础知识点">HTTP基础知识点</a></li><li><a href="/Computer-Networking/Computer%20Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></li>
+          <li class="active"><a href="/Computer-Networking/Computer-Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="HTTP基础知识点">HTTP基础知识点</a></li><li><a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -1288,7 +1288,7 @@ Monkey's Blog = </title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/Computer-Networking/Computer%20Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -1325,7 +1325,31 @@ Monkey's Blog = </title>
 <a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
 </div>
 
-    <span><a href="/Computer-Networking/Computer%20Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+    <span><a href="/Computer-Networking/Computer-Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型和原型链">JavaScript原型和原型链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
   </li>
 
       
@@ -1337,17 +1361,31 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/Computer-Networking/Computer%20Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
   </li>
 
       
@@ -1378,46 +1416,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
-</div>
-
-    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" title="JavaScript中的this">JavaScript中的this</a></span>
   </li>
 
   </ul>
@@ -1460,7 +1464,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'Computer-Networking/Computer Networking/HTTP基础知识点',
+    path: 'Computer-Networking/Computer-Networking/HTTP基础知识点',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
