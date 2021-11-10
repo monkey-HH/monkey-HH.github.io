@@ -24,13 +24,15 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
+  <meta name="keywords" content="Browser" />
 
-<link rel="canonical" href="https://monkeyhh.top/uncategorized/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow">
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow">
 
 
 
   <title>
- |
+重绘Repaint与回流Reflow - Browser - FrontEnd |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,23 +60,23 @@ Monkey's Blog = </title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">重绘Repaint与回流Reflow
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2021-11-10 22:23:08">
+  <span class="item" title="Created: 2021-07-15 09:28:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2021-11-10T22:23:08+08:00">2021-11-10</time>
+    <time itemprop="dateCreated datePublished" datetime="2021-07-15T09:28:32+08:00">2021-07-15</time>
   </span>
   <span class="item" title="Symbols count in article">
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>2.9k</span>
+    <span>2.7k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -82,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>3 mins.</span>
+    <span>2 mins.</span>
   </span>
 </div>
 
@@ -114,14 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
-        </ul>
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
       </div>
     </header>
     <div id="waves">
@@ -145,11 +140,16 @@ Monkey's Blog = </title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Browser/" itemprop="item" rel="index" title="In Browser"><span itemprop="name">Browser</span></a>
+<meta itemprop="position" content="2" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/uncategorized/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -164,15 +164,7 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <hr>
-<p>layout: paper<br>title: 浏览器原理介绍<br>date: 2021-07-06 09:28:32<br>cover: <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vbW9ua2V5LUhIL3BpY0JlZC9yYXcvbWFzdGVyL3BpY2JlZC9pbWcvMjAyMTA5MjAxMDE0MjQ3LnBuZw==">https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png</span><br>categories:</p>
-<ul>
-<li>FrontEnd</li>
-<li>Browser<br>tags:</li>
-<li>Browser</li>
-</ul>
-<hr>
-<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在之前写浏览器原理篇的文章的时候，就挖了个坑要讲讲重绘和回流，那就开始吧。</p>
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在之前写浏览器原理篇的文章的时候，就挖了个坑要讲讲重绘和回流，那就开始吧。</p>
 <p>首先回顾一下<code>渲染流水线</code>的流程:</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111102117139.webp" alt="img"></p>
 <p>详细的过程与前面的讲浏览器原理的文章有点区别，“绘制列表”和“建图层树”相反了，但不纠结，暂时以这张图为准。</p>
@@ -262,6 +254,9 @@ Monkey's Blog = </title>
 <li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTA0MDIxMzA4NzM1NTAyI2hlYWRpbmctNTk=">https://juejin.cn/post/6844904021308735502#heading-59</span></li>
 </ol>
 
+      <div class="tags">
+          <a href="/tags/Browser/" rel="tag"><i class="ic i-tag"></i> Browser</a>
+      </div>
   </div>
 
    <footer>
@@ -272,9 +267,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-11-10 22:22:34" itemprop="dateModified" datetime="2021-11-10T22:22:34+08:00">2021-11-10</time>
+    <time title="Modified: 2021-11-10 22:39:19" itemprop="dateModified" datetime="2021-11-10T22:39:19+08:00">2021-11-10</time>
   </span>
-  <span id="uncategorized/FrontEnd/Browser/重绘Repaint与回流Reflow" class="item leancloud_visitors" data-flag-title="" title="Views">
+  <span id="FrontEnd/Browser/FrontEnd/Browser/重绘Repaint与回流Reflow" class="item leancloud_visitors" data-flag-title="重绘Repaint与回流Reflow" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -293,7 +288,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/uncategorized/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" title="">https://monkeyhh.top/uncategorized/FrontEnd/Browser/重绘Repaint与回流Reflow</a>
+    <a href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" title="重绘Repaint与回流Reflow">https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/重绘Repaint与回流Reflow</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -312,14 +307,22 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111020852730.png" title="TCP和UDP基础知识点">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器原理介绍">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> Computer-Networking</span>
-  <h3>TCP和UDP基础知识点</h3>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>浏览器原理介绍</h3>
   </a>
 
     </div>
     <div class="item right">
+      
+
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的防抖与节流">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>JavaScript中的防抖与节流</h3>
+  </a>
+
     </div>
 </div>
 
@@ -339,6 +342,9 @@ Monkey's Blog = </title>
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9E%E6%B5%81Reflow"><span class="toc-number">2.</span> <span class="toc-text">回流Reflow</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">触发条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%B5%81%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">回流过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E7%BB%98Repaint"><span class="toc-number">3.</span> <span class="toc-text">重绘Repaint</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6-1"><span class="toc-number">3.1.</span> <span class="toc-text">触发条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E7%BB%98%E8%BF%87%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text">重绘过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%88%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">合成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GPU%E5%8A%A0%E9%80%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">GPU加速的原因</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%BD%B1%E5%93%8D"><span class="toc-number">5.</span> <span class="toc-text">性能影响</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%B5%81%E6%AF%94%E9%87%8D%E7%BB%98%E7%9A%84%E4%BB%A3%E4%BB%B7%E8%A6%81%E6%9B%B4%E9%AB%98"><span class="toc-number">5.1.</span> <span class="toc-text">回流比重绘的代价要更高</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text">性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS"><span class="toc-number">6.0.1.</span> <span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript"><span class="toc-number">6.0.2.</span> <span class="toc-text">JavaScript</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="解决跨域问题">解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器本地存储介绍">浏览器本地存储介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器原理介绍">浏览器原理介绍</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" rel="bookmark" title="重绘Repaint与回流Reflow">重绘Repaint与回流Reflow</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -421,10 +427,12 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -449,6 +457,28 @@ Monkey's Blog = </title>
 <a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
 </div>
 
+    <span><a href="/Computer-Networking/Computer-Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
+</div>
+
     <span><a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
   </li>
 
@@ -458,10 +488,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
   </li>
 
       
@@ -470,10 +500,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" title="JavaScript中的this">JavaScript中的this</a></span>
   </li>
 
       
@@ -494,10 +524,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
   </li>
 
       
@@ -506,34 +536,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
   </li>
 
       
@@ -557,7 +563,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
   </li>
 
   </ul>
@@ -600,7 +606,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'uncategorized/FrontEnd/Browser/重绘Repaint与回流Reflow',
+    path: 'FrontEnd/Browser/FrontEnd/Browser/重绘Repaint与回流Reflow',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
