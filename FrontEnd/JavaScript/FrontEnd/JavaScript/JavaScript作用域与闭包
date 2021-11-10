@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>13k</span>
+    <span>15k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>12 mins.</span>
+    <span>14 mins.</span>
   </span>
 </div>
 
@@ -280,6 +280,7 @@ Monkey's Blog = </title>
 <blockquote>
 <p>一个函数和对其周围状态（<code>lexical environment，词法环境</code>）的引用捆绑在一起（或者说函数被引用包围），这样的组合就是<code>闭包（</code>closure`）。也就是说，<strong>闭包让你可以在一个内层函数中访问到其外层函数的作用域</strong>。在 JavaScript 中，每当创建一个函数，闭包就会在函数创建的同时被创建出来。</p>
 </blockquote>
+<p>所以：<u>函数 + 函数创建时的环境 = 闭包</u></p>
 <p>举个例子我们来看一段代码，清晰地展示了闭包：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log( a );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> baz = foo();</span><br><span class="line">baz(); <span class="comment">// 2 —— 朋友，这就是闭包的效果。</span></span><br></pre></td></tr></table></figure>
 
@@ -317,7 +318,35 @@ Monkey's Blog = </title>
 <li>函数嵌套</li>
 <li>内部函数引用外部函数的变量</li>
 </ol>
-<h2 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h2><h3 id="延长局部变量生命周期"><a href="#延长局部变量生命周期" class="headerlink" title="延长局部变量生命周期"></a>延长局部变量生命周期</h3><p>前面提到了，引擎有垃圾回收器用来释放不再使用的内存空间，但闭包由于被函数持有，即某个函数的词法作用域被另一个函数持有，所以该闭包里的变量不会被回收。</p>
+<p>需要注意的一点是，很多人会忽略掉：<strong>立即执行函数也会创建闭包</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">countClicks</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> numClicks = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//创建一个监听函数，当点击一次页面，计数值就会+1</span></span><br><span class="line">	<span class="built_in">document</span>.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(++numClicks);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>我们来看下输出结果，每次输出值都增加1，而不是每次都输出1。这说明事实上已经创建了闭包。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111021056755.png" style="zoom:67%;" />
+
+
+
+
+
+<h2 id="闭包的特点"><a href="#闭包的特点" class="headerlink" title="闭包的特点"></a>闭包的特点</h2><h3 id="1-同一个环境可以被多个闭包共享"><a href="#1-同一个环境可以被多个闭包共享" class="headerlink" title="1. 同一个环境可以被多个闭包共享"></a>1. 同一个环境可以被多个闭包共享</h3><p>闭包有一个重要特性就是：<code>同一个环境可以被多个闭包共享</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="function"><span class="title">increment</span>(<span class="params"></span>)</span> &#123; count++; <span class="keyword">return</span> count; &#125;,</span><br><span class="line">    <span class="function"><span class="title">decrement</span>(<span class="params"></span>)</span> &#123; count--; <span class="keyword">return</span> count; &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> counter = createCounter();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  counter.increment(), <span class="comment">// 1</span></span><br><span class="line">  counter.decrement(), <span class="comment">// 0</span></span><br><span class="line">  counter.increment(), <span class="comment">// 1</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>示例中的两个闭包（increment 和 decrement）都创建于一个包含 count 变量的代码块（范围）内，它们共享着父环境的引用，也就是说他们的count是同一个。用伪代码描述为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">counterEnvironment = &#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 闭包</span></span><br><span class="line">incrementClouse = &#123;</span><br><span class="line">  <span class="attr">function</span>: increment,  <span class="comment">// 函数</span></span><br><span class="line">  <span class="attr">environment</span>: counterEnvironment, <span class="comment">// 环境</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">decrementClouse = &#123;</span><br><span class="line">  <span class="attr">function</span>: decrement,</span><br><span class="line">  <span class="attr">environment</span>: counterEnvironment,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-“不同引用持有的闭包”的环境不共享"><a href="#2-“不同引用持有的闭包”的环境不共享" class="headerlink" title="2.“不同引用持有的闭包”的环境不共享"></a>2.“不同引用持有的闭包”的环境不共享</h3><p>可能有点绕口，咱们还是看上面的例子，稍微改造一下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="function"><span class="title">increment</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">			count++;</span><br><span class="line">			<span class="keyword">return</span> count;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="function"><span class="title">decrement</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">			count--;</span><br><span class="line">			<span class="keyword">return</span> count;</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> counter1 = createCounter();<span class="comment">//第一个引用</span></span><br><span class="line"><span class="keyword">let</span> counter2 = createCounter();<span class="comment">//第二个引用</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">	counter1.increment(), <span class="comment">// 1</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">	counter2.increment(), <span class="comment">// 1  ，而不是2~</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>在两次调用createCounter函数的时候，都各自创建了各自的闭包，此时counter1和counter2所持有的环境不共享，所以两次输出都是1。</p>
+<h2 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h2><h3 id="封装私有变量和方法"><a href="#封装私有变量和方法" class="headerlink" title="封装私有变量和方法"></a>封装私有变量和方法</h3><p>JavaScript 本身是没有原生的方式来定义私有变量和方法，但是我们可以通过闭包来模仿这种行为。私有变量和方法的好处不止在于可以限制可访问的代码，同时提供一种有效的方式来管理全局命名空间，防止非核心的变量和方法污染公共接口。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makePeople</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> privateName;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    privateName = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">changeName</span>: <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">      setName(name);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">greeting</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;Hi! I am &#x27;</span> + privateName + <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> people = makePeople();</span><br><span class="line"></span><br><span class="line">people.changeName(<span class="string">&#x27;Tom&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(people.greeting()); <span class="comment">// Hi! I am Tom.</span></span><br></pre></td></tr></table></figure>
+
+<p>共享的环境被创建于 <code>makePeople</code> 函数体内，在此环境中我们声明了一个私有变量（privateName）和一个私有方法 （setName）。这些私有的成员无法在 <code>makePeople</code> 函数外被访问, 只能通过在 <code>makePeople</code> 函数内创建并返回的闭包来访问。</p>
+<p>接着上面的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> people1 = makePeople();</span><br><span class="line"><span class="keyword">const</span> people2 = makePeople();</span><br><span class="line"></span><br><span class="line">people1.changeName(<span class="string">&#x27;Tom&#x27;</span>);</span><br><span class="line">people2.changeName(<span class="string">&#x27;Bob&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(people1.greeting()); <span class="comment">// Hi! I am Tom.</span></span><br><span class="line"><span class="built_in">console</span>.log(people2.greeting()); <span class="comment">// Hi! I am Bob.</span></span><br></pre></td></tr></table></figure>
+
+<p>这次我们通过同一个 <code>makePeople</code> 函数创建了两个 people, 但是 <code>people1</code> 和 <code>people2</code> 都保存着各自独立的私有成员，互不干扰。这是因为每次 <code>makePeople</code> 执行时，都会创建一个新的环境，所以两次创建的 people 关联着不同的环境（<code>people1</code> 和 <code>people2</code> 互相独立），但是同一个 people 内的闭包（<code>changeName</code> 和 <code>greeting</code>）都共享同一个环境。</p>
+<h3 id="延长局部变量生命周期"><a href="#延长局部变量生命周期" class="headerlink" title="延长局部变量生命周期"></a>延长局部变量生命周期</h3><p>前面提到了，引擎有垃圾回收器用来释放不再使用的内存空间，但闭包由于被函数持有，即某个函数的词法作用域被另一个函数持有，所以该闭包里的变量不会被回收。</p>
 <p>看下面的例子</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      a++</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">      <span class="comment">// return a</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fn2</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">var</span> f = fn1()</span><br><span class="line">f() <span class="comment">// 1</span></span><br><span class="line">f() <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f2 = fn1()</span><br><span class="line">f2() <span class="comment">// 1</span></span><br><span class="line">f2() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 
@@ -426,7 +455,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-10-25 18:39:50" itemprop="dateModified" datetime="2021-10-25T18:39:50+08:00">2021-10-25</time>
+    <time title="Modified: 2021-11-02 10:58:28" itemprop="dateModified" datetime="2021-11-02T10:58:28+08:00">2021-11-02</time>
   </span>
   <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript作用域与闭包" class="item leancloud_visitors" data-flag-title="JavaScript作用域与闭包" title="Views">
       <span class="icon">
@@ -498,11 +527,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E5%92%8C%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87"><span class="toc-number">2.</span> <span class="toc-text">变量提升和函数提升</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E2%80%9D%E4%BC%98%E5%85%88%E4%BA%8E%E2%80%9C%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E2%80%9D%E6%9C%BA%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text">“函数声明”优先于“变量声明”机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E8%BF%99%E4%B9%88%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">为什么要进行这么一个操作?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E7%A1%AE%E5%AE%9A"><span class="toc-number">3.</span> <span class="toc-text">作用域是什么？——静态确定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9FLexical-scoping"><span class="toc-number">3.1.</span> <span class="toc-text">词法作用域Lexical scoping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="toc-number">3.2.</span> <span class="toc-text">作用域链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">3.3.</span> <span class="toc-text">面试题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AD%E5%8C%85Closure"><span class="toc-number">4.</span> <span class="toc-text">闭包Closure</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E5%BC%95%E8%A8%80"><span class="toc-number">4.1.</span> <span class="toc-text">小引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">闭包是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E5%AD%98%E5%9C%A8%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-number">4.3.</span> <span class="toc-text">闭包存在的条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.4.</span> <span class="toc-text">闭包的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%B6%E9%95%BF%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.4.1.</span> <span class="toc-text">延长局部变量生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0JavaScript%E6%A8%A1%E5%9D%97"><span class="toc-number">4.4.2.</span> <span class="toc-text">实现JavaScript模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">4.4.3.</span> <span class="toc-text">实现块级作用域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.5.</span> <span class="toc-text">闭包的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">4.6.</span> <span class="toc-text">闭包的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">4.7.</span> <span class="toc-text">闭包的面试题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E5%92%8C%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87"><span class="toc-number">2.</span> <span class="toc-text">变量提升和函数提升</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E2%80%9D%E4%BC%98%E5%85%88%E4%BA%8E%E2%80%9C%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E2%80%9D%E6%9C%BA%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text">“函数声明”优先于“变量声明”机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E8%BF%99%E4%B9%88%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">为什么要进行这么一个操作?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E2%80%94%E2%80%94%E9%9D%99%E6%80%81%E7%A1%AE%E5%AE%9A"><span class="toc-number">3.</span> <span class="toc-text">作用域是什么？——静态确定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9FLexical-scoping"><span class="toc-number">3.1.</span> <span class="toc-text">词法作用域Lexical scoping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="toc-number">3.2.</span> <span class="toc-text">作用域链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">3.3.</span> <span class="toc-text">面试题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AD%E5%8C%85Closure"><span class="toc-number">4.</span> <span class="toc-text">闭包Closure</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E5%BC%95%E8%A8%80"><span class="toc-number">4.1.</span> <span class="toc-text">小引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">闭包是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E5%AD%98%E5%9C%A8%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-number">4.3.</span> <span class="toc-text">闭包存在的条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">4.4.</span> <span class="toc-text">闭包的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%8C%E4%B8%80%E4%B8%AA%E7%8E%AF%E5%A2%83%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%A4%9A%E4%B8%AA%E9%97%AD%E5%8C%85%E5%85%B1%E4%BA%AB"><span class="toc-number">4.4.1.</span> <span class="toc-text">1. 同一个环境可以被多个闭包共享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E2%80%9C%E4%B8%8D%E5%90%8C%E5%BC%95%E7%94%A8%E6%8C%81%E6%9C%89%E7%9A%84%E9%97%AD%E5%8C%85%E2%80%9D%E7%9A%84%E7%8E%AF%E5%A2%83%E4%B8%8D%E5%85%B1%E4%BA%AB"><span class="toc-number">4.4.2.</span> <span class="toc-text">2.“不同引用持有的闭包”的环境不共享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.5.</span> <span class="toc-text">闭包的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E7%A7%81%E6%9C%89%E5%8F%98%E9%87%8F%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-number">4.5.1.</span> <span class="toc-text">封装私有变量和方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%B6%E9%95%BF%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.5.2.</span> <span class="toc-text">延长局部变量生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0JavaScript%E6%A8%A1%E5%9D%97"><span class="toc-number">4.5.3.</span> <span class="toc-text">实现JavaScript模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">4.5.4.</span> <span class="toc-text">实现块级作用域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.6.</span> <span class="toc-text">闭包的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">4.7.</span> <span class="toc-text">闭包的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">4.8.</span> <span class="toc-text">闭包的面试题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript数据类型">JavaScript数据类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型和原型链">JavaScript原型和原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" rel="bookmark" title="JavaScript中的this">JavaScript中的this</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript数据类型">JavaScript数据类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型和原型链">JavaScript原型和原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" rel="bookmark" title="JavaScript中的this">JavaScript中的this</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="JavaScript中的防抖与节流">JavaScript中的防抖与节流</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -516,7 +545,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">17</span>
+        <span class="count">19</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -615,10 +644,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84this" title="JavaScript中的this">JavaScript中的this</a></span>
   </li>
 
       
@@ -627,22 +656,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
   </li>
 
       
@@ -663,30 +680,6 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
@@ -699,10 +692,44 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
+</div>
+
+    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
   </li>
 
       
@@ -721,10 +748,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="解决跨域问题">解决跨域问题</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="JavaScript中的防抖与节流">JavaScript中的防抖与节流</a></span>
   </li>
 
   </ul>
@@ -749,13 +776,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">187k words</span>
+    <span title="Symbols count total">197k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">2:50</span>
+    <span title="Reading time total">2:59</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
