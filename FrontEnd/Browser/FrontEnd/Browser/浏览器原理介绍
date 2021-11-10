@@ -1,0 +1,913 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Browser" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D">
+
+
+
+  <title>
+浏览器原理介绍 - Browser - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">浏览器原理介绍
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-09-20 09:28:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-09-20T09:28:32+08:00">2021-09-20</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>17k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>16 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Browser/" itemprop="item" rel="index" title="In Browser"><span itemprop="name">Browser</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文将会讲解讲解现代常见浏览器的进程和线程控制，以及浏览器渲染页面的过程等知识点。很多人在开发网站时，只关注怎么写自己的代码，关注怎么提升自己的开发效率。这些当然重要，但是写到一定的阶段，就应该停下来想想：浏览器到底会怎么运行你写的代码。如果你能多了解一些浏览器，然后对它好一点，那么就会更容易达成你提升用户体验的目标。</p>
+<p>以下的主要内容来自参考链接里的前5个，宝藏网站，推荐大家有空都去看看</p>
+<p>本文将从四个方面介绍</p>
+<ul>
+<li>架构：以Chrome为例，介绍现代浏览器的实现架构。</li>
+<li>导航：从输入URL到获到HTML响应称为导航。</li>
+<li>渲染：浏览器解析HTML、下载外部资源、计算样式并把网页绘制到屏幕上。</li>
+<li>交互：用户输入事件的处理与优化。</li>
+</ul>
+<h1 id="谈谈浏览器的历史"><a href="#谈谈浏览器的历史" class="headerlink" title="谈谈浏览器的历史"></a>谈谈浏览器的历史</h1><h2 id="1-NCSA-Mosaic浏览器"><a href="#1-NCSA-Mosaic浏览器" class="headerlink" title="1.NCSA  Mosaic浏览器"></a>1.NCSA  Mosaic浏览器</h2><p>​        Mosaic浏览器是互联网历史上第一个获普遍使用和能够显示<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlOUIlQkUlRTclODklODcvMzcyNDE2">图片</span>的<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTclQkQlOTElRTklQTElQjUlRTYlQjUlOEYlRTglQTclODglRTUlOTklQTgvODMwOTk0MA==">网页浏览器</span>。它是由<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTQlQkMlOEElRTUlODglQTklRTglQUYlQkElRTQlQkMlOEElRTUlQTQlQTclRTUlQUQlQTYlRTUlOEUlODQlRTUlQjclQjQlRTclQkElQjMtJUU5JUE2JTk5JUU2JUE3JTlGJUU1JTg4JTg2JUU2JUEwJUEx">伊利诺伊大学厄巴纳-香槟分校</span>的<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9OQ1NB">NCSA</span>组织在1993年所发表，并于1997年1月7日正式终止开发和支持。在当时人气爆发的大受欢迎。Mosaic的出现，算是点燃了后期互联网热潮的火种之一。</p>
+<p>​        当时的MOSAIC开发的中心人物<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTklQTklQUMlRTUlODUlOEIlQzIlQjclRTUlQUUlODklRTUlQkUlQjclRTYlQTMlQUU=">马克·安德森</span>和Silicon Graphic(计算机绘图用的高性能计算机制造公司，简称为SGI，中译则是视算)公司的创始人<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlOTAlODklRTUlQTclODYlQzIlQjclRTUlODUlOEIlRTYlOEIlODklRTUlODUlOEI=">吉姆·克拉克</span>设立了「MOSAIC Communication Corp.」，这家公司之后1994年11月改名为「Netscape Communication Corp.」，中译为<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTclQkQlOTElRTYlOTklQUY=">网景</span>。顺便提一嘴网景公司后来，1998年11月网景被<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTclQkUlOEUlRTUlOUIlQkQlRTUlOUMlQTglRTclQkElQkYvNDk5NDI3MA==">美国在线</span>收购，而美国在线之后又成为<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTYlOTclQjYlRTQlQkIlQTMlRTUlOEQlOEUlRTclQkElQjMvNDE0OTA0">时代华纳</span>的一部分。2003年5月，微软和 Netscape 的母公司达成一项协议，微软支付 AOL7.5 亿美元， AOL 继续使用和推广 IE ，取代 Netscape 的位置。2003年7月15日时代华纳解散网景公司，大部分程序员被解雇，网景的标志也从办公大楼中去除。<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTclQkQlOTElRTYlOTklQUY=">网景</span>现在只作为一个商标存在。美国在线目前使用网景的商标提供为一个廉价<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlOUIlQTAlRTclODklQjklRTclQkQlOTElRTYlOUMlOEQlRTUlOEElQTElRTYlOEYlOTAlRTQlQkUlOUIlRTUlOTUlODYvNDk5NDMyOA==">因特网服务提供商</span>服务。</p>
+<h2 id="2-Netscape-Navigator-网景浏览器"><a href="#2-Netscape-Navigator-网景浏览器" class="headerlink" title="2. Netscape Navigator 网景浏览器"></a>2. Netscape <strong>Navigator</strong> 网景浏览器</h2><p>Netscape 是首个商业化的 web 浏览器。1994年10月13日，网景公司发布了Mosaic Netscape 0.9。同年12月15日，经过修正后1.0正式版发布，软件改名为Netscape Navigator。该浏览器的功能和市场占有率，在1.0版推出之后飇升。瞬间取代前一个浏览器。</p>
+<p>Netscape 虽是一个商业软件，但它也提供了可在 Unix、VMS、Macs 和 Microsoft Windows 等操作系统上运行的免费版本。</p>
+<h2 id="3-Internet-Explorer曾经的王者"><a href="#3-Internet-Explorer曾经的王者" class="headerlink" title="3. Internet Explorer曾经的王者"></a>3. Internet Explorer曾经的王者</h2><p>​      <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9JRS82OTEwMw==">IE</span>开发计划开始于1994年夏天，<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTUlQkUlQUUlRTglQkQlQUYvMTI0NzY3">微软</span>为抵抗当时主流的<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTclQkQlOTElRTYlOTklQUYlRTYlQjUlOEYlRTglQTclODglRTUlOTklQTg=">网景浏览器</span>（<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9OZXRzY2FwZQ==">Netscape</span>Navigator），要在Windows中开发适合自己的浏览器。自IE4到2011年左右，都是浏览器中的王者，随后被chrome赶上。</p>
+<p>2015年3月微软确认将放弃IE品牌。转而在Windows 10上，用[Microsoft Edge](<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9NaWNyb3NvZnQ=">https://baike.baidu.com/item/Microsoft</span> Edge)取代了Internet Explorer。 [1] </p>
+<p>2016年1月12日，微软公司宣布于这一天停止对Internet Explorer 8/9/10三个版本的技术支持，用户将不会再收到任何来自微软官方的IE安全更新；作为替代方案，微软建议用户升级到IE 11或者改用Microsoft Edge浏览器。 [2] </p>
+<p>2020年8月18日消息，微软服务将告别其古老的IE浏览器，在2021年8月17日停止微软365应用程序的IE 11支持。微软也将在2021年3月9日结束对其legacy Edge浏览器的支持。 [3] </p>
+<p>2021年5月20日,微软正式官宣IE浏览器将停止支持,IE浏览器桌面程序将会于2022年6月15日退役。此后，其将被新版Microsoft Edge以及其IE模式替代。</p>
+<ul>
+<li><p>IE1（发布于 1995 年8月16日），它在[Windows 95](<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9XaW5kb3dz">https://baike.baidu.com/item/Windows</span> 95)的Microsoft Plus!中提供选择安装。</p>
+</li>
+<li><p>IE2（发布于1995年11月22日），IE2支持当时所有Windows，在[Windows 95](<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9XaW5kb3dz">https://baike.baidu.com/item/Windows</span> 95)A系统的Microsoft Plus!中提供选择安装，并且于1996年1月发布支持苹果的Mac OS版。IE2开始支持Javascript、Cookies、SSL、RSS和NMTP等技术和协议。</p>
+</li>
+<li><p>IE3（发布于1996年8月13日），IE3开始支持CSS，加入<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9BY3RpdmVYJUU2JThFJUE3JUU0JUJCJUI2">ActiveX控件</span>和<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9KYXZhQXBwbGV0">JavaApplet</span>，并且能显示GIF和<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9KUEVHJUU2JUEwJUJDJUU1JUJDJThGLzM0NjI3NzA=">JPEG格式</span>图片文件，支持MIDI文件播放。使得网页在当时看来非常生动有趣。</p>
+</li>
+<li><p>IE4（发布于1997年10月），IE 4.0被广泛认为是微软在浏览器市场的转折性产品，是一款真正发起战争的产品——微软将IE 4.0集成至了Windows操作系统中，此举使得网景的份额大幅流失给微软，并最终走向倒闭。这个版本对 CSS 和 DOM 的支持非常好，但不支持 XML。IE4有了微软自己的浏览器内核Trident。</p>
+</li>
+<li><p>IE5（发布于1999年3月18日），是首个支持 XML 的主流浏览器。</p>
+</li>
+<li><p>IE6（发布于2001年8月27日），Windows XP 中的标准浏览器。IE6是微软最后一款命名“Microsoft Internet Explorer”的IE，此后的都叫做“Windows Internet Explorer”</p>
+</li>
+<li><p>IE7（发布于2005年7月27日），IE7 是 Windows XP with Service Pack 2 中的标准浏览器。</p>
+<p>Internet Explorer 7 提供改进的导航、通过工具栏进行 web 搜索、高级打印、即时搜索以及 RSS 提要。IE7增加了网络钓鱼过滤、支持选项卡浏览、支持非ASCII域名访问，加入了搜索引擎以便查找、支持PNG Alpha通道等众多新功能。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191128920.png" alt="image-20210919112842850"></p>
+</li>
+<li><p>IE8（发布于2009年3月19日）</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191129513.png" alt="image-20210919112903462"></p>
+</li>
+<li><p>IE9（发布于2011年3月14日），</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191129238.png" alt="image-20210919112914166"></p>
+</li>
+<li><p>IE10（发布于 2012 年 9 月 4 日），是 Windows 8 中的默认浏览器。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191129004.png" alt="image-20210919112936946"></p>
+</li>
+<li><p>IE11（发布于2013 年 10 月 ）</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191130453.png" alt="image-20210919113006385"></p>
+</li>
+</ul>
+<p>此后，就没有新的IE版本了，也就是最新就是IE11了，但微软已经放弃了</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109251901838.png" alt="image-20210925190147785"></p>
+<h2 id="4-Firefox-浏览器"><a href="#4-Firefox-浏览器" class="headerlink" title="4.Firefox 浏览器"></a>4.Firefox 浏览器</h2><p>Firefox 发布于 2004 年，由<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvTW96aWxsYSVFNSU5RiVCQSVFOSU4NyU5MSVFNiU5QyU4Mw==">Mozilla基金会</span>及其子公司<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvTW96aWxsYSVFNSU4NSVBQyVFNSU4RiVCOA==">Mozilla公司</span>开发，并且9个月内下载量超过6,000万，获取了巨大的成功，<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvSW50ZXJuZXRfRXhwbG9yZXI=">Internet Explorer</span>的主导地位首次受到了挑战。Firefox被认为是<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvTmV0c2NhcGVfTmF2aWdhdG9y">Netscape Navigator</span>的<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU3JUIyJUJFJUU3JUE1JTlFJUU3JUJCJUFEJUU0JUJEJTlD">精神续作</span>。</p>
+<p>自发布到2010年左右，IE浏览器稳居老大，而他位居老二。也是当今最流行的浏览器之一，至今的市场份额还位居前列。2021年7月14日，火狐浏览器 Firefox 90 版本正式发布，包含桌面版和 Android 版。</p>
+<h2 id="5-⭐chrome-现在的王者"><a href="#5-⭐chrome-现在的王者" class="headerlink" title="5. ⭐chrome 现在的王者"></a>5. ⭐chrome 现在的王者</h2><p>它由 Google 开发，发布于 2008 年。</p>
+<p>当 Google 决定开发一款浏览器时，他们需要彻底地重新谋划这款浏览器。而google实现了这一目标，现在chrome市场占有额度为第一。</p>
+<p>Chrome代码是基于其他开放源代码软件所编写，包括<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvQXBwbGVfV2ViS2l0">Apple WebKit</span>和<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvTW96aWxsYV9GaXJlZm94">Mozilla Firefox</span>，并开发出称为“<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvVjhfKEphdmFTY3JpcHQlRTUlQkMlOTUlRTYlOTMlOEUp">V8</span>”的高性能<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvSmF2YVNjcmlwdCVFNSVCQyU5NSVFNiU5MyU4RQ==">JavaScript引擎</span>[<span class="exturl" data-url="aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvR29vZ2xlX0Nocm9tZSNjaXRlX25vdGUtMTY=">16]</span>。</p>
+<h2 id="6-Safari-浏览器"><a href="#6-Safari-浏览器" class="headerlink" title="6.Safari 浏览器"></a>6.Safari 浏览器</h2><p>在 2003 年 1 月，史蒂夫乔布斯（Steve Jobs）宣布苹果正在开发自己的浏览器：Safari。</p>
+<p>在此之前，Mac 系统使用 Netscape Navigator 或 Internet Explorer 作为其默认浏览器。</p>
+<p>第一个正式的 (“out-of-beta”) Safari 版本于 2003 年 6 月发布。在 2005 年 4 月，Safari 成为 Mac 系统的默认浏览器。</p>
+<p>如同苹果的许多产品，Safari 以易用和清爽的设计闻名。Safari 支持 Mac 和 Windows 系统。</p>
+<p>这里放一个<span class="exturl" data-url="aHR0cHM6Ly9uZXRtYXJrZXRzaGFyZS5jb20vJUVGJUJDJThDJUU1JThGJUFGJUU0JUJCJUE1JUU1JUE0JUE3JUU2JUE2JTgyJUU3JTlDJThCJUU0JUI4JTgwJUU0JUI4JThCJUU2JUI1JThGJUU4JUE3JTg4JUU1JTk5JUE4JUU3JTlBJTg0JUU1JUI4JTgyJUU1JTlDJUJBJUU0JUJCJUJEJUU5JUEyJTlE">https://netmarketshare.com/，可以大概看一下浏览器的市场份额</span></p>
+<h1 id="谈谈现代浏览器的架构"><a href="#谈谈现代浏览器的架构" class="headerlink" title="谈谈现代浏览器的架构"></a>谈谈现代浏览器的架构</h1><h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><p>进程是 CPU资源分配的最小单位；线程是 CPU调度的最小单位。</p>
+<ul>
+<li>进程:<br>程序的一次执行, 它占有一片独有的内存空间<br>可以通过windows任务管理器查看进程 / 浏览器任务管理器</li>
+<li>线程:<br>是进程内的一个独立执行单元<br>是程序执行的一个完整流程<br>是CPU的最小的调度单元</li>
+<li>关系<br>一个进程至少有一个线程(主)<br>程序是在某个进程中的某个线程执行的</li>
+</ul>
+<p><strong>进程</strong>可以说是一个“执行中的程序”。程序是指令、数据及其组织形式的描述，是一个没有生命的实体，只有处理器赋予程序生命时（操作系统执行之），它才能成为一个活动的实体，我们称其为进程。</p>
+<p>有了<strong>线程</strong>技术，我们就可以在一个进程中创建多个线程，让它们在“同一时刻”分别去做不同的工作了。这些线程共享同一块内存，线程之间可以共享对象、资源，如果有冲突或需要协同，还可以随时沟通以解决冲突或保持同步。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181539138.png" alt="image-20210918153923101"></p>
+<p>假设你经营着一家物业管理公司，也就是进程。最初，业务量很小，事事都需要你亲力亲为。给老张家修完暖气管道，立马再去老李家换电灯泡——这叫<strong>单线程，所有的工作都得顺序执行</strong>。</p>
+<p>后来业务拓展了，你雇佣了几个工人，这样，你的物业公司就可以同时为多户人家提供服务了——这叫<strong>多线程</strong>，你是主线程。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181537568.png" alt="image-20210918153707516"></p>
+<p>工人们使用的工具，是物业管理公司提供的，这些工具由大家共享，并不专属于某一个人——这叫<strong>多线程资源共享</strong>。</p>
+<h2 id="早期单进程浏览器"><a href="#早期单进程浏览器" class="headerlink" title="早期单进程浏览器"></a>早期单进程浏览器</h2><p>顾名思义，<strong>单进程浏览器是指浏览器所以模块都运行再同一个进程里</strong>，这些模块包含了网络、插件、JavaScript 运行环境、渲染引擎和页面等。</p>
+<p>单进程浏览器的架构如下图所示👇</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191706061.png" alt="image-20210919170621980"></p>
+<p>如此多的功能模块运行在一个进程里，肯定有着不足的：</p>
+<ul>
+<li>不稳定性</li>
+<li>不流畅</li>
+<li>不安全</li>
+</ul>
+<h2 id="现代多进程架构浏览器"><a href="#现代多进程架构浏览器" class="headerlink" title="现代多进程架构浏览器"></a>现代多进程架构浏览器</h2><p>Web浏览器的架构，可以实现为一个进程包含多个线程，也可以实现为很多进程包含少数线程通过IPC通信。如何实现浏览器，并没有统一的标准。Chrome最新的架构：最上层是浏览器进程，负责协调承担各项工作的其他进程，比如实用程序进程、渲染器进程、GPU进程、插件进程等，如下图所示。</p>
+<p>⚠注：并不是所有浏览器都是下图这样的架构，下图的架构为2018年9月谷歌浏览器最新架构</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181629758.png" alt="img"></p>
+<p>渲染器进程对应新开的标签页，每新开一个标签页，就会创建一个新的渲染器进程。不仅如此，Chrome还会尽量给每个站点新开一个<strong>渲染器进程</strong>，包括iframe中的站点，以实现站点隔离。</p>
+<p>下面详细了解一下每个进程的作用，可以参考下图。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191751809.png" alt="img"></p>
+<ul>
+<li><p><strong>Browser Process</strong>：浏览器主进程,控制浏览器这个应用的chrome（主框架）部分，包括地址栏、书签、前进/后退按钮等，同时也会处理浏览器不可见的高权限任务，如发送网络请求、访问文件。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181634718.png" alt="image-20210918163408681"></p>
+</li>
+<li><p>⭐<strong>Renderer Process</strong>：渲染器进程，负责在标签页中显示网站及处理事件，即包括排版引擎和JavaScript引擎。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181634053.png" alt="image-20210918163424021"></p>
+</li>
+<li><p><strong>Plugin Process</strong>：插件进程,控制网站用到的所有插件。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181633723.png"></p>
+</li>
+<li><p><strong>GPU Process</strong>：GPU进程,在独立的进程中处理GPU任务。之所以放到独立的进程，是因为GPU要处理来自多个应用的请求，但要在同一个界面上绘制图形。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181634175.png" alt="image-20210918163400141"></p>
+</li>
+<li><p><strong>Utility Process</strong>:实用程序进程</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181647945.png" alt="image-20210918164737904"></p>
+</li>
+</ul>
+<p>打开chrome浏览器，点击右上角-&gt;更多工具-&gt;任务管理器，可以看到详细的进程列表</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181549442.png" alt="image-20210918154900396"></p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109181549241.png" alt="image-20210918154938177"></p>
+<p>从上图中可知：</p>
+<p>1、浏览器是多进程<br>2、不同类型的标签页都会开启一个新的进程<br>3、相同类型的标签页是会合并到一个进程</p>
+<p>以Chrome浏览器中为例，当你打开一个 Tab 页时，其实就是创建了一个进程（chrome使用多个进程来隔离不同的标签页。默认每一个tab页都是一个进程，互不影响）当然浏览器也会有自己的优化机制，比如打开多个空白的标签页，在chrome的任务管理器里面，就会发现把这些空白页，都合成了一个进程，所以一个tab标签页对应一个进程也不是绝对的。</p>
+<blockquote>
+<p>❓Chrome的多进程架构有哪些优点呢？又有什么缺点呢？</p>
+</blockquote>
+<p>最简单的情况下，可以想像一个标签页就是一个渲染器进程，比如3个标签页就是3个渲染器进程。这时候，如果有一个渲染器崩溃了，只要把它关掉即可，不会影响其他标签页。如果所有标签页都运行在一个进程中，那只要有一个标签页卡住，所有标签页都会卡住。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191831465.png" alt="image-20210919183129370"></p>
+<p>除此之外，多进程架构还有助于安全和隔离。因为操作系统有限制进程特权的机制，浏览器可以借此限制某些进程的能力。比如，Chrome会限制处理任意用户输入的渲染器进程，不让它任意访问文件。</p>
+<p>由于进程都有自己私有的内存空间，因此<u>每个进程可能都会保存某个公共基础设施（比如Chrome的JavaScript引擎V8）的多个副本</u>，这会导致内存占用增多。为节省内存，Chrome会限制自己可以打开的进程数量。限制的条件取决于设备内存和CPU配置。达到限制条件后，Chrome会用一个进程处理同一个站点的多个标签页。</p>
+<p>Chrome架构进化的目标是将整个浏览器程序的不同部分服务化，便于分割或合并。基本思路是在高配设备中，每个服务独立开进程，保证稳定；在低配设备中，多个服务合并为一个进程，节约资源。同样的思路也应用到了Android上。</p>
+<p>重点说一说<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL3VwZGF0ZXMvMjAxOC8wNy9zaXRlLWlzb2xhdGlvbg==">站点隔离</span>。站点隔离是新近引入Chrome的一个里程碑式特性，即每个跨站点iframe都运行一个独立的渲染器进程。即便像前面说的那样，每个标签页单开一个渲染器进程，但允许跨站点的iframe运行在同一个渲染器进程中并共享内存空间，那安全攻击仍然有可能绕开同源策略<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvU2VjdXJpdHkvU2FtZS1vcmlnaW5fcG9saWN5">同源策略</span> ，而且有人发现在现代CPU中，进程有可能读取任意内存。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191834024.png" alt="image-20210919183450950"></p>
+<p>进程隔离是隔离站点、确保上网安全最有效的方式。Chrome 67桌面版默认采用站点隔离。站点隔离是多年工程化努力的结果，它并非多开几个渲染器进程那么简单。比如，不同的iframe运行在不同进程中，开发工具在后台仍然要做到无缝切换，而且即便简单地Ctrl+F查找也会涉及在不同进程中搜索。</p>
+<p>系统为浏览器新开的进程分配内存、CPU 等资源,所以内存和 CPU 的资源消耗也会更大。</p>
+<p>不过 Chrome 在内存释放方面做的不错,基本内存都是能很快释放掉给其他程序运行的。</p>
+<h3 id="Browser-Process浏览器主进程"><a href="#Browser-Process浏览器主进程" class="headerlink" title="Browser Process浏览器主进程"></a>Browser Process浏览器主进程</h3><p>​        标签页外面的一切都由<strong>浏览器主进程</strong>处理。浏览器进程中有以下主要线程。</p>
+<ul>
+<li><strong>UI thread：</strong>UI线程，负责绘制浏览器的按钮和地址栏</li>
+<li><strong>Network thread</strong>：网络线程，负责处理网络请求并从互联网接收数据</li>
+<li><strong>Storage thread</strong>：存储线程，负责访问文件和存储数据。</li>
+</ul>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109182307987.png" alt="img"></p>
+<h3 id="⭐Renderer-Process渲染进程"><a href="#⭐Renderer-Process渲染进程" class="headerlink" title="⭐Renderer Process渲染进程"></a>⭐Renderer Process渲染进程</h3><p>在浏览器那么多的进程中，最值得介绍的就是渲染进程，核心任务是将 HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页，排版引擎 Blink 和 JavaScript 引擎 V8 都是运行在该进程中，默认情况下，Chrome 会为每个 Tab 标签创建一个渲染进程。</p>
+<p>出于安全考虑，渲染进程都是运行在沙箱模式下。在早期内核也是包含JavaScript引擎的，而现在 JavaScript引擎越来独立了，可以把它单独提出来 。渲染进程，也有人称为浏览器内核<br>主流浏览器的内核及变化如下 </p>
+<table>
+<thead>
+<tr>
+<th>主流浏览器</th>
+<th>内核(渲染引擎)</th>
+<th>JavaScript引擎</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE</td>
+<td>Trident(又叫MSHTML)</td>
+<td>JScript（IE3.0-IE8.0） / Chakra（IE9、IE10、IE11）</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>Webkit(Chrome 27)-&gt;Blink(28~)</td>
+<td>V8（大名鼎鼎）</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Webkit</td>
+<td>JavaScriptCore 被改写为 SquirrelFish，升级版本为 QuirrelFish Extreme，也叫做 Nitro</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>Gecko</td>
+<td>SpiderMonkey（1.0-3.0）/ TraceMonkey（3.5-3.6）/ JaegerMonkey（4.0-）</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Presto-&gt;Webkit-&gt;blink</td>
+<td>Linear A（4.0-6.1）/ Linear B（7.0-9.2）/ Futhark（9.5-10.2）/ Carakan（10.5-）</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>EdgeHTML(Edge12~Edge18)-&gt;Chromium(Edge18以后)</td>
+<td>Chakra</td>
+</tr>
+</tbody></table>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109251643649.png" alt="image-20210925164355568"></p>
+<blockquote>
+<p>常说的Chromium 内核是什么：就是chrome浏览器用的内核，泛指。</p>
+<p>chrome的webkit 用的好好的，为何要投入到一个新的内核中去呢？</p>
+<p>Blink 其实是 WebKit 的分支，如同 WebKit 是 KHTML 的分支。Google 的 Chromium 项目此前一直使用 WebKit(WebCore) 作为渲染引擎，但出于某种原因，并没有将其多进程架构移植入Webkit。</p>
+<p>后来，由于苹果推出的 WebKit2 与 Chromium 的沙箱设计存在冲突，所以 Chromium 一直停留在 WebKit，并使用移植的方式来实现和主线 WebKit2 的对接。这增加了 Chromium 的复杂性，且在一定程度上影响了 Chromium 的架构移植工作。</p>
+<p>基于以上原因，Google 决定从 WebKit 衍生出自己的 Blink 引擎（后由 Google 和 Opera Software 共同研发）</p>
+</blockquote>
+<p>那么浏览器内核里面有什么内线程？</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191730513.png" alt="image-20210919173057455"></p>
+<h1 id="从输入URL到浏览器显示页面过程中都发生了什么？"><a href="#从输入URL到浏览器显示页面过程中都发生了什么？" class="headerlink" title="从输入URL到浏览器显示页面过程中都发生了什么？"></a>从输入URL到浏览器显示页面过程中都发生了什么？</h1><h2 id="导航——网络篇"><a href="#导航——网络篇" class="headerlink" title="导航——网络篇"></a>导航——网络篇</h2><p>导航涉及浏览器进程与线程间为显示网页而通信。一切从用户在浏览器中输入一个URL开始。输入URL之后，浏览器会通过互联网获取数据并显示网页。从请求网页到浏览器准备渲染网页的过程，叫做导航。</p>
+<p>下面我们逐步看一看导航的几个步骤。</p>
+<h3 id="第一步：处理输入"><a href="#第一步：处理输入" class="headerlink" title="第一步：处理输入"></a>第一步：处理输入</h3><p>浏览器主进程里的UI线程会判断用户输入的是查询字符串还是URL。因为Chrome的地址栏同时也是搜索框。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109182307088.png" alt="img"></p>
+<h3 id="第二步：发起网络请求"><a href="#第二步：发起网络请求" class="headerlink" title="第二步：发起网络请求"></a>第二步：发起网络请求</h3><p>UI线程会通知Network线程发起网络调用，获取网站内容，以下是具体流程。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191739208.png" alt="img"></p>
+<ol>
+<li><p><strong>Network线程进行DNS解析</strong>，DNS解析过程中首先会将一个域名，解析成IP地址的一个过程，它会先去找缓存（比如说浏览器缓存 -&gt; 本机缓存 (hosts 文件)-&gt; 路由器缓存）。</p>
+<p>浏览器缓存可以查看，例如在chrome中chrome://chrome-urls/可以看到chrome所有的配置界面，选择dns就可以看到缓存。接下来参和一点计算机网络的DNS解析过程。递归查询就是本地域名服务器帮客户机查，迭代查询就是域名服务器告诉客户机去哪个IP地址查，你自己个查。</p>
+</li>
+</ol>
+<ol start="2">
+<li>建立TCP 连接</li>
+</ol>
+<p>对服务端的 ip 地址建立一个 tcp 连接，主要就是三次握手的过程。</p>
+<ol start="3">
+<li>发起 HTTP 请求</li>
+</ol>
+<p>发送一些请求来请求资源，最常见的就是请求 html 文档以及对应的图片、css 等资源了。这个过程还涉及到一些浏览器缓存（会先看本地有无缓存、强缓存协商缓存之类的，会在别的博客介绍）</p>
+<ol start="4">
+<li>服务器端处理HTTP请求并且返回相应</li>
+</ol>
+<p>网络线程可能收到服务器的重定向头部，如HTTP 301。此时网络线程会跟UI线程沟通，告诉它服务器要求重定向。然后，再发起对另一个URL的请求。</p>
+<h3 id="第三步：读取网络响应"><a href="#第三步：读取网络响应" class="headerlink" title="第三步：读取网络响应"></a>第三步：读取网络响应</h3><p>服务器返回的响应体到来之后，网络线程会检查接收到的前几个字节。响应的Content-Type头部应该包含数据类型，如果没有这个字段，则需要<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRUUC9CYXNpY3Nfb2ZfSFRUUC9NSU1FX3R5cGVz">MIME 类型嗅探</span>。看看<span class="exturl" data-url="aHR0cHM6Ly9jcy5jaHJvbWl1bS5vcmcvY2hyb21pdW0vc3JjL25ldC9iYXNlL21pbWVfc25pZmZlci5jYz9zcT1wYWNrYWdlOmNocm9taXVtJmRyPUNTJmw9NQ==">源代码中</span>中的注释就知道这一块有多难搞。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191749714.png" alt="img"></p>
+<p>如果响应是HTML文件，那下一步就是把数据交给渲染器进程。但如果是一个zip文件或其他文件，那就意味着是一个下载请求，需要把数据传给下载管理器。</p>
+<p>此时也是“安全浏览”（<span class="exturl" data-url="aHR0cHM6Ly9zYWZlYnJvd3NpbmcuZ29vZ2xlLmNvbS8lRUYlQkMlODklRTYlQTMlODAlRTYlOUYlQTUlRTclOUElODQlRTclOEUlQUYlRTglOEElODIlRTMlODAlODIlRTUlQTYlODIlRTYlOUUlOUMlRTUlOUYlOUYlRTUlOTAlOEQlRTUlOTIlOEMlRTUlOTMlOEQlRTUlQkElOTQlRTYlOTUlQjAlRTYlOEQlQUUlRTUlOEMlQjklRTklODUlOEQlRTUlQjclQjIlRTclOUYlQTUlRTclOUElODQlRTYlODElQjYlRTYlODQlOEYlRTclQkQlOTElRTclQUIlOTklRUYlQkMlOEMlRTclQkQlOTElRTclQkIlOUMlRTclQkElQkYlRTclQTglOEIlRTQlQkMlOUElRTYlOTglQkUlRTclQTQlQkElRTglQUQlQTYlRTUlOTElOEElRTklQTElQjUlRTMlODAlODIlRTYlQUQlQTQlRTUlQTQlOTYlRUYlQkMlOENDT1JCJUVGJUJDJTg4Q3Jvc3M=">https://safebrowsing.google.com/）检查的环节。如果域名和响应数据匹配已知的恶意网站，网络线程会显示警告页。此外，CORB（Cross</span> Origin Read Blocking，<span class="exturl" data-url="aHR0cHM6Ly93d3cuY2hyb21pdW0ub3JnL0hvbWUvY2hyb21pdW0tc2VjdXJpdHkvY29yYi1mb3ItZGV2ZWxvcGVycyVFRiVCQyU4OSVFNiVBMyU4MCVFNiU5RiVBNSVFNCVCOSU5RiVFNCVCQyU5QSVFNiU4OSVBNyVFOCVBMSU4QyVFRiVCQyU4QyVFNCVCQiVBNSVFNyVBMSVBRSVFNCVCRiU5RCVFNiU5NSU4RiVFNiU4NCU5RiVFNyU5QSU4NCVFOCVCNyVBOCVFNyVBQiU5OSVFNyU4MiVCOSVFNiU5NSVCMCVFNiU4RCVBRSVFNCVCOCU4RCVFNCVCQyU5QSVFNSU4RiU5MSVFOSU4MCU4MSVFNyVCQiU5OSVFNiVCOCVCMiVFNiU5RiU5MyVFNSU5OSVBOCVFOCVCRiU5QiVFNyVBOCU4QiVFMyU4MCU4Mg==">https://www.chromium.org/Home/chromium-security/corb-for-developers）检查也会执行，以确保敏感的跨站点数据不会发送给渲染器进程。</span></p>
+<h3 id="第四步：通知Renderer-Thread渲染界面"><a href="#第四步：通知Renderer-Thread渲染界面" class="headerlink" title="第四步：通知Renderer Thread渲染界面"></a>第四步：通知Renderer Thread渲染界面</h3><p>所有查检完毕，网络线程确认浏览器可以导航到用户请求的网站，于是会通知UI线程数据已经准备好了。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191752245.png" alt="img"></p>
+<blockquote>
+<p>由于网络请求可能要花几百毫秒才能拿到响应，这里还会应用一个优化策略。第二步UI线程要求网络线程发送请求后，已经知道可能要导航到哪个网站去了。因此在发送网络请求的同时，UI线程会提前联系或并行启动一个渲染器进程。这样在网络线程收到数据后，就已经有渲染器进程原地待命了。如果发生了重定向，这个待命进程可能用不上，而是换作其他进程去处理。</p>
+</blockquote>
+<h3 id="第五步：-提交导航"><a href="#第五步：-提交导航" class="headerlink" title="第五步： 提交导航"></a>第五步： 提交导航</h3><p>现在数据和渲染器进程已经准备就绪，<strong>UI Thread</strong>会联系<strong>Renderer Process</strong>渲染网页，即<strong>Browser Process</strong>通过IPC（Inter-Process Communication，进程间通信）向<strong>Renderer Process</strong>提交导航。<strong>Renderer Process</strong>也会同时接收到不间断的HTML数据流。当<strong>Browser Process</strong>通收到<strong>Renderer Process</strong>的确认消息后，导航完成，文档加载阶段开始。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191801359.png" alt="img"></p>
+<p>此时，地址栏已更新，安全指示器和站点设置 UI 反映了新页面的站点信息。该选项卡的会话历史将更新，因此后退/前进按钮将逐步浏览刚刚导航到的站点。为了在您关闭选项卡或窗口时方便选项卡/会话恢复，会话历史记录存储在磁盘上。</p>
+<h3 id="额外知识扩展"><a href="#额外知识扩展" class="headerlink" title="额外知识扩展"></a>额外知识扩展</h3><p>💕从这里开始就是一些扩展内容了，不想看可以跳到渲染一章</p>
+<p><strong>初始加载完成</strong>。提交导航之后，<strong>Renderer Process</strong>将负责加载资源和渲染页面（具体细节后面介绍）。而在“完成”渲染后（在所有iframe中的<code>onload</code>事件触发且执行完成后），<strong>Rederer Process</strong>会通过IPC给<strong>Browser Process</strong>发送一个消息。此时，UI线程停止标签页上的旋转图标。</p>
+<blockquote>
+<p>初始加载完成后，客户端JavaScript仍然可能加载额外资源并重新渲染页面。</p>
+</blockquote>
+<p>如果此时用户在地址又输入了其他URL呢？浏览器进程还会重复上述步骤，导航到新站点。不过在此之前，需要确认已渲染的网站是否关注<code>beforeunload</code>事件。因为标签页中的一切，包括JavaScript代码都由渲染器进程处理，所以浏览器进程必须与当前的渲染器进程确认后再导航到新站点。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/d0a4aa7cc1c331ca9c9990d8540352f6e49dae5b9eceb2e915c0a2521d521c30/68747470733a2f2f70302e73736c2e7168696d672e636f6d2f743031313966343834373162363761393836622e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191818080.png" alt="img"></a></p>
+<p>如果导航请求来自当前渲染器进程（用户点击了链接或JavaScript运行了<code>window.location = &quot;https://newsite.com&quot;</code>），渲染器进程首先会检查<code>beforeunload</code>处理程序。然后，它会走一遍与浏览器进程触发导航同样的过程。唯一的区别在于导航请求是由渲染器进程提交给浏览器进程的。</p>
+<p>导航到不同的网站时，会有一个新的独立渲染器进程负责处理新导航，而老的渲染器进程要负责处理<code>unload</code>之类的事件。更多细节，可以参考“页面生命周期API”：<span class="exturl" data-url="aHR0cDovL3QuY24vUmV5N1JJRSVFMyU4MCU4Mg==">http://t.cn/Rey7RIE。</span></p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/585bee2d515705e49133f2a758fceef0624be1d744356aa2b95636c0d1c15029/68747470733a2f2f70352e73736c2e7168696d672e636f6d2f743031303863636437396133353038316262652e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191818624.png" alt="img"></a></p>
+<p>另外，导航阶段还可能涉及Service Worker，即网页应用中的网络代理服务，开发者可以通过它控制什么缓存在本地，何时从网络获取新数据。Service Worker说到底也是需要渲染器进程运行的JavaScript代码。如果网站注册了Server Worker，那么导航请求到来时，网络线程会根据URL将其匹配出来，此时UI线程就会联系一个渲染器进程来执行Service Worker的代码：可能只要从本地缓存读取数据，也可能需要发送网络请求。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/6782577023257c86aad033d26da3011c7d28509c4bf7aa08cd5aad358cdbc31c/68747470733a2f2f70312e73736c2e7168696d672e636f6d2f743031623766656564666335623936656134642e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191818577.png" alt="img"></a></p>
+<p>如果Service Worker最终决定从网络请求数据，浏览器进程与渲染器进程间的这种往返通信会导致延迟。因此，这里会有一个“导航预加载”的优化，即在Service Worker启动同时预先加载资源，加载请求通过HTTP头部与服务器沟通，服务器决定是否完全更新内容。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/c4ec2cb17ed2b1a966067b97b08a48db60a139f3f012643ccc2d1fde06d3c729/68747470733a2f2f70342e73736c2e7168696d672e636f6d2f743031656431303238313737396562333761362e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191818956.png" alt="img"></a></p>
+<h2 id="渲染——渲染过程篇"><a href="#渲染——渲染过程篇" class="headerlink" title="渲染——渲染过程篇"></a>渲染——渲染过程篇</h2><p>渲染是渲染器进程内部的工作，渲染器进程的核心工作是将 HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页。涉及Web性能的诸多方面（详细内容可以参考这里<span class="exturl" data-url="aHR0cDovL3QuY24vQWk5YzRuVXUlRUYlQkMlODklRTMlODAlODI=">http://t.cn/Ai9c4nUu）。</span></p>
+<p>标签页中的一切都由渲染器进程负责处理，其中主线程负责运行大多数客户端JavaScript代码，少量代码可能会由工作线程处理（如果用到了Web Worker或Service Worker）。合成器（compositor）线程和栅格化（raster）线程负责高效、平滑地渲染页面，会在第五步中讲到。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/91a0e87f48f4aca435774a88d16cdd3cebeff08bd3fe62dd2a8d43943d386826/68747470733a2f2f70322e73736c2e7168696d672e636f6d2f743031633866396338313664613334373532642e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191819199.png" alt="img"></a></p>
+<p>渲染器进程的核心任务是把HTML、CSS和JavaScript转换成用户可以交互的网页</p>
+<p>大致的工作流如下图，其中的的Render树，在本文中成为Layout Tree</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191857480.png" alt="image-20210919185748404"></p>
+<p>接下来，我们从整体上过一遍渲染器进程处理Web内容的各个阶段。</p>
+<h3 id="第一步：解析HTML，构建DOM树"><a href="#第一步：解析HTML，构建DOM树" class="headerlink" title="第一步：解析HTML，构建DOM树"></a>第一步：解析HTML，构建DOM树</h3><p>当渲染过程接收提交消息用于导航和开始接收HTML数据，主线程开始解析文本串（HTML），使之成为DOM树</p>
+<p>DOM 是浏览器对页面的内部表示，也是 Web 开发人员可以通过 JavaScript 与之交互的数据结构和 API。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192010785.png" alt="image-20210919201040721"></p>
+<p>将 HTML 文档解析为 DOM 是由<span class="exturl" data-url="aHR0cHM6Ly9odG1sLnNwZWMud2hhdHdnLm9yZy8=">HTML 标准</span>定义的 。您可能已经注意到，向浏览器提供 HTML 永远不会引发错误。</p>
+<p>网站通常使用图像、CSS 和 JavaScript 等外部资源。这些文件需要从网络或缓存加载。主线程<em>可以</em>在解析构建 DOM 的过程中找到它们后一一请求它们，但为了加快速度，“预加载扫描器”是<strong>并发运行</strong>的。如果HTML 文档中有类似<code>&lt;img&gt;</code>或 之类的东西<code>&lt;link&gt;</code>，则预加载扫描器会查看 HTML 解析器生成的令牌，并将请求发送到浏览器进程中的网络线程。</p>
+<p><strong>JavaScript 可以阻止解析</strong>，当 HTML 解析器找到一个<code>&lt;script&gt;</code>标签时，它会暂停 HTML 文档的解析，并且必须加载、解析和执行 JavaScript 代码。为什么？因为 JavaScript 可以使用<code>document.write()</code>改变整个 DOM 结构之类的东西来改变文档的形状（ HTML 规范<span class="exturl" data-url="aHR0cHM6Ly9odG1sLnNwZWMud2hhdHdnLm9yZy9tdWx0aXBhZ2UvcGFyc2luZy5odG1sI292ZXJ2aWV3LW9mLXRoZS1wYXJzaW5nLW1vZGVs">中的解析模型概述</span>有一个很好的图表）。这就是 HTML 解析器必须等待 JavaScript 运行才能继续解析 HTML 文档的原因。如果您对 JavaScript 执行中发生的事情感到好奇，<span class="exturl" data-url="aHR0cHM6Ly9tYXRoaWFzYnluZW5zLmJlL25vdGVzL3NoYXBlcy1pY3M=">V8 团队有关于此的演讲和博客文章</span>。</p>
+<blockquote>
+<p>❓那么，有没有方法让JavaScript不阻止HTML的解析？</p>
+<p>为了更好地加载资源，可以通过很多方式告诉浏览器。如果JavaScript没有用到<code>document.write()</code>，可以在<code>&lt;script&gt;</code>标签上添加<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-async"><code>async</code></a>或<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer"><code>defer</code></a>属性。这样浏览器就会异步运行JavaScript代码，不会阻塞解析。合适的话，可以考虑使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL2Z1bmRhbWVudGFscy9wcmltZXJzL21vZHVsZXM=">JavaScript 模块</span>。<code>&lt;link rel=&quot;preload&quot;&gt;</code>是一种通知浏览器当前导航肯定需要该资源并且您希望尽快下载的方式。您可以在<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL2Z1bmRhbWVudGFscy9wZXJmb3JtYW5jZS9yZXNvdXJjZS1wcmlvcml0aXphdGlvbg==">资源优先级 - 让浏览器帮助您</span>阅读更多相关信息。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192030849.png" alt="image-20210919203041763"></p>
+</blockquote>
+<h3 id="第二步：CSS样式计算，构建CSSOM树"><a href="#第二步：CSS样式计算，构建CSSOM树" class="headerlink" title="第二步：CSS样式计算，构建CSSOM树"></a>第二步：CSS样式计算，构建CSSOM树</h3><p>拥有 DOM 并不足以知道页面会是什么样子，因为我们可以在 CSS 中设置页面元素的样式。主线程解析 CSS 并确定每个 DOM 节点的计算样式。这是关于基于 CSS 选择器将哪种样式应用于每个元素的信息。您可以在<code>computed</code>DevTools 部分看到此信息。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192043451.png" alt="image-20210919204304378"></p>
+<p>即使您不提供任何 CSS，每个 DOM 节点都有一个计算样式。<code>&lt;h1&gt;</code>标签显示得比<code>&lt;h2&gt;</code>标签大，并且为每个元素定义了边距。这是因为浏览器有一个默认的样式表。如果你想知道 Chrome 的默认 CSS 是什么样的， <span class="exturl" data-url="aHR0cHM6Ly9jcy5jaHJvbWl1bS5vcmcvY2hyb21pdW0vc3JjL3RoaXJkX3BhcnR5L2JsaW5rL3JlbmRlcmVyL2NvcmUvaHRtbC9yZXNvdXJjZXMvaHRtbC5jc3M=">你可以在这里查看源代码</span>。</p>
+<h3 id="第三步：合成DOM和CSSOM，构建Layout布局树"><a href="#第三步：合成DOM和CSSOM，构建Layout布局树" class="headerlink" title="第三步：合成DOM和CSSOM，构建Layout布局树"></a>第三步：合成DOM和CSSOM，构建Layout布局树</h3><p>现在渲染器进程知道文档的结构和每个节点的样式，但这还不足以渲染页面。想象一下，您正试图通过电话向您的朋友描述一幅画。“有一个大的红色圆圈和一个小的蓝色方块”不足以让您的朋友知道这幅画究竟是什么样子。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192047041.png" alt="image-20210919204713992"></p>
+<p>布局是一个寻找元素几何形状的过程。</p>
+<ul>
+<li>主线程遍历 <strong>DOM</strong> 和<strong>CSSOM</strong>，并创建布局树，其中<u>包含 xy 坐标和边界框大小等信息</u>。</li>
+</ul>
+<p>布局树可能与 DOM 树的结构相似，但它只包含页面上<strong>可见的内容</strong>相关的信息。⭐如果<code>display: none</code>应用，则该元素不是Layout Tree的一部分（但是，具有的元素<code>visibility: hidden</code>在布局树中）。类似地，如果应用了具有类似内容的伪类，<code>p::before&#123;content:&quot;Hi!&quot;&#125;</code>即使它不在 DOM 中，它也会包含在Layout Tree中。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192048143.png" alt="image-20210919204807076"></p>
+<p>确定页面的布局是一项具有挑战性的任务。即使是最简单的页面布局，比如从上到下的块流，也必须考虑字体有多大以及在哪里换行，因为这些会影响段落的大小和形状；这会影响下一段需要在哪里。</p>
+<p>CSS 可以使元素浮动到一侧，屏蔽溢出项，并改变书写方向。可想而知，这个布局阶段任务艰巨。在 Chrome 中，整个工程师团队负责布局。如果您想查看他们工作的详细信息， <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1ZNVhhNEgyd3RWQQ==">BlinkOn Conference 的一些演讲</span>被记录下来并且非常有趣。</p>
+<blockquote>
+<p>⭐顺便说一句，请注意这<code>visibility: hidden</code>与<code>display: none</code>. 前者使元素不可见，但该元素仍占据布局中的空间（即，它被渲染为一个空框），而后者 ( <code>display: none</code>) 将元素完全从渲染树中移除，这样该元素是不可见的，而不是布局的一部分。</p>
+</blockquote>
+<h3 id="第四步：Paint-，确定绘制顺序，创建绘制记录"><a href="#第四步：Paint-，确定绘制顺序，创建绘制记录" class="headerlink" title="第四步：Paint ，确定绘制顺序，创建绘制记录"></a>第四步：Paint ，确定绘制顺序，创建绘制记录</h3><p>拥有 DOM、样式和布局仍然不足以渲染页面。假设您正在尝试复制一幅画。你知道元素的大小、形状和位置，但你仍然需要判断你<strong>绘制它们的顺序</strong>。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192050642.png" alt="image-20210919205042597"></p>
+<p>例如，<code>z-index</code>可能会为某些元素设置，在这种情况下，按照 HTML 中编写的元素的顺序绘制将导致不正确的渲染。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192051999.png" alt="image-20210919205100936" style="zoom:50%;" />
+
+<ul>
+<li>在此绘制步骤中，主线程遍历Layout Tree布局树以创建<code>绘制记录</code>。</li>
+<li>绘制记录是对“先背景，后文字，再矩形”的绘画过程的记录。如果您<code>&lt;canvas&gt;</code>使用 JavaScript绘制过元素，那么您可能对 这个过程很熟悉。</li>
+</ul>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111101656234.png" alt="img"></p>
+<p>大家可以在 Chrome 开发者工具中在设置栏中展开 <code>more tools</code>, 然后选择<code>Layers</code>面板，就能看到下面的绘制列表:</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111101926171.png" alt="image-20211110192601080" style="zoom:50%;" />
+
+<p>渲染是一个流水线作业（pipeline）：前一道工序的输出就是下一道工序的输入。这意味着如果布局树有变化，则相应的绘制记录也要重新生成。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192053690.gif" alt="img" style="zoom:50%;" />
+
+<p>如果元素有动画，浏览器就需要每帧运行一次渲染流水线。目前显示器的刷新率为每秒60次（60fps），也就是说每秒更新60帧，动画会显得很流畅。如果中间缺了帧，那页面看起来就会“闪眼睛”。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/3239f6a56ab1e07791065e7fa4316c73c563353f3c3b83b5bf5275101e1280f4/68747470733a2f2f70352e73736c2e7168696d672e636f6d2f743031316233353963373637303934306665342e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192054106.png" alt="img" style="zoom: 67%;" /></a></p>
+<p>即便渲染操作的频率能跟上屏幕刷新率，但由于计算发生在主线程上，而主线程可能因为运行JavaScript被阻塞。此时动画会因为阻塞被卡住。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/05db02282e70992db5d0879611463ec49aff8b83b52fdb7408fba94197343856/68747470733a2f2f70312e73736c2e7168696d672e636f6d2f743031336638343434316537346332303533352e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192053137.png" alt="img" style="zoom:67%;" /></a></p>
+<p>此时，可以使用<code>requestAnimationFrame()</code>将涉及动画的JavaScript操作分块并调度到每一帧的开始去运行。对于耗时的不必操作DOM的JavaScript操作，可以考虑Web Worker，避免阻塞主线程。</p>
+<h3 id="第五步：Compositing合成（分层、栅格化、创建合成器帧、GPU渲染）"><a href="#第五步：Compositing合成（分层、栅格化、创建合成器帧、GPU渲染）" class="headerlink" title="第五步：Compositing合成（分层、栅格化、创建合成器帧、GPU渲染）"></a>第五步：Compositing合成（分层、栅格化、创建合成器帧、GPU渲染）</h3><p>既然浏览器知道了文档的结构、每个元素的样式、页面的几何形状和绘制顺序，它如何绘制页面？将此信息转换为屏幕上的像素称为<strong>rasterizing栅格化</strong>。</p>
+<p>最简单的方式，可能就是把页面在当前视口中的部分先<strong>栅格化</strong>。然后随着用户滚动页面，再移动<strong>栅格化的画框</strong>，填补缺失    的部分。Chrome最早的版本就是这样干的。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192058146.gif" alt="img" style="zoom:50%;" />
+
+<p>但现代浏览器会使用一个更高级的步骤叫<strong>合成</strong>。什么是合成？合成（composite）是将页面不同部分<strong>先分层</strong>并分别<strong>栅格化</strong>，然后再通过独立的<strong>合成器</strong>线程合成页面。这样当用户滚动页面时，因为层都已经栅格化，所以浏览器唯一要做的就是合成一个新的帧。而动画也可以用同样的方式实现：先移动层，再合成帧。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111101916910.gif" alt="tt"></p>
+<h4 id="5-1分层，创建Layer-Tree图层树"><a href="#5-1分层，创建Layer-Tree图层树" class="headerlink" title="5.1分层，创建Layer Tree图层树"></a>5.1分层，创建Layer Tree图层树</h4><p>为了确定哪个元素应该在哪一层，主线程会遍历<strong>Layout Tree布局树</strong>并创建<strong>Layer Tree图层树</strong>（这一部分在开发工具的“性能”面板中叫“Update Layer Tree”）。如果页面某些部分应该独立一层（如滑入的菜单）但却没有，那你可以在CSS中给它加上<code>will-change</code>属性来提醒浏览器。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192104744.png" alt="img"></p>
+<h4 id="5-2生成图块并栅格化"><a href="#5-2生成图块并栅格化" class="headerlink" title="5.2生成图块并栅格化"></a>5.2生成图块并栅格化</h4><p>一旦创建了<strong>Layer Tree图层树</strong>，确定了绘制顺序，主线程就会把这些信息提交给<strong>合成器线程</strong>。</p>
+<p>一层有可能跟页面一样大，首先，考虑到视口就这么大，当页面非常大的时候，要滑很长时间才能滑到底，如果要一口气全部绘制出来是相当浪费性能的。</p>
+<p>此时<strong>合成器线程</strong>会将它将它们分成多个<strong>图块</strong>，再把每一片发给<strong>Raster栅格化线程</strong>，其将每一小片<strong>栅格化</strong>后将它们保存在GPU的内存中。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/037c25408ce5e03baa4c0239ba464dc54f940027a0e0acc8cdb098d7b582d912/68747470733a2f2f70322e73736c2e7168696d672e636f6d2f743031313832616263386432353963626238302e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192114832.png" alt="img"></a></p>
+<p><strong>合成器线程</strong>会安排<strong>栅格化线程池</strong>优先转换<u>视口（及附近）</u>的小片。而构成一层的小片也会转换为不同分辨率的版本，以便在用户缩放时使用。</p>
+<h4 id="5-3-创建合成器帧，GPU渲染"><a href="#5-3-创建合成器帧，GPU渲染" class="headerlink" title="5.3 创建合成器帧，GPU渲染"></a>5.3 创建合成器帧，GPU渲染</h4><p>所有小片都栅格化以后，<strong>合成器线程</strong>会收集叫做“绘制方块”（draw quad）的小片信息，并创建<strong>合成器帧</strong>。</p>
+<ul>
+<li>绘制方块（draw quad）：包含小片的内存地址、页面位置等合成页面相关的信息</li>
+<li>合成器帧（Compositor frame）：代表一个页面帧的，由多个“绘制方块”组成的集合</li>
+</ul>
+<p>创建好的合成器帧会通过IPC提交给<strong>浏览器进程</strong>，浏览器进程再进一步把“合成器帧”发送到 GPU ，以将其显示在屏幕上。</p>
+<p>如果发生滚动事件，合成器线程会再创建新的合成器帧并发送给GPU。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/b700ec268758940f3612f552ba9be6647438328b1baf78e3f5318ca52923a2fe/68747470733a2f2f70302e73736c2e7168696d672e636f6d2f743031363131663161613361313062323566332e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192115301.png" alt="img"></a></p>
+<p>合成的好处是它是在不涉及主线程的情况下完成的。合成器线程不需要等待样式计算或 JavaScript 执行。这就是为什么 <span class="exturl" data-url="aHR0cHM6Ly93d3cuaHRtbDVyb2Nrcy5jb20vZW4vdHV0b3JpYWxzL3NwZWVkL2hpZ2gtcGVyZm9ybWFuY2UtYW5pbWF0aW9ucy8=">只合成动画</span> 被认为是获得流畅性能的最佳选择。如果需要重新计算布局或绘制，则必须涉及主线程。</p>
+<h1 id="谈谈浏览器和用户之间的交互"><a href="#谈谈浏览器和用户之间的交互" class="headerlink" title="谈谈浏览器和用户之间的交互"></a>谈谈浏览器和用户之间的交互</h1><h2 id="从浏览器的角度输入事件"><a href="#从浏览器的角度输入事件" class="headerlink" title="从浏览器的角度输入事件"></a>从浏览器的角度输入事件</h2><p>当您听到“输入事件”时，您可能只会想到在文本框中键入或鼠标单击，但从浏览器的角度来看，输入意味着来自用户的任何手势。鼠标滚轮滚动是一个输入事件，触摸或鼠标悬停也是一个输入事件。</p>
+<p>当用户在屏幕上进行触摸等手势时，浏览器进程首先接收该手势。但是，浏览器进程只知道该手势发生的位置，因为选项卡内的内容由渲染器进程处理。因此浏览器进程将事件类型（如<code>touchstart</code>）及其坐标发送到渲染器进程。渲染器进程通过查找事件目标并运行附加的事件侦听器来适当地处理事件。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192140119.png" alt="image-20210919214032040"></p>
+<h2 id="合成器接收输入事件"><a href="#合成器接收输入事件" class="headerlink" title="合成器接收输入事件"></a>合成器接收输入事件</h2><p>在上一篇文章中，我们研究了合成器如何通过合成光栅化图层来平滑地处理滚动。如果没有输入事件监听器附加到页面，合成器线程可以创建一个完全独立于主线程的新复合框架。但是如果某些事件侦听器附加到页面上呢？合成器线程如何确定是否需要处理事件？</p>
+<h2 id="非快速滚动区域"><a href="#非快速滚动区域" class="headerlink" title="非快速滚动区域"></a>非快速滚动区域</h2><blockquote>
+<p>❗理解非快速滚动区域</p>
+<p>由于运行 JavaScript 是主线程的工作，因此在合成页面时，合成器线程会给附加了事件处理程序的页面区域打上“Non-Fast Scrollable Region”的记号。</p>
+<ul>
+<li><p>如果输入事件来自该区域之内，则合成器线程会将输入事件发送到主线程。</p>
+</li>
+<li><p>如果输入事件来自该区域之外，则合成器线程继续合成新帧，而无需等待主线程。</p>
+</li>
+</ul>
+<p>​    <img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192136699.png" alt="img"></p>
+<p>如果事件发生在这个区域外，那合成器线程会继续合成新帧而不会等待主线程。</p>
+</blockquote>
+<p>提到注册事件，有一个常见的问题要注意。很多人喜欢使用事件委托来注册处理程序。这是利用事件冒泡原理，把事件注册到最外层元素上，然后再根据事件目标决定是否执行任务。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">&#x27;touchstart&#x27;</span>, <span class="function"><span class="params">evt</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (evt.target === area) &#123;</span><br><span class="line">        evt.preventDefault()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>一个事件处理程序就可以面向多个元素，这种高效的写法因此很流行。然而，从浏览器的角度来看，这样会导致整个页面被标记为“非快速滚动区”。这也就意味着，即便事件发生在那些不需要处理的元素上，合成器线程也要每次都跟主线程沟通，并等待它的回应。于是，合成器线程平滑滚动的优点就被抵销了。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/1a2f27aca56f45401c469f08b55bb0bbecc1a400b61d35cbef4278f9ae213d95/68747470733a2f2f70332e73736c2e7168696d672e636f6d2f743031356234396662626564393139376133662e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192153517.png" alt="img"></a></p>
+<p>为缓冲使用事件委托带来的副作用，可以在注册事件时传入<code>passive: true</code>。这个选项会提醒浏览器，你仍然希望主线程处理事件，但与此同时合成器线程也可以继续合成新的帧。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">&#x27;touchstart&#x27;</span>, <span class="function"><span class="params">evt</span> =&gt;</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;, &#123; <span class="attr">passive</span>: <span class="literal">true</span> &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="检查事件是否可以取消"><a href="#检查事件是否可以取消" class="headerlink" title="检查事件是否可以取消"></a>检查事件是否可以取消</h2><p>此外，检查事件是否可以取消也是一个优化策略。假设页面中有一个盒子，你想限制盒子中的内容只能水平滚动。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/a1768955164f067db954fcf11bdb0155c9c2859c985a85ae1edec7ac57dbd3b1/68747470733a2f2f70352e73736c2e7168696d672e636f6d2f743031393639373131333332346239333534362e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192153386.png" alt="img"></a></p>
+<p>使用<code>passive: true</code>可以让页面平滑滚动，但为了限制滚动方向而调用<code>prevenDefault</code>则不会避免垂直滚动。此时可以检查<code>evt.cancelable</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">&#x27;pointermove&#x27;</span>, <span class="function"><span class="params">evt</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (evt.cancelable) &#123;</span><br><span class="line">        evt.preventDefault(); <span class="comment">// 阻止原生滚动</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        *  其他操作</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &#123; <span class="attr">passive</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>当然，也可以使用CSS规则如<code>touch-action</code>完全避免使用事件处理程序。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#area</span> &#123;</span><br><span class="line">    touch-action: pan-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="寻找事件目标"><a href="#寻找事件目标" class="headerlink" title="寻找事件目标"></a>寻找事件目标</h2><p>当合成器线程向主线程发送输入事件时，首先要运行的是命中测试以找到事件目标。命中测试使用渲染过程中生成的绘制记录数据来找出发生事件的点坐标下方的内容。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192158051.png" alt="img"></p>
+<h2 id="最小化事件调度到主线程"><a href="#最小化事件调度到主线程" class="headerlink" title="最小化事件调度到主线程"></a>最小化事件调度到主线程</h2><p>在上一篇文章中，我们讨论了我们的典型显示器如何每秒刷新屏幕 60 次，以及我们需要如何跟上节奏以获得流畅的动画。对于输入，典型的触摸屏设备每秒传递 60-120 次触摸事件，典型的鼠标每秒传递 100 次事件。输入事件的保真度高于我们的屏幕可以刷新的保真度。</p>
+<p>如果像这样的连续事件<code>touchmove</code>每秒被发送到主线程 120 次，那么与屏幕刷新的速度相比，它可能会触发过多的命中测试和 JavaScript 执行。如下图：事件淹没帧时间线导致页面卡顿</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192205204.png" alt="image-20210919220500127"></p>
+<p>为把对主线程过多的调用降至最少，Chrome会合并（coalesce）连续触发的事件（如<code>wheel</code>、<code>mousewheel</code>、<code>mousemove</code>、<code>pointermove</code>、<code>touchmove</code>），并将它们延迟到恰好在下一次<code>requestAnimationFrame</code>之前派发。与之前相同的时间线，但事件被合并和延迟</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192206907.png" alt="image-20210919220610835"></p>
+<p>对于其他离散触发的事件，像<code>keydown</code>、<code>keyup</code>、<code>mouseup</code>、<code>mousedown</code>、<code>touchstart</code>和<code>touchend</code>会立即派发。</p>
+<h2 id="使用getCoalescedEvents得到帧内事件"><a href="#使用getCoalescedEvents得到帧内事件" class="headerlink" title="使用getCoalescedEvents得到帧内事件"></a>使用getCoalescedEvents得到帧内事件</h2><p>合并后的事件在多数情况下足以保证不错的用户体验。但是，在一些特殊应用场景下，比如需要基于<code>touchmove</code>事件的坐标生成轨迹的绘图应用，合并事件就会导致丢失一些坐标，影响所绘线条的平滑度。左侧是平滑的触摸手势路径，右侧是合并的有限路径</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/4dee811a1b54030530af599219dcac00285b9850aa5e2e4203633de9f7f95990/68747470733a2f2f70302e73736c2e7168696d672e636f6d2f743031666334633934663333376239666135322e706e67"><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192206584.png" alt="img"></a></p>
+<p>此时，可以使用指针事件的<code>getCoalescedEvents</code>方法，取得被合并事件的信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;pointermove&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> events = event.getCoalescedEvents();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> event <span class="keyword">of</span> events) &#123;</span><br><span class="line">        <span class="keyword">const</span> x = event.pageX;</span><br><span class="line">        <span class="keyword">const</span> y = event.pageY;</span><br><span class="line">        <span class="comment">// 使用x和y坐标画线</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这是个小小的结尾。相信不少前端开发者早已知道给<code>&lt;script&gt;</code>标签添加<code>defer</code>、<code>async</code>属性的作用。通过阅读本文，你应该也知道了为什么在注册事件监听器时最好传入<code>passive: true</code>选项，知道了CSS的<code>will-change</code>属性会让浏览器做出不同的决策。事实上，不止上面这些，看完看懂篇文章，你甚至也会对其他关于浏览器性能优化的细节感到豁然开朗，从而对更多关于网页性能的话题会产生兴起。而这正是深入理解现代浏览器的重要意义和价值所在，因为它为我们打开了一扇大门。</p>
+<p>妈耶，开了一堆大坑，头发要没啦。</p>
+<h1 id="启发"><a href="#启发" class="headerlink" title="启发"></a>启发</h1><h2 id="1、CSS放在标签里（阻塞渲染的CSS）"><a href="#1、CSS放在标签里（阻塞渲染的CSS）" class="headerlink" title="1、CSS放在标签里（阻塞渲染的CSS）"></a>1、CSS放在<head>标签里（阻塞渲染的CSS）</h2><p>CSS文件会阻塞浏览器的渲染，放在<head>头部，在加载html生成DOM tree的时候，就可以同时对DOM tree进行渲染。同时生成DOM树和进行CSS样式计算，这样可以防止闪跳，白屏或者布局混乱。现在浏览器为了更好的用户体验，渲染引擎会尝试尽快在屏幕上显示内容，它不会等到所有的HTMl元素解析之后在构建和布局dom树，所以部分内容将被解析并显示。</p>
+<p>如果放在底下，DOM树生成了，还得等你的CSS加载和样式计算，那就会有更长的时间白屏了呀，用户体验就会变差。</p>
+<h2 id="2、JavaScript文件放在最下面（阻塞解析的JavaScript）"><a href="#2、JavaScript文件放在最下面（阻塞解析的JavaScript）" class="headerlink" title="2、JavaScript文件放在最下面（阻塞解析的JavaScript）"></a>2、JavaScript文件放在<body>最下面（阻塞解析的JavaScript）</h2><h3 id="为什么不能放在head标签？"><a href="#为什么不能放在head标签？" class="headerlink" title="为什么不能放在head标签？"></a>为什么不能放在head标签？</h3><p>这种做法的主要目的是把外部的 CSS 和 JavaScript 文件都集中放到一起。不过，把所有 JavaScript 文件都放在里，也就意味着必须把所有 JavaScript 代码都下载、解析和解释完成后，才能开始渲 染页面（页面在浏览器解析到的起始标签时开始渲染）。对于需要很多 JavaScript 的页面，这会 导致页面渲染的明显延迟，在此期间浏览器窗口完全空白。</p>
+<p>总结就是下面几点</p>
+<p>①JavaScript可能会改变DOM tree的结构，所以需要一个稳定的DOM tree。</p>
+<p>②JavaScript文件加载后会立即执行，会阻塞对HTML文档的解析（不考虑defer等属性的情况下）。</p>
+<p>③ JavaScript文件加载、执行的过程中，这个时间一般是比较长的，而且可能文件本身比较大、一旦长期执行，就会一直阻塞 HTML 文档的解析，使得页面长时间白屏（性能指标的首屏时间），所以我们一般把 JavaScript文件放在 body 底部。</p>
+<p>事实上现在可以用defer和async属性解决这个问题</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL3VwZGF0ZXMvMjAxOC8wOS9pbnNpZGUtYnJvd3Nlci1wYXJ0MQ==">https://developers.google.com/web/updates/2018/09/inside-browser-part1</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL3VwZGF0ZXMvMjAxOC8wOS9pbnNpZGUtYnJvd3Nlci1wYXJ0Mg==">https://developers.google.com/web/updates/2018/09/inside-browser-part2</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL3VwZGF0ZXMvMjAxOC8wOS9pbnNpZGUtYnJvd3Nlci1wYXJ0Mw==">https://developers.google.com/web/updates/2018/09/inside-browser-part3</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL3VwZGF0ZXMvMjAxOC8wOS9pbnNpZGUtYnJvd3Nlci1wYXJ0NA==">https://developers.google.com/web/updates/2018/09/inside-browser-part4</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL2Z1bmRhbWVudGFscy9wZXJmb3JtYW5jZS9jcml0aWNhbC1yZW5kZXJpbmctcGF0aC9yZW5kZXItdHJlZS1jb25zdHJ1Y3Rpb24/aGw9ZW4=">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=en</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTA0MDIxMzA4NzM1NTAyI2hlYWRpbmctNTU=">浏览器灵魂之问，请问你能接得住几个？</span></li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/Browser/" rel="tag"><i class="ic i-tag"></i> Browser</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-11-10 22:47:29" itemprop="dateModified" datetime="2021-11-10T22:47:29+08:00">2021-11-10</time>
+  </span>
+  <span id="FrontEnd/Browser/FrontEnd/Browser/浏览器原理介绍" class="item leancloud_visitors" data-flag-title="浏览器原理介绍" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/浏览器原理介绍</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111020852730.png" title="TCP和UDP基础知识点">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Computer-Networking</span>
+  <h3>TCP和UDP基础知识点</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-number">2.</span> <span class="toc-text">谈谈浏览器的历史</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-NCSA-Mosaic%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">1.NCSA  Mosaic浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Netscape-Navigator-%E7%BD%91%E6%99%AF%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">2. Netscape Navigator 网景浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Internet-Explorer%E6%9B%BE%E7%BB%8F%E7%9A%84%E7%8E%8B%E8%80%85"><span class="toc-number">2.3.</span> <span class="toc-text">3. Internet Explorer曾经的王者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Firefox-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text">4.Firefox 浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E2%AD%90chrome-%E7%8E%B0%E5%9C%A8%E7%9A%84%E7%8E%8B%E8%80%85"><span class="toc-number">2.5.</span> <span class="toc-text">5. ⭐chrome 现在的王者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Safari-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.6.</span> <span class="toc-text">6.Safari 浏览器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">谈谈现代浏览器的架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">进程与线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E5%8D%95%E8%BF%9B%E7%A8%8B%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">3.2.</span> <span class="toc-text">早期单进程浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">3.3.</span> <span class="toc-text">现代多进程架构浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Browser-Process%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%BB%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.3.1.</span> <span class="toc-text">Browser Process浏览器主进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90Renderer-Process%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.3.2.</span> <span class="toc-text">⭐Renderer Process渲染进程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%83%BD%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">从输入URL到浏览器显示页面过程中都发生了什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E7%AF%87"><span class="toc-number">4.1.</span> <span class="toc-text">导航——网络篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%A4%84%E7%90%86%E8%BE%93%E5%85%A5"><span class="toc-number">4.1.1.</span> <span class="toc-text">第一步：处理输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%8F%91%E8%B5%B7%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82"><span class="toc-number">4.1.2.</span> <span class="toc-text">第二步：发起网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%AF%BB%E5%8F%96%E7%BD%91%E7%BB%9C%E5%93%8D%E5%BA%94"><span class="toc-number">4.1.3.</span> <span class="toc-text">第三步：读取网络响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E9%80%9A%E7%9F%A5Renderer-Thread%E6%B8%B2%E6%9F%93%E7%95%8C%E9%9D%A2"><span class="toc-number">4.1.4.</span> <span class="toc-text">第四步：通知Renderer Thread渲染界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A-%E6%8F%90%E4%BA%A4%E5%AF%BC%E8%88%AA"><span class="toc-number">4.1.5.</span> <span class="toc-text">第五步： 提交导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E7%9F%A5%E8%AF%86%E6%89%A9%E5%B1%95"><span class="toc-number">4.1.6.</span> <span class="toc-text">额外知识扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E2%80%94%E2%80%94%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E7%AF%87"><span class="toc-number">4.2.</span> <span class="toc-text">渲染——渲染过程篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%A7%A3%E6%9E%90HTML%EF%BC%8C%E6%9E%84%E5%BB%BADOM%E6%A0%91"><span class="toc-number">4.2.1.</span> <span class="toc-text">第一步：解析HTML，构建DOM树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9ACSS%E6%A0%B7%E5%BC%8F%E8%AE%A1%E7%AE%97%EF%BC%8C%E6%9E%84%E5%BB%BACSSOM%E6%A0%91"><span class="toc-number">4.2.2.</span> <span class="toc-text">第二步：CSS样式计算，构建CSSOM树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%90%88%E6%88%90DOM%E5%92%8CCSSOM%EF%BC%8C%E6%9E%84%E5%BB%BALayout%E5%B8%83%E5%B1%80%E6%A0%91"><span class="toc-number">4.2.3.</span> <span class="toc-text">第三步：合成DOM和CSSOM，构建Layout布局树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9APaint-%EF%BC%8C%E7%A1%AE%E5%AE%9A%E7%BB%98%E5%88%B6%E9%A1%BA%E5%BA%8F%EF%BC%8C%E5%88%9B%E5%BB%BA%E7%BB%98%E5%88%B6%E8%AE%B0%E5%BD%95"><span class="toc-number">4.2.4.</span> <span class="toc-text">第四步：Paint ，确定绘制顺序，创建绘制记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9ACompositing%E5%90%88%E6%88%90%EF%BC%88%E5%88%86%E5%B1%82%E3%80%81%E6%A0%85%E6%A0%BC%E5%8C%96%E3%80%81%E5%88%9B%E5%BB%BA%E5%90%88%E6%88%90%E5%99%A8%E5%B8%A7%E3%80%81GPU%E6%B8%B2%E6%9F%93%EF%BC%89"><span class="toc-number">4.2.5.</span> <span class="toc-text">第五步：Compositing合成（分层、栅格化、创建合成器帧、GPU渲染）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1%E5%88%86%E5%B1%82%EF%BC%8C%E5%88%9B%E5%BB%BALayer-Tree%E5%9B%BE%E5%B1%82%E6%A0%91"><span class="toc-number">4.2.5.1.</span> <span class="toc-text">5.1分层，创建Layer Tree图层树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2%E7%94%9F%E6%88%90%E5%9B%BE%E5%9D%97%E5%B9%B6%E6%A0%85%E6%A0%BC%E5%8C%96"><span class="toc-number">4.2.5.2.</span> <span class="toc-text">5.2生成图块并栅格化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-%E5%88%9B%E5%BB%BA%E5%90%88%E6%88%90%E5%99%A8%E5%B8%A7%EF%BC%8CGPU%E6%B8%B2%E6%9F%93"><span class="toc-number">4.2.5.3.</span> <span class="toc-text">5.3 创建合成器帧，GPU渲染</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E7%94%A8%E6%88%B7%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="toc-number">5.</span> <span class="toc-text">谈谈浏览器和用户之间的交互</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E8%A7%92%E5%BA%A6%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-number">5.1.</span> <span class="toc-text">从浏览器的角度输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%99%A8%E6%8E%A5%E6%94%B6%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-number">5.2.</span> <span class="toc-text">合成器接收输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%BF%AB%E9%80%9F%E6%BB%9A%E5%8A%A8%E5%8C%BA%E5%9F%9F"><span class="toc-number">5.3.</span> <span class="toc-text">非快速滚动区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%BA%8B%E4%BB%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%8F%96%E6%B6%88"><span class="toc-number">5.4.</span> <span class="toc-text">检查事件是否可以取消</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E4%BA%8B%E4%BB%B6%E7%9B%AE%E6%A0%87"><span class="toc-number">5.5.</span> <span class="toc-text">寻找事件目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E5%8C%96%E4%BA%8B%E4%BB%B6%E8%B0%83%E5%BA%A6%E5%88%B0%E4%B8%BB%E7%BA%BF%E7%A8%8B"><span class="toc-number">5.6.</span> <span class="toc-text">最小化事件调度到主线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8getCoalescedEvents%E5%BE%97%E5%88%B0%E5%B8%A7%E5%86%85%E4%BA%8B%E4%BB%B6"><span class="toc-number">5.7.</span> <span class="toc-text">使用getCoalescedEvents得到帧内事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%AF%E5%8F%91"><span class="toc-number">7.</span> <span class="toc-text">启发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81CSS%E6%94%BE%E5%9C%A8%E6%A0%87%E7%AD%BE%E9%87%8C%EF%BC%88%E9%98%BB%E5%A1%9E%E6%B8%B2%E6%9F%93%E7%9A%84CSS%EF%BC%89"><span class="toc-number">7.1.</span> <span class="toc-text">1、CSS放在标签里（阻塞渲染的CSS）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81JavaScript%E6%96%87%E4%BB%B6%E6%94%BE%E5%9C%A8%E6%9C%80%E4%B8%8B%E9%9D%A2%EF%BC%88%E9%98%BB%E5%A1%9E%E8%A7%A3%E6%9E%90%E7%9A%84JavaScript%EF%BC%89"><span class="toc-number">7.2.</span> <span class="toc-text">2、JavaScript文件放在最下面（阻塞解析的JavaScript）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E6%94%BE%E5%9C%A8head%E6%A0%87%E7%AD%BE%EF%BC%9F"><span class="toc-number">7.2.1.</span> <span class="toc-text">为什么不能放在head标签？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">8.</span> <span class="toc-text">参考</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="解决跨域问题">解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器本地存储介绍">浏览器本地存储介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" rel="bookmark" title="重绘Repaint与回流Reflow">重绘Repaint与回流Reflow</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="浏览器原理介绍">浏览器原理介绍</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">19</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">6</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">8</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
+</div>
+
+    <span><a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="浏览器原理介绍">浏览器原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B" title="JavaScript数据类型">JavaScript数据类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
+</div>
+
+    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">197k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">2:59</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/Browser/FrontEnd/Browser/浏览器原理介绍',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
