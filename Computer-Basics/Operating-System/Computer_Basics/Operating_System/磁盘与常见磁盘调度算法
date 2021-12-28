@@ -1,0 +1,666 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Operating_System" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/Computer-Basics/Operating-System/Computer_Basics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95">
+
+
+
+  <title>
+磁盘与常见磁盘调度算法 - Operating_System - Computer_Basics |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">磁盘与常见磁盘调度算法
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-09-15 09:28:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-09-15T09:28:32+08:00">2021-09-15</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>2.9k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>3 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Computer-Basics/" itemprop="item" rel="index" title="In Computer_Basics"><span itemprop="name">Computer_Basics</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Computer-Basics/Operating-System/" itemprop="item" rel="index" title="In Operating_System"><span itemprop="name">Operating_System</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/Computer-Basics/Operating-System/Computer_Basics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="一、磁盘存储设备"><a href="#一、磁盘存储设备" class="headerlink" title="一、磁盘存储设备"></a>一、磁盘存储设备</h1><p>计算机的外存储器又称磁表面存储设备。所谓磁表面存储，是用 某些磁性材料薄薄地涂在金属铝或塑料表面作载磁体来存储信息。 磁盘存储器、磁带存储器均属于磁表面存储器。磁表面存储器的 </p>
+<p><strong>优点</strong>：</p>
+<p> ①存储容量大，位价格低； </p>
+<p>②记录介质可以重复使用； </p>
+<p>③记录信息可以长期保存而不丢失，甚至可以脱机存档； </p>
+<p>④非破坏性读出，读出时不需要再生信息。</p>
+<p>当然，磁表面存储器也有 </p>
+<p><strong>缺点</strong>：主要是存取速度较慢，机械结构复杂，对工作环境要求较高。</p>
+<h1 id="二、磁记录原理"><a href="#二、磁记录原理" class="headerlink" title="二、磁记录原理"></a>二、磁记录原理</h1><p>磁性材料被磁化以后，只要外加的正向脉冲电流（即外加磁场）幅度足够大，那么在电流消失的时候，磁感应强度处于“正剩磁状态”，该磁性不容易消失。反之，我们加负向脉冲电流，则在电流消失的时候，磁感应强度处于“负剩磁状态”。这样子，我们就可以把“正剩磁状态”代表为1，“负剩磁状态”代表0，就能表示一切信息了。</p>
+<p><strong>写操作</strong>：当写线圈中通过一定方向的脉冲电流时，铁芯内就产生一定方向的磁通，给磁道“附魔”。 </p>
+<p><strong>读操作</strong>：当磁头经过载磁体的 磁化元时，由于磁头铁芯是良好的导磁材料，磁化元的磁力线很容易通过磁头而形成闭合磁通回路。不同极性的磁化元在铁芯里的方向是不同的。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211435290.png" alt="image-20211221143543250"></p>
+<h1 id="三、磁盘的结构"><a href="#三、磁盘的结构" class="headerlink" title="三、磁盘的结构"></a>三、磁盘的结构</h1><p>首先上一张图看看磁盘长什么样子，下面我们再来详细介绍一下。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211331251.png" alt="image-20211221133157174" style="zoom:67%;" />
+
+<h2 id="磁盘、盘片、盘面"><a href="#磁盘、盘片、盘面" class="headerlink" title="磁盘、盘片、盘面"></a>磁盘、盘片、盘面</h2><p><code>磁盘</code>：我们常说的机械硬盘（Hard Disk Drive）就是这里所说的磁盘。</p>
+<p><code>盘片（platter）</code>：一个<code>磁盘</code>由多个<code>盘片</code>“摞”起来组成，当然中间是有夹层的。</p>
+<p><code>盘面/记录面</code>：而每个<code>盘片</code>的上下两个面都可以存储信息，我们记录信息就是记录在盘面上。盘片的编号自下向上从0开始，如最下边的盘片有0面和1面，再上一个盘片就编号为2面和3面。</p>
+<h2 id="磁道、扇区"><a href="#磁道、扇区" class="headerlink" title="磁道、扇区"></a>磁道、扇区</h2><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211412918.png" alt="image-20211221141240841" style="zoom: 50%;" />
+
+<p><code>磁道（track）</code>：盘片上有很多的“圆圈状”的轨道，轨道上记录着“磁信息”，我们称这些轨道就是磁道。每个盘片表面通常由几百到几千个磁道。磁道的编址是从外向内依次编号的，最外的一个同心圆叫0磁道，最里面的同心圆叫n磁道，n磁道里面的圆面积不用来记录信息。</p>
+<p><code>⭐扇区（sector）</code>：每个磁道分为若干个扇区，注意是“一个磁道”。扇区的编号有多种方法，可以连续编号，可间隔编号。所以我们就可以用n磁道m扇区的磁盘地址找到实际磁盘上与之相对应的记录区。</p>
+<p><code>柱面（cylinder）</code>：如下图所示，相同编号的磁道形成一个圆柱，就叫做柱面。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211416884.png" alt="image-20211221141623810" style="zoom: 50%;" />
+
+
+
+<h2 id="读写信息的装置：机械臂杆、磁臂、磁头"><a href="#读写信息的装置：机械臂杆、磁臂、磁头" class="headerlink" title="读写信息的装置：机械臂杆、磁臂、磁头"></a>读写信息的装置：机械臂杆、磁臂、磁头</h2><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211418688.png" alt="image-20211221141836654" style="zoom:80%;" />
+
+<p><code>转轴（splindle）</code>：<code>转轴</code>负责带动每一个盘片转动。</p>
+<p><code>读写磁头（read-write head）</code>：简称磁头，每个盘片都被两个<code>读写磁头</code>“捏”住，即每个盘面都有一个对应的<code>读写磁头</code>负责读写信息。</p>
+<p><code>磁臂（arm）</code>：磁臂的最前端就是磁头。</p>
+<p><code>机械臂杆（arm assembly）</code>：机械臂杆插着很多负责带动磁臂，使得磁臂可以往里或往外运动。</p>
+<p>相当于这一整个读取装置就是“磁信息”的记录员，机械臂杆就是他的身体，磁臂就是他整个手臂，手臂可以伸长缩短，读写磁头就是手上握着的那支“笔”。</p>
+<p>通过磁臂的前后伸缩，我们可以解决的是“读取哪个磁道”的问题，然后通过盘片的转动，我们就能解决“读取整条磁道”的问题。</p>
+<h1 id="四、磁盘物理地址"><a href="#四、磁盘物理地址" class="headerlink" title="四、磁盘物理地址"></a>四、磁盘物理地址</h1><p>直接寻址的最小单位是**一个记录块(一个扇区)**，每个记录块记录固定字节数目的信息，在定长记录的数据块中，活动头磁盘组的编址方式可用如下格式：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211441629.png" alt="image-20211221144103599"></p>
+<blockquote>
+<p>先切一个有高度的圆环，然后切片，取得一个圆环，然后再从圆环中切出我们要的扇区。</p>
+</blockquote>
+<h1 id="五、磁盘的分类"><a href="#五、磁盘的分类" class="headerlink" title="五、磁盘的分类"></a>五、磁盘的分类</h1><p>硬磁盘按盘片结构，分成可换盘片式与固定盘片式两种；</p>
+<p>磁头 也分为可移动磁头和固定磁头两种。 </p>
+<ul>
+<li>可移动磁头固定盘片的磁盘机的特点是一片或一组盘片固定在主 轴上，盘片不可更换。盘片每面只有一个磁头，存取数据时磁头 沿盘面径向移动。可移动磁头可换盘片的磁盘机：盘片可以更换， 磁头可沿盘面径向移动。优点是盘片可以脱机保存，同种型号的 盘片具有互换性。 </li>
+<li> 固定磁头磁盘机特点是磁头位置固定，磁盘的每一个磁道对应一 个磁头，盘片不可更换。优点是存取速度快，省去磁头找道时间， 缺点是结构复杂。</li>
+</ul>
+<h1 id="六、磁盘存储器的技术指标"><a href="#六、磁盘存储器的技术指标" class="headerlink" title="六、磁盘存储器的技术指标"></a>六、磁盘存储器的技术指标</h1><ul>
+<li>存储密度：存储密度分道密度、位密度和面密度<ul>
+<li>道密度：沿磁盘半径方向单位长度上的磁道数，单位为道/英寸。</li>
+<li>位密度：磁道单位长度上能记录的二进制代码位数，单位为位/英寸。</li>
+<li>面密度：位密度和道密度的乘积，单位为位/平方英寸。</li>
+</ul>
+</li>
+<li>存储容量：一个磁盘存储器所能存储的字节总数， 称为磁盘存储器的存储容量。</li>
+</ul>
+<h2 id="一次磁盘读-写操作需要的时间"><a href="#一次磁盘读-写操作需要的时间" class="headerlink" title="一次磁盘读/写操作需要的时间"></a>一次磁盘读/写操作需要的时间</h2><ul>
+<li>寻道时间：将磁头臂移到指定磁道所需要的时间，即寻找磁道的时间，</li>
+<li>旋转延迟：将磁盘的待访问地址区域旋转到读/写磁头可访问的位置所需要的时间。</li>
+<li>传输时间：读或写操作的数据传输所需的时间。</li>
+</ul>
+<p>一次磁盘读/写操作需要的时间=<strong>寻道时间</strong>+<strong>旋转延迟</strong>+<strong>传输时间</strong></p>
+<h1 id="七、磁盘调度算法"><a href="#七、磁盘调度算法" class="headerlink" title="七、磁盘调度算法"></a>七、磁盘调度算法</h1><p>磁盘调度算法是用于优化寻道时间的，即我们的应用在运行的过程中，会产生I/O请求顺序队列，该队列中给出了要访问的数据所在的磁道，我们用什么样的顺序来读取这些数据，这样的算法很大程度上会影响到总体的读取速度。以下介绍几个常见算法，并且给出一些实例。</p>
+<h2 id="1-FIFO-先进先出-算法"><a href="#1-FIFO-先进先出-算法" class="headerlink" title="1.FIFO(先进先出)算法"></a>1.FIFO(先进先出)算法</h2><p><code> FIFO (First In First Out)</code>：也有称为FCFS（First Come First Service）算法，按请求到来的顺序进行服务</p>
+<p><strong>优点</strong>：比较公平</p>
+<p><strong>缺点</strong>：通常不能提供最快的服务</p>
+<blockquote>
+<p>有一个磁盘队列，其I/O请求顺序如下：</p>
+<p>​       98，183，37，122，14，124，65，67</p>
+<p>磁头开始位于53</p>
+</blockquote>
+<p>那么利用FIFO就是最简单的算法了，一个一个访问。</p>
+<p>则访问顺序为：53（初始位置)，98，183，37，122，14，124，65，67</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211456272.png" alt="image-20211221145625209" style="zoom: 33%;" />
+
+<p>平均寻道长度：[（98-53）+（183-98）+（183-37）+（122-37）+…+（67-65）] /8= 640/8 =80</p>
+<h2 id="2-SSTF（最短寻道时间优先算法）算法"><a href="#2-SSTF（最短寻道时间优先算法）算法" class="headerlink" title="2.SSTF（最短寻道时间优先算法）算法"></a>2.SSTF（最短寻道时间优先算法）算法</h2><p><code>SSTF(Shortest Seek Time First)</code>：从当前磁头位置选择最短寻道时间的请求，即选择与当前磁头位置最近的待处理请求。</p>
+<p><strong>优点</strong>：较FCFS大大提高了性能，改善了磁盘平均服务时间。</p>
+<p><strong>缺点</strong>：可能会导致一些请求得不到服务，产生饥饿现象。</p>
+<p>同样的例子：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211505743.png" alt="image-20211221150518686" style="zoom: 33%;" />
+
+<p>平均寻道长度：236/8=29.5</p>
+<h2 id="SCAN（电梯算法、扫描算法）"><a href="#SCAN（电梯算法、扫描算法）" class="headerlink" title="SCAN（电梯算法、扫描算法）"></a>SCAN（电梯算法、扫描算法）</h2><p><code>SCAN(电梯算法)</code>：磁臂从磁盘的一端向另一端移动，同时当磁头移过每个柱面时，处理位于该柱面上的服务请求。当到达另一端时，磁头改变方向，处理继续。就和我们坐电梯一样。</p>
+<p><strong>优点</strong>：克服了最短寻道优先的缺点，既考虑了距离，同时又考虑了方向。</p>
+<p><strong>缺点</strong>：某些请求处理可能不及时。</p>
+<p>电梯算法有两种分类：</p>
+<ul>
+<li>先往磁道号变大的方向移动</li>
+<li>先往磁道号变小的方向移动</li>
+</ul>
+<p>我们以第一种举例子：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211510587.png" alt="image-20211221151008538" style="zoom:33%;" />
+
+<p>平均寻道长度：299/8=37.375</p>
+<h2 id="C-SCAN（变种电梯算法、循环扫描算法）"><a href="#C-SCAN（变种电梯算法、循环扫描算法）" class="headerlink" title="C-SCAN（变种电梯算法、循环扫描算法）"></a>C-SCAN（变种电梯算法、循环扫描算法）</h2><p><code>CSCAN(变种电梯算法、循环扫描算法)</code>：在扫描算法的基础上规定磁头单向移动来提供服务，回返时直接快速移动至起始端而不服务任何请求。</p>
+<p><strong>优点</strong>：由于SCAN算法偏向于处理那些接近最里或最外的磁道的访问请求，所以使用改进型的C-SCAN算法来避免这个问题。</p>
+<p>同样的，变种电梯算法有两种分类：</p>
+<ul>
+<li>先往磁道号变大的方向移动</li>
+<li>先往磁道号变小的方向移动</li>
+</ul>
+<p>我们以第一种举个例子：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112211515412.png" alt="image-20211221151530341" style="zoom:33%;" />
+
+<p>平均寻道长度：322/8=40.25</p>
+
+      <div class="tags">
+          <a href="/tags/Operating-System/" rel="tag"><i class="ic i-tag"></i> Operating_System</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-28 12:06:40" itemprop="dateModified" datetime="2021-12-28T12:06:40+08:00">2021-12-28</time>
+  </span>
+  <span id="Computer-Basics/Operating-System/Computer_Basics/Operating_System/磁盘与常见磁盘调度算法" class="item leancloud_visitors" data-flag-title="磁盘与常见磁盘调度算法" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/Computer-Basics/Operating-System/Computer_Basics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">https://monkeyhh.top/Computer-Basics/Operating-System/Computer_Basics/Operating_System/磁盘与常见磁盘调度算法</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="【浏览器内核原理篇】重绘Repaint与回流Reflow">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>【浏览器内核原理篇】重绘Repaint与回流Reflow</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281044723.jpeg" title="pnpm相较于npm和yarn有什么优点？">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Package_Manager</span>
+  <h3>pnpm相较于npm和yarn有什么优点？</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">一、磁盘存储设备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A3%81%E8%AE%B0%E5%BD%95%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">二、磁记录原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">三、磁盘的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E3%80%81%E7%9B%98%E7%89%87%E3%80%81%E7%9B%98%E9%9D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">磁盘、盘片、盘面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E9%81%93%E3%80%81%E6%89%87%E5%8C%BA"><span class="toc-number">3.2.</span> <span class="toc-text">磁道、扇区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A3%85%E7%BD%AE%EF%BC%9A%E6%9C%BA%E6%A2%B0%E8%87%82%E6%9D%86%E3%80%81%E7%A3%81%E8%87%82%E3%80%81%E7%A3%81%E5%A4%B4"><span class="toc-number">3.3.</span> <span class="toc-text">读写信息的装置：机械臂杆、磁臂、磁头</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%A3%81%E7%9B%98%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-number">4.</span> <span class="toc-text">四、磁盘物理地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A3%81%E7%9B%98%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">五、磁盘的分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E6%8A%80%E6%9C%AF%E6%8C%87%E6%A0%87"><span class="toc-number">6.</span> <span class="toc-text">六、磁盘存储器的技术指标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E7%A3%81%E7%9B%98%E8%AF%BB-%E5%86%99%E6%93%8D%E4%BD%9C%E9%9C%80%E8%A6%81%E7%9A%84%E6%97%B6%E9%97%B4"><span class="toc-number">6.1.</span> <span class="toc-text">一次磁盘读&#x2F;写操作需要的时间</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">七、磁盘调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-FIFO-%E5%85%88%E8%BF%9B%E5%85%88%E5%87%BA-%E7%AE%97%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">1.FIFO(先进先出)算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-SSTF%EF%BC%88%E6%9C%80%E7%9F%AD%E5%AF%BB%E9%81%93%E6%97%B6%E9%97%B4%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95%EF%BC%89%E7%AE%97%E6%B3%95"><span class="toc-number">7.2.</span> <span class="toc-text">2.SSTF（最短寻道时间优先算法）算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SCAN%EF%BC%88%E7%94%B5%E6%A2%AF%E7%AE%97%E6%B3%95%E3%80%81%E6%89%AB%E6%8F%8F%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-number">7.3.</span> <span class="toc-text">SCAN（电梯算法、扫描算法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-SCAN%EF%BC%88%E5%8F%98%E7%A7%8D%E7%94%B5%E6%A2%AF%E7%AE%97%E6%B3%95%E3%80%81%E5%BE%AA%E7%8E%AF%E6%89%AB%E6%8F%8F%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-number">7.4.</span> <span class="toc-text">C-SCAN（变种电梯算法、循环扫描算法）</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/Computer-Basics/Operating-System/Computer_Basics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" rel="bookmark" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">36</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">17</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
+</div>
+
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue响应式原理">【Vue进阶】浅谈Vue响应式原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/NodeJS/" title="In NodeJS">NodeJS</a>
+</div>
+
+    <span><a href="/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="NodeJS基础知识入门">NodeJS基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE" title="JavaScript中的数据">JavaScript中的数据</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Basics/" title="In Computer_Basics">Computer_Basics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Computer-Basics/Operating-System/" title="In Operating_System">Operating_System</a>
+</div>
+
+    <span><a href="/Computer-Basics/Operating-System/Computer_Basics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/BOM%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B" title="BOM浏览器对象模型">BOM浏览器对象模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
+</div>
+
+    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">470k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">7:07</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'Computer-Basics/Operating-System/Computer_Basics/Operating_System/磁盘与常见磁盘调度算法',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

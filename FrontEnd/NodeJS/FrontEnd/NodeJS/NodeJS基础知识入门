@@ -1,0 +1,957 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="NodeJS" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8">
+
+
+
+  <title>
+NodeJS基础知识入门 - NodeJS - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">NodeJS基础知识入门
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-10-12 09:28:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-10-12T09:28:32+08:00">2021-10-12</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>16k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>14 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/NodeJS/" itemprop="item" rel="index" title="In NodeJS"><span itemprop="name">NodeJS</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文主要是对自己学习到的Nodejs的知识点进行一个整理，将自己碎片化的记忆组合一下。</p>
+<h1 id="Node-js简介"><a href="#Node-js简介" class="headerlink" title="Node.js简介"></a>Node.js简介</h1><p>Node.js 是一个开源和跨平台的 JavaScript 运行时环境。2009年3月，Ryan Dahl他找到了涉及高性能，Web服务器的几个要点：<code>事件驱动、非阻塞I/O</code>。</p>
+<p>通过比较，最终选择使用JavaScript这一语言进行设计。</p>
+<h2 id="Node-js的特点"><a href="#Node-js的特点" class="headerlink" title="Node.js的特点"></a>Node.js的特点</h2><ul>
+<li><p>异步I/O</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110222303492.png" alt="image-20211022230341428" style="zoom: 50%;" /></li>
+<li><p>事件驱动</p>
+</li>
+<li><p>单线程</p>
+<p>Node保持了JavaScript在浏览器中单线程的特点。而且在Node中，JavaScript 与其余线程是无法共享任何状态的。</p>
+<p>单线程的最大好处是</p>
+<ol>
+<li>不用处处在意状态的同步问题</li>
+<li>没有死锁的存在</li>
+<li>没有线程上下文交换所带来的性能上的开销</li>
+</ol>
+<p>单线程的坏处：</p>
+<ol>
+<li>无法利用多核CPU。</li>
+<li>错误会引起整个应用退出，应用的健壮性值得考验。</li>
+<li>大量计算占用CPU导致无法继续调用异步I/O，已完成的异步I/O的回调函数也得不到及时执行。</li>
+</ol>
+<p>Node采用了与Web Workers相同的思路来解决单线程中大计算量的问题：child_process。将计算分发到多个子进程，再通过进程间通信来传递结果，很好地保持了应用模型的简单和低依赖。</p>
+</li>
+<li><p>跨平台</p>
+<p>Node 基于 libuv 实现跨平台（libuv 是一个跨平台的异步 I/O 库，它提供的内容不仅是 I/O，还有进程、线程、定时器、线程池等。） </p>
+<p>Node 用 libuv 作为抽象封装层，使得所有平台兼容性的判断由该层来完成。Node 在编译时会判断平台条件，选择性编译 unix 目录或 win 目录下的源文件到目标程序中。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110222259233.png" alt="image-20211022225915171" style="zoom:50%;" /></li>
+</ul>
+<h2 id="Node-js的应用场景"><a href="#Node-js的应用场景" class="headerlink" title="Node.js的应用场景"></a>Node.js的应用场景</h2><p>显然，异步 I/O 的使用场景最大就是 I/O 密集型场景。它的优势主要在于 Node 利用事件循环的处理能力。</p>
+<p>I/O密集的<strong>优势</strong>主要在于Node利用事件循环的处理能力，而不是启动每一个线程为每一个请求服务，资源占用极少。</p>
+<h1 id="Node-js核心模块的实现"><a href="#Node-js核心模块的实现" class="headerlink" title="Node.js核心模块的实现"></a>Node.js核心模块的实现</h1><h2 id="Buffer缓冲区模块"><a href="#Buffer缓冲区模块" class="headerlink" title="Buffer缓冲区模块"></a>Buffer缓冲区模块</h2><p>JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。</p>
+<p>但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。</p>
+<p>在 Node.js 中，Buffer 类是随 Node 内核一起发布的核心库。Buffer 库为 Node.js 带来了一种存储原始数据的方法，可以让 Node.js 处理二进制数据，每当需要在 Node.js 中处理I/O操作中移动的数据时，就有可能使用 Buffer 库。原始数据存储在 Buffer 类的实例中。一个 Buffer 类似于一个整数数组，但它对应于 V8 堆内存之外的一块原始内存。</p>
+<blockquote>
+<p>在v6.0之前创建Buffer对象直接使用new Buffer()构造函数来创建对象实例，但是Buffer对内存的权限操作相比很大，可以直接捕获一些敏感信息，所以在v6.0以后，官方文档里面建议使用 ==Buffer.from()==接口去创建Buffer对象。</p>
+</blockquote>
+<p><code>Buffer</code> 对象用于表示固定长度的字节序列。 许多 Node.js API 都支持 <code>Buffer</code>。</p>
+<p><code>Buffer</code> 类是 JavaScript <a target="_blank" rel="noopener" href="http://url.nodejs.cn/ZbDkpm"><code>Uint8Array</code></a> 类的子类，并使用涵盖额外用例的方法对其进行扩展。 Node.js API 在支持 <code>Buffer</code> 的地方也接受普通的 <a target="_blank" rel="noopener" href="http://url.nodejs.cn/ZbDkpm"><code>Uint8Array</code></a>。</p>
+<p>虽然 <code>Buffer</code> 类在全局范围内可用，但仍然建议通过 import 或 require 语句显式地引用它。</p>
+<h3 id="初体验"><a href="#初体验" class="headerlink" title="初体验"></a>初体验</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Buffer &#125; = <span class="built_in">require</span>(<span class="string">&#x27;buffer&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建长度为 10 的以零填充的缓冲区。</span></span><br><span class="line"><span class="keyword">const</span> buf1 = Buffer.alloc(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建长度为 10 的缓冲区，</span></span><br><span class="line"><span class="comment">// 使用值为 `1` 的字节填充。</span></span><br><span class="line"><span class="keyword">const</span> buf2 = Buffer.alloc(<span class="number">10</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建长度为 10 的未初始化的缓冲区。</span></span><br><span class="line"><span class="comment">// 这比调用 Buffer.alloc() 快，</span></span><br><span class="line"><span class="comment">// 但返回的缓冲区实例可能包含旧数据，</span></span><br><span class="line"><span class="comment">// 需要使用 fill()、write() 、</span></span><br><span class="line"><span class="comment">// 或其他填充缓冲区内容的函数重写。</span></span><br><span class="line"><span class="keyword">const</span> buf3 = Buffer.allocUnsafe(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建包含字节 [1, 2, 3] 的缓冲区。</span></span><br><span class="line"><span class="keyword">const</span> buf4 = Buffer.from([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建包含字节 [1, 1, 1, 1] 的缓冲区，</span></span><br><span class="line"><span class="comment">// 所有条目都使用 `(value &amp; 255)` 截断以符合范围 0–255。</span></span><br><span class="line"><span class="keyword">const</span> buf5 = Buffer.from([<span class="number">257</span>, <span class="number">257.5</span>, -<span class="number">255</span>, <span class="string">&#x27;1&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建包含字符串 &#x27;tést&#x27; 的 UTF-8 编码字节的缓冲区：</span></span><br><span class="line"><span class="comment">// [0x74, 0xc3, 0xa9, 0x73, 0x74]（十六进制）</span></span><br><span class="line"><span class="comment">// [116, 195, 169, 115, 116]（十进制）</span></span><br><span class="line"><span class="keyword">const</span> buf6 = Buffer.from(<span class="string">&#x27;tést&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建包含 Latin-1 字节 [0x74, 0xe9, 0x73, 0x74] 的缓冲区。</span></span><br><span class="line"><span class="keyword">const</span> buf7 = Buffer.from(<span class="string">&#x27;tést&#x27;</span>, <span class="string">&#x27;latin1&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>当在 <code>Buffer</code> 和字符串之间进行转换时，可以指定字符编码。 如果未指定字符编码，则默认使用 UTF-8。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; Buffer &#125; = <span class="built_in">require</span>(<span class="string">&#x27;buffer&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> buf = Buffer.from(<span class="string">&#x27;hello world&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(buf.toString(<span class="string">&#x27;hex&#x27;</span>));</span><br><span class="line"><span class="comment">// 打印: 68656c6c6f20776f726c64</span></span><br><span class="line"><span class="built_in">console</span>.log(buf.toString(<span class="string">&#x27;base64&#x27;</span>));</span><br><span class="line"><span class="comment">// 打印: aGVsbG8gd29ybGQ=</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Buffer.from(<span class="string">&#x27;fhqwhgads&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>));</span><br><span class="line"><span class="comment">// 打印: &lt;Buffer 66 68 71 77 68 67 61 64 73&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(Buffer.from(<span class="string">&#x27;fhqwhgads&#x27;</span>, <span class="string">&#x27;utf16le&#x27;</span>));</span><br><span class="line"><span class="comment">// 打印: &lt;Buffer 66 00 68 00 71 00 77 00 68 00 67 00 61 00 64 00 73 00&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Node-js-目前支持的字符编码如下："><a href="#Node-js-目前支持的字符编码如下：" class="headerlink" title="Node.js 目前支持的字符编码如下："></a>Node.js 目前支持的字符编码如下：</h3><ul>
+<li><code>&#39;utf8&#39;</code>（别名：<code>&#39;utf-8&#39;</code>）：多字节编码的 Unicode 字符。 许多网页和其他文档格式使用 <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vbXpXNWpv">UTF-8</span>。 这是默认的字符编码。 当将 <code>Buffer</code> 解码为不完全包含有效 UTF-8 数据的字符串时，则 Unicode 替换字符 <code>U+FFFD</code> � 将用于表示这些错误。</li>
+<li><code>&#39;utf16le&#39;</code>（别名：<code>&#39;utf-16le&#39;</code>）：多字节编码的 Unicode 字符。 与 <code>&#39;utf8&#39;</code> 不同，字符串中的每个字符都将使用 2 或 4 个字节进行编码。 Node.js 仅支持 <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vQ0pIekpx">UTF-16</span> 的<span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vSFkzdFZw">小端序</span>变体。</li>
+<li><code>&#39;latin1&#39;</code>: Latin-1 代表 <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vejhBYURz">ISO-8859-1</span>。 此字符编码仅支持 <code>U+0000</code> 至 <code>U+00FF</code> 的 Unicode 字符。 每个字符都使用单个字节进行编码。 不符合该范围的字符将被截断并映射到该范围内的字符。</li>
+</ul>
+<p>使用以上编码之一将 <code>Buffer</code> 转换为字符串称为解码，将字符串转换为 <code>Buffer</code> 称为编码。</p>
+<p>Node.js 还支持以下二进制转文本的编码。 对于二进制转文本的编码，命名约定是相反的：将 <code>Buffer</code> 转换为字符串通常称为编码，将字符串转换为 <code>Buffer</code> 通常称为解码。</p>
+<ul>
+<li><code>&#39;base64&#39;</code>: <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vZnVtMnhV">Base64</span> 编码。 当从字符串创建 <code>Buffer</code> 时，此编码还将正确接受 <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vajhhUzRS">RFC 4648，第 5 节</span>中指定的 “URL 和文件名安全字母表”。 base64 编码的字符串中包含的空白字符（例如空格、制表符和换行符）会被忽略。</li>
+<li><code>&#39;base64url&#39;</code>: <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vajhhUzRS">base64url</span> 编码如 <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vajhhUzRS">RFC 4648, 第 5 节</span>中指定。 当从字符串创建 <code>Buffer</code> 时，此编码也将正确接受常规的 base64 编码字符串。 当将 <code>Buffer</code> 编码为字符串时，此编码将忽略填充。</li>
+<li><code>&#39;hex&#39;</code>: 将每个字节编码为两个十六进制字符。 当解码仅包含有效十六进制字符的字符串时，可能会发生数据截断。 请参阅下面的示例。</li>
+</ul>
+<p>还支持以下旧版字符编码：</p>
+<ul>
+<li><code>&#39;ascii&#39;</code>: 仅适用于 7 位 <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vcExUMUQ5">ASCII</span> 数据。 当将字符串编码为 <code>Buffer</code> 时，这等效于使用 <code>&#39;latin1&#39;</code>。 当将 <code>Buffer</code> 解码为字符串时，使用此编码将在解码为 <code>&#39;latin1&#39;</code> 之前额外取消设置每个字节的最高位。 通常，没有理由使用此编码，因为在编码或解码纯 ASCII 文本时，<code>&#39;utf8&#39;</code>（或者，如果已知数据始终是纯 ASCII，则为 <code>&#39;latin1&#39;</code>）将是更好的选择。 它仅用于旧版兼容性。</li>
+<li><code>&#39;binary&#39;</code>: <code>&#39;latin1&#39;</code> 的别名。 有关此主题的更多背景信息，请参阅<span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24veDVFM1lo">二进制字符串</span>。 此编码的名称很容易让人误解，因为这里列出的所有编码都在字符串和二进制数据之间进行转换。 对于字符串和 <code>Buffer</code> 之间的转换，通常 <code>&#39;utf8&#39;</code> 是正确的选择。</li>
+<li><code>&#39;ucs2&#39;</code>, <code>&#39;ucs-2&#39;</code>: <code>&#39;utf16le&#39;</code> 的别名。 UCS-2 过去指的是 UTF-16 的一种变体，它不支持代码点大于 U+FFFF 的字符。 在 Node.js 中，始终支持这些代码点。</li>
+</ul>
+<h3 id="Buffer类"><a href="#Buffer类" class="headerlink" title="Buffer类"></a>Buffer类</h3><p>以下方法，Buffer.xxx表示是类方法，buf.xxx表示是实例方法</p>
+<p><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer"><code>Buffer</code> 类</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_alloc_size_fill_encoding"><code>Buffer.alloc(size[, fill[, encoding]])</code></a>   分配 <code>size</code> 个字节的新 <code>Buffer</code></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_allocunsafe_size"><code>Buffer.allocUnsafe(size)</code></a>   ：分配 <code>size</code> 个字节的新 <code>Buffer</code></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_allocunsafeslow_size"><code>Buffer.allocUnsafeSlow(size)</code></a>    ：分配 <code>size</code> 个字节的新 <code>Buffer</code>。</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_bytelength_string_encoding"><code>Buffer.byteLength(string[, encoding])</code></a>      ：使用 <code>encoding</code> 编码时返回字符串的字节长度</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_compare_buf1_buf2"><code>Buffer.compare(buf1, buf2)</code></a>   ：比较 <code>buf1</code> 和 <code>buf2</code>，通常用于对 <code>Buffer</code> 实例的数组进行排序</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_concat_list_totallength"><code>Buffer.concat(list[, totalLength])</code></a>    ：连接多个Buffer</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_from_array"><code>Buffer.from(array)</code></a>   ：</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_from_arraybuffer_byteoffset_length"><code>Buffer.from(arrayBuffer[, byteOffset[, length]])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_from_buffer"><code>Buffer.from(buffer)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_from_object_offsetorencoding_length"><code>Buffer.from(object[, offsetOrEncoding[, length]])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_from_string_encoding"><code>Buffer.from(string[, encoding])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_isbuffer_obj"><code>Buffer.isBuffer(obj)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_static_method_buffer_isencoding_encoding"><code>Buffer.isEncoding(encoding)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_class_property_buffer_poolsize"><code>Buffer.poolSize</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_index"><code>buf[index]</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_buffer"><code>buf.buffer</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_byteoffset"><code>buf.byteOffset</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_compare_target_targetstart_targetend_sourcestart_sourceend"><code>buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_copy_target_targetstart_sourcestart_sourceend"><code>buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_entries"><code>buf.entries()</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_equals_otherbuffer"><code>buf.equals(otherBuffer)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><code>buf.fill(value[, offset[, end]][, encoding])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_includes_value_byteoffset_encoding"><code>buf.includes(value[, byteOffset][, encoding])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_indexof_value_byteoffset_encoding"><code>buf.indexOf(value[, byteOffset][, encoding])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_keys"><code>buf.keys()</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_lastindexof_value_byteoffset_encoding"><code>buf.lastIndexOf(value[, byteOffset][, encoding])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><code>buf.length</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_parent"><code>buf.parent</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readbigint64be_offset"><code>buf.readBigInt64BE([offset])</code></a>   ：从指定的 <code>offset</code> 处的 <code>buf</code> 读取有符号的大端序 64 位整数。</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readbigint64le_offset"><code>buf.readBigInt64LE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readbiguint64be_offset"><code>buf.readBigUInt64BE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readbiguint64le_offset"><code>buf.readBigUInt64LE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readdoublebe_offset"><code>buf.readDoubleBE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readdoublele_offset"><code>buf.readDoubleLE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readfloatbe_offset"><code>buf.readFloatBE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readfloatle_offset"><code>buf.readFloatLE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readint8_offset"><code>buf.readInt8([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readint16be_offset"><code>buf.readInt16BE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readint16le_offset"><code>buf.readInt16LE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readint32be_offset"><code>buf.readInt32BE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readint32le_offset"><code>buf.readInt32LE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readintbe_offset_bytelength"><code>buf.readIntBE(offset, byteLength)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readintle_offset_bytelength"><code>buf.readIntLE(offset, byteLength)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint8_offset"><code>buf.readUInt8([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint16be_offset"><code>buf.readUInt16BE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint16le_offset"><code>buf.readUInt16LE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint32be_offset"><code>buf.readUInt32BE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint32le_offset"><code>buf.readUInt32LE([offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readuintbe_offset_bytelength"><code>buf.readUIntBE(offset, byteLength)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_readuintle_offset_bytelength"><code>buf.readUIntLE(offset, byteLength)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_subarray_start_end"><code>buf.subarray([start[, end]])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_slice_start_end"><code>buf.slice([start[, end]])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_swap16"><code>buf.swap16()</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_swap32"><code>buf.swap32()</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_swap64"><code>buf.swap64()</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_tojson"><code>buf.toJSON()</code></a>  ：转为JSON</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_tostring_encoding_start_end"><code>buf.toString([encoding[, start[, end]]])</code></a>    ：转化为字符串输出</li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_values"><code>buf.values()</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_write_string_offset_length_encoding"><code>buf.write(string[, offset[, length]][, encoding])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writebigint64be_value_offset"><code>buf.writeBigInt64BE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writebigint64le_value_offset"><code>buf.writeBigInt64LE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writebiguint64be_value_offset"><code>buf.writeBigUInt64BE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writebiguint64le_value_offset"><code>buf.writeBigUInt64LE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writedoublebe_value_offset"><code>buf.writeDoubleBE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writedoublele_value_offset"><code>buf.writeDoubleLE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writefloatbe_value_offset"><code>buf.writeFloatBE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writefloatle_value_offset"><code>buf.writeFloatLE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint8_value_offset"><code>buf.writeInt8(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint16be_value_offset"><code>buf.writeInt16BE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint16le_value_offset"><code>buf.writeInt16LE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint32be_value_offset"><code>buf.writeInt32BE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint32le_value_offset"><code>buf.writeInt32LE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeintbe_value_offset_bytelength"><code>buf.writeIntBE(value, offset, byteLength)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeintle_value_offset_bytelength"><code>buf.writeIntLE(value, offset, byteLength)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint8_value_offset"><code>buf.writeUInt8(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint16be_value_offset"><code>buf.writeUInt16BE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint16le_value_offset"><code>buf.writeUInt16LE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint32be_value_offset"><code>buf.writeUInt32BE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint32le_value_offset"><code>buf.writeUInt32LE(value[, offset])</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintbe_value_offset_bytelength"><code>buf.writeUIntBE(value, offset, byteLength)</code></a></li>
+<li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintle_value_offset_bytelength"><code>buf.writeUIntLE(value, offset, byteLength)</code></a></li>
+</ul>
+<h2 id="dns模块"><a href="#dns模块" class="headerlink" title="dns模块"></a>dns模块</h2><p>Node.js <strong>DNS</strong> 模块用于解析域名为ip地址，或者把ip地址转化为域名 。引入 DNS 模块语法格式如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dns = <span class="built_in">require</span>(<span class="string">&quot;dns&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801594.png" alt="image-20210804162240811"></p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>创建 main.js 文件，代码如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dns = <span class="built_in">require</span>(<span class="string">&#x27;dns&#x27;</span>);</span><br><span class="line"><span class="comment">//把域名解析为ip地址</span></span><br><span class="line">dns.lookup(<span class="string">&#x27;www.github.com&#x27;</span>, <span class="function"><span class="keyword">function</span> <span class="title">onLookup</span>(<span class="params">err, address, family</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;ip 地址:&#x27;</span>, address);</span><br><span class="line">   dns.reverse(address, <span class="function"><span class="keyword">function</span> (<span class="params">err, hostnames</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(err.stack);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;反向解析 &#x27;</span> + address + <span class="string">&#x27;: &#x27;</span> + <span class="built_in">JSON</span>.stringify(hostnames));</span><br><span class="line">&#125;);  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>执行以上代码，结果如下所示:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">address: 192.30.252.130</span><br><span class="line">reverse for 192.30.252.130: [&quot;github.com&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>比较简单的工具模块包<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9ub2RlanMvbm9kZWpzLWRucy1tb2R1bGUuaHRtbA==">https://www.runoob.com/nodejs/nodejs-dns-module.html</span></p>
+<h2 id="⭐events模块"><a href="#⭐events模块" class="headerlink" title="⭐events模块"></a>⭐events模块</h2><hr>
+<h4 id="初体验："><a href="#初体验：" class="headerlink" title="初体验："></a>初体验：</h4><p>require(‘events’) 返回的是一个EventEmitter 类，events 模块只提供了一个对象： events.EventEmitter。EventEmitter 的核心就是事件触发与事件监听器功能的封装。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801296.png" alt="image-20210803201113120"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两种写法等效</span></span><br><span class="line"><span class="comment">//第一种写法</span></span><br><span class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">&#x27;events&#x27;</span>); </span><br><span class="line"><span class="comment">//第二种写法，EventEmitter里有个叫EventEmitter的属性指向自己</span></span><br><span class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">&#x27;events&#x27;</span>).EventEmitter; </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> event = <span class="keyword">new</span> EventEmitter(); </span><br><span class="line"><span class="comment">//此处甚至可以简单点  var event = new (require(&#x27;events&#x27;))()</span></span><br><span class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">&#x27;events&#x27;</span>).EventEmitter; </span><br><span class="line"><span class="keyword">var</span> event = <span class="keyword">new</span> EventEmitter(); </span><br><span class="line"><span class="comment">//两种方式为一个事件添加监听器</span></span><br><span class="line"><span class="comment">//此处为匿名函数的写法，也可以传一个函数的名字</span></span><br><span class="line">event.on(<span class="string">&#x27;some_event&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;some_event 事件1触发&#x27;</span>); </span><br><span class="line">&#125;); </span><br><span class="line">第二种方式</span><br><span class="line">event.addListener(<span class="string">&#x27;some_event&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	 <span class="built_in">console</span>.log(<span class="string">&#x27;some_event 事件2触发&#x27;</span>); </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    event.emit(<span class="string">&#x27;some_event&#x27;</span>); </span><br><span class="line">&#125;, <span class="number">1000</span>); </span><br><span class="line"><span class="comment">//过了一秒后，控制台打印结果</span></span><br><span class="line">some_event 事件<span class="number">1</span>触发</span><br><span class="line">some_event 事件<span class="number">2</span>触发</span><br><span class="line"><span class="comment">//通过on注册了一个叫&#x27;some_event&#x27;的事件监听器，并设置一秒后通过emit方法出发该事件</span></span><br><span class="line"><span class="comment">//运行结果中可以看到两个事件监听器回调函数被先后调用。 这就是EventEmitter最简单的用法。</span></span><br><span class="line"><span class="comment">//如果要给监听器函数传参数也可以，在emit方法后面传入</span></span><br></pre></td></tr></table></figure>
+
+<p>每一个EventEmitter 类有默认的两个事件</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801264.png" alt="image-20210803210323000"></p>
+<p> 所有触发事件的对象都是 <code>EventEmitter</code> 类的实例，例如<a target="_blank" rel="noopener" href="http://nodejs.cn/api/net.html#net_class_net_server"><code>net.Server</code></a> 对象在每次有连接时触发事件；<a target="_blank" rel="noopener" href="http://nodejs.cn/api/fs.html#fs_class_fs_readstream"><code>fs.ReadStream</code></a> 在打开文件时触发事件等，这些对象暴露了 <code>eventEmitter.on()</code> 函数，允许将一个或多个函数绑定到对象触发的命名事件。</p>
+<h4 id="EventEmitter-类的常用方法"><a href="#EventEmitter-类的常用方法" class="headerlink" title="EventEmitter 类的常用方法"></a>EventEmitter 类的常用方法</h4><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801393.png" alt="image-20210803211743366"></p>
+<h4 id="EventEmitter-类的属性和方法"><a href="#EventEmitter-类的属性和方法" class="headerlink" title="EventEmitter 类的属性和方法"></a>EventEmitter 类的属性和方法</h4><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801989.png" alt="image-20210803220722386"></p>
+<h4 id="error-事件"><a href="#error-事件" class="headerlink" title="error 事件"></a>error 事件</h4><p>EventEmitter 定义了一个特殊的事件 error，它包含了错误的语义，我们在遇到 异常的时候通常会触发 error 事件。</p>
+<p>当 error 被触发时，EventEmitter 规定如果没有响 应的监听器，Node.js 会把它当作异常，退出程序并输出错误信息。</p>
+<p>我们一般要为会触发 error 事件的对象设置监听器，避免遇到错误后整个程序崩溃。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> events = <span class="built_in">require</span>(<span class="string">&#x27;events&#x27;</span>); </span><br><span class="line"><span class="keyword">var</span> emitter = <span class="keyword">new</span> events.EventEmitter(); </span><br><span class="line">emitter.emit(<span class="string">&#x27;error&#x27;</span>); </span><br></pre></td></tr></table></figure>
+
+<p>运行时会显示以下错误：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">node.js:<span class="number">201</span> </span><br><span class="line"><span class="keyword">throw</span> e; <span class="comment">// process.nextTick error, or &#x27;error&#x27; event on first tick </span></span><br><span class="line">^ </span><br><span class="line"><span class="built_in">Error</span>: Uncaught, unspecified <span class="string">&#x27;error&#x27;</span> event. </span><br><span class="line">at EventEmitter.emit (events.js:<span class="number">50</span>:<span class="number">15</span>) </span><br><span class="line">at <span class="built_in">Object</span>.&lt;anonymous&gt; (<span class="regexp">/home/</span>byvoid/error.js:<span class="number">5</span>:<span class="number">9</span>) </span><br><span class="line">at Module._compile (<span class="built_in">module</span>.js:<span class="number">441</span>:<span class="number">26</span>) </span><br><span class="line">at <span class="built_in">Object</span>..js (<span class="built_in">module</span>.js:<span class="number">459</span>:<span class="number">10</span>) </span><br><span class="line">at Module.load (<span class="built_in">module</span>.js:<span class="number">348</span>:<span class="number">31</span>) </span><br><span class="line">at <span class="built_in">Function</span>._load (<span class="built_in">module</span>.js:<span class="number">308</span>:<span class="number">12</span>) </span><br><span class="line">at <span class="built_in">Array</span><span class="number">.0</span> (<span class="built_in">module</span>.js:<span class="number">479</span>:<span class="number">10</span>) </span><br><span class="line">at EventEmitter._tickCallback (node.js:<span class="number">192</span>:<span class="number">40</span>) </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="⭐继承EventEmitter"><a href="#⭐继承EventEmitter" class="headerlink" title="⭐继承EventEmitter"></a>⭐继承EventEmitter</h4><p>大多数时候我们不会直接使用 EventEmitter，而是在对象中继承它。包括 fs、net、 http 在内的，只要是支持事件响应的核心模块都是 EventEmitter 的子类。!!!这点非常重要，是整个node的基础</p>
+<p>为什么要这样做呢？原因有两点：</p>
+<p>首先，具有某个实体功能的对象实现事件符合语义， 事件的监听和发生应该是一个对象的方法。</p>
+<p>其次 JavaScript 的对象机制是基于原型的，支持 部分多重继承，继承 EventEmitter 不会打乱对象原有的继承关系。</p>
+<h2 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h2><p>Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>简单的例子可以去看菜鸟教程</p>
+<h4 id="几个类之间的关系"><a href="#几个类之间的关系" class="headerlink" title="几个类之间的关系"></a>几个类之间的关系</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http.createServer( <span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;  &#125;.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>http.createServer 新建了一个http.Server类，</p>
+<p>该函数的参数的request是http.IncomingMessage,</p>
+<p>response是http.ServerResponse类，</p>
+<p>http.OutgoingMessage类作为 <a target="_blank" rel="noopener" href="http://nodejs.cn/api/http.html#http_class_http_clientrequest"><code>http.ClientRequest</code></a> 和 <a target="_blank" rel="noopener" href="http://nodejs.cn/api/http.html#http_class_http_serverresponse"><code>http.ServerResponse</code></a> 的父类。 从 HTTP 事务的参与者的角度来看，它是对传出消息的抽象。</p>
+<p>http.ClientRequest类是此对象从 <a target="_blank" rel="noopener" href="http://nodejs.cn/api/http.html#http_http_request_options_callback"><code>http.request()</code></a> 内部创建并返回。 它表示正在进行的请求。像下方带啊吗段里倒数第二行那个一样，就会创建这个类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 用于请求的选项</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">   <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">   <span class="attr">port</span>: <span class="string">&#x27;8080&#x27;</span>,</span><br><span class="line">   <span class="attr">path</span>: <span class="string">&#x27;/index.html&#x27;</span>  </span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 处理响应的回调函数</span></span><br><span class="line"><span class="keyword">var</span> callback = <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">   <span class="comment">// 不断更新数据</span></span><br><span class="line">   <span class="keyword">var</span> body = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">   response.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">      body += data;</span><br><span class="line">   &#125;);</span><br><span class="line">   </span><br><span class="line">   response.on(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 数据接收完成</span></span><br><span class="line">      <span class="built_in">console</span>.log(body);</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 向服务端发送请求</span></span><br><span class="line"><span class="keyword">var</span> req = http.request(options, callback);</span><br><span class="line">req.end();</span><br></pre></td></tr></table></figure>
+
+<h4 id="一些疑惑"><a href="#一些疑惑" class="headerlink" title="一些疑惑"></a>一些疑惑</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 定义了一个post变量，用于暂存请求体的信息</span></span><br><span class="line">    <span class="keyword">var</span> post = <span class="string">&#x27;&#x27;</span>;     </span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中</span></span><br><span class="line">    req.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;    </span><br><span class="line">        post += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。</span></span><br><span class="line">    req.on(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    </span><br><span class="line">        post = querystring.parse(post);</span><br><span class="line">        res.end(util.inspect(post));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码中用到了on为data事件注册了一个监听器,我们知道req本质是http.IncomingMessage，而文档中该类并没</p>
+<p>有data事件，而发现有一个net.Socket类和这个关联了，Socket有，可以知道http是基于net这个tcp协议实现的</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801763.png" alt="image-20210805011631402"></p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801229.png" alt="image-20210805011716201"></p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801082.png" alt="image-20210805011754915"></p>
+<h2 id="net模块：运输层的TCP协议"><a href="#net模块：运输层的TCP协议" class="headerlink" title="net模块：运输层的TCP协议"></a>net模块：运输层的TCP协议</h2><p><code>net</code> 模块提供了异步的网络 API，用于创建基于流的 TCP 或 <span class="exturl" data-url="aHR0cDovL25vZGVqcy5jbi9hcGkvbmV0Lmh0bWwjbmV0X2lwY19zdXBwb3J0">IPC</span> 服务器 (<a target="_blank" rel="noopener" href="http://nodejs.cn/api/net.html#net_net_createserver_options_connectionlistener"><code>net.createServer()</code></a>) 和客户端 (<a target="_blank" rel="noopener" href="http://nodejs.cn/api/net.html#net_net_createconnection"><code>net.createConnection()</code></a>)。</p>
+<p>net模块是用运输层的TCP实现的，如果要用udp的话，得用新版本的Nodejs里的UDP/datagram模块实现，</p>
+<p>⭐== 注意 == </p>
+<p>Socket是什么？Socket是运输层的APi，运输层的两个端点通信就是用的Socket，两端都有Socket，</p>
+<p>Nodejs里基于TCP的Socket：在net模块里服务器端Socket是<a target="_blank" rel="noopener" href="http://nodejs.cn/api/net.html#net_class_net_server"><code>net.Server</code> 类</a> Socket，客户端的直接是net.Socket类</p>
+<p>Nodejs里基于UDP的Socket：服务器端和客户端的都是<a target="_blank" rel="noopener" href="https://nodejs.org/dist/latest-v16.x/docs/api/dgram.html#dgram_class_dgram_socket">Class: <code>dgram.Socket</code></a>类</p>
+<p>java里基于TCP的Socket：服务器端Socket是ServerSocket类，客户端的直接是Socket类</p>
+<p>java里基于UDP的Socket：服务器端和客户端的都是DatagramSocket类</p>
+<p>可以使用以下方式访问它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>一下为源码，即net此时的对象</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801132.png" alt="image-20210804153932046"></p>
+<h4 id="？几个类之间的关系："><a href="#？几个类之间的关系：" class="headerlink" title="？几个类之间的关系："></a>？几个类之间的关系：</h4><p>net.createServer方法创建了一个net.Server类</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801742.png" alt="image-20210804154210162"></p>
+<p>net.connect则是创建了一个net.Socket类，然后通过socket去连接上面的那个端口</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801685.png" alt="image-20210804154414407"></p>
+<p><code>BlockList</code> 对象可与一些网络 API 一起使用，以指定用于禁用对特定 IP 地址、IP 范围或 IP 子网的入站或出站访问的规则。暂时没找到怎么用！还要进一步学习</p>
+<p><code>SocketAddress</code>也没找到怎么用 </p>
+<p>方法看<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9ub2RlanMvbm9kZWpzLW5ldC1tb2R1bGUuaHRtbCVFOCU4RiU5QyVFOSVCOCU5RiVFNiU5NSU5OSVFNyVBOCU4QiVFNiU4OCU5NiVFOCU4MCU4NSVFNSVBRSU5OCVFNiU5NiVCOSVFNiU5NiU4NyVFNiVBMSVBMw==">https://www.runoob.com/nodejs/nodejs-net-module.html菜鸟教程或者官方文档</span></p>
+<h4 id="初体验-1"><a href="#初体验-1" class="headerlink" title="初体验"></a>初体验</h4><p>服务端：创建 server.js 文件，代码如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> server = net.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">connection</span>) </span>&#123; </span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;client connected&#x27;</span>);</span><br><span class="line">   connection.on(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;客户端关闭连接&#x27;</span>);</span><br><span class="line">   &#125;);</span><br><span class="line">   connection.write(<span class="string">&#x27;Hello World!\r\n&#x27;</span>);</span><br><span class="line">   connection.pipe(connection);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8080</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;server is listening&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>执行以上服务端代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js</span><br><span class="line">server is listening   # 服务已创建并监听 <span class="number">8080</span> 端口</span><br></pre></td></tr></table></figure>
+
+<p>客户端：新开一个窗口，创建 client.js 文件，代码如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> client = net.connect(&#123;<span class="attr">port</span>: <span class="number">8080</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;连接到服务器！&#x27;</span>);  </span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">   client.end();</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;断开与服务器的连接&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>执行以上客户端的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">连接到服务器！</span><br><span class="line">Hello World!</span><br><span class="line"></span><br><span class="line">断开与服务器的连接</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="net包的方法"><a href="#net包的方法" class="headerlink" title="net包的方法"></a>net包的方法</h4><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801590.png" alt="image-20210804155747137"></p>
+<h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><p><code>os</code> 模块提供了与操作系统相关的实用方法和属性。 可以使用以下方式访问它：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> os = <span class="built_in">require</span>(<span class="string">&#x27;os&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>序号    方法    描述<br>1    os.tmpdir()    返回操作系统的默认临时文件夹。<br>2    os.endianness()    返回 CPU 的字节序，可能的是 “BE” 或 “LE”。<br>3    os.hostname()    返回操作系统的主机名。<br>4    os.type()    返回操作系统名<br>5    os.platform()    返回编译时的操作系统名<br>6    os.arch()    返回操作系统 CPU 架构，可能的值有 “x64”、“arm” 和 “ia32”。<br>7    os.release()    返回操作系统的发行版本。<br>8    os.uptime() 返回操作系统运行的时间，以秒为单位。<br>9    os.loadavg()    返回一个包含 1、5、15 分钟平均负载的数组。<br>10    os.totalmem()    返回系统内存总量，单位为字节。<br>11    os.freemem()    返回操作系统空闲内存量，单位是字节。<br>12    os.cpus()    返回一个对象数组，包含所安装的每个 CPU/内核的信息：型号、速度（单位 MHz）、时间（一个包含 user、nice、sys、idle 和 irq 所使用 CPU/内核毫秒数的对象）。<br>13    os.networkInterfaces()    获得网络接口列表。</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">功能</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_eol"><code>os.EOL</code></a></td>
+<td align="center">返回操作系统特定的行尾标记。</td>
+<td align="center">POSIX 上是 <code>\n</code> Windows 上是 <code>\r\n</code></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_arch"><code>os.arch()</code></a></td>
+<td align="center">返回为其编译 Node.js 二进制文件的操作系统 CPU 架构。</td>
+<td align="center">返回值相当于 <a target="_blank" rel="noopener" href="http://nodejs.cn/api/process.html#process_process_arch"><code>process.arch</code></a>。</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_constants"><code>os.constants</code></a></td>
+<td align="center">包含用于错误码、进程信号等的常用操作系统特定常量。 定义的特定常量在<span class="exturl" data-url="aHR0cDovL25vZGVqcy5jbi9hcGkvb3MuaHRtbCNvc19vc19jb25zdGFudHNfMQ==">操作系统常量</span>中描述。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_cpus"><code>os.cpus()</code></a></td>
+<td align="center">返回每个CPU内核的信息</td>
+<td align="center">比如型号、速度等</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_devnull"><code>os.devNull</code></a></td>
+<td align="center">空设备的特定于平台的文件路径。</td>
+<td align="center">Windows 上是 <code>\\.\nul</code>  POSIX 上是 <code>/dev/null</code></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_endianness"><code>os.endianness()</code></a></td>
+<td align="center">返回标识为其编译 Node.js 二进制文件的 CPU 的字节序的字符串。</td>
+<td align="center">可能的值是大端序的 <code>&#39;BE&#39;</code> 和小端序的 <code>&#39;LE&#39;</code></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_freemem"><code>os.freemem()</code></a></td>
+<td align="center">返回空闲的系统内存量（以字节为单位）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_getpriority_pid"><code>os.getPriority([pid])</code></a></td>
+<td align="center">返回某个进程的优先级</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_homedir"><code>os.homedir()</code></a></td>
+<td align="center">返回当前用户的主目录的字符串路径</td>
+<td align="center">在 Windows 上，它使用 <code>USERPROFILE</code> 环境变量（如果已定义）</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_hostname"><code>os.hostname()</code></a></td>
+<td align="center">返回操作系统的主机名</td>
+<td align="center">就是用户名</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_loadavg"><code>os.loadavg()</code></a></td>
+<td align="center">返回包含 1、5 和 15 分钟平均负载的数组</td>
+<td align="center">平均负载是 Unix 特有的概念。 在 Windows 上，返回值始终为 <code>[0, 0, 0]</code></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_networkinterfaces"><code>os.networkInterfaces()</code></a></td>
+<td align="center">返回包含已分配网络地址的网络接口的对象</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_platform"><code>os.platform()</code></a></td>
+<td align="center">返回标识操作系统平台</td>
+<td align="center">比如linux、win32</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_release"><code>os.release()</code></a></td>
+<td align="center">操作系统版本</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_setpriority_pid_priority"><code>os.setPriority([pid, ]priority)</code></a></td>
+<td align="center">设置进程优先级</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>os.tmpdir()</code></td>
+<td align="center">返回操作系统的默认临时文件目录</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_totalmem"><code>os.totalmem()</code></a></td>
+<td align="center">返回总内存数（以字节为单位）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_type"><code>os.type()</code></a></td>
+<td align="center">返回 <a target="_blank" rel="noopener" href="http://url.nodejs.cn/JL5KHm"><code>uname(3)</code></a> 返回的操作系统名称</td>
+<td align="center">如Linux、Windows_NT</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_uptime"><code>os.uptime()</code></a></td>
+<td align="center">返回系统正常运行时间</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_userinfo_options"><code>os.userInfo([options])</code></a></td>
+<td align="center">返回有关当前有效用户的信息</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="http://nodejs.cn/api/os.html#os_os_version"><code>os.version()</code></a></td>
+<td align="center">返回标识内核版本的字符串</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h3 id="path-路径模块"><a href="#path-路径模块" class="headerlink" title="path 路径模块"></a>path 路径模块</h3><p><code>path</code> 模块提供了用于处理文件和目录的路径的实用工具。 可以使用以下方式访问它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Windows与POSIX的对比看文档</p>
+<p>主要方法如下</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801073.png" alt="image-20210804105828839"></p>
+<h3 id="Process基础进程"><a href="#Process基础进程" class="headerlink" title="Process基础进程"></a>Process基础进程</h3><p>​    <code>process</code> 对象提供有关当前 Node.js 进程的信息并对其进行控制。 虽然它==全局可用==，但是建议通过 require 或 import 显式地访问它：</p>
+<h2 id="url包"><a href="#url包" class="headerlink" title="url包"></a>url包</h2><p><code>url</code> 模块提供用于网址处理和解析的实用工具。可以把URL解析成部分，也可以设置部分，组成一个完整的URL。</p>
+<p> 可以使用以下方式访问它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> url <span class="keyword">from</span> <span class="string">&#x27;url&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="网址字符串与网址对象"><a href="#网址字符串与网址对象" class="headerlink" title="网址字符串与网址对象"></a>网址字符串与网址对象</h4><p>网址字符串是包含多个有意义组件的结构化字符串。 解析时，将返回包含每个组件的属性的网址对象。</p>
+<p><code>url</code> 模块提供了两种用于处理网址的 API：一种是 Node.js 特定的旧版 API，一种是实现了与 Web 浏览器使用的相同的 <span class="exturl" data-url="aHR0cDovL3VybC5ub2RlanMuY24vZktnVzhk">WHATWG 网址标准</span>的新版 API。</p>
+<p>下面提供了 WHATWG 和 旧版 API 之间的比较。</p>
+<p> 在网址 <code>&#39;https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash&#39;</code> 上方显示的是由旧版 <code>url.parse()</code> 返回的对象的属性。 </p>
+<p>下方则是 WHATWG <code>URL</code> 对象的属性。</p>
+<p>WHATWG 网址的 <code>origin</code> 属性包括 <code>protocol</code> 和 <code>host</code>，但不包括 <code>username</code> 或 <code>password</code>。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801479.png" alt="image-20210804163528592"></p>
+<p>使用 WHATWG API 解析网址字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myURL =</span><br><span class="line">  <span class="keyword">new</span> URL(<span class="string">&#x27;https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>使用旧版 API 解析网址字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> myURL =</span><br><span class="line">  url.parse(<span class="string">&#x27;https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>可以使用属性设置器或模板文字串从组件部分构建 WHATWG 网址：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myURL = <span class="keyword">new</span> URL(<span class="string">&#x27;https://example.org&#x27;</span>);</span><br><span class="line">myURL.pathname = <span class="string">&#x27;/a/b/c&#x27;</span>;</span><br><span class="line">myURL.search = <span class="string">&#x27;?d=e&#x27;</span>;</span><br><span class="line">myURL.hash = <span class="string">&#x27;#fgh&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> pathname = <span class="string">&#x27;/a/b/c&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> search = <span class="string">&#x27;?d=e&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> hash = <span class="string">&#x27;#fgh&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> myURL = <span class="keyword">new</span> URL(<span class="string">`https://example.org<span class="subst">$&#123;pathname&#125;</span><span class="subst">$&#123;search&#125;</span><span class="subst">$&#123;hash&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>要获取构造的网址字符串，则使用 <code>href</code> 属性访问器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(myURL.href);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个也是很简单的，看官方文档就行了，随用随查</p>
+<h2 id="util-实用模块"><a href="#util-实用模块" class="headerlink" title="util 实用模块"></a>util 实用模块</h2><p><a target="_blank" rel="noopener" href="http://nodejs.cn/api/util.html#util_util_types"><code>util.types</code></a> 可以拿来判断数据类型</p>
+<h1 id="express框架"><a href="#express框架" class="headerlink" title="express框架"></a>express框架</h1><p>菜鸟教程的文档（不全）：<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS93M2Nub3RlL2V4cHJlc3MtNC14LWFwaS5odG1s">https://www.runoob.com/w3cnote/express-4-x-api.html</span></p>
+<p>官方Api文档：<a target="_blank" rel="noopener" href="https://www.expressjs.com.cn/4x/api.html#express"><span class="exturl" data-url="aHR0cHM6Ly93d3cuZXhwcmVzc2pzLmNvbS5jbi8=">Express 中文网</span></a></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZWFzdGgvcC9leHByZXNzX21pZGRsZXdlYXIuaHRtbA==">https://www.cnblogs.com/easth/p/express_middlewear.html</span>    中间件的说明，注意要有next()才能转到下一个对应接口，中间件顺序很重要，依次来</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801682.png" alt="image-20210803172943342"></p>
+<h2 id="express脚手架快速生成"><a href="#express脚手架快速生成" class="headerlink" title="express脚手架快速生成"></a>express脚手架快速生成</h2><p> 安装生成器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">npm install express-generator -g </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#◆ 创建名称为APP的应用：</span></span></span><br><span class="line">express app </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#◆ 安装依赖包:</span></span></span><br><span class="line">cd  app   //进入app目录</span><br><span class="line">npm run install   //安装依赖包生成 package.json文件 </span><br><span class="line"></span><br><span class="line">◆ 启动应用</span><br><span class="line">npm start</span><br><span class="line"></span><br><span class="line">◆ 端口修改：</span><br><span class="line">在浏览器中使用 localhost:3000访问，默认的端口就是3000。app/bin/www文件中可以修改端口配置</span><br><span class="line"></span><br><span class="line">var port = normalizePort(process.env.PORT || &#x27;3000&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="express入门"><a href="#express入门" class="headerlink" title="express入门"></a>express入门</h3><p>npm install –save sequelize</p>
+<p>npm install –save mysql2</p>
+
+      <div class="tags">
+          <a href="/tags/NodeJS/" rel="tag"><i class="ic i-tag"></i> NodeJS</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-28 12:08:36" itemprop="dateModified" datetime="2021-12-28T12:08:36+08:00">2021-12-28</time>
+  </span>
+  <span id="FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS基础知识入门" class="item leancloud_visitors" data-flag-title="NodeJS基础知识入门" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="NodeJS基础知识入门">https://monkeyhh.top/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS基础知识入门</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281046623.jpeg" title="【Vue进阶】浅谈Vue响应式原理">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Vue</span>
+  <h3>【Vue进阶】浅谈Vue响应式原理</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="TypeScript基础知识">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> TypeScript</span>
+  <h3>TypeScript基础知识</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">Node.js简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">Node.js的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">2.2.</span> <span class="toc-text">Node.js的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">Node.js核心模块的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer%E7%BC%93%E5%86%B2%E5%8C%BA%E6%A8%A1%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">Buffer缓冲区模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-number">3.1.1.</span> <span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js-%E7%9B%AE%E5%89%8D%E6%94%AF%E6%8C%81%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">Node.js 目前支持的字符编码如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Buffer%E7%B1%BB"><span class="toc-number">3.1.3.</span> <span class="toc-text">Buffer类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dns%E6%A8%A1%E5%9D%97"><span class="toc-number">3.2.</span> <span class="toc-text">dns模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.2.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90events%E6%A8%A1%E5%9D%97"><span class="toc-number">3.3.</span> <span class="toc-text">⭐events模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C%EF%BC%9A"><span class="toc-number">3.3.0.1.</span> <span class="toc-text">初体验：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EventEmitter-%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.0.2.</span> <span class="toc-text">EventEmitter 类的常用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EventEmitter-%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.0.3.</span> <span class="toc-text">EventEmitter 类的属性和方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#error-%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.3.0.4.</span> <span class="toc-text">error 事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%AD%90%E7%BB%A7%E6%89%BFEventEmitter"><span class="toc-number">3.3.0.5.</span> <span class="toc-text">⭐继承EventEmitter</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E6%A8%A1%E5%9D%97"><span class="toc-number">3.4.</span> <span class="toc-text">http模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">几个类之间的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91"><span class="toc-number">3.4.0.2.</span> <span class="toc-text">一些疑惑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#net%E6%A8%A1%E5%9D%97%EF%BC%9A%E8%BF%90%E8%BE%93%E5%B1%82%E7%9A%84TCP%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.5.</span> <span class="toc-text">net模块：运输层的TCP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%9F%E5%87%A0%E4%B8%AA%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-number">3.5.0.1.</span> <span class="toc-text">？几个类之间的关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C-1"><span class="toc-number">3.5.0.2.</span> <span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#net%E5%8C%85%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.5.0.3.</span> <span class="toc-text">net包的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS%E6%A8%A1%E5%9D%97"><span class="toc-number">3.6.</span> <span class="toc-text">OS模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#path-%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9D%97"><span class="toc-number">3.6.1.</span> <span class="toc-text">path 路径模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Process%E5%9F%BA%E7%A1%80%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.6.2.</span> <span class="toc-text">Process基础进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#url%E5%8C%85"><span class="toc-number">3.7.</span> <span class="toc-text">url包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%9D%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%BD%91%E5%9D%80%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.7.0.1.</span> <span class="toc-text">网址字符串与网址对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#util-%E5%AE%9E%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">3.8.</span> <span class="toc-text">util 实用模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#express%E6%A1%86%E6%9E%B6"><span class="toc-number">4.</span> <span class="toc-text">express框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#express%E8%84%9A%E6%89%8B%E6%9E%B6%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90"><span class="toc-number">4.1.</span> <span class="toc-text">express脚手架快速生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#express%E5%85%A5%E9%97%A8"><span class="toc-number">4.1.1.</span> <span class="toc-text">express入门</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="NodeJS基础知识入门">NodeJS基础知识入门</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">36</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">17</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+</div>
+
+    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Basics/" title="In Computer_Basics">Computer_Basics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Computer-Basics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/Computer-Basics/Computer-Networking/Computer_Basics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">470k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">7:07</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS基础知识入门',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
