@@ -1,0 +1,917 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="CSS" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8">
+
+
+
+  <title>
+CSS3动画入门 - CSS - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">CSS3动画入门
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-06-14 12:01:30">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-06-14T12:01:30+08:00">2021-06-14</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>14k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>12 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/CSS/" itemprop="item" rel="index" title="In CSS"><span itemprop="name">CSS</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>CSS动画其实以前学过，但是自己老是忘记，因为用的不错，于是决定把CSS动画的知识总结一下，重新温习一下相关的知识点。</p>
+<p>我们 知道CSS动画可以分为CSS3过渡动画、CSS3关键帧动画，主要有以下几个属性：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQ1NTL3RyYW5zaXRpb24=">transition</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQ1NTL2FuaW1hdGlvbg==">animation</span></li>
+</ul>
+<p>此外，还有其他的一些属性，例如translate、transform等。</p>
+<p>下面的知识点主要围绕这几个属性展开。</p>
+<h1 id="一、容易混淆的几个CSS属性"><a href="#一、容易混淆的几个CSS属性" class="headerlink" title="一、容易混淆的几个CSS属性"></a>一、容易混淆的几个CSS属性</h1><p>CSS有几个属性非常容易混淆</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>animation（动画）</td>
+<td><code>animation</code> 属性用来指定一组或多组动画，每组之间用逗号相隔。是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-name"><code>animation-name</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-duration"><code>animation-duration</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-timing-function"><code>animation-timing-function</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-delay"><code>animation-delay</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-iteration-count"><code>animation-iteration-count</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-direction"><code>animation-direction</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-fill-mode"><code>animation-fill-mode</code></a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-play-state"><code>animation-play-state</code></a> 属性的一个简写属性形式。</td>
+</tr>
+<tr>
+<td>transition（过渡）</td>
+<td>transition可以为一个元素在不同状态之间切换的时候定义不同的过渡效果。</td>
+</tr>
+<tr>
+<td>transform（变形）</td>
+<td>CSS**<code>transform</code>**属性允许你旋转，缩放，倾斜或平移给定元素。配合transition过渡动画实现效果。</td>
+</tr>
+<tr>
+<td>translate（移动）</td>
+<td>可以平移一个元素，为transform的一个属性。</td>
+</tr>
+</tbody></table>
+<p>弄清楚这几个问题，我们就可以头脑清醒的状态下去学习css的动画</p>
+<h1 id="二、Transform（变形）属性"><a href="#二、Transform（变形）属性" class="headerlink" title="二、Transform（变形）属性"></a>二、Transform（变形）属性</h1><p>上面提到了Transform允许我们对元素进行旋转，缩放，倾斜或平移给定元素。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform"><code>transform</code></a>属性可以指定为关键字值<code>none</code> 或一个或多个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function"><code>&lt;transform-function&gt;</code></a>值。</p>
+<p>我们先用一个最简单的例子体会一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// HTML</span><br><span class="line">&lt;div&gt;Transformed element&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">// CSS</span><br><span class="line">div &#123;</span><br><span class="line">  border: solid red;</span><br><span class="line">  transform: translate(30px, 20px) rotate(20deg);</span><br><span class="line">  width: 140px;</span><br><span class="line">  height: 60px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们看下页面的结果如何：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201031954.png" alt="image-20211220103129909" style="zoom:50%;" />
+
+<p>可以看到在transform中传入了多个属性值，并且这些属性值都是<code>函数</code>，这些变形函数各自都实现了特定的效果，我们来大致看看有哪些种类的变形函数：</p>
+<ul>
+<li>rotate类：旋转</li>
+<li>translate类：平移</li>
+<li>scale类：缩放</li>
+<li>perspective类：透视，实现近大远小效果</li>
+<li>matrix类：矩阵变形</li>
+<li>skew类：扭曲</li>
+</ul>
+<p>是不是看了还是有点懵，没关系，下面我们详细展开讲讲每一类都有哪些属性。</p>
+<h3 id="1-rotate旋转"><a href="#1-rotate旋转" class="headerlink" title="1.rotate旋转"></a>1.rotate旋转</h3><p>rotate顾名思义就是将元素进行旋转，主要有以下的几个CSS transform-function：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#rotate"><code>rotate(a)</code></a>：2D旋转，a参数表示 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/angle"><code>&lt;angel&gt;</code></a> 代表旋转的角度。正角表示顺时针旋转，负角表示逆时针旋转。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#rotatex"><code>rotateX(a)</code></a>：将元素在X轴上旋转而不使其变形的方法。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#rotatey"><code>rotateY(a)</code></a>：将元素在Y轴上旋转而不使其变形的方法。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#rotatez"><code>rotateZ(a)</code></a>：将元素在Z轴上旋转而不使其变形的方法。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#rotate3d"><code>rotate3d(x, y, z, a)</code></a>：3D旋转。</li>
+</ul>
+<p>我们从最简单的第一个2D旋转函数rotate(a)开始：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;boy.jpeg&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100px;background-color: ;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-id">#father</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>:red solid;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-tag">img</span> &#123;	</span></span><br><span class="line"><span class="css">        <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">20deg</span>);	</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下，可以看到图片顺时针旋转了45°：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201114649.png" alt="image-20211220111433615"></p>
+<p>很简单很容易理解，不多赘述，我们再看rotateX()，其中变动的只有CSS代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;	</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">45deg</span>);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果如下，我们可以看到图片似乎被压缩了，但事实上是图片<u>绕着X轴</u>，旋转了45°。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201115006.png" alt="image-20211220111515977"></p>
+<p>这个过程可能会让人迷惑，我们可以借助transiton属性看看具体的过程（如果不了解transition的话，我们下面会提到，我们只需要知道它可以设定一个属性和一个时间，让元素在变换属性的时候呈现一个“过渡”的动画效果），我们将代码进行如下改变：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">180deg</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201123736.gif" alt="test"></p>
+<p>这里我们还能发现一个小知识，当图片绕X轴旋转180°，相当于图片上下翻转了，并且有意思的是，我们的图片是双面的（很容易get到对吧，不然转完回来就不会有一个倒立蜡笔小新了，只会是空白）。</p>
+<p>对于rotateY同理：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">rotateY</span>(<span class="number">180deg</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201128522.gif" alt="test"></p>
+<p>对于rotateZ同理：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">180deg</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>咱们可以发现：二维空间中，rotate即围绕屏幕法向量旋转，等同于 rotateZ</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201131532.gif" alt="test"></p>
+<p>上面都是只能绕着X轴、Y轴、Z轴旋转，那有没有方法，我们自己定义一个任意方向的“旋转轴”呢？有！</p>
+<p>接下来我们看一下rotate3d(x, y, z, a)，最后一个参数a我们从上面例子可以看出，这是一个角度值，那么前面的x、y、z又是什么呢？</p>
+<p>在三维空间中，旋转有三个自由度，各表示某条旋转轴。 旋转轴由[x，y，z]向量定义，且过原点（由 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-origin"><code>transform-origin</code></a> CSS属性定义）。 并且x+y+z === 1。</p>
+<p>也就是说我们通过transform-origin设置好坐标的原点后，我们再设置[x,y,z]，我们连一个从原点到[x,y,z]的向量，这个向量就是我们的旋转轴！那么就很好理解了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transform: rotate3D(1,0,0,180deg);  ===   transform: rotateX(180deg);</span><br><span class="line">transform: rotate3D(0,1,0,180deg);  ===   transform: rotateY(180deg);</span><br><span class="line">transform: rotate3D(0,0,1,180deg);  ===   transform: rotateZ(180deg);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-translate平移"><a href="#2-translate平移" class="headerlink" title="2.translate平移"></a>2.translate平移</h3><p>平移就很好理解了，我们看下有哪些属性：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#translate"><code>translate(tx,ty)</code></a>：平面位移</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#translatex"><code>translateX(t)</code></a>：<code>translate(tx,0)</code>和<code>translate(tx, 0) </code>的简写形式</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#translatey"><code>translateY(t)</code></a>：<code>translate(0,ty)</code>和<code>translate(0, ty)</code>的简写形式</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#translatez"><code>translateZ(t)</code></a>：<code>translate3d(0, 0, tz) </code>的简写形式</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#translate3d"><code>translate3d(tx, ty, tz)</code></a>：同时定义三个轴上的平移量</li>
+</ul>
+<p>我们从最简单的translate(tx,ty)函数开始，用于移动元素在平面上的位置。这种变换的特点是矢量的坐标定义了它在每个方向上的移动量。</p>
+<p>参数如下：</p>
+<ul>
+<li>该参数为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/length"><code>&lt;length&gt;</code></a> ，表示要移动矢量的横坐标。</li>
+<li>该参数为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/length"><code>&lt;length&gt;</code></a> ，表示要移动矢量的纵坐标。 如果不写则默认为零，例如  <code>translate(2)</code> 表示 <code>translate(2, 0)</code>。</li>
+</ul>
+<p><u>要注意y轴正方向是指向屏幕的下方</u>。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201151273.png" alt="image-20211220115103245"></p>
+<p>我们看下面的例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">50px</span>,<span class="number">50px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201153150.gif" alt="test"></p>
+<p>translateX(t)、translateY(t)、translateZ(t)就很好理解啦，在各自的坐标轴上平移，可以这么说：</p>
+<ul>
+<li><code>translateX(tx)</code> 是 <code>translate(tx, 0) </code>的简写形式</li>
+<li><code>translateY(ty)</code> 是 <code>translate(0, ty)</code>的简写形式</li>
+<li><code>translateZ(tz)</code> 是 <code>translate3d(0, 0, tz) </code>的简写形式</li>
+</ul>
+<p>translate3d(tx, ty, tz)就是同时设置3个坐标轴方向的平移量。</p>
+<h3 id="3-scale缩放"><a href="#3-scale缩放" class="headerlink" title="3.scale缩放"></a>3.scale缩放</h3><p>它可以增大或减小元素的大小，并且缩放量由矢量定义，并且它可以使在一个方向上比另一个方向更多。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201204974.png" alt="image-20211220120447935"></p>
+<p>主要有以下的函数：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#scale"><code>scale(sx, sy)</code></a>：在平面中进行缩放</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#scalex"><code>scaleX(sx)</code></a>：<code>scale(sx, 1)</code> 和 <code>scale3d(sx, 1, 1)</code> 的简写形式</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#scaley"><code>scaleY(sy)</code></a>：<code>scale(1, sy)</code> 和 <code>scale3d(1, sy, 1)</code> 的简写形式</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#scalez"><code>scaleZ(sz)</code></a>：<code>scale3d(1, 1, sz)</code> 的简写形式</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#scale3d"><code>scale3d(sx，sy，sz)</code></a>：3D缩放</li>
+</ul>
+<p>话不多说，直接看scale(sx, sy)，上代码</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">2</span>, <span class="number">0.5</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现的效果就是元素在 X轴上拉伸为原来的2倍长，在 Y轴上缩小为二分之一</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201209540.gif" alt="test"></p>
+<p>当我们设置负值的时候，则表现为将元素翻转的同时拉伸。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">scale</span>(-<span class="number">2</span>, <span class="number">0.5</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201212257.gif" alt="test"></p>
+<p>scaleX()、scaleY()就是同样的道理，不多解释，倒是scaleZ(）是什么意思的，我们设置代码后看看效果：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">scaleZ</span>(<span class="number">2</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们看下效果，对你没看，图片没有效果。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201226483.gif" alt="test"></p>
+<p>为什么呢？因为是对Z轴方向进行缩放，我们形象点来说，默认情况下。x轴缩放就是左右缩放，y轴缩放就是上下缩放，那z轴则是前后缩放了，而我们的图片显然是2D的图片，它是一个平面的，没有“厚度”，自然没有效果。</p>
+<h3 id="4-perspective透视"><a href="#4-perspective透视" class="headerlink" title="4.perspective透视"></a>4.perspective透视</h3><p> <code>perspective()</code> 这个CSS函数定义了 z=0平面与用户之间的距离。 它用于将透视图转换应用于元素。如果它是0或负值，则不应用透视变换。</p>
+<p>举个例子</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">perspective</span> : <span class="number">50</span> </span><br><span class="line">/* 或者 */</span><br><span class="line">transform: <span class="built_in">perspective</span>(<span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+
+<p>代表了此时z=0平面和用户之间的距离为50px，可以简单理解为眼睛离屏幕的距离。</p>
+<p>那么什么是透视呢?透视的原理就是 <strong>近大远小</strong> 。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201306172.png" alt="image-20211220130646128" style="zoom: 33%;" />
+
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201329289.png" alt="image-20211220132915232" style="zoom:67%;" />
+
+<p>并且要注意的是：</p>
+<ul>
+<li>当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。所以如果我们要透视一个元素，要给它的父元素设置perspective属性。</li>
+<li>子元素得设置好3D变换效果，该属性才会影响页面和视觉上的效果。什么是3D变换效果，例如translateZ、rotateY、rotateX这种属性，我们得考虑到3个维度才能想象出最后的结果图，translateX、translateY这种为什么不行？因为他们只是单纯的2D上的变化，不用考虑到或者说涉及到第三个维度。</li>
+</ul>
+<p>我们来看一个例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-id">#father</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: red solid;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">position</span>: fixed;</span></span><br><span class="line"><span class="css">        <span class="attribute">top</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">left</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">        <span class="attribute">perspective</span>: <span class="number">200</span>;</span></span><br><span class="line"><span class="css">        -webkit-<span class="attribute">perspective</span>: <span class="number">200</span>;</span></span><br><span class="line"><span class="css">        <span class="comment">/* Safari and Chrome */</span> </span></span><br><span class="line"><span class="css">	&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">	<span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="css">		<span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">45deg</span>);</span></span><br><span class="line"><span class="css">	&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">	<span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;1.jpeg&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100px;background-color: ;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201323109.png" alt="image-20211220132354074"></p>
+<p>我们把perspective值调成50看下什么效果。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201324820.png" alt="image-20211220132433774"></p>
+<p>很好理解嘛，眼睛和屏幕距离变近了，图片的”形变“自然就会变大，这就是 <strong>近大远小</strong> 。</p>
+<blockquote>
+<p>题外话，如果想设置”眼睛的位置“，请参考<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQ1NTL3BlcnNwZWN0aXZlLW9yaWdpbg==">perspective-origin</span> 属性。</p>
+</blockquote>
+<p>然后还有一个奇怪的点，应该注意到我定义perspective的前面没有transform，我使用了transform的话，像这样，页面元素就没有效果，我还没有找到原因，我的浏览器版88.0.4324.104版本的chrome。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#father</span> &#123;</span><br><span class="line">	...</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">50</span>);</span><br><span class="line">    -webkit-<span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">50</span>);</span><br><span class="line">    <span class="comment">/* Safari and Chrome */</span> </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="5-matrix矩阵变形"><a href="#5-matrix矩阵变形" class="headerlink" title="5.matrix矩阵变形"></a>5.matrix矩阵变形</h3><p>此属性值使用涉及到数学中的矩阵。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#matrix"><code>matrix(a, b, c, d, tx, ty)</code></a>：用六个指定的值来指定一个均匀的二维（2D）变换矩阵。<code>matrix(a, b, c, d, tx, ty)</code> 是 <code>matrix3d(a, b, 0, 0, c, d, 0, 0, 0, 0, 1, 0, tx, ty, 0, 1)</code> 的简写。<ul>
+<li><em>a</em> <em>b</em> <em>c</em> <em>d</em>：以 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/number"><code>&lt;number&gt;</code></a> 的格式来描述线性变换</li>
+<li><em>tx</em> <em>ty</em>：以 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/number"><code>&lt;number&gt;</code></a> 的格式来描述变换的量</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#matrix3d"><code>matrix3d(a1, b1, c1, d1, a2, b2, c2, d2, a3, b3, c3, d3, a4, b4, c4, d4)</code></a>：用一个 4 × 4 的齐次矩阵来描述一个三维（3D）变换。16个参数都在主要列的顺序中描述。<ul>
+<li><em>a1 b1 c1 d1</em> <em>a2 b2 c2 d2</em> <em>a3 b3 c3 d3</em> <em>d4</em>：以 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/number"><code>&lt;number&gt;</code></a> 的格式来描述线性变换</li>
+<li><em>a4</em> <em>b4 c4</em>：以 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/number"><code>&lt;number&gt;</code></a> 的格式来描述变换的量</li>
+</ul>
+</li>
+</ul>
+<p>具体原理先挖个坑，以后来填，非常厉害，通过计算是可以实现其他属性的效果的，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform: matrix(1, 0, 0, 1, 30, 30) `就等同于` transform: translate(30px, 30px)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">matrix</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">30</span>, <span class="number">30</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201350921.gif" alt="test"></p>
+<h3 id="6-skew扭曲"><a href="#6-skew扭曲" class="headerlink" title="6.skew扭曲"></a>6.skew扭曲</h3><p>这个CSS函数是一种用于拉伸，该函数会使得在每个方向上以一定角度扭曲元素上的每个点。这是通过将每个坐标增加一个与指定角度成比例的值和到原点的距离来完成的。离原点越远，拉伸的值就越大。</p>
+<p>主要有以下CSS函数：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#skew"><code>skew(ax, ay)</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#skewx"><code>skewX(a)</code></a>：水平拉伸，skew(ax,0)的简写</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function#skewy"><code>skewY(a)</code></a>：垂直拉伸，skew(0,ay)的简写</li>
+</ul>
+<p>例如如下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">skewX</span>(<span class="number">45deg</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果就是把X轴方向以45°进行拉伸。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201357080.gif" alt="test"></p>
+<h3 id="7-哪些属性可以脱离transform？"><a href="#7-哪些属性可以脱离transform？" class="headerlink" title="7.哪些属性可以脱离transform？"></a>7.哪些属性可以脱离transform？</h3><ul>
+<li>rotate对🉐</li>
+<li>translate🉐</li>
+<li>scale🉐</li>
+<li>perspective🉐</li>
+<li>matrix🚫</li>
+<li>skew🚫</li>
+</ul>
+<p>为什么要让这些属性可以单飞？</p>
+<p>因为单飞的属性会应用在初次渲染中，写在transform中的会根据transform动画的变化来进行重新的渲染。</p>
+<p>我们可以灵活选择哪些要参与transform属性定义的transition过渡动画。</p>
+<h1 id="三、CSS过渡动画——Transition"><a href="#三、CSS过渡动画——Transition" class="headerlink" title="三、CSS过渡动画——Transition"></a>三、CSS过渡动画——Transition</h1><h2 id="1-属性介绍"><a href="#1-属性介绍" class="headerlink" title="1.属性介绍"></a>1.属性介绍</h2><p>transition属性可以指定一个属性发生变化时的切换方式。比如在不同的伪元素之间切换，像是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:hover"><code>:hover</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:active"><code>:active</code></a> 或者通过 JavaScript 实现的状态变化。</p>
+<p>效果就是元素在不同CSS属性之间切换的时候，浏览器会把这个过程给展示出来，就像是自动在中间填充了补间动画，视觉上看就是动画的效果。</p>
+<p><strong><code>transition</code></strong> 属性事实上由以下的属性组成：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-property"><code>transition-property</code></a>： 规定设置过渡效果的 CSS 属性的名称，多个属性间使用逗号隔开，如果所有属性都需要过渡，则使用all关键字。大部分属性都支持过渡效果，注意过渡时必须是从一个有效数值向另外一个有效数值进行过渡。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-duration"><code>transition-duration</code></a>： 规定完成过渡效果需要多少秒或毫秒。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-timing-function"><code>transition-timing-function</code></a>：过渡的时序函数，用来描述这个补间动画是怎样计算的，要如何展现补间动画。<ul>
+<li>常见的设置如下：</li>
+<li>ease：默认值，慢速开始，先加速，再减速</li>
+<li>linear 匀速运动</li>
+<li>ease-in 加速运动</li>
+<li>ease-out 减速运动</li>
+<li>ease-in-out 先加速 后减速</li>
+<li>cubic-bezier() 来指定时序函数 使用<span class="exturl" data-url="aHR0cHM6Ly9jdWJpYy1iZXppZXIuY29tLw==">工具网站</span>来定制</li>
+<li>steps(number,positon) 分步执行过渡效果<ul>
+<li>number：表示分为几个步骤</li>
+<li>end ， 在时间结束时执行过渡(默认值)</li>
+<li>start ， 在时间开始时执行过渡</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-delay"><code>transition-delay</code></a>：定义过渡效果何时开始，等待一段时间后在执行过渡动画。</li>
+</ul>
+<h2 id="2-重要事件钩子"><a href="#2-重要事件钩子" class="headerlink" title="2.重要事件钩子"></a>2.重要事件钩子</h2><h3 id="①、transitionrun-和transitionstart-：过渡开始阶段"><a href="#①、transitionrun-和transitionstart-：过渡开始阶段" class="headerlink" title="①、transitionrun 和transitionstart ：过渡开始阶段"></a>①、transitionrun 和transitionstart ：过渡开始阶段</h3><p>第一个和第二个不同之处在于：</p>
+<ul>
+<li>transitionrun 在创建transition时触发（即在transition-delay开始时）。</li>
+<li>transitionstart 在实际动画开始时触发（即在transition-delay结束时）。</li>
+</ul>
+<p>用法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> transition = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.transition&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> message = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.message&#x27;</span>);</span><br><span class="line"></span><br><span class="line">transition.addEventListener(<span class="string">&#x27;transitionrun&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  message.textContent = <span class="string">&#x27;transitionrun fired&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">transition.addEventListener(<span class="string">&#x27;transitionstart&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  message.textContent = <span class="string">&#x27;transitionstart fired&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">transition.addEventListener(<span class="string">&#x27;transitionend&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  message.textContent = <span class="string">&#x27;transitionend fired&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="②、transitionend：过渡结束时候"><a href="#②、transitionend：过渡结束时候" class="headerlink" title="②、transitionend：过渡结束时候"></a>②、transitionend：过渡结束时候</h3><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL0hUTUxFbGVtZW50L3RyYW5zaXRpb25lbmRfZXZlbnQ=">transitionend</span>事件会在 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQ1NTL0NTU19UcmFuc2l0aW9ucy9Vc2luZ19DU1NfdHJhbnNpdGlvbnM=">CSS transition</span> 结束后触发. 当transition完成前移除transition时，比如移除css的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-property"><code>transition-property</code></a> 属性，事件将不会被触发.如在transition完成前设置 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 为”<code>none&quot;</code>，事件同样不会被触发。</p>
+<p>用法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 在指定的元素上监听transitionend事件, 例如#slidingMenu</span></span><br><span class="line"><span class="comment"> * 然后指定一个函数, 例如 showMessage()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMessage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Transition 已完成&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">&quot;slidingMenu&quot;</span>);</span><br><span class="line">element.addEventListener(<span class="string">&quot;transitionend&quot;</span>, showMessage, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-transition的不足"><a href="#3-transition的不足" class="headerlink" title="3.transition的不足"></a>3.transition的不足</h2><p>transition的优点在于简单易用，但是它有几个很大的局限。</p>
+<p>（1）transition需要事件触发，所以没法在网页加载时自动发生。</p>
+<p>（2）transition是一次性的，不能重复发生，除非一再触发。</p>
+<p>（3）transition只能定义开始状态和结束状态，不能定义中间状态，也就是说只有两个状态。</p>
+<p>（4）一条transition规则，只能定义一个属性的变化，不能涉及多个属性。</p>
+<p>CSS Animation就是为了解决这些问题而提出的。</p>
+<h1 id="四、CSS关键帧动画——Animation"><a href="#四、CSS关键帧动画——Animation" class="headerlink" title="四、CSS关键帧动画——Animation"></a>四、CSS关键帧动画——Animation</h1><p>CSS关键帧动画主要通过<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQ1NTL2FuaW1hdGlvbg==">animation</span>这一个属性实现，该属性事实上是八个属性的简写形式：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-name"><code>animation-name</code></a></td>
+<td align="center">指定 @keyframes 动画的名称</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-duration"><code>animation-duration</code></a></td>
+<td align="center">指定一个动画周期的时长。默认值为0s，表示无动画</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-timing-function"><code>animation-timing-function</code></a></td>
+<td align="center">定义CSS动画在每一动画周期中执行的节奏</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-delay"><code>animation-delay</code></a></td>
+<td align="center">定义在浏览器开始执行动画之前等待的时间</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-iteration-count"><code>animation-iteration-count</code></a></td>
+<td align="center">定义动画运行的次数</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-direction"><code>animation-direction</code></a></td>
+<td align="center">指示动画是否反向播放</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-fill-mode"><code>animation-fill-mode</code></a></td>
+<td align="center">CSS动画在执行之前和之后如何将样式应用于其目标。</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-play-state"><code>animation-play-state</code></a></td>
+<td align="center">定义一个动画是否运行或者暂停。可以通过查询它来确定动画是否正在运行。另外，它的值可以被设置为暂停和恢复的动画的重放。</td>
+</tr>
+</tbody></table>
+<h2 id="4-1-属性介绍"><a href="#4-1-属性介绍" class="headerlink" title="4.1 属性介绍"></a>4.1 属性介绍</h2><h3 id="1、-animation-name"><a href="#1、-animation-name" class="headerlink" title="1、 animation-name"></a>1、 animation-name</h3><p>这个属性用来指定动画使用哪个@keyframe，@keyframe有两种定义方式，一种是用百分比进行定义，一种是用from-to的形式来定义，第二种方式就是用百分比的方式来定义，这种方式比前一种方式能定义更多的阶段，如下图</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*第一种方式*/</span></span><br><span class="line"><span class="keyword">@keyframes</span> rotate_frame &#123;</span><br><span class="line">	<span class="selector-tag">from</span> &#123;</span><br><span class="line">			<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="selector-tag">to</span> &#123;</span><br><span class="line">			<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*第二种方式*/</span></span><br><span class="line"><span class="keyword">@keyframes</span> rotate_frame &#123;</span><br><span class="line">	<span class="number">0%</span> &#123;</span><br><span class="line">		<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="number">100%</span> &#123;</span><br><span class="line">		<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 事实上我们还可以混着写 */</span></span><br><span class="line"><span class="keyword">@keyframes</span> rotate_frame &#123;</span><br><span class="line">	<span class="selector-tag">from</span> &#123;</span><br><span class="line">		<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">0deg</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="number">50%</span> &#123;</span><br><span class="line">		<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">180deg</span>);</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="selector-tag">to</span> &#123;</span><br><span class="line">        <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的rotate_frame就是我们所说的animation-name</p>
+<h3 id="2、-animation-duration"><a href="#2、-animation-duration" class="headerlink" title="2、 animation-duration"></a>2、 animation-duration</h3><p><code>animation-duration</code>属性指定一个动画周期的时长。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.name</span> &#123;</span><br><span class="line">	<span class="attribute">animation-duration</span>:<span class="number">2s</span>;</span><br><span class="line">	-webkit-<span class="attribute">animation-duration</span>:<span class="number">2s</span>; <span class="comment">/* Safari 和 Chrome */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、-animation-timing-function"><a href="#3、-animation-timing-function" class="headerlink" title="3、 animation-timing-function"></a>3、 animation-timing-function</h3><p>该属性指定动画执行的时序函数，具体的选项可以参考transition中的transition-timing-function。</p>
+<h3 id="4、-animation-delay"><a href="#4、-animation-delay" class="headerlink" title="4、 animation-delay"></a>4、 animation-delay</h3><p>该属性指定动画延迟多少秒才执行。</p>
+<h3 id="5、-animation-iteration-count"><a href="#5、-animation-iteration-count" class="headerlink" title="5、 animation-iteration-count"></a>5、 animation-iteration-count</h3><p>执行了动画播放的次数，如果是无限次可以设为infinite</p>
+<h3 id="6、-animation-direction"><a href="#6、-animation-direction" class="headerlink" title="6、 animation-direction"></a>6、 animation-direction</h3><p>该属性指定了动画播放的顺序，可选项如下：</p>
+<ul>
+<li><strong>normal</strong>：默认配置，每个动画循环结束，动画重置到起点重新开始</li>
+<li><strong>alternate</strong>：动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向</li>
+<li><strong>reverse</strong>：反向播放，每周期结束动画由尾到头运行。</li>
+<li><strong>alternate-reverse</strong>：反向交替， 反向开始交替。动画第一次运行时是反向的，然后下一次是正向，后面依次循环。决定奇数次或偶数次的计数从1开始。</li>
+</ul>
+<h3 id="7、-animation-fill-mode"><a href="#7、-animation-fill-mode" class="headerlink" title="7、 animation-fill-mode"></a>7、 animation-fill-mode</h3><p>动画结束以后，会立即从结束状态跳回到起始状态。如果想让动画保持在结束状态，需要使用animation-fill-mode属性。</p>
+<ul>
+<li>none：当动画未执行时，动画将不会将任何样式应用于目标，而是已经赋予给该元素的 CSS 规则来显示该元素。这是默认值。</li>
+<li><strong>forwards</strong>：表示让动画停留在结束状态，即保留to中或者100%中的属性。</li>
+<li><strong>backwards</strong>：让动画回到第一帧的状态。</li>
+<li><strong>both</strong>：根据animation-direction轮流应用forwards和backwards规则。</li>
+</ul>
+<h3 id="8、-animation-play-state"><a href="#8、-animation-play-state" class="headerlink" title="8、 animation-play-state"></a>8、 animation-play-state</h3><p>有时，动画播放过程中，会突然停止。这时，默认行为是跳回到动画的开始状态。</p>
+<p>如果想让动画保持突然终止时的状态，就要使用animation-play-state属性。</p>
+<p>该属性只有两个选项paused和running。我们可以在需要触发时将属性设为running，需要暂停时设置为paused。</p>
+<p>就像这样子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">animation</span>: spin <span class="number">1s</span> linear infinite;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: paused;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">animation-play-state</span>: running;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-重要事件钩子"><a href="#4-2-重要事件钩子" class="headerlink" title="4.2  重要事件钩子"></a>4.2  重要事件钩子</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/animationstart_event"><code>animationstart</code></a>：事件会在CSS动画开始时触发。如果有<code>animation-delay</code> 延时，事件会在延迟时效过后立即触发。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/animationiteration_event"><code>animationiteration</code></a>：当<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQ1NTL0NTU19BbmltYXRpb25z">CSS 动画</span>的迭代结束并开始另一个迭代时，将触发该事件。此事件不会与该<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/animationend_event"><code>animationend</code></a>事件同时发生，因此对于具有 <code>animation-iteration-count</code>为一的动画来说，该事件不会发生。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/animationcancel_event"><code>animationcancel</code></a>：动画被取消时候，即没有发送 <code>animationend (en-US)</code> 事件时停止运行，则会触发该事件，有以下可能性导致动画取消：<ul>
+<li> <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-name"><code>animation-name</code></a> 发生改变导致动画被移除</li>
+<li>使用CSS隐藏了动画中的node节点</li>
+<li>使用CSS隐藏了动画中的node节点的父节点</li>
+<li>直接移除了动画中的node节点的animation属性</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/animationend_event"><code>animationend</code></a>：会在一个 CSS 动画完成时触发（不包括完成前就已终止的情况，例如元素变得不可见或者动画从元素中移除）。</li>
+</ul>
+<p>我们来看一个例子如何使用这些API：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;animation-example&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;animation&quot;</span>&gt;</span>You chose a cold night to visit our planet.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;activate&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Activate animation<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;event-log&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">3rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.event-log</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">25rem</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">2rem</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0.2rem</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.2rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.animation</span><span class="selector-class">.active</span> &#123;</span><br><span class="line">  <span class="attribute">animation-duration</span>: <span class="number">2s</span>;</span><br><span class="line">  <span class="attribute">animation-name</span>: slidein;</span><br><span class="line">  <span class="attribute">animation-iteration-count</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@keyframes</span> slidein &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100%</span>) <span class="built_in">scaleX</span>(<span class="number">3</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">0</span>) <span class="built_in">scaleX</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> animation = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;p.animation&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> animationEventLog = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.animation-example&gt;.event-log&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> applyAnimation = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.animation-example&gt;button.activate&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> iterationCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">animation.addEventListener(<span class="string">&#x27;animationstart&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    animationEventLog.textContent = <span class="string">`<span class="subst">$&#123;animationEventLog.textContent&#125;</span>&#x27;animation started&#x27; `</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">animation.addEventListener(<span class="string">&#x27;animationiteration&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    iterationCount++;</span><br><span class="line">    animationEventLog.textContent = <span class="string">`<span class="subst">$&#123;animationEventLog.textContent&#125;</span>&#x27;animation iterations: <span class="subst">$&#123;iterationCount&#125;</span>&#x27; `</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">animation.addEventListener(<span class="string">&#x27;animationend&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    animationEventLog.textContent = <span class="string">`<span class="subst">$&#123;animationEventLog.textContent&#125;</span>&#x27;animation ended&#x27;`</span>;</span><br><span class="line">    animation.classList.remove(<span class="string">&#x27;active&#x27;</span>);</span><br><span class="line">    applyAnimation.textContent = <span class="string">&quot;Activate animation&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">animation.addEventListener(<span class="string">&#x27;animationcancel&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    animationEventLog.textContent = <span class="string">`<span class="subst">$&#123;animationEventLog.textContent&#125;</span>&#x27;animation canceled&#x27;`</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">applyAnimation.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    animation.classList.toggle(<span class="string">&#x27;active&#x27;</span>);<span class="comment">//直接移除了动画中的node节点的animation属性</span></span><br><span class="line">    animationEventLog.textContent = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    iterationCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> active = animation.classList.contains(<span class="string">&#x27;active&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (active) &#123;</span><br><span class="line">        applyAnimation.textContent = <span class="string">&quot;Cancel animation&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        applyAnimation.textContent = <span class="string">&quot;Activate animation&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>我们来看下正常执行的况下的输出</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201635618.gif" alt="test"></p>
+<p>再来看看中途中断动画时的输出</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201636751.gif" alt="test"></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE0LzAyL2Nzc190cmFuc2l0aW9uX2FuZF9hbmltYXRpb24uaHRtbA==">css_transition_and_animation.html</span></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/CSS/" rel="tag"><i class="ic i-tag"></i> CSS</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-28 10:25:19" itemprop="dateModified" datetime="2021-12-28T10:25:19+08:00">2021-12-28</time>
+  </span>
+  <span id="FrontEnd/CSS/FrontEnd/CSS/CSS3动画入门" class="item leancloud_visitors" data-flag-title="CSS3动画入门" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">https://monkeyhh.top/FrontEnd/CSS/FrontEnd/CSS/CSS3动画入门</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljitigmj20zk0m87fp.jpg" title="CSS布局总结">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> CSS</span>
+  <h3>CSS布局总结</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201018875.jpg" title="JavaScript常用继承方案">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>JavaScript常用继承方案</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%B9%E6%98%93%E6%B7%B7%E6%B7%86%E7%9A%84%E5%87%A0%E4%B8%AACSS%E5%B1%9E%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">一、容易混淆的几个CSS属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Transform%EF%BC%88%E5%8F%98%E5%BD%A2%EF%BC%89%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">二、Transform（变形）属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-rotate%E6%97%8B%E8%BD%AC"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.rotate旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-translate%E5%B9%B3%E7%A7%BB"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.translate平移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-scale%E7%BC%A9%E6%94%BE"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.scale缩放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-perspective%E9%80%8F%E8%A7%86"><span class="toc-number">3.0.4.</span> <span class="toc-text">4.perspective透视</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-matrix%E7%9F%A9%E9%98%B5%E5%8F%98%E5%BD%A2"><span class="toc-number">3.0.5.</span> <span class="toc-text">5.matrix矩阵变形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-skew%E6%89%AD%E6%9B%B2"><span class="toc-number">3.0.6.</span> <span class="toc-text">6.skew扭曲</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%93%AA%E4%BA%9B%E5%B1%9E%E6%80%A7%E5%8F%AF%E4%BB%A5%E8%84%B1%E7%A6%BBtransform%EF%BC%9F"><span class="toc-number">3.0.7.</span> <span class="toc-text">7.哪些属性可以脱离transform？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81CSS%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB%E2%80%94%E2%80%94Transition"><span class="toc-number">4.</span> <span class="toc-text">三、CSS过渡动画——Transition</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.1.</span> <span class="toc-text">1.属性介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E9%92%A9%E5%AD%90"><span class="toc-number">4.2.</span> <span class="toc-text">2.重要事件钩子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A0%E3%80%81transitionrun-%E5%92%8Ctransitionstart-%EF%BC%9A%E8%BF%87%E6%B8%A1%E5%BC%80%E5%A7%8B%E9%98%B6%E6%AE%B5"><span class="toc-number">4.2.1.</span> <span class="toc-text">①、transitionrun 和transitionstart ：过渡开始阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A1%E3%80%81transitionend%EF%BC%9A%E8%BF%87%E6%B8%A1%E7%BB%93%E6%9D%9F%E6%97%B6%E5%80%99"><span class="toc-number">4.2.2.</span> <span class="toc-text">②、transitionend：过渡结束时候</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-transition%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="toc-number">4.3.</span> <span class="toc-text">3.transition的不足</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81CSS%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB%E2%80%94%E2%80%94Animation"><span class="toc-number">5.</span> <span class="toc-text">四、CSS关键帧动画——Animation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 属性介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81-animation-name"><span class="toc-number">5.1.1.</span> <span class="toc-text">1、 animation-name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81-animation-duration"><span class="toc-number">5.1.2.</span> <span class="toc-text">2、 animation-duration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81-animation-timing-function"><span class="toc-number">5.1.3.</span> <span class="toc-text">3、 animation-timing-function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81-animation-delay"><span class="toc-number">5.1.4.</span> <span class="toc-text">4、 animation-delay</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81-animation-iteration-count"><span class="toc-number">5.1.5.</span> <span class="toc-text">5、 animation-iteration-count</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81-animation-direction"><span class="toc-number">5.1.6.</span> <span class="toc-text">6、 animation-direction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81-animation-fill-mode"><span class="toc-number">5.1.7.</span> <span class="toc-text">7、 animation-fill-mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81-animation-play-state"><span class="toc-number">5.1.8.</span> <span class="toc-text">8、 animation-play-state</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E9%87%8D%E8%A6%81%E4%BA%8B%E4%BB%B6%E9%92%A9%E5%AD%90"><span class="toc-number">5.2.</span> <span class="toc-text">4.2  重要事件钩子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">6.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" rel="bookmark" title="CSS选择器">CSS选择器</a></li><li><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" rel="bookmark" title="CSS布局总结">CSS布局总结</a></li><li class="active"><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" rel="bookmark" title="CSS3动画入门">CSS3动画入门</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">30</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">8</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">11</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Webpack/" title="In Webpack">Webpack</a>
+</div>
+
+    <span><a href="/FrontEnd/Webpack/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
+</div>
+
+    <span><a href="/Computer-Networking/Computer-Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">397k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">6:01</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/CSS/FrontEnd/CSS/CSS3动画入门',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

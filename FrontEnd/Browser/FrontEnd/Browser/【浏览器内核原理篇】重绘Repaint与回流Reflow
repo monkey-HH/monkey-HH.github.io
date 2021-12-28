@@ -1,0 +1,713 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Browser" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow">
+
+
+
+  <title>
+【浏览器内核原理篇】重绘Repaint与回流Reflow - Browser - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">【浏览器内核原理篇】重绘Repaint与回流Reflow
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-09-27 09:28:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-09-27T09:28:32+08:00">2021-09-27</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>8k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>7 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Browser/" itemprop="item" rel="index" title="In Browser"><span itemprop="name">Browser</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0.引言"></a>0.引言</h1><p>在之前写浏览器原理篇的文章的时候，就挖了个坑要讲讲重绘和回流，那就开始吧。</p>
+<h1 id="1-回顾知识点"><a href="#1-回顾知识点" class="headerlink" title="1.回顾知识点"></a>1.回顾知识点</h1><h2 id="1-160fps与设备刷新率"><a href="#1-160fps与设备刷新率" class="headerlink" title="1.160fps与设备刷新率"></a>1.160fps与设备刷新率</h2><p>目前大多数设备的屏幕刷新率为 <strong>60 次/秒</strong>。因此，如果在页面中有一个动画或渐变效果，或者用户正在滚动页面，那么浏览器渲染动画或页面的每一帧的速率也需要跟设备屏幕的刷新率保持一致。</p>
+<p>其中每个帧的预算时间仅比 16 毫秒多一点 (1 秒/ 60 = 16.66 毫秒)。但实际上，浏览器有整理工作要做，因此您的所有工作需要在 <strong>10 毫秒</strong>内完成。如果无法符合此预算，帧率将下降，并且内容会在屏幕上抖动。 此现象通常称为<strong>卡顿</strong>，会对用户体验产生负面影响。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061529406.png" alt="image-20211206152910353" style="zoom:50%;" />
+
+
+
+
+
+<h2 id="1-2像素管道"><a href="#1-2像素管道" class="headerlink" title="1.2像素管道"></a>1.2像素管道</h2><p>首先回顾一下<code>像素管道</code>的流程:</p>
+<p>以下模型是一个简化，具体过程可以查看我的另一篇介绍浏览器原理的文章，此处不考虑网络层面的东西。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061529221.png" alt="image-20211206152930172"></p>
+<ul>
+<li><strong>JavaScript</strong>。一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如用 jQuery 的 <code>animate</code> 函数做一个动画、对一个数据集进行排序或者往页面里添加一些 DOM 元素等。当然，除了 JavaScript，还有其他一些常用方法也可以实现视觉变化效果，比如: CSS Animations、Transitions 和 Web Animation API。</li>
+<li><strong>Style样式计算</strong>。此过程是根据匹配选择器（例如 <code>.headline</code> 或 <code>.nav &gt; .nav__item</code>）计算出哪些元素应用哪些 CSS 规则的过程。从中知道规则之后，将应用规则并计算每个元素的最终样式。</li>
+<li><strong>Layout布局</strong>。在知道对一个元素应用哪些规则之后，浏览器即可开始计算它要占据的空间大小及其在屏幕的位置。网页的布局模式意味着一个元素可能影响其他元素，例如 <code>&lt;body&gt;</code> 元素的宽度一般会影响其子元素的宽度以及树中各处的节点，因此对于浏览器来说，布局过程是经常发生的。</li>
+<li><strong>Paint绘制</strong>。绘制是填充像素的过程。它涉及绘出文本、颜色、图像、边框和阴影，基本上包括元素的每个可视部分。绘制一般是在多个表面（通常称为层）上完成的。</li>
+<li><strong>Composite合成</strong>。由于页面的各部分可能被绘制到多层，由此它们需要按正确顺序绘制到屏幕上，以便正确渲染页面。对于与另一元素重叠的元素来说，这点特别重要，因为一个错误可能使一个元素错误地出现在另一个元素的上层。</li>
+</ul>
+<p>接下来我们以此图来讲解。</p>
+<h1 id="2-像素管道的三种情况"><a href="#2-像素管道的三种情况" class="headerlink" title="2.像素管道的三种情况"></a>2.像素管道的三种情况</h1><h2 id="2-1情况一、重排Reflow（回流）"><a href="#2-1情况一、重排Reflow（回流）" class="headerlink" title="2.1情况一、重排Reflow（回流）"></a>2.1情况一、重排Reflow（回流）</h2><h3 id="什么是重排"><a href="#什么是重排" class="headerlink" title="什么是重排"></a>什么是重排</h3><p>回流也称为<code>重排</code></p>
+<p>任何改变用来构建Layout Tree的信息都会导致一次重排或重绘。</p>
+<p>如果您修改元素的“layout”属性，也就是<strong>改变了元素的几何属性</strong>（例如 width, height, 或者 its position with left or top等），那么浏览器将必须检查所有其他元素，然后“自动重排”页面。任何受影响的部分都需要重新绘制，而且最终绘制的元素需进行合成。</p>
+<p>简单来说，就是当我们对 DOM 结构的修改引发 DOM 几何尺寸变化的时候，会发生<code>回流</code>的过程。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061530000.png" alt="image-20211206153047954"></p>
+<h3 id="会导致重排的操作"><a href="#会导致重排的操作" class="headerlink" title="会导致重排的操作"></a>会导致重排的操作</h3><ul>
+<li>页面首次渲染</li>
+<li>浏览器窗口大小发生改变</li>
+<li>元素几何属性或位置发生改变，常见的几何属性有<code>width</code>、<code>height</code>、<code>padding</code>、<code>margin</code>、<code>left</code>、<code>top</code>、<code>border</code> 等等, 这个很好理解。</li>
+<li>元素内容变化（文字数量或图片大小等等）</li>
+<li>元素字体大小变化</li>
+<li>⭐添加或者删除<strong>可见</strong>的<code>DOM</code>元素</li>
+<li>激活<code>CSS</code>伪类（例如：<code>:hover</code>）</li>
+<li>查询某些属性或调用某些方法，如读写 <code>offset</code>族、<code>scroll</code>族和<code>client</code>族属性的时候，浏览器为了获取这些值，需要进行回流操作。</li>
+<li>调用 <code>window.getComputedStyle</code> 方法。</li>
+</ul>
+<p>一些常用且会导致回流的属性和方法：</p>
+<ul>
+<li><code>clientWidth</code>、<code>clientHeight</code>、<code>clientTop</code>、<code>clientLeft</code></li>
+<li><code>offsetWidth</code>、<code>offsetHeight</code>、<code>offsetTop</code>、<code>offsetLeft</code></li>
+<li><code>scrollWidth</code>、<code>scrollHeight</code>、<code>scrollTop</code>、<code>scrollLeft</code></li>
+<li><code>scrollIntoView()</code>、<code>scrollIntoViewIfNeeded()</code></li>
+<li><code>getComputedStyle()</code></li>
+<li><code>getBoundingClientRect()</code></li>
+<li><code>scrollTo()</code></li>
+</ul>
+<p>相当于将解析和合成的过程重新又走了一篇，开销是非常大的。</p>
+<h2 id="2-2情况二、重绘Repaint"><a href="#2-2情况二、重绘Repaint" class="headerlink" title="2.2情况二、重绘Repaint"></a>2.2情况二、重绘Repaint</h2><h3 id="什么是重绘"><a href="#什么是重绘" class="headerlink" title="什么是重绘"></a>什么是重绘</h3><p>如果您修改“paint only”属性（例如背景图片、文字颜色或阴影等），即<strong>不会影响页面布局的属性</strong>，则浏览器会跳过布局，但仍将执行<code>重绘</code>。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061543158.png" alt="image-20211206154341105"></p>
+<h2 id="2-3重排和重绘的关系"><a href="#2-3重排和重绘的关系" class="headerlink" title="2.3重排和重绘的关系"></a>2.3重排和重绘的关系</h2><p>⭐<strong>可以看到，重绘不一定导致重排，但重排一定发生了重绘。</strong></p>
+<h3 id="回流比重绘的代价要更高"><a href="#回流比重绘的代价要更高" class="headerlink" title="回流比重绘的代价要更高"></a>回流比重绘的代价要更高</h3><p>有时即使仅仅回流一个单一的元素，它的父元素以及任何跟随它的元素也会产生回流。</p>
+<h2 id="2-4情况三、直接合成"><a href="#2-4情况三、直接合成" class="headerlink" title="2.4情况三、直接合成"></a>2.4情况三、直接合成</h2><p>正如您现在可能已经猜到的那样，回流和重绘都可能代价高昂，我们应该尽可能避免它们。</p>
+<p>唯一可以安全地进行动画或过渡的属性是 <code>opacity</code> 和 <code>transform</code>，因为它们是在准备好所有图层的<strong>合成阶段添加</strong>的。</p>
+<p>不过要注意前提：只有这两个属性对应的元素<strong>被提升为一个合成层</strong>，才不会导致重绘和重排！</p>
+<p>在许多情况下，我们可以坚持将这两个属性用于动画，并完全避免回流和重绘。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061548594.png" alt="image-20211206154829543"></p>
+<p>这也是我们所说的<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnRlYW10cmVlaG91c2UuY29tL2luY3JlYXNlLXlvdXItc2l0ZXMtcGVyZm9ybWFuY2Utd2l0aC1oYXJkd2FyZS1hY2NlbGVyYXRlZC1jc3M=">GPU加速</span>。</p>
+<h4 id="GPU加速的原因"><a href="#GPU加速的原因" class="headerlink" title="GPU加速的原因"></a>GPU加速的原因</h4><p>在合成的情况下，会直接跳过布局和绘制流程，直接进入<code>非主线程</code>处理的部分，即直接交给<code>合成线程</code>处理。交给它处理有两大好处:</p>
+<ol>
+<li>能够充分发挥<code>GPU</code>的优势。合成线程生成位图的过程中会调用线程池，并在其中使用<code>GPU</code>进行加速生成，而GPU 是擅长处理位图数据的。</li>
+<li>没有占用主线程的资源，即使主线程卡住了，效果依然能够流畅地展示。</li>
+</ol>
+<h1 id="3-性能优化篇"><a href="#3-性能优化篇" class="headerlink" title="3.性能优化篇"></a>3.性能优化篇</h1><p>知道上面的原理之后，对于开发过程有什么指导意义呢？我们从几个方面来进行讲解。</p>
+<h2 id="3-1-浏览器自带的优化"><a href="#3-1-浏览器自带的优化" class="headerlink" title="3.1 浏览器自带的优化"></a>3.1 浏览器自带的优化</h2><p>现代浏览器会对频繁的回流或重绘操作进行优化：</p>
+<p>浏览器会维护一个<strong>队列</strong>，把所有引起回流和重绘的操作放入队列中，如果队列中的任务数量或者时间间隔达到一个阈值的，浏览器就会将队列清空，进行一次批处理，这样可以把多次回流和重绘变成一次。</p>
+<p>举个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;foobar&#x27;</span>);</span><br><span class="line"></span><br><span class="line">foo.style.color = <span class="string">&#x27;blue&#x27;</span>;</span><br><span class="line">foo.style.marginTop = <span class="string">&#x27;30px&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码只会导致一次重绘，因为浏览器会累积 DOM 变动，然后一次性执行。</p>
+<p>当你访问以下属性或方法时，浏览器会<strong>立刻清空队列</strong>：</p>
+<ul>
+<li><code>clientWidth</code>、<code>clientHeight</code>、<code>clientTop</code>、<code>clientLeft</code></li>
+<li><code>offsetWidth</code>、<code>offsetHeight</code>、<code>offsetTop</code>、<code>offsetLeft</code></li>
+<li><code>scrollWidth</code>、<code>scrollHeight</code>、<code>scrollTop</code>、<code>scrollLeft</code></li>
+<li><code>width</code>、<code>height</code></li>
+<li><code>getComputedStyle()</code></li>
+<li><code>getBoundingClientRect()</code></li>
+</ul>
+<p>因为队列中可能会有影响到这些属性或方法返回值的操作，<strong>因为很有可能你所需要达成的目的需要最新的值</strong>。</p>
+<p>即使你希望获取的信息与队列中操作引发的改变无关，浏览器也会强行清空队列，确保你拿到的值是最精确的。</p>
+<h3 id="启示：避免强制同步布局"><a href="#启示：避免强制同步布局" class="headerlink" title="启示：避免强制同步布局"></a>启示：避免强制同步布局</h3><p>例子一：</p>
+<p>在3.1中我们提到了：如果访问特定属性，会导致强制同步布局，我们举个栗子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Schedule our function to run at the start of the frame.</span></span><br><span class="line">requestAnimationFrame(logBoxHeight);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logBoxHeight</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Gets the height of the box in pixels and logs it out.</span></span><br><span class="line">  <span class="built_in">console</span>.log(box.offsetHeight);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果在请求此框的高度之前，已更改其样式，就会出现问题:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logBoxHeight</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  box.classList.add(<span class="string">&#x27;super-big&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Gets the height of the box in pixels</span></span><br><span class="line">  <span class="comment">// and logs it out.</span></span><br><span class="line">  <span class="built_in">console</span>.log(box.offsetHeight);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在，为了回答高度问题，浏览器必须先应用样式更改（由于增加了 <code>super-big</code> 类），然后运行布局。这时它才能返回正确的高度。这是不必要的，并且可能是开销很大的工作。</p>
+<p>因此，始终应先批量读取样式并执行（浏览器可以使用上一帧的布局值），然后执行任何写操作:</p>
+<p>正确完成时，以上函数应为:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logBoxHeight</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Gets the height of the box in pixels</span></span><br><span class="line">  <span class="comment">// and logs it out.</span></span><br><span class="line">  <span class="built_in">console</span>.log(box.offsetHeight);</span><br><span class="line"></span><br><span class="line">  box.classList.add(<span class="string">&#x27;super-big&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大部分情况下，并不需要应用样式然后查询值；使用上一帧的值就足够了。与浏览器同步（或比其提前）运行样式计算和布局可能成为瓶颈，并且您一般不想做这种设计。</p>
+<p>**例子二：  ** <strong>避免频繁读取会引发回流/重绘的属性，如果确实需要多次使用，就用一个变量缓存起来。</strong></p>
+<p>有一种方式会使强制同步布局甚至更糟: 接二连三地执行大量这种布局。看看这个代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resizeAllParagraphsToMatchBlockWidth</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Puts the browser into a read-write-read-write cycle.</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; paragraphs.length; i++) &#123;</span><br><span class="line">    paragraphs[i].style.width = box.offsetWidth + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此代码循环处理一组段落，并设置每个段落的宽度以匹配一个称为“box”的元素的宽度。这看起来没有害处，但问题是循环的每次迭代读取一个样式值 (<code>box.offsetWidth</code>)，然后立即使用此值来更新段落的宽度 (<code>paragraphs[i].style.width</code>)。在循环的下次迭代时，浏览器必须考虑样式已更改这一事实，因为 <code>offsetWidth</code> 是上次请求的（在上一次迭代中），因此它必须应用样式更改，然后运行布局。每次迭代都将出现此问题！</p>
+<p>此示例的修正方法还是先读取值，然后写入值:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Read.</span></span><br><span class="line"><span class="keyword">var</span> width = box.offsetWidth;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resizeAllParagraphsToMatchBlockWidth</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; paragraphs.length; i++) &#123;</span><br><span class="line">    <span class="comment">// Now write.</span></span><br><span class="line">    paragraphs[i].style.width = width + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-优化JavaScript执行"><a href="#3-2-优化JavaScript执行" class="headerlink" title="3.2 优化JavaScript执行"></a>3.2 优化JavaScript执行</h2><p>JavaScript 经常会触发视觉变化。有时是直接通过样式操作，有时是会产生视觉变化的计算，例如搜索数据或将其排序。时机不当或长时间运行的 JavaScript 可能是导致性能问题的常见原因。您应当设法尽可能减少其影响。</p>
+<h3 id="3-2-1-使用DocumentFragment进行批量的-DOM-操作"><a href="#3-2-1-使用DocumentFragment进行批量的-DOM-操作" class="headerlink" title="3.2.1 使用DocumentFragment进行批量的 DOM 操作"></a>3.2.1 使用<code>DocumentFragment</code>进行批量的 DOM 操作</h3><p>创建一个游离于DOM树之外的节点，然后在此节点上批量操作，最后插入DOM树中，因此只触发一次重排</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">  <span class="keyword">let</span> node = <span class="built_in">document</span>.createElement(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">  node.innerHTML = i;</span><br><span class="line">  fragment.appendChild(node);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-2-2-使用-requestAnimationFrame-来实现视觉变化"><a href="#3-2-2-使用-requestAnimationFrame-来实现视觉变化" class="headerlink" title="3.2.2 使用 requestAnimationFrame 来实现视觉变化"></a>3.2.2 使用 requestAnimationFrame 来实现视觉变化</h3><p>对于动画效果的实现，避免使用 setTimeout 或 setInterval，请使用 requestAnimationFrame。</p>
+<p>当屏幕正在发生视觉变化时，您希望在适合浏览器的时间执行您的工作，也就是正好在帧的开头。保证 JavaScript 在帧开始时运行的唯一方式是使用 <code>requestAnimationFrame</code>。</p>
+<p>下面是一个<code>window.requestAnimationFrame()</code>对比效果的例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重流代价高</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleHeight</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> currentHeight = element.clientHeight;</span><br><span class="line">  element.style.height = (currentHeight * <span class="number">2</span>) + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">all_my_elements.forEach(doubleHeight);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重绘代价低</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleHeight</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> currentHeight = element.clientHeight;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">window</span>.requestAnimationFrame(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    element.style.height = (currentHeight * <span class="number">2</span>) + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">all_my_elements.forEach(doubleHeight);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一段代码，每读一次 DOM，就写入新的值，会造成不停的重排和重流。</li>
+<li>第二段代码把所有的写操作，都累积在一起，从而 DOM 代码变动的代价就最小化了。</li>
+</ul>
+<p>使用 <code>setTimeout</code> 或 <code>setInterval</code> 来执行动画之类的视觉变化，但这种做法的问题是，回调将在帧中的某个时点运行，可能刚好在末尾，而这可能经常会使我们丢失帧，导致卡顿。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061651579.png" alt="image-20211206165135511" style="zoom:67%;" />
+
+<h3 id="3-2-3-使用Web-Worker处理无关复杂任务"><a href="#3-2-3-使用Web-Worker处理无关复杂任务" class="headerlink" title="3.2.3 使用Web Worker处理无关复杂任务"></a>3.2.3 使用Web Worker处理无关复杂任务</h3><p>JavaScript 在浏览器的主线程上运行，恰好与样式计算、布局以及许多情况下的绘制一起运行。如果 JavaScript 运行时间过长，就会阻塞这些其他工作，可能导致帧丢失。</p>
+<p>因此，您要妥善处理 JavaScript 何时运行以及运行多久。例如，如果在滚动之类的动画中，最好是想办法使 JavaScript 保持在 <strong>3-4 毫秒</strong>的范围内。不合理的JavaScript则<strong>将长时间运行的 JavaScript 从主线程移到 Web Worker</strong>。</p>
+<p>我们可以通过performance选项卡进行查看。</p>
+<p>如果JavaScript中不需要 DOM 访问权限，可以使用Web Worker进行处理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dataSortWorker = <span class="keyword">new</span> Worker(<span class="string">&quot;sort-worker.js&quot;</span>);</span><br><span class="line">dataSortWorker.postMesssage(dataToSort);</span><br><span class="line"></span><br><span class="line"><span class="comment">// The main thread is now free to continue working on other things...</span></span><br><span class="line"></span><br><span class="line">dataSortWorker.addEventListener(<span class="string">&#x27;message&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">var</span> sortedData = evt.data;</span><br><span class="line">   <span class="comment">// Update data on screen...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-4-对组件使用防抖节流"><a href="#3-2-4-对组件使用防抖节流" class="headerlink" title="3.2.4 对组件使用防抖节流"></a>3.2.4 对组件使用防抖节流</h3><p>防抖节流在我另外一篇文章里有</p>
+<h3 id="3-2-5-避免频繁使用-style，而是采用修改class的方式"><a href="#3-2-5-避免频繁使用-style，而是采用修改class的方式" class="headerlink" title="3.2.5 避免频繁使用 style，而是采用修改class的方式"></a>3.2.5 避免频繁使用 style，而是采用修改<code>class</code>的方式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.class = <span class="string">&quot;new_class&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-2-6-其他"><a href="#3-2-6-其他" class="headerlink" title="3.2.6 其他"></a>3.2.6 其他</h3><ul>
+<li>将复杂<strong>动画</strong>应用到的<strong>绝对定位元素（<code>position</code>属性为<code>absolute</code>或<code>fixed</code>）</strong>，使它脱离文档流，减少对其他元素造成的重排重绘影响。</li>
+<li>也可以先为元素设置<code>display: none</code>，操作结束后再把它显示出来。因为在<code>display</code>属性为<code>none</code>的元素上进行的<code>DOM</code>操作不会引发回流和重绘。不过感觉这样子不太实用。</li>
+<li>使用虚拟DOM</li>
+</ul>
+<h2 id="3-3-优化CSS组织方式"><a href="#3-3-优化CSS组织方式" class="headerlink" title="3.3 优化CSS组织方式"></a>3.3 优化CSS组织方式</h2><h3 id="3-3-1-降低选择器的复杂性"><a href="#3-3-1-降低选择器的复杂性" class="headerlink" title="3.3.1 降低选择器的复杂性"></a>3.3.1 降低选择器的复杂性</h3><p>在最简单的情况下，您在 CSS 中引用只有一个类的元素:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="comment">/* styles */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是，随着项目的增长，将可能产生更复杂的 CSS，最终您的选择器可能变成这样:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:nth-last-child</span>(-n+<span class="number">1</span>) <span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="comment">/* styles */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>浏览器实际上必须询问“这是否为有 title 类的元素，其父元素恰好是负第 N 个子元素加上 1 个带 box 类的元素？”计算此结果可能需要大量时间。所以我们可以优化选择器</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.final-box-title</span> &#123;</span><br><span class="line">  <span class="comment">/* styles */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并且，避免设置多层内联样式，在使用less、sass的时候，不要去嵌套css，增加了复杂度，例如</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">    <span class="selector-class">.b</span>&#123;</span><br><span class="line">        <span class="selector-class">.c</span>&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-3-2-减少要计算样式的元素数量"><a href="#3-3-2-减少要计算样式的元素数量" class="headerlink" title="3.3.2 减少要计算样式的元素数量"></a>3.3.2 减少要计算样式的元素数量</h3><p>用合理的方法来组织您的 CSS，使得每个选择器对应的DOM元素不要太多，减少在元素更改时需要计算的工作量。</p>
+<h3 id="3-3-3-尽量较少布局操作"><a href="#3-3-3-尽量较少布局操作" class="headerlink" title="3.3.3 尽量较少布局操作"></a>3.3.3 尽量较少布局操作</h3><p>当您更改样式时，浏览器会检查任何更改是否需要计算布局，以及是否需要更新渲染树。对“几何属性”（如宽度、高度、左侧或顶部）的更改都需要布局计算。</p>
+<h3 id="3-3-4-使用-flexbox-而不是较早的布局模型"><a href="#3-3-4-使用-flexbox-而不是较早的布局模型" class="headerlink" title="3.3.4 使用 flexbox 而不是较早的布局模型"></a>3.3.4 使用 flexbox 而不是较早的布局模型</h3><p>新版 Flexbox 一般比旧版 Flexbox 或基于浮动的布局模型更快</p>
+<p>最早的 CSS 布局模型使我们能够在屏幕上对元素进行相对、绝对定位或通过浮动元素定位。</p>
+<p>对于相同数量的元素和相同的视觉外观，flexbox布局的时间要少得多。</p>
+<h3 id="3-3-5-提升合成层，使用opacity和transform做动画"><a href="#3-3-5-提升合成层，使用opacity和transform做动画" class="headerlink" title="3.3.5 提升合成层，使用opacity和transform做动画"></a>3.3.5 提升合成层，使用opacity和transform做动画</h3><p>让渲染引擎为其单独实现一个图层，当这些变换发生时，仅仅只是利用合成线程去处理这些变换，而不牵扯到主线程，大大提高渲染效率。</p>
+<p>首先前提是：<strong>使用 <code>will-change</code> 或 <code>translateZ</code> 提升移动的元素</strong>。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//新版浏览器</span><br><span class="line"><span class="selector-class">.moving-element</span> &#123;</span><br><span class="line">  will-change: transform;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//旧版浏览器</span><br><span class="line"><span class="selector-class">.moving-element</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-6-不要乱提升合成层"><a href="#3-3-6-不要乱提升合成层" class="headerlink" title="3.3.6 不要乱提升合成层"></a>3.3.6 不要乱提升合成层</h3><p>合理提升合成层往往有助于性能，知道这一点可能会诱使开发者通过以下代码来提升页面上的所有元素:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  will-change: transform;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是以迂回方式说您想要提升页面上的每个元素。此处的问题是您创建的每一层都需要内存和管理，而这些并不是免费的。事实上，在内存有限的设备上，对性能的影响可能远远超过创建层带来的任何好处。每一层的纹理都需要上传到 GPU，使 CPU 与 GPU 之间的带宽、GPU 上可用于纹理处理的内存都受到进一步限制。</p>
+<h2 id="3-4学会使用devtool进行分析"><a href="#3-4学会使用devtool进行分析" class="headerlink" title="3.4学会使用devtool进行分析"></a>3.4学会使用devtool进行分析</h2><p>例如我们测试样式重新计算的开销</p>
+<p>测量样式重新计算的最简单、最好的方法是使用 Chrome DevTools 的 Performance模式。</p>
+<p>首先，打开 DevTools，转至 Performance选项卡，选中记录并与您的网站交互。停止记录后，将看到响应情况。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vd2ViL2Z1bmRhbWVudGFscy9wZXJmb3JtYW5jZS9yZW5kZXJpbmc/aGw9emgtY24=">Rendering Performance</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmxvZ3JvY2tldC5jb20vZWxpbWluYXRlLWNvbnRlbnQtcmVwYWludHMtd2l0aC10aGUtbmV3LWxheWVycy1wYW5lbC1pbi1jaHJvbWUtZTJjMzA2ZDRkNzUyLz9naT1jZDYyNzE4MzRjZWE=">Eliminate content repaints with the new Layers panel in Chrome</span></li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/Browser/" rel="tag"><i class="ic i-tag"></i> Browser</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-28 10:28:58" itemprop="dateModified" datetime="2021-12-28T10:28:58+08:00">2021-12-28</time>
+  </span>
+  <span id="FrontEnd/Browser/FrontEnd/Browser/【浏览器内核原理篇】重绘Repaint与回流Reflow" class="item leancloud_visitors" data-flag-title="【浏览器内核原理篇】重绘Repaint与回流Reflow" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" title="【浏览器内核原理篇】重绘Repaint与回流Reflow">https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/【浏览器内核原理篇】重绘Repaint与回流Reflow</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="【V8引擎原理篇】浏览器原理介绍">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>【V8引擎原理篇】浏览器原理介绍</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">0.引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%9B%9E%E9%A1%BE%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">1.回顾知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-160fps%E4%B8%8E%E8%AE%BE%E5%A4%87%E5%88%B7%E6%96%B0%E7%8E%87"><span class="toc-number">2.1.</span> <span class="toc-text">1.160fps与设备刷新率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E5%83%8F%E7%B4%A0%E7%AE%A1%E9%81%93"><span class="toc-number">2.2.</span> <span class="toc-text">1.2像素管道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%83%8F%E7%B4%A0%E7%AE%A1%E9%81%93%E7%9A%84%E4%B8%89%E7%A7%8D%E6%83%85%E5%86%B5"><span class="toc-number">3.</span> <span class="toc-text">2.像素管道的三种情况</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E6%83%85%E5%86%B5%E4%B8%80%E3%80%81%E9%87%8D%E6%8E%92Reflow%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">2.1情况一、重排Reflow（回流）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8D%E6%8E%92"><span class="toc-number">3.1.1.</span> <span class="toc-text">什么是重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%9A%E5%AF%BC%E8%87%B4%E9%87%8D%E6%8E%92%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">3.1.2.</span> <span class="toc-text">会导致重排的操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2%E6%83%85%E5%86%B5%E4%BA%8C%E3%80%81%E9%87%8D%E7%BB%98Repaint"><span class="toc-number">3.2.</span> <span class="toc-text">2.2情况二、重绘Repaint</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8D%E7%BB%98"><span class="toc-number">3.2.1.</span> <span class="toc-text">什么是重绘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E9%87%8D%E6%8E%92%E5%92%8C%E9%87%8D%E7%BB%98%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.3.</span> <span class="toc-text">2.3重排和重绘的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%B5%81%E6%AF%94%E9%87%8D%E7%BB%98%E7%9A%84%E4%BB%A3%E4%BB%B7%E8%A6%81%E6%9B%B4%E9%AB%98"><span class="toc-number">3.3.1.</span> <span class="toc-text">回流比重绘的代价要更高</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4%E6%83%85%E5%86%B5%E4%B8%89%E3%80%81%E7%9B%B4%E6%8E%A5%E5%90%88%E6%88%90"><span class="toc-number">3.4.</span> <span class="toc-text">2.4情况三、直接合成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GPU%E5%8A%A0%E9%80%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">GPU加速的原因</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AF%87"><span class="toc-number">4.</span> <span class="toc-text">3.性能优化篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%B8%A6%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 浏览器自带的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E7%A4%BA%EF%BC%9A%E9%81%BF%E5%85%8D%E5%BC%BA%E5%88%B6%E5%90%8C%E6%AD%A5%E5%B8%83%E5%B1%80"><span class="toc-number">4.1.1.</span> <span class="toc-text">启示：避免强制同步布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BC%98%E5%8C%96JavaScript%E6%89%A7%E8%A1%8C"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 优化JavaScript执行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E4%BD%BF%E7%94%A8DocumentFragment%E8%BF%9B%E8%A1%8C%E6%89%B9%E9%87%8F%E7%9A%84-DOM-%E6%93%8D%E4%BD%9C"><span class="toc-number">4.2.1.</span> <span class="toc-text">3.2.1 使用DocumentFragment进行批量的 DOM 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E4%BD%BF%E7%94%A8-requestAnimationFrame-%E6%9D%A5%E5%AE%9E%E7%8E%B0%E8%A7%86%E8%A7%89%E5%8F%98%E5%8C%96"><span class="toc-number">4.2.2.</span> <span class="toc-text">3.2.2 使用 requestAnimationFrame 来实现视觉变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E4%BD%BF%E7%94%A8Web-Worker%E5%A4%84%E7%90%86%E6%97%A0%E5%85%B3%E5%A4%8D%E6%9D%82%E4%BB%BB%E5%8A%A1"><span class="toc-number">4.2.3.</span> <span class="toc-text">3.2.3 使用Web Worker处理无关复杂任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E5%AF%B9%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81"><span class="toc-number">4.2.4.</span> <span class="toc-text">3.2.4 对组件使用防抖节流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-%E9%81%BF%E5%85%8D%E9%A2%91%E7%B9%81%E4%BD%BF%E7%94%A8-style%EF%BC%8C%E8%80%8C%E6%98%AF%E9%87%87%E7%94%A8%E4%BF%AE%E6%94%B9class%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">4.2.5.</span> <span class="toc-text">3.2.5 避免频繁使用 style，而是采用修改class的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-%E5%85%B6%E4%BB%96"><span class="toc-number">4.2.6.</span> <span class="toc-text">3.2.6 其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E4%BC%98%E5%8C%96CSS%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 优化CSS组织方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E9%99%8D%E4%BD%8E%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="toc-number">4.3.1.</span> <span class="toc-text">3.3.1 降低选择器的复杂性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E5%87%8F%E5%B0%91%E8%A6%81%E8%AE%A1%E7%AE%97%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%85%83%E7%B4%A0%E6%95%B0%E9%87%8F"><span class="toc-number">4.3.2.</span> <span class="toc-text">3.3.2 减少要计算样式的元素数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-%E5%B0%BD%E9%87%8F%E8%BE%83%E5%B0%91%E5%B8%83%E5%B1%80%E6%93%8D%E4%BD%9C"><span class="toc-number">4.3.3.</span> <span class="toc-text">3.3.3 尽量较少布局操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-4-%E4%BD%BF%E7%94%A8-flexbox-%E8%80%8C%E4%B8%8D%E6%98%AF%E8%BE%83%E6%97%A9%E7%9A%84%E5%B8%83%E5%B1%80%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.3.4.</span> <span class="toc-text">3.3.4 使用 flexbox 而不是较早的布局模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-5-%E6%8F%90%E5%8D%87%E5%90%88%E6%88%90%E5%B1%82%EF%BC%8C%E4%BD%BF%E7%94%A8opacity%E5%92%8Ctransform%E5%81%9A%E5%8A%A8%E7%94%BB"><span class="toc-number">4.3.5.</span> <span class="toc-text">3.3.5 提升合成层，使用opacity和transform做动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-6-%E4%B8%8D%E8%A6%81%E4%B9%B1%E6%8F%90%E5%8D%87%E5%90%88%E6%88%90%E5%B1%82"><span class="toc-number">4.3.6.</span> <span class="toc-text">3.3.6 不要乱提升合成层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4%E5%AD%A6%E4%BC%9A%E4%BD%BF%E7%94%A8devtool%E8%BF%9B%E8%A1%8C%E5%88%86%E6%9E%90"><span class="toc-number">4.4.</span> <span class="toc-text">3.4学会使用devtool进行分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="客户端存储">客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【V8引擎原理篇】浏览器原理介绍">【V8引擎原理篇】浏览器原理介绍</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" rel="bookmark" title="【浏览器内核原理篇】重绘Repaint与回流Reflow">【浏览器内核原理篇】重绘Repaint与回流Reflow</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">30</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">8</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">11</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE" title="JavaScript中的数据">JavaScript中的数据</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
+</div>
+
+    <span><a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/BOM%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B" title="BOM浏览器对象模型">BOM浏览器对象模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">397k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">6:01</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/Browser/FrontEnd/Browser/【浏览器内核原理篇】重绘Repaint与回流Reflow',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
