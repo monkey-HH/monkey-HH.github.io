@@ -1,0 +1,785 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="JavaScript" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93">
+
+
+
+  <title>
+JavaScript中DOM操作总结 - JavaScript - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">JavaScript中DOM操作总结
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-05-23 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-05-23T12:00:00+08:00">2021-05-23</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>7.6k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>7 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/JavaScript/" itemprop="item" rel="index" title="In JavaScript"><span itemprop="name">JavaScript</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0.引言"></a>0.引言</h1><p>相信很多人在学习DOM操作的时候都会有一些疑问，Node和Element的关系是什么？如何对DOM元素进行增删查改？什么又是HTMLCollection,HTMLElement,和NodeList呢？为什么在调用nextSibling时访问innerHTML会出错？</p>
+<p>等等的问题，以下是我的一些分享。</p>
+<h1 id="1-什么是HTML-DOM？"><a href="#1-什么是HTML-DOM？" class="headerlink" title="1.什么是HTML DOM？"></a>1.什么是HTML DOM？</h1><p>DOM (Document Object Model) 译为<strong>文档对象模型</strong></p>
+<p>在 HTML DOM (Document Object Model) 中 , 每一个元素都是 <strong>节点</strong>:</p>
+<ul>
+<li>文档是一个文档节点。</li>
+<li>所有的HTML元素都是元素节点。</li>
+<li>所有 HTML 属性都是属性节点。（这点很可能被删除）</li>
+<li>文本插入到 HTML 元素是文本节点。are text nodes。</li>
+<li>注释是注释节点。</li>
+</ul>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181331169.png" alt="image-20211218133132122"></p>
+<h1 id="2-几个重要的接口介绍"><a href="#2-几个重要的接口介绍" class="headerlink" title="2.几个重要的接口介绍"></a>2.几个重要的接口介绍</h1><h2 id="👴EventTarget"><a href="#👴EventTarget" class="headerlink" title="👴EventTarget"></a>👴EventTarget</h2><p>👴这个前缀已经暗示了，EventTarget是一切的节点的祖先了，什么Node、Element都是这个接口的“子孙”。</p>
+<p><code>EventTarget</code> 是一个 DOM 接口，由可以接收事件、并且可以创建侦听器的对象实现。</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document"><code>document</code></a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window"><code>window</code></a> 是最常见的 event targets ，但是其他对象也可以作为 event targets，比如 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest"><code>XMLHttpRequest</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AudioNode"><code>AudioNode</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/AudioContext"><code>AudioContext</code></a> 等等。</p>
+<p>许多 event targets （包括 elements， documents 和 windows）支持通过 <code>onevent</code> 特性和属性设置<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvRXZlbnRzL0V2ZW50X2hhbmRsZXJz">事件处理程序 (en-US)</span> (<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvRXZlbnRzL0V2ZW50X2hhbmRsZXJz">event handlers (en-US)</span>)。</p>
+<h3 id="EventTarget-构造函数"><a href="#EventTarget-构造函数" class="headerlink" title="EventTarget 构造函数"></a>EventTarget 构造函数</h3><p>详细可参考，此处不做重点内容：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/EventTarget"><code>EventTarget()</code></a></p>
+<h3 id="EventTarget-属性"><a href="#EventTarget-属性" class="headerlink" title="EventTarget 属性"></a>EventTarget 属性</h3><p>无</p>
+<h3 id="EventTarget-方法"><a href="#EventTarget-方法" class="headerlink" title="EventTarget 方法"></a>EventTarget 方法</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener"><code>EventTarget.addEventListener()</code></a> ：在EventTarget上注册特定事件类型的事件处理程序。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/removeEventListener"><code>EventTarget.removeEventListener()</code></a> ：EventTarget中删除事件侦听器。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent"><code>EventTarget.dispatchEvent()</code></a> ：将事件分派到此EventTarget。</li>
+</ul>
+<p>看到这些方法我们就知道了，原来我们通过js给元素添加事件监听函数的方法接口，都是由EventTarget提供的！</p>
+<h2 id="👨Node"><a href="#👨Node" class="headerlink" title="👨Node"></a>👨Node</h2><p>👨这个前缀就暗示了，Node比EventTarget辈分小，Node是EventTarget的儿子，换句话说，<strong>Node继承了EventTarget</strong>！！！</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181357327.png" alt="image-20211218135747297"></p>
+<blockquote>
+<p><strong><code>Node</code></strong> 是一个接口，各种类型的 DOM API 对象会从这个接口继承。它允许我们使用相似的方式对待这些不同类型的对象；比如, 继承同一组方法，或者用同样的方式测试。</p>
+<p>以下接口都从 <code>Node</code> 继承其方法和属性：</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document"><code>Document</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Attr"><code>Attr</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CharacterData"><code>CharacterData</code></a> (which <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Text"><code>Text</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Comment"><code>Comment</code></a>, and <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CDATASection"><code>CDATASection</code></a> inherit), <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction"><code>ProcessingInstruction</code> (en-US)</a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment"><code>DocumentFragment</code></a>, <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentType"><code>DocumentType</code></a>, <code>Notation</code>, <code>Entity</code>, <code>EntityReference</code></p>
+<p>在方法和属性不相关的特定情况下，这些接口可能返回 <code>null</code>。它们可能会抛出异常 - 例如，当将子节点添加到不允许子节点存在的节点时。</p>
+<p>—— MDN</p>
+</blockquote>
+<h3 id="Node-构造函数"><a href="#Node-构造函数" class="headerlink" title="Node 构造函数"></a>Node 构造函数</h3><p>无</p>
+<h3 id="Node实例属性"><a href="#Node实例属性" class="headerlink" title="Node实例属性"></a>Node实例属性</h3><p>除了从EventTarget继承的属性，还有自己的以下一些<u>重点属性</u>：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/parentNode"><code>Node.parentNode</code></a> 、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/childNodes"><code>Node.childNodes</code></a>：谦和返回一个当前节点 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>的父节点 ，后者返回一个包含了该节点所有<strong>子节点</strong>的<strong>实时</strong>的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList"><code>NodeList</code></a>（子节点更新时这个也会更新）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/firstChild"><code>Node.firstChild</code></a> 、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/lastChild"><code>Node.lastChild</code></a> ：前者返回该节点的第一个子节点<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>，后者返回该节点的最后一个子节点<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/previousSibling"><code>Node.previousSibling</code></a> 、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nextSibling"><code>Node.nextSibling</code></a> ：前者返回哥哥Node节点，后者返回弟弟Node节点。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType"><code>⭐Node.nodeType</code></a>：返回一个与该节点类型对应的<code>无符号短整型</code>的值，可能的值如下，详细请<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL05vZGUvbm9kZVR5cGU=">点击</span></p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th align="left">常量</th>
+<th align="left">NodeType</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>Node.ELEMENT_NODE</code></td>
+<td align="left"><code>1</code></td>
+<td align="left">一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>元素</code></a> 节点，例如 p  div span 等等所有的标签</td>
+</tr>
+<tr>
+<td align="left"><code>Node.TEXT_NODE</code></td>
+<td align="left"><code>3</code></td>
+<td align="left">表示一个文本节点，回车、空格也算文本，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a> 或者 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Attr"><code>Attr</code></a> 中实际的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Text"><code>文字</code></a></td>
+</tr>
+<tr>
+<td align="left"><code>Node.COMMENT_NODE</code></td>
+<td align="left"><code>8</code></td>
+<td align="left">一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Comment"><code>Comment</code></a> 节点，即注释节点。</td>
+</tr>
+<tr>
+<td align="left"><code>Node.DOCUMENT_NODE</code></td>
+<td align="left"><code>9</code></td>
+<td align="left">一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document"><code>Document</code></a> 节点。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/parentElement"><code>Node.parentElement</code></a> ：返回一个当前节点的父节点 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a> 。</p>
+</li>
+<li><p>…</p>
+</li>
+</ul>
+<p>我们可以从nodeType属性看到node到底有什么类型的节点，我们熟知的有元素节点、注释节点、文本节点等，我们通过一个例子看看nodeType属性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--注释--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;father&#x27;</span>).childNodes); <span class="comment">//NodeList[5]</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;father&#x27;</span>).children) ;  <span class="comment">//HTMLCollection[div]</span></span></span><br><span class="line"><span class="javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181425183.png" alt="image-20211218142553144"></p>
+<p>显然，我们打印childNodes得到的都是Node节点，comment节点对应了注释，div#son节点对应了其子节点div。可能会有个疑问，为什么这里会有三个text文本节点呢？因为上面提到了，回车、空格也算文本，咱们点看看看就能发现。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181428760.png" alt="image-20211218142806725"></p>
+<p>而下面的打印children得到的则是只有一个div元素，提前预告一下，通过children返回的就是Element元素，详细的后面会提到。</p>
+<h3 id="Node实例方法"><a href="#Node实例方法" class="headerlink" title="Node实例方法"></a>Node实例方法</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/appendChild"><code>Node.appendChild()</code></a>：将指定的 childNode 参数作为最后一个子节点添加到当前节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/insertBefore"><code>Node.insertBefore()</code></a>：将新Node插入到指定子节点的前面。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/cloneNode"><code>Node.cloneNode()</code></a>：克隆一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>，并且可以选择是否克隆这个节点下的所有内容。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/contains"><code>Node.contains()</code></a>：表示传入的节点是否为该节点的后代节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/hasChildNodes"><code>Node.hasChildNodes()</code></a>：表示该元素是否包含有子节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/removeChild"><code>Node.removeChild()</code></a>：移除一个子节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/replaceChild"><code>Node.replaceChild()</code></a>：替换一个子节点。</li>
+<li>…</li>
+</ul>
+<h2 id="🧑Element"><a href="#🧑Element" class="headerlink" title="🧑Element"></a>🧑Element</h2><p>🧑前缀已经暗示了，Element继承了Node。</p>
+<p><strong><code>Element</code></strong> 是一个通用性非常强的基类，所有 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document"><code>Document</code></a> 对象下的对象都继承自它。这个接口描述了所有相同种类的元素所普遍具有的方法和属性。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181440691.png" alt="image-20211218144046656"></p>
+<p>*所有属性方法继承自它的祖先接口 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>，并且扩展了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a> 的父接口 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget"><code>EventTarget</code></a>*。</p>
+<h3 id="Element-构造函数"><a href="#Element-构造函数" class="headerlink" title="Element 构造函数"></a>Element 构造函数</h3><p>无</p>
+<h3 id="Element实例属性"><a href="#Element实例属性" class="headerlink" title="Element实例属性"></a>Element实例属性</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className"><code>Element.className</code></a>：这个元素的 class。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/id"><code>Element.id</code></a>：这个元素的ID</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML"><code>Element.innerHTML</code></a>：表示这个元素的内容文本。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/children"><code>Element.children</code></a> ：只读！获取到元素的子Element。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/childElementCount"><code>Element.childElementCount</code></a> ：只读！获取到元素的子Element的数量。</li>
+<li>…</li>
+</ul>
+<h3 id="Element实例方法"><a href="#Element实例方法" class="headerlink" title="Element实例方法"></a>Element实例方法</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getAttribute"><code>Element.getAttribute()</code></a>：获取属性</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/setAttribute"><code>Element.setAttribute()</code></a>：设定属性</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/removeAttribute"><code>Element.removeAttribute()</code></a>：通过给属性名移除某一个属性。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNode"><code>Element.removeAttributeNode()</code></a>：通过直接给一个Node实例删除一个属性。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getElementsByClassName"><code>Element.getElementsByClassName()</code></a> ：返回一个动态的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCollection"><code>HTMLCollection</code></a> ，包含了所有持有这些类的后代元素。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getElementsByTagName"><code>Element.getElementsByTagName()</code></a>：返回一个动态的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCollection"><code>HTMLCollection</code></a> ，包含了所有持有这些类的后代元素。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/querySelector"><code>Element.querySelector()</code></a>：通过选择器查找元素。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentElement"><code>Element.insertAdjacentElement()</code></a>：将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentHTML"><code>Element.insertAdjacentHTML()</code></a>：将指定的文本解析为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a> 元素，并将结果节点插入到DOM树中的指定位置。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentText"><code>Element.insertAdjacentText()</code></a>：将一个给定的文本节点插入在相对于被调用的元素给定的位置。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/remove"><code>Element.remove()</code></a>：把该节点移除。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/before"><code>Element.before()</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/after"><code>Element.after()</code></a>：插入一个哥哥节点或者弟弟节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend"><code>Element.prepend()</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append"><code>Element.append()</code></a>：插入一个最大儿子元素或者一个最小儿子元素。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren"><code>Element.replaceChildren()</code></a>：移除当前节点的子节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith"><code>Element.replaceWith()</code></a>：移除的同时给新节点</li>
+</ul>
+<h2 id="其他重要类和上述类的关系"><a href="#其他重要类和上述类的关系" class="headerlink" title="其他重要类和上述类的关系"></a>其他重要类和上述类的关系</h2><h3 id="1-Document"><a href="#1-Document" class="headerlink" title="1.Document"></a>1.Document</h3><p>我们经常使用到Document这一个对象。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181454994.png" alt="image-20211218145407957"></p>
+<h3 id="2-Window"><a href="#2-Window" class="headerlink" title="2.Window"></a>2.Window</h3><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181454766.png" alt="image-20211218145424732"></p>
+<h3 id="3-History、Location、Navigator、Screen等剩下的BOM对象"><a href="#3-History、Location、Navigator、Screen等剩下的BOM对象" class="headerlink" title="3.History、Location、Navigator、Screen等剩下的BOM对象"></a>3.History、Location、Navigator、Screen等剩下的BOM对象</h3><p>不继承上述任何接口。</p>
+<h3 id="4-Attribute"><a href="#4-Attribute" class="headerlink" title="4.Attribute"></a>4.<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0F0dHI=">Attribute</span></h3><p>属性节点。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181646443.png" alt="image-20211218164621401"></p>
+<h3 id="5-Comment"><a href="#5-Comment" class="headerlink" title="5.Comment"></a>5.<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0NvbW1lbnQ=">Comment</span></h3><p>注释节点。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181646188.png" alt="image-20211218164658150"></p>
+<h3 id="6-Text"><a href="#6-Text" class="headerlink" title="6.Text"></a>6.<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL1RleHQ=">Text</span></h3><p>文本节点</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181647560.png" alt="image-20211218164745526"></p>
+<h3 id="7-HTMLElement"><a href="#7-HTMLElement" class="headerlink" title="7.HTMLElement"></a>7.<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL0hUTUxFbGVtZW50">HTMLElement</span></h3><p>HTMLElement 接口表示所有的 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRNTA==">HTML</span> 元素。一些HTML元素直接实现了HTMLElement接口，其它的间接实现HTMLElement接口。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201703601.png" alt="image-20211220170333571"></p>
+<h3 id="8-HTMLElement子类"><a href="#8-HTMLElement子类" class="headerlink" title="8.HTMLElement子类"></a>8.HTMLElement子类</h3><p>HTMLElement子接口有很多，例如<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL0hUTUxJbWFnZUVsZW1lbnQ=">HTMLImageElement</span>、 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement"><code>HTMLInputElement</code></a> 等等等等，几乎每一个html标签都继承了HTMLElement，以<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement"><code>HTMLInputElement</code></a> 为例子，其继承关系如下：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201706869.png" alt="QQ截图20211217140740"></p>
+<h1 id="3-NodeList-和HTMLCollection的关系"><a href="#3-NodeList-和HTMLCollection的关系" class="headerlink" title="3.NodeList 和HTMLCollection的关系"></a>3.NodeList 和HTMLCollection的关系</h1><p>首先，<strong>NodeList和ElementCollcetion都不是真正的数组</strong>，我们可以通过下面例子验证：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--注释--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;father&#x27;</span>) <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// false</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;father&#x27;</span>) <span class="keyword">instanceof</span> <span class="built_in">Array</span>) ;  <span class="comment">// false</span></span></span><br><span class="line"><span class="javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>NodeList、ElementCollcetion和函数的arguments都被称为<code>伪数组</code>，他们表示有length属性,但是不具备数组的方法。</p>
+<p>还是开始的时候的那个例子。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--注释--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;father&#x27;</span>).childNodes); <span class="comment">//NodeList[5]</span></span></span><br><span class="line"><span class="javascript">			<span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;father&#x27;</span>).children) ;  <span class="comment">//HTMLCollection[div]</span></span></span><br><span class="line"><span class="javascript">		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181425183.png" alt="image-20211218142553144"></p>
+<p>所以我们通过childNodes<code>获取到了</code>NodeList<code>，但我们操作DOM时往往不想操作</code>Node`(我只想操作元素Element)，那么如何获取ElementList呢？但我们操作DOM一般只会通过Element接口操作，所以我们通过的getElementsByxxx类似的API进行查询，得到的结果是一个HTMLCollection，事实上这个HTMLCollection里面的元素就是Element的实例。</p>
+<p>至于对于Node和Element的联系应该有了一定的认识。我们再回顾一下引言中提到的问题。</p>
+<blockquote>
+<p>为什么在调用nextSibling时访问innerHTML会出错？</p>
+</blockquote>
+<p>因为nextSibling获取到的是Node实例，该实例可能只是单纯的Node实例，也可能同时是Element的实例，而innerHTML是Element实例才拥有的属性，Node实例没有该属性，因此有可能报错。</p>
+<h1 id="4-DOM操作总结"><a href="#4-DOM操作总结" class="headerlink" title="4.DOM操作总结"></a>4.DOM操作总结</h1><h2 id="4-1-获取节点"><a href="#4-1-获取节点" class="headerlink" title="4.1 获取节点"></a>4.1 获取节点</h2><h3 id="1-查询元素"><a href="#1-查询元素" class="headerlink" title="1. 查询元素"></a>1. 查询元素</h3><p>以下只讨论返回的都是HTMLCollection实例。</p>
+<p>我们查询DOM元素一般通过以下的方法：</p>
+<ul>
+<li>document.getElementsById(Id) 通过ID获取结点，ID是唯一的</li>
+<li>document.getElementsByName(name) 通过名字获取结点，name是获取有着相同名字的集合</li>
+<li>document.getElementsByTagName(Tagname) 通过标签名获取结点，比如p，span</li>
+</ul>
+<p>还有一个通过CSS选择器查询的方法：</p>
+<ul>
+<li>Document.querySelector()、Document.querySelectorAll：在整棵DOM树查。</li>
+<li>Element.querySelector()、Element.querySelectorAll()：在指定Element的后代中查询</li>
+</ul>
+<h3 id="2-通过节点指针"><a href="#2-通过节点指针" class="headerlink" title="2. 通过节点指针"></a>2. 通过节点指针</h3><p>结合上面的的方法，我们可以利用返回的结果进行再一次查询。</p>
+<p>Node接口提供的操作，获取到的都是Node的实例。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/parentNode"><code>Node.parentNode</code></a> 、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/childNodes"><code>Node.childNodes</code></a>：谦和返回一个当前节点 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>的父节点 ，后者返回一个包含了该节点所有<strong>子节点</strong>的<strong>实时</strong>的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeList"><code>NodeList</code></a>（子节点更新时这个也会更新）。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/firstChild"><code>Node.firstChild</code></a> 、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/lastChild"><code>Node.lastChild</code></a> ：前者返回该节点的第一个子节点<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>，后者返回该节点的最后一个子节点<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/previousSibling"><code>Node.previousSibling</code></a> 、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nextSibling"><code>Node.nextSibling</code></a> ：前者返回哥哥Node节点，后者返回弟弟Node节点。</li>
+</ul>
+<p>Node接口<strong>的子类</strong>提供的操作，获取到的既是Node的实例，同时也是对应子类的实例，因为可以直接获取元素节点，一般比较常用。</p>
+<p>Element类特有的方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/children"><code>Element.children</code></a> ：<strong>只读</strong>！获取到元素的子Element类实例。</li>
+</ul>
+<h2 id="4-2-创建节点"><a href="#4-2-创建节点" class="headerlink" title="4.2 创建节点"></a>4.2 创建节点</h2><p>主要通过Document.createXxx的方法进行创建</p>
+<ol>
+<li>创建一个元素节点：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"><code>Document.createElement()</code></a>：</li>
+<li>创建一个属性节点：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttribute"><code>Document.createAttribute()</code></a></li>
+<li>创建一个文本节点：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode"><code>Document.createTextNode()</code></a></li>
+<li>创建一个注释节点：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createComment"><code>Document.createComment()</code></a></li>
+</ol>
+<p>事实上节点并不只有这些，可以通过查询<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0RvY3VtZW50I21ldGhvZHM=">MDN</span>获取更多方法</p>
+<h2 id="4-3-插入节点"><a href="#4-3-插入节点" class="headerlink" title="4.3 插入节点"></a>4.3 插入节点</h2><p>Node接口所提供的方法，可适用于所有的Node及其子类：</p>
+<ul>
+<li>Node.appendChild(所添加的新节点) 向节点的子节点列表的末尾添加新的子节点</li>
+<li>Node.insertBefore(所添加的新节点,已知子节点) 在已知的节点前插入一个新的子节点</li>
+</ul>
+<p>Element类特有的方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentElement"><code>Element.insertAdjacentElement()</code></a>：将一个给定的元素节点插入到相对于被调用的元素的给定的一个位置。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentHTML"><code>Element.insertAdjacentHTML()</code></a>：将指定的文本解析为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a> 元素，并将结果节点插入到DOM树中的指定位置。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/insertAdjacentText"><code>Element.insertAdjacentText()</code></a>：将一个给定的文本节点插入在相对于被调用的元素给定的位置。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/before"><code>Element.before()</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/after"><code>Element.after()</code></a>：插入一个哥哥节点或者弟弟节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend"><code>Element.prepend()</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append"><code>Element.append()</code></a>：插入一个最大儿子元素或者一个最小儿子元素。</li>
+</ul>
+<h2 id="4-4-删除节点"><a href="#4-4-删除节点" class="headerlink" title="4.4 删除节点"></a>4.4 删除节点</h2><p>Node接口所提供的方法，可适用于所有的Node及其子类：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/removeChild"><code>Node.removeChild()</code></a>：移除一个子节点。</li>
+</ul>
+<p>Element类特有的方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/remove"><code>Element.remove()</code></a>：把该节点移除</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute"><code>Element.removeAttribute()</code></a>：通过给属性名移除某一个属性。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNode"><code>Element.removeAttributeNode()</code></a>：通过直接给一个Node实例删除一个属性。</li>
+</ul>
+<h2 id="4-5-替换节点"><a href="#4-5-替换节点" class="headerlink" title="4.5 替换节点"></a>4.5 替换节点</h2><p>Node接口所提供的方法，可适用于所有的Node及其子类：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/replaceChild"><code>Node.replaceChild()</code></a>：替换一个子节点。</li>
+</ul>
+<p>Element类特有的方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren"><code>Element.replaceChildren()</code></a>：移除当前节点的子节点。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith"><code>Element.replaceWith()</code></a>：移除的同时给新节点</li>
+</ul>
+<h2 id="4-6-复制节点"><a href="#4-6-复制节点" class="headerlink" title="4.6 复制节点"></a>4.6 复制节点</h2><p>Node接口所提供的方法，可适用于所有的Node及其子类：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/cloneNode"><code>Node.cloneNode()</code></a>：克隆一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node"><code>Node</code></a>，并且可以选择是否克隆这个节点下的所有内容。</li>
+</ul>
+<h2 id="4-7-属性操作"><a href="#4-7-属性操作" class="headerlink" title="4.7 属性操作"></a>4.7 属性操作</h2><p>Element类特有的方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getAttribute"><code>Element.getAttribute()</code></a>：获取属性</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/setAttribute"><code>Element.setAttribute()</code></a>：设定属性</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/removeAttribute"><code>Element.removeAttribute()</code></a>：通过给属性名移除某一个属性。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNode"><code>Element.removeAttributeNode()</code></a>：通过直接给一个Node实例删除一个属性。</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/JavaScript/" rel="tag"><i class="ic i-tag"></i> JavaScript</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-28 10:16:16" itemprop="dateModified" datetime="2021-12-28T10:16:16+08:00">2021-12-28</time>
+  </span>
+  <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript中DOM操作总结" class="item leancloud_visitors" data-flag-title="JavaScript中DOM操作总结" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">https://monkeyhh.top/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript中DOM操作总结</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器Web安全攻防">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>浏览器Web安全攻防</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的前端模块化">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>JavaScript中的前端模块化</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">0.引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFHTML-DOM%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">1.什么是HTML DOM？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E6%8E%A5%E5%8F%A3%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">2.几个重要的接口介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%91%B4EventTarget"><span class="toc-number">3.1.</span> <span class="toc-text">👴EventTarget</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#EventTarget-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">EventTarget 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EventTarget-%E5%B1%9E%E6%80%A7"><span class="toc-number">3.1.2.</span> <span class="toc-text">EventTarget 属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EventTarget-%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.3.</span> <span class="toc-text">EventTarget 方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%91%A8Node"><span class="toc-number">3.2.</span> <span class="toc-text">👨Node</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.1.</span> <span class="toc-text">Node 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7"><span class="toc-number">3.2.2.</span> <span class="toc-text">Node实例属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.3.</span> <span class="toc-text">Node实例方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%91Element"><span class="toc-number">3.3.</span> <span class="toc-text">🧑Element</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Element-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">3.3.1.</span> <span class="toc-text">Element 构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Element%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7"><span class="toc-number">3.3.2.</span> <span class="toc-text">Element实例属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Element%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.3.</span> <span class="toc-text">Element实例方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E7%B1%BB%E5%92%8C%E4%B8%8A%E8%BF%B0%E7%B1%BB%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.4.</span> <span class="toc-text">其他重要类和上述类的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Document"><span class="toc-number">3.4.1.</span> <span class="toc-text">1.Document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Window"><span class="toc-number">3.4.2.</span> <span class="toc-text">2.Window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-History%E3%80%81Location%E3%80%81Navigator%E3%80%81Screen%E7%AD%89%E5%89%A9%E4%B8%8B%E7%9A%84BOM%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.4.3.</span> <span class="toc-text">3.History、Location、Navigator、Screen等剩下的BOM对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Attribute"><span class="toc-number">3.4.4.</span> <span class="toc-text">4.Attribute</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Comment"><span class="toc-number">3.4.5.</span> <span class="toc-text">5.Comment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Text"><span class="toc-number">3.4.6.</span> <span class="toc-text">6.Text</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-HTMLElement"><span class="toc-number">3.4.7.</span> <span class="toc-text">7.HTMLElement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-HTMLElement%E5%AD%90%E7%B1%BB"><span class="toc-number">3.4.8.</span> <span class="toc-text">8.HTMLElement子类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-NodeList-%E5%92%8CHTMLCollection%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">3.NodeList 和HTMLCollection的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-DOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">4.DOM操作总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 获取节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E8%AF%A2%E5%85%83%E7%B4%A0"><span class="toc-number">5.1.1.</span> <span class="toc-text">1. 查询元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E8%8A%82%E7%82%B9%E6%8C%87%E9%92%88"><span class="toc-number">5.1.2.</span> <span class="toc-text">2. 通过节点指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 创建节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 插入节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="toc-number">5.4.</span> <span class="toc-text">4.4 删除节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-%E6%9B%BF%E6%8D%A2%E8%8A%82%E7%82%B9"><span class="toc-number">5.5.</span> <span class="toc-text">4.5 替换节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-%E5%A4%8D%E5%88%B6%E8%8A%82%E7%82%B9"><span class="toc-number">5.6.</span> <span class="toc-text">4.6 复制节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="toc-number">5.7.</span> <span class="toc-text">4.7 属性操作</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE" rel="bookmark" title="JavaScript中的数据">JavaScript中的数据</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/BOM%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B" rel="bookmark" title="BOM浏览器对象模型">BOM浏览器对象模型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" rel="bookmark" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" rel="bookmark" title="JavaScript事件循环">JavaScript事件循环</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">27</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">6</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">9</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE" title="JavaScript中的数据">JavaScript中的数据</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D" title="浏览器本地存储介绍">浏览器本地存储介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
+</div>
+
+    <span><a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">339k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">5:08</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript中DOM操作总结',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
