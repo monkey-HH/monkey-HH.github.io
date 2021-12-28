@@ -1,0 +1,709 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="pnpm" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F">
+
+
+
+  <title>
+pnpm相较于npm和yarn有什么优点？ - Package_Manager - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">pnpm相较于npm和yarn有什么优点？
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-10-03 09:28:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-10-03T09:28:32+08:00">2021-10-03</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>5.5k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>5 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281044723.jpeg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Package-Manager/" itemprop="item" rel="index" title="In Package_Manager"><span itemprop="name">Package_Manager</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="一、什么是pnpm？"><a href="#一、什么是pnpm？" class="headerlink" title="一、什么是pnpm？"></a>一、什么是pnpm？</h1><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3BucG0vcG5wbQ==">pnpm</span>是 Node.js 的替代包管理器。它是 npm 的直接替代品，但速度更快、效率更高。</p>
+<blockquote>
+<p>Fast, disk space efficient package manager</p>
+</blockquote>
+<h1 id="二、pnpm特性"><a href="#二、pnpm特性" class="headerlink" title="二、pnpm特性"></a>二、pnpm特性</h1><h2 id="1-速度快"><a href="#1-速度快" class="headerlink" title="1.速度快"></a>1.速度快</h2><blockquote>
+<p>官网描述：pnpm is up to 2x faster than the alternatives</p>
+</blockquote>
+<p><img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20211219172251387.png" alt="image-20211219172251387"></p>
+<p>我们从官网的benchmark测试，可以看到，pnpm的速度在大多情况下比npm和yarn等方式安装包都要更快。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191721947.png" alt="image-20211219172105737" style="zoom:80%;" />
+
+<h2 id="2-高效利用磁盘空间"><a href="#2-高效利用磁盘空间" class="headerlink" title="2.高效利用磁盘空间"></a>2.高效利用磁盘空间</h2><blockquote>
+<p>官网描述：Files inside node_modules are linked from a single content-addressable storage</p>
+</blockquote>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191723832.png" alt="image-20211219172331795"></p>
+<p>​    pnpm 内部使用<code>基于内容寻址</code>的文件系统来存储磁盘上所有的文件，这个文件系统出色的地方在于:</p>
+<ul>
+<li><strong>不同版本依赖优化</strong>：<u>不会重复安装同一个包</u>。如果依赖于不同版本的依赖项，则只会将不同的文件添加到一个叫store的地方。例如，如果它有 100 个文件，而新版本仅在其中一个文件中有更改，<code>pnpm update</code>则只会将 1 个新文件添加到store中，而不是仅为单个更改克隆整个依赖项。</li>
+<li><strong>相同版本依赖共享</strong>：所有文件都保存在磁盘上的一个位置。安装包时，它们的文件从那个地方<code>硬链接</code>，不消耗额外的磁盘空间。这允许您跨项目共享相同版本的依赖项。</li>
+</ul>
+<p>因此，可以根据项目和依赖项的数量在磁盘上节省大量空间，并且安装速度更快！</p>
+<h2 id="3-支持-monorepo"><a href="#3-支持-monorepo" class="headerlink" title="3.支持 monorepo"></a>3.支持 monorepo</h2><blockquote>
+<p>官网描述：pnpm has built-in support for multiple packages in a repository</p>
+</blockquote>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191727157.png" alt="image-20211219172700118"></p>
+<p>如果你之前没接触过 monorepo 的概念，建议仔细看看<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vd3d3LnBlcmZvcmNlLmNvbS9ibG9nL3Zjcy93aGF0LW1vbm9yZXBv">这篇文章</span>以及开源的 monorepo 管理工具<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vZ2l0aHViLmNvbS9sZXJuYS9sZXJuYSUyM3JlYWRtZQ==">lerna</span>，项目目录结构可以参考一下 <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vZ2l0aHViLmNvbS9iYWJlbC9iYWJlbA==">babel 仓库</span>。</p>
+<p>pnpm 与 npm/yarn 另外一个很大的不同就是支持了 monorepo，体现在各个子命令的功能上，比如在根目录下 <code>pnpm add A -r</code>, 那么所有的 package 中都会被添加 A 这个依赖，当然也支持 <code>--filter</code>字段来对 package 进行过滤。</p>
+<h2 id="4-严格、安全性高"><a href="#4-严格、安全性高" class="headerlink" title="4.严格、安全性高"></a>4.严格、安全性高</h2><blockquote>
+<p>官网描述：pnpm creates a non-flat node_modules, so code has no access to arbitrary packages</p>
+</blockquote>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191727759.png" alt="image-20211219172722728"></p>
+<p>使用npm和yarn的时候会创建一个扁平化结构的<code>node_modules</code>文件夹存放依赖。</p>
+<p>扁平化结构：如果 A 依赖 B，当我们下载A包的时候，npm3及以上和yarn都会自动下载A包和B包，并对B进行<code>依赖提升</code>的操作，把A依赖、B依赖都放在<code>node_modules</code>根目录下，即A、B此时存放在同级目录下。</p>
+<p>但扁平化结构会有潜在的问题：上面的例子中，我们可以在项目中直接使用B包，但如果A不再依赖这个B包，而我们又使用了B包的依赖，在项目重新install的过程中会删除掉B依赖，则此时会导致项目报错。这种问题我们称之为<code>非法访问子依赖</code>。</p>
+<p>我们后续会讲到pnpm是如何解决这个问题的。</p>
+<h1 id="三、依赖管理"><a href="#三、依赖管理" class="headerlink" title="三、依赖管理"></a>三、依赖管理</h1><p>依赖管理包含两个部分，第一就是我们通过<code>npm install</code>后，下载后的依赖包以及对应的子依赖包，如何到达项目的<code>node_modules</code>中，以及以什么样的方式组织、管理<code>node_modules</code>目录中，即<code>node_modules</code>结构如何。</p>
+<p>第一个问题答案如下</p>
+<p>执行命令后，首先会构建依赖树，然后针对每个节点下的包，会经历下面四个步骤:</p>
+<ul>
+<li><ol>
+<li>将依赖包的版本区间解析为某个具体的版本号</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>下载对应版本依赖的 tar 包到本地离线镜像</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>将依赖从离线镜像解压到本地缓存</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>将依赖从缓存拷贝到当前目录的 node_modules 目录</li>
+</ol>
+</li>
+</ul>
+<p>然后，对应的包就会到达项目的<code>node_modules</code>当中。</p>
+<p>接下来我们主要讨论第二个问题在不同的包管理器中是如何实现的。</p>
+<h2 id="1-旧版本npm的依赖管理"><a href="#1-旧版本npm的依赖管理" class="headerlink" title="1.旧版本npm的依赖管理"></a>1.旧版本npm的依赖管理</h2><p>在 <code>npm1</code>、<code>npm2</code> 中呈现出的是<strong>嵌套结构</strong>，在<em>npm@3</em>之前，<em>node_modules</em>结构是可预测和干净的，因为<em>node_modules 中的</em>每个依赖<em>项</em>都有自己的<em>node_modules</em>文件夹，其中指定了所有依赖项<em>包.json</em>。比如下面这样:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">└─ foo</span><br><span class="line">   ├─ index.js</span><br><span class="line">   ├─ package.json</span><br><span class="line">   └─ node_modules</span><br><span class="line">      └─ bar</span><br><span class="line">         ├─ index.js</span><br><span class="line">         └─ package.json</span><br></pre></td></tr></table></figure>
+
+<p>好处是我们装一个包，<code>node_modules</code>文件夹下就会多一个相应的包，目录结构很清晰，并且是唯一的。</p>
+<p>但这样子会有如下的问题：</p>
+<ul>
+<li>依赖层级太深：创建太深的依赖树，这会导致 Windows 上的目录路径过长问题</li>
+<li>低效的空间利用、依赖重复：大量重复的包被安装，文件体积超级大。比如A和B都依赖于C，则会下载两次C包。</li>
+<li>模块实例不能共享。比如 React 有一些内部变量，在两个不同包引入的 React 不是同一个模块实例，因此无法共享内部变量，导致一些不可预知的 bug。</li>
+</ul>
+<p>对于这个问题（新版本的npm、yarn）和pnpm提出了不同的解决方案。</p>
+<h2 id="2-npm3-yarn的依赖管理"><a href="#2-npm3-yarn的依赖管理" class="headerlink" title="2.npm3/yarn的依赖管理"></a>2.npm3/yarn的依赖管理</h2><p>为了解决上述的问题，npm3/yarn提出了新的解决方案：<code>扁平化依赖树（flatten the dependency tree）</code>。</p>
+<p>这时候我们安装一个包，会将“子”依赖包进行提升，放到<code>node_modules</code>目录下，结果就是“依赖包”及其“子依赖包”都在同级目录。</p>
+<p>如下图所示，我只下载了express一个包，却多了很多子依赖包。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191752085.png" alt="image-20211219175216047" style="zoom: 80%;" />
+
+<p>没错，这就是<code>扁平化</code>依赖管理的结果。相比之前的<code>嵌套结构</code>，现在的目录结构类似下面这样:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">├─ foo</span><br><span class="line">|  ├─ index.js</span><br><span class="line">|  └─ package.json</span><br><span class="line">└─ bar</span><br><span class="line">   ├─ index.js</span><br><span class="line">   └─ package.json</span><br></pre></td></tr></table></figure>
+
+<p>最大的好处是解决了依赖重复的问题，在安装新的包时，会不停往上级的<code>node_modules</code>当中去找，如果找到相同版本的包就不会重新安装，并且依赖层级也不会过高。</p>
+<p>当然这样的方案也有缺点：</p>
+<ul>
+<li>依赖结构的<strong>不确定性</strong>。</li>
+<li>性能低：压平依赖树的<strong>算法非常复杂</strong>，耗时很长。</li>
+<li>不安全性、非法访问子依赖问题：项目中仍然可以<strong>非法访问</strong>没有声明过依赖的包。</li>
+</ul>
+<p>后面两个都好理解，那第一点中的<code>不确定性</code>是什么意思？这里来详细解释一下。</p>
+<p>假如现在项目依赖两个包 foo 和 bar，这两个包的依赖又是这样的: <img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191801459.webp" alt="img" style="zoom:33%;" /></p>
+<p>那么 npm/yarn install 的时候，通过扁平化处理之后，究竟是这样 <img data-src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b2368d74f8b341f0b1b545198683af59~tplv-k3u1fbpfcp-watermark.awebp" alt="img" style="zoom:33%;" /></p>
+<p>还是这样？</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191802995.webp" alt="img" style="zoom:33%;" />
+
+<p>答案是: 都有可能。取决于 foo 和 bar 在 <code>package.json</code>中的位置，如果 foo 声明在前面，那么就是前面的结构，否则是后面的结构。</p>
+<p>这就是为什么会产生依赖结构的<code>不确定</code>问题，也是 <code>lock 文件</code>诞生的原因，无论是<code>package-lock.json</code>(npm 5.x才出现)还是<code>yarn.lock</code>，都是为了保证 install 之后都产生确定的<code>node_modules</code>结构。</p>
+<p>尽管如此，npm/yarn 本身还是存在<code>扁平化算法复杂</code>和<code>package 非法访问</code>的问题，影响性能和安全。</p>
+<blockquote>
+<p>npm 也有想过去解决这个问题，指定<code>--global-style</code>参数即可禁止变量提升，但这样做相当于回到了当年嵌套依赖的时代，一夜回到解放前，前面提到的嵌套依赖的缺点仍然暴露无遗。</p>
+<p>npm/yarn 本身去解决依赖提升的问题貌似很难完成，不过社区针对这个问题也已经有特定的解决方案: <strong>dependency-check</strong>，地址: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2RlcGVuZGVuY3ktY2hlY2stdGVhbS9kZXBlbmRlbmN5LWNoZWNr">github.com/dependency-…</span></p>
+</blockquote>
+<h2 id="3-pnpm的依赖管理"><a href="#3-pnpm的依赖管理" class="headerlink" title="3.pnpm的依赖管理"></a>3.pnpm的依赖管理</h2><p>对于扁平化结构，pnpm的作者Zoltan Kochan发了一篇文章：<span class="exturl" data-url="aHR0cHM6Ly9wbnBtLmlvL2Jsb2cvMjAyMC8wNS8yNy9mbGF0LW5vZGUtbW9kdWxlcy1pcy1ub3QtdGhlLW9ubHktd2F5">flat-node-modules-is-not-the-only-way</span>。</p>
+<p>我们通过一个实际例子来讲解，首先我们下载一个express包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install express</span><br></pre></td></tr></table></figure>
+
+<p>随后我们查看一下<code>node_modules</code>目录是如何的，可以通过点击<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3prb2NoYW4vY29tcGFyaW5nLW5vZGUtbW9kdWxlcy90cmVlL21hc3Rlci9wbnBtNS1leGFtcGxl">此处</span>查看：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191846023.png" alt="image-20211219184618976"></p>
+<p>我们可以看到的<code>node_modules</code>目录下只有一个文件夹叫做<code>.pnpm</code>和一个名为<code>express</code>的<code>软链接（symlink or junction on Windows）</code>。</p>
+<p>似乎我们的express的依赖是在这个express文件夹里，但我们点开看一下：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191848255.png" alt="image-20211219184823220"></p>
+<p>发现了吗？这里没有<code>node_modules</code>文件夹所以这里的express不是依赖真正的位置。那么我们的express依赖在哪里呢？</p>
+<p>我们继续在 .pnpm 当中寻找:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">▾ node_modules</span><br><span class="line">  ▾ .pnpm</span><br><span class="line">    ▸ accepts@1.3.7</span><br><span class="line">    ▸ array-flatten@1.1.1</span><br><span class="line">    ...</span><br><span class="line">    ▾ express@4.17.1</span><br><span class="line">      ▾ node_modules</span><br><span class="line">        ▸ accepts</span><br><span class="line">        ▸ array-flatten</span><br><span class="line">        ▸ body-parser</span><br><span class="line">        ▸ content-disposition</span><br><span class="line">        ...</span><br><span class="line">        ▸ etag</span><br><span class="line">        ▾ express</span><br><span class="line">          ▸ lib</span><br><span class="line">            History.md</span><br><span class="line">            index.js</span><br><span class="line">            LICENSE</span><br><span class="line">            package.json</span><br><span class="line">            Readme.md</span><br></pre></td></tr></table></figure>
+
+<p>我们在这里找到了依赖的真正位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/.pnpm/express@4.17.1/node_modules/express</span><br></pre></td></tr></table></figure>
+
+<p>我们现在是找到了<code>express依赖</code>，那么<code>express“子”依赖</code>在哪里呢，我们找啊找，欸找到了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/.pnpm/express@4.17.1/node_modules/子依赖名</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191911133.png" alt="image-20211219191151086"></p>
+<p>现在我们知道<code>.pnpm/</code>文件夹的用途了。<code>.pnpm/</code>将所有包存储在一个扁平的文件夹结构中，因此每个包都可以在以这种模式命名的文件夹中找到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/ .pnpm/&lt;name&gt;@&lt;version&gt;/node_modules/&lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我们称<strong>node_modules/.pnpm</strong>这一目录为<code>虚拟商店目录（virtual store directory）</code>。</p>
+<p>⭐好的，我们现在总结一下在pnpm中，<code>node_moduels</code>目录的结构：</p>
+<ul>
+<li><p>依赖包及其子依赖包位置：</p>
+<ul>
+<li>```<br>node_modules/ .pnpm/ &lt;name🌙&gt;@<version>/ node_modules <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 对应“子”依赖包位置：</span><br><span class="line"></span><br><span class="line">  - ```</span><br><span class="line">    node_modules/ .pnpm/ &lt;name🌙&gt;@&lt;version&gt;/ node_modules/ &lt;childName🌙&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>依赖包本体的两个位置。前者是后者的一个<code>软链接</code>。</p>
+<ul>
+<li><pre><code>node_modules/ &lt;name🌙&gt;   ==    node_modules/ .pnpm/ &lt;name🌙&gt;@&lt;version&gt;/ node_modules/ &lt;name🌙&gt;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">这样子下来的好处就是`node_modules`目录就不再混乱了，并且我们能实现安全性，解决`非法访问子依赖`的问题（因为子依赖不再被提升到`node_modules`中，无法直接使用子依赖）。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">此外还有一点问题还没弄明白，上面我们提到了npm3/yarn的方式会导致多个依赖的子依赖相同时，导致的`依赖结构不确定性`问题以及如何做到高性能的。</span><br><span class="line"></span><br><span class="line">这一切都离不开`硬链接（hard link）`与`store机制`。硬链接可以简单理解成“快捷方式”。</span><br><span class="line"></span><br><span class="line">&gt; store目录默认放在“项目所在的磁盘”的根目录下的.pnpm-store目录下，举个例子：我们的项目地址为D:\1project\sample-project。</span><br><span class="line">&gt;</span><br><span class="line">&gt; 其store所在的目录就在D:\\\.pnpm-store</span><br><span class="line"></span><br><span class="line">pnpm 在安装依赖时，依赖包被全局存放到store中。这样子的好处是，下载一个新依赖的时候，如果其子依赖已经存在于store中，那我们创建一个“快捷方式”给这个依赖用就可以了，没必要又开一个新空间，达到了对相同子依赖的复用。</span><br><span class="line"></span><br><span class="line">正如开头所提到的：</span><br><span class="line"></span><br><span class="line">- **不同版本依赖优化**：&lt;u&gt;不会重复安装同一个包&lt;/u&gt;。如果依赖于不同版本的依赖项，则只会将不同的文件添加到store中。例如，如果它有 100 个文件，而新版本仅在其中一个文件中有更改，`pnpm update`则只会将 1 个新文件添加到store中，而不是仅为单个更改克隆整个依赖项。</span><br><span class="line">- **相同版本依赖共享**：所有文件都保存在磁盘上的一个位置。安装包时，它们的文件从那个地方`硬链接`，不消耗额外的磁盘空间。这允许您跨项目共享相同版本的依赖项。</span><br><span class="line"></span><br><span class="line"># 四、使用方式</span><br><span class="line"></span><br><span class="line">1.安装：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+npm install pnpm -g
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.下载依赖</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+pnpm install xxx
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3.更新依赖</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+pnpm update xxx
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4.卸载依赖</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+pnpm uninstall xxx
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li>.<span class="exturl" data-url="aHR0cHM6Ly9wbnBtLmlvLw==">pnpm官网</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cua29jaGFuLmlvL25vZGVqcy93aHktc2hvdWxkLXdlLXVzZS1wbnBtLmh0bWw=">Zoltan Kochan 《Why should we use pnpm?》</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cua29jaGFuLmlvL25vZGVqcy9wbnBtcy1zdHJpY3RuZXNzLWhlbHBzLXRvLWF2b2lkLXNpbGx5LWJ1Z3MuaHRtbA==">Zoltan Kochan 《pnpm’s strictness helps to avoid silly bugs》</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9wbnBtLmlvL2Jsb2cvMjAyMC8wNS8yNy9mbGF0LW5vZGUtbW9kdWxlcy1pcy1ub3QtdGhlLW9ubHktd2F5">Zoltan Kochan 《Flat node_modules is not the only way》</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNTU1OTgy">Conarli《npm install 原理分析》</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9sb3Zla3kuZ2l0aHViLmlvLzIwMTkvMDIvMTEveWFybi1wbnAv">《Yarn 的 Plug’n’Play 特性》</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudG9wdGFsLmNvbS9mcm9udC1lbmQvZ3VpZGUtdG8tbW9ub3JlcG9z">《Guide to Monorepos for Front-end Code》</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82OTMyMDQ2NDU1NzMzNDg1NTc1">《关于现代包管理器的深度思考——为什么现在我更推荐 pnpm 而不是 npm/yarn?》</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC83MDAxNzk0MTYyOTcwMzYxODky">Pnpm: 最先进的包管理工具</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC83MDAxNzk0MTYyOTcwMzYxODky">https://juejin.cn/post/7001794162970361892</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82OTMyMDQ2NDU1NzMzNDg1NTc1">https://juejin.cn/post/6932046455733485575</span></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/pnpm/" rel="tag"><i class="ic i-tag"></i> pnpm</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-28 10:44:31" itemprop="dateModified" datetime="2021-12-28T10:44:31+08:00">2021-12-28</time>
+  </span>
+  <span id="FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm相较于npm和yarn有什么优点？" class="item leancloud_visitors" data-flag-title="pnpm相较于npm和yarn有什么优点？" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">https://monkeyhh.top/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm相较于npm和yarn有什么优点？</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="【浏览器内核原理篇】重绘Repaint与回流Reflow">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>【浏览器内核原理篇】重绘Repaint与回流Reflow</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281046623.jpeg" title="【Vue进阶】浅谈Vue响应式原理">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Vue</span>
+  <h3>【Vue进阶】浅谈Vue响应式原理</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFpnpm%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">一、什么是pnpm？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81pnpm%E7%89%B9%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">二、pnpm特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%80%9F%E5%BA%A6%E5%BF%AB"><span class="toc-number">2.1.</span> <span class="toc-text">1.速度快</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%AB%98%E6%95%88%E5%88%A9%E7%94%A8%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4"><span class="toc-number">2.2.</span> <span class="toc-text">2.高效利用磁盘空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%94%AF%E6%8C%81-monorepo"><span class="toc-number">2.3.</span> <span class="toc-text">3.支持 monorepo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%A5%E6%A0%BC%E3%80%81%E5%AE%89%E5%85%A8%E6%80%A7%E9%AB%98"><span class="toc-number">2.4.</span> <span class="toc-text">4.严格、安全性高</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">三、依赖管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%97%A7%E7%89%88%E6%9C%ACnpm%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">1.旧版本npm的依赖管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-npm3-yarn%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="toc-number">3.2.</span> <span class="toc-text">2.npm3&#x2F;yarn的依赖管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-pnpm%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">3.pnpm的依赖管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" rel="bookmark" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">33</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">10</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">14</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/HelloWorld/" title="In HelloWorld">HelloWorld</a>
+</div>
+
+    <span><a href="/HelloWorld/hello-world" title="hello-world">hello-world</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/BOM%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B" title="BOM浏览器对象模型">BOM浏览器对象模型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" title="【浏览器内核原理篇】重绘Repaint与回流Reflow">【浏览器内核原理篇】重绘Repaint与回流Reflow</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型与原型链">JavaScript原型与原型链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Computer-Networking/" title="In Computer-Networking">Computer-Networking</a>
+</div>
+
+    <span><a href="/Computer-Networking/Computer-Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">420k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">6:22</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm相较于npm和yarn有什么优点？',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
