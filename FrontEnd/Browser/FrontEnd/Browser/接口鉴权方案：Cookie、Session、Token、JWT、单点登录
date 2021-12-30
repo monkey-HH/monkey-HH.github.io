@@ -1,0 +1,862 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Browser" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95">
+
+
+
+  <title>
+接口鉴权方案：Cookie、Session、Token、JWT、单点登录 - Browser - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">接口鉴权方案：Cookie、Session、Token、JWT、单点登录
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-10-01 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-10-01T12:00:00+08:00">2021-10-01</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>14k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>13 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301811017.jpeg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Browser/" itemprop="item" rel="index" title="In Browser"><span itemprop="name">Browser</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>常见的接口鉴权方案，如Cookie、Session、JWT等，虽然自己一直在用，但是对于他们之间的区别，和彼此之间的优劣都不是很清楚，最近有空就整理一下以前的笔记，发上来一起学习。</p>
+<p>开冲。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301806862.png" alt="image-20211230180652775"></p>
+<h1 id="鉴权三部曲"><a href="#鉴权三部曲" class="headerlink" title="鉴权三部曲"></a>鉴权三部曲</h1><h2 id="第一步：认证（Authentication）"><a href="#第一步：认证（Authentication）" class="headerlink" title="第一步：认证（Authentication）"></a>第一步：认证（Authentication）</h2><p><code>认证（Authentication）</code>也就是客户端发起带有”自身信息”的请求，发送给服务端，客户端的用户想服务端自证身份。</p>
+<p>在Web场景中，常见的方式如下：</p>
+<ul>
+<li>使用账号密码登录</li>
+<li>使用手机号+验证码登录</li>
+<li>…</li>
+</ul>
+<h2 id="第二步：授权（Authorization）"><a href="#第二步：授权（Authorization）" class="headerlink" title="第二步：授权（Authorization）"></a>第二步：授权（Authorization）</h2><p><code>授权（Authorization）</code>即服务端在接受到用户端的认证信息过后，进行用户信息的“校验”，校验成功则返回一个”凭证“。例如查询用户是否存在，用户若存在的情况下，密码是否正确等，</p>
+<h2 id="第三步：凭证（Credentials）"><a href="#第三步：凭证（Credentials）" class="headerlink" title="第三步：凭证（Credentials）"></a>第三步：凭证（Credentials）</h2><p><code>凭证（Credentials）</code>即服务端验证成功之后，发放给客户端的一个“身份认证成功证书”，就像是上大学注册信息之后，学校会发放一个校园卡，该校园卡就可以证明该学生的身份，随后进出校园、校园消费等都可以直接使用该校园卡。</p>
+<h1 id="无状态的HTTP"><a href="#无状态的HTTP" class="headerlink" title="无状态的HTTP"></a>无状态的HTTP</h1><p>在讲到Cookie、Session等之前，我们要聊聊为什么要使用到鉴权的方案，为什么不能只用HTTP进行通信？</p>
+<p>之所以我们要用到以下的接口鉴权的方案，最根本的原因就是因为<strong>HTTP无状态</strong>。</p>
+<p>我们都知道HTTP是一个无状态的协议，客户端和服务端都不会保存上一次的HTTP会话信息，也就是说每一次的的HTTP都不知道在它之前是不是有发过HTTP请求，如果只是简单地要使用HTTP来获取一些数据，那就完全不用顾虑HTTP无状态这一点。</p>
+<p>但在很多的场景之下，我们需要“状态”，例如我们在登录了购物网站之后，我们需要保存这个“登录状态”，后续下单、加入购物车、查看订单等都是在登录后的用户状态下，如果不保存状态，每次请求都得重新认证与授权身份，那么开销将会是很大的。</p>
+<blockquote>
+<p>那么最简单的解决方案是什么？</p>
+</blockquote>
+<p>没错，就是发一个“凭证”。就好像进了大学之后，学校会发一张校园卡，后续进出校园只需要刷这张卡就行了。Cookie、Session、JWT等就是一个”凭证“。</p>
+<h1 id="什么是Cookie？"><a href="#什么是Cookie？" class="headerlink" title="什么是Cookie？"></a>什么是Cookie？</h1><blockquote>
+<p>问题：Cookie解决了什么问题？</p>
+<p>总而言之：解决http的无状态性，记录状态</p>
+</blockquote>
+<p>在 Web认证中 ,因为HTTP协议本身的局限，必须采用其他技术将相关认证标记以某种方式持续传送，以免客户从一个页面跳转至另一个页面时重新输入认证信息，Cookie就是方案之一。</p>
+<p>Cookie是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</p>
+<p>可以按F12开发者工具→Application选项卡—→Cookies进行查看。</p>
+<h2 id="Cookie的目的-用途"><a href="#Cookie的目的-用途" class="headerlink" title="Cookie的目的/用途"></a>Cookie的目的/用途</h2><p>Cookie 主要用于下面三个目的</p>
+<ul>
+<li><p><code>会话管理、存储用户信息</code>：登陆信息、购物车、游戏得分或者服务器应该记住的其他内容</p>
+</li>
+<li><p><code>个性化定制</code>：用户偏好、主题或者其他设置</p>
+</li>
+<li><p><code>追踪</code>：记录和分析用户行为</p>
+</li>
+</ul>
+<p>详细讲讲两个例子：</p>
+<ol>
+<li><p>Cookies最典型的应用是判定注册用户是否已经登录网站，用户可能会得到提示，是否在下一次进入此网站时保留用户信息以便简化登录手续，这些都是Cookies的功用。实现方法是<strong>把登录信息如账号、密码等保存在Cookie中，并控制Cookie的有效期，下次访问时再验证Cookie中的登录信息即可。</strong></p>
+<p>保存登录信息有多种方案：</p>
+<ul>
+<li>方案一：<strong>用户名与密码都保存到Cookie中</strong>，下次访问时检查Cookie中的用户名与密码，与数据库比较。这是一种比较危险的选择，一般不把密码等重要信息保存到Cookie中。</li>
+<li>方案二：<strong>用户名和登录的时间戳保存到Cookie中</strong>，到时只验证用户名与登录时间戳就可以了。</li>
+<li>方案三：<strong>用户名和密码（已加密）保存到Cookie中</strong>，下次访问时解密并与数据库比较。这种方案略微安全一些。</li>
+<li>…</li>
+</ul>
+</li>
+<li><p>另一个重要应用场合是“购物车”之类处理。用户可能会在一段时间内在同一家网站的不同页面中选择不同的商品，这些信息都会写入Cookies，以便在最后付款时提取信息。</p>
+</li>
+</ol>
+<h2 id="Cookie的认证机制"><a href="#Cookie的认证机制" class="headerlink" title="Cookie的认证机制"></a>Cookie的认证机制</h2><p>基于Cookie的认证过程，主要由以下三个阶段组成：</p>
+<p>（1）发布Cookie。当用户试图访问某Web站点中需要认证的资源时，Web服务器会检查用户是否提供了认证Cookie，如果没有，则将用户重定向到登录页面。在用户成功登录后，Web服务器会产生认证Cookie，并通过HTTP响应中的Set-Cookie头发送给客户端，用于对用户随后的请求进行检查和验证，接着将用户重定向到初始请求的资源 [5] 。</p>
+<p>（2）检索Cookie。在用户随后的访问请求中，客户端浏览器检索Path和Domain等属性与用户请求资源相匹配的Cookie，并将找到的Cookie<strong>自动</strong>通过HTTP请求中的Cookie头提交给Web服务器  。</p>
+<p>（3）验证Cookie。Web服务器提取客户端浏览器递交的Cookie，验证其中的访问令牌。若合法，则将访问请求的资源发送给客户端浏览器；反之则拒绝用户的访问请求。Cookie 认证技术简化了用户访问 Web 网站资源的过程，即用户只需在初次登录网站时输入身份信息进行认证，随后便可以访问被授权的所有站点资源，不再需要重复手工提交身份信息 </p>
+<p>一般过程是这样的：</p>
+<ul>
+<li>在提供标记的接口，通过 HTTP 返回头的 Set-Cookie 字段，直接「种」到浏览器上</li>
+<li>浏览器发起请求时，会自动把 cookie 通过 HTTP 请求头的 Cookie 字段，带给接口</li>
+</ul>
+<h2 id="Cookie的特点"><a href="#Cookie的特点" class="headerlink" title="Cookie的特点"></a>Cookie的特点</h2><ul>
+<li><strong>存储于客户端</strong>：cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</li>
+<li><strong>无法跨域</strong>：每个 cookie 都会绑定单一的域名，无法在别的域名下获取使用，<strong>一级域名和二级域名之间是允许共享使用的</strong>（<strong>靠的是 domain）</strong>。</li>
+</ul>
+<h2 id="Cookie的属性"><a href="#Cookie的属性" class="headerlink" title="Cookie的属性"></a>Cookie的属性</h2><p>通过开发者工具，我们可以看到Cookie有如下的属性：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301352768.png" alt="image-20211230135221720"></p>
+<p>接下来我们一一说明：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>name=value</strong></td>
+<td>键值对，设置 Cookie 的名称及相对应的值，都必须是<strong>字符串类型</strong> - 如果值为 Unicode 字符，需要为字符编码。 - 如果值为二进制数据，则需要使用 BASE64 编码。</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>指定 cookie 所属域名，默认是当前域名</td>
+</tr>
+<tr>
+<td>path</td>
+<td>**指定 cookie 在哪个路径（路由）下生效，默认是 ‘/‘**。 如果设置为 <code>/abc</code>，则只有 <code>/abc</code> 下的路由可以访问到该 cookie，如：<code>/abc/read</code>。</td>
+</tr>
+<tr>
+<td><strong>Expires</strong></td>
+<td>cookie过期时间。直接给的是一个准确时间，例如 2021-09-23T01:34:44.000Z。</td>
+</tr>
+<tr>
+<td><strong>maxAge</strong></td>
+<td>cookie过期时间，从浏览器收到报文开始计算，单位秒。如果为整数，则该 cookie 在 maxAge 秒后失效。如果为负数，该 cookie 为临时 cookie ，关闭浏览器即失效，浏览器也不会以任何形式保存该 cookie 。如果为 0，表示删除该 cookie 。默认为 -1。 - <strong>比 expires 好用</strong>。</td>
+</tr>
+<tr>
+<td>size</td>
+<td>表示该cookie的大小，以字节为单位。</td>
+</tr>
+<tr>
+<td><strong>httpOnly</strong></td>
+<td><strong>如果给某个 cookie 设置了 httpOnly 属性，表示只能通过HTTP类协议传输，则无法通过 JS 脚本 读取到该 cookie 的信息（document.cookie），但还是能通过 Application 中手动修改 cookie，所以只是在一定程度上可以防止 XSS 攻击，不是绝对的安全</strong></td>
+</tr>
+<tr>
+<td>secure</td>
+<td>该 cookie 是否仅被使用安全协议传输。安全协议有 HTTPS，SSL等，在网络上传输数据之前先将数据加密。默认为false。 当 secure 值为 true 时，cookie 在 HTTP 中是无效，在 HTTPS 中才有效。</td>
+</tr>
+<tr>
+<td>SameSite</td>
+<td>SameSite 设置<strong>跨域时不携带 cookie</strong>，防止<strong>CSRF</strong>，设置为三个值，<code>Strict</code>、<code>Lax</code>和<code>None</code>。<br/><strong>a.</strong> 在<code>Strict</code>模式下，浏览器完全禁止第三方请求携带Cookie。比如请求<code>sanyuan.com</code>网站只能在<code>sanyuan.com</code>域名当中请求才能携带 Cookie，在其他网站请求都不能。<br/><strong>b.</strong> 在<code>Lax</code>模式，就宽松一点了，但是只能在 <code>get 方法提交表单</code>况或者<code>a 标签发送 get 请求</code>的情况下可以携带 Cookie，其他情况均不能。<br/><strong>c.</strong> 在<code>None</code>模式下，也就是默认模式，请求会自动携带上 Cookie。</td>
+</tr>
+</tbody></table>
+<p>Secure 和 HttpOnly 是强烈建议开启的。SameSite 选项需要根据实际情况讨论，因为 SameSite 可能会导致即使你用 CORS 解决了<strong>跨越问题</strong>，依然会因为请求没自带 cookie 引起一系列问题，一开始还以为是 axios 配置问题，绕了一大圈，然而根本没关系。</p>
+<p>其实因为 Chrome 在某一次更新后把没设置 <code>SameSite</code> 的 cookie 都默认为 <code>Lax</code>，所以！你不在服务器手动把 <code>SameSite</code> 设置为 <code>None</code> 的话，跨域请求就不会自动带 cookie 了（还要注意 SameSite 为 none 时 Secure <strong>必须</strong>为 true），这些安全控制的行为都是浏览器行为，这就是现代浏览器为你网络安全护航的点点滴滴。</p>
+<h2 id="Cookie的缺点"><a href="#Cookie的缺点" class="headerlink" title="Cookie的缺点"></a>Cookie的缺点</h2><ol>
+<li>容量缺陷。Cookie 的体积上限只有<code>4KB</code>，只能用来存储少量的信息。</li>
+<li>性能缺陷。Cookie 紧跟域名，不管域名下面的某一个地址需不需要这个 Cookie ，请求都会携带上完整的 Cookie，这样随着请求数的增多，其实会造成巨大的性能浪费的，因为请求携带了很多不必要的内容。但可以通过<code>Domain</code>和<code>Path</code>指定<strong>作用域</strong>来解决。</li>
+<li>安全缺陷。由于 Cookie 以纯文本的形式在浏览器和服务器中传递，很容易被非法用户截获，然后进行一系列的篡改，在 Cookie 的有效期内重新发送给服务器，这是相当危险的。另外，在<code>HttpOnly</code>为 false 的情况下，Cookie 信息能直接通过 JS 脚本来读取。</li>
+</ol>
+<h2 id="Cookie的使用"><a href="#Cookie的使用" class="headerlink" title="Cookie的使用"></a>Cookie的使用</h2><p>主要步骤为：</p>
+<ol>
+<li>用户登录：客户端输入账号密码发起登录的HTTP请求</li>
+<li>服务端生成Cookie：<strong>由服务端</strong>通过HTTP的Set-Cookie请求头设置Cookie，然后HTTP就会自动生成一个Cookie给客户端。</li>
+<li>客户端存储Cookie，且每次请求每次向服务端发起HTTP请求的话就会自动带上该Cookie。</li>
+<li>服务端鉴权：服务端对Cookie信息进行查看，有常见的以下的做法：看看Cookie是否过期，信息是否正确…..</li>
+</ol>
+<h3 id="通过HTTP头对-Cookie-的读写说明"><a href="#通过HTTP头对-Cookie-的读写说明" class="headerlink" title="通过HTTP头对 Cookie 的读写说明"></a>通过HTTP头对 Cookie 的读写说明</h3><p>HTTP 返回的一个 Set-Cookie 头用于向浏览器写入「一条（且只能是一条）」cookie，格式为 cookie 键值 + 配置键值。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly</span><br></pre></td></tr></table></figure>
+
+<p>那我想一次多 set 几个 cookie 怎么办？多给几个 Set-Cookie 头（一次 HTTP 请求中允许重复）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: username=jimu; domain=jimu.com</span><br><span class="line">Set-Cookie: height=180; domain=me.jimu.com</span><br><span class="line">Set-Cookie: weight=80; domain=me.jimu.com</span><br></pre></td></tr></table></figure>
+
+<p>HTTP 请求的 Cookie 头用于浏览器把符合当前「空间、时间、使用方式」配置的所有 cookie 一并发给服务端。因为由浏览器做了筛选判断，就不需要归还配置内容了，只要发送键值就可以。</p>
+<h3 id="前端读写Cookie"><a href="#前端读写Cookie" class="headerlink" title="前端读写Cookie"></a>前端读写Cookie</h3><p>一般前端是不会对Cookie进行读写的，因为一般服务端会把Cookie设为httpOnly，即无法通过js代码读写Cookie。</p>
+<p>前端可以自己创建 cookie，如果服务端创建的 cookie 没加 <code>HttpOnly</code>，那恭喜你也可以修改他给的 cookie。</p>
+<p>调用 <code>document.cookie</code>可以创建、修改 cookie，和 HTTP 一样，一次 <code>document.cookie</code>能且只能操作一个 cookie。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie = <span class="string">&#x27;username=jimu; domain=jimu.com; path=/blog; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>调用 <code>document.cookie</code>也可以读到 cookie，也和 HTTP 一样，能读到所有的非 <code>HttpOnly</code> cookie。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie);</span><br></pre></td></tr></table></figure>
+
+<p>（就一个 cookie 属性，为什么读写行为不一样？get / set 了解下）</p>
+<h3 id="Node环境下读写Cookie"><a href="#Node环境下读写Cookie" class="headerlink" title="Node环境下读写Cookie"></a>Node环境下读写Cookie</h3><p>由于是用HTTP头进行配置，事实上我们不用引入任何第三方cookie生态包也可以配置一个Cookie。以下以node为示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> Cookies = &#123;&#125;;</span><br><span class="line">     <span class="comment">// 读Cookie</span></span><br><span class="line">    req.headers.cookie &amp;&amp; req.headers.cookie.split(<span class="string">&#x27;;&#x27;</span>).forEach(<span class="function"><span class="keyword">function</span>(<span class="params"> Cookie </span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> parts = Cookie.split(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        Cookies[ parts[ <span class="number">0</span> ].trim() ] = ( parts[ <span class="number">1</span> ] || <span class="string">&#x27;&#x27;</span> ).trim();</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(Cookies)</span><br><span class="line">    <span class="comment">// 写Cookie</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">        <span class="string">&#x27;Set-Cookie&#x27;</span>: <span class="string">&#x27;myCookie=test&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;);</span><br><span class="line">    res.end(<span class="string">&#x27;Hello World\n&#x27;</span>);</span><br><span class="line">&#125;).listen(<span class="number">8000</span>);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;Server running at http://127.0.0.1:8000/&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>为了简化操作，我们也可以通过<code>cookie-parser</code>中间件简化操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*   1、安装 npm install cookie-parser --save</span></span><br><span class="line"><span class="comment">*   2、引入var cookieParser =</span></span><br><span class="line"><span class="comment">*   3、设置中间件  app.use()</span></span><br><span class="line"><span class="comment">*   4、设置cookie   HttpOnly默认fals不允许客户端脚本访问，</span></span><br><span class="line"><span class="comment">*   允许后端进行访问，也允许nodejs进行访问，但不允许前端的js代码进行访问</span></span><br><span class="line"><span class="comment">*   5、获取cookie</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">&#x27;cookie-parser&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> express()</span><br><span class="line">app.use(cookieParser());</span><br><span class="line"> </span><br><span class="line">app.get(<span class="string">&#x27;/&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.cookies);</span><br><span class="line">    res.send(<span class="string">&#x27;你好nodejs&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">app.get(<span class="string">&#x27;/news&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.cookies);</span><br><span class="line">    res.send(<span class="string">&#x27;你好nodejs news&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">app.get(<span class="string">&#x27;/set&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    *   参数1：名字</span></span><br><span class="line"><span class="comment">    *   参数2：cookie的值</span></span><br><span class="line"><span class="comment">    *   参数3：cookie的配置信息</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    <span class="comment">//设置cookie由服务器端来完成，设置之后保存在浏览器本地</span></span><br><span class="line">    <span class="comment">// 客户端浏览器发送请求的时候把存储在浏览器本地的cookie也一并发送过去</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    *   在localhost:3000下设置的cookie，默认在localhost:3000下的</span></span><br><span class="line"><span class="comment">    *   所有路由可以访问到</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    res.cookie(<span class="string">&#x27;username&#x27;</span>,<span class="string">&#x27;cookie的值&#x27;</span>,&#123;<span class="attr">maxAge</span>:<span class="number">600000</span>&#125;)</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    *   设置cookie path，只在设置cookie时所在的域名的path指定的路由下可以访问</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    res.cookie(<span class="string">&#x27;userinfo&#x27;</span>,<span class="string">&#x27;cookie111&#x27;</span>,&#123;<span class="attr">maxAge</span>:<span class="number">60000</span>,<span class="attr">path</span>:<span class="string">&#x27;/news&#x27;</span>,<span class="attr">httpOnly</span>:<span class="literal">true</span>&#125;)</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    *   aaa.com</span></span><br><span class="line"><span class="comment">    *   news.aaa.com</span></span><br><span class="line"><span class="comment">    *   www.aaa.com</span></span><br><span class="line"><span class="comment">    *   domain:&#x27;aaa.com&#x27;  多个二级域名共享cookie</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line">    res.cookie(<span class="string">&#x27;user&#x27;</span>,<span class="string">&#x27;cookie的值111&#x27;</span>,&#123;<span class="attr">maxAge</span>:<span class="number">600000</span>,<span class="attr">domain</span>:<span class="string">&#x27;.aaa.com&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    *   使用sign对cookie进行加密</span></span><br><span class="line"><span class="comment">    *   1、参数表示加密的随机字符串</span></span><br><span class="line"><span class="comment">    *   app.use(cookieParser(&#x27;sign&#x27;);</span></span><br><span class="line"><span class="comment">    *   2、设置</span></span><br><span class="line"><span class="comment">    *   res.cookie(&#x27;userinfo&#x27;,&#x27;cookie222_info&#x27;,&#123;maxAge:50000,signed:true&#125;)</span></span><br><span class="line"><span class="comment">    *   3、使用 获取</span></span><br><span class="line"><span class="comment">    *   req.signedCookies</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    res.send(<span class="string">&#x27;设置cookie成功&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line">app.listen(<span class="number">3000</span>,<span class="string">&#x27;localhost&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="什么是Session？"><a href="#什么是Session？" class="headerlink" title="什么是Session？"></a>什么是Session？</h1><p>Session是另一种记录服务器和客户端会话状态的机制，Session一般其实是基于Cookie，Session将数据存放在服务器端，会放一个SessionID在Cookie中，主要数据根据SessionId去检索就可以了。</p>
+<h2 id="Session的目的？Session和Cookie的区别？Sesson特点？"><a href="#Session的目的？Session和Cookie的区别？Sesson特点？" class="headerlink" title="Session的目的？Session和Cookie的区别？Sesson特点？"></a>Session的目的？Session和Cookie的区别？Sesson特点？</h2><p>可能不少人会疑惑，既然session的实现需要借助于Cookie，那服务器直接根据Cookie来实现会话跟踪，不是能达到一样的效果吗？那么为什么要搞那么复杂，直接用cookie不就行了吗？下面从几个方面来聊聊：</p>
+<ul>
+<li><strong>存储大小</strong>：Cookie只有4KB，很小，Session 可存储数据远高于 Cookie</li>
+<li><strong>安全性</strong>：Cookie保存在本地不安全，毕竟是明文存储，且可以直接通过浏览器获取，导致XSS跨站请求攻击。而Session将数据存在了服务端。</li>
+<li><strong>存储位置</strong>：Cookie存储于客户端，Session存储于服务端。</li>
+<li><strong>宽带方面</strong>：Cookie太多了，会十分浪费带宽，并且每次请求都会带上Cookie，如果Cookie很多，那么每次请求光是传输Cookie的数据传输量就很高了，用户体验就会降低。Session将数据存在服务器端，虽然服务器端压力会变大，但是本地I/O速度远高于网络I/O，则本地I/O速度的损耗远比网络I/O速度的损耗值得多，网站毕竟是面向用户的，用户体验是最重要的。</li>
+<li><strong>有效期不同：</strong> Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭（默认情况下）或者 Session 超时都会失效。</li>
+<li><strong>存取值的类型不同</strong>：Cookie 只支持存字符串数据，想要设置其他类型的数据，需要将其转换成字符串，Session 可以存任意数据类型。</li>
+</ul>
+<h2 id="Session的认证机制"><a href="#Session的认证机制" class="headerlink" title="Session的认证机制"></a>Session的认证机制</h2><p>典型的 session 登陆/验证流程：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301516771.png" alt="image-20211230151612702"></p>
+<p><strong>session 认证流程：</strong></p>
+<ul>
+<li>用户第一次请求服务器的时候，服务器根据用户提交的相关信息，创建对应的 Session</li>
+<li>请求返回时将此 Session 的唯一标识信息 SessionID 返回给浏览器</li>
+<li>浏览器接收到服务器返回的 SessionID 信息后，会将此信息存入到 Cookie 中，同时 Cookie 记录此 SessionID 属于哪个域名</li>
+<li>当用户第二次访问服务器的时候，请求会自动判断此域名下是否存在 Cookie 信息，如果存在自动将 Cookie 信息也发送给服务端，服务端会从 Cookie 中获取 SessionID，再根据 SessionID 查找对应的 Session 信息，如果没有找到说明用户没有登录或者登录失效，如果找到 Session 证明用户已经登录可执行后面操作。</li>
+</ul>
+<h2 id="Session的存储方式"><a href="#Session的存储方式" class="headerlink" title="Session的存储方式"></a>Session的存储方式</h2><p>显然，服务端只是给 cookie 一个 sessionId，而 session 的具体内容（可能包含用户信息、session 状态等），要自己存一下。存储的方式有几种：</p>
+<ul>
+<li>Redis（推荐）：内存型数据库，<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHA6Ly93d3cucmVkaXMuY24v">redis中文官方网站</span>。以 key-value 的形式存，正合 sessionId-sessionData 的场景；且访问快。</li>
+<li>内存：直接放到变量里。一旦服务重启就没了</li>
+<li>数据库：普通数据库。性能不高。</li>
+<li></li>
+</ul>
+<h2 id="SessionID的存储方式"><a href="#SessionID的存储方式" class="headerlink" title="SessionID的存储方式"></a>SessionID的存储方式</h2><p>上一节讲了Session的存储方式，这里讲的是SessionID的存储方式，为什么要专门讲呢？我们知道SessionID的存储最经典的方式为：</p>
+<p><strong>SessionID存储于Cookie</strong>中，但如果浏览器禁用了Cookie，那Session就无法使用了。</p>
+<p>以下是常用的几种方式：</p>
+<ul>
+<li>第一种，<strong>存储于Cookie</strong>：不多说，主要讲讲后面Cookie禁用后的方法。</li>
+<li>第二种，<strong>URL重写</strong>：把SessionID作为参数追加到原URL中，后续的浏览器与服务器交互中携带SessionID参数。</li>
+<li>第三种，<strong>浏览器客户端存储</strong>：浏览器有两种storage（localStorage、sessionStorage），也有websql和indexedDB可以存储，然后一般通过<strong>设置到HTTP头</strong>进行通信。</li>
+</ul>
+<h2 id="Node环境下Session的使用"><a href="#Node环境下Session的使用" class="headerlink" title="Node环境下Session的使用"></a>Node环境下Session的使用</h2><p>在 <code>npm</code>中，已经有封装好的中间件，比如 <span class="exturl" data-url="aHR0cHM6Ly93d3cubnBtanMuY29tL3BhY2thZ2UvZXhwcmVzcy1zZXNzaW9u">express-session - npm</span>。</p>
+<p>这是它种的 cookie：</p>
+<p><img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20211230153124494.png" alt="image-20211230153124494"></p>
+<p>主要实现了：</p>
+<ul>
+<li>封装了对cookie的读写操作，并提供配置项配置字段、加密方式、过期时间等。</li>
+<li>封装了对session的存取操作，并提供配置项配置session存储方式（内存/redis）、存储规则等。</li>
+<li>给req提供了session属性，控制属性的set/get并响应到cookie和session存取上，并给req.session提供了一些方法。</li>
+</ul>
+<p>以下是一个例子，记录了客户端访问服务器端的次数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> parseurl = <span class="built_in">require</span>(<span class="string">&#x27;parseurl&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">&#x27;express-session&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(</span><br><span class="line">  session(&#123;</span><br><span class="line">    <span class="attr">secret</span>: <span class="string">&#x27;keyboard cat&#x27;</span>,</span><br><span class="line">    <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">saveUninitialized</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.session.views) &#123;</span><br><span class="line">    req.session.views = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get the url pathname</span></span><br><span class="line">  <span class="keyword">var</span> pathname = parseurl(req).pathname</span><br><span class="line"></span><br><span class="line">  <span class="comment">// count the views</span></span><br><span class="line">  req.session.views[pathname] = (req.session.views[pathname] || <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/foo&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    <span class="attr">session</span>: req.session,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/bar&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;you viewed this page &#x27;</span> + req.session.views[<span class="string">&#x27;/bar&#x27;</span>] + <span class="string">&#x27; times&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3001</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="分布式Session的问题：Session共享"><a href="#分布式Session的问题：Session共享" class="headerlink" title="分布式Session的问题：Session共享"></a>分布式Session的问题：Session共享</h2><p>由于现代服务的架构很多都是分布式的，配置Nginx代理网络请求，并且进行负载均衡，具体原理可以看我的另一篇讲解Nginx的文章。这回导致同一个客户端发送给服务器的请求，很可能是由不同的服务器进行处理的，一旦用户后续接口请求到的机器和他登录请求的机器不一致，或者登录请求的机器宕机了，session 不就失效了吗？</p>
+<p>这个问题现在有几种解决方式。</p>
+<ul>
+<li>一是从「存储」角度，把 session 集中存储。如果我们用独立的 Redis 或普通数据库，就可以把 session 都存到一个库里。</li>
+<li>二是从「分布」角度，让相同 IP 的请求在负载均衡时都打到同一台机器上。以 nginx 为例，可以配置 ip_hash 来实现。</li>
+</ul>
+<p>但通常还是采用第一种方式，因为第二种相当于阉割了负载均衡，且仍没有解决「用户请求的机器宕机」的问题。</p>
+<h1 id="什么是Token？"><a href="#什么是Token？" class="headerlink" title="什么是Token？"></a>什么是Token？</h1><p>说完了Cookie和Session，那么Token是什么呢？</p>
+<p>Token，翻译一下，就是<strong>令牌</strong>，那不就是最开始说的<strong>凭证</strong>嘛，没错<strong>本质上 token 的功能就是和 SessionID 一模一样</strong>，并没有任何更加高端、玄乎、抽象的概念，事实上Token和SessionID一样就是一段文本。</p>
+<p>和Session的区别在于，session id <strong>一般</strong>存在 cookie 里，自动带上；token <strong>一般</strong>是要你主动放在请求中，例如设置请求头的<code>Authorization</code> 为 <code>bearer:&lt;access_token&gt;</code>。</p>
+<p>我们在哪里经常可以看到Token？</p>
+<ul>
+<li>GitHub：打开 GitHub 进入设置，找到 Settings / Developer settings，可以看到 Personal access tokens 选项，生成新的 token 后，你就可以带着它通过 GitHub API，证明“你就是你”，然后通过该Token，我们就可以对仓库进行一定的操作，例如我在我的PicGo里配置了token之后，就可以通过PicGo自动上传图片到GitHub上了。</li>
+<li>在 OAuth 系统中也使用了 Access token 这个关键词，写过微信登录的朋友应该都能感受到 token 是个什么啦。</li>
+</ul>
+<p>业务接口用来鉴权的 token，我们称之为 <code>Access Token</code>。越是权限敏感的业务，我们越希望<code> Access Token</code> 有效期足够短，以避免被盗用。但过短的有效期会造成 <code>Access Token</code> 经常过期，过期后怎么办呢？</p>
+<p>一种办法是，让用户重新登录获取新 token，显然不够友好，要知道有的 <code>Access Token</code> 过期时间可能只有几分钟。</p>
+<p>另外一种办法是，再来一个 token，一个专门生成 <code>Access Token</code> 的 token，我们称为 <code>Refresh Token</code>。</p>
+<h2 id="Access-Token"><a href="#Access-Token" class="headerlink" title="Access Token"></a>Access Token</h2><p><strong>访问资源接口（API）时所需要的资源凭证</strong></p>
+<p><strong>简单 token 的组成：</strong> uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign（签名，token 的前几位以哈希算法压缩成的一定长度的十六进制字符串）</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li><strong>服务端无状态化、可扩展性好</strong></li>
+<li><strong>支持移动端设备</strong></li>
+<li>安全</li>
+<li>支持跨程序调用</li>
+</ul>
+<p><strong>token 的身份验证流程：</strong></p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301615478.png" alt="image-20211230161512397" style="zoom: 67%;" />
+
+<ol>
+<li>客户端使用用户名跟密码请求登录</li>
+<li>服务端收到请求，去验证用户名与密码</li>
+<li>验证成功后，服务端会签发一个 token 并把这个 token 发送给客户端</li>
+<li>客户端收到 token 以后，会把它存储起来，比如放在 cookie 里或者 localStorage 里</li>
+<li>客户端每次向服务端请求资源的时候需要带着服务端签发的 token</li>
+<li>服务端收到请求，然后去验证客户端请求里面带着的 token ，如果验证成功，就向客户端返回请求的数据</li>
+</ol>
+<ul>
+<li><strong>每一次请求都需要携带 token，需要把 token 放到 HTTP 的 Header 里</strong></li>
+<li><strong>基于 token 的用户认证是一种服务端无状态的认证方式，服务端不用存放 token 数据。用解析 token 的计算时间换取 session 的存储空间，从而减轻服务器的压力，减少频繁的查询数据库</strong></li>
+<li><strong>token 完全由应用管理，所以它可以避开同源策略</strong></li>
+</ul>
+<h2 id="Refresh-Token"><a href="#Refresh-Token" class="headerlink" title="Refresh Token"></a>Refresh Token</h2><p>refresh token 是专用于刷新 access token 的 token。如果没有 refresh token，也可以刷新 access token，但每次刷新都要用户输入登录用户名与密码，会很麻烦。有了 refresh token，可以减少这个麻烦，客户端直接用 refresh token 去更新 access token，无需用户进行额外的操作。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301615382.png" alt="image-20211230161556277" style="zoom: 50%;" />
+
+<p>Access Token 的有效期比较短，当 Acesss Token 由于过期而失效时，使用 Refresh Token 就可以获取到新的 Token，如果 Refresh Token 也失效了，用户就只能重新登录了。</p>
+<p>Refresh Token 及过期时间是存储在服务器的数据库中，只有在申请新的 Acesss Token 时才会验证，不会对业务接口响应时间造成影响，也不需要向 Session 一样一直保持在内存中以应对大量的请求。</p>
+<h2 id="Token和Session的区别？"><a href="#Token和Session的区别？" class="headerlink" title="Token和Session的区别？"></a>Token和Session的区别？</h2><ul>
+<li><strong>状态管理</strong>：Session 是一种记录服务器和客户端会话状态的机制，使服务端有状态化，可以记录会话信息。而在Token方案中，Token 服务器就不保存任何会话信息数据了，直接把<u>信息存在Token</u>里，<strong>即服务端无状态化。</strong></li>
+<li><strong>安全性</strong>：Session 和 Token 并不矛盾，作为身份认证 Token 安全性比 Session 好，因为每一个请求都有签名还能防止监听以及重放攻击，而 Session 就必须依赖链路层来保障通讯安全了。</li>
+<li><strong>使用复杂性</strong>：session 的维护给服务端造成很大困扰，我们必须找地方存放它，又要考虑分布式的问题，甚至要单独为了它启用一套 Redis 集群。</li>
+<li><strong>数据共享</strong>：所谓 Session 认证只是简单的把 User 信息存储到 Session 里，因为 SessionID 的不可预测性，暂且认为是安全的。而 Token ，如果指的是 OAuth Token 或类似的机制的话，提供的是 认证 和 授权 ，认证是针对用户，授权是针对 App 。其目的是让某 App 有权利访问某用户的信息。这里的 Token 是唯一的。不可以转移到其它 App上，也不可以转到其它用户上。Session 只提供一种简单的认证，即只要有此 SessionID ，即认为有此 User 的全部权利。是需要严格保密的，这个数据应该只保存在站方，不应该共享给其它网站或者第三方 App。所以简单来说：<strong>如果你的用户数据可能需要和第三方共享，或者允许第三方调用 API 接口，用 Token 。如果永远只是自己的网站，自己的 App，用什么就无所谓了。</strong></li>
+</ul>
+<h1 id="什么是JSON-Web-Token（JWT）？"><a href="#什么是JSON-Web-Token（JWT）？" class="headerlink" title="什么是JSON Web Token（JWT）？"></a>什么是JSON Web Token（JWT）？</h1><p>从名字可以看出，JWT是Token的一种实现方式。</p>
+<p><strong>阮一峰老师的 <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHA6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE4LzA3L2pzb25fd2ViX3Rva2VuLXR1dG9yaWFsLmh0bWw=">JSON Web Token 入门教程</span> 讲的非常通俗易懂</strong>，我就不赘述了。</p>
+<h2 id="Token和JWT的区别"><a href="#Token和JWT的区别" class="headerlink" title="Token和JWT的区别"></a>Token和JWT的区别</h2><p><strong>相同：</strong></p>
+<ul>
+<li>都是访问资源的令牌</li>
+<li>都可以记录用户的信息</li>
+<li>都是使服务端无状态化</li>
+<li>都是只有验证成功后，客户端才能访问服务端上受保护的资源</li>
+</ul>
+<p><strong>区别：</strong></p>
+<ul>
+<li>Token：服务端验证客户端发送过来的 Token 时，还需要查询数据库获取用户信息，然后验证 Token 是否有效。</li>
+<li>JWT： 将 Token 和 Payload 加密后存储于客户端，服务端只需要使用密钥解密进行校验（校验也是 JWT 自己实现的）即可，不需要查询或者减少查询数据库，因为 JWT 自包含了用户信息和加密的数据。</li>
+</ul>
+<h2 id="JWT的使用"><a href="#JWT的使用" class="headerlink" title="JWT的使用"></a>JWT的使用</h2><p><span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vand0LmlvLw==">jwt.io/</span><br><span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vd3d3Lmpzb253ZWJ0b2tlbi5pby8=">www.jsonwebtoken.io/</span></p>
+<p>Token可以放在HTTP请求头、请求体、URL里。</p>
+<h1 id="OAuth-2-0"><a href="#OAuth-2-0" class="headerlink" title="OAuth 2.0"></a>OAuth 2.0</h1><p>挖个坑，了解不多</p>
+<h1 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h1><h1 id="单点登录（Single-Sign-On，简称SSO）"><a href="#单点登录（Single-Sign-On，简称SSO）" class="headerlink" title="单点登录（Single Sign On，简称SSO）"></a>单点登录（Single Sign On，简称SSO）</h1><p>前面我们已经知道了，在同域下的客户端/服务端认证系统中，通过客户端携带凭证，维持一段时间内的登录状态。</p>
+<p>但当我们业务线越来越多，就会有更多业务系统分散到不同域名下，就需要「一次登录，全线通用」的能力，叫做「单点登录」。</p>
+<h2 id="“虚假”的单点登录（主域名相同）"><a href="#“虚假”的单点登录（主域名相同）" class="headerlink" title="“虚假”的单点登录（主域名相同）"></a>“虚假”的单点登录（主域名相同）</h2><p>简单的，如果业务系统都在同一主域名下，比如 <code>wenku.baidu.com</code> <code>tieba.baidu.com</code>，就好办了。可以直接把 cookie domain 设置为主域名 <code>baidu.com</code>，百度也就是这么干的。</p>
+<h2 id="“真实”的单点登录（主域名不同）"><a href="#“真实”的单点登录（主域名不同）" class="headerlink" title="“真实”的单点登录（主域名不同）"></a>“真实”的单点登录（主域名不同）</h2><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301801474.png" alt="dcb743204f8a201be53df5338fc34affe5fa1059"></p>
+<p>上图是CAS官网上的标准流程，具体流程如下：</p>
+<ol>
+<li>用户访问app系统，app系统是需要登录的，但用户现在没有登录。</li>
+<li>跳转到CAS server，即SSO登录系统，<strong>以后图中的CAS Server我们统一叫做SSO系统。</strong> SSO系统也没有登录，弹出用户登录页。</li>
+<li>用户填写用户名、密码，SSO系统进行认证后，将登录状态写入SSO的session，浏览器（Browser）中写入SSO域下的Cookie。</li>
+<li>SSO系统登录完成后会生成一个ST（Service Ticket），然后跳转到app系统，同时将ST作为参数传递给app系统。</li>
+<li>app系统拿到ST后，从后台向SSO发送请求，验证ST是否有效。</li>
+<li>验证通过后，app系统将登录状态写入session并设置app域下的Cookie。</li>
+</ol>
+<p>至此，跨域单点登录就完成了。以后我们再访问app系统时，app就是登录的。接下来，我们再看看访问app2系统时的流程。</p>
+<ol>
+<li>用户访问app2系统，app2系统没有登录，跳转到SSO。</li>
+<li>由于SSO已经登录了，不需要重新登录认证。</li>
+<li>SSO生成ST，浏览器跳转到app2系统，并将ST作为参数传递给app2。</li>
+<li>app2拿到ST，后台访问SSO，验证ST是否有效。</li>
+<li>验证成功后，app2将登录状态写入session，并在app2域下写入Cookie。</li>
+</ol>
+<p>这样，app2系统不需要走登录流程，就已经是登录了。SSO，app和app2在不同的域，它们之间的session不共享也是没问题的。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>HTTP 是无状态的，为了维持前后请求，需要前端存储标记</li>
+<li>cookie 是一种完善的标记方式，通过 HTTP 头或 js 操作，有对应的安全策略，是大多数状态管理方案的基石</li>
+<li>session 是一种状态管理方案，前端通过 cookie 存储 id，后端存储数据，但后端要处理分布式问题</li>
+<li>token 是另一种状态管理方案，相比于 session 不需要后端存储，数据全部存在前端，解放后端，释放灵活性</li>
+<li>token 的编码技术，通常基于 base64，或增加加密算法防篡改，jwt 是一种成熟的编码方案</li>
+<li>在复杂系统中，token 可通过 service token、refresh token 的分权，同时满足安全性和用户体验</li>
+<li>session 和 token 的对比就是「用不用cookie」和「后端存不存」的对比</li>
+<li>单点登录要求不同域下的系统「一次登录，全线通用」，通常由独立的 SSO 系统记录登录状态、下发 ticket，各业务系统配合存储和认证 ticket</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTA0MDM0MTgxMDcwODYx">傻傻分不清之 Cookie、Session、Token、JWT</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODk4NjMwMTM0NTMwNzUyNTIw">前端鉴权的兄弟们：cookie、session、token、jwt、单点登录</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTA0MTE1MDgwNzkwMDIz">看完这篇 Session、Cookie、Token，和面试官扯皮就没问题了</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zc3Nob290ZXIuY29tLzIwMjEtMDItMjEtYXV0aC8jJUU1JTg1JUI2JUU0JUJCJTk2JUU2JTk2JUI5JUU2JUIzJTk1">前后端接口鉴权全解：cookie、session、token 区别解析</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9hcnRpY2xlLzYzNjI4MQ==">单点登录（SSO）看这一篇就够了</span></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/Browser/" rel="tag"><i class="ic i-tag"></i> Browser</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-12-30 18:11:28" itemprop="dateModified" datetime="2021-12-30T18:11:28+08:00">2021-12-30</time>
+  </span>
+  <span id="FrontEnd/Browser/FrontEnd/Browser/接口鉴权方案：Cookie、Session、Token、JWT、单点登录" class="item leancloud_visitors" data-flag-title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicliierfjj20zk0m8npd.jpg" title="磁盘与常见磁盘调度算法">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Operating_System</span>
+  <h3>磁盘与常见磁盘调度算法</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281214702.png" title="NodeJS基础知识入门">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> NodeJS</span>
+  <h3>NodeJS基础知识入门</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%89%B4%E6%9D%83%E4%B8%89%E9%83%A8%E6%9B%B2"><span class="toc-number">2.</span> <span class="toc-text">鉴权三部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">第一步：认证（Authentication）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%8E%88%E6%9D%83%EF%BC%88Authorization%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">第二步：授权（Authorization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%87%AD%E8%AF%81%EF%BC%88Credentials%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">第三步：凭证（Credentials）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84HTTP"><span class="toc-number">3.</span> <span class="toc-text">无状态的HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCookie%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">什么是Cookie？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%9B%AE%E7%9A%84-%E7%94%A8%E9%80%94"><span class="toc-number">4.1.</span> <span class="toc-text">Cookie的目的&#x2F;用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="toc-number">4.2.</span> <span class="toc-text">Cookie的认证机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">4.3.</span> <span class="toc-text">Cookie的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">4.4.</span> <span class="toc-text">Cookie的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">4.5.</span> <span class="toc-text">Cookie的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">4.6.</span> <span class="toc-text">Cookie的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87HTTP%E5%A4%B4%E5%AF%B9-Cookie-%E7%9A%84%E8%AF%BB%E5%86%99%E8%AF%B4%E6%98%8E"><span class="toc-number">4.6.1.</span> <span class="toc-text">通过HTTP头对 Cookie 的读写说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%AF%BB%E5%86%99Cookie"><span class="toc-number">4.6.2.</span> <span class="toc-text">前端读写Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%AF%BB%E5%86%99Cookie"><span class="toc-number">4.6.3.</span> <span class="toc-text">Node环境下读写Cookie</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSession%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">什么是Session？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E7%9B%AE%E7%9A%84%EF%BC%9FSession%E5%92%8CCookie%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9FSesson%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-number">5.1.</span> <span class="toc-text">Session的目的？Session和Cookie的区别？Sesson特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="toc-number">5.2.</span> <span class="toc-text">Session的认证机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.3.</span> <span class="toc-text">Session的存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SessionID%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.4.</span> <span class="toc-text">SessionID的存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node%E7%8E%AF%E5%A2%83%E4%B8%8BSession%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.5.</span> <span class="toc-text">Node环境下Session的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8FSession%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9ASession%E5%85%B1%E4%BA%AB"><span class="toc-number">5.6.</span> <span class="toc-text">分布式Session的问题：Session共享</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFToken%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">什么是Token？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Access-Token"><span class="toc-number">6.1.</span> <span class="toc-text">Access Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refresh-Token"><span class="toc-number">6.2.</span> <span class="toc-text">Refresh Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Token%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">6.3.</span> <span class="toc-text">Token和Session的区别？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJSON-Web-Token%EF%BC%88JWT%EF%BC%89%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">什么是JSON Web Token（JWT）？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Token%E5%92%8CJWT%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.1.</span> <span class="toc-text">Token和JWT的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.2.</span> <span class="toc-text">JWT的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OAuth-2-0"><span class="toc-number">8.</span> <span class="toc-text">OAuth 2.0</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95"><span class="toc-number">9.</span> <span class="toc-text">单点登录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88Single-Sign-On%EF%BC%8C%E7%AE%80%E7%A7%B0SSO%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">单点登录（Single Sign On，简称SSO）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E8%99%9A%E5%81%87%E2%80%9D%E7%9A%84%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88%E4%B8%BB%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%90%8C%EF%BC%89"><span class="toc-number">10.1.</span> <span class="toc-text">“虚假”的单点登录（主域名相同）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E7%9C%9F%E5%AE%9E%E2%80%9D%E7%9A%84%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88%E4%B8%BB%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%EF%BC%89"><span class="toc-number">10.2.</span> <span class="toc-text">“真实”的单点登录（主域名不同）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">12.</span> <span class="toc-text">参考</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="客户端存储">客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【V8引擎原理篇】浏览器原理介绍">【V8引擎原理篇】浏览器原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" rel="bookmark" title="【浏览器内核原理篇】重绘Repaint与回流Reflow">【浏览器内核原理篇】重绘Repaint与回流Reflow</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">37</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">18</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/NodeJS/FrontEnd/NodeJS/NodeJS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
+</div>
+
+    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">495k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">7:30</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/Browser/FrontEnd/Browser/接口鉴权方案：Cookie、Session、Token、JWT、单点登录',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
