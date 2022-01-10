@@ -27,12 +27,12 @@
   <meta name="keywords" content="Linux" />
 
 
-<link rel="canonical" href="https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85">
+<link rel="canonical" href="https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Vmware%E5%AE%89%E8%A3%85Linux%E8%99%9A%E6%8B%9F%E6%9C%BA">
 
 
 
   <title>
-Linux系统的安装 - Linux - BackEnd |
+【Linux】Vmware安装Linux虚拟机 - Linux - BackEnd |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,7 +60,7 @@ Monkey's Blog = </title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">Linux系统的安装
+  <h1 itemprop="name headline">【Linux】Vmware安装Linux虚拟机
   </h1>
   
 <div class="meta">
@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>1.2k</span>
+    <span>1.3k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -149,7 +149,7 @@ Monkey's Blog = </title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Vmware%E5%AE%89%E8%A3%85Linux%E8%99%9A%E6%8B%9F%E6%9C%BA">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -250,9 +250,11 @@ Monkey's Blog = </title>
 <h1 id="测试网络"><a href="#测试网络" class="headerlink" title="测试网络"></a>测试网络</h1><p>登陆成功之后输入<strong>ip addr</strong>。</p>
 <p>找到网卡ens32和该网卡的IP信息。注意：你的网卡不一定是叫ens32，下文以ens32为例子。</p>
 <p>lo 网卡为回环地址网卡</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826160804277.png" alt="image-20210826160804277"></p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201081253265.png" alt="image-20220108125320226"></p>
 <p>ping一下百度，看是否能上外网。看到类似下面的内容，说明虚拟机网络配置成功。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826125548594.png" alt="image-20210826125548594"></p>
+<h1 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h1><p>方式1：直接拷贝一份安装好的虚拟机文件</p>
+<p>方式2：使用vmware的克隆操作。</p>
 <h1 id="快照管理"><a href="#快照管理" class="headerlink" title="快照管理"></a>快照管理</h1><p><strong>虚拟机的快照是虚拟机在某个点及时的副本。</strong></p>
 <p>虚拟机快照是对某一个特定文件系统，在某一个特定时间内的一个具有只读属性的镜像。就是说当用户需要重复的返回到某一系统状态时，又不想创建多个虚拟机的时候，就可以使用虚拟机快照功能。</p>
 <p>系统崩溃或系统异常，可以通过使用恢复到快照来保持磁盘文件系统和系统存储，当升级应用和服务器以及给它们打补丁的时候，快照是相当于救世主一样的存在。</p>
@@ -271,9 +273,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-30 19:58:31" itemprop="dateModified" datetime="2021-12-30T19:58:31+08:00">2021-12-30</time>
+    <time title="Modified: 2022-01-10 20:07:31" itemprop="dateModified" datetime="2022-01-10T20:07:31+08:00">2022-01-10</time>
   </span>
-  <span id="BackEnd/Linux/BackEnd/Linux/Linux系统的安装" class="item leancloud_visitors" data-flag-title="Linux系统的安装" title="Views">
+  <span id="BackEnd/Linux/BackEnd/Linux/【Linux】Vmware安装Linux虚拟机" class="item leancloud_visitors" data-flag-title="【Linux】Vmware安装Linux虚拟机" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -292,7 +294,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85" title="Linux系统的安装">https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/Linux系统的安装</a>
+    <a href="https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Vmware%E5%AE%89%E8%A3%85Linux%E8%99%9A%E6%8B%9F%E6%9C%BA" title="【Linux】Vmware安装Linux虚拟机">https://monkeyhh.top/BackEnd/Linux/BackEnd/Linux/【Linux】Vmware安装Linux虚拟机</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -311,10 +313,10 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/BackEnd/Linux/BackEnd/Linux/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301958270.jpeg" title="Linux基础知识">
+  <a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301958270.jpeg" title="【Linux】Linux基础知识">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Linux</span>
-  <h3>Linux基础知识</h3>
+  <h3>【Linux】Linux基础知识</h3>
   </a>
 
     </div>
@@ -343,11 +345,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDLinux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F"><span class="toc-number">2.1.</span> <span class="toc-text">下载Linux系统镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85vmware-workstation-pro"><span class="toc-number">2.2.</span> <span class="toc-text">安装vmware workstation pro</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Window%E4%B8%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%88%9B%E5%BB%BA%E5%AF%BC%E5%90%91"><span class="toc-number">3.</span> <span class="toc-text">Window下虚拟机创建导向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">系统安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C"><span class="toc-number">5.</span> <span class="toc-text">测试网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">快照管理</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDLinux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F"><span class="toc-number">2.1.</span> <span class="toc-text">下载Linux系统镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85vmware-workstation-pro"><span class="toc-number">2.2.</span> <span class="toc-text">安装vmware workstation pro</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Window%E4%B8%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%88%9B%E5%BB%BA%E5%AF%BC%E5%90%91"><span class="toc-number">3.</span> <span class="toc-text">Window下虚拟机创建导向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">系统安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C"><span class="toc-number">5.</span> <span class="toc-text">测试网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%8B%E9%9A%86"><span class="toc-number">6.</span> <span class="toc-text">克隆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">快照管理</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li class="active"><a href="/BackEnd/Linux/BackEnd/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85" rel="bookmark" title="Linux系统的安装">Linux系统的安装</a></li><li><a href="/BackEnd/Linux/BackEnd/Linux/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="bookmark" title="Linux基础知识">Linux基础知识</a></li>
+          <li class="active"><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Vmware%E5%AE%89%E8%A3%85Linux%E8%99%9A%E6%8B%9F%E6%9C%BA" rel="bookmark" title="【Linux】Vmware安装Linux虚拟机">【Linux】Vmware安装Linux虚拟机</a></li><li><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="bookmark" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -431,7 +433,7 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/BackEnd/Linux/BackEnd/Linux/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
@@ -460,22 +462,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【V8引擎原理篇】浏览器原理介绍">【V8引擎原理篇】浏览器原理介绍</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
   </li>
 
       
@@ -499,7 +489,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
   </li>
 
       
@@ -508,10 +498,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
   </li>
 
       
@@ -530,36 +520,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
-</div>
-
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
 <i class="ic i-angle-right"></i>
 <a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
 </div>
 
-    <span><a href="/BackEnd/Linux/BackEnd/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85" title="Linux系统的安装">Linux系统的安装</a></span>
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
   </li>
 
       
@@ -568,10 +534,46 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94webpack%E5%BF%AB" title="Vite为什么比webpack快">Vite为什么比webpack快</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE" title="JavaScript中的数据">JavaScript中的数据</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
   </li>
 
   </ul>
@@ -614,7 +616,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'BackEnd/Linux/BackEnd/Linux/Linux系统的安装',
+    path: 'BackEnd/Linux/BackEnd/Linux/【Linux】Vmware安装Linux虚拟机',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
