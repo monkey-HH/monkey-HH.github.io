@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>14k</span>
+    <span>16k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>13 mins.</span>
+    <span>15 mins.</span>
   </span>
 </div>
 
@@ -333,10 +333,12 @@ Monkey's Blog = </title>
 </ul>
 <h2 id="Session的存储方式"><a href="#Session的存储方式" class="headerlink" title="Session的存储方式"></a>Session的存储方式</h2><p>显然，服务端只是给 cookie 一个 sessionId，而 session 的具体内容（可能包含用户信息、session 状态等），要自己存一下。存储的方式有几种：</p>
 <ul>
-<li>Redis（推荐）：内存型数据库，<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHA6Ly93d3cucmVkaXMuY24v">redis中文官方网站</span>。以 key-value 的形式存，正合 sessionId-sessionData 的场景；且访问快。</li>
-<li>内存：直接放到变量里。一旦服务重启就没了</li>
-<li>数据库：普通数据库。性能不高。</li>
-<li></li>
+<li><p>Redis（推荐）：内存型数据库，<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHA6Ly93d3cucmVkaXMuY24v">redis中文官方网站</span>。以 key-value 的形式存，正合 sessionId-sessionData 的场景；且访问快。</p>
+</li>
+<li><p>内存：直接放到变量里。一旦服务重启就没了</p>
+</li>
+<li><p>数据库：普通数据库。性能不高。</p>
+</li>
 </ul>
 <h2 id="SessionID的存储方式"><a href="#SessionID的存储方式" class="headerlink" title="SessionID的存储方式"></a>SessionID的存储方式</h2><p>上一节讲了Session的存储方式，这里讲的是SessionID的存储方式，为什么要专门讲呢？我们知道SessionID的存储最经典的方式为：</p>
 <p><strong>SessionID存储于Cookie</strong>中，但如果浏览器禁用了Cookie，那Session就无法使用了。</p>
@@ -356,7 +358,7 @@ Monkey's Blog = </title>
 <li>给req提供了session属性，控制属性的set/get并响应到cookie和session存取上，并给req.session提供了一些方法。</li>
 </ul>
 <p>以下是一个例子，记录了客户端访问服务器端的次数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> parseurl = <span class="built_in">require</span>(<span class="string">&#x27;parseurl&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">&#x27;express-session&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(</span><br><span class="line">  session(&#123;</span><br><span class="line">    <span class="attr">secret</span>: <span class="string">&#x27;keyboard cat&#x27;</span>,</span><br><span class="line">    <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">saveUninitialized</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.session.views) &#123;</span><br><span class="line">    req.session.views = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get the url pathname</span></span><br><span class="line">  <span class="keyword">var</span> pathname = parseurl(req).pathname</span><br><span class="line"></span><br><span class="line">  <span class="comment">// count the views</span></span><br><span class="line">  req.session.views[pathname] = (req.session.views[pathname] || <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/foo&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    <span class="attr">session</span>: req.session,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/bar&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;you viewed this page &#x27;</span> + req.session.views[<span class="string">&#x27;/bar&#x27;</span>] + <span class="string">&#x27; times&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3001</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> parseurl = <span class="built_in">require</span>(<span class="string">&#x27;parseurl&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">&#x27;express-session&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(</span><br><span class="line">  session(&#123;</span><br><span class="line">    <span class="attr">secret</span>: <span class="string">&#x27;keyboard cat&#x27;</span>,<span class="comment">// 给session ID cookie签名</span></span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Monkey&#x27;</span>,<span class="comment">// 设置Cookie里的name，默认是connect.sid</span></span><br><span class="line">    <span class="attr">cookie</span>:&#123;<span class="attr">maxAge</span>: <span class="number">15000</span> &#125;,</span><br><span class="line">    <span class="attr">resave</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">saveUninitialized</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!req.session.views) &#123;</span><br><span class="line">    req.session.views = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// get the url pathname</span></span><br><span class="line">  <span class="keyword">var</span> pathname = parseurl(req).pathname</span><br><span class="line"></span><br><span class="line">  <span class="comment">// count the views</span></span><br><span class="line">  req.session.views[pathname] = (req.session.views[pathname] || <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/foo&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    <span class="attr">session</span>: req.session,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">&#x27;/bar&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.send(<span class="string">&#x27;you viewed this page &#x27;</span> + req.session.views[<span class="string">&#x27;/bar&#x27;</span>] + <span class="string">&#x27; times&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3001</span>)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -415,7 +417,15 @@ Monkey's Blog = </title>
 <li><strong>数据共享</strong>：所谓 Session 认证只是简单的把 User 信息存储到 Session 里，因为 SessionID 的不可预测性，暂且认为是安全的。而 Token ，如果指的是 OAuth Token 或类似的机制的话，提供的是 认证 和 授权 ，认证是针对用户，授权是针对 App 。其目的是让某 App 有权利访问某用户的信息。这里的 Token 是唯一的。不可以转移到其它 App上，也不可以转到其它用户上。Session 只提供一种简单的认证，即只要有此 SessionID ，即认为有此 User 的全部权利。是需要严格保密的，这个数据应该只保存在站方，不应该共享给其它网站或者第三方 App。所以简单来说：<strong>如果你的用户数据可能需要和第三方共享，或者允许第三方调用 API 接口，用 Token 。如果永远只是自己的网站，自己的 App，用什么就无所谓了。</strong></li>
 </ul>
 <h1 id="什么是JSON-Web-Token（JWT）？"><a href="#什么是JSON-Web-Token（JWT）？" class="headerlink" title="什么是JSON Web Token（JWT）？"></a>什么是JSON Web Token（JWT）？</h1><p>从名字可以看出，JWT是Token的一种实现方式。</p>
-<p><strong>阮一峰老师的 <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHA6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE4LzA3L2pzb25fd2ViX3Rva2VuLXR1dG9yaWFsLmh0bWw=">JSON Web Token 入门教程</span> 讲的非常通俗易懂</strong>，我就不赘述了。</p>
+<p><strong>阮一峰老师的 <span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTgvMDcvanNvbl93ZWJfdG9rZW4tdHV0b3JpYWwuaHRtbA==">JSON Web Token 入门教程</span> 讲的非常通俗易懂</strong>，我就不赘述了。</p>
+<p>一个JWT主要有三个部分组成，header、payload、signature，中间用.号分号：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202060014459.png" alt="image-20220206001449883" style="zoom:50%;" />
+
+<p>前二者均为JSON对象，payload则为传递的数据。</p>
+<p><strong>Signature 部分是对前两部分的签名</strong>，防止数据篡改。首先，需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256），按照下面的公式产生签名。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">signature = HMACSHA256(</span><br><span class="line">  base64UrlEncode(header) + <span class="string">&quot;.&quot;</span> +</span><br><span class="line">  base64UrlEncode(payload),</span><br><span class="line">  secret)</span><br></pre></td></tr></table></figure>
+
+<p>算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用”点”（<code>.</code>）分隔，就可以返回给用户。</p>
 <h2 id="Token和JWT的区别"><a href="#Token和JWT的区别" class="headerlink" title="Token和JWT的区别"></a>Token和JWT的区别</h2><p><strong>相同：</strong></p>
 <ul>
 <li>都是访问资源的令牌</li>
@@ -428,7 +438,30 @@ Monkey's Blog = </title>
 <li>Token：服务端验证客户端发送过来的 Token 时，还需要查询数据库获取用户信息，然后验证 Token 是否有效。</li>
 <li>JWT： 将 Token 和 Payload 加密后存储于客户端，服务端只需要使用密钥解密进行校验（校验也是 JWT 自己实现的）即可，不需要查询或者减少查询数据库，因为 JWT 自包含了用户信息和加密的数据。</li>
 </ul>
-<h2 id="JWT的使用"><a href="#JWT的使用" class="headerlink" title="JWT的使用"></a>JWT的使用</h2><p><span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vand0LmlvLw==">jwt.io/</span><br><span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vd3d3Lmpzb253ZWJ0b2tlbi5pby8=">www.jsonwebtoken.io/</span></p>
+<h2 id="JWT的存储方式"><a href="#JWT的存储方式" class="headerlink" title="JWT的存储方式"></a>JWT的存储方式</h2><p>主要有以下的几种存储方式：</p>
+<ul>
+<li>存储于Cookie中，虽然能自动发送，但很少用。</li>
+<li>存储在浏览器的localStorage或者sessionStorage中。</li>
+</ul>
+<h2 id="JWT的发送方式"><a href="#JWT的发送方式" class="headerlink" title="JWT的发送方式"></a>JWT的发送方式</h2><p>Cookie和Session都是通过Cookie的形式每次发送请求的时候，自动带上。但一般JWT的解决方案中我们不会存在Cookie。</p>
+<p>因此我们可以通过以下的方式将Token带上：</p>
+<ul>
+<li>直接放在请求当中去，如POST请求的数据体里面</li>
+<li>放在 HTTP 请求的头信息<code>Authorization</code>字段里面。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Bearer &lt;token&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="JWT的特点"><a href="#JWT的特点" class="headerlink" title="JWT的特点"></a>JWT的特点</h2><p>（1）<strong>JWT 默认是不加密</strong>，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。</p>
+<p>（2）JWT 不加密的情况下，不能将秘密数据写入 JWT。</p>
+<p>（3）JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。</p>
+<p>（4）JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。</p>
+<p>（5）JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。</p>
+<p>（6）为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。</p>
+<h2 id="JWT的使用"><a href="#JWT的使用" class="headerlink" title="JWT的使用"></a>JWT的使用</h2><p>官网为：<span class="exturl" data-url="aHR0cHM6Ly9qd3QuaW8v">jwt.io/</span>，里面可以查看到多个语言对应的jwt库，这里我们使用Node.js环境下的jsonwebtoken库。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&#x27;jsonwebtoken&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> username_DB = <span class="string">&quot;monkey&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> password_DB = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> jwtSecret = <span class="string">&#x27;签名&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/login&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (req.body.username) === username_DB &amp;&amp; req.body.password === password_DB) &#123;</span><br><span class="line">	<span class="keyword">const</span> token = jwt.sign(</span><br><span class="line">	&#123;	<span class="attr">name</span>: <span class="string">&#x27;monkey&#x27;</span>	&#125;, <span class="comment">// payload部分</span></span><br><span class="line">	jwtSecret, <span class="comment">// 用于计算signature的密钥</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="attr">algorithm</span>: <span class="string">&#x27;HS256&#x27;</span>，</span><br><span class="line">		<span class="attr">expiresIn</span>: <span class="number">10000</span></span><br><span class="line">	&#125;<span class="comment">//这部分就是header部分</span></span><br><span class="line">    </span><br><span class="line">    );</span><br><span class="line">	res.send(token);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">	res.send(<span class="string">&#x27;账号或密码 - 错误&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.post(<span class="string">&#x27;/vip&#x27;</span>,<span class="function">(<span class="params">res,req</span>)=&gt;</span>&#123;</span><br><span class="line">	jwt.verify(req.body.token,jwtSecret,<span class="function">(<span class="params">err,decoded</span>)=&gt;</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(err)&#123;</span><br><span class="line">			res.send(<span class="string">&#x27;账号或密码 - 错误&#x27;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			res.send(<span class="string">`欢迎VIP用户<span class="subst">$&#123; decoded.name &#125;</span>`</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>Token可以放在HTTP请求头、请求体、URL里。</p>
 <h1 id="OAuth-2-0"><a href="#OAuth-2-0" class="headerlink" title="OAuth 2.0"></a>OAuth 2.0</h1><p>挖个坑，了解不多</p>
 <h1 id="单点登录"><a href="#单点登录" class="headerlink" title="单点登录"></a>单点登录</h1><h1 id="单点登录（Single-Sign-On，简称SSO）"><a href="#单点登录（Single-Sign-On，简称SSO）" class="headerlink" title="单点登录（Single Sign On，简称SSO）"></a>单点登录（Single Sign On，简称SSO）</h1><p>前面我们已经知道了，在同域下的客户端/服务端认证系统中，通过客户端携带凭证，维持一段时间内的登录状态。</p>
@@ -484,7 +517,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-30 18:11:28" itemprop="dateModified" datetime="2021-12-30T18:11:28+08:00">2021-12-30</time>
+    <time title="Modified: 2022-02-06 00:34:17" itemprop="dateModified" datetime="2022-02-06T00:34:17+08:00">2022-02-06</time>
   </span>
   <span id="FrontEnd/Browser/FrontEnd/Browser/接口鉴权方案：Cookie、Session、Token、JWT、单点登录" class="item leancloud_visitors" data-flag-title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录" title="Views">
       <span class="icon">
@@ -556,11 +589,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%89%B4%E6%9D%83%E4%B8%89%E9%83%A8%E6%9B%B2"><span class="toc-number">2.</span> <span class="toc-text">鉴权三部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">第一步：认证（Authentication）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%8E%88%E6%9D%83%EF%BC%88Authorization%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">第二步：授权（Authorization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%87%AD%E8%AF%81%EF%BC%88Credentials%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">第三步：凭证（Credentials）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84HTTP"><span class="toc-number">3.</span> <span class="toc-text">无状态的HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCookie%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">什么是Cookie？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%9B%AE%E7%9A%84-%E7%94%A8%E9%80%94"><span class="toc-number">4.1.</span> <span class="toc-text">Cookie的目的&#x2F;用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="toc-number">4.2.</span> <span class="toc-text">Cookie的认证机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">4.3.</span> <span class="toc-text">Cookie的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">4.4.</span> <span class="toc-text">Cookie的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">4.5.</span> <span class="toc-text">Cookie的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">4.6.</span> <span class="toc-text">Cookie的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87HTTP%E5%A4%B4%E5%AF%B9-Cookie-%E7%9A%84%E8%AF%BB%E5%86%99%E8%AF%B4%E6%98%8E"><span class="toc-number">4.6.1.</span> <span class="toc-text">通过HTTP头对 Cookie 的读写说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%AF%BB%E5%86%99Cookie"><span class="toc-number">4.6.2.</span> <span class="toc-text">前端读写Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%AF%BB%E5%86%99Cookie"><span class="toc-number">4.6.3.</span> <span class="toc-text">Node环境下读写Cookie</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSession%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">什么是Session？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E7%9B%AE%E7%9A%84%EF%BC%9FSession%E5%92%8CCookie%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9FSesson%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-number">5.1.</span> <span class="toc-text">Session的目的？Session和Cookie的区别？Sesson特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="toc-number">5.2.</span> <span class="toc-text">Session的认证机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.3.</span> <span class="toc-text">Session的存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SessionID%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.4.</span> <span class="toc-text">SessionID的存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node%E7%8E%AF%E5%A2%83%E4%B8%8BSession%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.5.</span> <span class="toc-text">Node环境下Session的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8FSession%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9ASession%E5%85%B1%E4%BA%AB"><span class="toc-number">5.6.</span> <span class="toc-text">分布式Session的问题：Session共享</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFToken%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">什么是Token？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Access-Token"><span class="toc-number">6.1.</span> <span class="toc-text">Access Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refresh-Token"><span class="toc-number">6.2.</span> <span class="toc-text">Refresh Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Token%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">6.3.</span> <span class="toc-text">Token和Session的区别？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJSON-Web-Token%EF%BC%88JWT%EF%BC%89%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">什么是JSON Web Token（JWT）？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Token%E5%92%8CJWT%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.1.</span> <span class="toc-text">Token和JWT的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.2.</span> <span class="toc-text">JWT的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OAuth-2-0"><span class="toc-number">8.</span> <span class="toc-text">OAuth 2.0</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95"><span class="toc-number">9.</span> <span class="toc-text">单点登录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88Single-Sign-On%EF%BC%8C%E7%AE%80%E7%A7%B0SSO%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">单点登录（Single Sign On，简称SSO）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E8%99%9A%E5%81%87%E2%80%9D%E7%9A%84%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88%E4%B8%BB%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%90%8C%EF%BC%89"><span class="toc-number">10.1.</span> <span class="toc-text">“虚假”的单点登录（主域名相同）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E7%9C%9F%E5%AE%9E%E2%80%9D%E7%9A%84%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88%E4%B8%BB%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%EF%BC%89"><span class="toc-number">10.2.</span> <span class="toc-text">“真实”的单点登录（主域名不同）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">12.</span> <span class="toc-text">参考</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%89%B4%E6%9D%83%E4%B8%89%E9%83%A8%E6%9B%B2"><span class="toc-number">2.</span> <span class="toc-text">鉴权三部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">第一步：认证（Authentication）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%8E%88%E6%9D%83%EF%BC%88Authorization%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">第二步：授权（Authorization）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%87%AD%E8%AF%81%EF%BC%88Credentials%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">第三步：凭证（Credentials）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81%E7%9A%84HTTP"><span class="toc-number">3.</span> <span class="toc-text">无状态的HTTP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFCookie%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">什么是Cookie？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%9B%AE%E7%9A%84-%E7%94%A8%E9%80%94"><span class="toc-number">4.1.</span> <span class="toc-text">Cookie的目的&#x2F;用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="toc-number">4.2.</span> <span class="toc-text">Cookie的认证机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">4.3.</span> <span class="toc-text">Cookie的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">4.4.</span> <span class="toc-text">Cookie的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">4.5.</span> <span class="toc-text">Cookie的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">4.6.</span> <span class="toc-text">Cookie的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87HTTP%E5%A4%B4%E5%AF%B9-Cookie-%E7%9A%84%E8%AF%BB%E5%86%99%E8%AF%B4%E6%98%8E"><span class="toc-number">4.6.1.</span> <span class="toc-text">通过HTTP头对 Cookie 的读写说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%AF%BB%E5%86%99Cookie"><span class="toc-number">4.6.2.</span> <span class="toc-text">前端读写Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%AF%BB%E5%86%99Cookie"><span class="toc-number">4.6.3.</span> <span class="toc-text">Node环境下读写Cookie</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSession%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">什么是Session？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E7%9B%AE%E7%9A%84%EF%BC%9FSession%E5%92%8CCookie%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9FSesson%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-number">5.1.</span> <span class="toc-text">Session的目的？Session和Cookie的区别？Sesson特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="toc-number">5.2.</span> <span class="toc-text">Session的认证机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.3.</span> <span class="toc-text">Session的存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SessionID%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.4.</span> <span class="toc-text">SessionID的存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node%E7%8E%AF%E5%A2%83%E4%B8%8BSession%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.5.</span> <span class="toc-text">Node环境下Session的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8FSession%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9ASession%E5%85%B1%E4%BA%AB"><span class="toc-number">5.6.</span> <span class="toc-text">分布式Session的问题：Session共享</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFToken%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">什么是Token？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Access-Token"><span class="toc-number">6.1.</span> <span class="toc-text">Access Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Refresh-Token"><span class="toc-number">6.2.</span> <span class="toc-text">Refresh Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Token%E5%92%8CSession%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">6.3.</span> <span class="toc-text">Token和Session的区别？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJSON-Web-Token%EF%BC%88JWT%EF%BC%89%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">什么是JSON Web Token（JWT）？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Token%E5%92%8CJWT%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">7.1.</span> <span class="toc-text">Token和JWT的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">7.2.</span> <span class="toc-text">JWT的存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT%E7%9A%84%E5%8F%91%E9%80%81%E6%96%B9%E5%BC%8F"><span class="toc-number">7.3.</span> <span class="toc-text">JWT的发送方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">7.4.</span> <span class="toc-text">JWT的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.5.</span> <span class="toc-text">JWT的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OAuth-2-0"><span class="toc-number">8.</span> <span class="toc-text">OAuth 2.0</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95"><span class="toc-number">9.</span> <span class="toc-text">单点登录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88Single-Sign-On%EF%BC%8C%E7%AE%80%E7%A7%B0SSO%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">单点登录（Single Sign On，简称SSO）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E8%99%9A%E5%81%87%E2%80%9D%E7%9A%84%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88%E4%B8%BB%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%90%8C%EF%BC%89"><span class="toc-number">10.1.</span> <span class="toc-text">“虚假”的单点登录（主域名相同）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E7%9C%9F%E5%AE%9E%E2%80%9D%E7%9A%84%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%EF%BC%88%E4%B8%BB%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%90%8C%EF%BC%89"><span class="toc-number">10.2.</span> <span class="toc-text">“真实”的单点登录（主域名不同）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">12.</span> <span class="toc-text">参考</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="客户端存储">客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【V8引擎原理篇】浏览器原理介绍">【V8引擎原理篇】浏览器原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98Repaint%E4%B8%8E%E5%9B%9E%E6%B5%81Reflow" rel="bookmark" title="【浏览器内核原理篇】重绘Repaint与回流Reflow">【浏览器内核原理篇】重绘Repaint与回流Reflow</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】JavaScript事件循环机制">【V8引擎原理篇】JavaScript事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -574,7 +607,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">39</span>
+        <span class="count">37</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -586,7 +619,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">20</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -676,7 +709,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF" title="JavaScript事件循环">JavaScript事件循环</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
   </li>
 
       
@@ -685,10 +718,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
+    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
   </li>
 
       
@@ -698,7 +731,7 @@ Monkey's Blog = </title>
 <a href="/categories/CI-CD/" title="In CI&CD">CI&CD</a>
 </div>
 
-    <span><a href="/CI-CD/CI&CD/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
+    <span><a href="/CI-CD/CI&CD/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
   </li>
 
       
@@ -707,10 +740,58 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" title="【V8引擎原理篇】JavaScript事件循环机制">【V8引擎原理篇】JavaScript事件循环机制</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
   </li>
 
       
@@ -734,55 +815,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
-</div>
-
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
-</div>
-
-    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
   </li>
 
   </ul>
@@ -807,13 +840,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">543k words</span>
+    <span title="Symbols count total">548k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">8:13</span>
+    <span title="Reading time total">8:18</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
