@@ -1,0 +1,689 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Browser,Javascript" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90">
+
+
+
+  <title>
+【V8引擎原理篇】JavaScript代码解释执行解析 - Browser - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">【V8引擎原理篇】JavaScript代码解释执行解析
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-01-05 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-01-05T12:00:00+08:00">2022-01-05</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>4.4k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>4 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202082108316.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Browser/" itemprop="item" rel="index" title="In Browser"><span itemprop="name">Browser</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202082108316.png" alt="image-20220208210810467"></p>
+<h1 id="编译和解释"><a href="#编译和解释" class="headerlink" title="编译和解释"></a>编译和解释</h1><p>我们知道：<strong>任何代码最终都要被“翻译”成二进制的形式才能在计算机中执行</strong>。而翻译程序可以分类为：</p>
+<ul>
+<li><code>编译程序</code>：被翻译的初始程序语言就叫做<strong>编译型语言</strong>（也称为<strong>编译语言</strong>），如 C/C++、Pascal、Go语言、汇编等，必须在程序运行之前将所有代码都翻译成二进制形式，也就是生成可执行文件，用户拿到的是最终生成的可执行文件，看不到源码，这个过程叫做<code>编译（Compile）</code>，完成编译过程的软件叫做<code>编译器（Complier）</code>。</li>
+<li><code>解释程序</code>：被翻译的初始程序语言就叫做<strong>解释型语言</strong>（也称为<strong>脚本语言</strong>），如 Shell、JavaScript、Python、PHP等，需要一边执行一边翻译，不会生成任何可执行文件，用户必须拿到源码才能运行程序。程序运行后会即时翻译，翻译完一部分执行一部分，不用等到所有代码都翻译完，这个过程叫做<code>解释（interpret）</code>，完成解释过程的软件叫做<code>解释器(Interpreter)</code>。</li>
+</ul>
+<p>他们各自的优点和优势如下：</p>
+<ul>
+<li>编译型语言的优点是执行速度快、对硬件要求低、保密性好，适合开发操作系统、大型应用程序、数据库等。</li>
+<li>解释型语言的优点是使用灵活、部署容易、跨平台性好，非常适合 Web 开发以及小工具的制作。</li>
+</ul>
+<p>而JavaScript我们常常认为是“解释型语言”，即JavaScript在解释执行的过程中，不会有二进制可执行文件的生成，而是逐行逐行的“解释运行”，这种说法会导致<strong>一个误区：所有解释型语言肯定没有编译（Compile）的步骤</strong>。</p>
+<p>JavaScript代码执行的过程会生成一种称为“字节码”的中间代码，字节码不仅配合了解释器，而且还和编译器打交道，所以 <strong>JS 并不是完全的解释型语言</strong>。</p>
+<p>编译器和解释器的 根本区别在于前者会编译生成二进制文件但后者不会。</p>
+<p>并且，这种字节码跟编译器和解释器结合的技术，我们称之为<code>即时编译</code>, 也就是我们经常听到的<code>JIT</code>。</p>
+<h1 id="V8的JavaScript执行管道"><a href="#V8的JavaScript执行管道" class="headerlink" title="V8的JavaScript执行管道"></a>V8的JavaScript执行管道</h1><p>一段JavaScript代码要能够正常执行，需要对JavaScript代码进行处理，以便V8能够理解它，要通过以下的几个步骤：</p>
+<ul>
+<li>解析（Parse）：<code>Parse</code> 阶段可以细分为两个阶段：<strong>「词法分析」</strong>（Lexical Analysis, LA）和<strong>「语法分析」</strong>（Syntactic Analysis, SA），最终生成抽象语法树（Abstract Syntax Tree，AST）。</li>
+<li>生成字节码（Bytecode）：利用V8内置的解释器（Ignition），将AST转化为字节码。</li>
+<li>优化：V8的编译器（TurboFan ）获取字节码并从中生成优化的机器码。</li>
+</ul>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202081851713.png" alt="image-20220208185104323" style="zoom:67%;" />
+
+<h2 id="解析（Parse）"><a href="#解析（Parse）" class="headerlink" title="解析（Parse）"></a>解析（Parse）</h2><h3 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h3><p>词法分析阶段可以看成是对代码进行“分词”，它接收一段源代码，然后执行一段 <code>tokenize</code> 函数，把代码分割成被称为<code>Tokens</code> 的东西。<code>Token</code> 其实就是语言的单词符号 ，是具有独立意义的最小语法单位，例如：</p>
+<ul>
+<li>关键字：基本字  保留字</li>
+<li>标识符：即变量名</li>
+<li>常量：常数</li>
+<li>运算符：例如+ - * /</li>
+<li>界符：例如 ,  ;   :  (  )</li>
+<li>…</li>
+</ul>
+<p>例如下方的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> answer = <span class="number">6</span> * <span class="number">7</span>;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到有以下的token：</p>
+<ul>
+<li>关键字（keyword）：var</li>
+<li>标识符（Identifier）：answer</li>
+<li>运算符（Punctuator）：= 和 *</li>
+<li>常数：6 和 7</li>
+</ul>
+<p>通过 <span class="exturl" data-url="aHR0cDovL2VzcHJpbWEub3JnL2RlbW8vcGFyc2UuaHRtbA==">http://esprima.org/demo/parse.html</span> 查看生成的Tokens：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Keyword&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;var&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Identifier&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;answer&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Punctuator&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;=&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Numeric&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;6&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Punctuator&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;*&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Numeric&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;7&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Punctuator&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>很显然，词法分析阶段生成的就是一个数组，以type-value的形式存放着程序代码里的所有“词”，因此就称为“词法”分析。</p>
+<h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><p>在语法分析结果的基础上，我们可以在语法分析阶段进行进一步的分析，分析代码的语法，并生成AST。例如</p>
+<p>对于以下的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myName = <span class="string">&quot; monkey &quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(myName)</span><br></pre></td></tr></table></figure>
+
+<p>我们查看这段代码生成的AST是什么样子的，通过这个<span class="exturl" data-url="aHR0cHM6Ly9hc3RleHBsb3Jlci5uZXQv">AST Explorer</span>网站生成：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202082003791.png" alt="image-20220208200316533"></p>
+<p>展开VariableDeclaration和FunctionDeclaration:</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202082005747.png" alt="image-20220208200549289"></p>
+<p>可以发现，每个块(使用对象表示的部分)都包含一个 <code>type</code>属性，例如：</p>
+<ul>
+<li>VariableDeclaration：顶层的代码描述</li>
+<li>FunctionDeclaration：函数的声明描述</li>
+<li>Identifier：变量声明描述</li>
+<li>…（更多类型可以参考<span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL2RvY3MvZW4vYmFiZWwtdHlwZXM=">这里</span>）</li>
+</ul>
+<p>上图仅描述 AST 的大致结构。V8 有一套自己的 <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vZ2l0aHViLmNvbS92OC92OC9ibG9iL21hc3Rlci9zcmMvYXN0L2FzdC5o">AST 表示方式</span>，生成的 AST 结构有所差异。</p>
+<h2 id="V8解释器（Ignition）与字节码"><a href="#V8解释器（Ignition）与字节码" class="headerlink" title="V8解释器（Ignition）与字节码"></a>V8解释器（Ignition）与字节码</h2><p>上面提到了，V8解释器会将解析阶段生成的AST进一步转化为字节码，推荐一下官方介绍<span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYvZG9jcy9pZ25pdGlvbg==">Ignition</span>。</p>
+<blockquote>
+<p>字节码是什么？</p>
+</blockquote>
+<p><strong>字节码是机器码的抽象，介于高级语言和机器语言之间</strong>，并且字节码是平台无关的代码，和特定的机器码无关。机器并不能直接运行字节码，还需要将字节码进一步转成机器码，机器才能识别与运行。这时候就会产生疑问，那为什么不直接转成机器码，还要“多此一举”？</p>
+<p>我们用一张图直观地看看JavaScript源代码、字节码、机器码的大小：</p>
+<img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20220208201354563.png" alt="image-20220208201354563" style="zoom:67%;" />
+
+<p>想了解更多字节码的内容，可以点击：<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2RhaWx5anMvdW5kZXJzdGFuZGluZy12OHMtYnl0ZWNvZGUtMzE3ZDQ2Yzk0Nzc1">Understanding V8’s bytecode</span></p>
+<p>很显然，越“高级”的代码，其代码量就越小，在V8早期的时候，就是直接把源代码转成机器码的，但机器码的体积非常大，导致事实上效率并不高，内存占用率倒是挺高的。</p>
+<p>转成字节码之后，并不需要一次性把字节码转为机器码才能运行，只需要进一步<strong>逐行</strong>执行即可，不需要生成二进制文件。</p>
+<p>因此Ignition干了两件事：</p>
+<ul>
+<li>把AST转为字节码</li>
+<li>逐行执行字节码</li>
+</ul>
+<p>想了解更多，可以查看Ignition的<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xMVQyQ1JleDloWHhvSndiWXFWUTMyeUlQTWgwdW91VVpMZHlydG1Nb0w0NC9lZGl0">设计文档</span>。</p>
+<h2 id="V8优化编译器（TurboFan-）及优化"><a href="#V8优化编译器（TurboFan-）及优化" class="headerlink" title="V8优化编译器（TurboFan ）及优化"></a>V8优化编译器（TurboFan ）及优化</h2><p>推荐一下官方介绍<span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYvZG9jcy90dXJib2Zhbg==">TurboFan</span>。</p>
+<p>在执行字节码的过程中，如果发现某一部分代码重复出现，那么 V8 将它记做<code>热点代码(HotSpot)</code>，然后将这么代码编译成<code>机器码</code>保存起来，这个用来编译的工具就是V8的<code>编译器</code>(也叫做<code>TurboFan</code>) , 因此在这样的机制下，代码执行的时间越久，那么执行效率会越来越高，因为有越来越多的字节码被标记为<code>热点代码</code>，遇到它们时直接执行相应的机器码，不用再次将转换为机器码。</p>
+<p>顺便提一提JavaScript本身要做到优化的一些难点：</p>
+<ul>
+<li>JavaScript是动态类型语言，即变量的类型无需在编写代码的阶段指定，导致一个变量的类型可以在代码运行过程中发生数次变换，导致前面做过的优化失效，要重新优化，这一步就叫做<strong>“去优化”（Deoptimization）</strong>。</li>
+<li>JavaScript是基于原型链的语言。</li>
+<li>…</li>
+</ul>
+<h1 id="V8的JavaScrip执行管道的演变历史"><a href="#V8的JavaScrip执行管道的演变历史" class="headerlink" title="V8的JavaScrip执行管道的演变历史"></a>V8的JavaScrip执行管道的演变历史</h1><p>V8的JavaScript执行管道在近些年产生了非常大的变化，整体架构变化很大，主要是为了如下的目的：</p>
+<ul>
+<li>提高性能表现</li>
+<li>让性能表现可预测</li>
+<li>减少页面加载时间</li>
+<li>减少内存消耗</li>
+<li>降低复杂性</li>
+</ul>
+<p>以下图片来自<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vcHJlc2VudGF0aW9uL2QvMV9lTGxWemNqOTRfRzRyOWo5ZF9MajVIUktGbnE2amdwdVBKdG5tSUJzODgvZWRpdCNzbGlkZT1pZC5nMjEzNGRhNjgxZV8wXzU5">这里</span>，配套一个<span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1NMUZCb3NCNXRqTQ==">视频</span>演讲。</p>
+<h2 id="2008"><a href="#2008" class="headerlink" title="2008"></a>2008</h2><p>2008年的架构非常简单，生成的代码只是进行了简单的优化，且不生成字节码，但随着JavaScript应用的增大，性能表现越来越糟糕。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202081620620.png" alt="image-20220208162008011" style="zoom:50%;" />
+
+<h2 id="2010"><a href="#2010" class="headerlink" title="2010"></a>2010</h2><p>此时V8第一个优化JIT 出现了，即CrankShaft。专门对代码进行优化。</p>
+<p>这里的Full-Codegen生成的是机器码，也不是字节码。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202081621293.png" alt="image-20220208162025556" style="zoom: 50%;" />
+
+<h2 id="2014"><a href="#2014" class="headerlink" title="2014"></a>2014</h2><img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20220208164540609.png" alt="image-20220208164540609" style="zoom: 67%;" />
+
+<p>开始启用TurboFan。TurboFan有“涡轮风扇”的意思，官宣文章：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNocm9taXVtLm9yZy8yMDE1LzA3L3JldnZpbmctdXAtamF2YXNjcmlwdC1wZXJmb3JtYW5jZS13aXRoLmh0bWw=">Revving up JavaScript performance with TurboFan，2015-7-7</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYvYmxvZy90dXJib2Zhbi1qaXQ=">Digging into the TurboFan JIT，2015-7-13</span></li>
+</ul>
+<p>TurboFan的设计目的为：</p>
+<ul>
+<li>获得最佳、最顶的性能表现，如生成高质量的机器码</li>
+<li>最大化利用静态类型的信息。例如TypeScript等带有静态类型系统的语言</li>
+<li>减少生成的中间代码的平台相关性</li>
+<li>提高可测试性，进一步较少可能出现的bug</li>
+</ul>
+<p>企图找到一个Crankshaft的替代品，TurboFank可以看成是进阶版的Crankshaft。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202081620568.png" alt="image-20220208162055869" style="zoom:50%;" />
+
+<h2 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h2><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202081645384.png" alt="image-20220208164514128" style="zoom: 67%;" />
+
+<p>这个阶段开始启用Ignition解释器了。Ignition意思为“点火、点火装置”，官宣文章：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYvYmxvZy9pZ25pdGlvbi1pbnRlcnByZXRlcg==">Firing up the Ignition interpreter，2016-8-23</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9iZW5lZGlrdG1ldXJlci5kZS8yMDE2LzExLzI1L3Y4LWJlaGluZC10aGUtc2NlbmVzLW5vdmVtYmVyLWVkaXRpb24=">https://benediktmeurer.de/2016/11/25/v8-behind-the-scenes-november-edition</span></li>
+</ul>
+<p>与之前的Full-Codegen相比，Ignition 生成的是体积更小的字节码（Full-Codegen 生成的是机器码），这大大减少了代码内存开销。</p>
+<p>除此之外，它还改善了页面加载时间并有助于减轻解析开销：TurboFan 优化编译器<u>不再需要在优化的时候重新解析源代码</u>，字节码可以直接被优化编译器 TurboFan 用于生成图（TurboFan 对代码的优化基于图），避免优化编译器在优化代码时需要对 JavaScript 源代码重新进行解析。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202081621731.png" alt="image-20220208162116059" style="zoom:50%;" />
+
+
+
+<h2 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h2><p>简化了架构，Full-codegen 和 Crankshaft不再在 V8 中用于 JavaScript 执行，因为它们不再能够跟上新的 JavaScript 语言特性和优化的步伐这些功能需要。</p>
+<p>官宣文章：<span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYvYmxvZy9sYXVuY2hpbmctaWduaXRpb24tYW5kLXR1cmJvZmFu">Launching Ignition and TurboFan，2017-5-15</span></p>
+<img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20220208162137301.png" alt="image-20220208162137301" style="zoom:50%;" />
+
+<p>V8团队后续还进行了更多的优化，可以查看以下的文章：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYvYmxvZy9zY2FubmVy">https://v8.dev/blog/scanner</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly92OC5kZXYvYmxvZy9wcmVwYXJzZXI=">https://v8.dev/blog/preparser</span></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/Browser/" rel="tag"><i class="ic i-tag"></i> Browser</a>
+          <a href="/tags/Javascript/" rel="tag"><i class="ic i-tag"></i> Javascript</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-02-08 21:09:42" itemprop="dateModified" datetime="2022-02-08T21:09:42+08:00">2022-02-08</time>
+  </span>
+  <span id="FrontEnd/Browser/FrontEnd/Browser/【V8引擎原理篇】JavaScript代码解释执行解析" class="item leancloud_visitors" data-flag-title="【V8引擎原理篇】JavaScript代码解释执行解析" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">https://monkeyhh.top/FrontEnd/Browser/FrontEnd/Browser/【V8引擎原理篇】JavaScript代码解释执行解析</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202202080034272.png" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%92%8C%E8%A7%A3%E9%87%8A"><span class="toc-number">1.</span> <span class="toc-text">编译和解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#V8%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E7%AE%A1%E9%81%93"><span class="toc-number">2.</span> <span class="toc-text">V8的JavaScript执行管道</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%88Parse%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">解析（Parse）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">2.1.1.</span> <span class="toc-text">词法分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">2.1.2.</span> <span class="toc-text">语法分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V8%E8%A7%A3%E9%87%8A%E5%99%A8%EF%BC%88Ignition%EF%BC%89%E4%B8%8E%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">V8解释器（Ignition）与字节码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V8%E4%BC%98%E5%8C%96%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%88TurboFan-%EF%BC%89%E5%8F%8A%E4%BC%98%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">V8优化编译器（TurboFan ）及优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#V8%E7%9A%84JavaScrip%E6%89%A7%E8%A1%8C%E7%AE%A1%E9%81%93%E7%9A%84%E6%BC%94%E5%8F%98%E5%8E%86%E5%8F%B2"><span class="toc-number">3.</span> <span class="toc-text">V8的JavaScrip执行管道的演变历史</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2008"><span class="toc-number">3.1.</span> <span class="toc-text">2008</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2010"><span class="toc-number">3.2.</span> <span class="toc-text">2010</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2014"><span class="toc-number">3.3.</span> <span class="toc-text">2014</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2016"><span class="toc-number">3.4.</span> <span class="toc-text">2016</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017"><span class="toc-number">3.5.</span> <span class="toc-text">2017</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">39</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">16</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">21</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
+</div>
+
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">562k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">8:31</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/Browser/FrontEnd/Browser/【V8引擎原理篇】JavaScript代码解释执行解析',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
