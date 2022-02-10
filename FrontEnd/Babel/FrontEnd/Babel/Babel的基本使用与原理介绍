@@ -1,0 +1,796 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Babel" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D">
+
+
+
+  <title>
+Babel的基本使用与原理介绍 - Babel - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Babel的基本使用与原理介绍
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-11-28 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-11-28T12:00:00+08:00">2021-11-28</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>10k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>9 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202101724865.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/Babel/" itemprop="item" rel="index" title="In Babel"><span itemprop="name">Babel</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202101724865.png" style="zoom:67%;" />
+
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>相信大家都听说过Babel，Babel可以很好地帮助我们解决代码兼容性问题，如把ES6+代码的语法给转为ES5的语法，让尚未受到某些浏览器支持的新特性语法代码，可以成功地运行，那么背后是如何做到的呢？</p>
+<p>接下来就和大家分享一下Babel的基本使用和基本原理。</p>
+<h1 id="什么是Babel"><a href="#什么是Babel" class="headerlink" title="什么是Babel?"></a>什么是Babel?</h1><p>官方的解释 Babel 是一个 JavaScript 编译器，用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前版本和旧版本的浏览器或其他环境中。简单来说 Babel 的工作就是：</p>
+<ul>
+<li>语法转换</li>
+<li>通过 Polyfill 的方式在目标环境中添加缺失的特性</li>
+<li>JavaScript源代码的转换（codemods）</li>
+</ul>
+<h1 id="Babel的使用"><a href="#Babel的使用" class="headerlink" title="Babel的使用"></a>Babel的使用</h1><p>Babel事实上有着很多的应用环境，也有很多的工具用到了Babel，例如Webpack等项目打包器都用到了Babel进行语法转换，不过官方很贴心地准备了一个<span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL3NldHVwLmh0bWwjaW5zdGFsbGF0aW9u">交互式设置指南</span>。</p>
+<p>以下通过<code>Babel-CLI</code>来演示一下Babel的使用：</p>
+<h2 id="Babel-CLI的使用"><a href="#Babel-CLI的使用" class="headerlink" title="Babel-CLI的使用"></a>Babel-CLI的使用</h2><p>我们来试着把ES6+的语法转为ES5语法吧</p>
+<blockquote>
+<p>第一步：新建并初始化项目，同时下载好两个基础包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在一个位置打开cmd命令行工具</span></span><br><span class="line">mkdir babel-demo &amp;&amp; <span class="built_in">cd</span> babel-demo</span><br><span class="line">npm init -y</span><br><span class="line">mkdir src &amp;&amp; <span class="built_in">cd</span> src</span><br><span class="line">touch index.js <span class="comment"># 新建文件</span></span><br><span class="line"></span><br><span class="line">npm install --save-dev @babel/core @babel/cli @babel/preset-env</span><br><span class="line"><span class="comment"># @babel/core是babel的核心基础包</span></span><br><span class="line"><span class="comment"># @babel/cli是终端运行工具，让我们可以通过 npx babel 命令使用babel</span></span><br><span class="line"><span class="comment"># @babel/preset-env为一组插件，可以帮助我们把ES6+语法转为ES5语法</span></span><br></pre></td></tr></table></figure>
+
+<p>一顿操作下来，我们就创建了如下的项目结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">babel-demo</span><br><span class="line">  |-src</span><br><span class="line">  	index.js</span><br><span class="line">  |-package.json</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第二步：编辑index.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="function">() =&gt;</span> <span class="number">1</span>; <span class="comment">// 箭头函数, 返回值为1</span></span><br><span class="line"><span class="built_in">console</span>.log(fn());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第三步：babel进行代码转换</p>
+</blockquote>
+<p>打开cmd，输入如下指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npx babel src -d lib</span><br><span class="line"><span class="comment"># Successfully compiled 1 file with Babel (429ms).</span></span><br></pre></td></tr></table></figure>
+
+<p>出现第二行字，说明成功了，在lib文件夹下有一个同名的index.js，我们打开看一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;; <span class="comment">// 箭头函数, 返回值为1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(fn());</span><br></pre></td></tr></table></figure>
+
+<p>成功了！箭头函数的语法转成了ES5的函数写法！</p>
+<h2 id="Babel的配置文件"><a href="#Babel的配置文件" class="headerlink" title="Babel的配置文件"></a>Babel的配置文件</h2><p>Babel的配置文件有很多种选择：</p>
+<ul>
+<li>babel.config.js</li>
+<li>babel.config.json</li>
+<li>.babelrc.json</li>
+<li>.babelrc.js</li>
+<li>package.json</li>
+<li>…</li>
+</ul>
+<p>更详细说明可以查看<span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL2RvY3MvZW4vY29uZmlndXJhdGlvbg==">官网</span></p>
+<h1 id="Babel处理的三部曲"><a href="#Babel处理的三部曲" class="headerlink" title="Babel处理的三部曲"></a>Babel处理的三部曲</h1><p>Babel其实简单点来说就是干了这么几件事： <strong>Babel把代码解析成AST，然后通过插件更改AST，最后由Babel输出新代码</strong></p>
+<p>Babel 的三个主要处理步骤分别是： <strong>解析（parse）</strong>，<strong>转换（transform）</strong>，<strong>生成（generate）</strong>。</p>
+<p>为了讲解地更清晰，把解析步骤拆分为词法分析和语法分析，把转换拆分为遍历和转换两个步骤。</p>
+<img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20220210092821545.png" alt="image-20220210092821545" style="zoom: 80%;" />
+
+
+
+<h2 id="解析（Parse）"><a href="#解析（Parse）" class="headerlink" title="解析（Parse）"></a>解析（Parse）</h2><h3 id="1️⃣词法分析"><a href="#1️⃣词法分析" class="headerlink" title="1️⃣词法分析"></a>1️⃣词法分析</h3><p>词法分析阶段，就是利用<code>词法解析器(Tokenizer)</code>在这个阶段将字符串形式的代码转换为<code>Tokens(令牌)</code>。</p>
+<p>我们常说词法分析为“分词”，被分下来的词就是Token。例如<code>for (const item of items) &#123;&#125;</code> 词法解析后的结果如下:</p>
+<img data-src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/10/2/16d8d0cd40b123d1~tplv-t2oaga2asx-watermark.awebp" alt="img" style="zoom: 80%;" />
+
+<h3 id="2️⃣语法分析"><a href="#2️⃣语法分析" class="headerlink" title="2️⃣语法分析"></a>2️⃣语法分析</h3><p>语法分析就是在词法分析的基础上，对代码的进一步分析，将代码彻底转化为<code>AST（Abstract Syntax Tree，抽象语法树）</code>。</p>
+<h3 id="AST"><a href="#AST" class="headerlink" title="AST"></a>AST</h3><blockquote>
+<p>什么是AST？</p>
+</blockquote>
+<p>Babel 使用一个基于 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2VzdHJlZS9lc3RyZWU=">ESTree</span> 并修改过的 AST，AST节点类型大全可以查看<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JhYmVsL2JhYmVsL2Jsb2IvbWFzdGVyL3BhY2thZ2VzL2JhYmVsLXBhcnNlci9hc3Qvc3BlYy5tZCN2YXJpYWJsZWRlY2xhcmF0aW9u">@babel/parser (babylon) AST node types</span>。</p>
+<p><span class="exturl" data-url="aHR0cDovL2FzdGV4cGxvcmVyLm5ldC8=">AST Explorer</span> 可以让你对 AST 节点有一个更好的感性认识！通过这个网站我们可以直接查看一段代码生成的AST。</p>
+<p>例如以下代码，这是一条简单的复制语句：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> msg = <span class="string">&quot;test&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码生成的AST如下图：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202100937753.png" alt="image-20220210093715800"></p>
+<p>我们来仔细看一下生成的AST里的一些重要信息，为方面理解，我把这个AST给简化了一下：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202100953844.png" alt="image-20220210095306820"></p>
+<p><strong>红色框框部分</strong>：VariableDeclaration、VariableDeclarator等等，我们称之为AST节点类型（node types），每一个节点都是定义了一组属性来描述关于这个节点信息，并且很容易就能从结点的名字得知信息，例如：</p>
+<ul>
+<li>VariableDeclaration代表这是一个“变量声明”结点，该结点有一个属性kind，代表了当前变量是“const”变量。</li>
+<li>VariableDeclarator代表这是一个“变量声明符”结点，有着另外两个AST子结点。</li>
+<li>Identifier代表这是一个“标识符”结点，有着一个name属性，为“msg”。</li>
+<li>StringLiteral代表这是一个“字符串常量”，有着一个value属性，为“test”。</li>
+<li>…</li>
+<li>更多AST节点类型可以查看<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JhYmVsL2JhYmVsL2Jsb2IvbWFzdGVyL3BhY2thZ2VzL2JhYmVsLXBhcnNlci9hc3Qvc3BlYy5tZCN2YXJpYWJsZWRlY2xhcmF0aW9u">@babel/parser (babylon) AST node types</span>。</li>
+</ul>
+<p>在babel中，实现解析这一步骤就是靠@babel/parser这个包，下面来一波代码实操：</p>
+<blockquote>
+<p>第一步：初始化项目并下载@babel/parser</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir babel-parser-demo</span><br><span class="line"><span class="built_in">cd</span> babel-parser-demo</span><br><span class="line">npm init -y</span><br><span class="line">npm install @babel/parser</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第二步：创建parser.js，并输入以下代码</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// parser.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; parse &#125; = <span class="built_in">require</span>(<span class="string">&quot;@babel/parser&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">&quot;2 + ( 4 * 10 )&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ast = parse(code);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ast);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第三步：执行代码</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node ./parse.js</span><br></pre></td></tr></table></figure>
+
+<p>然后我们就可以看到生成的AST啦。这就是</p>
+<h2 id="遍历（Traverse）"><a href="#遍历（Traverse）" class="headerlink" title="遍历（Traverse）"></a>遍历（Traverse）</h2><p>转换步骤接收 AST 并对其进行<strong>遍历</strong>，在此过程中对节点进行添加、更新及移除等操作。 这是 Babel 或是其他编译器中最复杂的过程 同时也是插件将要介入工作的部分。因此，我们要先讲解如何进行遍历，然后再讲讲如何在遍历的过程中对AST进行转换。</p>
+<p>AST的遍历过程是一个<strong>深度优先</strong>的过程，即对AST进行<strong>递归</strong>地遍历，</p>
+<p>例如：</p>
+<p>比方说我们有一个 <code>FunctionDeclaration</code> 类型。它有几个属性：<code>id</code>，<code>params</code>，和 <code>body</code>，每一个都有一些内嵌节点。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: <span class="string">&quot;FunctionDeclaration&quot;</span>,</span><br><span class="line">  id: &#123;</span><br><span class="line">    type: <span class="string">&quot;Identifier&quot;</span>,</span><br><span class="line">    name: <span class="string">&quot;square&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  params: [&#123;</span><br><span class="line">    type: <span class="string">&quot;Identifier&quot;</span>,</span><br><span class="line">    name: <span class="string">&quot;n&quot;</span></span><br><span class="line">  &#125;],</span><br><span class="line">  body: &#123;</span><br><span class="line">    type: <span class="string">&quot;BlockStatement&quot;</span>,</span><br><span class="line">    body: [&#123;</span><br><span class="line">      type: <span class="string">&quot;ReturnStatement&quot;</span>,</span><br><span class="line">      argument: &#123;</span><br><span class="line">        type: <span class="string">&quot;BinaryExpression&quot;</span>,</span><br><span class="line">        operator: <span class="string">&quot;*&quot;</span>,</span><br><span class="line">        left: &#123;</span><br><span class="line">          type: <span class="string">&quot;Identifier&quot;</span>,</span><br><span class="line">          name: <span class="string">&quot;n&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        right: &#123;</span><br><span class="line">          type: <span class="string">&quot;Identifier&quot;</span>,</span><br><span class="line">          name: <span class="string">&quot;n&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是我们从 <code>FunctionDeclaration</code> 开始并且我们知道它的内部属性（即：<code>id</code>，<code>params</code>，<code>body</code>），所以我们依次访问每一个属性及它们的子节点。</p>
+<p>接着我们来到 <code>id</code>，它是一个 <code>Identifier</code>。<code>Identifier</code> 没有任何子节点属性，所以我们继续。</p>
+<p>之后是 <code>params</code>，由于它是一个数组节点所以我们访问其中的每一个，它们都是 <code>Identifier</code> 类型的单一节点，然后我们继续。</p>
+<p>此时我们来到了 <code>body</code>，这是一个 <code>BlockStatement</code> 并且也有一个 <code>body</code>节点，而且也是一个数组节点，我们继续访问其中的每一个。</p>
+<p>这里唯一的一个属性是 <code>ReturnStatement</code> 节点，它有一个 <code>argument</code>，我们访问 <code>argument</code> 就找到了 <code>BinaryExpression</code>。.</p>
+<p><code>BinaryExpression</code> 有一个 <code>operator</code>，一个 <code>left</code>，和一个 <code>right</code>。 Operator 不是一个节点，它只是一个值因此我们不用继续向内遍历，我们只需要访问 <code>left</code> 和 <code>right</code>。.</p>
+<p>Babel 的转换步骤全都是这样的遍历过程。</p>
+<h3 id="Visitor"><a href="#Visitor" class="headerlink" title="Visitor"></a>Visitor</h3><blockquote>
+<p>访问者模式（Visitor Pattern）</p>
+</blockquote>
+<p>当我们谈及“进入”一个节点，实际上是说<u>我们在访问它们</u>，简而言之就是，我们<strong>告诉程序我们想要的AST节点类型，然后遍历器就会返回这个节点的一个“NodePath”类型的对象path</strong>（path个数===AST中该类型的节点数），我们称path为路径。</p>
+<p>traverse()方法中，传入的第一个参数为ast，第二个参数就是Visitors。下面来一个实践演习：</p>
+<blockquote>
+<p>第一步：安装用于遍历AST的包：@babel/traverse</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @babel/traverse</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第二步：编写代码</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// traverse.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; parse &#125; = <span class="built_in">require</span>(<span class="string">&quot;@babel/parser&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">&quot;@babel/traverse&quot;</span>).default;<span class="comment">// 引入遍历AST的函数方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">&quot;100&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ast = parse(code);</span><br><span class="line"></span><br><span class="line">traverse(ast,&#123;</span><br><span class="line">	<span class="comment">// NumericLiteral(path)&#123;</span></span><br><span class="line">	<span class="comment">// 	console.log(path.node)</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">	<span class="attr">NumericLiteral</span>:&#123;</span><br><span class="line">		<span class="function"><span class="title">enter</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(path.node.value)</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="function"><span class="title">exit</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(path.node.value)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//结果为</span></span><br><span class="line"><span class="number">100</span></span><br><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<p>这里为啥会打印两个100呢？</p>
+<p>上面提到了遍历的过程是深度优先算法，因此，当从父节点找到当前节点的时候就称为“enter”时期，从“当前节点的子节点”回溯到当前节点的时候就称为“exit”时期。有点儿像DOM里的事件捕获和事件冒泡阶段。</p>
+<h3 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h3><blockquote>
+<p>path到底是啥啊？</p>
+</blockquote>
+<p>AST 通常会有许多节点，那么节点直接如何相互关联呢？ 我们可以使用一个可操作和访问的巨大可变对象表示节点之间的关联关系，或者也可以用<strong>Paths</strong>（路径）来简化这件事情。</p>
+<p><strong>Path</strong> 是表示两个节点之间连接的对象，包含了节点的信息以及节点和所在的位置，以供对特定节点进行操作。</p>
+<p>例如，如果有下面这样一个节点及其子节点︰</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;FunctionDeclaration&quot;</span>,</span><br><span class="line">  <span class="attr">id</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;Identifier&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;square&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将子节点 <code>Identifier</code> 表示为一个路径（Path）的话，看起来是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;parent&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;FunctionDeclaration&quot;</span>,</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: &#123;...&#125;,</span><br><span class="line">    ....</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;node&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;Identifier&quot;</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;square&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时它还包含关于该路径的其他元数据：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;parent&quot;</span>: &#123;...&#125;,</span><br><span class="line">  <span class="string">&quot;node&quot;</span>: &#123;...&#125;,</span><br><span class="line">  <span class="string">&quot;hub&quot;</span>: &#123;...&#125;,</span><br><span class="line">  <span class="string">&quot;contexts&quot;</span>: [],</span><br><span class="line">  <span class="string">&quot;data&quot;</span>: &#123;&#125;,</span><br><span class="line">  <span class="string">&quot;shouldSkip&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;shouldStop&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;removed&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;state&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;opts&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;skipKeys&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;parentPath&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;context&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;container&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;listKey&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;inList&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">&quot;parentKey&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;key&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;scope&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;type&quot;</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="string">&quot;typeAnnotation&quot;</span>: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然路径对象还包含添加、更新、移动和删除节点有关的其他很多方法，稍后我们再来看这些方法。</p>
+<p>在某种意义上，路径是一个节点在树中的位置以及关于该节点各种信息的响应式 <strong>Reactive</strong> 表示。 当你调用一个修改树的方法后，路径信息也会被更新。 Babel 帮你管理这一切，从而使得节点操作简单，尽可能做到无状态。</p>
+<h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><p>State是visitor对象中每次访问节点方法时传入的第二个参数。如果看Babel手册里的解释，可能还是有点困惑，简单来说，state就是一系列状态的集合，包含诸如当前plugin的信息、plugin传入的配置参数信息，甚至当前节点的path信息也能获取到，当然也可以把babel插件处理过程中的自定义状态存储到state对象中。</p>
+<h3 id="Scopes"><a href="#Scopes" class="headerlink" title="Scopes"></a>Scopes</h3><p>状态是抽象语法树AST转换的敌人，状态管理会不断牵扯你的精力，而且几乎所有你对状态的假设，总是会有一些未考虑到的语法最终证明你的假设是错误的。</p>
+<p>考虑下列代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> n * n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>让我们写一个把 <code>n</code> 重命名为 <code>x</code> 的访问者的快速实现.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> paramName;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> MyVisitor = &#123;</span><br><span class="line">  <span class="function"><span class="title">FunctionDeclaration</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> param = path.node.params[<span class="number">0</span>];</span><br><span class="line">    paramName = param.name;</span><br><span class="line">    param.name = <span class="string">&quot;x&quot;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">Identifier</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (path.node.name === paramName) &#123;</span><br><span class="line">      path.node.name = <span class="string">&quot;x&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>对上面的例子代码这段访问者代码也许能工作，但它很容易被打破，对于下面代码，会把最下面的变量n也变成x，这显然不是我们想要的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> n * n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> n;</span><br></pre></td></tr></table></figure>
+
+<p>因此我们可以这么写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> updateParamNameVisitor = &#123;</span><br><span class="line">  <span class="function"><span class="title">Identifier</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (path.node.name === <span class="built_in">this</span>.paramName) &#123;</span><br><span class="line">      path.node.name = <span class="string">&quot;x&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> MyVisitor = &#123;</span><br><span class="line">  <span class="function"><span class="title">FunctionDeclaration</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> param = path.node.params[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">const</span> paramName = param.name;</span><br><span class="line">    param.name = <span class="string">&quot;x&quot;</span>;</span><br><span class="line"></span><br><span class="line">    path.traverse(updateParamNameVisitor, &#123; paramName &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">path.traverse(MyVisitor);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="转换（Transform）"><a href="#转换（Transform）" class="headerlink" title="转换（Transform）"></a>转换（Transform）</h2><p>单纯地遍历AST并没有任何意义，我们使用Babel就是为了对代码进行某种转换，以达到某些目的。即Babel接收解析获得的AST并经过babel-traverse对其进行深度优先遍历，在此过程当中对节点进行添加、更新及移除操作。</p>
+<p>而要达到这一点，就得对AST进行转换。</p>
+<p>我们在上面的例子中就演示了一种最简单转换的方式。</p>
+<p>这部分设计的基础的操作可以查看官网的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2phbWllYnVpbGRzL2JhYmVsLWhhbmRib29rL2Jsb2IvbWFzdGVyL3RyYW5zbGF0aW9ucy96aC1IYW5zL3BsdWdpbi1oYW5kYm9vay5tZCN0b2MtdHJhbnNmb3JtYXRpb24tb3BlcmF0aW9ucw==">HandBook</span></p>
+<h2 id="生成（Generate）"><a href="#生成（Generate）" class="headerlink" title="生成（Generate）"></a>生成（Generate）</h2><p>在AST修改完成之后则要根据更新过后的AST去生成新的代码了，我们还是用上面那个把函数里的n转为x的案例进行演示：</p>
+<blockquote>
+<p>第一步：安装Babel中用于生成新代码的包：@babel/generator</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/generator</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第二步：编写代码</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; parse &#125; = <span class="built_in">require</span>(<span class="string">&quot;@babel/parser&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">&quot;@babel/traverse&quot;</span>).default;</span><br><span class="line"><span class="keyword">const</span> generate = <span class="built_in">require</span>(<span class="string">&quot;@babel/generator&quot;</span>).default;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">&quot;function square(n) &#123; return n * n; &#125;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ast = parse(code);</span><br><span class="line"></span><br><span class="line">traverse(ast,&#123;</span><br><span class="line">	<span class="function"><span class="title">FunctionDeclaration</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">const</span> param = path.node.params[<span class="number">0</span>];</span><br><span class="line">		paramName = param.name;</span><br><span class="line">		param.name = <span class="string">&quot;x&quot;</span>;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">Identifier</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (path.node.name === paramName) &#123;</span><br><span class="line">		      path.node.name = <span class="string">&quot;x&quot;</span>;</span><br><span class="line">		    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> transformedCode = generate(ast).code</span><br><span class="line"><span class="built_in">console</span>.log(transformedCode)</span><br><span class="line"></span><br><span class="line"><span class="comment">// console结果如下：</span></span><br><span class="line"><span class="comment">// function square(x) &#123;</span></span><br><span class="line"><span class="comment">//   return x * x;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Babel的生态介绍"><a href="#Babel的生态介绍" class="headerlink" title="Babel的生态介绍"></a>Babel的生态介绍</h1><h2 id="Core（内核）"><a href="#Core（内核）" class="headerlink" title="Core（内核）"></a>Core（内核）</h2><p><code>@babel/core</code> 是Babel的‘内核’。对于Babel来说，这个内核主要干这些事情：</p>
+<ul>
+<li>加载和处理配置(config)</li>
+<li>加载插件</li>
+<li>调用 <code>Parser</code> 进行语法解析，生成 <code>AST</code></li>
+<li>调用 <code>Traverser</code> 遍历AST，并使用<code>访问者模式</code>应用’插件’对 AST 进行转换</li>
+<li>生成代码，包括SourceMap转换和源代码生成</li>
+</ul>
+<h2 id="核心工具包（Tooling-Packages）"><a href="#核心工具包（Tooling-Packages）" class="headerlink" title="核心工具包（Tooling Packages）"></a>核心工具包（Tooling Packages）</h2><p>以下的三个包就是执行Babel那三部曲的核心包啦：</p>
+<p>1️⃣ **Parser(<code>@babel/parser</code>)**： 将源代码解析为 AST 就靠它了。 它已经内置支持很多语法. 例如 JSX、Typescript、Flow、以及最新的ECMAScript规范。目前为了执行效率，parser是<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vYmFiZWxqcy5pby9kb2NzL2VuL2JhYmVsLXBhcnNlciUyM2ZhcQ==">不支持扩展的</span>，由官方进行维护。如果你要支持自定义语法，可以 fork 它，不过这种场景非常少。</p>
+<p>2️⃣ **Traverser(<code>@babel/traverse</code>)**：  实现了<code>访问者模式</code>，对 AST 进行遍历，<code>转换插件</code>会通过它获取感兴趣的AST节点，对节点继续操作, 下文会详细介绍<code>访问器模式</code>。</p>
+<p>3️⃣ **Generator(<code>@babel/generator</code>)**： 将 AST 转换为源代码，支持 SourceMap</p>
+<h2 id="Plugin（插件）"><a href="#Plugin（插件）" class="headerlink" title="Plugin（插件）"></a>Plugin（插件）</h2><p>Babel的内核十分小，主要功能要通过插件完成，插件主要有以下几个分类：</p>
+<p>1️⃣<strong>转换插件（Transform Plugins）：</strong>指示Babel如何将代码转换为AST。</p>
+<ul>
+<li><code>@babel/plugin-transform-*</code>： 普通的转换插件</li>
+<li><code>@babel/plugin-proposal-*</code>： 还在“提议阶段’(非正式)的语言特性</li>
+</ul>
+<p>可以通过<span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL2RvY3MvZW4vcGx1Z2lucy1saXN0">Plugins List</span>查看有什么插件。</p>
+<p>2️⃣<strong>语法插件（Syntax Plugins）：</strong>大多数语法都可以被<code>@babel/parser</code>转换。在极少数情况下（如果尚未实现转换，或者没有默认方法），则要使用语法插件。</p>
+<blockquote>
+<p>注意：如果已经使用了相应的转换插件，则不需要指定语法插件，因为转换插件自带语法识别。</p>
+</blockquote>
+<p>或者，你也可以从 Babel 解析器中提供任何<a target="_blank" rel="noopener" href="https://babeljs.io/docs/en/babel-parser#plugins"><code>plugins</code>选项：</a></p>
+<p>你的<code>.babelrc</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;parserOpts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;plugins&quot;</span>: [<span class="string">&quot;jsx&quot;</span>, <span class="string">&quot;flow&quot;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果想开发一个插件，请参考优秀的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZWphbWVza3lsZS9iYWJlbC1oYW5kYm9vaw==">babel-handbook</span> 来学习如何创建自己的插件。</p>
+<h2 id="Preset（预设）"><a href="#Preset（预设）" class="headerlink" title="Preset（预设）"></a>Preset（预设）</h2><p>Babel的Preset就是一组Plugin的组合，可以避免了自己单独去挑选插件。</p>
+<p>Babel为常见环境组装了一些预设：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL2RvY3MvZW4vYmFiZWwtcHJlc2V0LWVudg==">@babel/preset-env</span> ：用于编译ES6+的语法。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL2RvY3MvZW4vYmFiZWwtcHJlc2V0LXR5cGVzY3JpcHQ=">@babel/preset-typescript</span> ：用于编译typescript。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL2RvY3MvZW4vYmFiZWwtcHJlc2V0LXJlYWN0">@babel/preset-react</span> ：用于编译 <span class="exturl" data-url="aHR0cHM6Ly9yZWFjdGpzLm9yZy8=">React</span> 相关。</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9iYWJlbGpzLmlvL2RvY3MvZW4vYmFiZWwtcHJlc2V0LWZsb3c=">@babel/preset-flow</span> ：用于 <span class="exturl" data-url="aHR0cHM6Ly9mbG93Lm9yZy8=">Flow</span></li>
+</ul>
+<p>在配置文件中配置Plugin和Preset的时候要注意这两者的执行顺序不同：</p>
+<ul>
+<li><p>Plugins先于Preset运行</p>
+</li>
+<li><p>Plugins是按照订购数组从左往右的顺序执行的，例如</p>
+<ul>
+<li><pre><code class="js">// 则是先调用transform-decorators-legacy，再调用transform-class-properties
+&#123;
+  &quot;plugins&quot;: [&quot;transform-decorators-legacy&quot;, &quot;transform-class-properties&quot;]
+&#125;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Preset是相反的，从右往左</p>
+</li>
+</ul>
+<h2 id="其他包介绍"><a href="#其他包介绍" class="headerlink" title="其他包介绍"></a>其他包介绍</h2><p>1️⃣ <strong>插件开发辅助：</strong></p>
+<ul>
+<li><code>@babel/template</code>： 某些场景直接操作AST太麻烦，就比如我们直接操作DOM一样，所以Babel实现了这么一个简单的模板引擎，可以将字符串代码转换为AST。比如在生成一些辅助代码(helper)时会用到这个库</li>
+<li><code>@babel/types</code>： AST 节点构造器和断言. 插件开发时使用很频繁</li>
+<li><code>@babel/helper-*</code>： 一些辅助器，用于辅助插件开发，例如简化AST操作</li>
+<li><code>@babel/helper</code>： 辅助代码，单纯的语法转换可能无法让代码运行起来，比如低版本浏览器无法识别class关键字，这时候需要添加辅助代码，对class进行模拟。</li>
+</ul>
+<p>2️⃣<strong>工具：</strong></p>
+<ul>
+<li><code>@babel/node</code>： Node.js CLI, 通过它直接运行需要 Babel 处理的JavaScript文件</li>
+<li><code>@babel/register</code>： Patch NodeJs 的require方法，支持导入需要Babel处理的JavaScript模块</li>
+<li><code>@babel/cli</code>： CLI工具</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[6]: </p>
+
+      <div class="tags">
+          <a href="/tags/Babel/" rel="tag"><i class="ic i-tag"></i> Babel</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-02-10 17:26:49" itemprop="dateModified" datetime="2022-02-10T17:26:49+08:00">2022-02-10</time>
+  </span>
+  <span id="FrontEnd/Babel/FrontEnd/Babel/Babel的基本使用与原理介绍" class="item leancloud_visitors" data-flag-title="Babel的基本使用与原理介绍" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">https://monkeyhh.top/FrontEnd/Babel/FrontEnd/Babel/Babel的基本使用与原理介绍</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281214796.png" title="TypeScript基础知识">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> TypeScript</span>
+  <h3>TypeScript基础知识</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281046623.jpeg" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> Vue</span>
+  <h3>【Vue进阶】浅谈Vue2与Vue3响应式原理</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFBabel"><span class="toc-number">2.</span> <span class="toc-text">什么是Babel?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Babel%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">Babel的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Babel-CLI%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">Babel-CLI的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Babel%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">Babel的配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Babel%E5%A4%84%E7%90%86%E7%9A%84%E4%B8%89%E9%83%A8%E6%9B%B2"><span class="toc-number">4.</span> <span class="toc-text">Babel处理的三部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%88Parse%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">解析（Parse）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">4.1.1.</span> <span class="toc-text">1️⃣词法分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">4.1.2.</span> <span class="toc-text">2️⃣语法分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AST"><span class="toc-number">4.1.3.</span> <span class="toc-text">AST</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%EF%BC%88Traverse%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">遍历（Traverse）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Visitor"><span class="toc-number">4.2.1.</span> <span class="toc-text">Visitor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Path"><span class="toc-number">4.2.2.</span> <span class="toc-text">Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#State"><span class="toc-number">4.2.3.</span> <span class="toc-text">State</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scopes"><span class="toc-number">4.2.4.</span> <span class="toc-text">Scopes</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%EF%BC%88Transform%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">转换（Transform）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%EF%BC%88Generate%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">生成（Generate）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Babel%E7%9A%84%E7%94%9F%E6%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.</span> <span class="toc-text">Babel的生态介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Core%EF%BC%88%E5%86%85%E6%A0%B8%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">Core（内核）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%B7%A5%E5%85%B7%E5%8C%85%EF%BC%88Tooling-Packages%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">核心工具包（Tooling Packages）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plugin%EF%BC%88%E6%8F%92%E4%BB%B6%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">Plugin（插件）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preset%EF%BC%88%E9%A2%84%E8%AE%BE%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">Preset（预设）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8C%85%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.5.</span> <span class="toc-text">其他包介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li class="active"><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">47</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">17</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">22</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE" title="JavaScript中的数据">JavaScript中的数据</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">649k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">9:50</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/Babel/FrontEnd/Babel/Babel的基本使用与原理介绍',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
