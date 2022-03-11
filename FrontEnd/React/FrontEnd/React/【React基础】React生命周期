@@ -1,0 +1,782 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="React" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">
+
+
+
+  <title>
+【React基础】React生命周期 - React - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">【React基础】React生命周期
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-08-01 12:00:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-08-01T12:00:32+08:00">2021-08-01</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>10k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>9 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281415928.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/React/" itemprop="item" rel="index" title="In React"><span itemprop="name">React</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="旧生命周期"><a href="#旧生命周期" class="headerlink" title="旧生命周期"></a>旧生命周期</h1><h2 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h2><p>类组件才有生命周期，函数组件是没有的！</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111221546430.png" alt="react生命周期(旧)" style="zoom:50%;" />
+
+<h2 id="生命周期阶段"><a href="#生命周期阶段" class="headerlink" title="生命周期阶段"></a>生命周期阶段</h2><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111221548495.png" alt="image-20211122154847351"></p>
+<h3 id="Initialization初始化阶段"><a href="#Initialization初始化阶段" class="headerlink" title="Initialization初始化阶段"></a>Initialization初始化阶段</h3><p><code>constructor()</code>：构造方法，一般用于初始化组件的 state 和绑定事件处理方法等。</p>
+<h3 id="Mounting挂载阶段"><a href="#Mounting挂载阶段" class="headerlink" title="Mounting挂载阶段"></a>Mounting挂载阶段</h3><ol>
+<li><code>componentWillMount()</code>：组件将要挂载</li>
+<li><code>render()</code>：必要方法，返回 UI，他必须是个纯函数 </li>
+<li><code>componentDidMount</code>()：挂载后调用，一般在这个时候向服务端请求数据。在这里调用 this.setState 会引起组件重新渲染</li>
+</ol>
+<h3 id="Updating更新阶段"><a href="#Updating更新阶段" class="headerlink" title="Updating更新阶段"></a>Updating更新阶段</h3><ol>
+<li><code>componentWillReceiveProps（nextProps）</code>：只在 props 引起的组件更新过程中才会被调用，<u>一般用于<code>props</code>改变时，执行请求数据、更改状态等操作。</u></li>
+<li><code>should ComponentUpdate (nextProps,nextState)</code>：决定组件是否继续执行更新过程，可以通过比较两个参数来决定返回值。用于减少组件不必要的渲染，来优化性能。 </li>
+<li><code>componentWillUpdate()</code> ：组件将要更新</li>
+<li><code>componentDidUpdate (prevProps,prevState)</code>：组件更新后被调用。</li>
+</ol>
+<h3 id="Unmounting卸载阶段"><a href="#Unmounting卸载阶段" class="headerlink" title="Unmounting卸载阶段"></a>Unmounting卸载阶段</h3><ol>
+<li><code>componentWillUnmount()</code>：在组件被卸载前调用。用于执行一些清理操作，比如清除定时器，清除 componentDidMount 中手动创建的 DOM</li>
+</ol>
+<h3 id="Error-Handling-错误处理阶段"><a href="#Error-Handling-错误处理阶段" class="headerlink" title="Error Handling 错误处理阶段"></a>Error Handling 错误处理阶段</h3><ol>
+<li><code>componentDidCatch()</code>：在这个阶段，不论在渲染的过程中，还是在生命周期方法中或是在任何子组件的构造函数中发生错误，该组件都会被调用。</li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>值得注意的一点是：初始化的时候不会把赋值算作更新，所以不会执行更新阶段。</p>
+<p>重要的钩子函数如下</p>
+<ol>
+<li>render：初始化渲染或更新渲染调用</li>
+<li>componentDidMount：开启监听, 发送ajax请求</li>
+<li>componentWillUnmount：做一些收尾工作, 如: 清理定时器</li>
+</ol>
+<h3 id="componentWillMount很危险"><a href="#componentWillMount很危险" class="headerlink" title="componentWillMount很危险"></a><code>componentWillMount</code>很危险</h3><p>它在 <code>render()</code> 之前调用，因此在此方法中同步调用 <code>setState()</code> 不会触发额外渲染。通常，我们建议使用 <code>constructor()</code> 来初始化 state。</p>
+<p>避免在此方法中引入任何副作用、订阅、事件监听。如遇此种情况，请改用 <code>componentDidMount()</code>。</p>
+<p>因为<code>componentWillMount</code> 可以被打断或调用多次，因此无法保证事件监听能在 unmount 的时候被成功卸载，可能会引起内存泄露</p>
+<p>由于 React 未来的版本中推出了异步渲染，在 <code>dom</code> 被挂载之前的阶段都可以被打断重来，导致 <code>componentWillMount</code>、<code>componentWillUpdate</code>、<code>componentWillReceiveProps</code> 在一次更新中可能会被触发多次，因此那些只希望触发一次的副作用应该放在 <code>componentDidMount</code> 中</p>
+<h3 id="setState-很奇怪"><a href="#setState-很奇怪" class="headerlink" title="setState()  很奇怪"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#setstate"><code>setState()</code> </a> 很奇怪</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>该函数有两种写法</p>
+<blockquote>
+<ol>
+<li>setState(stateChange, [callback]) ：对象式</li>
+</ol>
+</blockquote>
+<ul>
+<li>stateChange为状态改变对象，就是一个数据对象，可看下面的例子。</li>
+<li>callback是可选的回调函数, 它在状态更新完毕、界面也更新后(render调用后)才被调用。</li>
+</ul>
+<p>例子如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setState(&#123;<span class="attr">count</span>: <span class="built_in">this</span>.state.count + <span class="number">1</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注意❗：传入的stateChange对象中，如果用到了this.state或者this.props，有可能拿到的不是最新的，看下方例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">incrementCount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="comment">// 注意：这样 *不会* 像预期的那样工作。</span></span><br><span class="line">  <span class="built_in">this</span>.setState(&#123;<span class="attr">count</span>: <span class="built_in">this</span>.state.count + <span class="number">1</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handleSomething</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="comment">// 假设 `this.state.count` 从 0 开始。</span></span><br><span class="line">  <span class="built_in">this</span>.incrementCount();</span><br><span class="line">  <span class="built_in">this</span>.incrementCount();</span><br><span class="line">  <span class="built_in">this</span>.incrementCount();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当 React 重新渲染该组件时，<code>this.state.count</code> 会变为 1，而不是你期望的 3。</p>
+<blockquote>
+<p>在 React 中，<code>this.props</code> 和 <code>this.state</code> 都代表着<em>已经被渲染了的</em>值，即当前屏幕上显示的值。</p>
+</blockquote>
+<p>因为上面的 <code>incrementCount()</code> 函数是从 <code>this.state.count</code> 中读取数据的，但是 React 不会更新 <code>this.state.count</code>，直到该组件被重新渲染。</p>
+<p>所以最终 <code>incrementCount()</code> 每次读取 <code>this.state.count</code> 的值都是 0，并将它设为 1。</p>
+<p>至于如何解决这个问题，我们来看setState的第二种语法</p>
+<blockquote>
+<p>2.setState(updater, [callback])：函数式的setState</p>
+</blockquote>
+<ul>
+<li>updater为（state, props）返回stateChange对象的函数。</li>
+<li>⭐updater 函数中接收的** <code>state</code> 和 <code>props</code> 都保证为最新**。updater 的返回值会与 <code>state</code> 进行浅合并。</li>
+<li>callback是可选的回调函数, 它在状态更新、界面也更新后(render调用后)才被调用。它将在 <code>setState</code> 完成合并并重新渲染组件后执行。通常，我们建议使用 <code>componentDidUpdate()</code> 来代替此方式。</li>
+</ul>
+<p>例子如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">counter</span>: state.counter + props.step&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>所以很明显，上面的例子我们就可以用这个API来修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">incrementCount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>.setState(<span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 重要：在更新的时候读取 `state`，而不是 `this.state`。</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + <span class="number">1</span>&#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handleSomething</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="comment">// 假设 `this.state.count` 从 0 开始。</span></span><br><span class="line">  <span class="built_in">this</span>.incrementCount();</span><br><span class="line">  <span class="built_in">this</span>.incrementCount();</span><br><span class="line">  <span class="built_in">this</span>.incrementCount();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果你现在在这里读取 `this.state.count`，它还是会为 0。</span></span><br><span class="line">  <span class="comment">// 但是，当 React 重新渲染该组件时，它会变为 3。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="setState同步、异步是什么？"><a href="#setState同步、异步是什么？" class="headerlink" title="setState同步、异步是什么？"></a>setState同步、异步是什么？</h4><p>我们说的setState异步、同步的意思：setState语句的下一行直接读取this.state获取更新的state，如果能拿到最新的，那就是同步的，如果不行，那就是异步的。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设this.state.count初始值为0</span></span><br><span class="line"><span class="built_in">this</span>.setState(&#123;<span class="attr">count</span>:<span class="number">1</span>&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>.state.count) <span class="comment">//如果是0，则说明是异步的；如果是1，说明是同步的。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>setState</code> 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”。</p>
+<ul>
+<li>在“异步”中如果对同一个值进行多次<code>setState</code>，<code>setState</code>的批量更新策略会对其进行覆盖，取最后一次的执行</li>
+<li>如果是同时<code>setState</code>多个不同的值，在更新时会对其进行合并批量更新。</li>
+</ul>
+<h4 id="为什么要设置异步的setState？"><a href="#为什么要设置异步的setState？" class="headerlink" title="为什么要设置异步的setState？"></a>为什么要设置异步的setState？</h4><p>具体可以看看<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhY2Vib29rL3JlYWN0L2lzc3Vlcy8xMTUyNyNpc3N1ZWNvbW1lbnQtMzYwMTk5NzEw">Github Comment</span> ，以下进行一些摘抄</p>
+<p>在开始重新渲染之前，React 会有意地进行“等待”，直到所有在组件的事件处理函数内调用的 <code>setState()</code> 完成之后。这样可以通过避免不必要的重新渲染来提升性能。</p>
+<p>举例来说，如果我们在浏览器中<code>click</code>处理程序，既<code>Child</code>和<code>Parent</code>电话<code>setState</code>，我们不想再渲染<code>Child</code>两次，而是更愿意将它们标记为脏，退出浏览器事件之前一起重新渲染它们。</p>
+<p>主要的原因就是：提高性能，将多个状态更新合并，减少re-render调用。</p>
+<p>试想一下如果在组件中有以下这样一段代码执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for ( let i = 0; i &lt; 100; i++ ) &#123;</span><br><span class="line">    this.setState( &#123; num: this.state.num + 1 &#125; );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果setState是一个同步执行的机制，那么这个组件会被重新渲染100次，这对性能是一个相当大的消耗。</p>
+<p>但是，你可能还是会想，既然这样操作是为了优化渲染，那为什么 React 不能立即更新 <code>this.state</code>，而不对组件进行重新渲染呢。</p>
+<p>主要有两个原因：</p>
+<ul>
+<li>这样会破坏掉 <code>props</code> 和 <code>state</code> 之间的一致性，造成一些难以 debug 的问题。</li>
+</ul>
+<p>​    什么意思？即使this.state同步更新了，但props不会啊（props只有重新渲染了之后才更新）。</p>
+<ul>
+<li>这样会让一些我们正在实现的新功能变得无法实现。例如没法进行状态批量更新，无法优化性能。</li>
+</ul>
+<h4 id="什么时候异步？什么时候同步？"><a href="#什么时候异步？什么时候同步？" class="headerlink" title="什么时候异步？什么时候同步？"></a>什么时候异步？什么时候同步？</h4><blockquote>
+<p>这里所说的同步异步， 并不是真正的同步异步，这里的异步指的是多个state会合成到一起进行批量更新，即<strong>批处理机制</strong>。</p>
+</blockquote>
+<p>异步：<strong>事件处理程序</strong>、<strong>生命周期函数</strong>中的setState。<br>同步：React控制之外的事件中调用setState是同步更新的。比如原生js绑定的事件，setTimeout/setInterval等。即便setTimeout是在生命周期里。</p>
+<p>在React<u>合成事件处理函数内部以及钩子函数中</u>的 <code>setState</code> 是异步的，在<u>原生事件和<code>setTimeout</code></u> 中都是同步的。</p>
+<ul>
+<li>合成事件：就是react 在组件中的onClick等都是属于它自定义的合成事件</li>
+<li>原生事件：比如通过addeventListener添加的，dom中的原生事件</li>
+</ul>
+<p>【React的更新机制】</p>
+<p>生命周期函数和合成事件中：</p>
+<ol>
+<li>无论调用多少次setState，都不会立即执行更新。而是将要更新的state存入’_pendingStateQuene’，将要更新的组件存入’dirtyComponent’。</li>
+<li>当根组件didMount后，批处理机制更新为false。此时再取出’_pendingStateQuene’和’dirtyComponent’中的state和组件进行合并更新；</li>
+</ol>
+<p>原生事件和异步代码中：</p>
+<ol>
+<li>原生事件不会触发react的批处理机制，因而调用setState会直接更新；</li>
+<li>异步代码中调用setState，由于js的异步处理机制，异步代码会暂存，等待同步代码执行完毕再执行，此时react的批处理机制已经结束，因而直接更新。</li>
+</ol>
+<p>例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">state = &#123;</span><br><span class="line">    <span class="attr">count</span>:<span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 异步例子1</span></span><br><span class="line"><span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;<span class="attr">count</span>:<span class="number">1</span>&#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.count) <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 同步例子1</span></span><br><span class="line"><span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.body.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="built_in">this</span>.handleClick, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line">handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;<span class="attr">count</span>: <span class="number">1</span>&#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.count) <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同步例子2</span></span><br><span class="line"><span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.setState(&#123;<span class="attr">count</span>:<span class="number">1</span>&#125;)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.count)<span class="comment">// 1</span></span><br><span class="line">    &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>在 React 控制之内的事件处理过程中，setState 不会同步更新，而在控制之外的地方，会同步更新。</p>
+<ul>
+<li><p>React 控制之内，即是给元素使用 onClick={} 这种方式的事件。 </p>
+</li>
+<li><p>React 控制之外，即是用如 addEventListener 这种 API 给元素添加事件监听</p>
+</li>
+</ul>
+</blockquote>
+<p>总结：<br>react会表现出同步和异步的现象，但本质上是同步的，是其批处理机制造成了一种异步的假象。（其实完全可以在开发过程中，在合成事件和生命周期函数里，完全可以将其视为异步）</p>
+<p>以下会输出什么？</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>();</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">val</span>: <span class="number">0</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;<span class="attr">val</span>: <span class="built_in">this</span>.state.val + <span class="number">1</span>&#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.val);    <span class="comment">// 第 1 次 log</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;<span class="attr">val</span>: <span class="built_in">this</span>.state.val + <span class="number">1</span>&#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.val);    <span class="comment">// 第 2 次 log</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.setState(&#123;<span class="attr">val</span>: <span class="built_in">this</span>.state.val + <span class="number">1</span>&#125;);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.val);  <span class="comment">// 第 3 次 log</span></span><br><span class="line"></span><br><span class="line">      <span class="built_in">this</span>.setState(&#123;<span class="attr">val</span>: <span class="built_in">this</span>.state.val + <span class="number">1</span>&#125;);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.state.val);  <span class="comment">// 第 4 次 log</span></span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>1、第一次和第二次都是在 react 自身生命周期内，触发时 isBatchingUpdates 为 true，所以并不会直接执行更新 state，而是加入了 dirtyComponents，所以打印时获取的都是更新前的状态 0。</p>
+<p>2、两次 setState 时，获取到 this.state.val 都是 0，所以执行时都是将 0 设置成 1，在 react 内部会被合并掉，只执行一次。设置完成后 state.val 值为 1。</p>
+<p>3、setTimeout 中的代码，触发时 isBatchingUpdates 为 false，所以能够直接进行更新，所以连着输出 2、3。</p>
+<p>输出： 0 0 2 3</p>
+<p>详细请看 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0x1TmFIYWlKaWFvL2Jsb2cvaXNzdWVzLzI2">深入 setState 机制</span></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/48610973/458193">深入学习：何时以及为什么 <code>setState()</code> 会批量执行？</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/facebook/react/issues/11527#issuecomment-360199710">深入：为什么不直接更新 <code>this.state</code>？</a></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2RvY3MvZmFxLXN0YXRlLmh0bWw=">组件状态 </span> ，有两个代码是很好的例子，讲述了setState传对象和传函数的不同</li>
+</ul>
+<h4 id="如果-setState-更新的值不变，那么还会触发这些生命周期钩子吗？"><a href="#如果-setState-更新的值不变，那么还会触发这些生命周期钩子吗？" class="headerlink" title="如果 setState 更新的值不变，那么还会触发这些生命周期钩子吗？"></a>如果 <code>setState</code> 更新的值不变，那么还会触发这些生命周期钩子吗？</h4><ul>
+<li>哪怕每次都设置同样的值，还是会触发更新和re-render，所以要优化。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setState(&#123;<span class="attr">number</span>: <span class="built_in">this</span>.state.number &#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="版本迁移"><a href="#版本迁移" class="headerlink" title="版本迁移"></a>版本迁移</h1><p><code>componentWillMount</code>，<code>componentWillReceiveProps</code>，<code>componentWillUpdate</code> 这三个生命周期因为经常会被误解和滥用，所以被称为 <strong>不安全（不是指安全性，而是表示使用这些生命周期的代码，有可能在未来的 React 版本中存在缺陷，可能会影响未来的异步渲染）</strong> 的生命周期。具体可以查看<span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2RvY3Mvc3RyaWN0LW1vZGUuaHRtbCNkZXRlY3RpbmctdW5leHBlY3RlZC1zaWRlLWVmZmVjdHM=">https://zh-hans.reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects</span></p>
+<p><strong>React 16.3 版本</strong>：为不安全的生命周期引入别名 <code>UNSAFE_componentWillMount</code>，<code>UNSAFE_componentWillReceiveProps</code> 和 <code>UNSAFE_componentWillUpdate</code>。（<strong>旧的生命周期名称和新的别名都可以在此版本中使用</strong>）</p>
+<p><strong>React 16.3 之后的版本</strong>：为 <code>componentWillMount</code>，<code>componentWillReceiveProps</code> 和 <code>componentWillUpdate</code> 启用弃用警告。（<strong>旧的生命周期名称和新的别名都可以在此版本中使用，但旧名称会记录DEV模式警告</strong>）</p>
+<p><strong>React 17.0 版本：</strong> 推出新的渲染方式——<strong>异步渲染</strong>（ Async Rendering），提出一种可被打断的生命周期，而可以被打断的阶段正是实际 <code>dom</code> 挂载之前的虚拟 <code>dom</code> 构建阶段，也就是要被去掉的三个生命周期 <code>componentWillMount</code>，<code>componentWillReceiveProps</code> 和 <code>componentWillUpdate</code>。（<strong>从这个版本开始，只有新的“UNSAFE_”生命周期名称将起作用</strong>）</p>
+<h1 id="新生命周期"><a href="#新生命周期" class="headerlink" title="新生命周期"></a>新生命周期</h1><p>为什么要有新生命周期？</p>
+<blockquote>
+<p>One of the biggest lessons we’ve learned is that some of our legacy component lifecycles tend to encourage unsafe coding practices. They are:</p>
+<ul>
+<li><code>componentWillMount</code></li>
+<li><code>componentWillReceiveProps</code></li>
+<li><code>componentWillUpdate</code></li>
+</ul>
+<p>These lifecycle methods have often been misunderstood and subtly misused; furthermore, we anticipate that their potential misuse may be more problematic with async rendering. Because of this, we will be adding an “UNSAFE_” prefix to these lifecycles in an upcoming release. (Here, <u>“unsafe” refers not to security</u> but instead conveys that code using these lifecycles will be more likely to have bugs in future versions of React, especially once async rendering is enabled.)</p>
+</blockquote>
+<p>React v17是一个铺路石版本，认为其会导致v18的“<span class="exturl" data-url="aHR0cHM6Ly9yZWFjdGpzLm9yZy9ibG9nLzIwMTgvMDMvMjcvdXBkYXRlLW9uLWFzeW5jLXJlbmRlcmluZy5odG1s">异步渲染</span>”出现bug，同时因为这三个方法容易被误解，于v18可能被删除。目前如果要用的话必须加前缀”UNSAFE_”。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111221550915.png" alt="react生命周期(新)" style="zoom:67%;" />
+
+<h2 id="重要API"><a href="#重要API" class="headerlink" title="重要API"></a>重要API</h2><p>说白了，废除了三个钩子</p>
+<ul>
+<li><code>componentWillMount</code></li>
+<li><code>componentWillReceiveProps</code></li>
+<li><code>componentWillUpdate</code></li>
+</ul>
+<p>新增了两个钩子</p>
+<ul>
+<li><code>getDerivedStateFromProps</code></li>
+<li><code>getSnapshotBeforeUpdate</code></li>
+</ul>
+<h3 id="static-getDerivedStateFromProps-nextProps-nextState"><a href="#static-getDerivedStateFromProps-nextProps-nextState" class="headerlink" title="static getDerivedStateFromProps(nextProps,nextState)"></a>static getDerivedStateFromProps(nextProps,nextState)</h3><blockquote>
+<p>最常见的误解就是 <code>getDerivedStateFromProps</code> 和 <code>componentWillReceiveProps</code> 只会在 <code>props</code> “改变”时才会调用。</p>
+<p>实际上只要父组件重新渲染时，这两个生命周期函数就会重新调用，不管 <code>props</code> 有没有“变化”</p>
+</blockquote>
+<p>⭐<code>getDerivedStateFromProps</code> 的存在只有一个目的：让组件在 <strong>props 变化</strong>时更新 state，即我们需要根据props来更新state的话，才需要用到这个API。</p>
+<p>该方法返回一个对象并会和之前的 state 合并，作为新的 state，如果返回 <code>null</code> 则不更新任何内容，注意不用加组件自身的状态。</p>
+<p>与 <code>componentDidUpdate</code> 一起，这个新的生命周期涵盖过时的 <code>componentWillReceiveProps</code> 的所有用例。</p>
+<p>React 官方团队成员对于<code>派生状态</code>的思考：<br><span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2Jsb2cvMjAxOC8wNi8wNy95b3UtcHJvYmFibHktZG9udC1uZWVkLWRlcml2ZWQtc3RhdGUuaHRtbA==">你可能不需要Derived状态</span></p>
+<p>咱们看下官网咋说的：</p>
+<blockquote>
+<p>此方法适用于<span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2Jsb2cvMjAxOC8wNi8wNy95b3UtcHJvYmFibHktZG9udC1uZWVkLWRlcml2ZWQtc3RhdGUuaHRtbCN3aGVuLXRvLXVzZS1kZXJpdmVkLXN0YXRl">罕见的用例</span>，即 state 的值在任何时候都取决于 props。例如，实现 <code>&lt;Transition&gt;</code> 组件可能很方便，该组件会比较当前组件与下一组件，以决定针对哪些组件进行转场动画。</p>
+<p>派生状态会导致代码冗余，并使组件难以维护。</p>
+<ul>
+<li>如果你需要<strong>执行副作用</strong>（例如，数据提取或动画）以响应 props 中的更改，请改用 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#componentdidupdate"><code>componentDidUpdate</code></a>。</li>
+<li>如果只想在 <strong>prop 更改时重新计算某些数据</strong>，<span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2Jsb2cvMjAxOC8wNi8wNy95b3UtcHJvYmFibHktZG9udC1uZWVkLWRlcml2ZWQtc3RhdGUuaHRtbCN3aGF0LWFib3V0LW1lbW9pemF0aW9u">请使用 memoization helper 代替</span>。</li>
+<li>如果你想<strong>在 prop 更改时“重置”某些 state</strong>，请考虑使组件<span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2Jsb2cvMjAxOC8wNi8wNy95b3UtcHJvYmFibHktZG9udC1uZWVkLWRlcml2ZWQtc3RhdGUuaHRtbCNyZWNvbW1lbmRhdGlvbi1mdWxseS1jb250cm9sbGVkLWNvbXBvbmVudA==">完全受控</span>或<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key">使用 <code>key</code> 使组件完全不受控</a> 代替。</li>
+</ul>
+<p>此方法无权访问组件实例。如果你需要，可以通过提取组件 props 的纯函数及 class 之外的状态，在<code>getDerivedStateFromProps()</code>和其他 class 方法之间重用代码。</p>
+<p>请注意，不管原因是什么，都会在<em>每次</em>渲染前触发此方法。这与 <code>UNSAFE_componentWillReceiveProps</code> 形成对比，后者仅在父组件重新渲染时触发，而不是在内部调用 <code>setState</code> 时。</p>
+</blockquote>
+<p>所以事实上用的不多</p>
+<p>这里有一些<span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTA0MDIxMjMzMjM4MDI0I2hlYWRpbmctOA==">面试题</span></p>
+<h3 id="getSnapshotBeforeUpdate-prevProps-prevState"><a href="#getSnapshotBeforeUpdate-prevProps-prevState" class="headerlink" title="getSnapshotBeforeUpdate(prevProps, prevState)"></a>getSnapshotBeforeUpdate(prevProps, prevState)</h3><p><code>getSnapshotBeforeUpdate()</code> 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。**此生命周期方法的任何返回值将作为参数传递给 <code>componentDidUpdate()</code>**。</p>
+<p>此用法并不常见，但它可能出现在 UI 处理中，如需要以特殊方式处理滚动位置的聊天线程等。</p>
+<p>应返回 snapshot 的值（或 <code>null</code>）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ScrollingList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.listRef = React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">getSnapshotBeforeUpdate</span>(<span class="params">prevProps, prevState</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 我们是否在 list 中添加新的 items ？</span></span><br><span class="line">    <span class="comment">// 捕获滚动位置以便我们稍后调整滚动位置。</span></span><br><span class="line">    <span class="keyword">if</span> (prevProps.list.length &lt; <span class="built_in">this</span>.props.list.length) &#123;</span><br><span class="line">      <span class="keyword">const</span> list = <span class="built_in">this</span>.listRef.current;</span><br><span class="line">      <span class="keyword">return</span> list.scrollHeight - list.scrollTop;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentDidUpdate</span>(<span class="params">prevProps, prevState, snapshot</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 如果我们 snapshot 有值，说明我们刚刚添加了新的 items，</span></span><br><span class="line">    <span class="comment">// 调整滚动位置使得这些新 items 不会将旧的 items 推出视图。</span></span><br><span class="line">    <span class="comment">//（这里的 snapshot 是 getSnapshotBeforeUpdate 的返回值）</span></span><br><span class="line">    <span class="keyword">if</span> (snapshot !== <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> list = <span class="built_in">this</span>.listRef.current;</span><br><span class="line">      list.scrollTop = list.scrollHeight - snapshot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;this.listRef&#125;</span>&gt;</span>&#123;/* ...contents... */&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，重点是从 <code>getSnapshotBeforeUpdate</code> 读取 <code>scrollHeight</code> 属性，因为 “render” 阶段生命周期（如 <code>render</code>）和 “commit” 阶段生命周期（如 <code>getSnapshotBeforeUpdate</code> 和 <code>componentDidUpdate</code>）之间可能存在延迟。</p>
+<h2 id="错误处理钩子函数"><a href="#错误处理钩子函数" class="headerlink" title="错误处理钩子函数"></a>错误处理钩子函数</h2><p>当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#static-getderivedstatefromerror"><code>static getDerivedStateFromError(error)</code></a></li>
+</ul>
+<p>​        </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#componentdidcatch"><code>componentDidCatch(error, info)</code></a></li>
+</ul>
+<p>​    此生命周期在后代组件抛出错误后被调用。 它接收两个参数：</p>
+<ol>
+<li><code>error</code> —— 抛出的错误。</li>
+<li><code>info</code> —— 带有 <code>componentStack</code> key 的对象，其中包含<span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL2RvY3MvZXJyb3ItYm91bmRhcmllcy5odG1sI2NvbXBvbmVudC1zdGFjay10cmFjZXM=">有关组件引发错误的栈信息</span>。</li>
+</ol>
+<h2 id="其他API"><a href="#其他API" class="headerlink" title="其他API"></a>其他API</h2><h3 id="forceUpdate-强制让组件重新渲染"><a href="#forceUpdate-强制让组件重新渲染" class="headerlink" title="forceUpdate() 强制让组件重新渲染"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#forceupdate"><code>forceUpdate()</code></a> 强制让组件重新渲染</h3><h1 id="react重渲染逻辑"><a href="#react重渲染逻辑" class="headerlink" title="react重渲染逻辑"></a>react重渲染逻辑</h1><p>思考一下一个问题：</p>
+<blockquote>
+<p>父组件重新渲染（但传给子组件的props没有改变），子组件的<code>componentWillReceiveProps</code> 和<code>getDerivedStateFromProps</code> 会调用吗？</p>
+</blockquote>
+<p>答案是：会！</p>
+<p>react的重渲染逻辑是父组件的state或者props更新，就会导致其整个组件的重新渲染。</p>
+<p>最常见的误解就是 <code>getDerivedStateFromProps</code> 和 <code>componentWillReceiveProps</code> 只会在 <code>props</code> “改变”时才会调用。实际上只要父组件重新渲染时，这两个生命周期函数就会重新调用，不管 <code>props</code> 有没有“变化”</p>
+
+      <div class="tags">
+          <a href="/tags/React/" rel="tag"><i class="ic i-tag"></i> React</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-03-11 16:02:06" itemprop="dateModified" datetime="2022-03-11T16:02:06+08:00">2022-03-11</time>
+  </span>
+  <span id="FrontEnd/React/FrontEnd/React/【React基础】React生命周期" class="item leancloud_visitors" data-flag-title="【React基础】React生命周期" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">https://monkeyhh.top/FrontEnd/React/FrontEnd/React/【React基础】React生命周期</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】React组件间通信方式总结">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> React</span>
+  <h3>【React基础】React组件间通信方式总结</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】Virtual DOM与Diff算法初识">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> React</span>
+  <h3>【React基础】Virtual DOM与Diff算法初识</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A7%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">旧生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.1.</span> <span class="toc-text">组件生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.</span> <span class="toc-text">生命周期阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Initialization%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.1.</span> <span class="toc-text">Initialization初始化阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mounting%E6%8C%82%E8%BD%BD%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.2.</span> <span class="toc-text">Mounting挂载阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating%E6%9B%B4%E6%96%B0%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.3.</span> <span class="toc-text">Updating更新阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unmounting%E5%8D%B8%E8%BD%BD%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.4.</span> <span class="toc-text">Unmounting卸载阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error-Handling-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.5.</span> <span class="toc-text">Error Handling 错误处理阶段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">1.3.</span> <span class="toc-text">注意</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#componentWillMount%E5%BE%88%E5%8D%B1%E9%99%A9"><span class="toc-number">1.3.1.</span> <span class="toc-text">componentWillMount很危险</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setState-%E5%BE%88%E5%A5%87%E6%80%AA"><span class="toc-number">1.3.2.</span> <span class="toc-text">setState()  很奇怪</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#setState%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">setState同步、异步是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%BE%E7%BD%AE%E5%BC%82%E6%AD%A5%E7%9A%84setState%EF%BC%9F"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">为什么要设置异步的setState？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%BC%82%E6%AD%A5%EF%BC%9F%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%90%8C%E6%AD%A5%EF%BC%9F"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">什么时候异步？什么时候同步？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C-setState-%E6%9B%B4%E6%96%B0%E7%9A%84%E5%80%BC%E4%B8%8D%E5%8F%98%EF%BC%8C%E9%82%A3%E4%B9%88%E8%BF%98%E4%BC%9A%E8%A7%A6%E5%8F%91%E8%BF%99%E4%BA%9B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90%E5%90%97%EF%BC%9F"><span class="toc-number">1.3.2.6.</span> <span class="toc-text">如果 setState 更新的值不变，那么还会触发这些生命周期钩子吗？</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E8%BF%81%E7%A7%BB"><span class="toc-number">2.</span> <span class="toc-text">版本迁移</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B0%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">3.</span> <span class="toc-text">新生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%A6%81API"><span class="toc-number">3.1.</span> <span class="toc-text">重要API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#static-getDerivedStateFromProps-nextProps-nextState"><span class="toc-number">3.1.1.</span> <span class="toc-text">static getDerivedStateFromProps(nextProps,nextState)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getSnapshotBeforeUpdate-prevProps-prevState"><span class="toc-number">3.1.2.</span> <span class="toc-text">getSnapshotBeforeUpdate(prevProps, prevState)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">错误处理钩子函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96API"><span class="toc-number">3.3.</span> <span class="toc-text">其他API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#forceUpdate-%E5%BC%BA%E5%88%B6%E8%AE%A9%E7%BB%84%E4%BB%B6%E9%87%8D%E6%96%B0%E6%B8%B2%E6%9F%93"><span class="toc-number">3.3.1.</span> <span class="toc-text">forceUpdate() 强制让组件重新渲染</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#react%E9%87%8D%E6%B8%B2%E6%9F%93%E9%80%BB%E8%BE%91"><span class="toc-number">4.</span> <span class="toc-text">react重渲染逻辑</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">54</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">18</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">23</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
+</div>
+
+    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">773k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">11:43</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/React/FrontEnd/React/【React基础】React生命周期',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

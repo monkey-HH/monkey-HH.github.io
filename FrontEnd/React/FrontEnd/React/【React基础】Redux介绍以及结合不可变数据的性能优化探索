@@ -1,0 +1,1192 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="" href="https://monkeyhh.top/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="" href="https://monkeyhh.top/atom.xml" />
+<link rel="alternate" type="application/json" title="" href="https://monkeyhh.top/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="React" />
+
+
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2">
+
+
+
+  <title>
+【React基础】Redux介绍以及结合不可变数据的性能优化探索 - React - FrontEnd |
+Monkey's Blog = </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">【React基础】Redux介绍以及结合不可变数据的性能优化探索
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-08-01 12:00:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-08-01T12:00:32+08:00">2021-08-01</time>
+  </span>
+  <span class="item" title="Symbols count in article">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">Symbols count in article</span>
+    <span>36k</span>
+    <span class="text">words</span>
+  </span>
+  <span class="item" title="Reading time">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">Reading time</span>
+    <span>32 mins.</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Monkey's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281409527.png">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/" itemprop="item" rel="index" title="In FrontEnd"><span itemprop="name">FrontEnd</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/FrontEnd/React/" itemprop="item" rel="index" title="In React"><span itemprop="name">React</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Monkey-HH">
+    <meta itemprop="description" content=", Learn, share, make progress">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281409527.png" alt="image-20211228140957485"></p>
+<h1 id="Flux是什么？"><a href="#Flux是什么？" class="headerlink" title="Flux是什么？"></a>Flux是什么？</h1><p> Flux 是由 Facebook 在 2014 年开源的一款用于构建用户界面的应用程序架构（Application  Architecture for Building User Interface）。随着师出同门的 React 越来越火爆，Flux 也受到了越来 越多的关注。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112241440306.png" alt="image-20211224143959788"></p>
+<p>简单说，Flux 是一种架构思想，专门解决软件的结构问题。它跟<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDA3LzExL212Yy5odG1s">MVC 架构</span>是同一类东西，但是更加<span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vbmV3cy8yMDE0LzA1L2ZhY2Vib29rLW12Yy1mbHV4">简单和清晰</span>。Flux存在多种实现（<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Zvcm9uaWFuc2tpL2ZsdXgtY29tcGFyaXNvbg==">至少15种</span>），本文采用的是<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhY2Vib29rL2ZsdXg=">Facebook官方实现</span>。</p>
+<p>首先，Flux将一个应用分成四个部分。</p>
+<blockquote>
+<ul>
+<li><strong>View</strong>： 视图层</li>
+<li><strong>Action</strong>（动作）：视图层发出的消息（比如mouseClick）</li>
+<li><strong>Dispatcher</strong>（派发器）：用来接收Actions、执行回调函数</li>
+<li><strong>Store</strong>（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面</li>
+</ul>
+</blockquote>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261105506.png" alt="img"></p>
+<p>Flux 的最大特点，就是数据的”单向流动”。</p>
+<blockquote>
+<ol>
+<li>用户访问 View</li>
+<li>View 发出用户的 Action</li>
+<li>Dispatcher 收到 Action，要求 Store 进行相应的更新</li>
+<li>Store 更新后，发出一个”change”事件</li>
+<li>View 收到”change”事件后，更新页面</li>
+</ol>
+</blockquote>
+<p>上面过程中，数据总是”单向流动”，任何相邻的部分都不会发生数据的”双向流动”。这保证了流程的清晰。</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View也就是视图，用于展示store里的数据，通常来说View部分是一个<strong>纯组件</strong>（不包含任何的状态），纯粹用来展示store里存储的数据，通过绑定监听事件，当监听到对应的事件的时候，View就会向Dispatcher发出一个Action。</p>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>Action就是一个“动作”，存储了有关某个动作的信息，动作必须包括动作的名称以及需要与动作一起发送的任何信息（可选），社区有一个<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FjZGxpdGUvZmx1eC1zdGFuZGFyZC1hY3Rpb24=">规范</span>，例如type属性表示该动作的类型。</p>
+<h2 id="Dispatcher"><a href="#Dispatcher" class="headerlink" title="Dispatcher"></a>Dispatcher</h2><p><code>store.dispatch</code>接受一个 Action 对象作为参数，将它发送出去。</p>
+<p>可以把它看作一个路由器，负责在 View 和 Store 之间，建立 Action 的正确传递路线。注意，Dispatcher 只能有一个，而且是全局的。</p>
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><p>Store 保存整个应用的状态（数据）。它的角色有点像 MVC 架构之中的Model 。</p>
+<h1 id="Redux基本知识"><a href="#Redux基本知识" class="headerlink" title="Redux基本知识"></a>Redux基本知识</h1><h2 id="什么是Redux"><a href="#什么是Redux" class="headerlink" title="什么是Redux"></a>什么是Redux</h2><p>Redux是将整个应用状态存储到到一个地方，称为store。也就是说，Redux用于存储公共状态。</p>
+<blockquote>
+<p>为什么需要Redux？</p>
+</blockquote>
+<p>为了回答这个问题，首先我们来看看React“单向数据流”的基本逻辑，在我的另外一篇文章《React组件间通信》中提到了多种的通信方式，如果不是很了解具体的做法，可以先看看那篇文章，此处不多赘述做法，只探究渲染过程。首先我们来看，如果只是简单的父子组件之间的通信，我们可以简单地通过props传递：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261201306.gif" alt="1_O3-jbieSsxcQFkrTLp-1zw"></p>
+<p>我们再看看兄弟组件之间通信的情况，由于他们唯一的联系即他们有共同的父组件，因此我们需要先将状态进行提升，也就是说通过父组件内的一个函数，触发父组件的state更新，这会导致该父组件以及父组件下所有的子组件都重新渲染：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261220743.gif" alt="1_DrxF4q1jNkiEKKm1EBAgiQ"></p>
+<p>以上的都是最简单的情况，现实中，往往我们的项目中的层级关系是十分复杂的，情况就有可能出现这样子：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261227323.gif" alt="test (2)"></p>
+<p>如果我们只是一位地使用上述的方式，通过state和props进行层层数据传递，在最糟糕的情况下会导致整个应用所有的组件进行重渲染，这对整个应用的性能打击时非常大，我们希望可以通过一种方式，使得两个组件之间可以直接进行通信，而不是通过他们的共同祖先这种方式进行传值，这样就不会导致共同祖先的所有后代组件都重渲染。</p>
+<p>第一种方式可以是使用“发布订阅工具”，但这种方式会导致一个问题，当多个组件互相彼此订阅，项目将会变得难以维护，因为数据流十分不清晰，当程序员进行调试的时候，必须十分熟悉整个项目所有的“发布订阅模型”，因此这种方式只适合于简单的情况。</p>
+<p>第二种方式就是利用一个媒介，该媒介相当于一个中间人，我们称之为store，存放着所有组件的公共状态，如果有状态更新，则直接更新这个store，别的组件订阅这个store中的state，这样，数据的来源就是单一的，符合Flux原则。</p>
+<p>我们来看看这种情况下组件渲染的情况：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261236070.gif" alt="1_f3gS9znOZvX8HfCLg7T--Q"></p>
+<h2 id="Redux基本概念和操作"><a href="#Redux基本概念和操作" class="headerlink" title="Redux基本概念和操作"></a>Redux基本概念和操作</h2><p>首先我们放一张图，该图演示了redux中的数据流向，此处先不用细看，但可以对照这张图来看后面的内容，会更加容易理解。</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261338963.png" alt="image-20211226133828913" style="zoom:67%;" />
+
+<blockquote>
+<p>第一步：安装</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D redux</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Store：公共状态库"><a href="#Store：公共状态库" class="headerlink" title="Store：公共状态库"></a>Store：公共状态库</h3><p>上面已经提到了Store 就是保存数据的地方，整个应用只能有一个 Store。</p>
+<h3 id="第一步：redux-createStore-创建store"><a href="#第一步：redux-createStore-创建store" class="headerlink" title="第一步：redux.createStore()创建store"></a>第一步：redux.createStore()创建store</h3><p>Redux 提供<code>createStore</code>这个函数，用来生成 Store。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>createStore</code>函数接受另一个函数作为参数，返回新生成的 Store 对象。</p>
+<p>这里的reducer会在第五步、第六步中提到。</p>
+<h3 id="第二步：store-getState-获取状态"><a href="#第二步：store-getState-获取状态" class="headerlink" title="第二步：store.getState()获取状态"></a>第二步：store.getState()获取状态</h3><p>我们可以使用<code>store.getState()</code>获取store里的数据。</p>
+<p>我们可以在组件中直接使用：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;当前store里的数据为：&#123;store.getState()&#125;&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三步：Action-与-Action-Creator"><a href="#第三步：Action-与-Action-Creator" class="headerlink" title="第三步：Action 与 Action Creator"></a>第三步：Action 与 Action Creator</h3><p>Action 是一个对象，描述当前发生的事情。改变 State 的唯一办法，就是使用 Action。它会运送数据到 Store。</p>
+<p>其中的<code>type</code>属性是必须的，表示 Action 的名称。其他属性可以自由设置，社区有一个<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FjZGxpdGUvZmx1eC1zdGFuZGFyZC1hY3Rpb24=">规范</span>可以参考。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> action = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;ADD_TODO&#x27;</span>,</span><br><span class="line">  <span class="attr">payload</span>: <span class="string">&#x27;Learn Redux&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，Action 的名称是<code>ADD_TODO</code>，它携带的信息是字符串<code>Learn Redux</code>。</p>
+<p><code>Action Creator</code>则可以理解为一个Action工厂，输入action的订制信息，然后<code>Action Creator</code>根据该信息，量身定做并输出一个Action对象。</p>
+<p>以下是一个Action Creator函数实例，将data传入该函数，该函数会返回一个Action对象（有type和data两个属性）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> actionCreator = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT,data&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第四步：派发action"><a href="#第四步：派发action" class="headerlink" title="第四步：派发action"></a>第四步：派发action</h3><blockquote>
+<p>下一步：将Action交给store</p>
+</blockquote>
+<p>通过<code>store.dispatch(action)</code>这一个API将action传递给store，store再根据该action对象进行对应的state更新。</p>
+<p>结合上上一步，我们可以在React组件中的事件监听函数中，调用第三步中新建的函数<code>actionCreator</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">increasement = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> &#123;value&#125; = <span class="built_in">this</span>.someValue</span><br><span class="line">	store.dispatch(actionCreator(value*<span class="number">1</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第五步：定义Reducer"><a href="#第五步：定义Reducer" class="headerlink" title="第五步：定义Reducer"></a>第五步：定义Reducer</h3><blockquote>
+<p>什么是Reducer？</p>
+</blockquote>
+<p>Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会发生变化。这种 State 的计算过程就叫做 Reducer。</p>
+<p>也就是说：<strong>Reducer则实现了将Action转化为新state</strong>。</p>
+<p>Reducer 是一个函数，它接受 Action 和当前 State 作为参数，返回一个新的 State。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reducer = <span class="function"><span class="keyword">function</span> (<span class="params">preState, action</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">return</span> new_state;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Reducer是纯函数！！</p>
+</blockquote>
+<p>Reducer最重要的一点是：<strong>它是一个纯函数</strong>，也就是说，只要是同样的输入，必定得到同样的输出。这一点非常重要。</p>
+<p>纯函数是函数式编程的概念，必须遵守以下一些约束。</p>
+<ul>
+<li>不得改写参数</li>
+<li>不能调用系统 I/O 的API</li>
+<li>不能调用<code>Date.now()</code>或者<code>Math.random()</code>等不纯的方法，因为每次会得到不一样的结果</li>
+</ul>
+<p>由于 Reducer 是纯函数，就可以保证同样的State，必定得到同样的 View。但也正因为这一点，Reducer 函数里面不能改变 State，必须返回一个全新的对象，请参考下面的写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// State 是一个对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, state, &#123; thingToChange &#125;);</span><br><span class="line">  <span class="comment">// 或者</span></span><br><span class="line">  <span class="keyword">return</span> &#123; ...state, ...newState &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// State 是一个数组</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [...state, newItem];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最好把 State 对象设成只读。你没法改变它，要得到新的 State，唯一办法就是生成一个新对象。这样的好处是，任何时候，与某个 View 对应的 State 总是一个不变的对象。</p>
+<blockquote>
+<p>Reducer的实际例子</p>
+</blockquote>
+<p>整个应用的初始状态，可以作为 State 的默认值。下面是一个实际的例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> defaultState = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> countReducer = <span class="function">(<span class="params">preState = defaultState, action</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;ADD&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> preState + action.payload;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;MINUS&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> preState - action.payload;     </span><br><span class="line">    <span class="keyword">default</span>: </span><br><span class="line">      <span class="keyword">return</span> preState;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = reducer(<span class="number">1</span>, &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;ADD&#x27;</span>,</span><br><span class="line">  <span class="attr">payload</span>: <span class="number">2</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>reducer</code>函数收到名为<code>ADD</code>的 Action 以后，就返回一个新的 State，作为加法的计算结果。其他运算的逻辑（比如减法），也可以根据 Action 的不同来实现。</p>
+<h3 id="第六步：注册Reducer"><a href="#第六步：注册Reducer" class="headerlink" title="第六步：注册Reducer"></a>第六步：注册Reducer</h3><p>上面提到了如何写一个reducer，但还没讲如何将store和reducer联系起来。</p>
+<p>给store传入reducers的方式就是在<code>createStore()</code>的时候传入reducer。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入为Count组件服务的reducer</span></span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./count_reducer&#x27;</span></span><br><span class="line"><span class="comment">// 暴露store</span></span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer);</span><br></pre></td></tr></table></figure>
+
+<p>很显然，一个应用中是会有多个的reducer，因为如果把所有组件的reducer写在一个JavaScript文件中，将会导致项目比较难维护。</p>
+<p>因此我们可以按照下面的方式组织redux目录结构，其中actions存放着action Creator函数：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261428892.png" alt="image-20211226142843850"></p>
+<p>actions和reducers里的可以按照组件名命名，表示每个组件对应的action Creator和reducer。</p>
+<p>现在项目组织结构是有了，假设我们在定义了两个reducer，我们可以通过<code>redux.combineReducers</code>这一个API，将多个reducer合并，并传入到store中，以下是一个实际例子：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"><span class="comment">// 引入combineReducers</span></span><br><span class="line"><span class="keyword">import</span> &#123;createStore,combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入所有的reducer</span></span><br><span class="line"><span class="keyword">import</span> Component1Reducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/Component1&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Component2Reducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/Component2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将所有reducer合并</span></span><br><span class="line"><span class="keyword">const</span> combinedReducer = combineReducers(&#123;</span><br><span class="line">	<span class="attr">name1</span>:Component1Reducer,</span><br><span class="line">	<span class="attr">name2</span>:Component2Reducer</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store = createStore(combinedReducer)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第七步：store-subscribe-订阅更新"><a href="#第七步：store-subscribe-订阅更新" class="headerlink" title="第七步：store.subscribe()订阅更新"></a>第七步：store.subscribe()订阅更新</h3><p>Store 允许使用<code>store.subscribe</code>方法设置监听函数，一旦 State 发生变化，就自动执行这个函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer);</span><br><span class="line"></span><br><span class="line">store.subscribe(listener);</span><br></pre></td></tr></table></figure>
+
+<p>显然，只要把 View 的更新函数（对于 React 项目，就是组件的<code>render</code>方法或<code>setState</code>方法）放入<code>listen</code>，就会实现 View 的自动渲染。</p>
+<p>例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store.subscribe(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">	ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span>/&gt;</span></span>,<span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这种方式是最简单的，也是性能最差的，store里的状态更新了，组件确实会更新，但是全部组件都更新，会导致所有组件重渲染，这样子也就没有了使用redux的意义。</p>
+<p>最合适的方式是每个组件里，然后通过componentDidMount()方式来初始化监听，就像这样子：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">//检测redux中状态的变化，只要变化，就调用render</span></span><br><span class="line">    store.subscribe(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.setState(&#123;&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>store.subscribe</code>方法返回一个函数，调用这个函数就可以解除监听。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> unsubscribe = store.subscribe(<span class="function">() =&gt;</span><span class="built_in">console</span>.log(store.getState()));</span><br><span class="line"></span><br><span class="line">unsubscribe();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Redux中间件增强dispatch"><a href="#Redux中间件增强dispatch" class="headerlink" title="Redux中间件增强dispatch"></a>Redux中间件增强dispatch</h2><p>首先要介绍的中间件有：<code>redux-thunk</code>，该中间件支持了异步操作。</p>
+<h3 id="Redux-thunk实现异步更新state"><a href="#Redux-thunk实现异步更新state" class="headerlink" title="Redux-thunk实现异步更新state"></a>Redux-thunk实现异步更新state</h3><p>中间件说白了就是可以增强store.dispatch()`方法，为该方法添加功能，<u>在发出 Action后 和执行 Reducer 这两步之间</u>，拦截一下store的dispatch方法，Redux中store.dispatch原本是不能传一个函数进去的，但是redux-thunk让dispatch拥有的接受函数参数的能力。具体来说，如果dispatch方法中传递的是一个对象，那么直接按照正常的Redux工作流来运行，但如果是一个函数，那么直接执行它，并把store.dispatch这个方法当作第一个参数传进这个函数。</p>
+<h4 id="引入Redux-thunk"><a href="#引入Redux-thunk" class="headerlink" title="引入Redux-thunk"></a>引入Redux-thunk</h4><p>引入中间件的方式很简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore,applyMiddleware&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(</span><br><span class="line">  reducer,</span><br><span class="line">  applyMiddleware(thunk)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用Redux-thunk"><a href="#使用Redux-thunk" class="headerlink" title="使用Redux-thunk"></a>使用Redux-thunk</h4><p>下面详细讲讲该中间件的作用，首先我们写一个 异步的Action Creator（动作生成器）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ActionCreator函数</span></span><br><span class="line"><span class="keyword">const</span> actionCreator = <span class="function"><span class="params">postTitle</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 其实redux-thunk给当前返回函数中添加的第一个默认参数就是store的dispatch方法</span></span><br><span class="line">    <span class="comment">// 第二个默认参数就是store的dispatch方法</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function">(<span class="params">dispatch, getState</span>) =&gt;</span> &#123;</span><br><span class="line">		dispatch(requestPosts(postTitle));</span><br><span class="line">		<span class="keyword">return</span> fetch(<span class="string">`/some/API/<span class="subst">$&#123;postTitle&#125;</span>.json`</span>)</span><br><span class="line">			.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">			.then(<span class="function"><span class="params">json</span> =&gt;</span> dispatch(receivePosts(postTitle, json)));</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 使用方法一</span></span><br><span class="line">	store.dispatch(actionCreator(<span class="string">&#x27;reactjs&#x27;</span>));</span><br><span class="line">    <span class="comment">// 使用方法二</span></span><br><span class="line">    store.dispatch(actionCreator(<span class="string">&#x27;reactjs&#x27;</span>)).then(<span class="function">() =&gt;</span></span><br><span class="line">      <span class="built_in">console</span>.log(store.getState())</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>actionCreator</code>是一个Action Creator（动作生成器），<strong>返回一个函数</strong>。这个函数执行后，先dispatch一个Action（<code>requestPosts(postTitle)</code>）表示当前正在请求数据，拿到结果后，再dispatch一个 Action（ <code>receivePosts(postTitle, json)</code>）表示请求结束，并给store传入数据。</p>
+<blockquote>
+<p>当然了事实上不用中间件也可以实现相同的效果，直接在组件里调用方法请求数据，然后再dispatch就可以了。</p>
+<p>在ActionCreator里写一个异步函数，只是为了演示如何使得Redux支持异步更新state</p>
+</blockquote>
+<p>上面代码中，有几个地方需要注意。</p>
+<blockquote>
+<p>（1）**<code>actionCreator</code>返回了一个函数，而普通的 Action Creator 默认返回一个对象**。</p>
+<p>（2）返回的函数的参数是<code>dispatch</code>和<code>getState</code>这两个 Redux 方法，普通的 Action Creator 的参数是 Action 的内容。</p>
+<p>（3）在返回的函数之中，先发出一个 Action（<code>requestPosts(postTitle)</code>），表示操作开始。</p>
+<p>（4）异步操作结束之后，再发出一个 Action（<code>receivePosts(postTitle, json)</code>），表示操作结束。</p>
+</blockquote>
+<p>这样的处理，就解决了store.dispatch()不支持传入函数的问题。</p>
+<blockquote>
+<ul>
+<li>操作开始时，送出一个 Action，触发 State 更新为”正在操作”状态，View 重新渲染</li>
+<li>操作结束后，再送出一个 Action，触发 State 更新为”操作结束”状态，View 再一次重新渲染</li>
+</ul>
+</blockquote>
+<h3 id="其他中间件"><a href="#其他中间件" class="headerlink" title="其他中间件"></a>其他中间件</h3><p>异步操作也可以通过<code>redux-promise </code>这一个中间件实现。</p>
+<h2 id="接入redux-Devtool"><a href="#接入redux-Devtool" class="headerlink" title="接入redux Devtool"></a>接入redux Devtool</h2><p>首先我们要先下载好浏览器扩展插件：<span class="exturl" data-url="aHR0cHM6Ly9jaHJvbWUuZ29vZ2xlLmNvbS93ZWJzdG9yZS9kZXRhaWwvcmVkdXgtZGV2dG9vbHMvbG1oa3BtYmVrY3Bta25rbGlvZWliZmtwbW1maWJsamQ/aGw9emgtQ04=">Redux DevTools</span></p>
+<p>然后对createStore函数进行改造。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这些步骤都是常规步骤</span></span><br><span class="line"><span class="keyword">import</span> &#123;createStore,applyMiddleware&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./reducers&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入redux-devtools-extension</span></span><br><span class="line"><span class="keyword">import</span> &#123;composeWithDevTools&#125; <span class="keyword">from</span> <span class="string">&#x27;redux-devtools-extension&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//暴露store </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createStore(reducer,composeWithDevTools(applyMiddleware(thunk)))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h2><ul>
+<li>Action：一个Object对象，描述当前发生的事情，每一个动作就会有一个Action。</li>
+<li>Action Creator：一个函数，传入数据后，根据数据来生成并返回一个Action对象。</li>
+<li>Store：一个全局对象，表示数据仓库，只有一个！里面存有公共状态和很多的API用来处理数据：<ul>
+<li>store.dispatch（action）：往Store里传入一个action，Store才能知道怎么处理数据。</li>
+<li>store.getState()：获取到Store里的公共状态。</li>
+<li>store.subscribe(fn)：Store里的状态变化时的回调函数。</li>
+</ul>
+</li>
+<li>Reducer（preState，action）：Function函数，真正处理数据的地方，传入旧State，返回新State</li>
+<li>Redux-thunk等中间件则可以使得store.dispatch()可以接受一个函数，即此时Action Creator函数可以返回一个函数。</li>
+</ul>
+<h1 id="React-Redux基本知识"><a href="#React-Redux基本知识" class="headerlink" title="React-Redux基本知识"></a>React-Redux基本知识</h1><p>为了方便使用，Redux 的作者封装了一个 React 专用的库 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3JlYWN0anMvcmVhY3QtcmVkdXg=">React-Redux</span>。</p>
+<blockquote>
+<p>单纯的Redux库有什么缺点？</p>
+</blockquote>
+<ul>
+<li>需要手动dispatch所有的Action</li>
+<li>要手动调用store.subscribe()调用界面渲染方法来让界面刷新</li>
+<li>每个组件都要重新引入store实例</li>
+<li>…</li>
+</ul>
+<p>以上都通过React-Redux解决，不过要学习新的API。</p>
+<blockquote>
+<p>Readt-Redux和Redux的写法主要有什么区别？</p>
+</blockquote>
+<p>大体是相同的，主要有如下不同：</p>
+<ul>
+<li>通过<Provider store="store">传入全局store，这样就不用每个组件都引入store。</li>
+<li>使用Connect(  mapStateToProps,mapDispatchToProps)(UIComponent)生成容器组件。</li>
+<li>mapStateToProps(state, ownProps)，返回一个Object对象，在UI组件里就可以<strong>通过this.props.xxx来访问</strong>“父组件传的State”与“Store里的state”。可以达到store.getState()的效果</li>
+<li>mapDispatchToProps有两种形式，函数或对象，然后就能**通过this.props.xxx(data)**来达到store.dispatch()的效果：<ul>
+<li>函数形式：mapDispatchToProps (dispatch,ownProps)，返回一个Object对象，value部分调用dispatch方法。</li>
+<li>对象形式：该对象的value部分直接传入ActionCreator。</li>
+</ul>
+</li>
+<li>不用通过store.subscribe()来达到界面更新的效果了。</li>
+</ul>
+<h2 id="为全局提供store"><a href="#为全局提供store" class="headerlink" title="为全局提供store"></a><provider>为全局提供store</h2><p>React-Redux 提供<code>Provider</code>组件，store通过Provider传给所有组件，不用再每次组件都传store。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> todoApp <span class="keyword">from</span> <span class="string">&#x27;./reducers&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./components/App&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store = createStore(todoApp);</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>Provider</code>在根组件外面包了一层，这样一来，<code>App</code>的所有子组件就默认都可以拿到<code>state</code>了。</p>
+<p>它的原理是<code>React</code>组件的<a target="_blank" rel="noopener" href="https://facebook.github.io/react/docs/context.html"><code>context</code></a>属性。</p>
+<h2 id="UI组件与容器组件"><a href="#UI组件与容器组件" class="headerlink" title="UI组件与容器组件"></a>UI组件与容器组件</h2><p>React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。</p>
+<h3 id="什么是UI组件？"><a href="#什么是UI组件？" class="headerlink" title="什么是UI组件？"></a>什么是UI组件？</h3><p>UI 组件有以下几个特征。</p>
+<ul>
+<li>只负责 UI 的呈现，不带有任何业务逻辑</li>
+<li><strong>没有状态（即不使用<code>this.state</code>这个变量）</strong></li>
+<li>所有状态都由参数（<code>this.props</code>）提供</li>
+<li>不使用任何 Redux 的 API</li>
+</ul>
+<p>下面就是一个 UI 组件的例子。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Title = <span class="function"><span class="params">value</span> =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;value&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>因为不含有状态，UI 组件又称为”<strong>纯组件</strong>“，即它纯函数一样，纯粹由参数决定它的值。</p>
+<h3 id="什么是容器组件？"><a href="#什么是容器组件？" class="headerlink" title="什么是容器组件？"></a>什么是容器组件？</h3><p>容器组件的特征恰恰相反。</p>
+<blockquote>
+<ul>
+<li>负责管理数据和业务逻辑，不负责 UI 的呈现</li>
+<li>带有内部状态</li>
+<li>使用 Redux 的 API</li>
+</ul>
+</blockquote>
+<p>总之，只要记住一句话就可以了：UI 组件负责 UI 的呈现，容器组件负责管理数据和逻辑。</p>
+<p>你可能会问，如果一个组件既有 UI 又有业务逻辑，那怎么办？回答是，将它拆分成下面的结构：外面是一个容器组件，里面包了一个UI 组件。前者负责与外部的通信，将数据传给后者，由后者渲染出视图。</p>
+<p>React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是由 React-Redux 自动生成。也就是说，用户负责视觉层，状态管理则是全部交给它。</p>
+<h2 id="connect"><a href="#connect" class="headerlink" title="connect()"></a>connect()</h2><blockquote>
+<p>语法：connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])</p>
+</blockquote>
+<p>React-Redux 提供<code>connect</code>方法，用于从 UI 组件生成容器组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">const</span> ContainerComponent = connect()(UIComponent);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>UIComponent</code>是 UI 组件，<code>ContainerComponent</code>就是由 React-Redux 通过<code>connect</code>方法自动生成的容器组件。</p>
+<p>上面定义好的容器组件虽然和UI组件connect了，但还有两点问题：</p>
+<ol>
+<li>输入逻辑：外部的数据（即<code>state</code>对象）如何转换为 UI 组件的参数。</li>
+<li>输出逻辑：用户发出的动作如何变为 Action 对象，从 UI 组件传出去。</li>
+</ol>
+<p><code>connect</code>方法接受两个参数：<code>mapStateToProps</code>和<code>mapDispatchToProps</code>。它们定义了 UI 组件的业务逻辑。前者负责输入逻辑，即将<code>state</code>映射到 UI 组件的参数（<code>props</code>），后者负责输出逻辑，即将用户对 UI 组件的操作映射成 Action。</p>
+<h3 id="mapStateToProps"><a href="#mapStateToProps" class="headerlink" title="mapStateToProps()"></a>mapStateToProps()</h3><blockquote>
+<p>语法：<code>mapStateToProps?: (state, ownProps?) =&gt; Object</code></p>
+</blockquote>
+<p><code>mapStateToProps</code>是一个函数。用于<strong>将一个从（外部的）<code>state</code>对象转换到（UI 组件的）<code>props</code>对象</strong>。</p>
+<p>该函数返回值为传给UI组件的props对象，UI组件只需要通过this.props.xxx就可以访问。</p>
+<p><code>mapStateToProps</code>会订阅 Store，每当<code>state</code>更新的时候，就会自动执行，重新计算 UI 组件的参数，从而触发 UI 组件的重新渲染。</p>
+<p>注意这里写的state对象的来源是“外部的”，有两个来源：</p>
+<ul>
+<li>store里的state</li>
+<li>父组件传入的state</li>
+</ul>
+<p>因此，我们的<code>mapStateToProps</code>函数会有两个参数，state和ownProps，前者代表来自store的state，后者代表从父组件传入的state，以下是一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, ownProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">count</span>: state.count,</span><br><span class="line">        <span class="attr">number</span>: ownProps.number,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="mapDispatchToProps"><a href="#mapDispatchToProps" class="headerlink" title="mapDispatchToProps()"></a>mapDispatchToProps()</h3><blockquote>
+<p>语法：<code>mapDispatchToProps?: Object | (dispatch, ownProps?) =&gt; Object</code></p>
+</blockquote>
+<p><code>mapDispatchToProps</code>是<code>connect</code>函数的第二个参数，用来<strong>建立 UI 组件的参数到<code>store.dispatch</code>方法的映射</strong>。也就是说，它定义了哪些用户的操作应该当作 Action，传给 Store。它可以是一个函数，也可以是一个对象。</p>
+<p>如果<code>mapDispatchToProps</code>是<strong>一个函数</strong>，会得到<code>dispatch</code>和<code>ownProps</code>（容器组件的<code>props</code>对象）两个参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">    dispatch,</span></span></span><br><span class="line"><span class="params"><span class="function">    ownProps</span></span></span><br><span class="line"><span class="params"><span class="function"></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">methodName</span>: <span class="function"><span class="params">data</span> =&gt;</span> dispatch(actionCreator(data));</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面代码可以看到，<code>mapDispatchToProps</code>作为函数，应该返回一个对象，该对象的每个键值对都是一个映射，定义了 UI 组件的参数怎样发出 Action。</p>
+<p>然后就在UI组件里就可以通过this.props.onMethod（）调用该方法了。</p>
+<p>如果<code>mapDispatchToProps</code>是<strong>一个对象</strong>，键值应该是一个<code>Action creator</code>函数，返回的 Action 会由 Redux 自动dispatch。举例来说，上面的<code>mapDispatchToProps</code>写成对象就是下面这样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapDispatchToProps = &#123;</span><br><span class="line">	<span class="attr">methodName</span>: actionCreator</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="mergeProps"><a href="#mergeProps" class="headerlink" title="mergeProps"></a>mergeProps</h3><blockquote>
+<p>语法：<code>mergeProps?: (stateProps, dispatchProps, ownProps) =&gt; Object</code></p>
+</blockquote>
+<p><code>mergeProps</code>应指定最多三个参数。它们分别是<code>mapStateToProps()</code>、<code>mapDispatchToProps()</code>和包装组件的 的结果<code>props</code>：</p>
+<ol>
+<li><code>stateProps</code></li>
+<li><code>dispatchProps</code></li>
+<li><code>ownProps</code></li>
+</ol>
+<p>用来最后决定，到底传给UI组件的props中，stateProps、dispatchProps、ownProps对象是怎么样的。</p>
+<p>如果不传mergeprops，则默认为如下的效果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; ...ownProps, ...stateProps, ...dispatchProps &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="options"><a href="#options" class="headerlink" title="options"></a>options</h3><blockquote>
+<p>语法：<code>options?: Object</code></p>
+</blockquote>
+<p>传入多个配置，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  context?: <span class="built_in">Object</span>,</span><br><span class="line">  pure?: boolean,</span><br><span class="line">  areStatesEqual?: <span class="built_in">Function</span>,</span><br><span class="line">  areOwnPropsEqual?: <span class="built_in">Function</span>,</span><br><span class="line">  areStatePropsEqual?: <span class="built_in">Function</span>,</span><br><span class="line">  areMergedPropsEqual?: <span class="built_in">Function</span>,</span><br><span class="line">  forwardRef?: boolean,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="React-Redux进阶：结合Immutable-js"><a href="#React-Redux进阶：结合Immutable-js" class="headerlink" title="React-Redux进阶：结合Immutable.js"></a>React-Redux进阶：结合Immutable.js</h1><p>不可变数据就不多介绍了，对于项目的性能优化有一定的好处，我们会使用React.memo()或者shouldComponentUpdate()，使得组件在数据（prop、state）不变的情况下就不重新渲染组件。</p>
+<p>而我们要判断props、state是否有改变，则要通过层层比对，当数据层次深了的话，一次diff的过程是非常消耗性能的。</p>
+<p>而不可变数据解决的痛点就是<strong>diff数据带来的消耗</strong>。利用不可变数据，几乎可以做到0成本地对比State是否发生了变化。</p>
+<p>我们先来介绍一下不可变数据吧。</p>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>函数式编程（Functional Programming）在JS社区里获得了很多人的青睐，重要的原因是是：函数式编程避免了副作用（side-effects）和数据可变性（Mutability）。</p>
+<p>为了配合函数式编程更好地避免副作用，在函数式编程中，还有一个重要的点，<strong>使用不可变数据（Immutable Data）</strong>，下面分享下这方面我学习到的知识。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96aC1oYW5zLnJlYWN0anMub3JnL3R1dG9yaWFsL3R1dG9yaWFsLmh0bWwjd2h5LWltbXV0YWJpbGl0eS1pcy1pbXBvcnRhbnQ=">https://zh-hans.reactjs.org/tutorial/tutorial.html#why-immutability-is-important</span></p>
+<p>为了更好地理解正文，这里稍微大概地提一提我所理解的函数式编程。</p>
+<p><code>函数式编程（Functional Programming）</code>是一个<strong>编程范式</strong>，与<code>面向对象编程（Object-oriented programming）</code>和<code>过程式编程（Procedural programming）</code>并列的编程范式。不同的编程范式并没有绝对的孰优孰劣，在不同的变成场景之下会适合不同的编程范式。</p>
+<p>我们通过对比这三种范式来简单过一下函数式编程的概念。</p>
+<p>过程式编程，我们也称之为<code>命令式编程</code>，例如下方代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;monkey&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> greeting = <span class="string">&quot;Hi,I&#x27;m &quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(greeting + name);</span><br><span class="line">=&gt; <span class="string">&quot;Hi,I&#x27;m&quot;</span> monkey</span><br></pre></td></tr></table></figure>
+
+<p>可以看到我们是一步一步地告诉程序详细的过程，先干这个，再干这个。</p>
+<p>我们再来看看在面向对象编程中我们会怎么写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">greeting</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Hi,I&#x27;m &quot;</span>+name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">lat me = <span class="keyword">new</span> student(<span class="string">&quot;monkey&quot;</span>);</span><br><span class="line">me.greeting();</span><br><span class="line">=&gt; <span class="string">&quot;Hi,I&#x27;m&quot;</span> monkey</span><br></pre></td></tr></table></figure>
+
+<p>可以看到在面向对象编程中，我们把一切事物都抽象为类，类会封装好自己的属性和行为。</p>
+<p>我们再来看看<code>函数式编程</code>里我们怎么写的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greeting</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi,I&#x27;m &quot;</span>+name;</span><br><span class="line">&#125;</span><br><span class="line">greeting(<span class="string">&quot;monkey&quot;</span>)</span><br><span class="line">=&gt; <span class="string">&quot;Hi,I&#x27;m&quot;</span> monkey</span><br></pre></td></tr></table></figure>
+
+<p>可以看到在<code>函数式编程</code>里，我们把在过程式编程中的某个或某几个过程封装了起来，变成了一个函数，由这个函数进行执行某一个特定的行为，这个行为就可以达到被”复用“的效果，这段过程的逻辑得到了复用，这就是函数式编程最简单的理解。</p>
+<p>上面只是让大家对函数式编程有一个简单的印象或者说概念，更详细地说明可以参考：<span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTcvMDIvZnAtdHV0b3JpYWwuaHRtbA==">函数式编程入门教程</span>。</p>
+<p><code>函数式编程</code>最大的好处就是避免了<code>副作用（side-effects）</code>，而什么是副作用以及<code>函数式编程</code>是如何做到这一点的，下面继续深入。</p>
+<p>在函数式编程中有以下两个重要的特征：<strong>纯函数、不可变数据</strong>。</p>
+<h3 id="纯函数（Pure-Function）"><a href="#纯函数（Pure-Function）" class="headerlink" title="纯函数（Pure Function）"></a>纯函数（Pure Function）</h3><p>在函数式编程中，我们通常把函数写<code>为纯函数（Pure Function）</code>，纯函数有着重要的特点：</p>
+<ul>
+<li>只要输入一致，输出必然一致，并且输出的数据仅仅取决于输入的数据。</li>
+<li>不会造成函数范围外的任何影响，例如修改全局变量、控制台打印。</li>
+</ul>
+<p>因此，在纯函数中，必须避免使用Math.ramdom()等不确定的函数。</p>
+<p>通过函数式编程，我们这样做可以避免<code>副作用</code>。</p>
+<blockquote>
+<p>什么是副作用？</p>
+</blockquote>
+<p>副作用理解为：函数除了干他的本职（将输入数据进行转换），还干了其他事情（如打印到控制台、全局状态改变），如果你的函数使用了全局的变量，使得你的结果不仅仅取决于函数的输入数据，还取决于函数外的其他东西，这也叫做副作用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// not pure</span></span><br><span class="line"><span class="keyword">let</span> name = monkey</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi,I&#x27;m &quot;</span>+name;</span><br><span class="line">&#125;</span><br><span class="line">greeting()</span><br><span class="line"></span><br><span class="line"><span class="comment">//pure</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greeting</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi,I&#x27;m &quot;</span>+name;</span><br><span class="line">&#125;</span><br><span class="line">greeting(<span class="string">&quot;monkey&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>纯函数正如其名，非常地“纯”，<strong>纯函数非常可控、很直接</strong>，你能清晰地知道函数就是干了俩件事情，<code>Data in</code>和<code>Data Out</code>，就像一个纯粹的Data的“转换器”一般，在这个过程中，拒绝干其他“多余”的事情（例如修改全局变量的值、修改函数以外的其他东西），这<strong>有助于提高代码的可测试性和可维护性。</strong></p>
+<p>这样子下来，当在多个程序员共同开发的时候，这个函数对于每一个程序员来说都是非常清晰的。如果程序员A在这个函数里用了外部的数据，那程序员B自己阅读代码的时候，就会显然地感受到这个函数“不纯粹”。</p>
+<p>以上只是对于纯函数的一个快速理解，因为自己了解地其实不多，说的不对的望大家不吝赐教。</p>
+<p>那么纯函数可以实现什么呢？重要的一点就是：<code>高阶函数（Higher-Order Function）</code>。</p>
+<p>高阶函数可以是一个函数的输入/输出，基本就是把高阶函数视为一个对象，可以把高阶函数传递给别的函数。这也应证了一句话：<strong>函数是“一等公民”</strong>，这个特性意味着函数与其他数据类型一样，处于平等地位，可以赋值给其他变量，也可以作为参数，传入另一个函数，或者作为别的函数的返回值。</p>
+<p>最常见的例如数组的方法Map、Reduce、Filter，这些都是高阶函数。</p>
+<blockquote>
+<p>题外话：他们的作用可以用下图表示</p>
+</blockquote>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130220986.png" alt="image-20220113022024743" style="zoom: 50%;" />
+
+
+
+<h3 id="不可变数据（Immutable-Data）"><a href="#不可变数据（Immutable-Data）" class="headerlink" title="不可变数据（Immutable Data）"></a>不可变数据（Immutable Data）</h3><p><code>Immutable Data</code> 就是一旦创建，就不能再被更改的数据。对 Immutable 对象的任何修改或添加删除操作都会返回一个新的 Immutable 对象。</p>
+<p>我们聊聊为什么要使用不可变数据，简而言之就是：</p>
+<ul>
+<li>避免未知的错误和麻烦</li>
+</ul>
+<p>我们用一个奇怪的例子来说明，假设我们现在有一个简单的数组：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zoo = [<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐟&#x27;</span>,<span class="string">&#x27;🐖&#x27;</span>,<span class="string">&#x27;🐏&#x27;</span>,<span class="string">&#x27;🐘&#x27;</span>,<span class="string">&#x27;🐁&#x27;</span>,<span class="string">&#x27;🐪&#x27;</span>,<span class="string">&#x27;🦛&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>我们原先的zoo数组里只有一些地球上的动物，我们后面的所有代码逻辑都是基于这一点而实现的，并没有什么问题，忽然有一天，另外一个新程序员来写代码，他并不了解这个“前提”，在代码中把这个数组改成了：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zoo = [<span class="string">&#x27;👽&#x27;</span>,<span class="string">&#x27;🐟&#x27;</span>,<span class="string">&#x27;🐖&#x27;</span>,<span class="string">&#x27;🐏&#x27;</span>,<span class="string">&#x27;🐘&#x27;</span>,<span class="string">&#x27;🐁&#x27;</span>,<span class="string">&#x27;🐪&#x27;</span>,<span class="string">&#x27;🦛&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>欸，数组前面忽然多了一个外星人，然后程序跑不动了，好家伙，因为我们的逻辑都是基于“动物园里都是地球上的动物”这一点。然后我们就得改后面所有的代码，这样子维护起来就很麻烦了。</p>
+<p>那么解决方案可以是什么呢？欸，纯函数，我们可以用map函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Mutation(bad!):</span></span><br><span class="line"><span class="comment">// 变化数据（不好！）</span></span><br><span class="line"><span class="keyword">var</span> zoo = [<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐟&#x27;</span>,<span class="string">&#x27;🐖&#x27;</span>,<span class="string">&#x27;🐏&#x27;</span>,<span class="string">&#x27;🐘&#x27;</span>,<span class="string">&#x27;🐁&#x27;</span>,<span class="string">&#x27;🐪&#x27;</span>,<span class="string">&#x27;🦛&#x27;</span>];</span><br><span class="line">zoo[<span class="number">0</span>] = <span class="string">&quot;👽&quot;</span>;</span><br><span class="line">zoo; <span class="comment">// =&gt; [&#x27;👽&#x27;,&#x27;🐟&#x27;,&#x27;🐖&#x27;,&#x27;🐏&#x27;,&#x27;🐘&#x27;,&#x27;🐁&#x27;,&#x27;🐪&#x27;,&#x27;🦛&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// NO Mutation(good!):</span></span><br><span class="line"><span class="keyword">var</span> zoo = [<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐟&#x27;</span>,<span class="string">&#x27;🐖&#x27;</span>,<span class="string">&#x27;🐏&#x27;</span>,<span class="string">&#x27;🐘&#x27;</span>,<span class="string">&#x27;🐁&#x27;</span>,<span class="string">&#x27;🐪&#x27;</span>,<span class="string">&#x27;🦛&#x27;</span>];</span><br><span class="line"><span class="keyword">var</span> newZoo = zoo.map(<span class="function"><span class="keyword">function</span>(<span class="params">rm</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(rm == <span class="string">&quot;🐻&quot;</span>)&#123; <span class="keyword">return</span> <span class="string">&quot;👽&quot;</span>;&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> rm;</span><br><span class="line">&#125;)</span><br><span class="line">newZoo; <span class="comment">// =&gt; [&#x27;👽&#x27;,&#x27;🐟&#x27;,&#x27;🐖&#x27;,&#x27;🐏&#x27;,&#x27;🐘&#x27;,&#x27;🐁&#x27;,&#x27;🐪&#x27;,&#x27;🦛&#x27;]</span></span><br><span class="line">zoo; <span class="comment">// =&gt; [&#x27;🐻&#x27;,&#x27;🐟&#x27;,&#x27;🐖&#x27;,&#x27;🐏&#x27;,&#x27;🐘&#x27;,&#x27;🐁&#x27;,&#x27;🐪&#x27;,&#x27;🦛&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="小总结-1"><a href="#小总结-1" class="headerlink" title="小总结"></a>小总结</h3><ul>
+<li><p>使用纯函数的代码绝不会更改或破坏全局状态，有助于提高代码的可测试性和可维护性</p>
+</li>
+<li><p>函数式编程采用声明式的风格，易于推理，提高代码的可读性。</p>
+</li>
+<li><p>函数式编程将函数视为积木，通过一等高阶函数来提高代码的模块化和可重用性。</p>
+</li>
+<li><p>可以利用响应式编程组合各个函数来降低事件驱动程序的复杂性(这点后面可能会单独拿一篇来进行讲解)。</p>
+</li>
+</ul>
+<h2 id="Immutable基本原理"><a href="#Immutable基本原理" class="headerlink" title="Immutable基本原理"></a>Immutable基本原理</h2><p>上面提到了：<code>Immutable Data</code> 就是一旦创建，就不能再被更改的数据。对 Immutable 对象的任何修改或添加删除操作都会返回一个新的 Immutable 对象。</p>
+<p>而 Immutable 实现的原理是 <code>Persistent Data Structure（持久化数据结构）</code>，通过该结构，可以实现<code>Structural Sharing（结构共享）</code>。</p>
+<p>使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时为了避免 deepCopy 把所有节点都复制一遍带来的性能损耗，Immutable 使用了 <code>Structural Sharing（结构共享）</code>，即如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其它节点则进行共享。请看下面动画：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201111609021.gif" alt="Immutable 原理动画" style="zoom: 50%;" />
+
+<p>以上是一小段简单的介绍，稍微有个初始的印象就可以了。</p>
+<p>在深入讲解这个结构之前，我们先聊聊为什么要使用这个结构，也就是简单的方式实现不可变数据的弊端。</p>
+<h3 id="简单复制结构的弊端"><a href="#简单复制结构的弊端" class="headerlink" title="简单复制结构的弊端"></a>简单复制结构的弊端</h3><p>我们还是用上面的例子来说明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zoo = [<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐟&#x27;</span>,<span class="string">&#x27;🐖&#x27;</span>,<span class="string">&#x27;🐏&#x27;</span>,<span class="string">&#x27;🐘&#x27;</span>,<span class="string">&#x27;🐁&#x27;</span>,<span class="string">&#x27;🐪&#x27;</span>,<span class="string">&#x27;🦛&#x27;</span>]</span><br><span class="line"><span class="keyword">let</span> newZoo = [<span class="string">&#x27;👽&#x27;</span>,<span class="string">&#x27;🐟&#x27;</span>,<span class="string">&#x27;🐖&#x27;</span>,<span class="string">&#x27;🐏&#x27;</span>,<span class="string">&#x27;🐘&#x27;</span>,<span class="string">&#x27;🐁&#x27;</span>,<span class="string">&#x27;🐪&#x27;</span>,<span class="string">&#x27;🦛&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>我们要在这个zoo的基础上，创建一个newZoo对象的最简单的做法是什么呢？没错，就是复制+修改单个元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> newZoo = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">zoo.forEach(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">value, index, array</span>) </span>&#123;</span><br><span class="line">  newZoo[index] = value;</span><br><span class="line">&#125;</span><br><span class="line">newZoo[<span class="number">0</span>] = <span class="string">&#x27;👽&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样子乍一看，没有什么问题，但这里其实可以进行优化。我们在复制的时候，事实上除了第0号下标的元素变成了外星人，后面的所有的元素都是一样的，我们还得额外分配内存空间存储完全相同的内容，这完全就是<strong>浪费内存空间</strong>。</p>
+<p>并且，这还只是最简单的情况下，我们只是用一个数组来讲解，在实际情况下，数组中的元素完全可能是一个引用类型，或者说zoo是一个Object对象，我们要复制这个Object对象，则要用上<code>深拷贝</code>，这个对象的结构越复杂，我们完全复制的话，浪费的内存空间就会越多，同时也会影响程序运行的性能。</p>
+<p>我们可以称这种方式为：Copying（复制）。</p>
+<p>总结一下：</p>
+<ul>
+<li>在不可变的场景下，如果通过“单纯复制其他结构然后再修改值”，<strong>时间、空间上都没有效率</strong>。</li>
+</ul>
+<h3 id="持久化数据结构（Persistent-Data-Structure）"><a href="#持久化数据结构（Persistent-Data-Structure）" class="headerlink" title="持久化数据结构（Persistent Data Structure）"></a>持久化数据结构（Persistent Data Structure）</h3><p>铺垫完成，我们回归正题，什么是<code>持久化数据结构（Persistent Data Structure）</code>？</p>
+<p>我们通过一个例子进行学习。</p>
+<p>看以下代码，我们要通过zoo数组新建一个new数组：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 旧zoo</span></span><br><span class="line"><span class="keyword">let</span> zoo = [<span class="string">&#x27;🐵&#x27;</span>,<span class="string">&#x27;🐰&#x27;</span>,<span class="string">&#x27;🐼&#x27;</span>,<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐙&#x27;</span>,<span class="string">&#x27;🐸&#x27;</span>,<span class="string">&#x27;🐯&#x27;</span>,<span class="string">&#x27;🐨&#x27;</span>] </span><br><span class="line"><span class="comment">// new</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">new</span> = [<span class="string">&#x27;🐵&#x27;</span>,<span class="string">&#x27;👽&#x27;</span>,<span class="string">&#x27;🐼&#x27;</span>,<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐙&#x27;</span>,<span class="string">&#x27;🐸&#x27;</span>,<span class="string">&#x27;🐯&#x27;</span>,<span class="string">&#x27;🐨&#x27;</span>] </span><br></pre></td></tr></table></figure>
+
+<p>我们采用二叉树的结构来表示数组zoo，以两个为一组，元素会作为这棵树的叶子，zoo则保存了这棵树的索引：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130326003.png" alt="image-20220113032635943" style="zoom:50%;" />
+
+<p>那么我们如果要把🐰换成👽的做法是什么呢？</p>
+<p>我们只复制0和1号叶子，并修改兔子为外星人，新建一个new索引，就像这样子：</p>
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130315216.png" alt="image-20220113031519152" style="zoom:50%;" />
+
+<p>这样子，我们就不用复制所有的其他一样的数组的结构了，我们完成了2-7号下标元素的共享，我们称之为<code>Structural Sharing（结构共享）</code>。</p>
+<p>并且我们可以进行“时空穿梭”，我们既可以访问旧版本的数组，又可以访问最新版本的数组：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> zoo = [<span class="string">&#x27;🐵&#x27;</span>,<span class="string">&#x27;🐰&#x27;</span>,<span class="string">&#x27;🐼&#x27;</span>,<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐙&#x27;</span>,<span class="string">&#x27;🐸&#x27;</span>,<span class="string">&#x27;🐯&#x27;</span>,<span class="string">&#x27;🐨&#x27;</span>] </span><br><span class="line"><span class="keyword">let</span> newZoo = immutableFun(zoo)</span><br><span class="line"></span><br><span class="line">newZoo <span class="comment">// -&gt;[&#x27;🐵&#x27;,&#x27;👽&#x27;,&#x27;🐼&#x27;,&#x27;🐻&#x27;,&#x27;🐙&#x27;,&#x27;🐸&#x27;,&#x27;🐯&#x27;,&#x27;🐨&#x27;] </span></span><br><span class="line">zoo <span class="comment">// -&gt;[&#x27;🐵&#x27;,&#x27;🐰&#x27;,&#x27;🐼&#x27;,&#x27;🐻&#x27;,&#x27;🐙&#x27;,&#x27;🐸&#x27;,&#x27;🐯&#x27;,&#x27;🐨&#x27;] </span></span><br></pre></td></tr></table></figure>
+
+<p>这样子，<strong>省去了复制完整结构所带来的性能和空间的消耗</strong>，这种方式叫做<code>Path Copying（路径复制）</code>。</p>
+<p>上面虽然我们可以看到结构长什么样，但还有一点疑问：</p>
+<ul>
+<li>怎么访问下标对应的元素？即Path怎么设置的？</li>
+</ul>
+<h4 id="Indices-Trie（字典树）"><a href="#Indices-Trie（字典树）" class="headerlink" title="Indices Trie（字典树）"></a>Indices Trie（字典树）</h4><p>访问下标对应的元素的方式很简单，和普通的数组访问元素方式一样，如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zoo[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>而要做到这一点，我们可以把下标转为二进制，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0 =&gt; 000</span><br><span class="line">1 =&gt; 001</span><br><span class="line">2 =&gt; 010</span><br><span class="line">3 =&gt; 011</span><br><span class="line">4 =&gt; 100</span><br><span class="line">5 =&gt; 101</span><br><span class="line">6 =&gt; 110</span><br><span class="line">7 =&gt; 111</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130345087.png" alt="image-20220113034551020" style="zoom: 67%;" />
+
+<p>然后一位一位地去看，0代表左子树，1代表右子树，按照每一位对树进行检索就可以了。</p>
+<p>但现在会有一个问题，数组元素一旦多起来，将会用到更多位来表示下标，每一位就代表了一层，那么这个二叉树将会非常地深，例如zoo[18977]，那么我们表示起来就会是zoo[0b100101000100001]，这得是15层的树啊！</p>
+<p>所以实际中不会使用二叉树，而是很多叉树，研究表明32叉树是比较好的。</p>
+<h4 id="Hash-Array-Mapped-Trie（字典树）"><a href="#Hash-Array-Mapped-Trie（字典树）" class="headerlink" title="Hash  Array Mapped Trie（字典树）"></a>Hash  Array Mapped Trie（字典树）</h4><p>上面的例子中讲到的是数组，其下标（index）是个数字，如zoo[1]，如果zoo不是一个数组，而是map之类的，那么key就会是zoo[“key”]。</p>
+<p>好像路径就不能用单纯的“0，1”来表示了，但其实只要对这个key做个hash就可以了，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zoo[<span class="string">&quot;f&quot;</span>]</span><br><span class="line">hash(<span class="string">&quot;f&quot;</span>) === <span class="number">5</span> === <span class="number">0b101</span> <span class="comment">// hash(&quot;a&quot;)=0 ,hash(&quot;b&quot;)=1,hash(&quot;c&quot;)=2,.......</span></span><br><span class="line">zoo-&gt;<span class="number">1</span>-&gt;<span class="number">0</span>-&gt;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130357792.png" alt="image-20220113035707733" style="zoom: 67%;" />
+
+<p>这样子我们就还是可以取到值。这样的结构就叫做Hash  Array Mapped Trie（字典树）。</p>
+<h3 id="小总结-2"><a href="#小总结-2" class="headerlink" title="小总结"></a>小总结</h3><ul>
+<li>简单的复制结构会带来不必要的时间和空间上的消耗，因此要采用持久化数据结构。</li>
+<li>用字典树来实现持久化数据结构，以此实现了结构复制，并且会保存多个版本的数据信息。</li>
+<li>在字典树中，树叶保存value、路径代表key。</li>
+</ul>
+<p>事实上一个成熟的Immutable库的原理不止这些，还有其他非常多的优化项。</p>
+<blockquote>
+<p>一点题外话：持久化数据结构是有分类的，不同的库实现的可能不同。</p>
+<p>partial persistent data structures：部分持久化数据结构，可以访问历史数据版本，但只能修改最新的数据</p>
+<p>fully persistent data structures：完全持久化数据结构，可以穿越时空，任意访问和修改任何版本的数据。</p>
+</blockquote>
+<h2 id="Immutable-js"><a href="#Immutable-js" class="headerlink" title="Immutable.js"></a>Immutable.js</h2><h3 id="Immutable-js简介"><a href="#Immutable-js简介" class="headerlink" title="Immutable.js简介"></a>Immutable.js简介</h3><p><span class="exturl" data-url="aHR0cHM6Ly9pbW11dGFibGUtanMuY29tLw==">Immutable.js</span>就是一个实现了上述功能的库，由Facebook 工程师 Lee Byron 开源。其内部实现了非常多的<code>Immutable Data Structure</code>，例如Map、Set、Collection等等，其API也是尽量和对应的原生类靠近，所以在使用的时候要尽量小心区分开。</p>
+<h3 id="Immutable-js的优缺点"><a href="#Immutable-js的优缺点" class="headerlink" title="Immutable.js的优缺点"></a>Immutable.js的优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><h5 id="降低了-Mutable-带来的复杂度"><a href="#降低了-Mutable-带来的复杂度" class="headerlink" title="降低了 Mutable 带来的复杂度"></a>降低了 Mutable 带来的复杂度</h5><p>可变（Mutable）数据耦合了 Time 和 Value 的概念，造成了数据很难被回溯。</p>
+<p>比如下面一段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">touchAndLog</span>(<span class="params">touchFn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> data = &#123; <span class="attr">key</span>: <span class="string">&#x27;value&#x27;</span> &#125;;</span><br><span class="line">  touchFn(data);</span><br><span class="line">  <span class="built_in">console</span>.log(data.key); <span class="comment">// 猜猜会打印什么？</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在不查看 <code>touchFn</code> 的代码的情况下，因为不确定它对 <code>data</code> 做了什么，你是不可能知道会打印什么（这不是废话吗）。但如果 <code>data</code> 是 Immutable 的呢，你可以很肯定的知道打印的是 <code>value</code>。</p>
+<h5 id="节省内存"><a href="#节省内存" class="headerlink" title="节省内存"></a>节省内存</h5><p>最简单的实现不可变数据的方式就是复制大体结构，然后只修改变化的部分，而通过<code>Immutable Data Structure</code>，可以实现尽可能的结构共享，减少不必要的内存消耗，不用开额外的内存去保存相同的数据。</p>
+<h5 id="保存多版本数据"><a href="#保存多版本数据" class="headerlink" title="保存多版本数据"></a>保存多版本数据</h5><p>因为使用到了字典树的结构，让多个版本的数据可以都保存起来，那么我们如果要实现一些数据回退功能，就非常方便啦。</p>
+<h5 id="拥抱函数式编程"><a href="#拥抱函数式编程" class="headerlink" title="拥抱函数式编程"></a>拥抱函数式编程</h5><p>Immutable 本身就是函数式编程中的概念，纯函数式编程比面向对象更适用于前端开发。因为只要输入一致，输出必然一致，这样开发的组件更易于调试和组装。</p>
+<p>像 ClojureScript，Elm 等函数式编程语言中的数据类型天生都是 Immutable 的，这也是ClojureScript 基于 React 的框架——Om 性能比 React 还要好的原因。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>Immutable这个库有点太重了，大数据量的情况下，序列化一次带来的性能消耗可能比重新diff还大。</p>
+<p>如果只是做浅比较防止过度刷新的化，immer更合适些。</p>
+<p>fromJS和toJS会深度转换数据，随之带来的开销较大，尽可能避免使用</p>
+<h3 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h3><p>官网文档地址为：<span class="exturl" data-url="aHR0cHM6Ly9pbW11dGFibGUtanMuY29tL2RvY3MvdjQuMC4w">https://immutable-js.com/docs/v4.0.0</span></p>
+<p>安装方式很简单：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install immutable</span><br></pre></td></tr></table></figure>
+
+<h4 id="常用数据结构"><a href="#常用数据结构" class="headerlink" title="常用数据结构"></a>常用数据结构</h4><h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><p>我们可以给immutable.List()传入一个数组来初始化一个List。</p>
+<ul>
+<li>List（）：构造方法</li>
+<li>push()：往队列里加元素</li>
+<li>pop()：移除队列里的元素</li>
+<li>….</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; List &#125; <span class="keyword">from</span> <span class="string">&#x27;immutable&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> list1 = List([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line"><span class="keyword">const</span> list2 = list1.push(<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">const</span> list3 = list2.unshift(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">const</span> list4 = list1.concat(list2, list3);</span><br><span class="line">assert.equal(list1.size, <span class="number">2</span>);</span><br><span class="line">assert.equal(list2.size, <span class="number">5</span>);</span><br><span class="line">assert.equal(list3.size, <span class="number">6</span>);</span><br><span class="line">assert.equal(list4.size, <span class="number">13</span>);</span><br><span class="line">assert.equal(list4.get(<span class="number">0</span>), <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><p>我们可以给immutable.Map()传入一个对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; is, <span class="built_in">Map</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;immutable&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> map1 = Immutable.Map(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;);</span><br><span class="line"><span class="keyword">var</span> map2 = map1.set(<span class="string">&#x27;b&#x27;</span>, <span class="number">50</span>);</span><br><span class="line">map1.get(<span class="string">&#x27;b&#x27;</span>); <span class="comment">// 2</span></span><br><span class="line">map2.get(<span class="string">&#x27;b&#x27;</span>); <span class="comment">// 50</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="Ordered-Map"><a href="#Ordered-Map" class="headerlink" title="Ordered Map"></a>Ordered Map</h5><p>详细可以查看<span class="exturl" data-url="aHR0cHM6Ly9pbW11dGFibGUtanMuY29tL2RvY3MvdjQuMC4wL09yZGVyZWRNYXAv">https://immutable-js.com/docs/v4.0.0/OrderedMap/</span></p>
+<h5 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h5><p>Map可以转换为Set</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="built_in">Map</span>, <span class="built_in">Set</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;immutable&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> map1 = <span class="built_in">Map</span>(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> map2 = <span class="built_in">Map</span>(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> set = <span class="built_in">Set</span>().add(map1);</span><br><span class="line">set.has(map2); <span class="comment">// true because these are value-equal</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="fromJS"><a href="#fromJS" class="headerlink" title="fromJS"></a>fromJS</h4><p>它的功能是将 JS 对象转换为 immutable 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;fromJS&#125; <span class="keyword">from</span> <span class="string">&#x27;immutable&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> immutableState = fromJS (&#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>大家以后会经常在 redux 的 reducer 文件中看到这个 api, 是 immutable 库当中导出的方法。</p>
+<h4 id="toJS"><a href="#toJS" class="headerlink" title="toJS"></a>toJS</h4><p>和 fromJS 功能刚好相反，用来将 immutable 对象转换为 JS 对象。</p>
+<p>但是值得注意的是，这个方法并没有在 immutable 库中直接导出，而是需要让 immutable 对象调用。比如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jsObj = immutableState.toJS ();</span><br></pre></td></tr></table></figure>
+
+<p>要注意的是</p>
+<h4 id="set和setIn"><a href="#set和setIn" class="headerlink" title="set和setIn"></a>set和setIn</h4><p>用来对 immutable 对象的属性赋值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span></span><br><span class="line"><span class="keyword">let</span> immutableObj = fromJS (&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;);</span><br><span class="line">immutableObj.set (<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="get-getIn"><a href="#get-getIn" class="headerlink" title="get/getIn"></a>get/getIn</h4><p>用来获取 immutable 对象属性。通过与 JS 对象的对比来体会一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JS 对象</span></span><br><span class="line"><span class="keyword">let</span> jsObj = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> res = jsObj.a;</span><br><span class="line"><span class="comment">//immutable 对象</span></span><br><span class="line"><span class="keyword">let</span> immutableObj = fromJS (jsObj);</span><br><span class="line"><span class="keyword">let</span> res = immutableObj.get (<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"><span class="comment">//JS 对象</span></span><br><span class="line"><span class="keyword">let</span> jsObj = &#123;<span class="attr">a</span>: &#123;<span class="attr">b</span>: <span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">let</span> res = jsObj.a.b;</span><br><span class="line"><span class="comment">//immutable 对象</span></span><br><span class="line"><span class="keyword">let</span> immutableObj = fromJS (jsObj);</span><br><span class="line"><span class="keyword">let</span> res = immutableObj.getIn ([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]);<span class="comment">// 注意传入的是一个数组，获取了a.b</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h4><p>新数据与旧数据对比，旧数据中不存在的属性直接添加，旧数据中已存在的属性用新数据中的覆盖。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> immutableObj = fromJS (&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;);</span><br><span class="line">immutableObj.merge (&#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="number">3</span></span><br><span class="line">&#125;);<span class="comment">// 修改了 a 属性，增加了 b 属性</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="is"><a href="#is" class="headerlink" title="is"></a>is</h4><p>可以用来判断两个immutable对象是否是相同的。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="built_in">Map</span>, is &#125; = <span class="built_in">require</span>(<span class="string">&#x27;immutable&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> map1 = <span class="built_in">Map</span>(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">1</span>, <span class="attr">c</span>: <span class="number">1</span> &#125;)</span><br><span class="line"><span class="keyword">const</span> map2 = <span class="built_in">Map</span>(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">1</span>, <span class="attr">c</span>: <span class="number">1</span> &#125;)</span><br><span class="line">assert.equal(map1 !== map2, <span class="literal">true</span>)</span><br><span class="line">assert.equal(<span class="built_in">Object</span>.is(map1, map2), <span class="literal">false</span>)</span><br><span class="line">assert.equal(is(map1, map2), <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="React组件中使用Immutable-js"><a href="#React组件中使用Immutable-js" class="headerlink" title="React组件中使用Immutable.js"></a>React组件中使用Immutable.js</h2><p>React建议把 <code>this.state</code> 当作 Immutable ，因此我们要调用<code>immutable.js</code>的API，先把state转为不可变数据。</p>
+<p>只需要通过<code>is()</code>函数就可以可以判断是否发生了变化。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; is, <span class="built_in">Map</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;immutable&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Caculator</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    state = &#123;</span><br><span class="line">        <span class="attr">counter</span>: <span class="built_in">Map</span>(&#123; <span class="attr">number</span>: <span class="number">0</span> &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> amount = <span class="built_in">this</span>.amount.value ? <span class="built_in">Number</span>(<span class="built_in">this</span>.amount.value) : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">let</span> counter = <span class="built_in">this</span>.state.counter.update(<span class="string">&#x27;number&#x27;</span>, <span class="function"><span class="params">val</span> =&gt;</span> val + amount);</span><br><span class="line">        <span class="built_in">this</span>.setState(&#123;counter&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">shouldComponentUpdate</span>(<span class="params">nextProps = &#123;&#125;, nextState = &#123;&#125;</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Object</span>.keys(<span class="built_in">this</span>.state).length !== <span class="built_in">Object</span>.keys(nextState).length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 使用 immutable.is 来进行两个对象的比较</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> nextState) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!is(<span class="built_in">this</span>.state[key], nextState[key])) <span class="comment">// ⭐</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.state.counter.get(&#x27;number&#x27;)&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;input</span> =&gt;</span> this.amount = input&#125; /&gt;</span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Caculator</span> /&gt;</span></span>,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="Redux结合Immutable-js开发"><a href="#Redux结合Immutable-js开发" class="headerlink" title="Redux结合Immutable.js开发"></a>Redux结合Immutable.js开发</h2><p><strong>主体思路</strong>：</p>
+<ul>
+<li>在Redux中，把全局State都变成Immutable.js里的不可变对象。</li>
+<li>reducer里初始State通过<code>fromJS</code>等API，转化为Immutable转为不可变对象。</li>
+<li>更新公共State也要用Immutable对象的操作方法。千万别弄混淆！！</li>
+</ul>
+<p>⭐主要有一个点要注意，由于 Redux 中内置的 <code>combineReducers</code> 和 reducer 中的 <code>initialState</code> 都为原生的 Object 对象，所以不能和 Immutable 原生搭配使用，我们可以通过一个第三方库<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dhanVzL3JlZHV4LWltbXV0YWJsZSNyZWFkbWU/ZmlsZUd1aWQ9dENWdzhZNkN2OEozS1lIdw==">redux-immutable</span> 解决这个问题。</p>
+<p>首先下载相关包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install redux redux-thunk redux-immutable react-redux immutable --save</span><br></pre></td></tr></table></figure>
+
+<p>然后我们得定义一些reducer，例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// application/XxxComponent/store/constants.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CHANGE_CURRENT_ALBUM = <span class="string">&#x27;album/CHANGE_CURRENT_ALBUM&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CHANGE_PULLUP_LOADING = <span class="string">&#x27;album/CHANGE_PULLUP_LOADING&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CHANGE_ENTER_LOADING = <span class="string">&#x27;album/CHANGE_ENTER_LOADING&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CHANGE_START_INDEX = <span class="string">&#x27;album/CHANGE_START_INDEX&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CHANGE_TOTAL_COUNT = <span class="string">&#x27;album/CHANGE_TOTAL_COUNT&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// application/XxxComponent/store/actionCreators.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; CHANGE_CURRENT_ALBUM, CHANGE_TOTAL_COUNT, CHANGE_PULLUP_LOADING, CHANGE_START_INDEX, CHANGE_ENTER_LOADING &#125; <span class="keyword">from</span> <span class="string">&#x27;./constants&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getAlbumDetailRequest &#125; <span class="keyword">from</span> <span class="string">&#x27;../../../api/request&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; fromJS &#125; <span class="keyword">from</span> <span class="string">&#x27;immutable&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> changeCurrentAlbum = <span class="function">(<span class="params">data</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">type</span>: CHANGE_CURRENT_ALBUM,</span><br><span class="line">  <span class="attr">data</span>: fromJS(data)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> changePullUpLoading = <span class="function">(<span class="params">data</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">type</span>: CHANGE_PULLUP_LOADING,</span><br><span class="line">  data</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> changeEnterLoading = <span class="function">(<span class="params">data</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">type</span>: CHANGE_ENTER_LOADING,</span><br><span class="line">  data</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> changeTotalCount = <span class="function">(<span class="params">data</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">type</span>: CHANGE_TOTAL_COUNT,</span><br><span class="line">  data</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> changeStartIndex = <span class="function">(<span class="params">data</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">type</span>: CHANGE_START_INDEX,</span><br><span class="line">  data</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getAlbumList = <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">dispatch</span> =&gt;</span> &#123;</span><br><span class="line">    getAlbumDetailRequest(id).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> data = res.playlist;</span><br><span class="line">      dispatch(changeCurrentAlbum(data));</span><br><span class="line">      dispatch(changeEnterLoading(<span class="literal">false</span>));</span><br><span class="line">      dispatch(changeStartIndex(<span class="number">0</span>));</span><br><span class="line">      dispatch(changeTotalCount(data.tracks.length))</span><br><span class="line">    &#125;).catch(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;获取album数据失败!&quot;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// application/XxxComponent/store/reducer.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actionTypes <span class="keyword">from</span> <span class="string">&#x27;./constants&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; fromJS &#125; <span class="keyword">from</span> <span class="string">&#x27;immutable&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> defaultState = fromJS(&#123;</span><br><span class="line">  <span class="attr">currentAlbum</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">pullUpLoading</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">enterLoading</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">startIndex</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">totalCount</span>: <span class="number">0</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state = defaultState, action) =&gt; &#123;</span><br><span class="line">  <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> actionTypes.CHANGE_CURRENT_ALBUM:</span><br><span class="line">      <span class="keyword">return</span> state.set(<span class="string">&#x27;currentAlbum&#x27;</span>, action.data);</span><br><span class="line">    <span class="keyword">case</span> actionTypes.CHANGE_PULLUP_LOADING:</span><br><span class="line">      <span class="keyword">return</span> state.set(<span class="string">&#x27;pullUpLoading&#x27;</span>, action.data);</span><br><span class="line">    <span class="keyword">case</span> actionTypes.CHANGE_ENTER_LOADING:</span><br><span class="line">      <span class="keyword">return</span> state.set(<span class="string">&#x27;enterLoading&#x27;</span>, action.data);</span><br><span class="line">    <span class="keyword">case</span> actionTypes.CHANGE_START_INDEX:</span><br><span class="line">      <span class="keyword">return</span> state.set(<span class="string">&#x27;startIndex&#x27;</span>, action.data).set(<span class="string">&#x27;pullUpLoading&#x27;</span>, <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// application/XxxComponent/store/index.js</span></span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./reducer&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actionCreators <span class="keyword">from</span> <span class="string">&#x27;./actionCreators&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> constants <span class="keyword">from</span> <span class="string">&#x27;./constants&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; reducer, actionCreators, constants &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>接着我们要通过<code>redux-immutable</code>的<code>combineReducers</code>方法将这些reducer整合起来：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store/reducer.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">&quot;redux-immutable&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; reducer <span class="keyword">as</span> XxxComponentReducer &#125; <span class="keyword">from</span> <span class="string">&quot;../application/XxxComponent/store/index&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> combineReducers(&#123;</span><br><span class="line">  <span class="attr">xxxComponent</span>: XxxComponentReducer,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>最后传入给<code>createStore()</code>新建一个store。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store/index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore, compose, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">&quot;redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&quot;redux-thunk&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&quot;./reducer&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> composeEnhancers = <span class="built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+
+<p>最后就是要在<code>App.js</code>里将store提供给全局。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;./store/index&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">		...		</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<p>后续如果组件里要使用redux的话，则要调用connect方法啦，然后就顺便使用React.memo()包裹一下UI组件。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect, useRef, useCallback &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">XxxComponent</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      ...</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 映射Redux全局的state到组件的props上</span></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state</span>) =&gt;</span> (&#123;</span><br><span class="line">  <span class="attr">currentAlbum</span>: state.getIn([<span class="string">&#x27;album&#x27;</span>, <span class="string">&#x27;currentAlbum&#x27;</span>]),</span><br><span class="line">  <span class="attr">pullUpLoading</span>: state.getIn([<span class="string">&#x27;album&#x27;</span>, <span class="string">&#x27;pullUpLoading&#x27;</span>]),</span><br><span class="line">  <span class="attr">enterLoading</span>: state.getIn([<span class="string">&#x27;album&#x27;</span>, <span class="string">&#x27;enterLoading&#x27;</span>]),</span><br><span class="line">  <span class="attr">startIndex</span>: state.getIn([<span class="string">&#x27;album&#x27;</span>, <span class="string">&#x27;startIndex&#x27;</span>]),</span><br><span class="line">  <span class="attr">totalCount</span>: state.getIn([<span class="string">&#x27;album&#x27;</span>, <span class="string">&#x27;totalCount&#x27;</span>]),</span><br><span class="line">  <span class="attr">songsCount</span>: state.getIn([<span class="string">&#x27;player&#x27;</span>, <span class="string">&#x27;playList&#x27;</span>]).size</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 映射dispatch到props上</span></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="function"><span class="title">getAlbumDataDispatch</span>(<span class="params">id</span>)</span> &#123;</span><br><span class="line">      dispatch(changeEnterLoading(<span class="literal">true</span>));</span><br><span class="line">      dispatch(getAlbumList(id));</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">changePullUpLoadingStateDispatch</span>(<span class="params">state</span>)</span> &#123;</span><br><span class="line">      dispatch(changePullUpLoading(state));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将ui组件包装成容器组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(React.memo(XxxComponent));</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="React-Redux进阶：使用Hooks及Toolkit"><a href="#React-Redux进阶：使用Hooks及Toolkit" class="headerlink" title="React-Redux进阶：使用Hooks及Toolkit"></a>React-Redux进阶：使用Hooks及Toolkit</h1><p>react-redux自v7.1开始，提供了三个新的hooks，通过自定义Hooks的方式，让我们能以更简单的方式使用react-redux，允许我们在组件内订阅redux以及派发action：</p>
+<ul>
+<li>useSelector()</li>
+<li>useDispatch()</li>
+<li>useStore()</li>
+</ul>
+<h2 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector()"></a>useSelector()</h2><blockquote>
+<p>useSelector(selector: Function, equalityFn?: Function)：从store中提取需要的数据。</p>
+</blockquote>
+<p>这个hook等价于react-router里的connect()函数中的第一个参数<code>mapStateToProps</code>。</p>
+<p>两个参数的意思如下：</p>
+<ul>
+<li>selector：</li>
+<li>equalityFn：可选，</li>
+</ul>
+<p>代码示例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CounterComponent = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> counter = useSelector(<span class="function">(<span class="params">state</span>) =&gt;</span> state.counter)</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;counter&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch()"></a>useDispatch()</h2><blockquote>
+<p>useDispatch()：返回store实例的dispatch方法</p>
+</blockquote>
+<p>既然上面可以通过hooks获取数据了，那么我们自然也希望能获取到dispatch啦。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CounterComponent = <span class="function">(<span class="params">&#123; value &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> dispatch = useDispatch()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;value&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123; type: &#x27;increment-counter&#x27; &#125;)&#125;&gt;</span></span><br><span class="line"><span class="xml">        Increment counter</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="useStore"><a href="#useStore" class="headerlink" title="useStore()"></a>useStore()</h2><blockquote>
+<p>useStore()：获取由<Provider>传入的store实例</p>
+</blockquote>
+<p>这个hook不会经常使用，因为很多场景用useSelector都可以实现，只有少数的场景会比较合适使用useStore，例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useStore &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> CounterComponent = <span class="function">(<span class="params">&#123; value &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> store = useStore()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// EXAMPLE ONLY! Do not do this in a real app.</span></span><br><span class="line">  <span class="comment">// The component will not automatically update if the store state changes</span></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;store.getState()&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么有了以上的钩子了，我们还需要connect()函数吗？我们看下官方的说法：</p>
+<blockquote>
+<p><strong>We recommend using the React-Redux hooks API as the default approach in your React components.</strong></p>
+<p>The existing <code>connect</code> API still works and will continue to be supported, but the hooks API is simpler and works better with TypeScript.</p>
+</blockquote>
+<p>官方推荐我们使用更简单的Hooks进行开发，不过也会继续维护connect()这个API。</p>
+<h2 id="Toolkit介绍及实战"><a href="#Toolkit介绍及实战" class="headerlink" title="Toolkit介绍及实战"></a>Toolkit介绍及实战</h2><p>由于react-redux推出了Hooks，官方推荐使用Toolkit，通过Toolkit，我们可以进一步简化开发，把action和reducer重复的部分去除，Toolkit可以自动生成action！</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @reduxjs/toolkit react-redux</span><br></pre></td></tr></table></figure>
+
+<p>我们直接通过一个例子来查看如何正确地使用Hooks：</p>
+<blockquote>
+<p>第一步：创建一个Store</p>
+</blockquote>
+<p>这一步会自动配置Redux的DevTools。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store/index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&#x27;@reduxjs/toolkit&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> configureStore(&#123;</span><br><span class="line">  <span class="attr">reducer</span>: &#123;&#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第二步：给全局提供store</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&quot;react-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;./store/index&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> Counter <span class="keyword">from</span> <span class="string">&quot;./component.jsx&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Counter</span> /&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第三步：创建一个Redux的State切片</p>
+</blockquote>
+<p><strong>Slice Reducer切片</strong> 其实就是类似于vuex中的 <strong>module模块</strong>，这样子我们就能更好地将State进行分类管理，和我们在前面将reducer分开存放是一个道理。</p>
+<p>创建一个切片需要传入一个名称值、初始状态、一个或多个reducer函数（描述如何更新数据）。</p>
+<p>当我们创建了一个切片之后，我们可以根据我们写的reducers自动生成对应的actionCreator和reducer！起飞！</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store/slices/counter/counterSlice.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = createSlice(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;counter&quot;</span>,</span><br><span class="line">  <span class="attr">initialState</span>: &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">0</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">reducers</span>: &#123;</span><br><span class="line">    <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// Redux Toolkit allows us to write &quot;mutating&quot; logic in reducers. It</span></span><br><span class="line">      <span class="comment">// doesn&#x27;t actually mutate the state because it uses the Immer library,</span></span><br><span class="line">      <span class="comment">// which detects changes to a &quot;draft state&quot; and produces a brand new</span></span><br><span class="line">      <span class="comment">// immutable state based off those changes</span></span><br><span class="line">      state.value += <span class="number">1</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      state.value -= <span class="number">1</span>;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">      state.value += action.payload;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators are generated for each case reducer function</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.actions;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.reducer;</span><br></pre></td></tr></table></figure>
+
+<p>Redux要求我们把所有的状态都写成不可变数据。简单的写法就是“深克隆”对象后修改特定值。但我们都知道这种方式会产生性能问题，而react-router官方非常地贴心呀，Redux Toolkit的 <code>createSlice</code> 和<code>createReducer</code> API里直接内置了 <span class="exturl" data-url="aHR0cHM6Ly9pbW1lcmpzLmdpdGh1Yi5pby9pbW1lci8=">Immer</span> 这个库。</p>
+<blockquote>
+<p>第四步：把这个切片的reducer加入到store中</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store/index.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slices/counter/counterSlice&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> configureStore(&#123;</span><br><span class="line">  <span class="attr">reducer</span>: &#123;</span><br><span class="line">    <span class="attr">counter</span>: counterReducer,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第五步：在组件内使用数据</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// component.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useSelector, useDispatch &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment &#125; <span class="keyword">from</span> <span class="string">&quot;./store/slices/counter/counterSlice&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> count = useSelector(<span class="function">(<span class="params">state</span>) =&gt;</span> state.counter.value);</span><br><span class="line">  <span class="keyword">const</span> dispatch = useDispatch();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">aria-label</span>=<span class="string">&quot;Increment value&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(increment())&#125;</span></span><br><span class="line"><span class="xml">        &gt;</span></span><br><span class="line"><span class="xml">          Increment</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">aria-label</span>=<span class="string">&quot;Decrement value&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(decrement())&#125;</span></span><br><span class="line"><span class="xml">        &gt;</span></span><br><span class="line"><span class="xml">          Decrement</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后再启动项目就可以啦。</p>
+<h1 id="结合react-router"><a href="#结合react-router" class="headerlink" title="结合react-router"></a>结合react-router</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904183934484494#heading-24"><code>connected-react-router</code> 和 <code>redux</code></a></p>
+<p>近来 React Hooks 确实很火，展现出惊人的潜力，甚至有人声称可以抛弃 Redux 了。其实笔者觉得这种说法不完全正确，Redux 的成功其实不仅仅是因为这个框架本身，还因为围绕其构建起来的生态系统，比如 Enhancers、Middlewares、还有诸如 redux-form，redux-immutable 等，甚至还有基于 Redux 的上层框架，如 Dva 还有 Rematch，这些都为 Redux 巩固了在 React 社区的王者地位。 而有趣的是，我们注意到 Redux 的 React 绑定库 react-redux 现在正在用 React Hooks 重构，以求让代码更加精炼和高效，所以笔者觉得 React Hooks 首先还处于萌芽阶段，一小部分尝鲜者在视图使用它来构建更好的 React 项目或者框架，React Hooks 可以让之前的这些项目和框架变得更好，以更好的辅助 Redux 生态的继续繁荣，所以我们有理由相信，React Hooks 的出现，会让 React 社区变得更加高效和专业，也会帮助 Redux 工具链变得更加轻量，最终作为 React 的一个优秀的特性将 React 和其生态带向更好的远方。</p>
+<p>刚开始，我也以为hooks无法替代redux，然后就用react-redux-hook代替了react-redux，组合成redux+react-redux-hook，后来看到react实现全局后，就完全替代了redux，调用方式，也是有action reducer dispatch概念的。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9mYWNlYm9vay5naXRodWIuaW8vZmx1eC8=">Flux</span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTYvMDEvZmx1eC5odG1sP3NwbT10YW9mZWQuYmxvZ2luZm8uYmxvZy4yLjM4YjU1YWM4b3ZOS294">Redux 入门教程（一）：基本用法</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE2LzA5L3JlZHV4X3R1dG9yaWFsX3BhcnRfdHdvX2FzeW5jX29wZXJhdGlvbnMuaHRtbA==">Redux 入门教程（二）：中间件与异步操作</span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLzIwMTYvMDkvcmVkdXhfdHV0b3JpYWxfcGFydF90aHJlZV9yZWFjdC1yZWR1eC5odG1s">Redux 入门教程（三）：React-Redux 的用法</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmRvdWJhbi5jb20vc3ViamVjdC8yNjkxODAzOC8=">深入React技术栈</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2RhaWx5anMvd2hlbi1kby1pLWtub3ctaW0tcmVhZHktZm9yLXJlZHV4LWYzNGRhMjUzYzg1Zg==">When do I know I’m ready for Redux?</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly8yMDE3LmpzY29uZi5ldS9zcGVha2Vycy9hbmphbmEtdmFraWwtaW1tdXRhYmxlLWRhdGEtc3RydWN0dXJlcy1mb3ItZnVuY3Rpb25hbC1qcy5odG1s">Anjana Vakil: Immutable data structures for functional JS</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9oeXBpcmlvbi5jb20vbXVzaW5ncy91bmRlcnN0YW5kaW5nLXBlcnNpc3RlbnQtdmVjdG9yLXB0LTE=">Jean Niklas L’orange,”Understanding Clojure’s Persistent Vectors”</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9sYW1wd3d3LmVwZmwuY2gvcGFwZXJzL2lkZWFsaGFzaHRyZWVzLnBkZg==">Phil Bagwell,”ideal hash trees” EPFL Tchnica Repart 2001.</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1TaUZ3UnRDbnh2NA==">David Nolen: Immutability: Putting The Dream Machine To Work [JSConf2014]</span>+</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1JN0lkUy1QYkVnSQ==">Lee Byron:React.js Conf 2015 - Immutable Data and React</span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NhbXNvbmcvYmxvZy9pc3N1ZXMvMw==">Immutable 详解及 React 中实践</span></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/React/" rel="tag"><i class="ic i-tag"></i> React</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-03-11 16:02:49" itemprop="dateModified" datetime="2022-03-11T16:02:49+08:00">2022-03-11</time>
+  </span>
+  <span id="FrontEnd/React/FrontEnd/React/【React基础】Redux介绍以及结合不可变数据的性能优化探索" class="item leancloud_visitors" data-flag-title="【React基础】Redux介绍以及结合不可变数据的性能优化探索" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Monkey-HH <i class="ic i-at"><em>@</em></i>
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">https://monkeyhh.top/FrontEnd/React/FrontEnd/React/【React基础】Redux介绍以及结合不可变数据的性能优化探索</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="【手撕JavaScript系列】JavaScript中的防抖与节流">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>【手撕JavaScript系列】JavaScript中的防抖与节流</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】React Hooks介绍与使用">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> React</span>
+  <h3>【React基础】React Hooks介绍与使用</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flux%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">Flux是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#View"><span class="toc-number">1.1.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Action"><span class="toc-number">1.2.</span> <span class="toc-text">Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dispatcher"><span class="toc-number">1.3.</span> <span class="toc-text">Dispatcher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Store"><span class="toc-number">1.4.</span> <span class="toc-text">Store</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">Redux基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFRedux"><span class="toc-number">2.1.</span> <span class="toc-text">什么是Redux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.</span> <span class="toc-text">Redux基本概念和操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Store%EF%BC%9A%E5%85%AC%E5%85%B1%E7%8A%B6%E6%80%81%E5%BA%93"><span class="toc-number">2.2.1.</span> <span class="toc-text">Store：公共状态库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9Aredux-createStore-%E5%88%9B%E5%BB%BAstore"><span class="toc-number">2.2.2.</span> <span class="toc-text">第一步：redux.createStore()创建store</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9Astore-getState-%E8%8E%B7%E5%8F%96%E7%8A%B6%E6%80%81"><span class="toc-number">2.2.3.</span> <span class="toc-text">第二步：store.getState()获取状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9AAction-%E4%B8%8E-Action-Creator"><span class="toc-number">2.2.4.</span> <span class="toc-text">第三步：Action 与 Action Creator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%B4%BE%E5%8F%91action"><span class="toc-number">2.2.5.</span> <span class="toc-text">第四步：派发action</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E5%AE%9A%E4%B9%89Reducer"><span class="toc-number">2.2.6.</span> <span class="toc-text">第五步：定义Reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E6%B3%A8%E5%86%8CReducer"><span class="toc-number">2.2.7.</span> <span class="toc-text">第六步：注册Reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9Astore-subscribe-%E8%AE%A2%E9%98%85%E6%9B%B4%E6%96%B0"><span class="toc-number">2.2.8.</span> <span class="toc-text">第七步：store.subscribe()订阅更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%A2%9E%E5%BC%BAdispatch"><span class="toc-number">2.3.</span> <span class="toc-text">Redux中间件增强dispatch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redux-thunk%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0state"><span class="toc-number">2.3.1.</span> <span class="toc-text">Redux-thunk实现异步更新state</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5Redux-thunk"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">引入Redux-thunk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Redux-thunk"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">使用Redux-thunk</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">2.3.2.</span> <span class="toc-text">其他中间件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%85%A5redux-Devtool"><span class="toc-number">2.4.</span> <span class="toc-text">接入redux Devtool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">2.5.</span> <span class="toc-text">小总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-Redux%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">React-Redux基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E5%85%A8%E5%B1%80%E6%8F%90%E4%BE%9Bstore"><span class="toc-number">3.1.</span> <span class="toc-text">为全局提供store</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI%E7%BB%84%E4%BB%B6%E4%B8%8E%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">UI组件与容器组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFUI%E7%BB%84%E4%BB%B6%EF%BC%9F"><span class="toc-number">3.2.1.</span> <span class="toc-text">什么是UI组件？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6%EF%BC%9F"><span class="toc-number">3.2.2.</span> <span class="toc-text">什么是容器组件？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#connect"><span class="toc-number">3.3.</span> <span class="toc-text">connect()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mapStateToProps"><span class="toc-number">3.3.1.</span> <span class="toc-text">mapStateToProps()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mapDispatchToProps"><span class="toc-number">3.3.2.</span> <span class="toc-text">mapDispatchToProps()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mergeProps"><span class="toc-number">3.3.3.</span> <span class="toc-text">mergeProps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#options"><span class="toc-number">3.3.4.</span> <span class="toc-text">options</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-Redux%E8%BF%9B%E9%98%B6%EF%BC%9A%E7%BB%93%E5%90%88Immutable-js"><span class="toc-number">4.</span> <span class="toc-text">React-Redux进阶：结合Immutable.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">函数式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%AF%E5%87%BD%E6%95%B0%EF%BC%88Pure-Function%EF%BC%89"><span class="toc-number">4.1.1.</span> <span class="toc-text">纯函数（Pure Function）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%EF%BC%88Immutable-Data%EF%BC%89"><span class="toc-number">4.1.2.</span> <span class="toc-text">不可变数据（Immutable Data）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93-1"><span class="toc-number">4.1.3.</span> <span class="toc-text">小总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Immutable%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">Immutable基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%A4%8D%E5%88%B6%E7%BB%93%E6%9E%84%E7%9A%84%E5%BC%8A%E7%AB%AF"><span class="toc-number">4.2.1.</span> <span class="toc-text">简单复制结构的弊端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88Persistent-Data-Structure%EF%BC%89"><span class="toc-number">4.2.2.</span> <span class="toc-text">持久化数据结构（Persistent Data Structure）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Indices-Trie%EF%BC%88%E5%AD%97%E5%85%B8%E6%A0%91%EF%BC%89"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">Indices Trie（字典树）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hash-Array-Mapped-Trie%EF%BC%88%E5%AD%97%E5%85%B8%E6%A0%91%EF%BC%89"><span class="toc-number">4.2.2.2.</span> <span class="toc-text">Hash  Array Mapped Trie（字典树）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93-2"><span class="toc-number">4.2.3.</span> <span class="toc-text">小总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Immutable-js"><span class="toc-number">4.3.</span> <span class="toc-text">Immutable.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Immutable-js%E7%AE%80%E4%BB%8B"><span class="toc-number">4.3.1.</span> <span class="toc-text">Immutable.js简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Immutable-js%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.3.2.</span> <span class="toc-text">Immutable.js的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">4.3.2.1.</span> <span class="toc-text">优点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%99%8D%E4%BD%8E%E4%BA%86-Mutable-%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">4.3.2.1.1.</span> <span class="toc-text">降低了 Mutable 带来的复杂度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8A%82%E7%9C%81%E5%86%85%E5%AD%98"><span class="toc-number">4.3.2.1.2.</span> <span class="toc-text">节省内存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E5%A4%9A%E7%89%88%E6%9C%AC%E6%95%B0%E6%8D%AE"><span class="toc-number">4.3.2.1.3.</span> <span class="toc-text">保存多版本数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8B%A5%E6%8A%B1%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-number">4.3.2.1.4.</span> <span class="toc-text">拥抱函数式编程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">4.3.2.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8API"><span class="toc-number">4.3.3.</span> <span class="toc-text">常用API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">4.3.3.1.</span> <span class="toc-text">常用数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#List"><span class="toc-number">4.3.3.1.1.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Map"><span class="toc-number">4.3.3.1.2.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Ordered-Map"><span class="toc-number">4.3.3.1.3.</span> <span class="toc-text">Ordered Map</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Set"><span class="toc-number">4.3.3.1.4.</span> <span class="toc-text">Set</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fromJS"><span class="toc-number">4.3.3.2.</span> <span class="toc-text">fromJS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#toJS"><span class="toc-number">4.3.3.3.</span> <span class="toc-text">toJS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set%E5%92%8CsetIn"><span class="toc-number">4.3.3.4.</span> <span class="toc-text">set和setIn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get-getIn"><span class="toc-number">4.3.3.5.</span> <span class="toc-text">get&#x2F;getIn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#merge"><span class="toc-number">4.3.3.6.</span> <span class="toc-text">merge</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#is"><span class="toc-number">4.3.3.7.</span> <span class="toc-text">is</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React%E7%BB%84%E4%BB%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Immutable-js"><span class="toc-number">4.4.</span> <span class="toc-text">React组件中使用Immutable.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux%E7%BB%93%E5%90%88Immutable-js%E5%BC%80%E5%8F%91"><span class="toc-number">4.5.</span> <span class="toc-text">Redux结合Immutable.js开发</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-Redux%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%BD%BF%E7%94%A8Hooks%E5%8F%8AToolkit"><span class="toc-number">5.</span> <span class="toc-text">React-Redux进阶：使用Hooks及Toolkit</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#useSelector"><span class="toc-number">5.1.</span> <span class="toc-text">useSelector()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useDispatch"><span class="toc-number">5.2.</span> <span class="toc-text">useDispatch()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useStore"><span class="toc-number">5.3.</span> <span class="toc-text">useStore()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Toolkit%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%AE%9E%E6%88%98"><span class="toc-number">5.4.</span> <span class="toc-text">Toolkit介绍及实战</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E5%90%88react-router"><span class="toc-number">6.</span> <span class="toc-text">结合react-router</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Monkey-HH"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Monkey-HH</p>
+  <div class="description" itemprop="description">Learn, share, make progress</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">54</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">18</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">23</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL21vbmtleS1ISA==" title="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH"><i class="ic i-github"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOmhoanNjYXVAMTYzLmNvbQ==" title="mailto:hhjscau@163.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>Posts</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>Categories</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>Tags</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>Friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>Links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Monkey-HH @ Monkey's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="Symbols count total">773k words</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="Reading time total">11:43</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'FrontEnd/React/FrontEnd/React/【React基础】Redux介绍以及结合不可变数据的性能优化探索',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
