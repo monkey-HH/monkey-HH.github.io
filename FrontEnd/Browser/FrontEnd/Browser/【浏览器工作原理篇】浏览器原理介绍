@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>20k</span>
+    <span>21k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>18 mins.</span>
+    <span>19 mins.</span>
   </span>
 </div>
 
@@ -442,35 +442,64 @@ Monkey's Blog = </title>
 <p>下面我们逐步看一看导航的几个步骤。</p>
 <h3 id="第一步：处理输入"><a href="#第一步：处理输入" class="headerlink" title="第一步：处理输入"></a>第一步：处理输入</h3><p>浏览器主进程里的UI线程会判断用户输入的是查询字符串还是URL。因为Chrome的地址栏同时也是搜索框。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109182307088.png" alt="img"></p>
-<h3 id="第二步：发起网络请求"><a href="#第二步：发起网络请求" class="headerlink" title="第二步：发起网络请求"></a>第二步：发起网络请求</h3><p>UI线程会通知Network线程发起网络调用，获取网站内容，以下是具体流程。</p>
+<h3 id="第二步：构建网络请求"><a href="#第二步：构建网络请求" class="headerlink" title="第二步：构建网络请求"></a>第二步：构建网络请求</h3><p>UI线程会通知Network线程构建网络请求，注意，构建完毕还不会发送请求。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191739208.png" alt="img"></p>
-<ol>
+<h3 id="第三步：查找缓存"><a href="#第三步：查找缓存" class="headerlink" title="第三步：查找缓存"></a>第三步：查找缓存</h3><p>浏览器的缓存有四个，会按照下面的顺序依次查找缓存：</p>
+<ul>
+<li><strong>Memory Cache、Disk Cache</strong>：内存缓存与硬盘缓存。<ul>
+<li>Memory Cache：效率最高但存活时间短，tab页一关就没了。缓存的大部分为preloader指令下的静态资源，例如base64的图片。</li>
+<li>Disk Cache：从存取效率上讲是比内存缓存慢的，但是他的优势在于存储容量和存储时长。</li>
+</ul>
+</li>
+<li><strong>Service Worker Cache</strong>：基于Web Worker实现，PWA的原理，必须是HTTPS协议， 查看<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL1NlcnZpY2VfV29ya2VyX0FQSS9Vc2luZ19TZXJ2aWNlX1dvcmtlcnM=">使用 Service Workers</span>。</li>
+<li><strong>HTTP Cache</strong>：分为强缓存（发起HTTP请求前）、协商缓存（已发起HTTP请求）</li>
+<li><strong>Push Cache</strong>：推送缓存，它是HTTP2.0新增加的内容，更多内容可查看<span class="exturl" data-url="aHR0cHM6Ly9qYWtlYXJjaGliYWxkLmNvbS8yMDE3L2gyLXB1c2gtdG91Z2hlci10aGFuLWktdGhvdWdodC8=">这篇文章</span><ul>
+<li>缓存的最后一道防线。浏览器只有在 Memory Cache、HTTP Cache 和 Service Worker Cache 均未命中的情况下才会去询问 Push Cache。</li>
+<li>Push Cache 是一种存在于会话阶段的缓存，当 session 终止时，缓存也随之释放。</li>
+<li>不同的页面只要共享了同一个 HTTP2 连接，那么它们就可以共享同一个 Push Cache。</li>
+</ul>
+</li>
+</ul>
+<p>👇在下面这张图可以看到多种缓存。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202203150954788.png" alt="image-20220315095413155"></p>
+<p>👇在下面这张图可以看到Service Worker Cache</p>
+<p><img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20220315095723048.png" alt="image-20220315095723048"></p>
+<h3 id="第四步：DNS域名解析"><a href="#第四步：DNS域名解析" class="headerlink" title="第四步：DNS域名解析"></a>第四步：DNS域名解析</h3><ol>
 <li><p><strong>Network线程进行DNS解析</strong>，DNS解析过程中首先会将一个域名，解析成IP地址的一个过程，它会先去找缓存（比如说浏览器缓存 -&gt; 本机缓存 (hosts 文件)-&gt; 路由器缓存）。</p>
 <p>浏览器缓存可以查看，例如在chrome中chrome://chrome-urls/可以看到chrome所有的配置界面，选择dns就可以看到缓存。接下来参和一点计算机网络的DNS解析过程。递归查询就是本地域名服务器帮客户机查，迭代查询就是域名服务器告诉客户机去哪个IP地址查，你自己个查。</p>
 </li>
 </ol>
-<ol start="2">
-<li>建立TCP 连接</li>
-</ol>
-<p>对服务端的 ip 地址建立一个 tcp 连接，主要就是三次握手的过程。</p>
-<ol start="3">
+<h3 id="第五步：建立TCP连接"><a href="#第五步：建立TCP连接" class="headerlink" title="第五步：建立TCP连接"></a>第五步：建立TCP连接</h3><ol>
+<li>进行TCP三次握手+TLS握手<ul>
+<li>TCP：对服务端的 ip 地址建立一个 tcp 连接，主要就是三次握手的过程。</li>
+<li>TLS握手      <ul>
+<li>客户端请求服务端的证书 </li>
+<li>第一次非对称加密，用CA的公钥去解证书的签名，如果解出来的hash和证书信息hash一致则合法 </li>
+<li>第二次非对称加密，客户端使用服务端公钥加密随机数 </li>
+<li>服务端使用服务端私钥解密随机数 </li>
+<li>使用随机数进行对称加密</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>发起 HTTP 请求</li>
 </ol>
 <p>发送一些请求来请求资源，最常见的就是请求 html 文档以及对应的图片、css 等资源了。这个过程还涉及到一些浏览器缓存（会先看本地有无缓存、强缓存协商缓存之类的，会在别的博客介绍）</p>
-<ol start="4">
-<li>服务器端处理HTTP请求并且返回相应</li>
+<ol start="5">
+<li>协商缓存，使用if-modified-since和etag与服务器对比，或没有改变取本地缓存，返回的状态码是304。</li>
+<li>服务器端处理HTTP请求并且返回响应</li>
 </ol>
 <p>网络线程可能收到服务器的重定向头部，如HTTP 301。此时网络线程会跟UI线程沟通，告诉它服务器要求重定向。然后，再发起对另一个URL的请求。</p>
-<h3 id="第三步：读取网络响应"><a href="#第三步：读取网络响应" class="headerlink" title="第三步：读取网络响应"></a>第三步：读取网络响应</h3><p>服务器返回的响应体到来之后，网络线程会检查接收到的前几个字节。响应的Content-Type头部应该包含数据类型，如果没有这个字段，则需要<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRUUC9CYXNpY3Nfb2ZfSFRUUC9NSU1FX3R5cGVz">MIME 类型嗅探</span>。看看<span class="exturl" data-url="aHR0cHM6Ly9jcy5jaHJvbWl1bS5vcmcvY2hyb21pdW0vc3JjL25ldC9iYXNlL21pbWVfc25pZmZlci5jYz9zcT1wYWNrYWdlOmNocm9taXVtJmRyPUNTJmw9NQ==">源代码中</span>中的注释就知道这一块有多难搞。</p>
+<h3 id="第六步：发送HTTP请求并查询协商缓存"><a href="#第六步：发送HTTP请求并查询协商缓存" class="headerlink" title="第六步：发送HTTP请求并查询协商缓存"></a>第六步：发送HTTP请求并查询协商缓存</h3><p>这一步就是真正的发送HTTP请求。并且会进行协商缓存。</p>
+<h3 id="第七步：读取网络响应"><a href="#第七步：读取网络响应" class="headerlink" title="第七步：读取网络响应"></a>第七步：读取网络响应</h3><p>服务器返回的响应体到来之后，网络线程会检查接收到的前几个字节。响应的Content-Type头部应该包含数据类型，如果没有这个字段，则需要<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRUUC9CYXNpY3Nfb2ZfSFRUUC9NSU1FX3R5cGVz">MIME 类型嗅探</span>。看看<span class="exturl" data-url="aHR0cHM6Ly9jcy5jaHJvbWl1bS5vcmcvY2hyb21pdW0vc3JjL25ldC9iYXNlL21pbWVfc25pZmZlci5jYz9zcT1wYWNrYWdlOmNocm9taXVtJmRyPUNTJmw9NQ==">源代码中</span>中的注释就知道这一块有多难搞。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191749714.png" alt="img"></p>
 <p>如果响应是HTML文件，那下一步就是把数据交给渲染进程。但如果是一个zip文件或其他文件，那就意味着是一个下载请求，需要把数据传给下载管理器。</p>
-<p>此时也是“安全浏览”（<span class="exturl" data-url="aHR0cHM6Ly9zYWZlYnJvd3NpbmcuZ29vZ2xlLmNvbS8lRUYlQkMlODklRTYlQTMlODAlRTYlOUYlQTUlRTclOUElODQlRTclOEUlQUYlRTglOEElODIlRTMlODAlODIlRTUlQTYlODIlRTYlOUUlOUMlRTUlOUYlOUYlRTUlOTAlOEQlRTUlOTIlOEMlRTUlOTMlOEQlRTUlQkElOTQlRTYlOTUlQjAlRTYlOEQlQUUlRTUlOEMlQjklRTklODUlOEQlRTUlQjclQjIlRTclOUYlQTUlRTclOUElODQlRTYlODElQjYlRTYlODQlOEYlRTclQkQlOTElRTclQUIlOTklRUYlQkMlOEMlRTclQkQlOTElRTclQkIlOUMlRTclQkElQkYlRTclQTglOEIlRTQlQkMlOUElRTYlOTglQkUlRTclQTQlQkElRTglQUQlQTYlRTUlOTElOEElRTklQTElQjUlRTMlODAlODIlRTYlQUQlQTQlRTUlQTQlOTYlRUYlQkMlOENDT1JCJUVGJUJDJTg4Q3Jvc3M=">https://safebrowsing.google.com/）检查的环节。如果域名和响应数据匹配已知的恶意网站，网络线程会显示警告页。此外，CORB（Cross</span> Origin Read Blocking，<span class="exturl" data-url="aHR0cHM6Ly93d3cuY2hyb21pdW0ub3JnL0hvbWUvY2hyb21pdW0tc2VjdXJpdHkvY29yYi1mb3ItZGV2ZWxvcGVycyVFRiVCQyU4OSVFNiVBMyU4MCVFNiU5RiVBNSVFNCVCOSU5RiVFNCVCQyU5QSVFNiU4OSVBNyVFOCVBMSU4QyVFRiVCQyU4QyVFNCVCQiVBNSVFNyVBMSVBRSVFNCVCRiU5RCVFNiU5NSU4RiVFNiU4NCU5RiVFNyU5QSU4NCVFOCVCNyVBOCVFNyVBQiU5OSVFNyU4MiVCOSVFNiU5NSVCMCVFNiU4RCVBRSVFNCVCOCU4RCVFNCVCQyU5QSVFNSU4RiU5MSVFOSU4MCU4MSVFNyVCQiU5OSVFNiVCOCVCMiVFNiU5RiU5MyVFOCVCRiU5QiVFNyVBOCU4QiVFMyU4MCU4Mg==">https://www.chromium.org/Home/chromium-security/corb-for-developers）检查也会执行，以确保敏感的跨站点数据不会发送给渲染进程。</span></p>
-<h3 id="第四步：通知Renderer-Thread渲染界面"><a href="#第四步：通知Renderer-Thread渲染界面" class="headerlink" title="第四步：通知Renderer Thread渲染界面"></a>第四步：通知Renderer Thread渲染界面</h3><p>所有查检完毕，网络线程确认浏览器可以导航到用户请求的网站，于是会通知UI线程数据已经准备好了。</p>
+<h3 id="第八步：通知Renderer-Thread渲染界面"><a href="#第八步：通知Renderer-Thread渲染界面" class="headerlink" title="第八步：通知Renderer Thread渲染界面"></a>第八步：通知Renderer Thread渲染界面</h3><p>所有查检完毕，网络线程确认浏览器可以导航到用户请求的网站，于是会通知UI线程数据已经准备好了。这一步就是下面的渲染篇。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191752245.png" alt="img"></p>
 <blockquote>
 <p>由于网络请求可能要花几百毫秒才能拿到响应，这里还会应用一个优化策略。第二步UI线程要求网络线程发送请求后，已经知道可能要导航到哪个网站去了。因此在发送网络请求的同时，UI线程会提前联系或并行启动一个渲染进程。这样在网络线程收到数据后，就已经有渲染进程原地待命了。如果发生了重定向，这个待命进程可能用不上，而是换作其他进程去处理。</p>
 </blockquote>
-<h3 id="第五步：-提交导航"><a href="#第五步：-提交导航" class="headerlink" title="第五步： 提交导航"></a>第五步： 提交导航</h3><p>现在数据和渲染进程已经准备就绪，<strong>UI Thread</strong>会联系<strong>Renderer Process</strong>渲染网页，即<strong>Browser Process</strong>通过IPC（Inter-Process Communication，进程间通信）向<strong>Renderer Process</strong>提交导航。<strong>Renderer Process</strong>也会同时接收到不间断的HTML数据流。当<strong>Browser Process</strong>通收到<strong>Renderer Process</strong>的确认消息后，导航完成，文档加载阶段开始。</p>
+<h3 id="第九步：-提交导航"><a href="#第九步：-提交导航" class="headerlink" title="第九步： 提交导航"></a>第九步： 提交导航</h3><p>现在数据和渲染进程已经准备就绪，<strong>UI Thread</strong>会联系<strong>Renderer Process</strong>渲染网页，即<strong>Browser Process</strong>通过IPC（Inter-Process Communication，进程间通信）向<strong>Renderer Process</strong>提交导航。<strong>Renderer Process</strong>也会同时接收到不间断的HTML数据流。当<strong>Browser Process</strong>通收到<strong>Renderer Process</strong>的确认消息后，导航完成，文档加载阶段开始。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109191801359.png" alt="img"></p>
 <p>此时，地址栏已更新，安全指示器和站点设置 UI 反映了新页面的站点信息。该选项卡的会话历史将更新，因此后退/前进按钮将逐步浏览刚刚导航到的站点。为了在您关闭选项卡或窗口时方便选项卡/会话恢复，会话历史记录存储在磁盘上。</p>
 <h3 id="额外知识扩展"><a href="#额外知识扩展" class="headerlink" title="额外知识扩展"></a>额外知识扩展</h3><p>💕从这里开始就是一些扩展内容了，不想看可以跳到渲染一章</p>
@@ -735,7 +764,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-01-31 22:43:12" itemprop="dateModified" datetime="2022-01-31T22:43:12+08:00">2022-01-31</time>
+    <time title="Modified: 2022-03-15 10:27:52" itemprop="dateModified" datetime="2022-03-15T10:27:52+08:00">2022-03-15</time>
   </span>
   <span id="FrontEnd/Browser/FrontEnd/Browser/【浏览器工作原理篇】浏览器原理介绍" class="item leancloud_visitors" data-flag-title="【浏览器工作原理篇】浏览器工作基本原理介绍" title="Views">
       <span class="icon">
@@ -807,7 +836,7 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-number">2.</span> <span class="toc-text">谈谈浏览器的历史</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NCSA-Mosaic%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">NCSA  Mosaic浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netscape-Navigator-%E7%BD%91%E6%99%AF%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">Netscape Navigator 网景浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Internet-Explorer%E6%9B%BE%E7%BB%8F%E7%9A%84%E7%8E%8B%E8%80%85"><span class="toc-number">2.3.</span> <span class="toc-text">Internet Explorer曾经的王者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Firefox-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text">Firefox 浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90chrome-%E7%8E%B0%E5%9C%A8%E7%9A%84%E7%8E%8B%E8%80%85"><span class="toc-number">2.5.</span> <span class="toc-text">⭐chrome 现在的王者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Safari-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.6.</span> <span class="toc-text">Safari 浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B8%B8%E8%A7%81%E8%AF%B4%E6%B3%95"><span class="toc-number">2.7.</span> <span class="toc-text">浏览器的常见说法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">进程与线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">谈谈浏览器架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8D%95%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">4.1.</span> <span class="toc-text">早期浏览器的单进程架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">4.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">4.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">4.2.</span> <span class="toc-text">现代浏览器的多进程架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">4.3.</span> <span class="toc-text">未来浏览器的多进程架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E8%BF%9B%E7%A8%8B%E5%92%8C%E8%81%8C%E8%B4%A3"><span class="toc-number">5.</span> <span class="toc-text">浏览器的主要进程和职责</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%A6%82%E8%A6%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.1.</span> <span class="toc-text">进程概要介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E8%BF%9B%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.2.</span> <span class="toc-text">重要进程介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B%E7%A8%8B%EF%BC%88Browser-Process%EF%BC%89"><span class="toc-number">5.2.1.</span> <span class="toc-text">浏览器进程（Browser Process）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%EF%BC%88Renderer-Process%EF%BC%89"><span class="toc-number">5.2.2.</span> <span class="toc-text">⭐渲染进程（Renderer Process）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%EF%BC%88%E5%86%85%E6%A0%B8%EF%BC%89%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">渲染引擎（内核）介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E4%B8%AD%E7%9A%84%E7%BA%BF%E7%A8%8B"><span class="toc-number">5.2.2.2.</span> <span class="toc-text">渲染进程中的线程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%83%BD%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">从输入URL到浏览器显示页面过程中都发生了什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E7%AF%87"><span class="toc-number">6.1.</span> <span class="toc-text">导航——网络篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%A4%84%E7%90%86%E8%BE%93%E5%85%A5"><span class="toc-number">6.1.1.</span> <span class="toc-text">第一步：处理输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%8F%91%E8%B5%B7%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82"><span class="toc-number">6.1.2.</span> <span class="toc-text">第二步：发起网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%AF%BB%E5%8F%96%E7%BD%91%E7%BB%9C%E5%93%8D%E5%BA%94"><span class="toc-number">6.1.3.</span> <span class="toc-text">第三步：读取网络响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E9%80%9A%E7%9F%A5Renderer-Thread%E6%B8%B2%E6%9F%93%E7%95%8C%E9%9D%A2"><span class="toc-number">6.1.4.</span> <span class="toc-text">第四步：通知Renderer Thread渲染界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A-%E6%8F%90%E4%BA%A4%E5%AF%BC%E8%88%AA"><span class="toc-number">6.1.5.</span> <span class="toc-text">第五步： 提交导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E7%9F%A5%E8%AF%86%E6%89%A9%E5%B1%95"><span class="toc-number">6.1.6.</span> <span class="toc-text">额外知识扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E2%80%94%E2%80%94%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E7%AF%87"><span class="toc-number">6.2.</span> <span class="toc-text">渲染——渲染过程篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Parse%EF%BC%9A%E8%A7%A3%E6%9E%90HTML%EF%BC%8C%E6%9E%84%E5%BB%BADOM%E6%A0%91"><span class="toc-number">6.2.1.</span> <span class="toc-text">Parse：解析HTML，构建DOM树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">DOM的构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="toc-number">6.2.1.2.</span> <span class="toc-text">子资源的加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JS%E5%8F%AF%E4%BB%A5%E9%98%BB%E6%AD%A2%E8%A7%A3%E6%9E%90"><span class="toc-number">6.2.1.3.</span> <span class="toc-text">JS可以阻止解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Style-calculation%EF%BC%9A%E6%A0%B7%E5%BC%8F%E8%AE%A1%E7%AE%97%EF%BC%8C%E6%9E%84%E5%BB%BACSSOM%E6%A0%91"><span class="toc-number">6.2.2.</span> <span class="toc-text">Style calculation：样式计算，构建CSSOM树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Layout%EF%BC%9A%E5%B0%86DOM%E5%92%8CCSSOM%E5%90%88%E6%88%90%E4%B8%BALayout%E5%B8%83%E5%B1%80%E6%A0%91"><span class="toc-number">6.2.3.</span> <span class="toc-text">Layout：将DOM和CSSOM合成为Layout布局树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paint-%EF%BC%9A%E7%A1%AE%E5%AE%9A%E7%BB%98%E5%88%B6%E9%A1%BA%E5%BA%8F%EF%BC%8C%E5%88%9B%E5%BB%BA%E7%BB%98%E5%88%B6%E8%AE%B0%E5%BD%95"><span class="toc-number">6.2.4.</span> <span class="toc-text">Paint ：确定绘制顺序，创建绘制记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Composite%EF%BC%9A%E7%94%9F%E6%88%90%E5%90%88%E6%88%90%E5%B8%A7%E5%B9%B6%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2"><span class="toc-number">6.2.5.</span> <span class="toc-text">Composite：生成合成帧并渲染页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E5%88%86%E5%B1%82%E5%B9%B6%E5%88%9B%E5%BB%BA%E5%9B%BE%E5%B1%82%E6%A0%91%EF%BC%88Layer-Tree%EF%BC%89"><span class="toc-number">6.2.5.1.</span> <span class="toc-text">5.1 分层并创建图层树（Layer Tree）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E7%94%9F%E6%88%90%E5%B9%B6%E5%85%89%E6%A0%85%E5%8C%96%E5%9B%BE%E5%9D%97"><span class="toc-number">6.2.5.2.</span> <span class="toc-text">5.2 生成并光栅化图块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-%E5%88%9B%E5%BB%BA%E5%90%88%E6%88%90%E5%B8%A7%EF%BC%8CGPU%E6%B8%B2%E6%9F%93"><span class="toc-number">6.2.5.3.</span> <span class="toc-text">5.3 创建合成帧，GPU渲染</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E7%94%A8%E6%88%B7%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="toc-number">7.</span> <span class="toc-text">谈谈浏览器和用户之间的交互</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E8%A7%92%E5%BA%A6%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">从浏览器的角度输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%99%A8%E6%8E%A5%E6%94%B6%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.2.</span> <span class="toc-text">合成器接收输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%BF%AB%E9%80%9F%E6%BB%9A%E5%8A%A8%E5%8C%BA%E5%9F%9F"><span class="toc-number">7.3.</span> <span class="toc-text">非快速滚动区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%BA%8B%E4%BB%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%8F%96%E6%B6%88"><span class="toc-number">7.4.</span> <span class="toc-text">检查事件是否可以取消</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E4%BA%8B%E4%BB%B6%E7%9B%AE%E6%A0%87"><span class="toc-number">7.5.</span> <span class="toc-text">寻找事件目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E5%8C%96%E4%BA%8B%E4%BB%B6%E8%B0%83%E5%BA%A6%E5%88%B0%E4%B8%BB%E7%BA%BF%E7%A8%8B"><span class="toc-number">7.6.</span> <span class="toc-text">最小化事件调度到主线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8getCoalescedEvents%E5%BE%97%E5%88%B0%E5%B8%A7%E5%86%85%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.7.</span> <span class="toc-text">使用getCoalescedEvents得到帧内事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-Javascript-%E8%A6%81%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84"><span class="toc-number">8.1.</span> <span class="toc-text">为什么 Javascript 要是单线程的 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-JS-%E9%98%BB%E5%A1%9E%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD"><span class="toc-number">8.2.</span> <span class="toc-text">为什么 JS 阻塞页面加载 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E5%8A%A0%E8%BD%BD%E4%BC%9A%E9%98%BB%E5%A1%9EDOM%E7%9A%84%E8%A7%A3%E6%9E%90%E5%90%97-%EF%BC%9F"><span class="toc-number">8.3.</span> <span class="toc-text">CSS加载会阻塞DOM的解析吗 ？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E5%8A%A0%E8%BD%BD%E4%BC%9A%E9%98%BB%E5%A1%9EDOM%E7%9A%84%E6%B8%B2%E6%9F%93%E5%90%97%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-number">8.4.</span> <span class="toc-text">CSS加载会阻塞DOM的渲染吗？如何优化？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E4%BC%9A%E9%98%BB%E5%A1%9EJS%E7%9A%84%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F"><span class="toc-number">8.5.</span> <span class="toc-text">CSS会阻塞JS的执行吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8DJavaScript%E7%9A%84%E9%98%BB%E5%A1%9E%E6%95%88%E5%BA%94%EF%BC%9F"><span class="toc-number">8.6.</span> <span class="toc-text">如何避免JavaScript的阻塞效应？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-CRP-%E5%8D%B3%E5%85%B3%E9%94%AE%E6%B8%B2%E6%9F%93%E8%B7%AF%E5%BE%84-Critical-Rendering-Path-%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96"><span class="toc-number">8.7.</span> <span class="toc-text">什么是 CRP,即关键渲染路径(Critical Rendering Path)? 如何优化 ?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BC%98%E5%8C%96-DOM"><span class="toc-number">8.7.0.1.</span> <span class="toc-text">1. 优化 DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BC%98%E5%8C%96-CSSOM"><span class="toc-number">8.7.0.2.</span> <span class="toc-text">2. 优化 CSSOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BC%98%E5%8C%96-JavaScript"><span class="toc-number">8.7.0.3.</span> <span class="toc-text">3. 优化 JavaScript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.7.0.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9F"><span class="toc-number">8.8.</span> <span class="toc-text">谈谈什么是回流与重绘？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">9.</span> <span class="toc-text">参考</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-number">2.</span> <span class="toc-text">谈谈浏览器的历史</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NCSA-Mosaic%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">NCSA  Mosaic浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netscape-Navigator-%E7%BD%91%E6%99%AF%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">Netscape Navigator 网景浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Internet-Explorer%E6%9B%BE%E7%BB%8F%E7%9A%84%E7%8E%8B%E8%80%85"><span class="toc-number">2.3.</span> <span class="toc-text">Internet Explorer曾经的王者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Firefox-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text">Firefox 浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90chrome-%E7%8E%B0%E5%9C%A8%E7%9A%84%E7%8E%8B%E8%80%85"><span class="toc-number">2.5.</span> <span class="toc-text">⭐chrome 现在的王者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Safari-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">2.6.</span> <span class="toc-text">Safari 浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B8%B8%E8%A7%81%E8%AF%B4%E6%B3%95"><span class="toc-number">2.7.</span> <span class="toc-text">浏览器的常见说法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">进程与线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">谈谈浏览器架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%8D%95%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">4.1.</span> <span class="toc-text">早期浏览器的单进程架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">4.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">4.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">4.2.</span> <span class="toc-text">现代浏览器的多进程架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">4.3.</span> <span class="toc-text">未来浏览器的多进程架构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E8%BF%9B%E7%A8%8B%E5%92%8C%E8%81%8C%E8%B4%A3"><span class="toc-number">5.</span> <span class="toc-text">浏览器的主要进程和职责</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%A6%82%E8%A6%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.1.</span> <span class="toc-text">进程概要介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E8%BF%9B%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.2.</span> <span class="toc-text">重要进程介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B%E7%A8%8B%EF%BC%88Browser-Process%EF%BC%89"><span class="toc-number">5.2.1.</span> <span class="toc-text">浏览器进程（Browser Process）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%EF%BC%88Renderer-Process%EF%BC%89"><span class="toc-number">5.2.2.</span> <span class="toc-text">⭐渲染进程（Renderer Process）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%EF%BC%88%E5%86%85%E6%A0%B8%EF%BC%89%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">渲染引擎（内核）介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E4%B8%AD%E7%9A%84%E7%BA%BF%E7%A8%8B"><span class="toc-number">5.2.2.2.</span> <span class="toc-text">渲染进程中的线程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%83%BD%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">从输入URL到浏览器显示页面过程中都发生了什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E7%AF%87"><span class="toc-number">6.1.</span> <span class="toc-text">导航——网络篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%A4%84%E7%90%86%E8%BE%93%E5%85%A5"><span class="toc-number">6.1.1.</span> <span class="toc-text">第一步：处理输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%9E%84%E5%BB%BA%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82"><span class="toc-number">6.1.2.</span> <span class="toc-text">第二步：构建网络请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E6%9F%A5%E6%89%BE%E7%BC%93%E5%AD%98"><span class="toc-number">6.1.3.</span> <span class="toc-text">第三步：查找缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9ADNS%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">6.1.4.</span> <span class="toc-text">第四步：DNS域名解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E5%BB%BA%E7%AB%8BTCP%E8%BF%9E%E6%8E%A5"><span class="toc-number">6.1.5.</span> <span class="toc-text">第五步：建立TCP连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E5%8F%91%E9%80%81HTTP%E8%AF%B7%E6%B1%82%E5%B9%B6%E6%9F%A5%E8%AF%A2%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="toc-number">6.1.6.</span> <span class="toc-text">第六步：发送HTTP请求并查询协商缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9A%E8%AF%BB%E5%8F%96%E7%BD%91%E7%BB%9C%E5%93%8D%E5%BA%94"><span class="toc-number">6.1.7.</span> <span class="toc-text">第七步：读取网络响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E6%AD%A5%EF%BC%9A%E9%80%9A%E7%9F%A5Renderer-Thread%E6%B8%B2%E6%9F%93%E7%95%8C%E9%9D%A2"><span class="toc-number">6.1.8.</span> <span class="toc-text">第八步：通知Renderer Thread渲染界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E6%AD%A5%EF%BC%9A-%E6%8F%90%E4%BA%A4%E5%AF%BC%E8%88%AA"><span class="toc-number">6.1.9.</span> <span class="toc-text">第九步： 提交导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E7%9F%A5%E8%AF%86%E6%89%A9%E5%B1%95"><span class="toc-number">6.1.10.</span> <span class="toc-text">额外知识扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E2%80%94%E2%80%94%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E7%AF%87"><span class="toc-number">6.2.</span> <span class="toc-text">渲染——渲染过程篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Parse%EF%BC%9A%E8%A7%A3%E6%9E%90HTML%EF%BC%8C%E6%9E%84%E5%BB%BADOM%E6%A0%91"><span class="toc-number">6.2.1.</span> <span class="toc-text">Parse：解析HTML，构建DOM树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">DOM的构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="toc-number">6.2.1.2.</span> <span class="toc-text">子资源的加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JS%E5%8F%AF%E4%BB%A5%E9%98%BB%E6%AD%A2%E8%A7%A3%E6%9E%90"><span class="toc-number">6.2.1.3.</span> <span class="toc-text">JS可以阻止解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Style-calculation%EF%BC%9A%E6%A0%B7%E5%BC%8F%E8%AE%A1%E7%AE%97%EF%BC%8C%E6%9E%84%E5%BB%BACSSOM%E6%A0%91"><span class="toc-number">6.2.2.</span> <span class="toc-text">Style calculation：样式计算，构建CSSOM树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Layout%EF%BC%9A%E5%B0%86DOM%E5%92%8CCSSOM%E5%90%88%E6%88%90%E4%B8%BALayout%E5%B8%83%E5%B1%80%E6%A0%91"><span class="toc-number">6.2.3.</span> <span class="toc-text">Layout：将DOM和CSSOM合成为Layout布局树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paint-%EF%BC%9A%E7%A1%AE%E5%AE%9A%E7%BB%98%E5%88%B6%E9%A1%BA%E5%BA%8F%EF%BC%8C%E5%88%9B%E5%BB%BA%E7%BB%98%E5%88%B6%E8%AE%B0%E5%BD%95"><span class="toc-number">6.2.4.</span> <span class="toc-text">Paint ：确定绘制顺序，创建绘制记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Composite%EF%BC%9A%E7%94%9F%E6%88%90%E5%90%88%E6%88%90%E5%B8%A7%E5%B9%B6%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2"><span class="toc-number">6.2.5.</span> <span class="toc-text">Composite：生成合成帧并渲染页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E5%88%86%E5%B1%82%E5%B9%B6%E5%88%9B%E5%BB%BA%E5%9B%BE%E5%B1%82%E6%A0%91%EF%BC%88Layer-Tree%EF%BC%89"><span class="toc-number">6.2.5.1.</span> <span class="toc-text">5.1 分层并创建图层树（Layer Tree）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E7%94%9F%E6%88%90%E5%B9%B6%E5%85%89%E6%A0%85%E5%8C%96%E5%9B%BE%E5%9D%97"><span class="toc-number">6.2.5.2.</span> <span class="toc-text">5.2 生成并光栅化图块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-%E5%88%9B%E5%BB%BA%E5%90%88%E6%88%90%E5%B8%A7%EF%BC%8CGPU%E6%B8%B2%E6%9F%93"><span class="toc-number">6.2.5.3.</span> <span class="toc-text">5.3 创建合成帧，GPU渲染</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E5%92%8C%E7%94%A8%E6%88%B7%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="toc-number">7.</span> <span class="toc-text">谈谈浏览器和用户之间的交互</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E8%A7%92%E5%BA%A6%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">从浏览器的角度输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%99%A8%E6%8E%A5%E6%94%B6%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.2.</span> <span class="toc-text">合成器接收输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%BF%AB%E9%80%9F%E6%BB%9A%E5%8A%A8%E5%8C%BA%E5%9F%9F"><span class="toc-number">7.3.</span> <span class="toc-text">非快速滚动区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%BA%8B%E4%BB%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%8F%96%E6%B6%88"><span class="toc-number">7.4.</span> <span class="toc-text">检查事件是否可以取消</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E4%BA%8B%E4%BB%B6%E7%9B%AE%E6%A0%87"><span class="toc-number">7.5.</span> <span class="toc-text">寻找事件目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E5%8C%96%E4%BA%8B%E4%BB%B6%E8%B0%83%E5%BA%A6%E5%88%B0%E4%B8%BB%E7%BA%BF%E7%A8%8B"><span class="toc-number">7.6.</span> <span class="toc-text">最小化事件调度到主线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8getCoalescedEvents%E5%BE%97%E5%88%B0%E5%B8%A7%E5%86%85%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.7.</span> <span class="toc-text">使用getCoalescedEvents得到帧内事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-Javascript-%E8%A6%81%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84"><span class="toc-number">8.1.</span> <span class="toc-text">为什么 Javascript 要是单线程的 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-JS-%E9%98%BB%E5%A1%9E%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD"><span class="toc-number">8.2.</span> <span class="toc-text">为什么 JS 阻塞页面加载 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E5%8A%A0%E8%BD%BD%E4%BC%9A%E9%98%BB%E5%A1%9EDOM%E7%9A%84%E8%A7%A3%E6%9E%90%E5%90%97-%EF%BC%9F"><span class="toc-number">8.3.</span> <span class="toc-text">CSS加载会阻塞DOM的解析吗 ？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E5%8A%A0%E8%BD%BD%E4%BC%9A%E9%98%BB%E5%A1%9EDOM%E7%9A%84%E6%B8%B2%E6%9F%93%E5%90%97%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-number">8.4.</span> <span class="toc-text">CSS加载会阻塞DOM的渲染吗？如何优化？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E4%BC%9A%E9%98%BB%E5%A1%9EJS%E7%9A%84%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F"><span class="toc-number">8.5.</span> <span class="toc-text">CSS会阻塞JS的执行吗？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8DJavaScript%E7%9A%84%E9%98%BB%E5%A1%9E%E6%95%88%E5%BA%94%EF%BC%9F"><span class="toc-number">8.6.</span> <span class="toc-text">如何避免JavaScript的阻塞效应？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-CRP-%E5%8D%B3%E5%85%B3%E9%94%AE%E6%B8%B2%E6%9F%93%E8%B7%AF%E5%BE%84-Critical-Rendering-Path-%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96"><span class="toc-number">8.7.</span> <span class="toc-text">什么是 CRP,即关键渲染路径(Critical Rendering Path)? 如何优化 ?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BC%98%E5%8C%96-DOM"><span class="toc-number">8.7.0.1.</span> <span class="toc-text">1. 优化 DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BC%98%E5%8C%96-CSSOM"><span class="toc-number">8.7.0.2.</span> <span class="toc-text">2. 优化 CSSOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BC%98%E5%8C%96-JavaScript"><span class="toc-number">8.7.0.3.</span> <span class="toc-text">3. 优化 JavaScript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.7.0.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%88%E8%B0%88%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%9E%E6%B5%81%E4%B8%8E%E9%87%8D%E7%BB%98%EF%BC%9F"><span class="toc-number">8.8.</span> <span class="toc-text">谈谈什么是回流与重绘？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">9.</span> <span class="toc-text">参考</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
@@ -922,56 +951,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Operations/" title="In Operations">Operations</a>
-</div>
-
-    <span><a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Operations/" title="In Operations">Operations</a>
-</div>
-
-    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
   </li>
 
       
@@ -983,7 +968,19 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></span>
   </li>
 
       
@@ -992,10 +989,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
   </li>
 
       
@@ -1016,10 +1025,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
+    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
   </li>
 
       
@@ -1028,10 +1037,34 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></span>
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
   </li>
 
   </ul>
@@ -1056,7 +1089,7 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">773k words</span>
+    <span title="Symbols count total">774k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
