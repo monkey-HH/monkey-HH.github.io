@@ -117,11 +117,11 @@ Monkey's Blog = </title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
           <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
           <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
         </ul>
       </div>
@@ -171,7 +171,7 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>CSS动画其实以前学过，但是自己老是忘记，因为用的不错，于是决定把CSS动画的知识总结一下，重新温习一下相关的知识点。</p>
+    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>CSS动画其实以前学过，但是自己老是忘记，因为用的不多，于是决定把CSS动画的知识总结一下，重新温习一下相关的知识点。</p>
 <p>我们 知道CSS动画可以分为CSS3过渡动画、CSS3关键帧动画，主要有以下几个属性：</p>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQ1NTL3RyYW5zaXRpb24=">transition</span></li>
@@ -330,7 +330,8 @@ Monkey's Blog = </title>
 <p>我们来看一个例子：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-id">#father</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border</span>: red solid;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">position</span>: fixed;</span></span><br><span class="line"><span class="css">        <span class="attribute">top</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">left</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">        <span class="attribute">perspective</span>: <span class="number">200</span>;</span></span><br><span class="line"><span class="css">        -webkit-<span class="attribute">perspective</span>: <span class="number">200</span>;</span></span><br><span class="line"><span class="css">        <span class="comment">/* Safari and Chrome */</span> </span></span><br><span class="line"><span class="css">	&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">	<span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="css">		<span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">45deg</span>);</span></span><br><span class="line"><span class="css">	&#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">	<span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;1.jpeg&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100px;background-color: ;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>结果如下：<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201323109.png" alt="image-20211220132354074"></p>
+<p>结果如下：</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201323109.png" alt="image-20211220132354074"></p>
 <p>我们把perspective值调成50看下什么效果。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112201324820.png" alt="image-20211220132433774"></p>
 <p>很好理解嘛，眼睛和屏幕距离变近了，图片的”形变“自然就会变大，这就是 <strong>近大远小</strong> 。</p>
@@ -386,11 +387,13 @@ Monkey's Blog = </title>
 <p>为什么要让这些属性可以单飞？</p>
 <p>因为单飞的属性会应用在初次渲染中，写在transform中的会根据transform动画的变化来进行重新的渲染。</p>
 <p>我们可以灵活选择哪些要参与transform属性定义的transition过渡动画。</p>
-<h1 id="三、CSS过渡动画——Transition"><a href="#三、CSS过渡动画——Transition" class="headerlink" title="三、CSS过渡动画——Transition"></a>三、CSS过渡动画——Transition</h1><h2 id="1-属性介绍"><a href="#1-属性介绍" class="headerlink" title="1.属性介绍"></a>1.属性介绍</h2><p>transition属性可以指定一个属性发生变化时的切换方式。比如在不同的伪元素之间切换，像是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:hover"><code>:hover</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:active"><code>:active</code></a> 或者通过 JavaScript 实现的状态变化。</p>
-<p>效果就是元素在不同CSS属性之间切换的时候，浏览器会把这个过程给展示出来，就像是自动在中间填充了补间动画，视觉上看就是动画的效果。</p>
+<h1 id="三、CSS过渡动画——Transition"><a href="#三、CSS过渡动画——Transition" class="headerlink" title="三、CSS过渡动画——Transition"></a>三、CSS过渡动画——Transition</h1><h2 id="1-属性介绍"><a href="#1-属性介绍" class="headerlink" title="1.属性介绍"></a>1.属性介绍</h2><p>transition属性可以<strong>指定一个或多个CSS属性</strong>的过渡效果，通常搭配的是transform属性，但并不仅限于transform属性。比如在不同的伪元素之间切换，像是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:hover"><code>:hover</code></a>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:active"><code>:active</code></a> 或者通过 JavaScript 实现的状态变化。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.div</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">skewX</span>(<span class="number">45deg</span>);</span><br><span class="line">	<span class="attribute">transition</span>: <span class="number">5s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果就是元素在不同CSS属性之间切换的时候，浏览器会把这个过程给展示出来，<strong>就像是自动在中间填充了补间动画</strong>，视觉上看就是动画的效果。</p>
 <p><strong><code>transition</code></strong> 属性事实上由以下的属性组成：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-property"><code>transition-property</code></a>： 规定设置过渡效果的 CSS 属性的名称，多个属性间使用逗号隔开，如果所有属性都需要过渡，则使用all关键字。大部分属性都支持过渡效果，注意过渡时必须是从一个有效数值向另外一个有效数值进行过渡。</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-property"><code>transition-property</code></a>： <strong>⭐默认值为all</strong>。规定设置过渡效果的 CSS 属性的名称，多个属性间使用逗号隔开，如果所有属性都需要过渡，则使用all关键字。大部分属性都支持过渡效果，注意过渡时必须是从一个有效数值向另外一个有效数值进行过渡。</li>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-duration"><code>transition-duration</code></a>： 规定完成过渡效果需要多少秒或毫秒。</li>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition-timing-function"><code>transition-timing-function</code></a>：过渡的时序函数，用来描述这个补间动画是怎样计算的，要如何展现补间动画。<ul>
 <li>常见的设置如下：</li>
@@ -485,7 +488,7 @@ Monkey's Blog = </title>
 <ul>
 <li><strong>normal</strong>：默认配置，每个动画循环结束，动画重置到起点重新开始</li>
 <li><strong>alternate</strong>：动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向</li>
-<li><strong>reverse</strong>：反向播放，每周期结束动画由尾到头运行。</li>
+<li><strong>⭐reverse</strong>：倒放。</li>
 <li><strong>alternate-reverse</strong>：反向交替， 反向开始交替。动画第一次运行时是反向的，然后下一次是正向，后面依次循环。决定奇数次或偶数次的计数从1开始。</li>
 </ul>
 <h3 id="7、-animation-fill-mode"><a href="#7、-animation-fill-mode" class="headerlink" title="7、 animation-fill-mode"></a>7、 animation-fill-mode</h3><p>动画结束以后，会立即从结束状态跳回到起始状态。如果想让动画保持在结束状态，需要使用animation-fill-mode属性。</p>
@@ -527,6 +530,8 @@ Monkey's Blog = </title>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE0LzAyL2Nzc190cmFuc2l0aW9uX2FuZF9hbmltYXRpb24uaHRtbA==">css_transition_and_animation.html</span></li>
 </ul>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTA0MDAyMzUwNTE0MTkw">https://juejin.cn/post/6844904002350514190</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC83MDEzNTEwMjI0ODk2MDY1NTUw">我用这 18 个神奇的库，美化了我的项目，真是亮瞎我的眼！</span></p>
 
       <div class="tags">
           <a href="/tags/CSS/" rel="tag"><i class="ic i-tag"></i> CSS</a>
@@ -541,7 +546,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-28 10:25:19" itemprop="dateModified" datetime="2021-12-28T10:25:19+08:00">2021-12-28</time>
+    <time title="Modified: 2022-03-23 21:22:38" itemprop="dateModified" datetime="2022-03-23T21:22:38+08:00">2022-03-23</time>
   </span>
   <span id="FrontEnd/CSS/FrontEnd/CSS/CSS3动画入门" class="item leancloud_visitors" data-flag-title="CSS3动画入门" title="Views">
       <span class="icon">
@@ -581,7 +586,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgrvbd6j20zk0m8qv5.jpg" title="CSS布局总结">
+  <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicivghyooj20zk0m8dir.jpg" title="CSS布局总结">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> CSS</span>
   <h3>CSS布局总结</h3>
@@ -730,54 +735,6 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型与原型链">JavaScript原型与原型链</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
 </div>
 
@@ -793,43 +750,17 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/Operations/" title="In Operations">Operations</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
-</div>
-
-    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
   </li>
 
       
@@ -842,6 +773,76 @@ Monkey's Blog = </title>
 </div>
 
     <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Operations/" title="In Operations">Operations</a>
+</div>
+
+    <span><a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></span>
   </li>
 
   </ul>
@@ -866,13 +867,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">760k words</span>
+    <span title="Symbols count total">772k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:31</span>
+    <span title="Reading time total">11:42</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
