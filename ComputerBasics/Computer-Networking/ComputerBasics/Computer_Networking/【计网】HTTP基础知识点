@@ -24,15 +24,15 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="Computer_Networking,HTTP,HTTPS" />
+  <meta name="keywords" content="Computer_Networking" />
 
 
-<link rel="canonical" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
+<link rel="canonical" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
 
 
 
   <title>
-HTTP基础知识点 - Computer_Networking - ComputerBasics |
+【计网】HTTP基础知识点 - Computer_Networking - ComputerBasics |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,23 +60,23 @@ Monkey's Blog = </title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">HTTP基础知识点
+  <h1 itemprop="name headline">【计网】HTTP基础知识点
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2021-08-08 09:28:32">
+  <span class="item" title="Created: 2021-08-01 09:28:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2021-08-08T09:28:32+08:00">2021-08-08</time>
+    <time itemprop="dateCreated datePublished" datetime="2021-08-01T09:28:32+08:00">2021-08-01</time>
   </span>
   <span class="item" title="Symbols count in article">
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>22k</span>
+    <span>23k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>20 mins.</span>
+    <span>21 mins.</span>
   </span>
 </div>
 
@@ -149,7 +149,7 @@ Monkey's Blog = </title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -552,58 +552,74 @@ Monkey's Blog = </title>
 <p>Safe安全的：不会修改服务器的数据的方法，GET HEAD OPTIONS</p>
 <p>Idempotent幂等：同样的请求被执行一次和连续执行多次效果是一样的，服务器的状态也是一样的。所有的safe方法都是幂等的。GET HEAD OPTIONS PUT DELETE</p>
 <h2 id="get和post有啥区别"><a href="#get和post有啥区别" class="headerlink" title="get和post有啥区别"></a>get和post有啥区别</h2><ul>
-<li><p>从<strong>语义</strong>的角度，GET是获取资源，POST是提交数据（创建资源、更新资源）</p>
-</li>
-<li><p>从<strong>参数</strong>的角度，GET请求参数有长度限制，POST没有。</p>
-</li>
-<li><p>从<strong>安全</strong>的角度，GET 一般放在 URL 中，因此不安全，POST 放在请求体中，更适合传输敏感信息。</p>
-</li>
-<li><p>从<strong>缓存</strong>的角度，GET 请求会被浏览器主动缓存，留下历史记录，而 POST 默认不会。</p>
-</li>
-<li><p>从<strong>编码</strong>的角度，GET 只能进行 URL 编码，只能接收 ASCII 字符，而 POST 没有限制。</p>
-</li>
-<li><p>从<strong>幂等性</strong>的角度，<code>GET</code>是<strong>幂等</strong>的，而<code>POST</code>不是。(<code>幂等</code>表示执行相同的操作，结果也是相同的)</p>
-</li>
-<li><p>从<strong>TCP</strong>的角度，GET 请求会产生一个TCP数据包，而 POST 会产生两个 TCP 数据包，首先发 header 部分，如果服务器响应 100(continue)， 然后发 body 部分。(<strong>火狐</strong>浏览器除外，它的 POST 请求只发一个 TCP 包)</p>
-</li>
+<li>从<strong>语义</strong>的角度，GET是获取资源，POST是提交数据（创建资源、更新资源）</li>
+<li>从<strong>参数</strong>的角度，GET请求参数有长度限制，POST没有。</li>
+<li>从<strong>安全</strong>的角度，GET 一般放在 URL 中，因此不安全，POST 放在请求体中，更适合传输敏感信息。</li>
+<li>从<strong>缓存</strong>的角度，GET 请求会被浏览器主动缓存，留下历史记录，而 POST 默认不会。</li>
+<li>从<strong>编码</strong>的角度，GET 只能进行 URL 编码，只能接收 ASCII 字符，而 POST 没有限制。</li>
+<li>从<strong>幂等性</strong>的角度，<code>GET</code>是<strong>幂等</strong>的，而<code>POST</code>不是。(<code>幂等</code>表示执行相同的操作，结果也是相同的)</li>
+<li>从<strong>TCP</strong>的角度，GET 请求会产生一个TCP数据包，而 POST 会产生两个 TCP 数据包，首先发 header 部分，如果服务器响应 100(continue)， 然后发 body 部分。(<strong>火狐</strong>浏览器除外，它的 POST 请求只发一个 TCP 包)</li>
+</ul>
+<h2 id="HTML网页中常见的get和post请求"><a href="#HTML网页中常见的get和post请求" class="headerlink" title="HTML网页中常见的get和post请求"></a>HTML网页中常见的get和post请求</h2><p><strong>Get请求</strong>:</p>
+<ul>
+<li>form 标签 method=get</li>
+<li>a 标签</li>
+<li>link 标签引入 css</li>
+<li>Script 标签引入 js 文件</li>
+<li>img 标签引入图片</li>
+<li>iframe 引入 html 页面</li>
+<li>在浏览器地址栏中输入地址后敲回车</li>
+</ul>
+<p><strong>POST 请求</strong>：</p>
+<ul>
+<li>form 标签 method=post</li>
 </ul>
 <h2 id="POST和PUT用于创建资源时有什么区别"><a href="#POST和PUT用于创建资源时有什么区别" class="headerlink" title="POST和PUT用于创建资源时有什么区别?"></a>POST和PUT用于创建资源时有什么区别?</h2><p>POST和PUT在创建资源的区别在于，<strong>所创建的资源的名称(URI)是否由客户端决定</strong>。前者不是，后者是。</p>
 <p>例如为我的博文增加一个java的分类，生成的路径就是分类名/categories/java，那么就可以采用PUT方法。</p>
 <p>不过很多人直接把POST、GET、PUT、DELETE直接对应上CRUD，例如在一个典型的rails实现的RESTful应用中就是这么做的。</p>
-<h2 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h2><p>一种API设计风格;REST-Representational State Transfer，表述性状态转移。</p>
-<p>（1）每一个URI代表一种资源</p>
-<p>（2）客户端和服务器之间，传递这种资源的某些表现层</p>
-<p>（3）客户端通过HTTP method，对服务器端资源进行操作，实现”表现层状态转化”。</p>
+<h2 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h2><p>一种API设计风格：REST-Representational State Transfer，表述性状态转移。</p>
+<p>在REST中，主数据表示称为<strong>资源</strong>。拥有强大而一致的REST资源命名策略 - 肯定会证明您是长期最好的设计决策之一。</p>
+<ul>
+<li>一个<strong>资源可以是一个单或集合</strong>。例如，“ <code>customers</code>”是集合资源，“ <code>customer</code>”是单例资源（在银行业务域中）。我们可以<code>customers</code>使用URI“ <code>/customers</code>” 来识别“ ”集合资源。我们可以<code>customer</code>使用URI“ <code>/customers/&#123;customerId&#125;</code>” 识别单个“ ”资源。</li>
+<li>一个<strong>资源可能包含子集的资源</strong>也。例如，可以使用URN“ ”（在银行业务域中）识别<code>accounts</code>特定“ <code>customer</code>”的子集合资源“ ” <code>/customers/&#123;customerId&#125;/accounts</code>。类似地，<code>account</code>子集合资源“ ”内的单个资源“ ” <code>accounts</code>可以如下标识：“ <code>/customers/&#123;customerId&#125;/accounts/&#123;accountId&#125;</code>”。</li>
+</ul>
 <p>于是就得抛弃以前的什么getUser、updateUser啦，没必要，又冗余又麻烦。</p>
 <p>这里推荐一篇<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zMDM5NjM5MQ==">文章</span>，帮助我更好地理解了RESTful风格。</p>
-<p>常用的HTTP动词有下面五个（括号里是对应的SQL命令）。</p>
-<blockquote>
+<p>下面是一些例子，假设数据库里有多个动物园，每个动物园里有多种动物和多个员工。</p>
 <ul>
-<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
-<li>POST（CREATE）：在服务器新建一个资源。</li>
-<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
-<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
-<li>DELETE（DELETE）：从服务器删除资源。</li>
+<li><strong>GET（SELECT）：获取资源（一项或多项）</strong><ul>
+<li>GET  /zoos，列出所有动物园</li>
+<li>GET  /zoos/1，获取1号动物园信息</li>
+<li>GET  /zoos/1/employees，列出1号动物园的所有员工</li>
+<li>GET  /zoos/1/animals：列出1号动物园的所有动物</li>
 </ul>
-</blockquote>
-<p>还有两个不常用的HTTP动词。</p>
+</li>
+<li><strong>POST（CREATE）：新建资源。</strong><ul>
+<li>POST  /zoos，新建一个动物园</li>
+<li>POST /zoos/1/employees，为1号动物园雇佣员工</li>
+</ul>
+</li>
+<li><strong>PUT（UPDATE）：更新资源（客户端提供改变后的完整资源）。</strong><ul>
+<li>PUT  /zoos/1，更新1号动物园的信息（提供该动物园的<u>全部</u>信息）</li>
+</ul>
+</li>
+<li><strong>PATCH（UPDATE）：更新资源（客户端提供改变的属性）。</strong><ul>
+<li>PATCH  /zoos/1：更新1号动物园的信息（提供该动物园的<u>部分</u>信息）</li>
+</ul>
+</li>
+<li><strong>DELETE（DELETE）：删除资源。</strong><ul>
+<li>DELETE /zoos/1：删除1号动物园</li>
+<li>DELETE /zoos/1/animals，删除1号动物园内的所有动物</li>
+<li>DELETE /zoos/1/animals/1，删除1号动物园的1号动物</li>
+<li>DELETE /zoos/1/employees/2，删除1号动物园的2号员工</li>
+</ul>
+</li>
+</ul>
+<p>还有两个不常用的HTTP方法。</p>
 <blockquote>
 <ul>
 <li>HEAD：获取资源的元数据。</li>
 <li>OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的。</li>
-</ul>
-</blockquote>
-<p>下面是一些例子。</p>
-<blockquote>
-<ul>
-<li>GET /zoos：列出所有动物园</li>
-<li>POST /zoos：新建一个动物园</li>
-<li>GET /zoos/ID：获取某个指定动物园的信息</li>
-<li>PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）</li>
-<li>PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）</li>
-<li>DELETE /zoos/ID：删除某个动物园</li>
-<li>GET /zoos/ID/animals：列出某个指定动物园的所有动物</li>
-<li>DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物</li>
 </ul>
 </blockquote>
 <h1 id="说说如何理解HTTP缓存及缓存代理"><a href="#说说如何理解HTTP缓存及缓存代理" class="headerlink" title="说说如何理解HTTP缓存及缓存代理"></a>说说如何理解HTTP缓存及缓存代理</h1><p>缓存是性能优化中非常重要的一环，浏览器的缓存机制对开发也是非常重要的知识点。接下来以三个部分来把浏览器的缓存机制说清楚：</p>
@@ -618,13 +634,14 @@ Monkey's Blog = </title>
 <p>首先是检查强缓存，这个阶段<code>不需要</code>发送HTTP请求。</p>
 <p>如何来检查呢？通过相应的字段来进行，但是说起这个字段就有点门道了。</p>
 <p>在<code>HTTP/1.0</code>和<code>HTTP/1.1</code>当中，这个字段是不一样的。在早期，也就是<code>HTTP/1.0</code>时期，使用的是<strong>Expires</strong>，而<code>HTTP/1.1</code>使用的是<strong>Cache-Control</strong>。让我们首先来看看Expires。</p>
-<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p><code>Expires</code>即过期时间，存在于服务端返回的响应头中，告诉浏览器在这个过期时间之前可以直接从缓存里面获取数据，无需再次请求。比如下面这样:</p>
+<p>注意！这两个字段存在于<strong>服务端返回的响应头</strong>中，告诉浏览器在这个过期时间之前可以直接从缓存里面获取数据，无需再次请求。</p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p><code>Expires</code>即过期时间，是一个<strong>绝对时间</strong>。比如下面这样:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Expires: Wed, <span class="number">22</span> Nov <span class="number">2019</span> <span class="number">08</span>:<span class="number">41</span>:<span class="number">00</span> GMT</span><br></pre></td></tr></table></figure>
 
 <p>表示资源在<code>2019年11月22号8点41分</code>过期，过期了就得向服务端发请求。</p>
 <p>这个方式看上去没什么问题，合情合理，但其实潜藏了一个坑，那就是<strong>服务器的时间和浏览器的时间可能并不一致</strong>，那服务器返回的这个过期时间可能就是不准确的。因此这种方式很快在后来的HTTP1.1版本中被抛弃了。</p>
 <h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSFRUUC9IZWFkZXJzL0NhY2hlLUNvbnRyb2w=">Cache-Control</span></h3><p>当<strong>Expires</strong>和<strong>Cache-Control</strong>同时存在的时候，<strong>Cache-Control</strong>会优先考虑。</p>
-<p>它和<code>Expires</code>本质的不同在于它并没有采用<code>具体的过期时间点</code>这个方式，而是采用<code>过期时长</code>来控制缓存，对应的字段是<strong>max-age</strong>。比如这个例子:</p>
+<p>它和<code>Expires</code>本质的不同在于它并没有采用<code>具体的过期时间点</code>这个方式，采用<strong>相对时间</strong>，而是采用<code>过期时长</code>来控制缓存，对应的字段是<strong>max-age</strong>。比如这个例子:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control:max-age=<span class="number">3600</span></span><br><span class="line"><span class="comment">//代表这个响应返回后在 3600 秒，也就是一个小时之内可以直接使用缓存。</span></span><br></pre></td></tr></table></figure>
 
 <p>它其实可以组合非常多的指令，用逗号隔开，完成更多场景的缓存判断，详细可以点击标题进MDN查看</p>
@@ -726,6 +743,7 @@ Monkey's Blog = </title>
 </tbody></table>
 <p>当然，还存在一种情况，当资源缓存时间超时了，也就是<code>强缓存</code>失效了，接下来怎么办？没错，这样就进入到第二级屏障——<strong>协商缓存</strong>了。</p>
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>强缓存失效之后，浏览器在请求头中携带相应的<code>缓存tag</code>来向服务器发请求，由服务器根据这个tag，来决定是否使用缓存，这就是<strong>协商缓存</strong>。</p>
+<p>说白了需要你浏览器告诉我内容有没有更新，没更新我就用旧的。</p>
 <p>具体来说，这样的缓存tag分为两种: <strong>Last-Modified</strong> 和 <strong>ETag</strong>。这两者各有优劣，并不存在谁对谁有<code>绝对的优势</code>，跟上面强缓存的两个 tag 不一样。</p>
 <p>根据上面的流程图可以看出，事实上会优先考虑<code>ETag</code></p>
 <h3 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h3><p><code>ETag</code> 是服务器根据当前文件的内容，给文件生成的唯一标识，只要里面的内容有改动，这个值就会变。</p>
@@ -880,7 +898,7 @@ Monkey's Blog = </title>
 <p>因此，在响应体中各段数据之间会由这里指定的分隔符分开，而且在最后的分隔末尾添上<code>--</code>表示结束。</p>
 <p>以上就是 http 针对大文件传输所采用的手段。</p>
 <h1 id="HTTP如何处理表单数据"><a href="#HTTP如何处理表单数据" class="headerlink" title="HTTP如何处理表单数据"></a>HTTP如何处理表单数据</h1><p>挖坑，以后填</p>
-<h1 id="HTTP历史"><a href="#HTTP历史" class="headerlink" title="HTTP历史"></a>HTTP历史</h1><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110090028726.png" alt="image-20211009002851540"></p>
+<h1 id="HTTP历史大年表"><a href="#HTTP历史大年表" class="headerlink" title="HTTP历史大年表"></a>HTTP历史大年表</h1><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110090028726.png" alt="image-20211009002851540"></p>
 <h1 id="HTTP-1-0（1996）解决了什么问题？"><a href="#HTTP-1-0（1996）解决了什么问题？" class="headerlink" title="HTTP/1.0（1996）解决了什么问题？"></a>HTTP/1.0（1996）解决了什么问题？</h1><p>HTTP/0.9只有<strong>GET</strong>，且服务器只能回应HTML格式的字符串。</p>
 <p>1.0引入了<code>POST</code>命令和<code>HEAD</code>命令，任何格式的内容都可以发送。这使得互联网不仅可以传输文字，还能传输图像、视频、二进制文件，HTTP请求和回应的格式也变了。除了数据部分，每次通信都必须包括头信息（HTTP header），用来描述一些元数据。</p>
 <p>其他的新增功能还包括状态码（status code）、多字符集支持、多部分发送（multi-part type）、权限（authorization）、缓存（cache）、内容编码（content encoding）等。</p>
@@ -1035,7 +1053,7 @@ Monkey's Blog = </title>
 <blockquote>
 <p>注：这里的多路复用是指HTTP层面的多路复用，解决的是<code>HTTP请求-响应</code>这一粒度的队头阻塞，而没有解决<code>TCP层面</code>的队头阻塞，所以会有一个问题出现，如果有每一个<code>帧</code>丢失，则它后面的<code>帧</code>都不算收到（接收窗口不会往前滑，应用就无法读取，具体过程可以看我TCP的文章），那它以及它后面的所有<code>帧</code>所对应的流都是被阻塞了（即无法重组成<code>流</code>交给应用层），只能等TCP层面上把缺失的<code>帧</code>重传。具体这个层次的改进在HTTP/3中得到了解决，后面章节会提到。</p>
 </blockquote>
-<h2 id="服务器推送功能"><a href="#服务器推送功能" class="headerlink" title="服务器推送功能"></a>服务器推送功能</h2><p>在 HTTP/2 当中，服务器已经不再是完全被动地接收请求，响应请求，它也能新建 stream 来给客户端发送消息，当 TCP 连接建立之后，比如浏览器请求一个 HTML 文件，服务器就可以在返回 HTML 的基础上，将 HTML 中引用到的其他资源文件一起返回给客户端，减少客户端的等待。</p>
+<h2 id="服务器推送功能（Server-Push）"><a href="#服务器推送功能（Server-Push）" class="headerlink" title="服务器推送功能（Server Push）"></a>服务器推送功能（Server Push）</h2><p>在 HTTP/2 当中，服务器已经不再是完全被动地接收请求，响应请求，它也能新建 stream 来给客户端发送消息，当 TCP 连接建立之后，比如浏览器请求一个 HTML 文件，服务器就可以在返回 HTML 的基础上，将 HTML 中引用到的其他资源文件一起返回给客户端，减少客户端的等待。</p>
 <p>看下面一个详细的例子，右边客户端打开网页请求了page.html，这时候服务器端看到HTML文件里引用了script.js和style.css于是把这两个文件也主动推送给你。</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110122008471.png" alt="image-20211012200822377"></p>
 <h1 id="HTTPS解决了什么问题？"><a href="#HTTPS解决了什么问题？" class="headerlink" title="HTTPS解决了什么问题？"></a>HTTPS解决了什么问题？</h1><blockquote>
@@ -1100,6 +1118,8 @@ Monkey's Blog = </title>
 <li>QUIC 基于 UDP，UDP 的数据包在接收端没有处理顺序，即使中间丢失一个包，也不会阻塞整条连接，其他的资源会被正常处理。</li>
 </ul>
 <p>简而言之，TCP层面的队头阻塞是由于TCP本身的特性，UDP不会对上层报文进行切割，整个发送，并且不会前面丢了的不影响后面丢了的包，所以不会有阻塞问题。</p>
+<h1 id="HTTP是基于TCP还是UDP？"><a href="#HTTP是基于TCP还是UDP？" class="headerlink" title="HTTP是基于TCP还是UDP？"></a>HTTP是基于TCP还是UDP？</h1><p>看 HTTP 版本呀，HTTP/1.1 和 HTTP/2 都是基于 TCP 传输协议的，而 HTTP/3 是基于 UDP 传输协议的。</p>
+<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201301524930.jpeg" alt="img"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><p>《图解HTTP》</p>
 </li>
@@ -1113,8 +1133,6 @@ Monkey's Blog = </title>
 
       <div class="tags">
           <a href="/tags/Computer-Networking/" rel="tag"><i class="ic i-tag"></i> Computer_Networking</a>
-          <a href="/tags/HTTP/" rel="tag"><i class="ic i-tag"></i> HTTP</a>
-          <a href="/tags/HTTPS/" rel="tag"><i class="ic i-tag"></i> HTTPS</a>
       </div>
   </div>
 
@@ -1126,9 +1144,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-28 12:31:56" itemprop="dateModified" datetime="2021-12-28T12:31:56+08:00">2021-12-28</time>
+    <time title="Modified: 2022-03-23 21:03:25" itemprop="dateModified" datetime="2022-03-23T21:03:25+08:00">2022-03-23</time>
   </span>
-  <span id="ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP基础知识点" class="item leancloud_visitors" data-flag-title="HTTP基础知识点" title="Views">
+  <span id="ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/【计网】HTTP基础知识点" class="item leancloud_visitors" data-flag-title="【计网】HTTP基础知识点" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -1147,7 +1165,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP基础知识点</a>
+    <a href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/【计网】HTTP基础知识点</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -1166,20 +1184,20 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的异步编程方案">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201018875.jpg" title="【V8引擎原理篇】Event Loop事件循环机制">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
-  <h3>JavaScript中的异步编程方案</h3>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>【V8引擎原理篇】Event Loop事件循环机制</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111020852730.png" title="TCP和UDP基础知识点">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="【手撕JavaScript系列】JavaScript中的防抖与节流">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> Computer_Networking</span>
-  <h3>TCP和UDP基础知识点</h3>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>【手撕JavaScript系列】JavaScript中的防抖与节流</h3>
   </a>
 
     </div>
@@ -1198,11 +1216,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E7%89%B9%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">HTTP特点和缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">HTTP特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">HTTP缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">无状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8D%E8%A1%8C"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">安全性不行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">队头阻塞问题</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">HTTP报文结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="toc-number">2.1.</span> <span class="toc-text">请求报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">2.2.</span> <span class="toc-text">响应报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3URI%E5%92%8CURL"><span class="toc-number">2.3.</span> <span class="toc-text">怎么理解URI和URL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#URI%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">URI结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URI%E7%BC%96%E7%A0%81"><span class="toc-number">2.3.2.</span> <span class="toc-text">URI编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81HTTP%E9%A6%96%E9%83%A8"><span class="toc-number">2.4.</span> <span class="toc-text">常见HTTP首部</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5General-headers"><span class="toc-number">2.4.1.</span> <span class="toc-text">通用首部字段General headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5Request-headers"><span class="toc-number">2.4.2.</span> <span class="toc-text">请求首部字段Request headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5Response-headers"><span class="toc-number">2.4.3.</span> <span class="toc-text">响应首部字段Response headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5Entity-headers"><span class="toc-number">2.4.4.</span> <span class="toc-text">实体首部字段Entity headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E6%AD%A3%E5%BC%8F%E7%9A%84%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5"><span class="toc-number">2.4.5.</span> <span class="toc-text">非正式的首部字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B6%88%E6%81%AF%E5%A4%B4-%E4%B8%8E-%E9%80%90%E8%B7%B3%E6%B6%88%E6%81%AF%E5%A4%B4"><span class="toc-number">2.4.6.</span> <span class="toc-text">端到端消息头 与 逐跳消息头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81HTTP%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">常见HTTP状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1xx"><span class="toc-number">3.0.1.</span> <span class="toc-text">1xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2xx"><span class="toc-number">3.0.2.</span> <span class="toc-text">2xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3xx"><span class="toc-number">3.0.3.</span> <span class="toc-text">3xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4xx"><span class="toc-number">3.0.4.</span> <span class="toc-text">4xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5xx"><span class="toc-number">3.0.5.</span> <span class="toc-text">5xx</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81HTTP%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">常见HTTP方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#get%E5%92%8Cpost%E6%9C%89%E5%95%A5%E5%8C%BA%E5%88%AB"><span class="toc-number">4.1.</span> <span class="toc-text">get和post有啥区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST%E5%92%8CPUT%E7%94%A8%E4%BA%8E%E5%88%9B%E5%BB%BA%E8%B5%84%E6%BA%90%E6%97%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">4.2.</span> <span class="toc-text">POST和PUT用于创建资源时有什么区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RESTful-API"><span class="toc-number">4.3.</span> <span class="toc-text">RESTful API</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3HTTP%E7%BC%93%E5%AD%98%E5%8F%8A%E7%BC%93%E5%AD%98%E4%BB%A3%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">说说如何理解HTTP缓存及缓存代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="toc-number">5.1.</span> <span class="toc-text">强缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Expires"><span class="toc-number">5.1.1.</span> <span class="toc-text">Expires</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache-Control"><span class="toc-number">5.1.2.</span> <span class="toc-text">Cache-Control</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="toc-number">5.2.</span> <span class="toc-text">协商缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ETag"><span class="toc-number">5.2.1.</span> <span class="toc-text">ETag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Last-Modified"><span class="toc-number">5.2.2.</span> <span class="toc-text">Last-Modified</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E7%BC%93%E5%AD%98"><span class="toc-number">5.3.</span> <span class="toc-text">代理缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%8E%A7%E5%88%B6"><span class="toc-number">5.3.1.</span> <span class="toc-text">源服务器的缓存控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#private-%E5%92%8C-public"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">private 和 public</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#proxy-revalidate"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">proxy-revalidate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#s-maxage"><span class="toc-number">5.3.1.3.</span> <span class="toc-text">s-maxage</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E7%BC%93%E5%AD%98%E6%8E%A7%E5%88%B6"><span class="toc-number">5.3.2.</span> <span class="toc-text">客户端的缓存控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#max-stale-%E5%92%8C-min-fresh"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">max-stale 和 min-fresh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#only-if-cached"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">only-if-cached</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE"><span class="toc-number">5.4.</span> <span class="toc-text">缓存位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Service-Worker"><span class="toc-number">5.4.1.</span> <span class="toc-text">Service Worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory-Cache-%E5%92%8C-Disk-Cache"><span class="toc-number">5.4.2.</span> <span class="toc-text">Memory Cache 和 Disk Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Push-Cache"><span class="toc-number">5.4.3.</span> <span class="toc-text">Push Cache</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%AF%B9Cookie%E5%92%8CHTTP%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">6.</span> <span class="toc-text">说说对Cookie和HTTP的联系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">生存周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">6.0.0.2.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3"><span class="toc-number">6.0.0.3.</span> <span class="toc-text">安全相关</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie-%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">6.0.1.</span> <span class="toc-text">Cookie 的缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4HTTP%E4%BB%A3%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">说说HTTP代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">7.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%A4%B4%E9%83%A8%E5%AD%97%E6%AE%B5"><span class="toc-number">7.0.2.</span> <span class="toc-text">相关头部字段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Via"><span class="toc-number">7.0.2.1.</span> <span class="toc-text">Via</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#X-Forwarded-For"><span class="toc-number">7.0.2.2.</span> <span class="toc-text">X-Forwarded-For</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#X-Real-IP"><span class="toc-number">7.0.2.3.</span> <span class="toc-text">X-Real-IP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X-Forwarded-For%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">7.0.3.</span> <span class="toc-text">X-Forwarded-For产生的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93"><span class="toc-number">8.</span> <span class="toc-text">HTTP如何处理大文件传输</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81"><span class="toc-number">8.0.1.</span> <span class="toc-text">如何支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Range-%E5%AD%97%E6%AE%B5%E6%8B%86%E8%A7%A3"><span class="toc-number">8.0.2.</span> <span class="toc-text">Range 字段拆解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%AE%B5%E6%95%B0%E6%8D%AE"><span class="toc-number">8.0.3.</span> <span class="toc-text">单段数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%AE%B5%E6%95%B0%E6%8D%AE"><span class="toc-number">8.0.4.</span> <span class="toc-text">多段数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE"><span class="toc-number">9.</span> <span class="toc-text">HTTP如何处理表单数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%8E%86%E5%8F%B2"><span class="toc-number">10.</span> <span class="toc-text">HTTP历史</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-1-0%EF%BC%881996%EF%BC%89%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">HTTP&#x2F;1.0（1996）解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%A0%BC%E5%BC%8F"><span class="toc-number">11.1.</span> <span class="toc-text">请求格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E5%BA%94%E6%A0%BC%E5%BC%8F"><span class="toc-number">11.2.</span> <span class="toc-text">回应格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-Type-%E5%AD%97%E6%AE%B5"><span class="toc-number">11.3.</span> <span class="toc-text">Content-Type 字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-Encoding-%E5%AD%97%E6%AE%B5"><span class="toc-number">11.4.</span> <span class="toc-text">Content-Encoding 字段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-1-1%EF%BC%881997%EF%BC%89%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">12.</span> <span class="toc-text">HTTP&#x2F;1.1（1997）解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5-%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="toc-number">12.1.</span> <span class="toc-text">持久连接&#x2F;长连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%BA%BF%E5%8C%96"><span class="toc-number">12.2.</span> <span class="toc-text">管线化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP1-1%E4%B8%AD%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E"><span class="toc-number">12.3.</span> <span class="toc-text">HTTP1.1中持久连接的缺点：队头阻塞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%A4%9A%E4%B8%AA%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="toc-number">12.4.</span> <span class="toc-text">⭐队头阻塞的解决方案：多个长连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">12.4.1.</span> <span class="toc-text">并发连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E5%88%86%E7%89%87"><span class="toc-number">12.4.2.</span> <span class="toc-text">域名分片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%95%BF%E8%BF%9E%E6%8E%A5%E8%B5%84%E6%BA%90%E6%B5%AA%E8%B4%B9%EF%BC%9F"><span class="toc-number">12.5.</span> <span class="toc-text">说说如何避免长连接资源浪费？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-2%EF%BC%882015%EF%BC%89%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">HTTP&#x2F;2（2015）解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SPDY%E5%8D%8F%E8%AE%AE%EF%BC%882009%EF%BC%89"><span class="toc-number">13.1.</span> <span class="toc-text">SPDY协议（2009）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E5%A4%B4%E9%83%A8%E5%8E%8B%E7%BC%A9"><span class="toc-number">13.2.</span> <span class="toc-text">HTTP头部压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B8%A7Frame%E4%B8%8E%E6%B5%81Stream"><span class="toc-number">13.3.</span> <span class="toc-text">二进制帧Frame与流Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="toc-number">13.4.</span> <span class="toc-text">⭐队头阻塞解决方案：多路复用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD"><span class="toc-number">13.5.</span> <span class="toc-text">服务器推送功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">HTTPS解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%E6%A6%82%E8%BF%B0"><span class="toc-number">14.1.</span> <span class="toc-text">HTTPS加密方式概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AFSSL-TLS"><span class="toc-number">14.2.</span> <span class="toc-text">说说什么是SSL&#x2F;TLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TLS%E5%85%B7%E4%BD%93%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="toc-number">14.3.</span> <span class="toc-text">说说TLS具体握手过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-3%EF%BC%882018%EF%BC%89-%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">15.</span> <span class="toc-text">HTTP&#x2F;3（2018） 解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#QUIC%EF%BC%882013%EF%BC%89"><span class="toc-number">15.1.</span> <span class="toc-text">QUIC（2013）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E6%9B%B4%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">15.2.</span> <span class="toc-text">⭐队头阻塞更进一步的解决方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">16.</span> <span class="toc-text">参考</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E7%89%B9%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-number">1.</span> <span class="toc-text">HTTP特点和缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">HTTP特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">HTTP缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">无状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8D%E8%A1%8C"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">安全性不行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">队头阻塞问题</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">HTTP报文结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="toc-number">2.1.</span> <span class="toc-text">请求报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="toc-number">2.2.</span> <span class="toc-text">响应报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3URI%E5%92%8CURL"><span class="toc-number">2.3.</span> <span class="toc-text">怎么理解URI和URL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#URI%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.1.</span> <span class="toc-text">URI结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URI%E7%BC%96%E7%A0%81"><span class="toc-number">2.3.2.</span> <span class="toc-text">URI编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81HTTP%E9%A6%96%E9%83%A8"><span class="toc-number">2.4.</span> <span class="toc-text">常见HTTP首部</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5General-headers"><span class="toc-number">2.4.1.</span> <span class="toc-text">通用首部字段General headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5Request-headers"><span class="toc-number">2.4.2.</span> <span class="toc-text">请求首部字段Request headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5Response-headers"><span class="toc-number">2.4.3.</span> <span class="toc-text">响应首部字段Response headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5Entity-headers"><span class="toc-number">2.4.4.</span> <span class="toc-text">实体首部字段Entity headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E6%AD%A3%E5%BC%8F%E7%9A%84%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5"><span class="toc-number">2.4.5.</span> <span class="toc-text">非正式的首部字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B6%88%E6%81%AF%E5%A4%B4-%E4%B8%8E-%E9%80%90%E8%B7%B3%E6%B6%88%E6%81%AF%E5%A4%B4"><span class="toc-number">2.4.6.</span> <span class="toc-text">端到端消息头 与 逐跳消息头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81HTTP%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">常见HTTP状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1xx"><span class="toc-number">3.0.1.</span> <span class="toc-text">1xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2xx"><span class="toc-number">3.0.2.</span> <span class="toc-text">2xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3xx"><span class="toc-number">3.0.3.</span> <span class="toc-text">3xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4xx"><span class="toc-number">3.0.4.</span> <span class="toc-text">4xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5xx"><span class="toc-number">3.0.5.</span> <span class="toc-text">5xx</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81HTTP%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">常见HTTP方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#get%E5%92%8Cpost%E6%9C%89%E5%95%A5%E5%8C%BA%E5%88%AB"><span class="toc-number">4.1.</span> <span class="toc-text">get和post有啥区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML%E7%BD%91%E9%A1%B5%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84get%E5%92%8Cpost%E8%AF%B7%E6%B1%82"><span class="toc-number">4.2.</span> <span class="toc-text">HTML网页中常见的get和post请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST%E5%92%8CPUT%E7%94%A8%E4%BA%8E%E5%88%9B%E5%BB%BA%E8%B5%84%E6%BA%90%E6%97%B6%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">4.3.</span> <span class="toc-text">POST和PUT用于创建资源时有什么区别?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RESTful-API"><span class="toc-number">4.4.</span> <span class="toc-text">RESTful API</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3HTTP%E7%BC%93%E5%AD%98%E5%8F%8A%E7%BC%93%E5%AD%98%E4%BB%A3%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">说说如何理解HTTP缓存及缓存代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E7%BC%93%E5%AD%98"><span class="toc-number">5.1.</span> <span class="toc-text">强缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Expires"><span class="toc-number">5.1.1.</span> <span class="toc-text">Expires</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache-Control"><span class="toc-number">5.1.2.</span> <span class="toc-text">Cache-Control</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="toc-number">5.2.</span> <span class="toc-text">协商缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ETag"><span class="toc-number">5.2.1.</span> <span class="toc-text">ETag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Last-Modified"><span class="toc-number">5.2.2.</span> <span class="toc-text">Last-Modified</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E7%BC%93%E5%AD%98"><span class="toc-number">5.3.</span> <span class="toc-text">代理缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%8E%A7%E5%88%B6"><span class="toc-number">5.3.1.</span> <span class="toc-text">源服务器的缓存控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#private-%E5%92%8C-public"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">private 和 public</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#proxy-revalidate"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">proxy-revalidate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#s-maxage"><span class="toc-number">5.3.1.3.</span> <span class="toc-text">s-maxage</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E7%BC%93%E5%AD%98%E6%8E%A7%E5%88%B6"><span class="toc-number">5.3.2.</span> <span class="toc-text">客户端的缓存控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#max-stale-%E5%92%8C-min-fresh"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">max-stale 和 min-fresh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#only-if-cached"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">only-if-cached</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE"><span class="toc-number">5.4.</span> <span class="toc-text">缓存位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Service-Worker"><span class="toc-number">5.4.1.</span> <span class="toc-text">Service Worker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory-Cache-%E5%92%8C-Disk-Cache"><span class="toc-number">5.4.2.</span> <span class="toc-text">Memory Cache 和 Disk Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Push-Cache"><span class="toc-number">5.4.3.</span> <span class="toc-text">Push Cache</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%AF%B9Cookie%E5%92%8CHTTP%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">6.</span> <span class="toc-text">说说对Cookie和HTTP的联系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">生存周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">6.0.0.2.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3"><span class="toc-number">6.0.0.3.</span> <span class="toc-text">安全相关</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie-%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">6.0.1.</span> <span class="toc-text">Cookie 的缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4HTTP%E4%BB%A3%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">说说HTTP代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">7.0.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%A4%B4%E9%83%A8%E5%AD%97%E6%AE%B5"><span class="toc-number">7.0.2.</span> <span class="toc-text">相关头部字段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Via"><span class="toc-number">7.0.2.1.</span> <span class="toc-text">Via</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#X-Forwarded-For"><span class="toc-number">7.0.2.2.</span> <span class="toc-text">X-Forwarded-For</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#X-Real-IP"><span class="toc-number">7.0.2.3.</span> <span class="toc-text">X-Real-IP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#X-Forwarded-For%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">7.0.3.</span> <span class="toc-text">X-Forwarded-For产生的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93"><span class="toc-number">8.</span> <span class="toc-text">HTTP如何处理大文件传输</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81"><span class="toc-number">8.0.1.</span> <span class="toc-text">如何支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Range-%E5%AD%97%E6%AE%B5%E6%8B%86%E8%A7%A3"><span class="toc-number">8.0.2.</span> <span class="toc-text">Range 字段拆解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%AE%B5%E6%95%B0%E6%8D%AE"><span class="toc-number">8.0.3.</span> <span class="toc-text">单段数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%AE%B5%E6%95%B0%E6%8D%AE"><span class="toc-number">8.0.4.</span> <span class="toc-text">多段数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE"><span class="toc-number">9.</span> <span class="toc-text">HTTP如何处理表单数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E5%8E%86%E5%8F%B2%E5%A4%A7%E5%B9%B4%E8%A1%A8"><span class="toc-number">10.</span> <span class="toc-text">HTTP历史大年表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-1-0%EF%BC%881996%EF%BC%89%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">HTTP&#x2F;1.0（1996）解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%A0%BC%E5%BC%8F"><span class="toc-number">11.1.</span> <span class="toc-text">请求格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E5%BA%94%E6%A0%BC%E5%BC%8F"><span class="toc-number">11.2.</span> <span class="toc-text">回应格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-Type-%E5%AD%97%E6%AE%B5"><span class="toc-number">11.3.</span> <span class="toc-text">Content-Type 字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Content-Encoding-%E5%AD%97%E6%AE%B5"><span class="toc-number">11.4.</span> <span class="toc-text">Content-Encoding 字段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-1-1%EF%BC%881997%EF%BC%89%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">12.</span> <span class="toc-text">HTTP&#x2F;1.1（1997）解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5-%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="toc-number">12.1.</span> <span class="toc-text">持久连接&#x2F;长连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%BA%BF%E5%8C%96"><span class="toc-number">12.2.</span> <span class="toc-text">管线化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP1-1%E4%B8%AD%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E"><span class="toc-number">12.3.</span> <span class="toc-text">HTTP1.1中持久连接的缺点：队头阻塞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%A4%9A%E4%B8%AA%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="toc-number">12.4.</span> <span class="toc-text">⭐队头阻塞的解决方案：多个长连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">12.4.1.</span> <span class="toc-text">并发连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E5%88%86%E7%89%87"><span class="toc-number">12.4.2.</span> <span class="toc-text">域名分片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%95%BF%E8%BF%9E%E6%8E%A5%E8%B5%84%E6%BA%90%E6%B5%AA%E8%B4%B9%EF%BC%9F"><span class="toc-number">12.5.</span> <span class="toc-text">说说如何避免长连接资源浪费？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-2%EF%BC%882015%EF%BC%89%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">HTTP&#x2F;2（2015）解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SPDY%E5%8D%8F%E8%AE%AE%EF%BC%882009%EF%BC%89"><span class="toc-number">13.1.</span> <span class="toc-text">SPDY协议（2009）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E5%A4%B4%E9%83%A8%E5%8E%8B%E7%BC%A9"><span class="toc-number">13.2.</span> <span class="toc-text">HTTP头部压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B8%A7Frame%E4%B8%8E%E6%B5%81Stream"><span class="toc-number">13.3.</span> <span class="toc-text">二进制帧Frame与流Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="toc-number">13.4.</span> <span class="toc-text">⭐队头阻塞解决方案：多路复用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD%EF%BC%88Server-Push%EF%BC%89"><span class="toc-number">13.5.</span> <span class="toc-text">服务器推送功能（Server Push）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">HTTPS解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS%E5%8A%A0%E5%AF%86%E6%96%B9%E5%BC%8F%E6%A6%82%E8%BF%B0"><span class="toc-number">14.1.</span> <span class="toc-text">HTTPS加密方式概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AFSSL-TLS"><span class="toc-number">14.2.</span> <span class="toc-text">说说什么是SSL&#x2F;TLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TLS%E5%85%B7%E4%BD%93%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B"><span class="toc-number">14.3.</span> <span class="toc-text">说说TLS具体握手过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-3%EF%BC%882018%EF%BC%89-%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">15.</span> <span class="toc-text">HTTP&#x2F;3（2018） 解决了什么问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#QUIC%EF%BC%882013%EF%BC%89"><span class="toc-number">15.1.</span> <span class="toc-text">QUIC（2013）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E6%9B%B4%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">15.2.</span> <span class="toc-text">⭐队头阻塞更进一步的解决方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E6%98%AF%E5%9F%BA%E4%BA%8ETCP%E8%BF%98%E6%98%AFUDP%EF%BC%9F"><span class="toc-number">16.</span> <span class="toc-text">HTTP是基于TCP还是UDP？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">17.</span> <span class="toc-text">参考</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></li><li class="active"><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="HTTP基础知识点">HTTP基础知识点</a></li><li><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></li>
+          <li class="active"><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></li><li><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="HTTP基础知识点">HTTP基础知识点</a></li><li><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -1286,12 +1304,12 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -1313,12 +1331,48 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
+</div>
+
+    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
   </li>
 
       
@@ -1328,7 +1382,7 @@ Monkey's Blog = </title>
 <a href="/categories/Operations/" title="In Operations">Operations</a>
 </div>
 
-    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
+    <span><a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
   </li>
 
       
@@ -1337,46 +1391,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
-</div>
-
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
   </li>
 
       
@@ -1397,18 +1415,6 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
-</div>
-
-    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
@@ -1421,10 +1427,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></span>
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
   </li>
 
   </ul>
@@ -1467,7 +1485,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP基础知识点',
+    path: 'ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/【计网】HTTP基础知识点',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"
