@@ -64,19 +64,19 @@ Monkey's Blog = </title>
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2021-10-12 09:28:32">
+  <span class="item" title="Created: 2021-07-16 09:28:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2021-10-12T09:28:32+08:00">2021-10-12</time>
+    <time itemprop="dateCreated datePublished" datetime="2021-07-16T09:28:32+08:00">2021-07-16</time>
   </span>
   <span class="item" title="Symbols count in article">
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>16k</span>
+    <span>18k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>14 mins.</span>
+    <span>16 mins.</span>
   </span>
 </div>
 
@@ -164,7 +164,17 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文主要是对自己学习到的Nodejs的知识点进行一个整理，将自己碎片化的记忆组合一下。</p>
+    <p><span class="exturl" data-url="aHR0cDovL3d3dy5pbm9kZS5jbHViL25vZGUv">http://www.inode.club/node/</span></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文主要是对自己学习到的Nodejs的知识点进行一个整理，将自己碎片化的记忆组合一下。</p>
+<p>顺便提一嘴，Node的国内镜像站域名改了</p>
+<blockquote>
+<p>新的Web 站点：<span class="exturl" data-url="aHR0cHM6Ly9ucG1taXJyb3IuY29tLHJlZ2lzdHJ5Lw==">https://npmmirror.com，Registry</span> Endpoint：<span class="exturl" data-url="aHR0cHM6Ly9yZWdpc3RyeS5ucG1taXJyb3IuY29tLi8=">https://registry.npmmirror.com。</span></p>
+<p>旧的： <span class="exturl" data-url="aHR0cDovL25wbS50YW9iYW8ub3JnLw==">http://npm.taobao.org</span> 和 <span class="exturl" data-url="aHR0cDovL3JlZ2lzdHJ5Lm5wbS50YW9iYW8ub3JnLw==">http://registry.npm.taobao.org</span> 域名将于 2022 年 05 月 31 日零时起停止服务</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry <span class="comment"># 查看目前的镜像源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com <span class="comment"># 更改为新镜像</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="Node-js简介"><a href="#Node-js简介" class="headerlink" title="Node.js简介"></a>Node.js简介</h1><p>Node.js 是一个开源和跨平台的 JavaScript 运行时环境。2009年3月，Ryan Dahl他找到了涉及高性能，Web服务器的几个要点：<code>事件驱动、非阻塞I/O</code>。</p>
 <p>通过比较，最终选择使用JavaScript这一语言进行设计。</p>
 <h2 id="Node-js的特点"><a href="#Node-js的特点" class="headerlink" title="Node.js的特点"></a>Node.js的特点</h2><ul>
@@ -193,11 +203,21 @@ Monkey's Blog = </title>
 <p>Node 用 libuv 作为抽象封装层，使得所有平台兼容性的判断由该层来完成。Node 在编译时会判断平台条件，选择性编译 unix 目录或 win 目录下的源文件到目标程序中。</p>
 <img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110222259233.png" alt="image-20211022225915171" style="zoom:50%;" /></li>
 </ul>
-<h2 id="Node-js的应用场景"><a href="#Node-js的应用场景" class="headerlink" title="Node.js的应用场景"></a>Node.js的应用场景</h2><p>显然，异步 I/O 的使用场景最大就是 I/O 密集型场景。它的优势主要在于 Node 利用事件循环的处理能力。</p>
-<p>I/O密集的<strong>优势</strong>主要在于Node利用事件循环的处理能力，而不是启动每一个线程为每一个请求服务，资源占用极少。</p>
+<h2 id="Node-js的应用场景"><a href="#Node-js的应用场景" class="headerlink" title="Node.js的应用场景"></a>Node.js的应用场景</h2><p>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。这种模型使得Node.js 可以避免了由于需要等待输入或者输出（数据库、文件系统、Web服务器…）响应而造成的 CPU 时间损失。所以，Node.js适合运用在高并发、I/O密集、少量业务逻辑的场景。</p>
+<blockquote>
+<p><strong>1、IO密集型任务</strong></p>
+<p>一般来说：文件读写、DB读写、网络请求等</p>
+<p><strong>2、CPU密集型任务</strong></p>
+<p>一般来说：计算型代码、Bitmap转换、Gson转换等</p>
+</blockquote>
+<p>显然，异步 I/O 的使用场景最大就是 I/O 密集型场景。它的优势主要在于 Node 利用事件循环的处理能力。</p>
+<p>I/O密集的<strong>优势</strong>主要在于Node利用事件循环的处理能力，而<u>不是启动每一个线程为每一个请求服务，资源占用极少</u>。</p>
+<p>但是不要忘了，Node.js是一个JavaScript语言的运行时环境，<strong>JavaScript本身不擅长处理复杂逻辑，JavaScript本身执行效率比较低</strong>，和编译性语言（如Java、C++等），相比起来执行效率并不高。</p>
+<p>如果是简单的系统，或者是企业内部的系统，流量不大且业务逻辑简单，大部分的功能仅仅是对某个数据库进行CRUD，则可以直接server-side采用Node.js。但是如果是流量大、复杂程度高的项目，Node.js作为后端就不太适合了。</p>
+<p>但也不是说Node.js就一无是处了，Node.js可以作为一个BFF层，即中台，这样子后端能更加专注于业务开发，<strong>Node.js通过RPC调用后端服务</strong>，场景有如下，例如Node.js做接口鉴权、用户鉴权；当一个系统要调用到多个后端服务时，Node.js可以做到<strong>数据聚合、接口聚合</strong>，这种情况下也称为<strong>胶水层</strong>；以上都是中台的概念，后续会出一篇文章讲讲Node.js在中台的应用。当然了，Node.js也可以用来做<strong>服务端渲染</strong>，等等等等，还有很多应用，这里就不细说了。</p>
 <h1 id="Node-js核心模块的实现"><a href="#Node-js核心模块的实现" class="headerlink" title="Node.js核心模块的实现"></a>Node.js核心模块的实现</h1><h2 id="Buffer缓冲区模块"><a href="#Buffer缓冲区模块" class="headerlink" title="Buffer缓冲区模块"></a>Buffer缓冲区模块</h2><p>JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。</p>
 <p>但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。</p>
-<p>在 Node.js 中，Buffer 类是随 Node 内核一起发布的核心库。Buffer 库为 Node.js 带来了一种存储原始数据的方法，可以让 Node.js 处理二进制数据，每当需要在 Node.js 中处理I/O操作中移动的数据时，就有可能使用 Buffer 库。原始数据存储在 Buffer 类的实例中。一个 Buffer 类似于一个整数数组，但它对应于 V8 堆内存之外的一块原始内存。</p>
+<p>在 Node.js 中，Buffer 类是随 Node.js 内核一起发布的核心库。Buffer 库为 Node.js 带来了一种存储原始数据的方法，可以让 Node.js 处理二进制数据，每当需要在 Node.js 中处理I/O操作中移动的数据时，就有可能使用 Buffer 库。原始数据存储在 Buffer 类的实例中。一个 Buffer 类似于一个整数数组，但它对应于 V8 堆内存之外的一块原始内存。</p>
 <blockquote>
 <p>在v6.0之前创建Buffer对象直接使用new Buffer()构造函数来创建对象实例，但是Buffer对内存的权限操作相比很大，可以直接捕获一些敏感信息，所以在v6.0以后，官方文档里面建议使用 ==Buffer.from()==接口去创建Buffer对象。</p>
 </blockquote>
@@ -314,6 +334,19 @@ Monkey's Blog = </title>
 <li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintbe_value_offset_bytelength"><code>buf.writeUIntBE(value, offset, byteLength)</code></a></li>
 <li><a target="_blank" rel="noopener" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintle_value_offset_bytelength"><code>buf.writeUIntLE(value, offset, byteLength)</code></a></li>
 </ul>
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p>Buffer是数据以二进制形式临时存放在内存中的物理映射，stream为搬运数据的传送带和加工器，有方向、状态、缓冲大小。</p>
+<p>Stream 是在 Node.js 中处理流数据的抽象接口。Stream 并不是一个实际的接口，而是对所有流的一种统称。实际的接口有 ReadableStream、 WritableStream、ReadWriteStream 这几个。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ReadableStream <span class="keyword">extends</span> EventEmitter &#123;</span><br><span class="line">    <span class="attr">readable</span>: <span class="built_in">boolean</span>;</span><br><span class="line">    read(size?: <span class="built_in">number</span>): <span class="built_in">string</span> | Buffer;</span><br><span class="line">    setEncoding(encoding: BufferEncoding): <span class="built_in">this</span>;</span><br><span class="line">    pause(): <span class="built_in">this</span>;</span><br><span class="line">    resume(): <span class="built_in">this</span>;</span><br><span class="line">    isPaused(): <span class="built_in">boolean</span>;</span><br><span class="line">    pipe&lt;T <span class="keyword">extends</span> WritableStream&gt;(destination: T, options?: &#123; end?: <span class="built_in">boolean</span> | <span class="literal">undefined</span>; &#125;): T;</span><br><span class="line">    unpipe(destination?: WritableStream): <span class="built_in">this</span>;</span><br><span class="line">    unshift(chunk: <span class="built_in">string</span> | <span class="built_in">Uint8Array</span>, encoding?: BufferEncoding): <span class="built_in">void</span>;</span><br><span class="line">    wrap(oldStream: ReadableStream): <span class="built_in">this</span>;</span><br><span class="line">    [<span class="built_in">Symbol</span>.asyncIterator](): AsyncIterableIterator&lt;<span class="built_in">string</span> | Buffer&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> WritableStream <span class="keyword">extends</span> EventEmitter &#123;</span><br><span class="line">    <span class="attr">writable</span>: <span class="built_in">boolean</span>;</span><br><span class="line">    write(buffer: <span class="built_in">Uint8Array</span> | <span class="built_in">string</span>, cb?: <span class="function">(<span class="params">err?: <span class="built_in">Error</span> | <span class="literal">null</span></span>) =&gt;</span> <span class="built_in">void</span>): <span class="built_in">boolean</span>;</span><br><span class="line">    write(str: <span class="built_in">string</span>, encoding?: BufferEncoding, cb?: <span class="function">(<span class="params">err?: <span class="built_in">Error</span> | <span class="literal">null</span></span>) =&gt;</span> <span class="built_in">void</span>): <span class="built_in">boolean</span>;</span><br><span class="line">    end(cb?: <span class="function">() =&gt;</span> <span class="built_in">void</span>): <span class="built_in">this</span>;</span><br><span class="line">    end(data: <span class="built_in">string</span> | <span class="built_in">Uint8Array</span>, cb?: <span class="function">() =&gt;</span> <span class="built_in">void</span>): <span class="built_in">this</span>;</span><br><span class="line">    end(str: <span class="built_in">string</span>, encoding?: BufferEncoding, cb?: <span class="function">() =&gt;</span> <span class="built_in">void</span>): <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> ReadWriteStream <span class="keyword">extends</span> ReadableStream, WritableStream &#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出 ReadableStream 和 WritableStream 都是继承 EventEmitter 类的接口（ts中接口是可以继承类的，因为他们只是在进行类型的合并）。</p>
+<p>上面这些接口对应的实现类分别是 Readable、Writable 和 Duplex</p>
+<p>NodeJs中的流有4种：</p>
+<ul>
+<li>Readable 可读流（实现ReadableStream）</li>
+<li>Writable 可写流（实现WritableStream）</li>
+<li>Duplex 可读可写流（继承Readable后实现WritableStream）</li>
+<li>Transform 转换流（继承Duplex）</li>
+</ul>
 <h2 id="dns模块"><a href="#dns模块" class="headerlink" title="dns模块"></a>dns模块</h2><p>Node.js <strong>DNS</strong> 模块用于解析域名为ip地址，或者把ip地址转化为域名 。引入 DNS 模块语法格式如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dns = <span class="built_in">require</span>(<span class="string">&quot;dns&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -349,7 +382,7 @@ Monkey's Blog = </title>
 <p>为什么要这样做呢？原因有两点：</p>
 <p>首先，具有某个实体功能的对象实现事件符合语义， 事件的监听和发生应该是一个对象的方法。</p>
 <p>其次 JavaScript 的对象机制是基于原型的，支持 部分多重继承，继承 EventEmitter 不会打乱对象原有的继承关系。</p>
-<h2 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h2><p>Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块，代码如下：</p>
+<h2 id="HTTP模块"><a href="#HTTP模块" class="headerlink" title="HTTP模块"></a>HTTP模块</h2><p>Node.js 提供了 HTTP 模块，HTTP 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 HTTP 模块，代码如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>简单的例子可以去看菜鸟教程</p>
@@ -382,14 +415,14 @@ Monkey's Blog = </title>
 
 <p>一下为源码，即net此时的对象</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801132.png" alt="image-20210804153932046"></p>
-<h4 id="？几个类之间的关系："><a href="#？几个类之间的关系：" class="headerlink" title="？几个类之间的关系："></a>？几个类之间的关系：</h4><p>net.createServer方法创建了一个net.Server类</p>
+<h3 id="？几个类之间的关系："><a href="#？几个类之间的关系：" class="headerlink" title="？几个类之间的关系："></a>？几个类之间的关系：</h3><p>net.createServer方法创建了一个net.Server类</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801742.png" alt="image-20210804154210162"></p>
 <p>net.connect则是创建了一个net.Socket类，然后通过socket去连接上面的那个端口</p>
 <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801685.png" alt="image-20210804154414407"></p>
 <p><code>BlockList</code> 对象可与一些网络 API 一起使用，以指定用于禁用对特定 IP 地址、IP 范围或 IP 子网的入站或出站访问的规则。暂时没找到怎么用！还要进一步学习</p>
 <p><code>SocketAddress</code>也没找到怎么用 </p>
 <p>方法看<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9ub2RlanMvbm9kZWpzLW5ldC1tb2R1bGUuaHRtbCVFOCU4RiU5QyVFOSVCOCU5RiVFNiU5NSU5OSVFNyVBOCU4QiVFNiU4OCU5NiVFOCU4MCU4NSVFNSVBRSU5OCVFNiU5NiVCOSVFNiU5NiU4NyVFNiVBMSVBMw==">https://www.runoob.com/nodejs/nodejs-net-module.html菜鸟教程或者官方文档</span></p>
-<h4 id="初体验-1"><a href="#初体验-1" class="headerlink" title="初体验"></a>初体验</h4><p>服务端：创建 server.js 文件，代码如下所示：</p>
+<h3 id="初体验-1"><a href="#初体验-1" class="headerlink" title="初体验"></a>初体验</h3><p>服务端：创建 server.js 文件，代码如下所示：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> server = net.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">connection</span>) </span>&#123; </span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;client connected&#x27;</span>);</span><br><span class="line">   connection.on(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;客户端关闭连接&#x27;</span>);</span><br><span class="line">   &#125;);</span><br><span class="line">   connection.write(<span class="string">&#x27;Hello World!\r\n&#x27;</span>);</span><br><span class="line">   connection.pipe(connection);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8080</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;server is listening&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>执行以上服务端代码：</p>
@@ -403,7 +436,7 @@ Monkey's Blog = </title>
 
 
 
-<h4 id="net包的方法"><a href="#net包的方法" class="headerlink" title="net包的方法"></a>net包的方法</h4><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801590.png" alt="image-20210804155747137"></p>
+<h3 id="net包的方法"><a href="#net包的方法" class="headerlink" title="net包的方法"></a>net包的方法</h3><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801590.png" alt="image-20210804155747137"></p>
 <h2 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h2><p><code>os</code> 模块提供了与操作系统相关的实用方法和属性。 可以使用以下方式访问它：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> os = <span class="built_in">require</span>(<span class="string">&#x27;os&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
@@ -556,15 +589,7 @@ Monkey's Blog = </title>
 
 <p>这个也是很简单的，看官方文档就行了，随用随查</p>
 <h2 id="util-实用模块"><a href="#util-实用模块" class="headerlink" title="util 实用模块"></a>util 实用模块</h2><p><a target="_blank" rel="noopener" href="http://nodejs.cn/api/util.html#util_util_types"><code>util.types</code></a> 可以拿来判断数据类型</p>
-<h1 id="express框架"><a href="#express框架" class="headerlink" title="express框架"></a>express框架</h1><p>菜鸟教程的文档（不全）：<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS93M2Nub3RlL2V4cHJlc3MtNC14LWFwaS5odG1s">https://www.runoob.com/w3cnote/express-4-x-api.html</span></p>
-<p>官方Api文档：<a target="_blank" rel="noopener" href="https://www.expressjs.com.cn/4x/api.html#express"><span class="exturl" data-url="aHR0cHM6Ly93d3cuZXhwcmVzc2pzLmNvbS5jbi8=">Express 中文网</span></a></p>
-<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZWFzdGgvcC9leHByZXNzX21pZGRsZXdlYXIuaHRtbA==">https://www.cnblogs.com/easth/p/express_middlewear.html</span>    中间件的说明，注意要有next()才能转到下一个对应接口，中间件顺序很重要，依次来</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109141801682.png" alt="image-20210803172943342"></p>
-<h2 id="express脚手架快速生成"><a href="#express脚手架快速生成" class="headerlink" title="express脚手架快速生成"></a>express脚手架快速生成</h2><p> 安装生成器：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">npm install express-generator -g </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#◆ 创建名称为APP的应用：</span></span></span><br><span class="line">express app </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#◆ 安装依赖包:</span></span></span><br><span class="line">cd  app   //进入app目录</span><br><span class="line">npm run install   //安装依赖包生成 package.json文件 </span><br><span class="line"></span><br><span class="line">◆ 启动应用</span><br><span class="line">npm start</span><br><span class="line"></span><br><span class="line">◆ 端口修改：</span><br><span class="line">在浏览器中使用 localhost:3000访问，默认的端口就是3000。app/bin/www文件中可以修改端口配置</span><br><span class="line"></span><br><span class="line">var port = normalizePort(process.env.PORT || &#x27;3000&#x27;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="express入门"><a href="#express入门" class="headerlink" title="express入门"></a>express入门</h3><p>npm install –save sequelize</p>
-<p>npm install –save mysql2</p>
+<h2 id="addon、Node-API"><a href="#addon、Node-API" class="headerlink" title="addon、Node-API"></a>addon、Node-API</h2><p><span class="exturl" data-url="aHR0cDovL21wLndlaXhpbi5xcS5jb20vcz9fX2Jpej1Nekl5TkRVMk5UYzVNdz09JmFtcDttaWQ9MjI0NzUwMjMzOCZhbXA7aWR4PTEmYW1wO3NuPTk4OWExNDQxNzM2NGI5MjkzYmFmZWExMjU3MDFiNzk2JmFtcDtjaGtzbT1lODBmODU0Y2RmNzgwYzVhN2FkNTAxZjFkNTI3ODRhZTVjMGQ0M2VjZjlkMmYwODAwYWM2YWMxZTZjYWFjOTNjMzZlNjFiODA2NTE0JmFtcDttcHNoYXJlPTEmYW1wO3NjZW5lPTI0JmFtcDtzcmNpZD0wMzExZmZ6amZERU1IWUZKb3YzRXpKdVMmYW1wO3NoYXJlcl9zaGFyZXRpbWU9MTY0Njk1ODM2NzEyOSZhbXA7c2hhcmVyX3NoYXJlaWQ9MmQwODBmMjdiOGMxZDRjOTZjZDQxYjUyYmUwZmJkMDAjcmQ=">http://mp.weixin.qq.com/s?__biz=MzIyNDU2NTc5Mw==&amp;mid=2247502338&amp;idx=1&amp;sn=989a14417364b9293bafea125701b796&amp;chksm=e80f854cdf780c5a7ad501f1d52784ae5c0d43ecf9d2f0800ac6ac1e6caac93c36e61b806514&amp;mpshare=1&amp;scene=24&amp;srcid=0311ffzjfDEMHYFJov3EzJuS&amp;sharer_sharetime=1646958367129&amp;sharer_shareid=2d080f27b8c1d4c96cd41b52be0fbd00#rd</span></p>
 
       <div class="tags">
           <a href="/tags/Node-js/" rel="tag"><i class="ic i-tag"></i> Node.js</a>
@@ -579,7 +604,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-08 16:02:16" itemprop="dateModified" datetime="2022-03-08T16:02:16+08:00">2022-03-08</time>
+    <time title="Modified: 2022-03-23 20:52:18" itemprop="dateModified" datetime="2022-03-23T20:52:18+08:00">2022-03-23</time>
   </span>
   <span id="FrontEnd/Node-js/FrontEnd/Node.js/Node.js基础知识入门" class="item leancloud_visitors" data-flag-title="Node.js基础知识入门" title="Views">
       <span class="icon">
@@ -619,20 +644,20 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】常用代码复用及性能优化方案">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> React</span>
-  <h3>【React基础】常用代码复用及性能优化方案</h3>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281409527.png" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> React</span>
-  <h3>【React基础】Redux介绍以及结合不可变数据的性能优化探索</h3>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>【手撕JavaScript系列】Promise介绍以及实现一个Promise</h3>
   </a>
 
     </div>
@@ -651,7 +676,7 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">Node.js简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">Node.js的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">2.2.</span> <span class="toc-text">Node.js的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">Node.js核心模块的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer%E7%BC%93%E5%86%B2%E5%8C%BA%E6%A8%A1%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">Buffer缓冲区模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-number">3.1.1.</span> <span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js-%E7%9B%AE%E5%89%8D%E6%94%AF%E6%8C%81%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">Node.js 目前支持的字符编码如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Buffer%E7%B1%BB"><span class="toc-number">3.1.3.</span> <span class="toc-text">Buffer类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dns%E6%A8%A1%E5%9D%97"><span class="toc-number">3.2.</span> <span class="toc-text">dns模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.2.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90events%E6%A8%A1%E5%9D%97"><span class="toc-number">3.3.</span> <span class="toc-text">⭐events模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C%EF%BC%9A"><span class="toc-number">3.3.0.1.</span> <span class="toc-text">初体验：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EventEmitter-%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.0.2.</span> <span class="toc-text">EventEmitter 类的常用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EventEmitter-%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-number">3.3.0.3.</span> <span class="toc-text">EventEmitter 类的属性和方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#error-%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.3.0.4.</span> <span class="toc-text">error 事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%AD%90%E7%BB%A7%E6%89%BFEventEmitter"><span class="toc-number">3.3.0.5.</span> <span class="toc-text">⭐继承EventEmitter</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E6%A8%A1%E5%9D%97"><span class="toc-number">3.4.</span> <span class="toc-text">http模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">几个类之间的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91"><span class="toc-number">3.4.0.2.</span> <span class="toc-text">一些疑惑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#net%E6%A8%A1%E5%9D%97%EF%BC%9A%E8%BF%90%E8%BE%93%E5%B1%82%E7%9A%84TCP%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.5.</span> <span class="toc-text">net模块：运输层的TCP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%9F%E5%87%A0%E4%B8%AA%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-number">3.5.0.1.</span> <span class="toc-text">？几个类之间的关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C-1"><span class="toc-number">3.5.0.2.</span> <span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#net%E5%8C%85%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.5.0.3.</span> <span class="toc-text">net包的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS%E6%A8%A1%E5%9D%97"><span class="toc-number">3.6.</span> <span class="toc-text">OS模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#path-%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9D%97"><span class="toc-number">3.6.1.</span> <span class="toc-text">path 路径模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Process%E5%9F%BA%E7%A1%80%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.6.2.</span> <span class="toc-text">Process基础进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#url%E5%8C%85"><span class="toc-number">3.7.</span> <span class="toc-text">url包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%9D%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%BD%91%E5%9D%80%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.7.0.1.</span> <span class="toc-text">网址字符串与网址对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#util-%E5%AE%9E%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">3.8.</span> <span class="toc-text">util 实用模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#express%E6%A1%86%E6%9E%B6"><span class="toc-number">4.</span> <span class="toc-text">express框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#express%E8%84%9A%E6%89%8B%E6%9E%B6%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90"><span class="toc-number">4.1.</span> <span class="toc-text">express脚手架快速生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#express%E5%85%A5%E9%97%A8"><span class="toc-number">4.1.1.</span> <span class="toc-text">express入门</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">Node.js简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">Node.js的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">2.2.</span> <span class="toc-text">Node.js的应用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">Node.js核心模块的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer%E7%BC%93%E5%86%B2%E5%8C%BA%E6%A8%A1%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">Buffer缓冲区模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-number">3.1.1.</span> <span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js-%E7%9B%AE%E5%89%8D%E6%94%AF%E6%8C%81%E7%9A%84%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">Node.js 目前支持的字符编码如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Buffer%E7%B1%BB"><span class="toc-number">3.1.3.</span> <span class="toc-text">Buffer类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream"><span class="toc-number">3.2.</span> <span class="toc-text">Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dns%E6%A8%A1%E5%9D%97"><span class="toc-number">3.3.</span> <span class="toc-text">dns模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.3.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90events%E6%A8%A1%E5%9D%97"><span class="toc-number">3.4.</span> <span class="toc-text">⭐events模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C%EF%BC%9A"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">初体验：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EventEmitter-%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">3.4.0.2.</span> <span class="toc-text">EventEmitter 类的常用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EventEmitter-%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-number">3.4.0.3.</span> <span class="toc-text">EventEmitter 类的属性和方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#error-%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.4.0.4.</span> <span class="toc-text">error 事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%AD%90%E7%BB%A7%E6%89%BFEventEmitter"><span class="toc-number">3.4.0.5.</span> <span class="toc-text">⭐继承EventEmitter</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E6%A8%A1%E5%9D%97"><span class="toc-number">3.5.</span> <span class="toc-text">HTTP模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.5.0.1.</span> <span class="toc-text">几个类之间的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91"><span class="toc-number">3.5.0.2.</span> <span class="toc-text">一些疑惑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#net%E6%A8%A1%E5%9D%97%EF%BC%9A%E8%BF%90%E8%BE%93%E5%B1%82%E7%9A%84TCP%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.6.</span> <span class="toc-text">net模块：运输层的TCP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%9F%E5%87%A0%E4%B8%AA%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-number">3.6.1.</span> <span class="toc-text">？几个类之间的关系：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E4%BD%93%E9%AA%8C-1"><span class="toc-number">3.6.2.</span> <span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#net%E5%8C%85%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.6.3.</span> <span class="toc-text">net包的方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OS%E6%A8%A1%E5%9D%97"><span class="toc-number">3.7.</span> <span class="toc-text">OS模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#path-%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9D%97"><span class="toc-number">3.7.1.</span> <span class="toc-text">path 路径模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Process%E5%9F%BA%E7%A1%80%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.7.2.</span> <span class="toc-text">Process基础进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#url%E5%8C%85"><span class="toc-number">3.8.</span> <span class="toc-text">url包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%9D%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E7%BD%91%E5%9D%80%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.8.0.1.</span> <span class="toc-text">网址字符串与网址对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#util-%E5%AE%9E%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">3.9.</span> <span class="toc-text">util 实用模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#addon%E3%80%81Node-API"><span class="toc-number">3.10.</span> <span class="toc-text">addon、Node-API</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
@@ -739,12 +764,12 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -771,7 +796,55 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
   </li>
 
       
@@ -783,7 +856,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></span>
   </li>
 
       
@@ -792,32 +865,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Operations/" title="In Operations">Operations</a>
-</div>
-
-    <span><a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
-</div>
-
-    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
   </li>
 
       
@@ -838,46 +889,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
+</div>
+
+    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
-</div>
-
-    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
-</div>
-
-    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
   </li>
 
   </ul>
@@ -902,13 +929,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">774k words</span>
+    <span title="Symbols count total">776k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:43</span>
+    <span title="Reading time total">11:45</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
