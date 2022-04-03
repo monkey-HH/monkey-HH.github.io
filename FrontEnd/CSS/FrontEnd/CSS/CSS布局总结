@@ -117,12 +117,12 @@ Monkey's Blog = </title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
         </ul>
       </div>
     </header>
@@ -175,7 +175,7 @@ Monkey's Blog = </title>
 <p>其中有没有内容在另一个笔记里没整理过来，很多内容有待更新</p>
 <h1 id="抛弃“砖块”，拥抱“流”"><a href="#抛弃“砖块”，拥抱“流”" class="headerlink" title="抛弃“砖块”，拥抱“流”"></a>抛弃“砖块”，拥抱“流”</h1><p>“流”实际上是 CSS 世界中的一种基本的定位和布局机制，是水平的。</p>
 <p>CSS世界构建的基石是HTML，而HTML最具代表的两个基石div和span正好是CSS 世界中块级元素和内联级元素的代表，它们对应的正是图 所示的盛水容器中的水和木头， 其特性表现也正如现实世界的水和木头。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110201620183.png" alt="image-20211001133203472"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110201620183.png" alt="image-20211001133203472"></p>
 <p>在初步学习CSS的时候很容易觉得页面是砖块的方式搭建起来的，这句话既对也错。确实可以将页面划分成多个模块，但其内部离不开流。<u>不要用搭砖块的方式理解CSS，要用流的方式理解CSS。</u></p>
 <p>简单的一个例子，如果为每一个砖块设定好尺寸，将砖块精心布置堆叠，建立起来一个房子，似乎没什么问题。但事实上，房子，通常就是浏览器窗口，每个人电脑屏幕大小不一，更别提移动端适配的问题了，“房子”的大小，一定是会变化的。并且如果有一个“房间”想改大小，结局很可能是整栋“房子”重建。</p>
 <p>用流的方式的好处：</p>
@@ -185,7 +185,7 @@ Monkey's Blog = </title>
 <h3 id="块级元素与流"><a href="#块级元素与流" class="headerlink" title="块级元素与流"></a>块级元素与流</h3><p>我们来看看常见的一个水平居中方案margin:0 auto，与流的关系，详细过程如下</p>
 <p>①块级元素符合“外部尺寸”特性，即充分利用空间、流的特性，margin、border、padding、width自动分配，此时width会直接“吃满”父级容器的宽度，即width直接就是父元素的width。</p>
 <p>②当设置了width具体数值，margin和padding默认为0，则元素的流动性就会被阻断，因为元素给定宽度就像河流中间竖了两个大闸一样。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110201719235.png" alt="image-20211020171940166"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110201719235.png" alt="image-20211020171940166"></p>
 <p>③那此时margin:0 auto就会让水平方向上平分剩下的空间，则表现上就是水平居中了，具体的margin分配规则后面会讲到。</p>
 <p>为了更好地利用到流的特定，我们就得学会宽度分离原则。</p>
 <blockquote>
@@ -273,7 +273,7 @@ Monkey's Blog = </title>
 <p>这一条是针对大多数的<strong>块级元素</strong></p>
 <p>这一条是针对大多数的<strong>块级元素</strong>    </p>
 <p>比方说，<div>、<p>这些<strong>块级元素</strong>的宽度默认是 100%于父级容器的，即放一个空<div>，它的宽度会自动填满可用空间。 这种充分利用可用空间的行为还有个专有名字，叫作 <strong>fill-available</strong>。此处可以称为“正常<strong>流</strong>宽度”。（还有一个格式化宽高，也符合流，符合外部尺寸（此时尺寸自动填充其<u><strong>包含块</strong>而不是父级元素</u>的可用尺寸），在下面的2会提到）</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110011324359.png" alt="image-20211001132429306"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110011324359.png" alt="image-20211001132429306"></p>
 <p>CSS3里关键字叫stretch，可以将width设置成这个关键字，就会强制表现出该表现。</p>
 <p>此处有一个很好的例子，将a设为block元素后，画蛇添足地设置了width:100%，让a标签流动性缺失。<span class="exturl" data-url="aHR0cDovL2RlbW8uY3Nzd29ybGQuY24vMy8yLTMucGhw">http://demo.cssworld.cn/3/2-3.php</span></p>
 <p>具体知识点在《css世界》的3.2.1和《css新世界》的3.1.2</p>
@@ -284,7 +284,7 @@ Monkey's Blog = </title>
 <p>前提：<u>容器（父级或者包含块的意思）的宽度要大于元素的“首选最小宽度”</u>，啥意思？容器比一个字符还小，那就没包裹一说了。</p>
 <p>典型代表就是<u>浮动、绝对定位（position为absolute、fixed）、inline-block 元素或 table 元素</u>， 英文称为 shrink-to-fit。</p>
 <p>典型例子就是<u>按钮</u>，字少的时候文字居中，多的时候会换行。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110011903489.png" alt="image-20211001190328448" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110011903489.png" alt="image-20211001190328448" style="zoom:67%;" />
 
 <p>CSS3里关键字叫fit-content，可以讲width设置成这个关键字，就会强制表现出该表现。</p>
 <blockquote>
@@ -302,7 +302,7 @@ Monkey's Blog = </title>
 <p>3️⃣min-content收缩到最小，符合<strong>内部尺寸（宽度由内部元素决定）</strong></p>
 </blockquote>
 <p>首选最小宽度，比如说一个汉字就是一个宽度，如果将width设置成这个，就会一柱擎天。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110011852451.png" alt="image-20211001185232414" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110011852451.png" alt="image-20211001185232414" style="zoom: 50%;" />
 
 <ul>
 <li>替换元素的首选最小宽度：当前元素内容自身的宽度</li>
@@ -317,7 +317,7 @@ Monkey's Blog = </title>
 <p>4️⃣max-content超出容器限制，符合<strong>内部尺寸（宽度由内部元素决定）</strong></p>
 </blockquote>
 <p>max- content关键字表示最大内容宽度,max- content关键字的作用是让元素尽可能大，保证图文内容在一行显示，哪怕最终的宽度溢出外部容器元素。例如:</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110011854712.png" alt="image-20211001185432674"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110011854712.png" alt="image-20211001185432674"></p>
 <p>那有最小宽度，当然就也有最大宽度啦。最大宽度就是元素可以有的最大宽度。我自己是这么理解的，“最大宽 度”实际等同于“包裹性”元素设置 white-space:nowrap 声明后的宽 度。。如果内部没有块级元素或者块级元素没有设定宽度值，则“最大宽度”实际上是最大的连 续内联盒子的宽度。</p>
 <p>连续内联盒子看《CSS世界》23页，指的全部都是内联级别的一个或一堆元素，中间没有任何的换行标签br或其他块级元素。</p>
 <p>具体知识点在《css世界》的3.2.1和《css新世界》的3.1.4</p>
@@ -343,7 +343,7 @@ Monkey's Blog = </title>
 <p>此时的 height:100%就会有计算值，即使祖先元素的 height 计算为 auto 也是如此。 需要注意的是，绝对定位元素的百分比计算和非绝对定位元素的百分比计算是有区别的，区别 在于绝对定位的宽高百分比计算是相对于 padding box 的，也就是说会把 padding 大小值计算 在内，但是，非绝对定位元素则是相对于 content box 计算的。</p>
 <p>这个方式可以实现图片左右半区翻页功能，例子可以看《CSS世界》第36页。</p>
 <h2 id="内在盒子（容器盒子）"><a href="#内在盒子（容器盒子）" class="headerlink" title="内在盒子（容器盒子）"></a>内在盒子（容器盒子）</h2><p>页面渲染时，dom 元素所采用的 <strong>布局模型</strong>。我们的这个“内在盒子”又被分成了 4 个盒子，分别是 content-box、padding-box、border-box 和 margin-box。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109302143503.png" alt="image-20210930214345330"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109302143503.png" alt="image-20210930214345330"></p>
 <p>width、height、min-height、max-height、min-width、max-width等默认作用于content-box。</p>
 <p>可通过<code>box-sizing</code>进行设置。根据计算宽高的区域可分为：</p>
 <ul>
@@ -362,7 +362,7 @@ Monkey's Blog = </title>
 
 
 <h3 id="深入理解content"><a href="#深入理解content" class="headerlink" title="深入理解content"></a>深入理解content</h3><h4 id="替换元素与非替换元素"><a href="#替换元素与非替换元素" class="headerlink" title="替换元素与非替换元素"></a>替换元素与非替换元素</h4><p>首先说个重要的知识点：根据“外在盒子”是内联还是块级我们可以把元素分为内联元素和块级元素，而根据是否 具有可替换内容，我们也可以把元素分为替换元素和非替换元素。因此<strong>⭐替换元素都是内联元素</strong>，其余的内联元素、块级元素为非替换元素。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202281512136.png" alt="image-20220228151244518"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202281512136.png" alt="image-20220228151244518"></p>
 <p><strong>可替换元素</strong>（<strong>replaced element</strong>）的展现效果<u>不是由 CSS 来控制</u>的。这些元素是一种外部对象，它们外观的渲染，是独立于 CSS 的。</p>
 <p>替换元素就是<strong>修改某个属性值</strong>呈现的内容就被替换，例如img改src就变样式。p标签等不是，虽然每个p标签内容显示不一样，但是改的不是属性。</p>
 <p>比如以下代码，我们把1.jpg换成2.jpg，那这个元素的内容就被替换了：</p>
@@ -397,7 +397,7 @@ Monkey's Blog = </title>
 <blockquote>
 <p>替换元素的默认display值如下：</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202281524618.png" alt="image-20220228152424176"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202281524618.png" alt="image-20220228152424176"></p>
 <p>显然替换元素的 display 是 inline、block 和 inline-block 中的任意一个。</p>
 <blockquote>
 <p>替换元素的尺寸计算规则</p>
@@ -451,7 +451,7 @@ img { content: url(1.jpg); }
 <p>只是因为内联元素没有可视宽度和可视高度的说法（clientHeight 和 clientWidth 永远是 0），垂直方向的行为表现完全受 line-height 和 vertical-align 的影响，<u>视觉上并没有 改变和上一行下一行内容的间距</u>，因此，给我们的感觉就会是垂直 padding 没有起作用，事实上相当于垂直方向上自己padding其实会生效，但不影响布局。</p>
 <p>重要的一点：<u>块状元素的padding的百分比值无论是“水平方向”还是“垂直方向”都是相对于“宽度”计算的。</u></p>
 <p>内联元素的padding同样相对于宽度计算，默认的高度和宽度细节有差异，padding会断行</p>
-<h3 id="激进的margin"><a href="#激进的margin" class="headerlink" title="激进的margin"></a>激进的margin</h3><h4 id="margin与元素尺寸"><a href="#margin与元素尺寸" class="headerlink" title="margin与元素尺寸"></a>margin与元素尺寸</h4><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110012244146.png" alt="image-20211001224432074" style="zoom: 50%;" />
+<h3 id="激进的margin"><a href="#激进的margin" class="headerlink" title="激进的margin"></a>激进的margin</h3><h4 id="margin与元素尺寸"><a href="#margin与元素尺寸" class="headerlink" title="margin与元素尺寸"></a>margin与元素尺寸</h4><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110012244146.png" alt="image-20211001224432074" style="zoom: 50%;" />
 
 
 
@@ -474,13 +474,13 @@ img { content: url(1.jpg); }
 <p>参考下面这个例子：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.father</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: <span class="number">#f0f3f9</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.son</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">120px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin-right</span>: <span class="number">80px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin-left</span>: auto;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: <span class="number">#cd0000</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202281355588.png" alt="image-20220228135556369"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202281355588.png" alt="image-20220228135556369"></p>
 <p>此时适用于第一条规则，margin-right定值，则margin-left分配剩余空间，为20px。</p>
 <p>再看下面的例子，我们将margin-right改为auto，那会如何呢？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">margin-right: auto;</span><br></pre></td></tr></table></figure>
 
 <p>没错，适用于第二条规则了，平分剩余空间！</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202281354043.png" alt="image-20220228135449444"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202281354043.png" alt="image-20220228135449444"></p>
 <p>因此，margin有一个非常重要的<u>左中右对齐</u>功能，和内联元素使用text-align控制<u>左中右</u>对齐相呼应。</p>
 <p>这里要注意的一点，margin可以实现水平居中，但是没法垂直居中，这个看书96页，宽度和高度的特性不同导致。</p>
 <p>如果想要垂直居中，有两个办法：</p>
@@ -765,7 +765,7 @@ img { content: url(1.jpg); }
 
 <p>①高度塌陷：摆脱父元素的限制。        </p>
 <p>可以让跟随的内容可以和浮动的元素在同一个水平线上。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110171157263.png" alt="image-20211017115711230"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110171157263.png" alt="image-20211017115711230"></p>
 <p>黑色那一横就是div盒子的边框，可以看到高度塌陷了，下面p标签的文字才能上来。</p>
 <p>②行框盒子区域限制——实现环绕效果：行框盒子和浮动元素的不可重叠性。</p>
 <p>注意，这里说的是“行框盒子”，也就是每行内联元素所在的那个盒子，而非外部的块状 盒子。</p>
@@ -773,7 +773,7 @@ img { content: url(1.jpg); }
 <p>我们可以借 助::first-line 伪元素暴露第一行的“行框盒子”区域，</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.animal</span><span class="selector-pseudo">:first</span>-line &#123; </span><br><span class="line">    <span class="attribute">background</span>: red; </span><br><span class="line">    <span class="attribute">color</span>: white; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110171203610.png" alt="image-20211017120305658"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110171203610.png" alt="image-20211017120305658"></p>
 <p>可以看到：行框盒子如果和浮动元素的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素，而不会发生重叠。</p>
 <h3 id="父元素设置高度？"><a href="#父元素设置高度？" class="headerlink" title="父元素设置高度？"></a>父元素设置高度？</h3><p>设置完高度，既然有了高度， 何来“高度塌陷”。这句话对不对呢？对的，但是只解决了高度塌陷的问题，并没有解决“行框盒子区域限制”的问题。并且这样子就会失去盒子的弹性，布局就会很脆弱，稍微改一下内部大小就会出事。例子可以看《CSS世界》153页</p>
 <h3 id="成事不足败事有余的clear"><a href="#成事不足败事有余的clear" class="headerlink" title="成事不足败事有余的clear?"></a>成事不足败事有余的clear?</h3><p>先来看看常见的两种方式，本质都是一样的，利用clear</p>
@@ -820,7 +820,7 @@ img { content: url(1.jpg); }
 <li>…更多请参考<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvR3VpZGUvQ1NTL0Jsb2NrX2Zvcm1hdHRpbmdfY29udGV4dA==">MDN</span></li>
 </ul>
 <p>前面的例子中有提到::first-line伪元素暴露第一行的例子中，如果对文字设置成BFC之后，则文字为了和浮动元素产生交集，边顺着浮动边缘形成自己的封闭上下文。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110182152102.png" alt="image-20211018215204035"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110182152102.png" alt="image-20211018215204035"></p>
 <p>而在这些方法中，几乎每个方法都会有各自的问题，但只有overflow才是大神！</p>
 <p>那么现在清除浮动就有第三种方法：</p>
 <p>例如对于以下HTML结构：</p>
@@ -857,7 +857,7 @@ img { content: url(1.jpg); }
 <p>原理和两列布局中一致，多出来的中间那一列定宽的css样式和上面左边列一样</p>
 <h4 id="左右定宽，中自适应（所谓的圣杯布局）"><a href="#左右定宽，中自适应（所谓的圣杯布局）" class="headerlink" title="左右定宽，中自适应（所谓的圣杯布局）"></a>左右定宽，中自适应（所谓的圣杯布局）</h4><p>要求：屏幕大小变化，左右定宽，中间的宽度会变。</p>
 <p><u>事实上，和两列布局中几种方案也是一样的思想，也就是右侧和上面的左侧设置一样。</u></p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110182233161.png" alt="image-20211018223300106"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110182233161.png" alt="image-20211018223300106"></p>
 <p>header和footer就不说了，比较简单，宽度拉满就可以了，这里只关注中间的部分。</p>
 <h5 id="float-margin-1"><a href="#float-margin-1" class="headerlink" title="float+margin"></a>float+margin</h5><p>和两列布局中的一样，只不过右边也得加个margin。并且右侧是float:right</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>:<span class="number">200px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>:<span class="number">200px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>:<span class="number">200px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>:<span class="number">200px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">float</span>: right;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.center</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>:<span class="number">200px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>:<span class="number">0px</span> <span class="number">200px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">text-align</span>: center; </span></span><br><span class="line"><span class="css">        <span class="attribute">background-color</span>: aquamarine;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -871,14 +871,14 @@ img { content: url(1.jpg); }
 
 <h1 id="如何实现品字布局？"><a href="#如何实现品字布局？" class="headerlink" title="如何实现品字布局？"></a>如何实现品字布局？</h1><h2 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>品字布局<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    * &#123;</span></span><br><span class="line"><span class="css">      <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="attribute">margin</span>: auto <span class="number">0</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">background</span>: red;</span></span><br><span class="line"><span class="css">      <span class="attribute">font-size</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">line-height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">color</span>: <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.div1</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="attribute">margin</span>: <span class="number">100px</span> auto <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.div2</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="attribute">margin-left</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css">      <span class="attribute">background</span>: green;</span></span><br><span class="line"><span class="css">      <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">      <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">100%</span>);</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.div3</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="attribute">background</span>: blue;</span></span><br><span class="line"><span class="css">      <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">      <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">100%</span>);</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div3&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110182328997.png" alt="image-20211018232815934"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110182328997.png" alt="image-20211018232815934"></p>
 <h2 id="第二种（全屏版）"><a href="#第二种（全屏版）" class="headerlink" title="第二种（全屏版）"></a>第二种（全屏版）</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>品字布局<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">      * &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">background</span>: red;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">40px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">line-height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">color</span>: <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-class">.div1</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: <span class="number">0</span> auto <span class="number">0</span>;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-class">.div2</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">background</span>: green;</span></span><br><span class="line"><span class="css">        <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css"></span></span><br><span class="line"><span class="css">      <span class="selector-class">.div3</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">background</span>: blue;</span></span><br><span class="line"><span class="css">        <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css">      &#125;</span></span><br><span class="line"><span class="css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div1&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div2&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;div3&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110182328387.png" alt="image-20211018232840334"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110182328387.png" alt="image-20211018232840334"></p>
 <h1 id="布局题：div垂直居中，左右10px，高度始终为宽度一半"><a href="#布局题：div垂直居中，左右10px，高度始终为宽度一半" class="headerlink" title="布局题：div垂直居中，左右10px，高度始终为宽度一半"></a>布局题：div垂直居中，左右10px，高度始终为宽度一半</h1><blockquote>
 <p>问题描述: 实现一个div垂直居中, 其距离屏幕左右两边各10px, 其高度始终是宽度的50%。同时div中有一个文字A，文字需要水平垂直居中。</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191720039.gif" alt="test"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191720039.gif" alt="test"></p>
 <h2 id="思路一：利用height-0-padding-bottom-50"><a href="#思路一：利用height-0-padding-bottom-50" class="headerlink" title="思路一：利用height:0; padding-bottom: 50%;"></a>思路一：利用height:0; padding-bottom: 50%;</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    *&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">padding</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.outer_wrapper</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">        <span class="comment">/* flex布局让块垂直居中 */</span></span></span><br><span class="line"><span class="css">        <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">        <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.inner_wrapper</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">background</span>: red;</span></span><br><span class="line"><span class="css">        <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">padding-bottom</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">        <span class="attribute">justify-content</span>: center;</span></span><br><span class="line"><span class="css">        <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="css">        <span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;outer_wrapper&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inner_wrapper&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>强调两点:</p>
@@ -900,9 +900,9 @@ img { content: url(1.jpg); }
 <p>2009年，W3C 提出了一种新的方案—-Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
 <p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191731832.jpeg" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191731832.jpeg" alt="img"></p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191732556.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191732556.png" alt="img"></p>
 <p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
 <p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
 <h2 id="容器的属性"><a href="#容器的属性" class="headerlink" title="容器的属性"></a>容器的属性</h2><h3 id="container的属性"><a href="#container的属性" class="headerlink" title="container的属性"></a>container的属性</h3><ul>
@@ -927,22 +927,22 @@ img { content: url(1.jpg); }
 <li><code>row</code>（默认值）：主轴为水平方向，起点在左端。</li>
 <li><code>row-reverse</code>：主轴为水平方向，起点在右端。</li>
 </ul>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191735116.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191735116.png" alt="img"></p>
 <h4 id="2-flex-wrap属性"><a href="#2-flex-wrap属性" class="headerlink" title="2.flex-wrap属性"></a>2.flex-wrap属性</h4><p>默认情况下，项目都排在一条线（又称”轴线”）上。<code>flex-wrap</code>属性定义，如果一条轴线排不下，如何换行。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191737560.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191737560.png" alt="img"></p>
 <p>它可能取三个值。</p>
 <p>（1）<code>nowrap</code>（默认）：不换行。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191737966.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191737966.png" alt="img"></p>
 <p>（2）<code>wrap</code>：换行，第一行在上方。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191737808.jpeg" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191737808.jpeg" alt="img"></p>
 <p>（3）<code>wrap-reverse</code>：换行，第一行在下方。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191737174.jpeg" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191737174.jpeg" alt="img"></p>
 <h4 id="3-flex-flow"><a href="#3-flex-flow" class="headerlink" title="3.flex-flow"></a>3.flex-flow</h4><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
 <h4 id="4-justify-content属性"><a href="#4-justify-content属性" class="headerlink" title="4.justify-content属性"></a>4.justify-content属性</h4><p><code>justify-content</code>属性定义了项目在主轴上的对齐方式。</p>
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191739908.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191739908.png" alt="img"></p>
 <p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
 <blockquote>
 <ul>
@@ -957,7 +957,7 @@ img { content: url(1.jpg); }
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191739324.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191739324.png" alt="img"></p>
 <p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</p>
 <blockquote>
 <ul>
@@ -972,7 +972,7 @@ img { content: url(1.jpg); }
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">align-content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110191833272.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110191833272.png" alt="img"></p>
 <p>该属性可能取6个值。</p>
 <blockquote>
 <ul>
@@ -1002,18 +1002,18 @@ img { content: url(1.jpg); }
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">order</span>: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110192340365.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110192340365.png" alt="img"></p>
 <h4 id="2-flex-grow属性"><a href="#2-flex-grow属性" class="headerlink" title="2.flex-grow属性"></a>2.flex-grow属性</h4><p><code>flex-grow</code>属性定义项目的放大比例，默认为<code>0</code>，即如果存在剩余空间，也不放大。</p>
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: &lt;number&gt;; <span class="comment">/* default 0 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110192341573.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110192341573.png" alt="img"></p>
 <p>如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
 <h4 id="3-flex-shrink属性"><a href="#3-flex-shrink属性" class="headerlink" title="3.flex-shrink属性"></a>3.flex-shrink属性</h4><p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: &lt;number&gt;; <span class="comment">/* default 1 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110192341643.jpeg" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110192341643.jpeg" alt="img"></p>
 <p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
 <p>负值对该属性无效。</p>
 <h4 id="4-flex-basis属性"><a href="#4-flex-basis属性" class="headerlink" title="4.flex-basis属性"></a>4.flex-basis属性</h4><p><code>flex-basis</code>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。</p>
@@ -1031,7 +1031,7 @@ img { content: url(1.jpg); }
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110192343581.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110192343581.png" alt="img"></p>
 <p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
 <p>更多的实战例子可以看 <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE1LzA3L2ZsZXgtZXhhbXBsZXMuaHRtbA==">Flex 布局教程：实例篇——阮一峰</span></p>
 <h1 id="Grid格栅布局"><a href="#Grid格栅布局" class="headerlink" title="Grid格栅布局"></a>Grid格栅布局</h1><p>flex 布局虽然强大，但是只能是一维布局，如果要进行二维布局，那么我们还需要使用 grid。</p>
@@ -1051,7 +1051,7 @@ img { content: url(1.jpg); }
 <p>上面代码中，最外层的<code>&lt;div&gt;</code>元素就是容器，内层的三个<code>&lt;div&gt;</code>元素就是项目。</p>
 <p>注意：项目只能是容器的顶层子元素，不包含项目的子元素，比如上面代码的<code>&lt;p&gt;</code>元素就不是项目。Grid 布局只对项目生效。</p>
 <h3 id="行和列"><a href="#行和列" class="headerlink" title="行和列"></a>行和列</h3><p>容器里面的水平区域称为”行”（row），垂直区域称为”列”（column）。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200019487.png" alt="image-20211020001949419" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200019487.png" alt="image-20211020001949419" style="zoom:50%;" />
 
 <p>上图中，水平的深色区域就是”行”，垂直的深色区域就是”列”。</p>
 <h3 id="单元格"><a href="#单元格" class="headerlink" title="单元格"></a>单元格</h3><p>行和列的交叉区域，称为”单元格”（cell）。</p>
@@ -1062,14 +1062,14 @@ img { content: url(1.jpg); }
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">      <span class="attribute">display</span>: grid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200021086.png" alt="image-20211020002136028" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200021086.png" alt="image-20211020002136028" style="zoom:50%;" />
 
 <p>上图是<code>display: grid</code>的<span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20vZ3V2aXZ1bS9lZGl0P2h0bWwsY3NzLG91dHB1dA==">效果</span>。</p>
 <p>默认情况下，容器元素都是块级元素，但也可以设成行内元素。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">   <span class="attribute">display</span>: inline-grid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面代码指定<code>div</code>是一个行内元素，该元素内部采用网格布局。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200021261.png" alt="image-20211020002147206" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200021261.png" alt="image-20211020002147206" style="zoom:50%;" />
 
 <p>上图是<code>display: inline-grid</code>的<span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20vcWF0aXRhdi9lZGl0P2h0bWwsY3NzLG91dHB1dA==">效果</span>。</p>
 <blockquote>
@@ -1079,7 +1079,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">   <span class="attribute">display</span>: grid;</span><br><span class="line">   grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">   grid-template-rows: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面代码指定了一个三行三列的网格，列宽和行高都是<code>100px</code>。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200847969.png" alt="image-20211020084742891" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200847969.png" alt="image-20211020084742891" style="zoom:33%;" />
 
 <p>除了使用绝对单位，也可以使用百分比。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">   <span class="attribute">display</span>: grid;</span><br><span class="line">   grid-template-<span class="attribute">columns</span>: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">   grid-template-rows: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1096,7 +1096,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>, <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>);</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码、定义了6列，第一列和第四列的宽度为<code>100px</code>，第二列和第五列为<code>20px</code>，第三列和第六列为<code>80px</code>。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200849531.png" alt="image-20211020084907460" style="zoom:25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200849531.png" alt="image-20211020084907460" style="zoom:25%;" />
 
 <p><strong>（3）fr 关键字</strong></p>
 <p>为了方便表示比例关系，网格布局提供了<code>fr</code>关键字（fraction 的缩写，意为”片段”）。如果两列的宽度分别为<code>1fr</code>和<code>2fr</code>，就表示后者是前者的两倍。</p>
@@ -1104,14 +1104,14 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码表示两个相同宽度的列。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200849367.png" alt="image-20211020084940294" style="zoom: 25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200849367.png" alt="image-20211020084940294" style="zoom: 25%;" />
 
 <p><code>fr</code>可以与绝对长度的单位结合使用，这时会非常方便。</p>
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">150px</span> <span class="number">1</span>fr <span class="number">2</span>fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码表示，第一列的宽度为150像素，第二列的宽度是第三列的一半。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200850008.png" alt="image-20211020085024942" style="zoom: 33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200850008.png" alt="image-20211020085024942" style="zoom: 33%;" />
 
 <p><strong>（4）minmax()</strong></p>
 <p><code>minmax()</code>函数产生一个长度范围，表示长度就在这个范围之中。它接受两个参数，分别为最小值和最大值。</p>
@@ -1176,17 +1176,17 @@ img { content: url(1.jpg); }
 <p>比如，区域名为<code>header</code>，则起始位置的水平网格线和垂直网格线叫做<code>header-start</code>，终止位置的水平网格线和垂直网格线叫做<code>header-end</code>。</p>
 </blockquote>
 <h3 id="5-排列顺序：grid-auto-flow"><a href="#5-排列顺序：grid-auto-flow" class="headerlink" title="5.排列顺序：grid-auto-flow"></a>5.排列顺序：grid-auto-flow</h3><p>划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。默认的放置顺序是”先行后列”，即先填满第一行，再开始放入第二行，即下图数字的顺序。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200853732.png" alt="image-20211020085328660" style="zoom:25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200853732.png" alt="image-20211020085328660" style="zoom:25%;" />
 
 <p>这个顺序由<code>grid-auto-flow</code>属性决定，默认值是<code>row</code>，即”先行后列”。也可以将它设成<code>column</code>，变成”先列后行”。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-<span class="attribute">auto</span>-flow: column;</span><br></pre></td></tr></table></figure>
 
 <p>上面代码设置了<code>column</code>以后，放置顺序就变成了下图。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200856788.png" alt="image-20211020085608716" style="zoom:25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200856788.png" alt="image-20211020085608716" style="zoom:25%;" />
 
 <p><code>grid-auto-flow</code>属性除了设置成<code>row</code>和<code>column</code>，还可以设成<code>row dense</code>和<code>column dense</code>。这两个值主要用于，某些项目指定位置以后，剩下的项目怎么自动放置。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20vd2FwZWpvay9lZGl0P2NzcyxvdXRwdXQ=">下面的例子</span>让1号项目和2号项目各占据两个单元格，然后在默认的<code>grid-auto-flow: row</code>情况下，会产生下面这样的布局。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200856749.png" alt="image-20211020085636667" style="zoom:25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200856749.png" alt="image-20211020085636667" style="zoom:25%;" />
 
 <p>上图中，1号项目后面的位置是空的，这是因为3号项目默认跟着2号项目，所以会排在2号项目后面。</p>
 <p>现在修改设置，设为<code>row dense</code>，表示”先行后列”，并且尽可能紧密填满，尽量不出现空格。</p>
@@ -1194,7 +1194,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-<span class="attribute">auto</span>-flow: row dense;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码的效果如下。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200857987.png" alt="image-20211020085708908" style="zoom:25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200857987.png" alt="image-20211020085708908" style="zoom:25%;" />
 
 <p>上图会先填满第一行，再填满第二行，所以3号项目就会紧跟在1号项目的后面。8号项目和9号项目就会排到第四行。</p>
 <p>如果将设置改为<code>column dense</code>，表示”先列后行”，并且尽量填满空格。</p>
@@ -1202,7 +1202,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-<span class="attribute">auto</span>-flow: column dense;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20vcHVwb2R1Yy8xL2VkaXQ/aHRtbCxjc3Msb3V0cHV0">上面代码</span>的效果如下。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200857256.png" alt="image-20211020085736185" style="zoom:25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200857256.png" alt="image-20211020085736185" style="zoom:25%;" />
 
 <p>上图会先填满第一列，再填满第2列，所以3号项目在第一列，4号项目在第二列。8号项目和9号项目被挤到了第四列。</p>
 <h3 id="6-单元格内容位置：place-items-（justify-items-align-items）"><a href="#6-单元格内容位置：place-items-（justify-items-align-items）" class="headerlink" title="6.单元格内容位置：place-items （justify-items + align-items）"></a>6.单元格内容位置：place-items （justify-items + align-items）</h3><p><code>justify-items</code>属性设置单元格内容的水平位置（左中右），<code>align-items</code>属性设置单元格内容的垂直位置（上中下）。</p>
@@ -1222,13 +1222,13 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  justify-items: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码表示，单元格的内容左对齐，效果如下图。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200900280.png" alt="image-20211020090015204" style="zoom: 33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200900280.png" alt="image-20211020090015204" style="zoom: 33%;" />
 
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码表示，单元格的内容头部对齐，效果如下图。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200900077.png" alt="image-20211020090045993" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200900077.png" alt="image-20211020090045993" style="zoom:50%;" />
 
 <p><code>place-items</code>属性是<code>align-items</code>属性和<code>justify-items</code>属性的合并简写形式。</p>
 <blockquote>
@@ -1249,42 +1249,42 @@ img { content: url(1.jpg); }
 <li>start - 对齐容器的起始边框。</li>
 </ul>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200901293.png" alt="image-20211020090119207" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200901293.png" alt="image-20211020090119207" style="zoom:33%;" />
 
 <blockquote>
 <ul>
 <li>end - 对齐容器的结束边框。</li>
 </ul>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200901125.png" alt="image-20211020090141037" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200901125.png" alt="image-20211020090141037" style="zoom:33%;" />
 
 <blockquote>
 <ul>
 <li>stretch - 项目大小没有指定时，拉伸占据整个网格容器。</li>
 </ul>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200902315.png" alt="image-20211020090203225" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200902315.png" alt="image-20211020090203225" style="zoom:33%;" />
 
 <blockquote>
 <ul>
 <li>space-around - 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。    </li>
 </ul>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200902144.png" alt="image-20211020090232055" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200902144.png" alt="image-20211020090232055" style="zoom:33%;" />
 
 <blockquote>
 <ul>
 <li>space-between - 项目与项目的间隔相等，项目与容器边框之间没有间隔。</li>
 </ul>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200902211.png" alt="image-20211020090255132" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200902211.png" alt="image-20211020090255132" style="zoom:33%;" />
 
 <blockquote>
 <ul>
 <li>space-evenly - 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。</li>
 </ul>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200903613.png" alt="image-20211020090313525" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200903613.png" alt="image-20211020090313525" style="zoom:33%;" />
 
 <p><code>place-content</code>属性是<code>align-content</code>属性和<code>justify-content</code>属性的合并简写形式。</p>
 <blockquote>
@@ -1302,7 +1302,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  grid-template-rows: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  grid-<span class="attribute">auto</span>-rows: <span class="number">50px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码指定新增的行高统一为50px（原始的行高为100px）。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200905367.png" alt="image-20211020090519282" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200905367.png" alt="image-20211020090519282" style="zoom:33%;" />
 
 <h3 id="9-grid-template-、grid"><a href="#9-grid-template-、grid" class="headerlink" title="9.grid-template 、grid"></a>9.grid-template 、grid</h3><p><code>grid-template</code>属性是<code>grid-template-columns</code>、<code>grid-template-rows</code>和<code>grid-template-areas</code>这三个属性的合并简写形式。</p>
 <p><code>grid</code>属性是<code>grid-template-rows</code>、<code>grid-template-columns</code>、<code>grid-template-areas</code>、 <code>grid-auto-rows</code>、<code>grid-auto-columns</code>、<code>grid-auto-flow</code>这六个属性的合并简写形式。</p>
@@ -1320,7 +1320,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-column-start: <span class="number">2</span>;</span><br><span class="line">  grid-column-end: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码指定，1号项目的左边框是第二根垂直网格线，右边框是第四根垂直网格线。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200906137.png" alt="image-20211020090642051" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200906137.png" alt="image-20211020090642051" style="zoom:33%;" />
 
 <p>上图中，只指定了1号项目的左右边框，没有指定上下边框，所以会采用默认位置，即上边框是第一根水平网格线，下边框是第二根水平网格线。</p>
 <p>除了1号项目以外，其他项目都没有指定位置，由浏览器自动布局，这时它们的位置由容器的<code>grid-auto-flow</code>属性决定，这个属性的默认值是<code>row</code>，因此会”先行后列”进行排列。读者可以把这个属性的值分别改成<code>column</code>、<code>row dense</code>和<code>column dense</code>，看看其他项目的位置发生了怎样的变化。</p>
@@ -1328,7 +1328,7 @@ img { content: url(1.jpg); }
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-column-start: <span class="number">1</span>;</span><br><span class="line">  grid-column-end: <span class="number">3</span>;</span><br><span class="line">  grid-row-start: <span class="number">2</span>;</span><br><span class="line">  grid-row-end: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200906155.png" alt="image-20211020090659067" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200906155.png" alt="image-20211020090659067" style="zoom:33%;" />
 
 <p>这四个属性的值，除了指定为第几个网格线，还可以指定为网格线的名字。</p>
 <blockquote>
@@ -1340,7 +1340,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-column-start: span <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码表示，1号项目的左边框距离右边框跨越2个网格。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200908844.png" alt="image-20211020090805759" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200908844.png" alt="image-20211020090805759" style="zoom:33%;" />
 
 <p>这与<span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20vbXVqaWhpYi9lZGl0P2h0bWwsY3NzLG91dHB1dA==">下面的代码</span>效果完全一样。</p>
 <blockquote>
@@ -1361,7 +1361,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#b03532</span>;</span><br><span class="line">  grid-column: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">  grid-row: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 等同于 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#b03532</span>;</span><br><span class="line">  grid-column: <span class="number">1</span> / span <span class="number">2</span>;</span><br><span class="line">  grid-row: <span class="number">1</span> / span <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20vdm9sdWdvdy9lZGl0P2h0bWwsY3NzLG91dHB1dA==">上面代码</span>中，项目<code>item-1</code>占据的区域，包括第一行 + 第二行、第一列 + 第二列。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200908770.png" alt="image-20211020090851688" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200908770.png" alt="image-20211020090851688" style="zoom:33%;" />
 
 <p>斜杠以及后面的部分可以省略，默认跨越一个网格。</p>
 <blockquote>
@@ -1373,7 +1373,7 @@ img { content: url(1.jpg); }
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-area: e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9qc2Jpbi5jb20vcW9rZXhvYi9lZGl0P2NzcyxvdXRwdXQ=">上面代码</span>中，1号项目位于<code>e</code>区域，效果如下图。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200911881.png" alt="image-20211020091141796" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200911881.png" alt="image-20211020091141796" style="zoom:33%;" />
 
 <p><code>grid-area</code>属性还可用作<code>grid-row-start</code>、<code>grid-column-start</code>、<code>grid-row-end</code>、<code>grid-column-end</code>的合并简写形式，直接指定项目的位置。</p>
 <blockquote>
@@ -1397,7 +1397,7 @@ img { content: url(1.jpg); }
 <blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span>  &#123;</span><br><span class="line">  justify-self: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110200912706.png" alt="image-20211020091253610" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110200912706.png" alt="image-20211020091253610" style="zoom:33%;" />
 
 <p><code>place-self</code>属性是<code>align-self</code>属性和<code>justify-self</code>属性的合并简写形式。</p>
 <blockquote>
@@ -1496,7 +1496,7 @@ img { content: url(1.jpg); }
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-23 17:58:58" itemprop="dateModified" datetime="2022-03-23T17:58:58+08:00">2022-03-23</time>
+    <time title="Modified: 2022-04-03 15:25:00" itemprop="dateModified" datetime="2022-04-03T15:25:00+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/CSS/FrontEnd/CSS/CSS布局总结" class="item leancloud_visitors" data-flag-title="CSS布局总结" title="Views">
       <span class="icon">
@@ -1546,7 +1546,7 @@ img { content: url(1.jpg); }
     <div class="item right">
       
 
-  <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicm0fdw5cj20zk0m8hdt.jpg" title="CSS3动画入门">
+  <a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevo9j1jj20zk0m8e81.jpg" title="CSS3动画入门">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> CSS</span>
   <h3>CSS3动画入门</h3>
@@ -1586,7 +1586,7 @@ img { content: url(1.jpg); }
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">54</span>
+        <span class="count">53</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -1685,10 +1685,10 @@ img { content: url(1.jpg); }
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
   </li>
 
       
@@ -1700,19 +1700,7 @@ img { content: url(1.jpg); }
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
   </li>
 
       
@@ -1724,7 +1712,7 @@ img { content: url(1.jpg); }
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></span>
   </li>
 
       
@@ -1733,22 +1721,10 @@ img { content: url(1.jpg); }
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
-</div>
-
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
   </li>
 
       
@@ -1760,7 +1736,7 @@ img { content: url(1.jpg); }
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
   </li>
 
       
@@ -1769,22 +1745,10 @@ img { content: url(1.jpg); }
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
+<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
 </div>
 
-    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
   </li>
 
       
@@ -1793,10 +1757,46 @@ img { content: url(1.jpg); }
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
+    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
   </li>
 
   </ul>
