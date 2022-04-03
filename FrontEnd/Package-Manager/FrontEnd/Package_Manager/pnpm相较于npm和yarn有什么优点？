@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281044723.jpeg">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281044723.jpeg">
       </div>
     </header>
     <div id="waves">
@@ -171,14 +171,14 @@ Monkey's Blog = </title>
 <h1 id="二、pnpm特性"><a href="#二、pnpm特性" class="headerlink" title="二、pnpm特性"></a>二、pnpm特性</h1><h2 id="1-速度快"><a href="#1-速度快" class="headerlink" title="1.速度快"></a>1.速度快</h2><blockquote>
 <p>官网描述：pnpm is up to 2x faster than the alternatives</p>
 </blockquote>
-<p><img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20211219172251387.png" alt="image-20211219172251387"></p>
+<p><img data-src="https://raw.githubusercontent.com/monkey-HH/picBed/master/typora/202204031550827.png" alt="image-20211219172251387"></p>
 <p>我们从官网的benchmark测试，可以看到，pnpm的速度在大多情况下比npm和yarn等方式安装包都要更快。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191721947.png" alt="image-20211219172105737" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191721947.png" alt="image-20211219172105737" style="zoom:80%;" />
 
 <h2 id="2-高效利用磁盘空间"><a href="#2-高效利用磁盘空间" class="headerlink" title="2.高效利用磁盘空间"></a>2.高效利用磁盘空间</h2><blockquote>
 <p>官网描述：Files inside node_modules are linked from a single content-addressable storage</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191723832.png" alt="image-20211219172331795"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191723832.png" alt="image-20211219172331795"></p>
 <p>​    pnpm 内部使用<code>基于内容寻址</code>的文件系统来存储磁盘上所有的文件，这个文件系统出色的地方在于:</p>
 <ul>
 <li><strong>不同版本依赖优化</strong>：<u>不会重复安装同一个包</u>。如果依赖于不同版本的依赖项，则只会将不同的文件添加到一个叫store的地方。例如，如果它有 100 个文件，而新版本仅在其中一个文件中有更改，<code>pnpm update</code>则只会将 1 个新文件添加到store中，而不是仅为单个更改克隆整个依赖项。</li>
@@ -188,13 +188,13 @@ Monkey's Blog = </title>
 <h2 id="3-支持-monorepo"><a href="#3-支持-monorepo" class="headerlink" title="3.支持 monorepo"></a>3.支持 monorepo</h2><blockquote>
 <p>官网描述：pnpm has built-in support for multiple packages in a repository</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191727157.png" alt="image-20211219172700118"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191727157.png" alt="image-20211219172700118"></p>
 <p>如果你之前没接触过 monorepo 的概念，建议仔细看看<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vd3d3LnBlcmZvcmNlLmNvbS9ibG9nL3Zjcy93aGF0LW1vbm9yZXBv">这篇文章</span>以及开源的 monorepo 管理工具<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vZ2l0aHViLmNvbS9sZXJuYS9sZXJuYSUyM3JlYWRtZQ==">lerna</span>，项目目录结构可以参考一下 <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vZ2l0aHViLmNvbS9iYWJlbC9iYWJlbA==">babel 仓库</span>。</p>
 <p>pnpm 与 npm/yarn 另外一个很大的不同就是支持了 monorepo，体现在各个子命令的功能上，比如在根目录下 <code>pnpm add A -r</code>, 那么所有的 package 中都会被添加 A 这个依赖，当然也支持 <code>--filter</code>字段来对 package 进行过滤。</p>
 <h2 id="4-严格、安全性高"><a href="#4-严格、安全性高" class="headerlink" title="4.严格、安全性高"></a>4.严格、安全性高</h2><blockquote>
 <p>官网描述：pnpm creates a non-flat node_modules, so code has no access to arbitrary packages</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191727759.png" alt="image-20211219172722728"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191727759.png" alt="image-20211219172722728"></p>
 <p>使用npm和yarn的时候会创建一个扁平化结构的<code>node_modules</code>文件夹存放依赖。</p>
 <p>扁平化结构：如果 A 依赖 B，当我们下载A包的时候，npm3及以上和yarn都会自动下载A包和B包，并对B进行<code>依赖提升</code>的操作，把A依赖、B依赖都放在<code>node_modules</code>根目录下，即A、B此时存放在同级目录下。</p>
 <p>但扁平化结构会有潜在的问题：上面的例子中，我们可以在项目中直接使用B包，但如果A不再依赖这个B包，而我们又使用了B包的依赖，在项目重新install的过程中会删除掉B依赖，则此时会导致项目报错。这种问题我们称之为<code>非法访问子依赖</code>。</p>
@@ -236,7 +236,7 @@ Monkey's Blog = </title>
 <h2 id="2-npm3-yarn的依赖管理"><a href="#2-npm3-yarn的依赖管理" class="headerlink" title="2.npm3/yarn的依赖管理"></a>2.npm3/yarn的依赖管理</h2><p>为了解决上述的问题，npm3/yarn提出了新的解决方案：<code>扁平化依赖树（flatten the dependency tree）</code>。</p>
 <p>这时候我们安装一个包，会将“子”依赖包进行提升，放到<code>node_modules</code>目录下，结果就是“依赖包”及其“子依赖包”都在同级目录。</p>
 <p>如下图所示，我只下载了express一个包，却多了很多子依赖包。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191752085.png" alt="image-20211219175216047" style="zoom: 80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191752085.png" alt="image-20211219175216047" style="zoom: 80%;" />
 
 <p>没错，这就是<code>扁平化</code>依赖管理的结果。相比之前的<code>嵌套结构</code>，现在的目录结构类似下面这样:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">├─ foo</span><br><span class="line">|  ├─ index.js</span><br><span class="line">|  └─ package.json</span><br><span class="line">└─ bar</span><br><span class="line">   ├─ index.js</span><br><span class="line">   └─ package.json</span><br></pre></td></tr></table></figure>
@@ -249,10 +249,12 @@ Monkey's Blog = </title>
 <li>不安全性、非法访问子依赖问题：项目中仍然可以<strong>非法访问</strong>没有声明过依赖的包。</li>
 </ul>
 <p>后面两个都好理解，那第一点中的<code>不确定性</code>是什么意思？这里来详细解释一下。</p>
-<p>假如现在项目依赖两个包 foo 和 bar，这两个包的依赖又是这样的: <img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191801459.webp" alt="img" style="zoom:33%;" /></p>
-<p>那么 npm/yarn install 的时候，通过扁平化处理之后，究竟是这样 <img data-src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b2368d74f8b341f0b1b545198683af59~tplv-k3u1fbpfcp-watermark.awebp" alt="img" style="zoom:33%;" /></p>
+<p>假如现在项目依赖两个包 foo 和 bar，这两个包的依赖又是这样的: <img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191801459.webp" alt="img" style="zoom:33%;" /></p>
+<p>那么 npm/yarn install 的时候，通过扁平化处理之后，究竟是这样</p>
+ <img data-src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b2368d74f8b341f0b1b545198683af59~tplv-k3u1fbpfcp-watermark.awebp" alt="img" style="zoom:33%;" />
+
 <p>还是这样？</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191802995.webp" alt="img" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191802995.webp" alt="img" style="zoom:33%;" />
 
 <p>答案是: 都有可能。取决于 foo 和 bar 在 <code>package.json</code>中的位置，如果 foo 声明在前面，那么就是前面的结构，否则是后面的结构。</p>
 <p>这就是为什么会产生依赖结构的<code>不确定</code>问题，也是 <code>lock 文件</code>诞生的原因，无论是<code>package-lock.json</code>(npm 5.x才出现)还是<code>yarn.lock</code>，都是为了保证 install 之后都产生确定的<code>node_modules</code>结构。</p>
@@ -266,10 +268,10 @@ Monkey's Blog = </title>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install express</span><br></pre></td></tr></table></figure>
 
 <p>随后我们查看一下<code>node_modules</code>目录是如何的，可以通过点击<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3prb2NoYW4vY29tcGFyaW5nLW5vZGUtbW9kdWxlcy90cmVlL21hc3Rlci9wbnBtNS1leGFtcGxl">此处</span>查看：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191846023.png" alt="image-20211219184618976"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191846023.png" alt="image-20211219184618976"></p>
 <p>我们可以看到的<code>node_modules</code>目录下只有一个文件夹叫做<code>.pnpm</code>和一个名为<code>express</code>的<code>软链接（symlink or junction on Windows）</code>。</p>
 <p>似乎我们的express的依赖是在这个express文件夹里，但我们点开看一下：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191848255.png" alt="image-20211219184823220"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191848255.png" alt="image-20211219184823220"></p>
 <p>发现了吗？这里没有<code>node_modules</code>文件夹所以这里的express不是依赖真正的位置。那么我们的express依赖在哪里呢？</p>
 <p>我们继续在 .pnpm 当中寻找:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">▾ node_modules</span><br><span class="line">  ▾ .pnpm</span><br><span class="line">    ▸ accepts@1.3.7</span><br><span class="line">    ▸ array-flatten@1.1.1</span><br><span class="line">    ...</span><br><span class="line">    ▾ express@4.17.1</span><br><span class="line">      ▾ node_modules</span><br><span class="line">        ▸ accepts</span><br><span class="line">        ▸ array-flatten</span><br><span class="line">        ▸ body-parser</span><br><span class="line">        ▸ content-disposition</span><br><span class="line">        ...</span><br><span class="line">        ▸ etag</span><br><span class="line">        ▾ express</span><br><span class="line">          ▸ lib</span><br><span class="line">            History.md</span><br><span class="line">            index.js</span><br><span class="line">            LICENSE</span><br><span class="line">            package.json</span><br><span class="line">            Readme.md</span><br></pre></td></tr></table></figure>
@@ -280,7 +282,7 @@ Monkey's Blog = </title>
 <p>我们现在是找到了<code>express依赖</code>，那么<code>express“子”依赖</code>在哪里呢，我们找啊找，欸找到了：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/.pnpm/express@4.17.1/node_modules/子依赖名</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112191911133.png" alt="image-20211219191151086"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112191911133.png" alt="image-20211219191151086"></p>
 <p>现在我们知道<code>.pnpm/</code>文件夹的用途了。<code>.pnpm/</code>将所有包存储在一个扁平的文件夹结构中，因此每个包都可以在以这种模式命名的文件夹中找到：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/ .pnpm/&lt;name&gt;@&lt;version&gt;/node_modules/&lt;name&gt;</span><br></pre></td></tr></table></figure>
 
@@ -335,7 +337,7 @@ pnpm uninstall xxx
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-28 14:18:30" itemprop="dateModified" datetime="2021-12-28T14:18:30+08:00">2021-12-28</time>
+    <time title="Modified: 2022-04-03 15:50:21" itemprop="dateModified" datetime="2022-04-03T15:50:21+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm相较于npm和yarn有什么优点？" class="item leancloud_visitors" data-flag-title="pnpm相较于npm和yarn有什么优点？" title="Views">
       <span class="icon">
@@ -375,7 +377,7 @@ pnpm uninstall xxx
     <div class="item left">
       
 
-  <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281046623.jpeg" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">
+  <a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281046623.jpeg" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Vue</span>
   <h3>【Vue进阶】浅谈Vue2与Vue3响应式原理</h3>
@@ -385,7 +387,7 @@ pnpm uninstall xxx
     <div class="item right">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202202080034272.png" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202202080034272.png" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</h3>
@@ -425,7 +427,7 @@ pnpm uninstall xxx
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -437,7 +439,7 @@ pnpm uninstall xxx
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -524,10 +526,10 @@ pnpm uninstall xxx
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
   </li>
 
       
@@ -539,31 +541,7 @@ pnpm uninstall xxx
 <a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></span>
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】HTTP基础知识点">【计网基础】HTTP基础知识点</a></span>
   </li>
 
       
@@ -575,7 +553,7 @@ pnpm uninstall xxx
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
   </li>
 
       
@@ -584,22 +562,10 @@ pnpm uninstall xxx
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
   </li>
 
       
@@ -620,10 +586,34 @@ pnpm uninstall xxx
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
   </li>
 
       
@@ -635,7 +625,19 @@ pnpm uninstall xxx
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
   </li>
 
   </ul>
@@ -660,13 +662,13 @@ pnpm uninstall xxx
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

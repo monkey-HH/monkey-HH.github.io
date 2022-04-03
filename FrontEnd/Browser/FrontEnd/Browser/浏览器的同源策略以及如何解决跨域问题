@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>6.2k</span>
+    <span>8.7k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>6 mins.</span>
+    <span>8 mins.</span>
   </span>
 </div>
 
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
       </div>
     </header>
     <div id="waves">
@@ -166,12 +166,13 @@ Monkey's Blog = </title>
 
     <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>前端的同学会经常遇到像下面这样的问题，提示在请求资源的时候，由于同源策略的问题，导致请求失败，让很多新人非常地烦恼，这时候就要通过各种方法来解决这个问题了</p>
 <p>本文将讲解同源策略是什么，应该如何解决这个问题？没有同源策略又会导致什么安全问题呢？</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109142146518.png" alt="image-20210914214624329"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109142146518.png" alt="image-20210914214624329"></p>
 <h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><p><strong>同源策略</strong>是一个重要的安全策略，它用于限制一个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9HbG9zc2FyeS9PcmlnaW4=">origin</span>的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。</p>
+<p>注意，同源策略是浏览器的安全策略，不是HTTP的安全策略。</p>
 <p>1995年，同源政策由 Netscape 公司引入浏览器。所有现代浏览器都实现了某种形式的同源策略，因为它是重要的安全基石。</p>
 <p>那么怎么样才算作同源呢？</p>
 <p><strong>protocol（协议）、domain（域名）、port（端口）三者一致。</strong></p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109142256657.png" alt="image-20210914225616590"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109142256657.png" alt="image-20210914225616590"></p>
 <p>同源的例子</p>
 <table>
 <thead>
@@ -212,7 +213,7 @@ Monkey's Blog = </title>
 <li><p>跨域<strong>写操作</strong>（Cross-origin writes）<em>一般是被允许的</em>。例如链接（links），重定向以及表单提交。特定少数的HTTP请求需要添加 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9IVFRQL0FjY2Vzc19jb250cm9sX0NPUlMjUHJlZmxpZ2h0ZWRfcmVxdWVzdHM=">preflight</span>。</p>
 </li>
 <li><p>跨域<strong>资源嵌入</strong>（Cross-origin embedding）一般是被允许。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109151110313.png" alt="image-20210915111052207" style="zoom:67%;" /></li>
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109151110313.png" alt="image-20210915111052207" style="zoom:67%;" /></li>
 <li><p>跨域<strong>读操作</strong>（Cross-origin reads）<em>一般是不被允许的</em>，但常可以通过内嵌资源来巧妙的进行读取访问。例如，你可以读取嵌入图片的高度和宽度，调用内嵌脚本的方法，或<span class="exturl" data-url="aHR0cHM6Ly9ncmVwdWxhci5jb20vQWJ1c2luZ19IVFRQX1N0YXR1c19Db2Rlc190b19FeHBvc2VfUHJpdmF0ZV9JbmZvcm1hdGlvbg==">availability of an embedded resource</span>.</p>
 <p>（1） Cookie、LocalStorage 和 IndexDB 无法读取。</p>
 <p>（2） DOM 无法获得。</p>
@@ -229,7 +230,7 @@ Monkey's Blog = </title>
 <li>在浏览器中同时打开某电商网站（域名为b.com），同时在打开另一个网站(a.com)，那么在a.com域名下的脚本可以读取b.com下的Cookie，如果Cookie中包含隐私数据，后果不堪设想。</li>
 <li>因为可以随意读取任意域名下的Cookie数据，很容易发起CSRF攻击。</li>
 </ol>
-<h1 id="解决跨域问题方法"><a href="#解决跨域问题方法" class="headerlink" title="解决跨域问题方法"></a>解决跨域问题方法</h1><h2 id="1-jsonp"><a href="#1-jsonp" class="headerlink" title="1.jsonp"></a>1.jsonp</h2><p>利用 <code>&lt;script&gt;</code> 标签没有跨域限制这一特点，老浏览器都支持，网页可以得到从其他来源动态产生的 JSON 数据。<strong>JSONP请求一定需要对方的服务器做支持才可以。</strong></p>
+<h1 id="解决跨域问题方法"><a href="#解决跨域问题方法" class="headerlink" title="解决跨域问题方法"></a>解决跨域问题方法</h1><h2 id="Jsonp"><a href="#Jsonp" class="headerlink" title="Jsonp"></a>Jsonp</h2><p>利用 <code>&lt;script&gt;</code> 标签没有跨域限制这一特点，老浏览器都支持，网页可以得到从其他来源动态产生的 JSON 数据。<strong>JSONP请求一定需要对方的服务器做支持才可以。</strong></p>
 <p>过程如下：</p>
 <ol>
 <li>声明一个回调函数，其函数名(如show)当做参数值，要传递给跨域请求数据的服务器，函数形参为要获取目标数据(服务器返回的data)。</li>
@@ -237,9 +238,12 @@ Monkey's Blog = </title>
 <li>服务器接收到请求后，需要进行特殊的处理：把传递进来的函数名和它需要给你的数据拼接成一个字符串,例如：传递进去的函数名是show，它准备好的数据是<code>show(&#39;我不爱你&#39;)</code>。</li>
 <li>最后服务器把准备的数据通过HTTP协议返回给客户端，客户端再调用执行之前声明的回调函数（show），对返回的数据进行操作。</li>
 </ol>
-<h2 id="2-CORS"><a href="#2-CORS" class="headerlink" title="2.CORS"></a>2.CORS</h2><p><strong>跨域资源共享</strong>（<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9DT1JT">CORS</span>）是一个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9IVFRQ">HTTP</span> -header基础的机制，允许服务器表示任何<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9PcmlnaW4=">源</span>（域，方案，或者端口），比它自己从一个浏览器应该允许资源装载其他。CORS 还依赖于浏览器向托管跨域资源的服务器发出“预检”请求的机制，以检查服务器是否允许实际请求。在该预检中，浏览器发送指示 HTTP 方法的标头和将在实际请求中使用的标头。</p>
+<h2 id="Iframe"><a href="#Iframe" class="headerlink" title="Iframe"></a>Iframe</h2><p>诸多不便</p>
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>webSocket大家应该都有所耳闻，主要是为了客服端和服务端进行全双工的通信。但是这种通信是可以进行跨端口的。所以说我们可以用这个漏洞来进行跨域数据的交互。</p>
+<p>所以说，我们可以很轻松的构建基于webSocket构建一个客服端和服务端。</p>
+<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p><strong>跨域资源共享</strong>（<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9DT1JT">CORS</span>）是一个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9IVFRQ">HTTP</span> -header基础的机制，允许服务器表示任何<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9HbG9zc2FyeS9PcmlnaW4=">源</span>（域，方案，或者端口），比它自己从一个浏览器应该允许资源装载其他。CORS 还依赖于浏览器向托管跨域资源的服务器发出“预检”请求的机制，以检查服务器是否允许实际请求。在该预检中，浏览器发送指示 HTTP 方法的标头和将在实际请求中使用的标头。</p>
 <p>跨域请求的一个示例：<code>https://domain-a.com</code>用于<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest"><code>XMLHttpRequest</code></a>向<code>https://domain-b.com/data.json</code>.</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109162126088.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109162126088.png" alt="img"></p>
 <p>出于安全原因，浏览器会限制从脚本发起的跨域 HTTP 请求。例如，<code>XMLHttpRequest</code>与<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0ZldGNoX0FQSQ==">Fetch API</span>遵循<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvU2VjdXJpdHkvU2FtZS1vcmlnaW5fcG9saWN5">同源策略</span>。这意味着使用这些 API 的 Web 应用程序只能从加载应用程序的同一来源请求资源，==除非来自其他来源的响应包含正确的 CORS 标头。==</p>
 <p>CORS 机制支持浏览器和服务器之间的安全跨域请求和数据传输。现代浏览器在 API<code>XMLHttpRequest</code>或<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvQVBJL0ZldGNoX0FQSQ==">Fetch 中</span>使用 CORS来降低跨域 HTTP 请求的风险。</p>
 <p>实现 CORS 通信的关键在于服务器。</p>
@@ -252,7 +256,7 @@ Monkey's Blog = </title>
 <li>简单请求的 Content-Type 头只能是 text/plain、multipart/form-data 或 application/x-www-form-urlencoded</li>
 </ul>
 <p>对于简单请求，浏览器直接发出 CORS 请求，就是在头部信息中增加一个 origin 字段，表示请求的 “源”（协议 + 端口 + 域名），服务器根据这个值，来决定是否同意本次请求。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109162136695.png" alt="image-20210916213628645"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109162136695.png" alt="image-20210916213628645"></p>
 <p>如果服务器同意，在返回来的请求中，会多出几个头信息，给浏览器看的：</p>
 <ul>
 <li><p>Access-Control-Allow-Origin：表示允许的源，该字段是必须的。它的值要么是请求时 Origin 字段的值，要么是一个 * ，表示接受任意域名的请求。</p>
@@ -267,7 +271,7 @@ Monkey's Blog = </title>
 <h3 id="预检请求（preflighted-requests）"><a href="#预检请求（preflighted-requests）" class="headerlink" title="预检请求（preflighted requests）"></a>预检请求（preflighted requests）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">&#x27;POST&#x27;</span>, <span class="string">&#x27;https://bar.other/resources/post-here/&#x27;</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">&#x27;X-PINGOTHER&#x27;</span>, <span class="string">&#x27;pingpong&#x27;</span>);<span class="comment">//多了个自设请求头，所以不是简单请求了</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/xml&#x27;</span>);</span><br><span class="line">xhr.onreadystatechange = handler;</span><br><span class="line">xhr.send(<span class="string">&#x27;&lt;person&gt;&lt;name&gt;Arun&lt;/name&gt;&lt;/person&gt;&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>与<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests"><em>简单请求</em></a>不同，对于“预检”请求，浏览器首先使用该<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS"><code>OPTIONS</code></a>方法向另一个源上的资源发送 HTTP 请求，以确定实际请求是否可以安全发送。跨站点请求是这样预检的，因为它们可能会对用户数据产生影响。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109162136897.png" alt="image-20210916213617761" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109162136897.png" alt="image-20210916213617761" style="zoom:80%;" />
 
 <p>上面的这两个图的例子来自，详细<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSFRUUC9DT1JT">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</span> ，建议仔细阅读</p>
 <h3 id="那么CORS-为什么要区分『简单请求』和『预检请求』？"><a href="#那么CORS-为什么要区分『简单请求』和『预检请求』？" class="headerlink" title="那么CORS 为什么要区分『简单请求』和『预检请求』？"></a>那么CORS 为什么要区分『简单请求』和『预检请求』？</h3><p>以下回答源自<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tLzc1dGVhbS93M2MvYmxvYi9tYXN0ZXIvYXJ0aWNsZXMvMjAxOTA4MDFfaGF4X0NPUlMlRTQlQjglQkElRTQlQkIlODAlRTQlQjklODglRTglQTYlODElRTUlOEMlQkElRTUlODglODYlRTMlODAlOEUlRTclQUUlODAlRTUlOEQlOTUlRTglQUYlQjclRTYlQjElODIlRTMlODAlOEYlRTUlOTIlOEMlRTMlODAlOEUlRTklQTIlODQlRTYlQTMlODAlRTglQUYlQjclRTYlQjElODIlRTMlODAlOEYlRUYlQkMlOUYubWQ=">文章</span></p>
@@ -291,9 +295,41 @@ Monkey's Blog = </title>
 <p>或者</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&#x27;cors&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">app.use(cors())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>同源策略是浏览器的安全策略，不是HTTP的。所以可以整个和浏览器同源的中间代理服务器。</p>
-<h2 id="Iframe"><a href="#Iframe" class="headerlink" title="Iframe"></a>Iframe</h2><p>诸多不便</p>
-<h2 id="webpack-devtool等自带"><a href="#webpack-devtool等自带" class="headerlink" title="webpack devtool等自带"></a>webpack devtool等自带</h2><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
+
+
+
+
+
+
+
+
+<h2 id="webpack-dev-tool实现开发环境跨域"><a href="#webpack-dev-tool实现开发环境跨域" class="headerlink" title="webpack-dev-tool实现开发环境跨域"></a>webpack-dev-tool实现开发环境跨域</h2><p><code>webpack-dev-server</code>是 <code>webpack</code> 官方推出的一款开发工具，将自动编译和自动刷新浏览器等一系列对开发友好的功能全部集成在了一起</p>
+<p>目的是为了提高开发者日常的开发效率，「只适用在开发阶段」</p>
+<p>关于配置方面，在<code>webpack</code>配置对象属性中通过<code>devServer</code>属性提供，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="attr">devServer</span>: &#123;</span><br><span class="line">        <span class="attr">contentBase</span>: path.join(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">        <span class="attr">compress</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">proxy</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">                <span class="attr">target</span>: <span class="string">&#x27;https://api.github.com&#x27;</span></span><br><span class="line">                <span class="attr">ws</span>: <span class="literal">true</span></span><br><span class="line">                <span class="attr">chanOrigin</span>: <span class="literal">true</span> <span class="comment">// 允许跨域</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>devServetr</code>里面<code>proxy</code>则是关于代理的配置，该属性为对象的形式，对象中每一个属性就是一个代理的规则匹配。</p>
+<p>属性的名称是需要被代理的请求路径前缀，一般为了辨别都会设置前缀为<code>/api</code>，值为对应的代理匹配规则，对应如下：</p>
+<ul>
+<li>target：表示的是代理到的目标地址，即<strong>实际的后台地址</strong>。</li>
+<li>secure：默认情况下不接收转发到https的服务器上，如果希望支持，可以设置为false</li>
+<li>changeOrigin：它表示是否更新代理后请求的 headers 中host地址</li>
+</ul>
+<h2 id="Node-js代理服务器"><a href="#Node-js代理服务器" class="headerlink" title="Node.js代理服务器"></a>Node.js代理服务器</h2><p>使用<code>http-proxy-middleware</code>。</p>
+<p>1.<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vd3d3Lm5wbWpzLmNvbS9wYWNrYWdlL2tvYS1zZXJ2ZXItaHR0cC1wcm94eQ==">koa-server-http-proxy</span>是koa2的中间件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy = <span class="built_in">require</span>(<span class="string">&#x27;koa-server-http-proxy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next)=&gt; &#123;</span><br><span class="line">  ctx.set(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">  ctx.set(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild&#x27;</span>);</span><br><span class="line">  ctx.set(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;PUT, POST, GET, DELETE, OPTIONS&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (ctx.method == <span class="string">&#x27;OPTIONS&#x27;</span>) &#123;</span><br><span class="line">    ctx.body = <span class="number">200</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.use(proxy(<span class="string">&#x27;/yunpos&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">target</span>: <span class="string">&#x27;https://manage-gray.yingqianpos.com&#x27;</span>,</span><br><span class="line">  <span class="attr">pathRewrite</span>: &#123; <span class="string">&#x27;^/yunpos&#x27;</span>: <span class="string">&#x27;&#x27;</span> &#125;,</span><br><span class="line">  <span class="attr">changeOrigin</span>: <span class="literal">true</span></span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8081</span>)</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>2.# <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vd3d3Lm5wbWpzLmNvbS9wYWNrYWdlL2h0dHAtcHJveHktbWlkZGxld2FyZQ==">http-proxy-middleware</span>是node.js提供的代理方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; createProxyMiddleware &#125; = <span class="built_in">require</span>(<span class="string">&#x27;http-proxy-middleware&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">&#x27;/yunpos&#x27;</span>,</span><br><span class="line">  createProxyMiddleware(&#123;</span><br><span class="line">    <span class="attr">target</span>: <span class="string">&#x27;https://manage-gray.yingqianpos.com&#x27;</span>,</span><br><span class="line">    <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;^/yunpos&#x27;</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// rewrite path</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#125;));</span><br><span class="line">app.listen(<span class="number">8081</span>)</span><br><span class="line"></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>虽然现在vue、react的框架已经跨域的请求处理，这对我们前端童靴来说是个福音。但是还是存在某些传统的项目还是需要需要我们通过其他的方式实现跨域请求。node服务端代理以及nginx反向代理目前是我用的最多。</p>
+<h2 id="NginX实现生产环境跨域"><a href="#NginX实现生产环境跨域" class="headerlink" title="NginX实现生产环境跨域"></a>NginX实现生产环境跨域</h2><p><span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vd3d3LmNuYmxvZ3MuY29tL3lzb2NlYW4vcC85MzkyOTA4Lmh0bWw=">Nginx</span>处理跨域的方式其实就是反向反向代理。那什么是反向代理呢？通俗一点说就是我们不能直接访问到目标服务器，这个时候我们就需要通过代理的方式实现，这种对于用户还是我们开发来说都是无感的，因为这些处理都是nginx帮我们处理好了。配置代码如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">listen       <span class="number">8081</span>;</span><br><span class="line">server_name  localhost <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>;  <span class="comment">//当前服务的域名</span></span><br><span class="line"></span><br><span class="line">     </span><br><span class="line">#location ~ ^<span class="regexp">/(yunpos|agent)/</span> &#123;   <span class="comment">//添加访问目录为/apis的代理配置</span></span><br><span class="line">        #proxy_pass  https:<span class="comment">//manage-api.yingqianpos.com;  #线上后台api</span></span><br><span class="line">        #proxy_pass  https:<span class="comment">//yunpos-manageapi.cs.kemai.com.cn;  #测试后台api</span></span><br><span class="line">#&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ol>
 <li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvU2VjdXJpdHkvU2FtZS1vcmlnaW5fcG9saWN5">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDE2LzA0L3NhbWUtb3JpZ2luLXBvbGljeS5odG1s">https://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html</span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTAzNzY3MjI2MzUxNjIzI2hlYWRpbmctMTg=">https://juejin.cn/post/6844903767226351623#heading-18</span></li>
@@ -312,7 +348,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-02-06 17:28:09" itemprop="dateModified" datetime="2022-02-06T17:28:09+08:00">2022-02-06</time>
+    <time title="Modified: 2022-04-03 15:45:34" itemprop="dateModified" datetime="2022-04-03T15:45:34+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/Browser/FrontEnd/Browser/浏览器的同源策略以及如何解决跨域问题" class="item leancloud_visitors" data-flag-title="浏览器的同源策略以及如何解决跨域问题" title="Views">
       <span class="icon">
@@ -352,7 +388,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202201132252496.png" title="【Git】Git基本使用与操作">
+  <a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202201132252496.png" title="【Git】Git基本使用与操作">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Operations</span>
   <h3>【Git】Git基本使用与操作</h3>
@@ -362,10 +398,10 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="同源策略以及如何解决跨域问题">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="jQuery基础知识入门">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> Browser</span>
-  <h3>同源策略以及如何解决跨域问题</h3>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>jQuery基础知识入门</h3>
   </a>
 
     </div>
@@ -384,11 +420,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-number">2.</span> <span class="toc-text">同源策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">安全问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">解决跨域问题方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-jsonp"><span class="toc-number">4.1.</span> <span class="toc-text">1.jsonp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CORS"><span class="toc-number">4.2.</span> <span class="toc-text">2.CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82%EF%BC%9F"><span class="toc-number">4.2.1.</span> <span class="toc-text">简单请求？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82%EF%BC%88preflighted-requests%EF%BC%89"><span class="toc-number">4.2.2.</span> <span class="toc-text">预检请求（preflighted requests）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%A3%E4%B9%88CORS-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8C%BA%E5%88%86%E3%80%8E%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82%E3%80%8F%E5%92%8C%E3%80%8E%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82%E3%80%8F%EF%BC%9F"><span class="toc-number">4.2.3.</span> <span class="toc-text">那么CORS 为什么要区分『简单请求』和『预检请求』？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AECORS"><span class="toc-number">4.2.4.</span> <span class="toc-text">node环境配置CORS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.3.</span> <span class="toc-text">代理服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iframe"><span class="toc-number">4.4.</span> <span class="toc-text">Iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-devtool%E7%AD%89%E8%87%AA%E5%B8%A6"><span class="toc-number">4.5.</span> <span class="toc-text">webpack devtool等自带</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-number">2.</span> <span class="toc-text">同源策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">安全问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">解决跨域问题方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jsonp"><span class="toc-number">4.1.</span> <span class="toc-text">Jsonp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iframe"><span class="toc-number">4.2.</span> <span class="toc-text">Iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebSocket"><span class="toc-number">4.3.</span> <span class="toc-text">WebSocket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CORS"><span class="toc-number">4.4.</span> <span class="toc-text">CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82%EF%BC%9F"><span class="toc-number">4.4.1.</span> <span class="toc-text">简单请求？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82%EF%BC%88preflighted-requests%EF%BC%89"><span class="toc-number">4.4.2.</span> <span class="toc-text">预检请求（preflighted requests）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%A3%E4%B9%88CORS-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8C%BA%E5%88%86%E3%80%8E%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82%E3%80%8F%E5%92%8C%E3%80%8E%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82%E3%80%8F%EF%BC%9F"><span class="toc-number">4.4.3.</span> <span class="toc-text">那么CORS 为什么要区分『简单请求』和『预检请求』？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AECORS"><span class="toc-number">4.4.4.</span> <span class="toc-text">node环境配置CORS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-dev-tool%E5%AE%9E%E7%8E%B0%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E8%B7%A8%E5%9F%9F"><span class="toc-number">4.5.</span> <span class="toc-text">webpack-dev-tool实现开发环境跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.6.</span> <span class="toc-text">Node.js代理服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NginX%E5%AE%9E%E7%8E%B0%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E8%B7%A8%E5%9F%9F"><span class="toc-number">4.7.</span> <span class="toc-text">NginX实现生产环境跨域</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="客户端存储">客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
+          <li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -402,7 +438,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -414,7 +450,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -477,7 +513,7 @@ Monkey's Blog = </title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -499,96 +535,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
-</div>
-
-    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94webpack%E5%BF%AB" title="Vite为什么比webpack快">Vite为什么比webpack快</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
-</div>
-
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
-</div>
-
-    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
+    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
   </li>
 
       
@@ -600,7 +552,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
   </li>
 
       
@@ -612,7 +564,91 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
+</div>
+
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
+</div>
+
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】HTTP基础知识点">【计网基础】HTTP基础知识点</a></span>
   </li>
 
   </ul>
@@ -637,13 +673,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

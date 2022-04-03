@@ -27,12 +27,12 @@
   <meta name="keywords" content="React" />
 
 
-<link rel="canonical" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88">
+<link rel="canonical" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88">
 
 
 
   <title>
-【React基础】常用代码复用及性能优化方案 - React - FrontEnd |
+【React基础】状态复用及性能优化方案 - React - FrontEnd |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,7 +60,7 @@ Monkey's Blog = </title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">【React基础】常用代码复用及性能优化方案
+  <h1 itemprop="name headline">【React基础】状态复用及性能优化方案
   </h1>
   
 <div class="meta">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>16 mins.</span>
+    <span>17 mins.</span>
   </span>
 </div>
 
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281415928.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281415928.png">
       </div>
     </header>
     <div id="waves">
@@ -149,7 +149,7 @@ Monkey's Blog = </title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -204,7 +204,7 @@ Monkey's Blog = </title>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> Form <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap/Form&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> Button <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap/Button&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> Row <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap/Row&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> Col <span class="keyword">from</span> <span class="string">&#x27;react-bootstrap/Col&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">ToDoForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">super</span>(props);</span><br><span class="line">      <span class="built_in">this</span>.state = &#123;<span class="attr">value</span>: <span class="string">&#x27;&#x27;</span>&#125;;</span><br><span class="line">      <span class="built_in">this</span>.input = React.createRef();</span><br><span class="line">  </span><br><span class="line">      <span class="built_in">this</span>.handleSubmit = <span class="built_in">this</span>.handleSubmit.bind(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="title">handleSubmit</span>(<span class="params">event</span>)</span> &#123;</span><br><span class="line">      alert(<span class="string">&#x27;A name was submitted: &#x27;</span> + <span class="built_in">this</span>.input.current.value);</span><br><span class="line">      event.preventDefault();</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">          <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;todoform&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Form</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Form.Group</span> <span class="attr">as</span>=<span class="string">&#123;Row&#125;</span> <span class="attr">controlId</span>=<span class="string">&quot;formHorizontalEmail&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">Form.Label</span> <span class="attr">column</span> <span class="attr">sm</span>=<span class="string">&#123;2&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span>Item<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;/<span class="name">Form.Label</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">Col</span> <span class="attr">sm</span>=<span class="string">&#123;5&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">Form.Control</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Todo Item&quot;</span> <span class="attr">ref</span>=<span class="string">&#123;this.input&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">Col</span> <span class="attr">sm</span>=<span class="string">&#123;5&#125;</span>&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">variant</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleSubmit&#125;</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Add<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;/<span class="name">Col</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">Form.Group</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">Form</span>&gt;</span></span></span><br><span class="line"><span class="xml">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="容器组件"><a href="#容器组件" class="headerlink" title="容器组件"></a>容器组件</h2><p>容器组件是处理获取数据、订阅 redux 存储等的组件。它们包含展示组件和其他容器组件，但是里面从来没有html。</p>
-<h1 id="代码复用方案"><a href="#代码复用方案" class="headerlink" title="代码复用方案"></a>代码复用方案</h1><h2 id="Mixin"><a href="#Mixin" class="headerlink" title="Mixin"></a>Mixin</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112091813820.png" alt="image-20211209181339752"></p>
+<h1 id="代码复用方案"><a href="#代码复用方案" class="headerlink" title="代码复用方案"></a>代码复用方案</h1><h2 id="Mixin"><a href="#Mixin" class="headerlink" title="Mixin"></a>Mixin</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112091813820.png" alt="image-20211209181339752"></p>
 <p>Mixin（混入）是一种通过扩展收集功能的方式，它本质上是将一个对象的属性拷贝到另一个对象上面去，不过你可以拷贝任意多个对象的任意个方法到一个新对象上去，这是继承所不能实现的。它的出现主要就是为了解决代码复用问题。</p>
 <h3 id="React中的Mixin"><a href="#React中的Mixin" class="headerlink" title="React中的Mixin"></a>React中的Mixin</h3><p><code>React</code>也提供了<code>Mixin</code>的实现，如果完全不同的组件有相似的功能，我们可以引入来实现代码复用，当然只有在使用<code>createClass</code>来创建<code>React</code>组件时才可以使用，因为在<code>React</code>组件的<code>es6</code>写法中它已经被废弃掉了。</p>
 <p>例如下面的例子，很多组件或页面都需要记录用户行为，性能指标等。如果我们在每个组件都引入写日志的逻辑，会产生大量重复代码，通过<code>Mixin</code>我们可以解决这一问题：</p>
@@ -286,6 +286,44 @@ Monkey's Blog = </title>
 
 
 <h2 id="Hooks"><a href="#Hooks" class="headerlink" title="Hooks"></a>Hooks</h2><p>此部分在介绍Hooks的文章里。</p>
+<h1 id="状态复用总结"><a href="#状态复用总结" class="headerlink" title="状态复用总结"></a>状态复用总结</h1><ol>
+<li><p>mixin</p>
+<ul>
+<li><p>mixin之间的相互依赖会形成依赖链，当我们改动其中一个mixin的状态的时候，很可能会直接影响其他的mixin，不利于代码维护 </p>
+</li>
+<li><p>不同mixin的之间可能会产生命名冲突 </p>
+</li>
+<li><p>增加组件的复杂性，当我们引入的mixin较多时，会让代码的逻辑变得十分复杂，难以维护。 </p>
+</li>
+</ul>
+</li>
+<li><p>高阶组件</p>
+<ul>
+<li><code>HOC</code>需要在原组件上进行包裹或者嵌套，如果大量使用<code>HOC</code>，将会产生非常多的嵌套，这让调试变得非常困难。 </li>
+</ul>
+</li>
+<li><p>render props</p>
+</li>
+</ol>
+<p>render props是一项通过props来告知组件需要渲染什么内容的技术，它的使用场景是什么呢？ 很多时候我们渲染一个组件，但是它的逻辑和数据却依赖于父组件，这种情况下我们可以把那部分可以复用的逻辑抽取在父组件中，并且在父组件暴露一个参数 render 来接收渲染子组件的方法，并且通过这个方法把子组件所依赖的数据传给它，这种方式就是render props。</p>
+<p>render props的使用思路是控制反转，子组件通过render props的方式定义好渲染自身的函数，父组件再把子组件需要的数据传给这个函数，子组件拿到数据后可以随意的渲染自身。</p>
+<ol start="4">
+<li><p>hooks </p>
+<ul>
+<li><p>减少状态逻辑复用的风险，mixin引入的状态逻辑会相互覆盖，HOC也可能会出现 props 覆盖 </p>
+</li>
+<li><p>避免层级嵌套，让组件更易于理解 </p>
+</li>
+<li><p>使用函数代替 class ，更符合 react 函数式理念 </p>
+</li>
+</ul>
+</li>
+</ol>
+<p>​    问题</p>
+<ul>
+<li>只能在顶层使用 hooks </li>
+<li>只在 React 函数中使用 hooks</li>
+</ul>
 <h1 id="性能优化方案"><a href="#性能优化方案" class="headerlink" title="性能优化方案"></a>性能优化方案</h1><h2 id="React的Reconciliation算法"><a href="#React的Reconciliation算法" class="headerlink" title="React的Reconciliation算法"></a>React的Reconciliation算法</h2><p>Reconciliation（协调）： React 更新 DOM 的过程，当组件的状态变化时，React必须计算是否需要更新DOM，它通过创建一个虚拟DOM并将其与当前DOM进行比较来做到这一点。</p>
 <img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20220218174125899.png" alt="image-20220218174125899" style="zoom:50%;" />
 
@@ -398,9 +436,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-11 10:05:34" itemprop="dateModified" datetime="2022-03-11T10:05:34+08:00">2022-03-11</time>
+    <time title="Modified: 2022-04-03 15:50:40" itemprop="dateModified" datetime="2022-04-03T15:50:40+08:00">2022-04-03</time>
   </span>
-  <span id="FrontEnd/React/FrontEnd/React/【React基础】常用代码复用及性能优化方案" class="item leancloud_visitors" data-flag-title="【React基础】常用代码复用及性能优化方案" title="Views">
+  <span id="FrontEnd/React/FrontEnd/React/【React基础】状态复用及性能优化方案" class="item leancloud_visitors" data-flag-title="【React基础】状态复用及性能优化方案" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -419,7 +457,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】常用代码复用及性能优化方案">https://monkeyhh.top/FrontEnd/React/FrontEnd/React/【React基础】常用代码复用及性能优化方案</a>
+    <a href="https://monkeyhh.top/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】状态复用及性能优化方案">https://monkeyhh.top/FrontEnd/React/FrontEnd/React/【React基础】状态复用及性能优化方案</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -438,7 +476,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301811017.jpeg" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301811017.jpeg" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>接口鉴权方案：Cookie、Session、Token、JWT、单点登录</h3>
@@ -448,10 +486,10 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281409527.png" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">
+  <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281214796.png" title="TypeScript基础知识">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> React</span>
-  <h3>【React基础】Redux介绍以及结合不可变数据的性能优化探索</h3>
+  <span class="category"><i class="ic i-flag"></i> TypeScript</span>
+  <h3>TypeScript基础知识</h3>
   </a>
 
     </div>
@@ -470,11 +508,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">组件的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">函数式组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">类组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">受控组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="toc-number">2.4.</span> <span class="toc-text">非受控组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6"><span class="toc-number">2.5.</span> <span class="toc-text">容器组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%96%B9%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">代码复用方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mixin"><span class="toc-number">3.1.</span> <span class="toc-text">Mixin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React%E4%B8%AD%E7%9A%84Mixin"><span class="toc-number">3.1.2.</span> <span class="toc-text">React中的Mixin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mixin%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">Mixin的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6HOC"><span class="toc-number">3.3.</span> <span class="toc-text">高阶组件HOC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Render-Prop"><span class="toc-number">3.4.</span> <span class="toc-text">Render Prop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hooks"><span class="toc-number">3.5.</span> <span class="toc-text">Hooks</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="toc-number">4.</span> <span class="toc-text">性能优化方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#React%E7%9A%84Reconciliation%E7%AE%97%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">React的Reconciliation算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6%E4%BC%98%E5%8C%96"><span class="toc-number">4.2.</span> <span class="toc-text">类组件优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#React-PureComponent"><span class="toc-number">4.2.1.</span> <span class="toc-text">React.PureComponent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shouldComponentUpdate"><span class="toc-number">4.2.2.</span> <span class="toc-text">shouldComponentUpdate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%BC%98%E5%8C%96"><span class="toc-number">4.3.</span> <span class="toc-text">函数组件优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#React-memo"><span class="toc-number">4.3.1.</span> <span class="toc-text">React.memo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useMemo%E3%80%81useCallback"><span class="toc-number">4.3.2.</span> <span class="toc-text">useMemo、useCallback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%96%B9%E6%A1%88"><span class="toc-number">4.4.</span> <span class="toc-text">通用方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE-shouldComponentUpdate-memo%E6%B5%85%E5%B1%82%E6%AF%94%E5%AF%B9"><span class="toc-number">4.4.1.</span> <span class="toc-text">不可变数据+ shouldComponentUpdate&#x2F;memo浅层比对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Suspense%E9%85%8D%E5%90%88lazy%E8%BF%9B%E8%A1%8C%E7%BB%84%E4%BB%B6%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-number">4.4.2.</span> <span class="toc-text">使用Suspense配合lazy进行组件懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8key%E5%B1%9E%E6%80%A7"><span class="toc-number">4.4.3.</span> <span class="toc-text">列表合理使用key属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">4.5.</span> <span class="toc-text">小总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">组件的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">函数式组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">类组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">受控组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="toc-number">2.4.</span> <span class="toc-text">非受控组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6"><span class="toc-number">2.5.</span> <span class="toc-text">容器组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E6%96%B9%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">代码复用方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mixin"><span class="toc-number">3.1.</span> <span class="toc-text">Mixin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React%E4%B8%AD%E7%9A%84Mixin"><span class="toc-number">3.1.2.</span> <span class="toc-text">React中的Mixin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mixin%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">Mixin的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6HOC"><span class="toc-number">3.3.</span> <span class="toc-text">高阶组件HOC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Render-Prop"><span class="toc-number">3.4.</span> <span class="toc-text">Render Prop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hooks"><span class="toc-number">3.5.</span> <span class="toc-text">Hooks</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">状态复用总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88"><span class="toc-number">5.</span> <span class="toc-text">性能优化方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#React%E7%9A%84Reconciliation%E7%AE%97%E6%B3%95"><span class="toc-number">5.1.</span> <span class="toc-text">React的Reconciliation算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6%E4%BC%98%E5%8C%96"><span class="toc-number">5.2.</span> <span class="toc-text">类组件优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#React-PureComponent"><span class="toc-number">5.2.1.</span> <span class="toc-text">React.PureComponent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shouldComponentUpdate"><span class="toc-number">5.2.2.</span> <span class="toc-text">shouldComponentUpdate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%BC%98%E5%8C%96"><span class="toc-number">5.3.</span> <span class="toc-text">函数组件优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#React-memo"><span class="toc-number">5.3.1.</span> <span class="toc-text">React.memo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useMemo%E3%80%81useCallback"><span class="toc-number">5.3.2.</span> <span class="toc-text">useMemo、useCallback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%96%B9%E6%A1%88"><span class="toc-number">5.4.</span> <span class="toc-text">通用方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE-shouldComponentUpdate-memo%E6%B5%85%E5%B1%82%E6%AF%94%E5%AF%B9"><span class="toc-number">5.4.1.</span> <span class="toc-text">不可变数据+ shouldComponentUpdate&#x2F;memo浅层比对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Suspense%E9%85%8D%E5%90%88lazy%E8%BF%9B%E8%A1%8C%E7%BB%84%E4%BB%B6%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-number">5.4.2.</span> <span class="toc-text">使用Suspense配合lazy进行组件懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8key%E5%B1%9E%E6%80%A7"><span class="toc-number">5.4.3.</span> <span class="toc-text">列表合理使用key属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">5.5.</span> <span class="toc-text">小总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li>
+          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】状态复用及性能优化方案">【React基础】状态复用及性能优化方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -488,7 +526,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -500,7 +538,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -563,7 +601,7 @@ Monkey's Blog = </title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -590,19 +628,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
-</div>
-
-    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
   </li>
 
       
@@ -614,31 +640,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
-</div>
-
-    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></span>
   </li>
 
       
@@ -650,7 +652,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
   </li>
 
       
@@ -659,10 +661,20 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Operations/" title="In Operations">Operations</a>
+</div>
+
+    <span><a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
   </li>
 
       
@@ -674,29 +686,55 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Operations/" title="In Operations">Operations</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></span>
   </li>
 
   </ul>
@@ -721,13 +759,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
@@ -739,7 +777,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'FrontEnd/React/FrontEnd/React/【React基础】常用代码复用及性能优化方案',
+    path: 'FrontEnd/React/FrontEnd/React/【React基础】状态复用及性能优化方案',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

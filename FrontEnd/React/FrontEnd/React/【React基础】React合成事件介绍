@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>6.6k</span>
+    <span>6.8k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281415928.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281415928.png">
       </div>
     </header>
     <div id="waves">
@@ -198,7 +198,7 @@ Monkey's Blog = </title>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Component1</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.test_span.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="built_in">this</span>.handleClick);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleClick = <span class="function">(<span class="params">e</span>) =&gt;</span> <span class="built_in">console</span>.log(e)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span> <span class="attr">ref</span>=<span class="string">&#123;(ref)</span> =&gt;</span> (this.test_span = ref)&#125;&gt;</span></span><br><span class="line"><span class="xml">          123</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>打印结果如下：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281932641.png" alt="image-20211228193251598"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281932641.png" alt="image-20211228193251598"></p>
 <p>每个合成事件都有如下属性：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">boolean bubbles</span><br><span class="line">boolean cancelable</span><br><span class="line">DOMEventTarget currentTarget</span><br><span class="line">boolean defaultPrevented</span><br><span class="line">number eventPhase</span><br><span class="line">boolean isTrusted</span><br><span class="line">DOMEvent nativeEvent</span><br><span class="line"><span class="keyword">void</span> preventDefault()</span><br><span class="line">boolean isDefaultPrevented()</span><br><span class="line"><span class="keyword">void</span> stopPropagation()</span><br><span class="line">boolean isPropagationStopped()</span><br><span class="line"><span class="keyword">void</span> persist()</span><br><span class="line">DOMEventTarget target</span><br><span class="line">number timeStamp</span><br><span class="line">string type</span><br></pre></td></tr></table></figure>
 
@@ -235,16 +235,21 @@ Monkey's Blog = </title>
 
 <p>上面两行是等价的，分别对用箭头函数和bind的写法。</p>
 <p>在这两种情况下，<code>e</code>表示 React 事件的参数将作为 ID 之后的第二个参数传递。使用箭头函数，我们必须显式传递它，但<code>bind</code>任何进一步的参数都会自动转发。</p>
+<h1 id="React合成事件和原生事件的区别？"><a href="#React合成事件和原生事件的区别？" class="headerlink" title="React合成事件和原生事件的区别？"></a>React合成事件和原生事件的区别？</h1><ul>
+<li>命名方式不同</li>
+<li>事件处理函数写法不同</li>
+<li>阻止默认行为方式不同</li>
+</ul>
 <h1 id="React合成事件和原生事件可以混用吗？"><a href="#React合成事件和原生事件可以混用吗？" class="headerlink" title="React合成事件和原生事件可以混用吗？"></a>React合成事件和原生事件可以混用吗？</h1><p>不建议。因为有可能冲突，毕竟合成事件的底层还是原生事件，容易产生一些意外的bug，例如在原生事件里调用了stopPropagation的话会导致合成事件失效。</p>
 <h1 id="React合成事件与原生事件的执行顺序如何？"><a href="#React合成事件与原生事件的执行顺序如何？" class="headerlink" title="React合成事件与原生事件的执行顺序如何？"></a>React合成事件与原生事件的执行顺序如何？</h1><p>我们使用如下代码进行测试</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Component1</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.state = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 添加冒泡阶段事件处理函数</span></span><br><span class="line">    <span class="built_in">this</span>.parent.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom parent&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.child.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom child&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;document&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加捕获阶段事件处理函数</span></span><br><span class="line">    <span class="built_in">this</span>.parent.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom parent&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.child.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom child&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;,<span class="literal">true</span>);</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;document&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;,<span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  childClick = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;react child&quot;</span>, e.eventPhase);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  parentClick = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;react parent&quot;</span>, e.eventPhase);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">&#123;this.parentClick&#125;</span> <span class="attr">ref</span>=<span class="string">&#123;(ref)</span> =&gt;</span> (this.parent = ref)&#125;&gt;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">&#123;this.childClick&#125;</span> <span class="attr">ref</span>=<span class="string">&#123;(ref)</span> =&gt;</span> (this.child = ref)&#125;&gt;</span></span><br><span class="line"><span class="xml">          test</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Component1</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 添加冒泡阶段事件处理函数</span></span><br><span class="line">    <span class="built_in">this</span>.parent.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom parent&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.child.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom child&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;);</span><br><span class="line">      </span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;document&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加捕获阶段事件处理函数</span></span><br><span class="line">    <span class="built_in">this</span>.parent.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom parent&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.child.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;dom child&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;,<span class="literal">true</span>);</span><br><span class="line">      </span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;document&quot;</span>, e.eventPhase);</span><br><span class="line">    &#125;,<span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  childClick = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;react child&quot;</span>, e.eventPhase);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  parentClick = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;react parent&quot;</span>, e.eventPhase);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">&#123;this.parentClick&#125;</span> <span class="attr">ref</span>=<span class="string">&#123;(ref)</span> =&gt;</span> (this.parent = ref)&#125;&gt;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">onClick</span>=<span class="string">&#123;this.childClick&#125;</span> <span class="attr">ref</span>=<span class="string">&#123;(ref)</span> =&gt;</span> (this.child = ref)&#125;&gt;</span></span><br><span class="line"><span class="xml">          test</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281834310.png" alt="image-20211228183430272"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281834310.png" alt="image-20211228183430272"></p>
 <p>由上面的输出我们可以得到一些信息：</p>
 <p>第一点，<strong>React合成事件定义于冒泡阶段</strong>：看图的顺序就很显然能看到啦，不多解释。</p>
-<p>第二点，<strong>合成事件并非定义于元素自身</strong>。看图，没有打印出”react child 2”和”react parent 2”就说明了这点。</p>
-<p>事实上，还有一点不容易从这个例子中看出：**React合成事件定义于元素的<code>挂载的容器</code>**，也就是说，<u>合成事件既不是定义于其本身，更不是定义于document上</u>。我们看图中，后标为2表示事件到达元素自身，而此阶段中没有执行React合成事件处理函数（即控制台没有打印“react child 2”和“react parent 2”），并且React合成事件处理函数执行不仅晚于dom元素处理函数，而且早于document（即”react child 3”和”react parent 3”这两项不仅晚于“dom parent”，而且早于“document 3”）。</p>
+<p>第二点，原生事件先于React合成事件执行。</p>
+<p>第三点，<strong>合成事件并非定义于元素自身</strong>。看图，没有打印出”react child 2”和”react parent 2”就说明了这点。事实上，**React合成事件定义于元素<code>挂载的容器</code>**，也就是说，<u>合成事件既不是定义于其本身，更不是定义于document上</u>。我们看图中，后标为2表示事件到达元素自身，而此阶段中没有执行React合成事件处理函数（即控制台没有打印“react child 2”和“react parent 2”），并且React合成事件处理函数执行不仅晚于dom元素处理函数，而且早于document（即”react child 3”和”react parent 3”这两项不仅晚于“dom parent”，而且早于“document 3”）。</p>
 <blockquote>
 <p>在v17以前，合成事件定义于document，v17及之后已经改了，定义于元素本身的<code>挂载的容器</code>中，至于<code>挂载的容器</code>是什么，下一节揭晓。</p>
 </blockquote>
@@ -256,7 +261,7 @@ Monkey's Blog = </title>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClickCapture=&#123;<span class="built_in">this</span>.parentClick&#125;&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">onClickCapture</span>=<span class="string">&#123;this.childClick&#125;</span> &gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>我们使用这种方式给元素加上捕获阶段的事件处理函数看看结果，代码就不贴了，就是加上<code>onClickCapture</code>就行了：</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281916951.png" alt="image-20211228191620913" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281916951.png" alt="image-20211228191620913" style="zoom:80%;" />
 
 
 
@@ -280,6 +285,12 @@ Monkey's Blog = </title>
 </ul>
 <p>这些变化使 React 更贴近浏览器行为并提高了互操作性。</p>
 <h2 id="取消事件池"><a href="#取消事件池" class="headerlink" title="取消事件池"></a><strong>取消事件池</strong></h2><p><code>React 17 </code>取消事件池复用，也就解决了上述在<code>setTimeout</code>打印，找不到<code>e.target</code>的问题。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>React 合成事件（SyntheticEvent）是 React <strong>模拟原生 DOM 事件所有能力的一个事件对象</strong>。React 的合成事件它并不是绑定在 DOM 元素本身，而是统一绑定在 挂载容器 上。这样做主要有三个目的</p>
+<ul>
+<li>进行浏览器兼容，实现更好的跨平台 </li>
+<li>事件对象可能会被频繁创建和回收，使用事件池来进行统一管理，达到性能优化的目的。自React17开始已经取消。</li>
+</ul>
+<p>合成事件与原生事件的执行顺序：先执行原生事件，再处理 React 合成事件</p>
 
       <div class="tags">
           <a href="/tags/React/" rel="tag"><i class="ic i-tag"></i> React</a>
@@ -294,7 +305,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-11 16:01:59" itemprop="dateModified" datetime="2022-03-11T16:01:59+08:00">2022-03-11</time>
+    <time title="Modified: 2022-04-03 15:50:57" itemprop="dateModified" datetime="2022-04-03T15:50:57+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/React/FrontEnd/React/【React基础】React合成事件介绍" class="item leancloud_visitors" data-flag-title="【React基础】React合成事件介绍" title="Views">
       <span class="icon">
@@ -334,20 +345,20 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】React生命周期">
+  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】Virtual DOM与Diff算法初识">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> React</span>
-  <h3>【React基础】React生命周期</h3>
+  <h3>【React基础】Virtual DOM与Diff算法初识</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】Virtual DOM与Diff算法初识">
+  <a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281136082.png" title="HTML中的meta标签相关知识">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> React</span>
-  <h3>【React基础】Virtual DOM与Diff算法初识</h3>
+  <span class="category"><i class="ic i-flag"></i> HTML</span>
+  <h3>HTML中的meta标签相关知识</h3>
   </a>
 
     </div>
@@ -366,11 +377,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">React为什么要使用合成事件？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">React合成事件的语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%BA%8B%E4%BB%B6%E6%BA%90"><span class="toc-number">3.2.</span> <span class="toc-text">获取事件源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"><span class="toc-number">3.3.</span> <span class="toc-text">阻止默认行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD"><span class="toc-number">3.4.</span> <span class="toc-text">阻止事件传播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0this%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.5.</span> <span class="toc-text">React事件处理函数this的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">3.5.1.</span> <span class="toc-text">（1）使用箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E4%BD%BF%E7%94%A8bind"><span class="toc-number">3.5.2.</span> <span class="toc-text">（2）使用bind</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.6.</span> <span class="toc-text">将参数传递给事件处理程序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">React合成事件和原生事件可以混用吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E5%A6%82%E4%BD%95%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">React合成事件与原生事件的执行顺序如何？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-17-%E4%B8%AD%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E6%94%B9%E5%8A%A8%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">React 17 中事件系统有哪些改动？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E9%BD%90"><span class="toc-number">6.1.</span> <span class="toc-text">与浏览器对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E4%BA%8B%E4%BB%B6%E6%B1%A0"><span class="toc-number">6.2.</span> <span class="toc-text">取消事件池</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">React为什么要使用合成事件？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">React合成事件的语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%BA%8B%E4%BB%B6%E6%BA%90"><span class="toc-number">3.2.</span> <span class="toc-text">获取事件源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"><span class="toc-number">3.3.</span> <span class="toc-text">阻止默认行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD"><span class="toc-number">3.4.</span> <span class="toc-text">阻止事件传播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0this%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.5.</span> <span class="toc-text">React事件处理函数this的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">3.5.1.</span> <span class="toc-text">（1）使用箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E4%BD%BF%E7%94%A8bind"><span class="toc-number">3.5.2.</span> <span class="toc-text">（2）使用bind</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E7%BB%99%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.6.</span> <span class="toc-text">将参数传递给事件处理程序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">React合成事件和原生事件的区别？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">React合成事件和原生事件可以混用吗？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E5%A6%82%E4%BD%95%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">React合成事件与原生事件的执行顺序如何？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-17-%E4%B8%AD%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9C%89%E5%93%AA%E4%BA%9B%E6%94%B9%E5%8A%A8%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">React 17 中事件系统有哪些改动？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E9%BD%90"><span class="toc-number">7.1.</span> <span class="toc-text">与浏览器对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E4%BA%8B%E4%BB%B6%E6%B1%A0"><span class="toc-number">7.2.</span> <span class="toc-text">取消事件池</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li>
+          <li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】状态复用及性能优化方案">【React基础】状态复用及性能优化方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -384,7 +395,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -396,7 +407,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -454,12 +465,12 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -483,22 +494,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
   </li>
 
       
@@ -510,7 +509,41 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
+</div>
+
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Operations/" title="In Operations">Operations</a>
+</div>
+
+    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
   </li>
 
       
@@ -531,10 +564,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></span>
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
   </li>
 
       
@@ -543,22 +576,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
   </li>
 
       
@@ -579,22 +600,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></span>
   </li>
 
   </ul>
@@ -619,13 +628,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

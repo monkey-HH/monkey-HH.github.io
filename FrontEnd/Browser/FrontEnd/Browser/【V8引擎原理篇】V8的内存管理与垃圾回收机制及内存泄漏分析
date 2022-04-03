@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202080034272.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202080034272.png">
       </div>
     </header>
     <div id="waves">
@@ -164,7 +164,9 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="内存管理基础"><a href="#内存管理基础" class="headerlink" title="内存管理基础"></a>内存管理基础</h1><h2 id="变量存储：堆空间和栈空间"><a href="#变量存储：堆空间和栈空间" class="headerlink" title="变量存储：堆空间和栈空间"></a>变量存储：堆空间和栈空间</h2><p>首先我们来看一个例子：</p>
+    <img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202080034272.png" style="zoom:50%;" />
+
+<h1 id="内存管理基础"><a href="#内存管理基础" class="headerlink" title="内存管理基础"></a>内存管理基础</h1><h2 id="变量存储：堆空间和栈空间"><a href="#变量存储：堆空间和栈空间" class="headerlink" title="变量存储：堆空间和栈空间"></a>变量存储：堆空间和栈空间</h2><p>首先我们来看一个例子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&quot;foo&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 场景①</span></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 场景②</span></span><br><span class="line"><span class="keyword">var</span> bar = foo</span><br><span class="line">foo.name = <span class="string">&quot;baz&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(bar.name) <span class="comment">//baz</span></span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，变量b和变量bar都是对原有的变量进行了复制，并且对原变量（a、foo）都进行了重新赋值，但两者的输出结果却不同，前者打印出了旧值，后者则打印出了新值，为什么会有这样子的区别呢？</p>
@@ -176,7 +178,7 @@ Monkey's Blog = </title>
 <li>引用类型：其value部分为一个“内存地址”，而这个内存地址，则是指向“堆空间的地址”，即数据实际是存储在堆空间中。</li>
 </ul>
 <p>我们也可以通过开发者工具查看目前堆内存的状态，打开浏览器的开发者工具后，选择“Memory”面板，点击”take snapshot” 获取V8的堆内存快照。接着 “ctrl+f”(win),搜索“foo”。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202071358677.png" alt="image-20220207135839643" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202071358677.png" alt="image-20220207135839643" style="zoom:67%;" />
 
 <p><span class="exturl" data-url="aHR0cHM6Ly9zcGVha2VyZGVjay5jb20vZGVlcHUxMDUvdjgtbWVtb3J5LXVzYWdlLXN0YWNrLWFuZC1oZWFw">点击这里</span>可以查看一个栈内存和堆内存的使用实例。</p>
 <blockquote>
@@ -214,7 +216,7 @@ Monkey's Blog = </title>
 </li>
 </ul>
 <h1 id="V8内存结构"><a href="#V8内存结构" class="headerlink" title="V8内存结构"></a>V8内存结构</h1><p>首先我们来看看V8引擎的内存结构是怎样的。正在运行的程序总是由 V8 进程中分配的一些内存表示，这称为<strong>Resident Set</strong>。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202071720939.png" alt="image-20220207172001634" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202071720939.png" alt="image-20220207172001634" style="zoom:80%;" />
 
 <ul>
 <li>Stack：栈空间，第一节已经介绍过。 </li>
@@ -249,7 +251,7 @@ Monkey's Blog = </title>
 <li>JavaScript是单线程的，如果内存空间过大，会导致GC（garbage collect，垃圾回收）占用线程过长，使得JavaScript代码长时间没有响应。</li>
 </ul>
 <p>stop-the-world的意思为：大部分 V8 垃圾收集工作都是在主渲染线程上执行的，会暂停主线程的执行，导致JavaScript的执行暂停，参见下图，当需要维护太多对象时，通常会导致卡顿。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202071644819.png" alt="image-20220207164433981"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202071644819.png" alt="image-20220207164433981"></p>
 <p>当然了，事实上我们也可以调整堆内存的限制，例如在Node.js中通过下列命令来调整：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 这是调整老生代这部分的内存，单位是MB。后面会详细介绍新生代和老生代内存</span><br><span class="line">node --max-old-space-size=2048 xxx.js </span><br><span class="line">// 这是调整新生代这部分的内存，单位是 KB。</span><br><span class="line">node --max-new-space-size=2048 xxx.js</span><br></pre></td></tr></table></figure>
 
@@ -284,9 +286,9 @@ Monkey's Blog = </title>
 <li>该过程创建一个新对象(07)</li>
 <li>V8 尝试从空间中获取所需的内存，但那里没有可用空间来容纳我们的对象，因此此时会触发Minor GC。</li>
 </ol>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202071746874.png" alt="image-20220207174638754"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202071746874.png" alt="image-20220207174638754"></p>
 <p>此时，Minor GC就会检查From空间里的对象，如果是<strong>存活对象则复制到To内存</strong>中(在<u>To内存中按照顺序从头放置的</u>)，如果是非存活对象旧直接回收内存空间。（我们假设只有 1 3 5是存活的对象）</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202071750671.gif" alt="1"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202071750671.gif" alt="1"></p>
 <p>我们可以注意到，Minor GC主要有三个步骤：</p>
 <ol>
 <li><strong>标记</strong>：把存活对象的内存空间标记</li>
@@ -297,17 +299,17 @@ Monkey's Blog = </title>
 <p>这下子我们会有个疑问。那干脆直接回收非存活对象占用的空间不就完了？后续的操作有用什么用处？</p>
 </blockquote>
 <p>答案就是：<strong>整理内存碎片~</strong></p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202071758959.png" alt="image-20220207175854682"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202071758959.png" alt="image-20220207175854682"></p>
 <p>深色的小方块代表存活对象，白色部分表示待分配的内存，由于堆内存是连续分配的，这样零零散散的空间可能会导致稍微大一点的对象没有办法进行空间分配，这种零散的空间也叫做<strong>内存碎片</strong>。刚刚介绍的新生代垃圾回收算法也叫<strong>Scavenge算法</strong>。</p>
 <p>Scavenge 算法主要就是解决内存碎片的问题，在进行一顿复制之后，To空间变成了这个样子：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202071759026.png" alt="image-20220207175913638"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202071759026.png" alt="image-20220207175913638"></p>
 <p>这样子，就方便后续分配连续内存了。</p>
 <p><strong>Scavenge算法</strong>中，虽然导致新生代空间只剩一半，浪费了空间，但这有利于提高时间性能。</p>
 <blockquote>
 <p>那么对象是如何从新生代转为老生代的呢？</p>
 </blockquote>
 <p>我们来看一下V8官网是怎么说的：V8的堆被分成了不同的区域，我们用“生代”来称呼这些区域。主要分为新生代和老生代。而新生代又进一步划分成nursery和intermediate两个区域，对象初始时会被分配到nursery区域，经过一次gc后，如果对象依然存活，则会被复制到intermediate区域。再经过一次gc如果依然存活，则会被移动到老生代。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202072116677.png" alt="generational-gc"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202072116677.png" alt="generational-gc"></p>
 <p>当一个对象经过新生代垃圾回收中多次复制仍然存活时，它就会被认为是生命周期较长的对象，随后会被移动到老生代内存空间中（也就是<code>晋升</code>）。 </p>
 <p>在上面新生代垃圾回收过程中，并不是每一次都会把对象复制到闲置空间（To）中，而是在复制之前，会先判断两个条件，如果满足条件，则会触发对象晋升，而不是复制到闲置空间中。 </p>
 <p>这两个条件分别是： </p>
@@ -325,7 +327,7 @@ Monkey's Blog = </title>
 <blockquote>
 <p>V8官网称之为“Full Mark-Compact”，有的博文称之为“Mark-Sweep 及 Mark-Compact”的结合。</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202072159336.png" alt="image-20220207215904103"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202072159336.png" alt="image-20220207215904103"></p>
 <ul>
 <li><strong>标记（Mark）：</strong>遍历堆中的所有对象，并标记活着的对象。</li>
 <li><strong>清除（Sweep）：</strong>取回死亡对象所占的内存，将其加入到空闲列表（free-list）中。</li>
@@ -349,7 +351,7 @@ Monkey's Blog = </title>
 
 
 <h2 id="增量标记-Incremental-marking"><a href="#增量标记-Incremental-marking" class="headerlink" title="增量标记(Incremental marking)"></a>增量标记(Incremental marking)</h2><p>由于JS的单线程机制，V8 在进行垃圾回收的时候，不可避免地会阻塞业务逻辑的执行，倘若老生代的垃圾回收任务很重，那么耗时会非常可怕，严重影响应用的性能。那这个时候为了避免这样问题，V8 采取了增量标记的方案，即<strong>将一口气完成的标记任务分为很多小的部分完成</strong>，每做完一个小的部分就”歇”一下，就js应用逻辑执行一会儿，然后再执行下面的部分，如果循环，直到标记阶段完成才进入内存碎片的整理上面来。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202080034956.png" alt="image-20220208003445571" style="zoom: 33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202080034956.png" alt="image-20220208003445571" style="zoom: 33%;" />
 
 
 
@@ -359,7 +361,7 @@ Monkey's Blog = </title>
 <h2 id="惰性清除（Lazy-Sweeping）"><a href="#惰性清除（Lazy-Sweeping）" class="headerlink" title="惰性清除（Lazy Sweeping）"></a>惰性清除（Lazy Sweeping）</h2><p>延迟死亡内存空间的清理，直到需要内存的时候再清理。</p>
 <h1 id="优化后的V8-GC现状"><a href="#优化后的V8-GC现状" class="headerlink" title="优化后的V8 GC现状"></a>优化后的V8 GC现状</h1><h2 id="Minor-GC"><a href="#Minor-GC" class="headerlink" title="Minor GC"></a>Minor GC</h2><p>在V8新生代垃圾回收中，利用并行技术（Parallel），在复制阶段，即把活对象（live objects）从From-space转移（evacuate）到To-space这一个任务，分配给多个辅助线程（Helper Thread）。</p>
 <p>为了避免同一个活对象被多次复制，每个线程在完成一个活动对象的复制过后，要去维护更新“转发指针”，以便其他线程找到该活动对象后可以判断该对象是否已经被复制。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202080114267.png" alt="image-20220208011452529" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202080114267.png" alt="image-20220208011452529" style="zoom:33%;" />
 
 <h2 id="Major-GC"><a href="#Major-GC" class="headerlink" title="Major GC"></a>Major GC</h2><p>在V8老生代垃圾回收中，主要包括了两项优化技术：</p>
 <ul>
@@ -368,7 +370,7 @@ Monkey's Blog = </title>
 <li><p><strong>并行清除和并发整理</strong>：当并发标记完成或到达动态分配极限时，主线程将执行快速标记（）步骤。主线程再次扫描一次根集（root set）以确保所有活动对象都完成了标记。然后和部分的辅助线程一起开始并行整理（parallel compaction）及指针更新（pointer updating）。另外的辅助线程则会进行死亡对象的内存清除工作。</p>
 </li>
 </ul>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202080125807.png" alt="image-20220208012548908" style="zoom:33%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202080125807.png" alt="image-20220208012548908" style="zoom:33%;" />
 
 <h1 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h1><h2 id="什么是内存泄漏？"><a href="#什么是内存泄漏？" class="headerlink" title="什么是内存泄漏？"></a>什么是内存泄漏？</h2><p>当<strong>堆内存</strong>上的一块被动态分配的内存空间不再被JS应用程序使用，但GC却无法对其进行回收以释放内存空间，积累得多了，则会导致无效内存空间增多，无法给应用程序分配内存空间，这便是内存泄漏。</p>
 <blockquote>
@@ -382,7 +384,7 @@ Monkey's Blog = </title>
 <li>停止录制</li>
 </ul>
 <p>随后查看内存区别，如果内存使用率随时间不断上涨，且没有持平、下降的趋势，则大概率出现了内存泄漏的情况。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202080219789.png" alt="image-20220208021915624" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202080219789.png" alt="image-20220208021915624" style="zoom:67%;" />
 
 <p>注：上图只是演示该面板</p>
 <h2 id="内存泄漏的几种情况"><a href="#内存泄漏的几种情况" class="headerlink" title="内存泄漏的几种情况"></a>内存泄漏的几种情况</h2><p>V8 中的垃圾收集等自动内存管理旨在避免此类内存泄漏，例如，循环引用不再是问题，但仍可能由于堆中不需要的引用而发生，并且可能由不同的原因引起。下面描述了一些最常见的原因：</p>
@@ -451,7 +453,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-02-08 12:27:04" itemprop="dateModified" datetime="2022-02-08T12:27:04+08:00">2022-02-08</time>
+    <time title="Modified: 2022-04-03 15:45:26" itemprop="dateModified" datetime="2022-04-03T15:45:26+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/Browser/FrontEnd/Browser/【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析" class="item leancloud_visitors" data-flag-title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析" title="Views">
       <span class="icon">
@@ -491,7 +493,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281044723.jpeg" title="pnpm相较于npm和yarn有什么优点？">
+  <a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281044723.jpeg" title="pnpm相较于npm和yarn有什么优点？">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Package_Manager</span>
   <h3>pnpm相较于npm和yarn有什么优点？</h3>
@@ -501,7 +503,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202202082108316.png" title="【V8引擎原理篇】JavaScript代码解释执行解析">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202202082108316.png" title="【V8引擎原理篇】JavaScript代码解释执行解析">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>【V8引擎原理篇】JavaScript代码解释执行解析</h3>
@@ -527,7 +529,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="客户端存储">客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -541,7 +543,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -553,7 +555,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -640,6 +642,30 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
 </div>
 
@@ -652,10 +678,20 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
+    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Operations/" title="In Operations">Operations</a>
+</div>
+
+    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
   </li>
 
       
@@ -667,7 +703,19 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+</div>
+
+    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
   </li>
 
       
@@ -679,7 +727,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
   </li>
 
       
@@ -691,43 +739,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
-</div>
-
-    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
   </li>
 
       
@@ -739,17 +751,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Operations/" title="In Operations">Operations</a>
-</div>
-
-    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></span>
   </li>
 
   </ul>
@@ -774,13 +776,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

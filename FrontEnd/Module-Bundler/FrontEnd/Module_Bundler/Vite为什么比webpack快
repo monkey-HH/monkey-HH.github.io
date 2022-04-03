@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>3.1k</span>
+    <span>3.2k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281037320.jpeg">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281037320.jpeg">
       </div>
     </header>
     <div id="waves">
@@ -168,13 +168,15 @@ Monkey's Blog = </title>
 <p>而Vite解决了这个问题！</p>
 <p>为什么需要打包？因为在浏览器支持 ES 模块之前，JavaScript 并没有提供的原生机制让开发者以模块化的方式进行开发。这也正是我们对 “打包” 这个概念熟悉的原因：使用工具抓取、处理并将我们的源码模块串联成可以在浏览器中运行的文件。</p>
 <h1 id="webpack为什么慢？"><a href="#webpack为什么慢？" class="headerlink" title="webpack为什么慢？"></a>webpack为什么慢？</h1><p>我们知道，每次更新代码后，webpack都会重新打包，随着项目越来越大打包后的 bundle 也越来越大。因此很可能我们只是改动了一小行的代码，但打包的时候打了半天，webpack-dev-server过很久才起来。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112161735064.png" alt="基于打包器的开发服务器" style="zoom: 40%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112161735064.png" alt="基于打包器的开发服务器" style="zoom: 40%;" />
 
 <blockquote>
 <p>❓既然是打包慢，那webpack为什么要打包？</p>
 </blockquote>
 <p>在ESM还未得到浏览器广泛支持之前，当我们的代码里有ESM的时候，浏览器是无法识别的，因此我们必须每次都对代码进行打包，将可能性出现的ESM进行打包，浏览器才能进行识别。</p>
-<h1 id="为什么Vite在这个时候出来？"><a href="#为什么Vite在这个时候出来？" class="headerlink" title="为什么Vite在这个时候出来？"></a>为什么Vite在这个时候出来？</h1><p>现在大部分现代浏览器（除了 IE 11）已经对原生 ES 模块支持的很好了，而且新版的 Node 也支持 ESM 了。ESM 终于可以在不久的将来一统江湖。原生的就是香，因此Vite应运而生。</p>
+<h1 id="为什么Vite在这个时候出来？"><a href="#为什么Vite在这个时候出来？" class="headerlink" title="为什么Vite在这个时候出来？"></a>为什么Vite在这个时候出来？</h1><p>现在大部分现代浏览器（除了 IE 11）在2020过后的时间点已经<strong>原生支持 ES 模块</strong>，所以我们可以在<strong>开发阶段</strong>省去传统的bundling步骤，直接扔给浏览器ES模块让它来做链接，这样就可以<strong>大幅度提升冷启动和模块热替换速度</strong>。</p>
+<p>而且新版的 Node 也支持 ESM 了。ESM 终于可以在不久的将来一统江湖。原生的就是香，因此Vite应运而生。</p>
+<p>当然了，<strong>在Production生产环境还是要用Bundler</strong>。</p>
 <h1 id="Vite-和-webpack的关系"><a href="#Vite-和-webpack的关系" class="headerlink" title="Vite 和 webpack的关系"></a>Vite 和 webpack的关系</h1><p>以下内容摘抄自<span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzQ3NzEzOTA1NC9hbnN3ZXIvMjE1NjAxOTE4MA==">尤雨溪的回答</span></p>
 <p>从定位来说两者就是不一样的：webpack core 是一个纯打包工具（对标 Rollup），而 Vite 其实是一个更上层的工具链方案，对标的是 （webpack + 针对 web 的常用配置 + webpack-dev-server）。</p>
 <p>webpack core 因为<strong>只针对打包不预设场景</strong>，所以设计得极其灵活，不局限于针对 web 打包，几乎所有可配置的环节都做成了可配置的。这种极度的灵活性对于一些特定场景依然不可替代。但反过来导致的缺点就是配置项极度复杂，插件机制和内部逻辑晦涩难懂，针对常见的 web 也需要大量的配置。另外大量 loader 插件虽然单独发布却存在各种隐式耦合，很容易配置不当互相影响。对于新手来说，把 webpack 从零开始配到跟 Vite 开箱即用功能对等的程度根本是不可能的任务，所以大部分团队/公司要么用的是基于 webpack 包一层的脚手架（umi, vue-cli），或是专门养一个人称 webpack 配置工程师的角色。</p>
@@ -204,7 +206,7 @@ Monkey's Blog = </title>
 <p>Vite 以 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9HdWlkZS9Nb2R1bGVz">原生 ESM</span> 方式提供源码。这实际上是让浏览器接管了打包程序的部分工作：Vite 只需要在浏览器请求源码时进行转换并按需提供源码。根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。</p>
 </li>
 </ul>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112161743061.png" alt="基于 ESM 的开发服务器" style="zoom:40%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112161743061.png" alt="基于 ESM 的开发服务器" style="zoom:40%;" />
 
 <h3 id="更快的HMR"><a href="#更快的HMR" class="headerlink" title="更快的HMR"></a>更快的HMR</h3><p>上面提到了，webpack等传统工具由于每次更新都要重新构建并重载页面（就是页面会刷新），即使采用了 HMR 模式，其热更新速度也会随着应用规模的增长而显著下降。</p>
 <p>而使用Vite后，在项目冷启动的时候，将模块分成<code>依赖</code>和<code>源码</code>，当代码被修改更新过后，<code>依赖</code>就不需要重新加载，只需要更新<code>源码</code>对应的文件九可以了。</p>
@@ -232,7 +234,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-28 10:42:23" itemprop="dateModified" datetime="2021-12-28T10:42:23+08:00">2021-12-28</time>
+    <time title="Modified: 2022-04-03 15:49:16" itemprop="dateModified" datetime="2022-04-03T15:49:16+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite为什么比webpack快" class="item leancloud_visitors" data-flag-title="Vite为什么比webpack快" title="Views">
       <span class="icon">
@@ -272,7 +274,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281250371.png" title="【Nginx】Nginx基础入门">
+  <a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281250371.png" title="【Nginx】Nginx基础入门">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Operations</span>
   <h3>【Nginx】Nginx基础入门</h3>
@@ -322,7 +324,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -334,7 +336,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -421,58 +423,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
-</div>
-
-    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
   </li>
 
       
@@ -484,7 +438,91 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
+</div>
+
+    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】HTTP基础知识点">【计网基础】HTTP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
+</div>
+
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
   </li>
 
       
@@ -497,42 +535,6 @@ Monkey's Blog = </title>
 </div>
 
     <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></span>
   </li>
 
   </ul>
@@ -557,13 +559,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

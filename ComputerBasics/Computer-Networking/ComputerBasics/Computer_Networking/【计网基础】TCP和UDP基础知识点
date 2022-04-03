@@ -27,12 +27,12 @@
   <meta name="keywords" content="Computer_Networking,TCP,UDP" />
 
 
-<link rel="canonical" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
+<link rel="canonical" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
 
 
 
   <title>
-TCP和UDP基础知识点 - Computer_Networking - ComputerBasics |
+【计网基础】TCP和UDP基础知识点 - Computer_Networking - ComputerBasics |
 Monkey's Blog = </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,7 +60,7 @@ Monkey's Blog = </title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">TCP和UDP基础知识点
+  <h1 itemprop="name headline">【计网基础】TCP和UDP基础知识点
   </h1>
   
 <div class="meta">
@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>8.5k</span>
+    <span>9.2k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111020852730.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202111020852730.png">
       </div>
     </header>
     <div id="waves">
@@ -149,7 +149,7 @@ Monkey's Blog = </title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
-  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
+  <link itemprop="mainEntityOfPage" href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -164,8 +164,9 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文将按照下述网络介绍运输层两个重要的协议，TCP和UDP协议</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110101657537.png" alt="image-20211010165730480"></p>
+    <p><span class="exturl" data-url="aHR0cHM6Ly9tcC53ZWl4aW4ucXEuY29tL3MvclgzQV9GQTE5bjRwSTlIaWNJRXNYZw==">https://mp.weixin.qq.com/s/rX3A_FA19n4pI9HicIEsXg</span></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>本文将按照下述网络介绍运输层两个重要的协议，TCP和UDP协议</p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110101657537.png" alt="image-20211010165730480"></p>
 <h1 id="TCP和UDP概述"><a href="#TCP和UDP概述" class="headerlink" title="TCP和UDP概述"></a>TCP和UDP概述</h1><p>运输层向高层用户屏蔽了下面网络核心的细节，使得应用程序看见好像在两个运输层实体之间有一条<u>端到端</u>的逻辑通信信道。</p>
 <p>TCP和UDP都离不开计算机的端口，并实现<code>复用</code>和<code>分用</code>功能</p>
 <ul>
@@ -176,6 +177,7 @@ Monkey's Blog = </title>
 <thead>
 <tr>
 <th align="center">协议</th>
+<th>全称</th>
 <th align="center">特点</th>
 <th align="center">数据单位</th>
 <th align="center">首部大小</th>
@@ -184,21 +186,26 @@ Monkey's Blog = </title>
 </thead>
 <tbody><tr>
 <td align="center">TCP</td>
+<td>Transmission Control Protocol，传输控制协议</td>
 <td align="center">面向连接、可靠、面向字节流（根据情况决定传输报文的长度）、全双工</td>
-<td align="center">TCP报文段</td>
+<td align="center">TCP报文段（Segment）</td>
 <td align="center">20字节</td>
 <td>差错检测、可靠传输、连接管理、流量控制、拥塞控制</td>
 </tr>
 <tr>
 <td align="center">UDP</td>
-<td align="center">无连接、尽最大努力、面向报文（上层报文整个传输）</td>
-<td align="center">UDP用户数据报</td>
+<td>User Datagram Protocol，用户数据报协议</td>
+<td align="center">无连接、尽最大努力、面向报文（这个报文是指上层交付的“完整”报文）</td>
+<td align="center">UDP用户数据报（Datagram）</td>
 <td align="center">8字节</td>
 <td>差错检测</td>
 </tr>
 </tbody></table>
-<h1 id="说说这两个协议的首部"><a href="#说说这两个协议的首部" class="headerlink" title="说说这两个协议的首部"></a>说说这两个协议的首部</h1><h2 id="TCP首部"><a href="#TCP首部" class="headerlink" title="TCP首部"></a>TCP首部</h2><p>TCP报文段首部的前20个字节是固定的(图5-14)，后面有4n字节是根据需要而增加的选项(n是整数)。因此TCP首部的最小长度是20字节。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110091740030.png" alt="image-20211009174041976"></p>
+<h1 id="说说这两个协议的报文"><a href="#说说这两个协议的报文" class="headerlink" title="说说这两个协议的报文"></a>说说这两个协议的报文</h1><h2 id="TCP报文"><a href="#TCP报文" class="headerlink" title="TCP报文"></a>TCP报文</h2><blockquote>
+<p>TCP报文首部介绍</p>
+</blockquote>
+<p>TCP报文段首部的前20个字节是固定的(图5-14)，后面有4n字节是根据需要而增加的选项(n是整数)。因此TCP首部的最小长度是20字节。</p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110091740030.png" alt="image-20211009174041976"></p>
 <h3 id="源端口、目标端口"><a href="#源端口、目标端口" class="headerlink" title="源端口、目标端口"></a>源端口、目标端口</h3><p>如何标识唯一标识一个连接？答案是 TCP 连接的<code>四元组</code>——源 IP、源端口、目标 IP 和目标端口。</p>
 <p>那 TCP 报文怎么没有源 IP 和目标 IP 呢？这是因为在 IP 层就已经处理了 IP 。TCP 只需要记录两者的端口即可。</p>
 <h3 id="序列号"><a href="#序列号" class="headerlink" title="序列号"></a>序列号</h3><p>即<code>Sequence number</code>, 指的是本报文段第一个字节的序列号。</p>
@@ -219,7 +226,7 @@ Monkey's Blog = </title>
 <h3 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h3><p>占用两个字节，也就是 16 位，但实际上是不够用的。因此 TCP 引入了窗口缩放的选项，作为窗口缩放的比例因子，这个比例因子的范围在 0 ~ 14，比例因子可以将窗口的值扩大为原来的 2 ^ n 次方。</p>
 <h3 id="校验和"><a href="#校验和" class="headerlink" title="校验和"></a>校验和</h3><p>占用两个字节，防止传输过程中数据包有损坏，如果遇到校验和有差错的报文，TCP 直接丢弃之，等待重传。</p>
 <h3 id="可选项"><a href="#可选项" class="headerlink" title="可选项"></a>可选项</h3><p>可选项的格式如下:</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110091743818.webp" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110091743818.webp" alt="img"></p>
 <p>常用的可选项有以下几个:</p>
 <ul>
 <li>TimeStamp: TCP 时间戳，后面详细介绍。</li>
@@ -231,24 +238,34 @@ Monkey's Blog = </title>
 <p>发送方再发送报文段时把当前时钟的时间值放入时间戳字段，接收方在确认该报文段时把时间戳字段值复制到时间戳放回去，发送方收到确认报文后，可以准确算出RTT</p>
 <p>（2）防止序号重复</p>
 <p>前面提到，序号是有限的，只有32位，所以可以通过时间戳将序号相同的报文段区分开。</p>
-<h2 id="UDP首部"><a href="#UDP首部" class="headerlink" title="UDP首部"></a>UDP首部</h2><ul>
+<h2 id="UDP报文"><a href="#UDP报文" class="headerlink" title="UDP报文"></a>UDP报文</h2><blockquote>
+<p>UDP报文首部介绍</p>
+</blockquote>
+<ul>
 <li>(1)<strong>源端口</strong>：2字节长，在需要对方回信时选用。不需要时可用全0。</li>
 <li>(2)<strong>目的端口</strong>：2字节长，这在终点交付报文时必须使用。</li>
 <li>(3)<strong>长度</strong>：2字节长，表示UDP用户数据报的长度，其最小值是8 (仅有首部)。</li>
 <li>(4)<strong>检验和</strong>：2字节长，检测UDP用户数据报在传输中是否有错。有错就丢弃。</li>
 </ul>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110091720459.png" alt="image-20211009172037414"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110091720459.png" alt="image-20211009172037414"></p>
+<blockquote>
+<p>UDP报文数据部分介绍：UDP是面向报文的！</p>
+</blockquote>
+<p>什么意思呢？应用层交下来的报文，UDP不做任何处理，不合并，不拆分，直接加上UDP首部，然后向下交付给IP层。</p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201301559962.png" alt="image-20220130155945436"></p>
 <blockquote>
 <p>UDP是怎么做到差错检测的？</p>
+</blockquote>
 <p>在计算检验和时，会有一个<strong>伪首部</strong>（只用于计算检验和，不传输），UDP计算检验和的方法和计算IP数据报首部检验和的方法相似。但不同的是: IP 数据报的检验和只检验IP数据报的首部，但UDP的检验和是把首部和数据部分一起都检验。</p>
 <p>然后从左到右，每2个字节为一行（检验和设为全0），排满，然后相加，结果取反码。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110091804812.png" alt="image-20211009180403750"></p>
-</blockquote>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110091804812.png" alt="image-20211009180403750"></p>
 <h1 id="说说TCP的连接管理"><a href="#说说TCP的连接管理" class="headerlink" title="说说TCP的连接管理"></a>说说TCP的连接管理</h1><h2 id="TCP三次握手建立连接"><a href="#TCP三次握手建立连接" class="headerlink" title="TCP三次握手建立连接"></a>TCP三次握手建立连接</h2><p>其实应该叫三报文握手，因为其实是一次握手交换了三个报文。</p>
-<p>建立连接要确认的<strong>双方</strong>都要具备的能力： <code>发送的能力</code>和<code>接收的能力</code>，于是有三次握手的过程</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110091802899.png" alt="image-20211009180219849"></p>
+<p>建立连接要确认的<strong>双方</strong>都要具备的能力： <code>发送的能力</code>和<code>接收的能力</code>，于是有三次握手的过程。</p>
+<img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20220323214526133.png" alt="image-20220323214526133" style="zoom: 80%;" />
+
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110091802899.png" alt="image-20211009180219849"></p>
 <ol>
-<li><p>从最开始双方都处于<code>CLOSED</code>状态。然后服务端开始监听某个端口，进入了<code>LISTEN</code>状态。</p>
+<li><p>从最开始双方都处于<code>CLOSED</code>状态。先是服务端主动监听某个端口，处于 LISTEN 状态 。</p>
 </li>
 <li><p>然后客户端主动发起连接，发送 SYN , 自己变成了<code>SYN-SENT</code>状态。</p>
 </li>
@@ -262,10 +279,10 @@ Monkey's Blog = </title>
 <p>规则：凡是需要对端确认的，一定消耗TCP报文的序列号。</p>
 </blockquote>
 <p>SYN 需要对端的确认， 而 ACK 并不需要，因此 SYN 消耗一个序列号而 ACK 不需要。</p>
-<h3 id="为什么不能2次握手"><a href="#为什么不能2次握手" class="headerlink" title="为什么不能2次握手"></a>为什么不能2次握手</h3><p>根本原因: <u>无法确认客户端的接收能力</u>。</p>
-<p>分析如下:</p>
+<h3 id="为什么不能2次握手"><a href="#为什么不能2次握手" class="headerlink" title="为什么不能2次握手"></a>为什么不能2次握手</h3><p>根本原因: <u>会造成资源浪费</u>。</p>
+<p>我们可以从2次握手会引发的问题来回答，分析如下:</p>
 <p>A给B发了SYN包，但超时了没收到确认报文，于是重传，欸，这一次的成功了，然后干完活，把连接断了。</p>
-<p>然后事情来了，第一次的SYN包居然只是堵车，不是丢失，到了B。B就建立了连接，但是A没有，A不知道B 收到了这个自己认为丢失了的SYN包，但后B就被PUA了，造成资源浪费。</p>
+<p>然后事情来了，第一次的SYN包居然只是堵车，不是丢失，到了B。B就建立了连接，但是A没有，A不知道B 收到了这个自己认为丢失了的SYN包，然后B就被PUA了，造成资源浪费。</p>
 <h3 id="为什么不能4次"><a href="#为什么不能4次" class="headerlink" title="为什么不能4次"></a>为什么不能4次</h3><p>3次能干的事，要4次干嘛。</p>
 <h3 id="三次握手的过程中可以携带数据吗？"><a href="#三次握手的过程中可以携带数据吗？" class="headerlink" title="三次握手的过程中可以携带数据吗？"></a>三次握手的过程中可以携带数据吗？</h3><p>第三次握手的时候，可以携带。前两次握手不能携带数据。</p>
 <p>如果前两次握手能够携带数据，那么一旦有人想攻击服务器，那么他只需要在第一次握手中的 SYN 报文中放大量数据，那么服务器势必会消耗更多的<strong>时间</strong>和<strong>内存空间</strong>去处理这些数据，增大了服务器被攻击的风险。</p>
@@ -273,24 +290,31 @@ Monkey's Blog = </title>
 <h3 id="同时向对方请求连接会咋样？"><a href="#同时向对方请求连接会咋样？" class="headerlink" title="同时向对方请求连接会咋样？"></a>同时向对方请求连接会咋样？</h3><p>如果双方同时发 <code>SYN</code>报文，状态变化会是怎样的呢？</p>
 <p>这是一个可能会发生的情况。</p>
 <p>状态变迁如下:</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110091822944.png" alt="image-20211009182251891"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110091822944.png" alt="image-20211009182251891"></p>
 <p>在发送方给接收方发<code>SYN</code>报文的同时，接收方也给发送方发<code>SYN</code>报文，两个人刚上了!</p>
 <p>发完<code>SYN</code>，两者的状态都变为<code>SYN-SENT</code>。</p>
 <p>在各自收到对方的<code>SYN</code>后，两者状态都变为<code>SYN-REVD</code>。</p>
 <p>接着会回复对应的<code>ACK + SYN</code>，这个报文在对方接收之后，两者状态一起变为<code>ESTABLISHED</code>。</p>
 <p>这就是同时打开情况下的状态变迁。</p>
-<h2 id="说说TCP四次挥手断开连接"><a href="#说说TCP四次挥手断开连接" class="headerlink" title="说说TCP四次挥手断开连接"></a>说说TCP四次挥手断开连接</h2><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110091823944.png" alt="image-20211009182350882"></p>
-<p>刚开始双方处于<code>ESTABLISHED</code>状态。</p>
-<p>客户端要断开了，向服务器发送 <code>FIN</code> 报文，FIN是一个标志位，表示finish。</p>
-<p>发送后客户端变成了<code>FIN-WAIT-1</code>状态。注意, 这时候客户端同时也变成了<code>half-close(半关闭)</code>状态，即无法向服务端发送报文，只能接收。</p>
-<p>服务端接收后向客户端确认，变成了<code>CLOSED-WAIT</code>状态。</p>
-<p>客户端接收到了服务端的确认，变成了<code>FIN-WAIT2</code>状态。</p>
-<p>随后，服务端向客户端发送<code>FIN</code>，自己进入<code>LAST-ACK</code>状态，</p>
-<p>客户端收到服务端发来的<code>FIN</code>后，自己变成了<code>TIME-WAIT</code>状态，然后发送 ACK 给服务端。</p>
+<h2 id="说说TCP四次挥手断开连接"><a href="#说说TCP四次挥手断开连接" class="headerlink" title="说说TCP四次挥手断开连接"></a>说说TCP四次挥手断开连接</h2><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110091823944.png" alt="image-20211009182350882"></p>
+<img data-src="https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZeo9xBVAyPJ8iaWCC6sYS843KaMMu2mHfFLZNgiaREDZ5JicRYrlaiciayQjh9HDsacxIbMT0emGUpAX5w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片" style="zoom:67%;" />
+
+<ul>
+<li>客户端打算关闭连接，此时会发送一个 TCP 首部 <code>FIN</code> 标志位被置为 <code>1</code> 的报文，也即 <code>FIN</code> 报文，之后客户端进入 <code>FIN_WAIT_1</code> 状态。</li>
+<li>服务端收到该报文后，就向客户端发送 <code>ACK</code> 应答报文，接着服务端进入 <code>CLOSED_WAIT</code> 状态。</li>
+<li>客户端收到服务端的 <code>ACK</code> 应答报文后，之后进入 <code>FIN_WAIT_2</code> 状态。</li>
+<li>等待服务端处理完数据后，也向客户端发送 <code>FIN</code> 报文，之后服务端进入 <code>LAST_ACK</code> 状态。</li>
+<li>客户端收到服务端的 <code>FIN</code> 报文后，回一个 <code>ACK</code> 应答报文，之后进入 <code>TIME_WAIT</code> 状态</li>
+<li>服务器收到了 <code>ACK</code> 应答报文后，就进入了 <code>CLOSE</code> 状态，至此服务端已经完成连接的关闭。</li>
+<li>客户端在经过 <code>2MSL</code> 一段时间后，自动进入 <code>CLOSE</code> 状态，至此客户端也完成连接的关闭。</li>
+</ul>
+<p>你可以看到，每个方向都需要<strong>一个 FIN 和一个 ACK</strong>，因此通常被称为<strong>四次挥手</strong>。</p>
+<p>这里一点需要注意是：<strong>主动关闭连接的，才有 TIME_WAIT 状态。</strong></p>
 <p>注意了，这个时候，客户端需要等待足够长的时间，具体来说，是 2 个 <code>MSL</code>(<code>Maximum Segment Lifetime，报文最大生存时间</code>), 在这段时间内如果客户端没有收到服务端的重发请求，那么表示 ACK 成功到达，挥手结束，否则客户端重发 ACK。</p>
 <h3 id="为什么A在TIME-WAIT状态必须等待2MSL的时间？"><a href="#为什么A在TIME-WAIT状态必须等待2MSL的时间？" class="headerlink" title="为什么A在TIME-WAIT状态必须等待2MSL的时间？"></a>为什么A在TIME-WAIT状态必须等待2MSL的时间？</h3><p>可以拆分成两个问题</p>
 <p>为什么要等？因为要看看B是不是真的收到A最后一次挥手信息，如果没收到B的超时重传，说明B收到了确认，自己就可以关了。</p>
 <p>为什么是2MSL？那A第四次挥手的信息过去要1MSL，B如果没收到，发超时重传也要1MSL，加起来就2MSL。</p>
+<h3 id="为什么挥手需要四次？"><a href="#为什么挥手需要四次？" class="headerlink" title="为什么挥手需要四次？"></a>为什么挥手需要四次？</h3><p>中间得留时间给服务端处理剩下的数据。</p>
 <h1 id="说说半连接队列和-SYN-Flood-攻击的关系"><a href="#说说半连接队列和-SYN-Flood-攻击的关系" class="headerlink" title="说说半连接队列和 SYN Flood 攻击的关系"></a>说说半连接队列和 SYN Flood 攻击的关系</h1><p>三次握手前，服务端的状态从<code>CLOSED</code>变为<code>LISTEN</code>, 同时在内部创建了两个队列：<strong>半连接队列</strong>和<strong>全连接队列</strong>，即<strong>SYN队列</strong>和<strong>ACCEPT队列</strong>。</p>
 <h3 id="半连接队列"><a href="#半连接队列" class="headerlink" title="半连接队列"></a>半连接队列</h3><p>当客户端发送<code>SYN</code>到服务端，服务端收到以后回复<code>ACK</code>和<code>SYN</code>，状态由<code>LISTEN</code>变为<code>SYN_RCVD</code>，此时这个连接就被推入了<strong>SYN队列</strong>，也就是<strong>半连接队列</strong>。</p>
 <h3 id="全连接队列"><a href="#全连接队列" class="headerlink" title="全连接队列"></a>全连接队列</h3><p>当客户端返回<code>ACK</code>, 服务端接收后，三次握手完成。这个时候连接等待被具体的应用取走，在被取走之前，它会被推入另外一个 TCP 维护的队列，也就是**全连接队列(Accept Queue)**。</p>
@@ -315,30 +339,30 @@ Monkey's Blog = </title>
 <p>重点来了，现在服务端能向客户端发 HTTP 响应了！这是最显著的改变，三次握手还没建立，仅仅验证了 Cookie 的合法性，就可以返回 HTTP 响应了。</p>
 <p>当然，客户端的<code>ACK</code>还得正常传过来，不然怎么叫三次握手嘛。</p>
 <p>流程如下:</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110100940114.png" alt="image-20211010094007054"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110100940114.png" alt="image-20211010094007054"></p>
 <p>注意: 客户端最后握手的 ACK 不一定要等到服务端的 HTTP 响应到达才发送，两个过程没有任何关系。</p>
 <h3 id="TFO-的优势"><a href="#TFO-的优势" class="headerlink" title="TFO 的优势"></a>TFO 的优势</h3><p>TFO 的优势并不在与首轮三次握手，而在于后面的握手，在拿到客户端的 Cookie 并验证通过以后，可以直接返回 HTTP 响应，充分利用了<strong>1 个RTT</strong>(Round-Trip Time，往返时延)的时间<strong>提前进行数据传输</strong>，积累起来还是一个比较大的优势。</p>
 <h1 id="说说TCP如何实现可靠传输？"><a href="#说说TCP如何实现可靠传输？" class="headerlink" title="说说TCP如何实现可靠传输？"></a>说说TCP如何实现可靠传输？</h1><p>TCP的滑动窗口是以<u>字节</u>为单位的。</p>
 <h2 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h2><p>简而言之，就是A发送消息给B，B得发确认消息说收到了，如果A在规定时间内没收到确认消息，那就重新发送消息。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110092301350.png" alt="image-20211009230155299"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110092301350.png" alt="image-20211009230155299"></p>
 <p>那规定时间内A没收到确认消息，有三种情况：</p>
 <ul>
 <li>第一种就是B没收到A的消息，就是上图b情况</li>
 <li>第二种就是确认消息丢了，俗称确认丢失，如下图a</li>
 <li>第三种就是网络堵塞，俗称确认迟到，如下图b</li>
 </ul>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110092305728.png" alt="image-20211009230513671"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110092305728.png" alt="image-20211009230513671"></p>
 <p>这种可靠传输协议就叫做<code>自动重传请求ARQ (Automatic Repeat reQuest)</code>。</p>
 <blockquote>
 <p>任何情况下，都不会是B发个消息过来给A说，你的信息有错啦，重发一遍，这样复杂化了。</p>
 </blockquote>
 <h2 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h2><p>那么很明显这种一次只能发一个消息的方式信道利用率太低了，能不能连续发多个消息啊（即流水线传输的方式）？这就涉及到<code>连续ARQ协议</code></p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110092308095.png" alt="image-20211009230828047"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110092308095.png" alt="image-20211009230828047"></p>
 <p>这样子就可以很好地利用信道，连续发送多个分组，不必每发完一个分组就停顿下来等待确认，可以让信道上一直有数据不间断地传送。</p>
 <p>那么具体是怎么实现呢？这就离不开下面讲的<code>滑动窗口</code>。</p>
 <p>TCP 滑动窗口分为两种: <strong>发送窗口</strong>和<strong>接收窗口</strong>。</p>
 <h2 id="发送窗口"><a href="#发送窗口" class="headerlink" title="发送窗口"></a>发送窗口</h2><p>其结构如下，此处做了一个简化，事实上序号有限，且循环使用，事实上为圆环状：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110092201686.png" alt="image-20211009220146631"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110092201686.png" alt="image-20211009220146631"></p>
 <p>小于P1的是已发送并已收到确认的部分，而大于P3的是不允许发送的部分。</p>
 <ul>
 <li>P3 - P1 = A的<code>发送窗口</code></li>
@@ -347,7 +371,7 @@ Monkey's Blog = </title>
 </ul>
 <p>TCP的<code>发送窗口</code>在<code>发送缓存</code>中滑过，P1前的都会从缓存中移除</p>
 <h2 id="接收窗口"><a href="#接收窗口" class="headerlink" title="接收窗口"></a>接收窗口</h2><p>接收窗口结构和发送窗口类似：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110092219082.png" alt="image-20211009221918035"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110092219082.png" alt="image-20211009221918035"></p>
 <p>可以看到，接收窗口会影响发送窗口，只有接收窗口的左边滑动了（即发送确认），发送窗口的左边才会滑动。</p>
 <h1 id="说说TCP流量控制"><a href="#说说TCP流量控制" class="headerlink" title="说说TCP流量控制"></a>说说TCP流量控制</h1><p>这里结合前面可靠运输部分</p>
 <p>这里我们不用太复杂的例子，以一个最简单的来回来模拟一下流量控制的过程，方便大家理解。</p>
@@ -365,7 +389,7 @@ Monkey's Blog = </title>
 <p>在图5-23中的横坐标是<strong>提供的负载</strong>(offered load), 代表单位时间内输入给网络的分组数目。因此提供的负载也称为输入负载或网络负载。纵坐标是<strong>吞吐量</strong>(throughput)，代表单位时间内从网络输出的分组数目。</p>
 <p>具有理想拥塞控制的网络，在吞吐量饱和之前，网络吞吐量应等于提供的负载，故吞吐量曲线是45°的斜线。但当提供的负载超过某-限度时，由于网络资源受限，吞吐量不再增长而保持为水平线，即吞吐量达到饱和。这就表明提供的负载中有一部分损失掉了(例如，输入到网络的某些分组被某个结点丢弃了)。虽然如此，在这种理想的拥塞控制作用下，网络的吞吐量仍然维持在其所能达到的最大值。</p>
 <p>但是，实际网络的情况就很不相同了。从图5-23可看出，随着提供的负载的增大，网络吞吐量的增长速率逐渐减小。也就是说，在网络吞吐量还未达到饱和时，就已经有-部分的输入分组被丢弃了。当网络的吞吐量明显地小于理想的吞吐量时，网络就进入了<strong>轻度拥塞</strong>的状态。更值得注意的是，当提供的负载达到某一数值时， 网络的吞吐量反而随提供的负载的增大而下降，这时网络就进入了拥塞状态。当提供的负载继续增大到某一数值时， 网络的吞吐量就下降到零，网络已无法工作，这就是所谓的**死锁(deadlock)**。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110092346004.png" alt="image-20211009234652951"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110092346004.png" alt="image-20211009234652951"></p>
 <p>对于拥塞控制来说，TCP 每条连接都需要维护两个核心状态:</p>
 <ul>
 <li>拥塞窗口（Congestion Window，cwnd）</li>
@@ -403,7 +427,7 @@ Monkey's Blog = </title>
 <p>当网络拥塞时，ssthresh就会变为当前<u>拥塞窗口值的一半</u>。</p>
 </blockquote>
 <p>下面来看一个例子：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202110100840182.png" alt="image-20211010084031119"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202110100840182.png" alt="image-20211010084031119"></p>
 <blockquote>
 <p>①注:请注意，因为现在是讲原理，把窗口的单位改为报文段的个数。实际上应当是“拥塞窗口仅增加一个MSS的大小，单位是字节”。</p>
 </blockquote>
@@ -425,6 +449,25 @@ Monkey's Blog = </title>
 </ul>
 <p>以上就是 TCP 拥塞控制的经典算法: <strong>慢启动</strong>、<strong>拥塞避免</strong>、<strong>快速重传和快速恢复</strong>。</p>
 <h1 id="说说UDP怎么改进实现可靠传输？"><a href="#说说UDP怎么改进实现可靠传输？" class="headerlink" title="说说UDP怎么改进实现可靠传输？"></a>说说UDP怎么改进实现可靠传输？</h1><p>挖个坑</p>
+<h1 id="使用UDP和TCP协议的各种应用和应用层协议"><a href="#使用UDP和TCP协议的各种应用和应用层协议" class="headerlink" title="使用UDP和TCP协议的各种应用和应用层协议"></a>使用UDP和TCP协议的各种应用和应用层协议</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201301553459.png" alt="image-20220130155337072"></p>
+<h2 id="应用与协议对应端口号介绍"><a href="#应用与协议对应端口号介绍" class="headerlink" title="应用与协议对应端口号介绍"></a>应用与协议对应端口号介绍</h2><p>端口的概念是由运输层来的，在物理层、数据链路层、网络层都没有这个概念，而更高层因为是在运输层的基础上运行的，因此也会有端口的概念。</p>
+<p>使用了TCP协议的常见端口主要有：</p>
+<ul>
+<li>FTP：文件传输协议，20、21、39000-40000端口，端口20才是真正传输所用到的端口，端口21只用于FTP的登陆认证；</li>
+<li>SSH：安全外壳协议，登录Linux时用的，22端口；</li>
+<li>Telnet：远程登陆端口，23端口；</li>
+<li>HTTP/1.1、HTTP/2：超为本传输协议，80、8080、8081等；</li>
+<li>HTTPS：443端口；</li>
+</ul>
+<p>使用了UDP协议的常见端口主要有：</p>
+<ul>
+<li>HTTP3：超文本传输协议，指的是80、8080等</li>
+</ul>
+<p>顺便列一下常见的软件的默认端口：</p>
+<ul>
+<li>mysql：3306</li>
+<li>mongodb：27017</li>
+</ul>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><p>计算机网络谢希仁第七版</p>
 </li>
@@ -447,9 +490,9 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-28 12:32:06" itemprop="dateModified" datetime="2021-12-28T12:32:06+08:00">2021-12-28</time>
+    <time title="Modified: 2022-04-03 16:06:24" itemprop="dateModified" datetime="2022-04-03T16:06:24+08:00">2022-04-03</time>
   </span>
-  <span id="ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP和UDP基础知识点" class="item leancloud_visitors" data-flag-title="TCP和UDP基础知识点" title="Views">
+  <span id="ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/【计网基础】TCP和UDP基础知识点" class="item leancloud_visitors" data-flag-title="【计网基础】TCP和UDP基础知识点" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -468,7 +511,7 @@ Monkey's Blog = </title>
   </li>
   <li class="link">
     <strong>Post link: </strong>
-    <a href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP和UDP基础知识点</a>
+    <a href="https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】TCP和UDP基础知识点">https://monkeyhh.top/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/【计网基础】TCP和UDP基础知识点</a>
   </li>
   <li class="license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
@@ -487,17 +530,17 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111012245441.png" title="HTTP基础知识点">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的异步编程方案">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> Computer_Networking</span>
-  <h3>HTTP基础知识点</h3>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>JavaScript中的异步编程方案</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111012017215.png" title="Webpack5基础知识点入门">
+  <a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111012017215.png" title="Webpack5基础知识点入门">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Module_Bundler</span>
   <h3>Webpack5基础知识点入门</h3>
@@ -519,11 +562,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP%E5%92%8CUDP%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">TCP和UDP概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E8%BF%99%E4%B8%A4%E4%B8%AA%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%A6%96%E9%83%A8"><span class="toc-number">3.</span> <span class="toc-text">说说这两个协议的首部</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E9%A6%96%E9%83%A8"><span class="toc-number">3.1.</span> <span class="toc-text">TCP首部</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%AB%AF%E5%8F%A3%E3%80%81%E7%9B%AE%E6%A0%87%E7%AB%AF%E5%8F%A3"><span class="toc-number">3.1.1.</span> <span class="toc-text">源端口、目标端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8F%B7"><span class="toc-number">3.1.2.</span> <span class="toc-text">序列号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E5%8F%B7"><span class="toc-number">3.1.3.</span> <span class="toc-text">确认号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%81%8F%E7%A7%BB"><span class="toc-number">3.1.4.</span> <span class="toc-text">数据偏移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E4%BD%8D"><span class="toc-number">3.1.5.</span> <span class="toc-text">标记位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.1.6.</span> <span class="toc-text">窗口大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="toc-number">3.1.7.</span> <span class="toc-text">校验和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E9%A1%B9"><span class="toc-number">3.1.8.</span> <span class="toc-text">可选项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TimeStamp%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="toc-number">3.1.8.1.</span> <span class="toc-text">说说TimeStamp有什么用？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP%E9%A6%96%E9%83%A8"><span class="toc-number">3.2.</span> <span class="toc-text">UDP首部</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E7%9A%84%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">说说TCP的连接管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.</span> <span class="toc-text">TCP三次握手建立连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD2%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">4.1.1.</span> <span class="toc-text">为什么不能2次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD4%E6%AC%A1"><span class="toc-number">4.1.2.</span> <span class="toc-text">为什么不能4次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%8F%AF%E4%BB%A5%E6%90%BA%E5%B8%A6%E6%95%B0%E6%8D%AE%E5%90%97%EF%BC%9F"><span class="toc-number">4.1.3.</span> <span class="toc-text">三次握手的过程中可以携带数据吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%97%B6%E5%90%91%E5%AF%B9%E6%96%B9%E8%AF%B7%E6%B1%82%E8%BF%9E%E6%8E%A5%E4%BC%9A%E5%92%8B%E6%A0%B7%EF%BC%9F"><span class="toc-number">4.1.4.</span> <span class="toc-text">同时向对方请求连接会咋样？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.2.</span> <span class="toc-text">说说TCP四次挥手断开连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88A%E5%9C%A8TIME-WAIT%E7%8A%B6%E6%80%81%E5%BF%85%E9%A1%BB%E7%AD%89%E5%BE%852MSL%E7%9A%84%E6%97%B6%E9%97%B4%EF%BC%9F"><span class="toc-number">4.2.1.</span> <span class="toc-text">为什么A在TIME-WAIT状态必须等待2MSL的时间？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C-SYN-Flood-%E6%94%BB%E5%87%BB%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">5.</span> <span class="toc-text">说说半连接队列和 SYN Flood 攻击的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">5.0.1.</span> <span class="toc-text">半连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">5.0.2.</span> <span class="toc-text">全连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SYN-Flood-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number">5.0.3.</span> <span class="toc-text">SYN Flood 攻击原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%BA%94%E5%AF%B9-SYN-Flood-%E6%94%BB%E5%87%BB%EF%BC%9F"><span class="toc-number">5.0.4.</span> <span class="toc-text">如何应对 SYN Flood 攻击？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%88TFO%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">说说TCP快速打开的原理（TFO）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TFO-%E6%B5%81%E7%A8%8B"><span class="toc-number">6.0.1.</span> <span class="toc-text">TFO 流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E8%BD%AE%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">6.0.1.1.</span> <span class="toc-text">首轮三次握手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E9%9D%A2%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">6.0.1.2.</span> <span class="toc-text">后面的三次握手</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TFO-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">6.0.2.</span> <span class="toc-text">TFO 的优势</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">说说TCP如何实现可靠传输？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE"><span class="toc-number">7.1.</span> <span class="toc-text">停止等待协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E7%BB%ADARQ%E5%8D%8F%E8%AE%AE"><span class="toc-number">7.2.</span> <span class="toc-text">连续ARQ协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E7%AA%97%E5%8F%A3"><span class="toc-number">7.3.</span> <span class="toc-text">发送窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3"><span class="toc-number">7.4.</span> <span class="toc-text">接收窗口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">8.</span> <span class="toc-text">说说TCP流量控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">9.</span> <span class="toc-text">说说TCP拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E7%AA%97%E5%8F%A3"><span class="toc-number">9.0.1.</span> <span class="toc-text">拥塞窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D"><span class="toc-number">9.0.2.</span> <span class="toc-text">慢启动与拥塞避免</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C%E5%BF%AB%E9%80%9F%E6%81%A2%E5%A4%8D"><span class="toc-number">9.0.3.</span> <span class="toc-text">快速重传和快速恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0"><span class="toc-number">9.0.3.1.</span> <span class="toc-text">快速重传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%80%A7%E9%87%8D%E4%BC%A0SACK"><span class="toc-number">9.0.3.2.</span> <span class="toc-text">选择性重传SACK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%81%A2%E5%A4%8D"><span class="toc-number">9.0.3.3.</span> <span class="toc-text">快速恢复</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4UDP%E6%80%8E%E4%B9%88%E6%94%B9%E8%BF%9B%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">说说UDP怎么改进实现可靠传输？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">11.</span> <span class="toc-text">参考</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP%E5%92%8CUDP%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">TCP和UDP概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E8%BF%99%E4%B8%A4%E4%B8%AA%E5%8D%8F%E8%AE%AE%E7%9A%84%E6%8A%A5%E6%96%87"><span class="toc-number">3.</span> <span class="toc-text">说说这两个协议的报文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E6%8A%A5%E6%96%87"><span class="toc-number">3.1.</span> <span class="toc-text">TCP报文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%AB%AF%E5%8F%A3%E3%80%81%E7%9B%AE%E6%A0%87%E7%AB%AF%E5%8F%A3"><span class="toc-number">3.1.1.</span> <span class="toc-text">源端口、目标端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8F%B7"><span class="toc-number">3.1.2.</span> <span class="toc-text">序列号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E5%8F%B7"><span class="toc-number">3.1.3.</span> <span class="toc-text">确认号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%81%8F%E7%A7%BB"><span class="toc-number">3.1.4.</span> <span class="toc-text">数据偏移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E4%BD%8D"><span class="toc-number">3.1.5.</span> <span class="toc-text">标记位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%A4%A7%E5%B0%8F"><span class="toc-number">3.1.6.</span> <span class="toc-text">窗口大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="toc-number">3.1.7.</span> <span class="toc-text">校验和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E9%A1%B9"><span class="toc-number">3.1.8.</span> <span class="toc-text">可选项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TimeStamp%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="toc-number">3.1.8.1.</span> <span class="toc-text">说说TimeStamp有什么用？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP%E6%8A%A5%E6%96%87"><span class="toc-number">3.2.</span> <span class="toc-text">UDP报文</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E7%9A%84%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">说说TCP的连接管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.</span> <span class="toc-text">TCP三次握手建立连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD2%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">4.1.1.</span> <span class="toc-text">为什么不能2次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD4%E6%AC%A1"><span class="toc-number">4.1.2.</span> <span class="toc-text">为什么不能4次</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%8F%AF%E4%BB%A5%E6%90%BA%E5%B8%A6%E6%95%B0%E6%8D%AE%E5%90%97%EF%BC%9F"><span class="toc-number">4.1.3.</span> <span class="toc-text">三次握手的过程中可以携带数据吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%97%B6%E5%90%91%E5%AF%B9%E6%96%B9%E8%AF%B7%E6%B1%82%E8%BF%9E%E6%8E%A5%E4%BC%9A%E5%92%8B%E6%A0%B7%EF%BC%9F"><span class="toc-number">4.1.4.</span> <span class="toc-text">同时向对方请求连接会咋样？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.2.</span> <span class="toc-text">说说TCP四次挥手断开连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88A%E5%9C%A8TIME-WAIT%E7%8A%B6%E6%80%81%E5%BF%85%E9%A1%BB%E7%AD%89%E5%BE%852MSL%E7%9A%84%E6%97%B6%E9%97%B4%EF%BC%9F"><span class="toc-number">4.2.1.</span> <span class="toc-text">为什么A在TIME-WAIT状态必须等待2MSL的时间？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8C%A5%E6%89%8B%E9%9C%80%E8%A6%81%E5%9B%9B%E6%AC%A1%EF%BC%9F"><span class="toc-number">4.2.2.</span> <span class="toc-text">为什么挥手需要四次？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C-SYN-Flood-%E6%94%BB%E5%87%BB%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">5.</span> <span class="toc-text">说说半连接队列和 SYN Flood 攻击的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">5.0.1.</span> <span class="toc-text">半连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">5.0.2.</span> <span class="toc-text">全连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SYN-Flood-%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="toc-number">5.0.3.</span> <span class="toc-text">SYN Flood 攻击原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%BA%94%E5%AF%B9-SYN-Flood-%E6%94%BB%E5%87%BB%EF%BC%9F"><span class="toc-number">5.0.4.</span> <span class="toc-text">如何应对 SYN Flood 攻击？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%88TFO%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">说说TCP快速打开的原理（TFO）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TFO-%E6%B5%81%E7%A8%8B"><span class="toc-number">6.0.1.</span> <span class="toc-text">TFO 流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E8%BD%AE%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">6.0.1.1.</span> <span class="toc-text">首轮三次握手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E9%9D%A2%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">6.0.1.2.</span> <span class="toc-text">后面的三次握手</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TFO-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">6.0.2.</span> <span class="toc-text">TFO 的优势</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">说说TCP如何实现可靠传输？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE"><span class="toc-number">7.1.</span> <span class="toc-text">停止等待协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E7%BB%ADARQ%E5%8D%8F%E8%AE%AE"><span class="toc-number">7.2.</span> <span class="toc-text">连续ARQ协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E7%AA%97%E5%8F%A3"><span class="toc-number">7.3.</span> <span class="toc-text">发送窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E7%AA%97%E5%8F%A3"><span class="toc-number">7.4.</span> <span class="toc-text">接收窗口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">8.</span> <span class="toc-text">说说TCP流量控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">9.</span> <span class="toc-text">说说TCP拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E7%AA%97%E5%8F%A3"><span class="toc-number">9.0.1.</span> <span class="toc-text">拥塞窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D"><span class="toc-number">9.0.2.</span> <span class="toc-text">慢启动与拥塞避免</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0%E5%92%8C%E5%BF%AB%E9%80%9F%E6%81%A2%E5%A4%8D"><span class="toc-number">9.0.3.</span> <span class="toc-text">快速重传和快速恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E9%87%8D%E4%BC%A0"><span class="toc-number">9.0.3.1.</span> <span class="toc-text">快速重传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%80%A7%E9%87%8D%E4%BC%A0SACK"><span class="toc-number">9.0.3.2.</span> <span class="toc-text">选择性重传SACK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%81%A2%E5%A4%8D"><span class="toc-number">9.0.3.3.</span> <span class="toc-text">快速恢复</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4UDP%E6%80%8E%E4%B9%88%E6%94%B9%E8%BF%9B%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">说说UDP怎么改进实现可靠传输？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8UDP%E5%92%8CTCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E5%92%8C%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="toc-number">11.</span> <span class="toc-text">使用UDP和TCP协议的各种应用和应用层协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">11.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%8E%E5%8D%8F%E8%AE%AE%E5%AF%B9%E5%BA%94%E7%AB%AF%E5%8F%A3%E5%8F%B7%E4%BB%8B%E7%BB%8D"><span class="toc-number">11.2.</span> <span class="toc-text">应用与协议对应端口号介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">12.</span> <span class="toc-text">参考</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></li><li><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="HTTP基础知识点">HTTP基础知识点</a></li><li class="active"><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></li>
+          <li><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="【计网基础】HTTP基础知识点">【计网基础】HTTP基础知识点</a></li><li class="active"><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="bookmark" title="【计网基础】TCP和UDP基础知识点">【计网基础】TCP和UDP基础知识点</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -537,7 +580,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -549,7 +592,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -607,7 +650,7 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
@@ -639,7 +682,19 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
   </li>
 
       
@@ -651,55 +706,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
   </li>
 
       
@@ -720,10 +727,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
   </li>
 
       
@@ -732,10 +739,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型与原型链">JavaScript原型与原型链</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】状态复用及性能优化方案">【React基础】状态复用及性能优化方案</a></span>
   </li>
 
       
@@ -747,7 +766,31 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
   </li>
 
   </ul>
@@ -772,13 +815,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
@@ -790,7 +833,7 @@ Monkey's Blog = </title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP和UDP基础知识点',
+    path: 'ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/【计网基础】TCP和UDP基础知识点',
     favicon: {
       show: "（●´3｀●）Goooood",
       hide: "(´Д｀)Booooom"

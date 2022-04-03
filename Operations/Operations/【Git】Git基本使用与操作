@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201132252496.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201132252496.png">
       </div>
     </header>
     <div id="waves">
@@ -161,7 +161,7 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201132252496.png" alt="image-20220113225204435" style="zoom:67%;" />
+    <img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201132252496.png" alt="image-20220113225204435" style="zoom:67%;" />
 
 <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Git可以说是老伙伴了，代码管理神器，开发肯定离不开，前期刚开始学的时候是敲命令的方式来进行Git操作，如提交代码等等，后面吃了别人的安利，发现了IDE集成的Git工具，就开始偷懒，以图形化的方式进行Git操作，但用得久了，命令就有点忘了，今天就重新整理一下，刷新一下记忆。</p>
 <h1 id="Git简介"><a href="#Git简介" class="headerlink" title="Git简介"></a>Git简介</h1><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
@@ -178,27 +178,27 @@ Monkey's Blog = </title>
 <p>打开安装好的Git Bash，然后输入以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@youremail.com&quot;</span></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201837553.png" alt="image-20210920183741507"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201837553.png" alt="image-20210920183741507"></p>
 <p>如果出现了上述的情况，显示命令未找到，是因为命令打错了，注意ssh-keygen和-t要有空格，rsa和-C 之间也要有空格。随后根据命令提示输入三次回车就行。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131607310.png" alt="image-20220113160706996"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131607310.png" alt="image-20220113160706996"></p>
 <p>密钥生成成功之后，会提示在哪里生成密钥文件，如上图所示，则是在C盘生成</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131607624.png" alt="image-20220113160739595"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131607624.png" alt="image-20220113160739595"></p>
 <p>可以看到生成了两个文件，其中一个后面带pub的，表示该文件是公钥，我们要将其添加到GitHub上面去。</p>
 <blockquote>
 <p>第三步：添加密钥至GitHub上</p>
 </blockquote>
 <p>用记事本方式打开<code>id_rsa.pub</code>文件，复制将一大串文字，然后进入GitHub上，依次点击头像、Settings、SSH and GPG keys 、New SSH key。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131609154.png" alt="image-20220113160957051" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131609154.png" alt="image-20220113160957051" style="zoom:50%;" />
 
 <p>然后把复制好的公钥放入其中</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131612515.png" alt="image-20220113161207418" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131612515.png" alt="image-20220113161207418" style="zoom:50%;" />
 
 <blockquote>
 <p>第四步：回到bash命令行工具，进行最后一步</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131613197.png" alt="image-20220113161329162"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131613197.png" alt="image-20220113161329162"></p>
 <p>要输入yes，最后那行说明成功了。</p>
 <blockquote>
 <p>第五步：配置个人用户名和邮箱</p>
@@ -208,7 +208,7 @@ Monkey's Blog = </title>
 
 <p>然后就OK了。 </p>
 <h1 id="Git的工作区、暂存区、仓库"><a href="#Git的工作区、暂存区、仓库" class="headerlink" title="Git的工作区、暂存区、仓库"></a>Git的工作区、暂存区、仓库</h1><p>了解Git如何进行代码的版本控制之前，我们要先了解一下Git的工作区和仓库的概念。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131622611.png" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131622611.png" style="zoom:67%;" />
 
 
 
@@ -234,7 +234,7 @@ Monkey's Blog = </title>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 远程仓库url</span><br></pre></td></tr></table></figure>
 
 <p>url获取方式如下。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131640947.png" alt="image-20220113164007908" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131640947.png" alt="image-20220113164007908" style="zoom: 50%;" />
 
 <p>该命令其实用的不多，因为还得自己手动配置好远程仓库的URL。因此我们一般直接通过下一条命令<code>git clone</code>。</p>
 <h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><p>该命令用于克隆一个远程仓库，会将某个Git仓库克隆到本地，并配置好相关的信息及创建好对应的本地仓库。方便省事</p>
@@ -276,23 +276,23 @@ Monkey's Blog = </title>
 <p>状态一：nothing to commit, working tree clean，即没有修改要被commit，记录工作区修改的工作树为空</p>
 </blockquote>
 <p>这就是初始状态，此处我们没有进行任何的操作，包括改动文件、修改文件、删除文件，也没有执行git add或git commit 等命令。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201262333809.png" alt="image-20220126233354746"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201262333809.png" alt="image-20220126233354746"></p>
 <blockquote>
 <p>状态二：Changes not staged for commit</p>
 </blockquote>
 <p>表示只是文件有修改，但是还没有进行<code>git add</code>和<code>git commit</code>等后续操作。</p>
 <p>我们可以看到红色的字体处告诉了我们哪些文件有变动。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810201932261.png" alt="image-20210810201932261"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810201932261.png" alt="image-20210810201932261"></p>
 <p><code>git status</code>命令可以让我们时刻掌握仓库当前的状态，上面的命令输出告诉我们，<code>README.md</code>被修改过了，但最下面那一行文字说明还没有文件被<code>git add</code>。</p>
 <p>虽然Git告诉我们<code>README.md</code>被修改了，但如果能看看具体修改了什么内容，自然是很好的<code>git diff</code>顾名思义就是查看difference。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131807693.png" alt="image-20220113180757643" style="zoom: 80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131807693.png" alt="image-20220113180757643" style="zoom: 80%;" />
 
 <blockquote>
 <p>状态三：Changes to be committed</p>
 </blockquote>
 <p>表示文件修改后，进行了<code>git add</code>，但还没有<code>git commit</code>。</p>
 <p>可以看到绿色的文字告诉我们哪些文件被修改了且被加入到了暂存区。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810202031038.png" alt="image-20210810202031038"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810202031038.png" alt="image-20210810202031038"></p>
 <blockquote>
 <p>状态四：Your branch is ahead of ‘origin/&lt;branch&gt;’ by 1 commit</p>
 </blockquote>
@@ -302,7 +302,7 @@ Monkey's Blog = </title>
 <li>工作区树空白（nothing to commit，working tree clean）</li>
 <li>领先一个远程仓库一个版本（Your branch is ahead of ‘origin/&lt;branch&gt;’ by 1 commit）</li>
 </ul>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810205355370.png" alt="image-20210810205355370"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810205355370.png" alt="image-20210810205355370"></p>
 <h2 id="git-commit和git-log"><a href="#git-commit和git-log" class="headerlink" title="git commit和git log"></a>git commit和git log</h2><blockquote>
 <p>git commit 用于将暂存区的文件提交到本地仓库，并且创建一个新的版本与历史提交节点。</p>
 </blockquote>
@@ -380,7 +380,7 @@ Monkey's Blog = </title>
 <h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>和git merge一样用于合并分支，但是和git merge有明显的不同，不仅能合并分支，还能<strong>重建提交历史，创建一个线性的提交历史</strong>。</p>
 <p>我们来看下面的场景，参考自<span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMVhiNHkxNzczRg==">git rebase: 人生无法重来，但代码可以！</span>：</p>
 <p>我们在C1节点的基础上，开了两个分支，特性（feature）分支和主（master）分支，并且这两个分支上各自都有新的提交历史。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201261250063.png" alt="image-20220126124938507" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201261250063.png" alt="image-20220126124938507" style="zoom:67%;" />
 
 <p>如果我们要将master分支的两个新提交整合进feature中，那么我们的选择有什么呢？</p>
 <blockquote>
@@ -390,10 +390,10 @@ Monkey's Blog = </title>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature <span class="comment"># 先切换到feature分支</span></span><br><span class="line">git merge master <span class="comment"># 然后将master整合到当前分支</span></span><br></pre></td></tr></table></figure>
 
 <p>git merge 命令会以我方（feature分支）、对方（master分支）以及双方最近的公共祖先（C1）对应的快照，执行三路合并生成新快照。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201261305767.png" alt="image-20220126130506688" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201261305767.png" alt="image-20220126130506688" style="zoom:67%;" />
 
 <p>并且基于该快照创建一个连接feature分支和主干的合并节点，随后调整特性分支的指向。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201261439495.png" alt="image-20220126143938394" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201261439495.png" alt="image-20220126143938394" style="zoom:67%;" />
 
 
 
@@ -413,12 +413,12 @@ Monkey's Blog = </title>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature <span class="comment"># 先切换到feature分支</span></span><br><span class="line">git rebase master <span class="comment"># 然后将master整合到当前分支</span></span><br></pre></td></tr></table></figure>
 
 <p>执行git rebase的时候，git会从双方的最近公共祖先开始，将特性分支上每个提交对应的变更暂存起来。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201261411263.png" alt="image-20220126141137134" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201261411263.png" alt="image-20220126141137134" style="zoom:67%;" />
 
 
 
 <p>然后以主干分支指向的提交为新起点，将暂存的变更按顺序一一还原成新提交。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201261414933.png" alt="image-20220126141412869" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201261414933.png" alt="image-20220126141412869" style="zoom:67%;" />
 
 <p><strong>无论是merge还是rebase，特性分支最终指向快照是完全相同的，即C4’和上面的C7是完全一致的。但二者的提交历史完全不同。</strong></p>
 <p>那么我们就可以看到这两个指令的区别了：</p>
@@ -557,7 +557,7 @@ Monkey's Blog = </title>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branchname&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="合并远程分支"><a href="#合并远程分支" class="headerlink" title="合并远程分支"></a>合并远程分支</h3><p>如果要合并远程分支，事实上还是要先进行“合并本地分支”操作，然后再发合并好的分支推送到远程仓库去。</p>
-<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810213134516.png" alt="image-20210810213134516"></p>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810213134516.png" alt="image-20210810213134516"></p>
 <h3 id="撤销工作区修改"><a href="#撤销工作区修改" class="headerlink" title="撤销工作区修改"></a>撤销工作区修改</h3><blockquote>
 <p>场景一：撤销<strong>工作区</strong>修改</p>
 </blockquote>
@@ -565,9 +565,9 @@ Monkey's Blog = </title>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一：git checkout</span></span><br><span class="line">git checkout &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式二：git restore</span></span><br><span class="line">git restore &lt;filename&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式三：git reset可以吗？可以！</span></span><br><span class="line"><span class="comment"># 缺点：全局硬重置，无法指定特定文件，即所有的文件的改动都会被撤销。</span></span><br><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
 
 <p>例如下面的例子，我们先删除一个文件，然后通过git checkout命令把文件恢复。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201262222404.png" alt="image-20220126222206202"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201262222404.png" alt="image-20220126222206202"></p>
 <p>我们在试一下，同样删除一个文件，但是通过git restore命令把文件恢复。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201262226456.png" alt="image-20220126222636387"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201262226456.png" alt="image-20220126222636387"></p>
 <h3 id="撤销暂存区修改"><a href="#撤销暂存区修改" class="headerlink" title="撤销暂存区修改"></a>撤销暂存区修改</h3><blockquote>
 <p>场景二：撤销<strong>暂存区</strong>修改，但不会撤销<strong>工作区</strong>修改</p>
 </blockquote>
@@ -603,21 +603,21 @@ Monkey's Blog = </title>
 
 <p>这样子分支就成功merge了</p>
 <h3 id="git-push-冲突"><a href="#git-push-冲突" class="headerlink" title="git push 冲突"></a>git push 冲突</h3><p>在团队协作过程中，假设你和你的同伴在本地中分别有各自的新提交，而你的同伴先于你 <code>push</code> 了代码到远程分支上，所以你必须先执行 <code>git pull</code> 来获取同伴的提交，然后才能<code>push</code> 自己的提交到远程分支。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131924738.png" alt="image-20220113192428649"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131924738.png" alt="image-20220113192428649"></p>
 <p>此时我们就得先把代码pull到本地仓库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
 
 <p>然后会提示哪些文件有冲突：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201131933095.png" alt="image-20220113193317057"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201131933095.png" alt="image-20220113193317057"></p>
 <p>当本地库和远程库有差别的时候，要通过git pull同步，此时如果是简单的修改的话会直接自己同步，比如加了一行代码等，但是如果都修改了同一行代码，此时就会在冲突的地方提示，需要自己手动解决冲突，然后再push，不要直接不管就push，直接会把这些文字推上去。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810213449323.png" alt="image-20210810213449323"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210810213449323.png" alt="image-20210810213449323"></p>
 <p>我们手动解决了冲突之后，就再重新add、commit、push就可以啦。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210909213549361.png" alt="image-20210909213549361"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210909213549361.png" alt="image-20210909213549361"></p>
 <h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><p>命令<code>git rm</code>用于删除一个文件。详细步骤如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm file</span><br><span class="line">git commit -m <span class="string">&quot;message&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="暂存文件修改"><a href="#暂存文件修改" class="headerlink" title="暂存文件修改"></a>暂存文件修改</h2><p>有这么一个场景，当我们正在某个分支上写代码的时候，通过git stash可以暂存当前分支的代码修改，然后代码就会恢复到未修改前的状态了。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201132222415.png" alt="image-20220113222222355" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201132222415.png" alt="image-20220113222222355" style="zoom: 67%;" />
 
 <p>以下是一些常用的命令：</p>
 <p>添加改动到stash</p>
@@ -643,11 +643,11 @@ Monkey's Blog = </title>
 <h2 id="文件差异对比"><a href="#文件差异对比" class="headerlink" title="文件差异对比"></a>文件差异对比</h2><p>git diff 命令比较文件的不同。</p>
 <ul>
 <li><code>git diff</code>：比较最后一次commit的文件和<strong>工作区的文件</strong>，注意此时工作区的文件还没有进行<code>git add</code>。<ul>
-<li><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201132233616.png" alt="image-20220113223313570" style="zoom:67%;" /></li>
+<li><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201132233616.png" alt="image-20220113223313570" style="zoom:67%;" /></li>
 </ul>
 </li>
 <li><code>git diff --cached 或者 git diff --staged</code>：比较最后一次commit的文件和<strong>暂存区的文件</strong>，即工作区文件已经进行了<code>git add</code>。<ul>
-<li><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201132234841.png" alt="image-20220113223443789" style="zoom:67%;" /></li>
+<li><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201132234841.png" alt="image-20220113223443789" style="zoom:67%;" /></li>
 </ul>
 </li>
 </ul>
@@ -686,7 +686,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-23 20:54:34" itemprop="dateModified" datetime="2022-03-23T20:54:34+08:00">2022-03-23</time>
+    <time title="Modified: 2022-04-03 15:55:38" itemprop="dateModified" datetime="2022-04-03T15:55:38+08:00">2022-04-03</time>
   </span>
   <span id="Operations/Operations/【Git】Git基本使用与操作" class="item leancloud_visitors" data-flag-title="【Git】Git基本使用与操作" title="Views">
       <span class="icon">
@@ -728,7 +728,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器的同源策略以及如何解决跨域问题">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器的同源策略以及如何解决跨域问题">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>浏览器的同源策略以及如何解决跨域问题</h3>
@@ -768,7 +768,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -780,7 +780,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -865,10 +865,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
   </li>
 
       
@@ -877,10 +877,46 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
+</div>
+
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
   </li>
 
       
@@ -904,41 +940,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
-</div>
-
-    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Operations/" title="In Operations">Operations</a>
-</div>
-
-    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
   </li>
 
       
@@ -962,7 +964,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
   </li>
 
       
@@ -971,10 +973,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
   </li>
 
   </ul>
@@ -999,13 +1001,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

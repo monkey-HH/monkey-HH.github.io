@@ -64,12 +64,12 @@ Monkey's Blog = </title>
   </h1>
   
 <div class="meta">
-  <span class="item" title="Created: 2021-10-15 12:00:32">
+  <span class="item" title="Created: 2021-08-01 12:00:32">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">Posted on</span>
-    <time itemprop="dateCreated datePublished" datetime="2021-10-15T12:00:32+08:00">2021-10-15</time>
+    <time itemprop="dateCreated datePublished" datetime="2021-08-01T12:00:32+08:00">2021-08-01</time>
   </span>
   <span class="item" title="Symbols count in article">
     <span class="icon">
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281409527.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281409527.png">
       </div>
     </header>
     <div id="waves">
@@ -164,9 +164,9 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281409527.png" alt="image-20211228140957485"></p>
+    <p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281409527.png" alt="image-20211228140957485"></p>
 <h1 id="Flux是什么？"><a href="#Flux是什么？" class="headerlink" title="Flux是什么？"></a>Flux是什么？</h1><p> Flux 是由 Facebook 在 2014 年开源的一款用于构建用户界面的应用程序架构（Application  Architecture for Building User Interface）。随着师出同门的 React 越来越火爆，Flux 也受到了越来 越多的关注。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112241440306.png" alt="image-20211224143959788"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112241440306.png" alt="image-20211224143959788"></p>
 <p>简单说，Flux 是一种架构思想，专门解决软件的结构问题。它跟<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDA3LzExL212Yy5odG1s">MVC 架构</span>是同一类东西，但是更加<span class="exturl" data-url="aHR0cDovL3d3dy5pbmZvcS5jb20vbmV3cy8yMDE0LzA1L2ZhY2Vib29rLW12Yy1mbHV4">简单和清晰</span>。Flux存在多种实现（<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Zvcm9uaWFuc2tpL2ZsdXgtY29tcGFyaXNvbg==">至少15种</span>），本文采用的是<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZhY2Vib29rL2ZsdXg=">Facebook官方实现</span>。</p>
 <p>首先，Flux将一个应用分成四个部分。</p>
 <blockquote>
@@ -177,7 +177,7 @@ Monkey's Blog = </title>
 <li><strong>Store</strong>（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面</li>
 </ul>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261105506.png" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112261105506.png" alt="img"></p>
 <p>Flux 的最大特点，就是数据的”单向流动”。</p>
 <blockquote>
 <ol>
@@ -199,18 +199,18 @@ Monkey's Blog = </title>
 <p>为什么需要Redux？</p>
 </blockquote>
 <p>为了回答这个问题，首先我们来看看React“单向数据流”的基本逻辑，在我的另外一篇文章《React组件间通信》中提到了多种的通信方式，如果不是很了解具体的做法，可以先看看那篇文章，此处不多赘述做法，只探究渲染过程。首先我们来看，如果只是简单的父子组件之间的通信，我们可以简单地通过props传递：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261201306.gif" alt="1_O3-jbieSsxcQFkrTLp-1zw"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112261201306.gif" alt="1_O3-jbieSsxcQFkrTLp-1zw"></p>
 <p>我们再看看兄弟组件之间通信的情况，由于他们唯一的联系即他们有共同的父组件，因此我们需要先将状态进行提升，也就是说通过父组件内的一个函数，触发父组件的state更新，这会导致该父组件以及父组件下所有的子组件都重新渲染：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261220743.gif" alt="1_DrxF4q1jNkiEKKm1EBAgiQ"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112261220743.gif" alt="1_DrxF4q1jNkiEKKm1EBAgiQ"></p>
 <p>以上的都是最简单的情况，现实中，往往我们的项目中的层级关系是十分复杂的，情况就有可能出现这样子：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261227323.gif" alt="test (2)"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112261227323.gif" alt="test (2)"></p>
 <p>如果我们只是一位地使用上述的方式，通过state和props进行层层数据传递，在最糟糕的情况下会导致整个应用所有的组件进行重渲染，这对整个应用的性能打击时非常大，我们希望可以通过一种方式，使得两个组件之间可以直接进行通信，而不是通过他们的共同祖先这种方式进行传值，这样就不会导致共同祖先的所有后代组件都重渲染。</p>
 <p>第一种方式可以是使用“发布订阅工具”，但这种方式会导致一个问题，当多个组件互相彼此订阅，项目将会变得难以维护，因为数据流十分不清晰，当程序员进行调试的时候，必须十分熟悉整个项目所有的“发布订阅模型”，因此这种方式只适合于简单的情况。</p>
 <p>第二种方式就是利用一个媒介，该媒介相当于一个中间人，我们称之为store，存放着所有组件的公共状态，如果有状态更新，则直接更新这个store，别的组件订阅这个store中的state，这样，数据的来源就是单一的，符合Flux原则。</p>
 <p>我们来看看这种情况下组件渲染的情况：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261236070.gif" alt="1_f3gS9znOZvX8HfCLg7T--Q"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112261236070.gif" alt="1_f3gS9znOZvX8HfCLg7T--Q"></p>
 <h2 id="Redux基本概念和操作"><a href="#Redux基本概念和操作" class="headerlink" title="Redux基本概念和操作"></a>Redux基本概念和操作</h2><p>首先我们放一张图，该图演示了redux中的数据流向，此处先不用细看，但可以对照这张图来看后面的内容，会更加容易理解。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261338963.png" alt="image-20211226133828913" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112261338963.png" alt="image-20211226133828913" style="zoom:67%;" />
 
 <blockquote>
 <p>第一步：安装</p>
@@ -286,7 +286,7 @@ Monkey's Blog = </title>
 
 <p>很显然，一个应用中是会有多个的reducer，因为如果把所有组件的reducer写在一个JavaScript文件中，将会导致项目比较难维护。</p>
 <p>因此我们可以按照下面的方式组织redux目录结构，其中actions存放着action Creator函数：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112261428892.png" alt="image-20211226142843850"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112261428892.png" alt="image-20211226142843850"></p>
 <p>actions和reducers里的可以按照组件名命名，表示每个组件对应的action Creator和reducer。</p>
 <p>现在项目组织结构是有了，假设我们在定义了两个reducer，我们可以通过<code>redux.combineReducers</code>这一个API，将多个reducer合并，并传入到store中，以下是一个实际例子：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.js</span></span><br><span class="line"><span class="comment">// 引入combineReducers</span></span><br><span class="line"><span class="keyword">import</span> &#123;createStore,combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入所有的reducer</span></span><br><span class="line"><span class="keyword">import</span> Component1Reducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/Component1&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Component2Reducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/Component2&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将所有reducer合并</span></span><br><span class="line"><span class="keyword">const</span> combinedReducer = combineReducers(&#123;</span><br><span class="line">	<span class="attr">name1</span>:Component1Reducer,</span><br><span class="line">	<span class="attr">name2</span>:Component2Reducer</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store = createStore(combinedReducer)</span><br></pre></td></tr></table></figure>
@@ -512,7 +512,7 @@ Monkey's Blog = </title>
 <blockquote>
 <p>题外话：他们的作用可以用下图表示</p>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130220986.png" alt="image-20220113022024743" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201130220986.png" alt="image-20220113022024743" style="zoom: 50%;" />
 
 
 
@@ -546,7 +546,7 @@ Monkey's Blog = </title>
 <h2 id="Immutable基本原理"><a href="#Immutable基本原理" class="headerlink" title="Immutable基本原理"></a>Immutable基本原理</h2><p>上面提到了：<code>Immutable Data</code> 就是一旦创建，就不能再被更改的数据。对 Immutable 对象的任何修改或添加删除操作都会返回一个新的 Immutable 对象。</p>
 <p>而 Immutable 实现的原理是 <code>Persistent Data Structure（持久化数据结构）</code>，通过该结构，可以实现<code>Structural Sharing（结构共享）</code>。</p>
 <p>使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时为了避免 deepCopy 把所有节点都复制一遍带来的性能损耗，Immutable 使用了 <code>Structural Sharing（结构共享）</code>，即如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其它节点则进行共享。请看下面动画：</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201111609021.gif" alt="Immutable 原理动画" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201111609021.gif" alt="Immutable 原理动画" style="zoom: 50%;" />
 
 <p>以上是一小段简单的介绍，稍微有个初始的印象就可以了。</p>
 <p>在深入讲解这个结构之前，我们先聊聊为什么要使用这个结构，也就是简单的方式实现不可变数据的弊端。</p>
@@ -569,11 +569,11 @@ Monkey's Blog = </title>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 旧zoo</span></span><br><span class="line"><span class="keyword">let</span> zoo = [<span class="string">&#x27;🐵&#x27;</span>,<span class="string">&#x27;🐰&#x27;</span>,<span class="string">&#x27;🐼&#x27;</span>,<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐙&#x27;</span>,<span class="string">&#x27;🐸&#x27;</span>,<span class="string">&#x27;🐯&#x27;</span>,<span class="string">&#x27;🐨&#x27;</span>] </span><br><span class="line"><span class="comment">// new</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">new</span> = [<span class="string">&#x27;🐵&#x27;</span>,<span class="string">&#x27;👽&#x27;</span>,<span class="string">&#x27;🐼&#x27;</span>,<span class="string">&#x27;🐻&#x27;</span>,<span class="string">&#x27;🐙&#x27;</span>,<span class="string">&#x27;🐸&#x27;</span>,<span class="string">&#x27;🐯&#x27;</span>,<span class="string">&#x27;🐨&#x27;</span>] </span><br></pre></td></tr></table></figure>
 
 <p>我们采用二叉树的结构来表示数组zoo，以两个为一组，元素会作为这棵树的叶子，zoo则保存了这棵树的索引：</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130326003.png" alt="image-20220113032635943" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201130326003.png" alt="image-20220113032635943" style="zoom:50%;" />
 
 <p>那么我们如果要把🐰换成👽的做法是什么呢？</p>
 <p>我们只复制0和1号叶子，并修改兔子为外星人，新建一个new索引，就像这样子：</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130315216.png" alt="image-20220113031519152" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201130315216.png" alt="image-20220113031519152" style="zoom:50%;" />
 
 <p>这样子，我们就不用复制所有的其他一样的数组的结构了，我们完成了2-7号下标元素的共享，我们称之为<code>Structural Sharing（结构共享）</code>。</p>
 <p>并且我们可以进行“时空穿梭”，我们既可以访问旧版本的数组，又可以访问最新版本的数组：</p>
@@ -590,7 +590,7 @@ Monkey's Blog = </title>
 <p>而要做到这一点，我们可以把下标转为二进制，例如</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0 =&gt; 000</span><br><span class="line">1 =&gt; 001</span><br><span class="line">2 =&gt; 010</span><br><span class="line">3 =&gt; 011</span><br><span class="line">4 =&gt; 100</span><br><span class="line">5 =&gt; 101</span><br><span class="line">6 =&gt; 110</span><br><span class="line">7 =&gt; 111</span><br></pre></td></tr></table></figure>
 
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130345087.png" alt="image-20220113034551020" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201130345087.png" alt="image-20220113034551020" style="zoom: 67%;" />
 
 <p>然后一位一位地去看，0代表左子树，1代表右子树，按照每一位对树进行检索就可以了。</p>
 <p>但现在会有一个问题，数组元素一旦多起来，将会用到更多位来表示下标，每一位就代表了一层，那么这个二叉树将会非常地深，例如zoo[18977]，那么我们表示起来就会是zoo[0b100101000100001]，这得是15层的树啊！</p>
@@ -599,7 +599,7 @@ Monkey's Blog = </title>
 <p>好像路径就不能用单纯的“0，1”来表示了，但其实只要对这个key做个hash就可以了，例如：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zoo[<span class="string">&quot;f&quot;</span>]</span><br><span class="line">hash(<span class="string">&quot;f&quot;</span>) === <span class="number">5</span> === <span class="number">0b101</span> <span class="comment">// hash(&quot;a&quot;)=0 ,hash(&quot;b&quot;)=1,hash(&quot;c&quot;)=2,.......</span></span><br><span class="line">zoo-&gt;<span class="number">1</span>-&gt;<span class="number">0</span>-&gt;<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130357792.png" alt="image-20220113035707733" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201130357792.png" alt="image-20220113035707733" style="zoom: 67%;" />
 
 <p>这样子我们就还是可以取到值。这样的结构就叫做Hash  Array Mapped Trie（字典树）。</p>
 <h3 id="小总结-2"><a href="#小总结-2" class="headerlink" title="小总结"></a>小总结</h3><ul>
@@ -623,9 +623,8 @@ Monkey's Blog = </title>
 <h5 id="保存多版本数据"><a href="#保存多版本数据" class="headerlink" title="保存多版本数据"></a>保存多版本数据</h5><p>因为使用到了字典树的结构，让多个版本的数据可以都保存起来，那么我们如果要实现一些数据回退功能，就非常方便啦。</p>
 <h5 id="拥抱函数式编程"><a href="#拥抱函数式编程" class="headerlink" title="拥抱函数式编程"></a>拥抱函数式编程</h5><p>Immutable 本身就是函数式编程中的概念，纯函数式编程比面向对象更适用于前端开发。因为只要输入一致，输出必然一致，这样开发的组件更易于调试和组装。</p>
 <p>像 ClojureScript，Elm 等函数式编程语言中的数据类型天生都是 Immutable 的，这也是ClojureScript 基于 React 的框架——Om 性能比 React 还要好的原因。</p>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>Immutable这个库有点太重了，大数据量的情况下，序列化一次带来的性能消耗可能比重新diff还大。</p>
-<p>如果只是做浅比较防止过度刷新的化，immer更合适些。</p>
-<p>fromJS和toJS会深度转换数据，随之带来的开销较大，尽可能避免使用</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>如果只是做浅比较防止过度刷新的化，immer更合适些。</p>
+<p>Immutable这个库有点太重了，大数据量的情况下，fromJS和toJS会深度转换数据，随之带来的开销较大,序列化一次带来的性能消耗可能比重新diff还大。</p>
 <h3 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h3><p>官网文档地址为：<span class="exturl" data-url="aHR0cHM6Ly9pbW11dGFibGUtanMuY29tL2RvY3MvdjQuMC4w">https://immutable-js.com/docs/v4.0.0</span></p>
 <p>安装方式很简单：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install immutable</span><br></pre></td></tr></table></figure>
@@ -660,7 +659,7 @@ Monkey's Blog = </title>
 
 <p>要注意的是</p>
 <h4 id="set和setIn"><a href="#set和setIn" class="headerlink" title="set和setIn"></a>set和setIn</h4><p>用来对 immutable 对象的属性赋值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span></span><br><span class="line"><span class="keyword">let</span> immutableObj = fromJS (&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;);</span><br><span class="line">immutableObj.set (<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span></span><br><span class="line"><span class="keyword">let</span> immutableObj = fromJS (&#123;<span class="attr">a</span>: <span class="number">1</span>&#125;);</span><br><span class="line">immutableObj.set (<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 
 
 
@@ -688,8 +687,10 @@ Monkey's Blog = </title>
 <h2 id="Redux结合Immutable-js开发"><a href="#Redux结合Immutable-js开发" class="headerlink" title="Redux结合Immutable.js开发"></a>Redux结合Immutable.js开发</h2><p><strong>主体思路</strong>：</p>
 <ul>
 <li>在Redux中，把全局State都变成Immutable.js里的不可变对象。</li>
-<li>reducer里初始State通过<code>fromJS</code>等API，转化为Immutable转为不可变对象。</li>
+<li>reducer里存储Immutable对象，可以通过<code>fromJS</code>等API初始State，将原生JS对象转化为Immutable转为不可变对象。</li>
 <li>更新公共State也要用Immutable对象的操作方法。千万别弄混淆！！</li>
+<li>声明接收Props的时候，也是直接声明接受Immutable对象，使用的时候再转换。</li>
+<li>记得要使用React.memo、shouldComponentUpdate等进行浅比较。</li>
 </ul>
 <p>⭐主要有一个点要注意，由于 Redux 中内置的 <code>combineReducers</code> 和 reducer 中的 <code>initialState</code> 都为原生的 Object 对象，所以不能和 Immutable 原生搭配使用，我们可以通过一个第三方库<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dhanVzL3JlZHV4LWltbXV0YWJsZSNyZWFkbWU/ZmlsZUd1aWQ9dENWdzhZNkN2OEozS1lIdw==">redux-immutable</span> 解决这个问题。</p>
 <p>首先下载相关包</p>
@@ -814,7 +815,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-22 11:53:14" itemprop="dateModified" datetime="2022-03-22T11:53:14+08:00">2022-03-22</time>
+    <time title="Modified: 2022-04-03 15:51:24" itemprop="dateModified" datetime="2022-04-03T15:51:24+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/React/FrontEnd/React/【React基础】Redux介绍以及结合不可变数据的性能优化探索" class="item leancloud_visitors" data-flag-title="【React基础】Redux介绍以及结合不可变数据的性能优化探索" title="Views">
       <span class="icon">
@@ -854,20 +855,20 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】常用代码复用及性能优化方案">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="【手撕JavaScript系列】JavaScript中的防抖与节流">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> React</span>
-  <h3>【React基础】常用代码复用及性能优化方案</h3>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>【手撕JavaScript系列】JavaScript中的防抖与节流</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281214796.png" title="TypeScript基础知识">
+  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】React Hooks介绍与使用">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> TypeScript</span>
-  <h3>TypeScript基础知识</h3>
+  <span class="category"><i class="ic i-flag"></i> React</span>
+  <h3>【React基础】React Hooks介绍与使用</h3>
   </a>
 
     </div>
@@ -890,7 +891,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li>
+          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】状态复用及性能优化方案">【React基础】状态复用及性能优化方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -904,7 +905,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -916,7 +917,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -974,12 +975,12 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -1001,12 +1002,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
   </li>
 
       
@@ -1018,31 +1019,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
-</div>
-
-    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
   </li>
 
       
@@ -1054,43 +1031,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
-</div>
-
-    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
   </li>
 
       
@@ -1111,10 +1052,70 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】TCP和UDP基础知识点">【计网基础】TCP和UDP基础知识点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
   </li>
 
   </ul>
@@ -1139,13 +1140,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

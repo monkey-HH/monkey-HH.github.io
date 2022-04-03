@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>12 mins.</span>
+    <span>13 mins.</span>
   </span>
 </div>
 
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
       </div>
     </header>
     <div id="waves">
@@ -301,7 +301,7 @@ Monkey's Blog = </title>
 <p>每个普通函数都是 Function的实例，而箭头函数不是任何类的实例，每次调用都是不一样的引用，因此<strong>箭头函数没有<code>prototype</code>原型。</strong></p>
 <p>因此，我们可以通过这一点来分辨普通函数和箭头函数，箭头函数通过<code>eval</code>来新建一个函数；普通函数再进行别的处理。</p>
 <p>代码如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工具函数——克隆函数</span></span><br><span class="line"><span class="keyword">const</span> cloneFunction = <span class="function">(<span class="params">func</span>) =&gt;</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">let</span> funcString = func.toString();<span class="comment">//转为字符串</span></span><br><span class="line">	<span class="built_in">console</span>.log(funcString)</span><br><span class="line">	<span class="comment">// 箭头函数直接使用eval函数来创建新函数</span></span><br><span class="line">	<span class="keyword">if</span> (!func.prototype) <span class="keyword">return</span> <span class="built_in">eval</span>(funcString);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//匹配参数,意思就是左括号开头，(右括号+空格+左大括号)结尾的。</span></span><br><span class="line">	<span class="keyword">let</span> paramReg = <span class="regexp">/(?&lt;=\().+(?=\)\s+&#123;)/</span>;</span><br><span class="line">	<span class="keyword">let</span> param = paramReg.exec(funcString);</span><br><span class="line">	<span class="built_in">console</span>.log(param)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//匹配函数体，意思就是&#123;&#125;包围的部分，但不匹配&#123;&#125;本身，m代表多行匹配</span></span><br><span class="line">	<span class="keyword">let</span> bodyReg = <span class="regexp">/(?&lt;=&#123;)(.|\n)+(?=&#125;)/m</span>;</span><br><span class="line">	<span class="keyword">let</span> body = bodyReg.exec(funcString);</span><br><span class="line">	<span class="built_in">console</span>.log(body)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!body) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (param) &#123;</span><br><span class="line">		<span class="keyword">const</span> paramArr = param[<span class="number">0</span>].split(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(...paramArr, body[<span class="number">0</span>]);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(body[<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工具函数——克隆函数</span></span><br><span class="line"><span class="keyword">const</span> cloneFunction = <span class="function">(<span class="params">func</span>) =&gt;</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">let</span> funcString = func.toString();<span class="comment">//转为字符串</span></span><br><span class="line">	<span class="built_in">console</span>.log(funcString)</span><br><span class="line">	<span class="comment">// 箭头函数直接使用eval函数来创建新函数</span></span><br><span class="line">	<span class="keyword">if</span> (!func.prototype) <span class="keyword">return</span> <span class="built_in">eval</span>(funcString);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//匹配参数,意思就是左括号开头，(右括号+空格+左大括号)结尾的。</span></span><br><span class="line">	<span class="keyword">let</span> paramReg = <span class="regexp">/(?&lt;=\().+(?=\)\s+&#123;)/</span>;</span><br><span class="line">	<span class="keyword">let</span> param = paramReg.exec(funcString);</span><br><span class="line">	<span class="built_in">console</span>.log(param)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//匹配函数体，意思就是&#123;&#125;包围的部分，但不匹配&#123;&#125;本身，m代表多行匹配</span></span><br><span class="line">    <span class="comment">// 此处有可能匹配不到函数体，可以将\n 改为 \r\n </span></span><br><span class="line">    <span class="comment">// 原因是不同编译器的回车是不一样的。⭐</span></span><br><span class="line">    <span class="comment">// 非常重要的一点，踩坑了很久！</span></span><br><span class="line">	<span class="keyword">let</span> bodyReg = <span class="regexp">/(?&lt;=&#123;)(.|\n)+(?=&#125;)/m</span>;</span><br><span class="line">	<span class="keyword">let</span> body = bodyReg.exec(funcString);</span><br><span class="line">	<span class="built_in">console</span>.log(body)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!body) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (param) &#123;</span><br><span class="line">		<span class="keyword">const</span> paramArr = param[<span class="number">0</span>].split(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(...paramArr, body[<span class="number">0</span>]);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(body[<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -316,10 +316,10 @@ Monkey's Blog = </title>
 <h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//工具函数——获取实际类型</span></span><br><span class="line"><span class="keyword">const</span> getType = <span class="function"><span class="params">obj</span> =&gt;</span> <span class="built_in">Object</span>.prototype.toString.call(obj);</span><br><span class="line"></span><br><span class="line"><span class="comment">//工具函数——判断是否是引用类型</span></span><br><span class="line"><span class="keyword">const</span> isObject = <span class="function">(<span class="params">target</span>) =&gt;</span> target !== <span class="literal">null</span> &amp;&amp; (<span class="keyword">typeof</span> target === <span class="string">&#x27;object&#x27;</span> || <span class="keyword">typeof</span> target === <span class="string">&#x27;function&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//可遍历的对象</span></span><br><span class="line"><span class="keyword">const</span> mapTag = <span class="string">&#x27;[object Map]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> setTag = <span class="string">&#x27;[object Set]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> arrayTag = <span class="string">&#x27;[object Array]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> objectTag = <span class="string">&#x27;[object Object]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> argsTag = <span class="string">&#x27;[object Arguments]&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">const</span> deepTap = [mapTag, setTag, arrayTag, objectTag, argsTag];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//不可遍历的对象</span></span><br><span class="line"><span class="keyword">const</span> booleanTag = <span class="string">&#x27;[object Boolean]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> numberTag = <span class="string">&#x27;[object Number]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> stringTag = <span class="string">&#x27;[object String]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> symbolTag = <span class="string">&#x27;[object Symbol]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> dateTag = <span class="string">&#x27;[object Date]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> errorTag = <span class="string">&#x27;[object Error]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> regexpTag = <span class="string">&#x27;[object RegExp]&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> funcTag = <span class="string">&#x27;[object Function]&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//工具函数——克隆正则</span></span><br><span class="line"><span class="keyword">const</span> cloneReg = <span class="function">(<span class="params">target</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> &#123;</span><br><span class="line">		source,</span><br><span class="line">		flags</span><br><span class="line">	&#125; = target;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> target.constructor(source, flags);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//工具函数——克隆函数</span></span><br><span class="line"><span class="keyword">const</span> cloneFunction = <span class="function">(<span class="params">func</span>) =&gt;</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">let</span> funcString = func.toString();<span class="comment">//转为字符串</span></span><br><span class="line">	<span class="built_in">console</span>.log(funcString)</span><br><span class="line">	<span class="comment">// 箭头函数直接使用eval函数来创建新函数</span></span><br><span class="line">	<span class="keyword">if</span> (!func.prototype) <span class="keyword">return</span> <span class="built_in">eval</span>(funcString);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//匹配参数,意思就是左括号开头，(右括号+空格+左大括号)结尾的。</span></span><br><span class="line">	<span class="keyword">let</span> paramReg = <span class="regexp">/(?&lt;=\().+(?=\)\s+&#123;)/</span>;</span><br><span class="line">	<span class="keyword">let</span> param = paramReg.exec(funcString);</span><br><span class="line">	<span class="built_in">console</span>.log(param)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//匹配函数体，意思就是&#123;&#125;包围的部分，但不匹配&#123;&#125;本身，m代表多行匹配</span></span><br><span class="line">	<span class="keyword">let</span> bodyReg = <span class="regexp">/(?&lt;=&#123;)(.|\n)+(?=&#125;)/m</span>;</span><br><span class="line">	<span class="keyword">let</span> body = bodyReg.exec(funcString);</span><br><span class="line">	<span class="built_in">console</span>.log(body)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!body) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (param) &#123;</span><br><span class="line">		<span class="keyword">const</span> paramArr = param[<span class="number">0</span>].split(<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(...paramArr, body[<span class="number">0</span>]);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(body[<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//工具函数——克隆不可遍历的类型</span></span><br><span class="line"><span class="keyword">const</span> cloneOtherType = <span class="function">(<span class="params">target, type</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">const</span> Ctor = target.constructor;</span><br><span class="line">	<span class="keyword">switch</span> (type) &#123;</span><br><span class="line">		<span class="keyword">case</span> booleanTag:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="built_in">Boolean</span>.prototype.valueOf.call(target));</span><br><span class="line">		<span class="keyword">case</span> numberTag:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="built_in">Number</span>.prototype.valueOf.call(target));</span><br><span class="line">		<span class="keyword">case</span> stringTag:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="built_in">String</span>.prototype.valueOf.call(target));</span><br><span class="line">		<span class="keyword">case</span> symbolTag:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="built_in">Symbol</span>.prototype.valueOf.call(target));</span><br><span class="line">		<span class="keyword">case</span> errorTag:</span><br><span class="line">		<span class="keyword">case</span> dateTag:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Ctor(target);</span><br><span class="line">		<span class="keyword">case</span> regexpTag:</span><br><span class="line">			<span class="keyword">return</span> cloneReg(target);</span><br><span class="line">		<span class="keyword">case</span> funcTag:</span><br><span class="line">			<span class="keyword">return</span> cloneFunction(target);</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Ctor(target);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//主函数</span></span><br><span class="line"><span class="keyword">const</span> deepClone = <span class="function">(<span class="params">target, map = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">//原始类型数据直接返回</span></span><br><span class="line">	<span class="keyword">if</span> (!isObject(target))</span><br><span class="line">		<span class="keyword">return</span> target;</span><br><span class="line">	<span class="comment">//获取引用对象的实际类型</span></span><br><span class="line">	<span class="keyword">let</span> type = getType(target);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">let</span> cloneTarget;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//根据可否遍历进行处理</span></span><br><span class="line">	<span class="keyword">if</span> (deepTap.includes(type)) &#123;</span><br><span class="line">		<span class="comment">// 这波操作相当关键，可以保证对象的原型不丢失！</span></span><br><span class="line">		<span class="keyword">let</span> ctor = target.constructor;</span><br><span class="line">		cloneTarget = <span class="keyword">new</span> ctor();</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 处理不能遍历的对象</span></span><br><span class="line">		<span class="keyword">return</span> cloneOtherType(target, type);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//处理循环引用问题</span></span><br><span class="line">	<span class="keyword">if</span> (map.get(target))</span><br><span class="line">		<span class="keyword">return</span> target;</span><br><span class="line">	map.set(target, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//处理Map</span></span><br><span class="line">	<span class="keyword">if</span> (type === mapTag) &#123;</span><br><span class="line">		target.forEach(<span class="function">(<span class="params">item, key</span>) =&gt;</span> &#123;</span><br><span class="line">			cloneTarget.set(deepClone(key, map), deepClone(item, map));</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//处理Set </span></span><br><span class="line">	<span class="keyword">if</span> (type === setTag) &#123;</span><br><span class="line">		target.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">			cloneTarget.add(deepClone(item, map));</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 处理数组和对象</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> target) &#123;</span><br><span class="line">		<span class="keyword">if</span> (target.hasOwnProperty(prop)) &#123;</span><br><span class="line">			cloneTarget[prop] = deepClone(target[prop], map);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> cloneTarget;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//这个是用来测试的</span></span><br><span class="line"><span class="keyword">const</span> targeta = &#123;</span><br><span class="line">	<span class="attr">field1</span>: <span class="number">1</span>,</span><br><span class="line">	<span class="attr">field2</span>: <span class="literal">undefined</span>,</span><br><span class="line">	<span class="attr">field3</span>: &#123;</span><br><span class="line">		<span class="attr">child</span>: <span class="string">&#x27;child&#x27;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">field4</span>: [<span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>],</span><br><span class="line">	<span class="attr">empty</span>: <span class="literal">null</span>,</span><br><span class="line">	<span class="attr">map</span>: <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">		[<span class="string">&#x27;key&#x27;</span>, <span class="string">&#x27;value&#x27;</span>],</span><br><span class="line">		[<span class="string">&#x27;我是&#x27;</span>, <span class="string">&#x27;阿猴&#x27;</span>]</span><br><span class="line">	]),</span><br><span class="line">	<span class="attr">set</span>: <span class="keyword">new</span> <span class="built_in">Set</span>(<span class="string">&#x27;monkey&#x27;</span>, <span class="string">&#x27;阿猴&#x27;</span>),</span><br><span class="line">	<span class="attr">bool</span>: <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>),</span><br><span class="line">	<span class="attr">num</span>: <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">2</span>),</span><br><span class="line">	<span class="attr">str</span>: <span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">2</span>),</span><br><span class="line">	<span class="attr">symbol</span>: <span class="built_in">Object</span>(<span class="built_in">Symbol</span>(<span class="number">1</span>)),</span><br><span class="line">	<span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">	<span class="attr">reg</span>: <span class="regexp">/\d+/</span>,</span><br><span class="line">	error: <span class="keyword">new</span> <span class="built_in">Error</span>(),</span><br><span class="line">	<span class="attr">func1</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&#x27;阿猴&#x27;</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">func2</span>: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a + b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(deepClone(targeta))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>测试结果如下：</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111121725840.png" alt="image-20211112172551781" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202111121725840.png" alt="image-20211112172551781" style="zoom:80%;" />
 
 <p>⚠这里有一个奇怪的bug：在偶然的情况下，在运行上面整段的代码的时候，body一直拿到的都是null，拿不到函数体。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202111121726795.png" alt="image-20211112172627750"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202111121726795.png" alt="image-20211112172627750"></p>
 <p>为了更好地说明，我把关键代码抽离了出来，如下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fun</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">let</span> bodyReg = <span class="regexp">/(?&lt;=&#123;)(.|\n)+(?=&#125;)/m</span>;</span><br><span class="line">	<span class="keyword">let</span> body = bodyReg.exec(fun.toString());</span><br><span class="line">	<span class="built_in">console</span>.log(body) <span class="comment">//null</span></span><br><span class="line">&#125;</span><br><span class="line">func = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">test(func)</span><br></pre></td></tr></table></figure>
 
@@ -349,7 +349,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-28 10:19:59" itemprop="dateModified" datetime="2021-12-28T10:19:59+08:00">2021-12-28</time>
+    <time title="Modified: 2022-04-03 15:46:31" itemprop="dateModified" datetime="2022-04-03T15:46:31+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝" class="item leancloud_visitors" data-flag-title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝" title="Views">
       <span class="icon">
@@ -389,7 +389,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201018875.jpg" title="JavaScript常用继承方案">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201018875.jpg" title="JavaScript常用继承方案">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>JavaScript常用继承方案</h3>
@@ -399,7 +399,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201018875.jpg" title="axios基础知识点入门">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201018875.jpg" title="axios基础知识点入门">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>axios基础知识点入门</h3>
@@ -425,7 +425,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" rel="bookmark" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -439,7 +439,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -451,7 +451,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -536,48 +536,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
-</div>
-
-    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
-</div>
-
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
   </li>
 
       
@@ -589,7 +553,79 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+</div>
+
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
   </li>
 
       
@@ -602,42 +638,6 @@ Monkey's Blog = </title>
 </div>
 
     <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="浏览器中的客户端存储">浏览器中的客户端存储</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
-</div>
-
-    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
   </li>
 
       
@@ -672,13 +672,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

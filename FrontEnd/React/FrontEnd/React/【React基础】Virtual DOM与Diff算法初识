@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281415928.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281415928.png">
       </div>
     </header>
     <div id="waves">
@@ -230,8 +230,8 @@ Monkey's Blog = </title>
 <p>这个比对的过程我们称之为“diff”，采用的算法就是diffing 算法。</p>
 <p>正常情况下，比较两个树型结构差异的<span class="exturl" data-url="aHR0cDovL2dyZmlhLmRsc2kudWEuZXMvbWwvYWxnb3JpdGhtcy9yZWZlcmVuY2VzL2VkaXRzdXJ2ZXlfYmlsbGUucGRm">最佳算法</span>时间复杂度是 O (N^3)，其中 N 是树中元素的数量。</p>
 <p>但 React 通过总结 DOM 的实际使用场景，提出了两个绝大多数场景下都成立的假设。通过这两个假设，React 实现了 O (N) 的时间复杂度下完成两棵虚拟 DOM 树的比较。 </p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202181810325.png" alt="image-20220218181022004"></p>
-<p>React 基于以下三个假设实现了时间复杂度为 O(n) 的算法:</p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202181810325.png" alt="image-20220218181022004"></p>
+<h2 id="三个假设"><a href="#三个假设" class="headerlink" title="三个假设"></a>三个假设</h2><p>React 基于以下三个假设实现了时间复杂度为 O(n) 的算法:</p>
 <ul>
 <li>永远只比较同层节点。</li>
 <li>不同类型的节点会产生两棵不同的树。</li>
@@ -253,13 +253,13 @@ Monkey's Blog = </title>
 
 <p>通过对比这两个元素，React 知道只需要修改 DOM 元素上的 <code>color</code> 样式，无需修改 <code>fontWeight</code>。</p>
 <p>在处理完当前节点之后，React 继续对子节点进行递归。</p>
-<h3 id="相同类型的组件节点"><a href="#相同类型的组件节点" class="headerlink" title="相同类型的组件节点"></a>相同类型的组件节点</h3><p>当一个组件更新时，组件实例会保持不变，因此可以在不同的渲染时保持 state 一致。</p>
-<p>React 将更新该组件实例的 props 以保证与最新的元素保持一致。</p>
+<h3 id="相同类型的组件节点"><a href="#相同类型的组件节点" class="headerlink" title="相同类型的组件节点"></a>相同类型的组件节点</h3><p>当一个组件更新时，<strong>组件实例会保持不变</strong>，因此可以在不同的渲染时保持 state 一致。</p>
+<p>React 将更新该组件实例的 props 以保证与最新的元素保持一致，同时调用该实例的生命周期函数或者Hooks。</p>
 <p>接下来，调用<code>render()</code>方法，对新旧结果递归地进行diff 算法。</p>
 <blockquote>
 <p>对于组件类型的节点，这时候 React 无法知道如何更新真实 DOM 树，需要在组件更新并且 render 方法执行完毕后，根据 render 返回的虚拟 DOM 结构决定如何更新真实 DOM 树。</p>
 </blockquote>
-<h3 id="对子节点进行递归"><a href="#对子节点进行递归" class="headerlink" title="对子节点进行递归"></a>对子节点进行递归</h3><p>默认情况下，当递归 DOM 节点的子元素时，React 会同时遍历两个子元素的列表，<strong>按顺序进行一一比对</strong>。</p>
+<h3 id="对子节点进行递归及key属性"><a href="#对子节点进行递归及key属性" class="headerlink" title="对子节点进行递归及key属性"></a>对子节点进行递归及key属性</h3><p>默认情况下，当递归 DOM 节点的子元素时，React 会同时遍历两个子元素的列表，<strong>按顺序进行一一比对</strong>。</p>
 <p>注意是一一比对，React似乎显得很“固执”，顺序不对，我就认为发生了变化，React不会自动查找哪些元素没有变化。但也是基于这一点，React才得以将diff算法的复杂度降为O(N)。</p>
 <p>在子元素列表末尾新增元素时，更新开销比较小。比如：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>first<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>second<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>first<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>second<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>third<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -271,7 +271,7 @@ Monkey's Blog = </title>
 
 <p>React 并不会意识到应该保留 <code>&lt;li&gt;Duke&lt;/li&gt;</code> 和 <code>&lt;li&gt;Villanova&lt;/li&gt;</code>，而是会重建每一个子元素。这种情况会带来性能问题。</p>
 <p>为了解决上述问题可以使用key</p>
-<h3 id="key"><a href="#key" class="headerlink" title="key"></a>key</h3><p>为了避免前面那种特殊情况，提出了 key。key 是为了帮助 React 提高 Diff 算法的效率，<strong>使用 key 来匹配子节点</strong>，而不是按照顺序来匹配对比。 </p>
+<p>为了避免前面那种特殊情况，提出了 key。key 是为了帮助 React 提高 Diff 算法的效率，<strong>使用 key 来匹配子节点</strong>，而不是按照顺序来匹配对比。 </p>
 <p>如：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&quot;2015&quot;</span>&gt;</span>Duke<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&quot;2016&quot;</span>&gt;</span>Villanova<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&quot;2014&quot;</span>&gt;</span>Connecticut<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&quot;2015&quot;</span>&gt;</span>Duke<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&quot;2016&quot;</span>&gt;</span>Villanova<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -295,7 +295,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-11 16:03:04" itemprop="dateModified" datetime="2022-03-11T16:03:04+08:00">2022-03-11</time>
+    <time title="Modified: 2022-04-03 15:51:31" itemprop="dateModified" datetime="2022-04-03T15:51:31+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/React/FrontEnd/React/【React基础】Virtual DOM与Diff算法初识" class="item leancloud_visitors" data-flag-title="【React基础】Virtual DOM与Diff算法初识" title="Views">
       <span class="icon">
@@ -335,20 +335,20 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】React合成事件介绍">
+  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】React生命周期">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> React</span>
-  <h3>【React基础】React合成事件介绍</h3>
+  <h3>【React基础】React生命周期</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="HTML中的meta标签相关知识">
+  <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281415928.png" title="【React基础】React合成事件介绍">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> HTML</span>
-  <h3>HTML中的meta标签相关知识</h3>
+  <span class="category"><i class="ic i-flag"></i> React</span>
+  <h3>【React基础】React合成事件介绍</h3>
   </a>
 
     </div>
@@ -367,11 +367,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8Virtual-DOM%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">为什么要使用Virtual DOM？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFVirtual-DOM%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">什么是Virtual DOM？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffing-%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">Diffing 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA"><span class="toc-number">3.1.</span> <span class="toc-text">设计动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text">详细过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E5%85%83%E7%B4%A0"><span class="toc-number">3.2.1.</span> <span class="toc-text">不同类型元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84DOM%E8%8A%82%E7%82%B9"><span class="toc-number">3.2.2.</span> <span class="toc-text">同类型的DOM节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%BB%84%E4%BB%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.2.3.</span> <span class="toc-text">相同类型的组件节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%AD%90%E8%8A%82%E7%82%B9%E8%BF%9B%E8%A1%8C%E9%80%92%E5%BD%92"><span class="toc-number">3.2.4.</span> <span class="toc-text">对子节点进行递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#key"><span class="toc-number">3.2.5.</span> <span class="toc-text">key</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8Virtual-DOM%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">为什么要使用Virtual DOM？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFVirtual-DOM%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">什么是Virtual DOM？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffing-%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">Diffing 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA"><span class="toc-number">3.1.</span> <span class="toc-text">设计动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%81%87%E8%AE%BE"><span class="toc-number">3.2.</span> <span class="toc-text">三个假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">详细过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E5%85%83%E7%B4%A0"><span class="toc-number">3.3.1.</span> <span class="toc-text">不同类型元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84DOM%E8%8A%82%E7%82%B9"><span class="toc-number">3.3.2.</span> <span class="toc-text">同类型的DOM节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%BB%84%E4%BB%B6%E8%8A%82%E7%82%B9"><span class="toc-number">3.3.3.</span> <span class="toc-text">相同类型的组件节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%AD%90%E8%8A%82%E7%82%B9%E8%BF%9B%E8%A1%8C%E9%80%92%E5%BD%92%E5%8F%8Akey%E5%B1%9E%E6%80%A7"><span class="toc-number">3.3.4.</span> <span class="toc-text">对子节点进行递归及key属性</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li>
+          <li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></li><li class="active"><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" rel="bookmark" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="bookmark" title="【React基础】React生命周期">【React基础】React生命周期</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93" rel="bookmark" title="【React基础】React组件间通信方式总结">【React基础】React组件间通信方式总结</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" rel="bookmark" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" rel="bookmark" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></li><li><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" rel="bookmark" title="【React基础】状态复用及性能优化方案">【React基础】状态复用及性能优化方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -385,7 +385,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -397,7 +397,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -455,12 +455,12 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -484,22 +484,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D" title="【React基础】React合成事件介绍">【React基础】React合成事件介绍</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
   </li>
 
       
@@ -511,7 +499,19 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型与原型链">JavaScript原型与原型链</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
   </li>
 
       
@@ -523,7 +523,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
   </li>
 
       
@@ -532,10 +532,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></span>
+    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
   </li>
 
       
@@ -556,44 +556,46 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
-</div>
-
-    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Operations/" title="In Operations">Operations</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
 </div>
 
-    <span><a href="/Operations/Operations/%E3%80%90Nginx%E3%80%91Nginx%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8" title="【Nginx】Nginx基础入门">【Nginx】Nginx基础入门</a></span>
+    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94webpack%E5%BF%AB" title="Vite为什么比webpack快">Vite为什么比webpack快</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
+</div>
+
+    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型与原型链">JavaScript原型与原型链</a></span>
   </li>
 
   </ul>
@@ -618,13 +620,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

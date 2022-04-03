@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201014247.png">
       </div>
     </header>
     <div id="waves">
@@ -167,7 +167,7 @@ Monkey's Blog = </title>
     <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在之前写浏览器原理篇的文章的时候，就挖了个坑要讲讲重绘和回流，那就开始吧。</p>
 <h1 id="60fps与设备刷新率"><a href="#60fps与设备刷新率" class="headerlink" title="60fps与设备刷新率"></a>60fps与设备刷新率</h1><p>目前大多数设备的屏幕刷新率为 <strong>60 次/秒</strong>。因此，如果在页面中有一个动画或渐变效果，或者用户正在滚动页面，那么浏览器渲染动画或页面的每一帧的速率也需要跟设备屏幕的刷新率保持一致。</p>
 <p>其中每个帧的预算时间仅比 16 毫秒多一点 (1 秒/ 60 = 16.66 毫秒)。但实际上，浏览器有整理工作要做，因此您的所有工作需要在 <strong>10 毫秒</strong>内完成。如果无法符合此预算，帧率将下降，并且内容会在屏幕上抖动。 此现象通常称为<strong>卡顿</strong>，会对用户体验产生负面影响。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061529406.png" alt="image-20211206152910353" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112061529406.png" alt="image-20211206152910353" style="zoom:50%;" />
 
 
 
@@ -175,7 +175,7 @@ Monkey's Blog = </title>
 
 <h1 id="像素管道"><a href="#像素管道" class="headerlink" title="像素管道"></a>像素管道</h1><p>首先回顾一下<code>像素管道</code>的流程:</p>
 <p>以下模型是一个简化，具体过程可以查看我的另一篇介绍浏览器原理的文章，此处不考虑网络层面的东西，考虑的是初次渲染完成之后的情况，因此下图中没有HTML的解析，因为页面第一次解析完HTML之后，DOM的改变是由JavaScript导致的，因此像素管道的第一步是JavaScript。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061529221.png" alt="image-20211206152930172" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112061529221.png" alt="image-20211206152930172" style="zoom:67%;" />
 
 <ul>
 <li><strong>JavaScript</strong>。一般来说，我们会使用 JavaScript 来实现一些视觉变化的效果。比如用 jQuery 的 <code>animate</code> 函数做一个动画、对一个数据集进行排序或者往页面里添加一些 DOM 元素等。当然，除了 JavaScript，还有其他一些常用方法也可以实现视觉变化效果，比如: CSS Animations、Transitions 和 Web Animation API。</li>
@@ -186,15 +186,15 @@ Monkey's Blog = </title>
 </ul>
 <p>接下来我们以此图来讲解。</p>
 <h1 id="像素管道的三种情况"><a href="#像素管道的三种情况" class="headerlink" title="像素管道的三种情况"></a>像素管道的三种情况</h1><h2 id="情况一：JS-CSS-gt-样式-gt-布局-gt-绘制-gt-合成"><a href="#情况一：JS-CSS-gt-样式-gt-布局-gt-绘制-gt-合成" class="headerlink" title="情况一：JS / CSS &gt; 样式 &gt; 布局 &gt; 绘制 &gt; 合成"></a>情况一：JS / CSS &gt; 样式 &gt; 布局 &gt; 绘制 &gt; 合成</h2><p>如果您修改元素的“layout”属性，也就是<strong>改变了元素的几何属性（例如宽度、高度、左侧或顶部位置等）</strong>，那么浏览器将必须检查所有其他元素，然后自动<code>重排（Reflow）</code>页面。任何受影响的部分都需要<code>重新绘制（Repaint）</code>，而且最终<code>绘制（Paint）</code>的元素需进行<code>合成（Composite）</code>。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061530000.png" alt="image-20211206153047954" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112061530000.png" alt="image-20211206153047954" style="zoom:50%;" />
 
 <p>我们称这种情况为<code>重排（Reflow）</code>或者<code>回流</code>。</p>
 <h2 id="情况二：JS-CSS-gt-样式-gt-绘制-gt-合成"><a href="#情况二：JS-CSS-gt-样式-gt-绘制-gt-合成" class="headerlink" title="情况二：JS / CSS &gt; 样式 &gt; 绘制 &gt; 合成"></a>情况二：JS / CSS &gt; 样式 &gt; 绘制 &gt; 合成</h2><p>如果您修改“paint only”属性（例如背景图片、文字颜色或阴影等），即<strong>不会影响页面布局的属性</strong>，则浏览器会跳过<code>布局（Layout）</code>，但仍将执行<code>绘制（Paint）</code>。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061543158.png" alt="image-20211206154341105" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112061543158.png" alt="image-20211206154341105" style="zoom:50%;" />
 
 <p>我们也把这种情况叫做<code>重绘（Repaint）</code>。</p>
 <h2 id="情况三：JS-CSS-gt-样式-gt-合成"><a href="#情况三：JS-CSS-gt-样式-gt-合成" class="headerlink" title="情况三：JS / CSS &gt; 样式 &gt; 合成"></a>情况三：JS / CSS &gt; 样式 &gt; 合成</h2><p>如果您更改一个既不要布局也不要绘制的属性，则浏览器将跳到只执行合成。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061548594.png" alt="image-20211206154829543" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112061548594.png" alt="image-20211206154829543" style="zoom:50%;" />
 
 
 
@@ -207,7 +207,7 @@ Monkey's Blog = </title>
 <p>Change from default：设置属性(从默认值修改，相当于一开始没设置css)</p>
 <p>Subsequent updates：修改属性(对现有的属性值进行修改)</p>
 <p>灰色的字体则代表了不同的浏览器内核，因为不同浏览器的实现不同，所以会导致不同的表现</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201312011906.png" alt="image-20220131201108517"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201312011906.png" alt="image-20220131201108517"></p>
 <h2 id="会导致重排的操作"><a href="#会导致重排的操作" class="headerlink" title="会导致重排的操作"></a>会导致重排的操作</h2><ul>
 <li>页面首次渲染</li>
 <li>浏览器窗口大小发生改变</li>
@@ -230,11 +230,11 @@ Monkey's Blog = </title>
 <li><code>scrollTo()</code></li>
 </ul>
 <h1 id="什么是硬件加速？"><a href="#什么是硬件加速？" class="headerlink" title="什么是硬件加速？"></a>什么是硬件加速？</h1><p>通过上一节中给出的网站，我们可以查看 <code>transform</code> 的相关内容，你将看到：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201312046271.png" alt="image-20220131204632374"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201312046271.png" alt="image-20220131204632374"></p>
 <blockquote>
 <p>非常好的是，更改 transform 不会触发任何几何形状变化或绘制。这意味着该操作可能是由合成器线程在 GPU 的帮助下执行。</p>
 </blockquote>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201312046772.png" alt="image-20220131204656116"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201312046772.png" alt="image-20220131204656116"></p>
 <p><code>opacity</code> 属性的行为也类似。因此，他们是在 web 上做元素移动的理想选择。</p>
 <p>在许多情况下，我们可以坚持将这两个属性用于动画，并完全避免回流和重绘。不过要注意前提：只有这两个属性对应的元素<strong>被提升为一个合成层</strong>，才不会导致重绘和重排！</p>
 <p>这也是我们所说的<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLnRlYW10cmVlaG91c2UuY29tL2luY3JlYXNlLXlvdXItc2l0ZXMtcGVyZm9ybWFuY2Utd2l0aC1oYXJkd2FyZS1hY2NlbGVyYXRlZC1jc3M=">硬件加速</span>。</p>
@@ -309,7 +309,7 @@ Monkey's Blog = </title>
 <li>第二段代码把所有的写操作，都累积在一起，从而 DOM 代码变动的代价就最小化了。</li>
 </ul>
 <p>使用 <code>setTimeout</code> 或 <code>setInterval</code> 来执行动画之类的视觉变化，但这种做法的问题是，回调将在帧中的某个时点运行，可能刚好在末尾，而这可能经常会使我们丢失帧，导致卡顿。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112061651579.png" alt="image-20211206165135511" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112061651579.png" alt="image-20211206165135511" style="zoom:67%;" />
 
 <h3 id="使用Web-Worker处理无关复杂任务"><a href="#使用Web-Worker处理无关复杂任务" class="headerlink" title="使用Web Worker处理无关复杂任务"></a>使用Web Worker处理无关复杂任务</h3><p>JavaScript 在浏览器的主线程上运行，恰好与样式计算、布局以及许多情况下的绘制一起运行。如果 JavaScript 运行时间过长，就会阻塞这些其他工作，可能导致帧丢失。</p>
 <p>因此，您要妥善处理 JavaScript 何时运行以及运行多久。例如，如果在滚动之类的动画中，最好是想办法使 JavaScript 保持在 <strong>3-4 毫秒</strong>的范围内。不合理的JavaScript则<strong>将长时间运行的 JavaScript 从主线程移到 Web Worker</strong>。</p>
@@ -375,7 +375,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-23 20:51:27" itemprop="dateModified" datetime="2022-03-23T20:51:27+08:00">2022-03-23</time>
+    <time title="Modified: 2022-04-03 15:45:13" itemprop="dateModified" datetime="2022-04-03T15:45:13+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/Browser/FrontEnd/Browser/【浏览器工作原理篇】重绘、重排与性能优化" class="item leancloud_visitors" data-flag-title="【浏览器工作原理篇】重绘、重排与性能优化" title="Views">
       <span class="icon">
@@ -415,7 +415,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="【浏览器工作原理篇】浏览器工作基本原理介绍">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="【浏览器工作原理篇】浏览器工作基本原理介绍">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>【浏览器工作原理篇】浏览器工作基本原理介绍</h3>
@@ -425,7 +425,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301958270.jpeg" title="【Linux】Linux基础知识">
+  <a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301958270.jpeg" title="【Linux】Linux基础知识">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Linux</span>
   <h3>【Linux】Linux基础知识</h3>
@@ -451,7 +451,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="客户端存储">客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -465,7 +465,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -477,7 +477,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -564,22 +564,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
   </li>
 
       
@@ -591,7 +591,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
   </li>
 
       
@@ -600,34 +600,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
-</div>
-
-    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
   </li>
 
       
@@ -636,10 +624,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
   </li>
 
       
@@ -648,10 +636,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
   </li>
 
       
@@ -672,10 +660,22 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
   </li>
 
   </ul>
@@ -700,13 +700,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>46</span>
+    <span>1.6k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
       </div>
     </header>
     <div id="waves">
@@ -164,11 +164,118 @@ Monkey's Blog = </title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h1><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181711504.png" alt="image-20211218171131445"></p>
-<h1 id="History对象"><a href="#History对象" class="headerlink" title="History对象"></a>History对象</h1><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181711230.png" alt="image-20211218171115197"></p>
-<h1 id="Location对象"><a href="#Location对象" class="headerlink" title="Location对象"></a>Location对象</h1><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181710740.png" alt="image-20211218171047703"></p>
-<h1 id="Navigator对象"><a href="#Navigator对象" class="headerlink" title="Navigator对象"></a>Navigator对象</h1><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181710663.png" alt="image-20211218171035632"></p>
-<h1 id="Screen对象"><a href="#Screen对象" class="headerlink" title="Screen对象"></a>Screen对象</h1><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181710773.png" alt="image-20211218171025740"></p>
+    <h1 id="Window对象"><a href="#Window对象" class="headerlink" title="Window对象"></a>Window对象</h1><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181711504.png" alt="image-20211218171131445"></p>
+<h1 id="History对象"><a href="#History对象" class="headerlink" title="History对象"></a>History对象</h1><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181711230.png" alt="image-20211218171115197"></p>
+<h1 id="Location对象"><a href="#Location对象" class="headerlink" title="Location对象"></a>Location对象</h1><p>Location对象包含有关当前URL的信息，通过 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/location"><code>Document.location</code></a>和<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/location"><code>Window.location</code></a> 访问。</p>
+<h2 id="Location属性"><a href="#Location属性" class="headerlink" title="Location属性"></a>Location属性</h2><ul>
+<li>href：返回完整的URL，如’<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvQVBJL0xvY2F0aW9uJiMzOTslRTMlODAlODI=">https://developer.mozilla.org/zh-CN/docs/Web/API/Location&#39;。</span></li>
+<li>protocol：URL的协议，如“https”。</li>
+<li>host：返回一个URL的主机名和端口，如<span class="exturl" data-url="aHR0cDovL3d3dy5oYWhhaC5jb206ODA4MC8=">www.hahah.com:8080</span></li>
+<li>hostname：返回URL的主机名，如developer.mozilla.org。</li>
+<li>port：返回一个URL服务器使用的端口号，如8080.</li>
+<li></li>
+</ul>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181710740.png" alt="image-20211218171047703"></p>
+<h1 id="Navigator对象"><a href="#Navigator对象" class="headerlink" title="Navigator对象"></a>Navigator对象</h1><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181710663.png" alt="image-20211218171035632"></p>
+<h2 id="什么是Navigator对象？"><a href="#什么是Navigator对象？" class="headerlink" title="什么是Navigator对象？"></a>什么是Navigator对象？</h2><p>window.navigator 对象包含有关访问者浏览器的信息。</p>
+<h2 id="判断手机、电脑、iPad"><a href="#判断手机、电脑、iPad" class="headerlink" title="判断手机、电脑、iPad"></a>判断手机、电脑、iPad</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回由客户机发送服务器的user-agent 头部的值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> device = navigator.userAgent</span><br><span class="line"></span><br><span class="line"><span class="comment">//做判断 通过返回的数据来筛选查找关键信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (device.indexOf(<span class="string">&#x27;iPad&#x27;</span>) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">	<span class="comment">// ipad</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (device.indexOf(<span class="string">&#x27;Android&#x27;</span>) &gt; -<span class="number">1</span> || device.indexOf(<span class="string">&#x27;ios&#x27;</span>) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">	<span class="comment">// 手机</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">// 电脑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以使用<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21pcnJvcnMvRGV2aWNlLmpz">Device.js</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//npm</span><br><span class="line">npm install current-device</span><br><span class="line"></span><br><span class="line">import device from &#x27;current-device&#x27;</span><br><span class="line">if (device.mobile()) &#123;</span><br><span class="line"></span><br><span class="line">  console.log(&#x27;移动手机&#x27;)</span><br><span class="line"></span><br><span class="line">&#125; else if (device.ipad()) &#123;</span><br><span class="line"></span><br><span class="line">  console.log(&#x27;ipad&#x27;)</span><br><span class="line"></span><br><span class="line">&#125; else if (device.desktop()) &#123;</span><br><span class="line"></span><br><span class="line">  console.log(&#x27;电脑&#x27;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>JavaScript Method</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mobile</td>
+<td>device.mobile()</td>
+</tr>
+<tr>
+<td>Tablet</td>
+<td>device.tablet()</td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td>device.desktop()</td>
+</tr>
+<tr>
+<td>iOS</td>
+<td>device.ios()</td>
+</tr>
+<tr>
+<td>iPad</td>
+<td>device.ipad()</td>
+</tr>
+<tr>
+<td>iPhone</td>
+<td>device.iphone()</td>
+</tr>
+<tr>
+<td>iPod</td>
+<td>device.ipod()</td>
+</tr>
+<tr>
+<td>Android</td>
+<td>device.android()</td>
+</tr>
+<tr>
+<td>Android Phone</td>
+<td>device.androidPhone()</td>
+</tr>
+<tr>
+<td>Android Tablet</td>
+<td>device.androidTablet()</td>
+</tr>
+<tr>
+<td>BlackBerry</td>
+<td>device.blackberry()</td>
+</tr>
+<tr>
+<td>BlackBerry Phone</td>
+<td>device.blackberryPhone()</td>
+</tr>
+<tr>
+<td>BlackBerry Tablet</td>
+<td>device.blackberryTablet()</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>device.windows()</td>
+</tr>
+<tr>
+<td>Windows Phone</td>
+<td>device.windowsPhone()</td>
+</tr>
+<tr>
+<td>Windows Tablet</td>
+<td>device.windowsTablet()</td>
+</tr>
+<tr>
+<td>Firefox OS</td>
+<td>device.fxos()</td>
+</tr>
+<tr>
+<td>Firefox OS Phone</td>
+<td>device.fxosPhone()</td>
+</tr>
+<tr>
+<td>Firefox OS Tablet</td>
+<td>device.fxosTablet()</td>
+</tr>
+<tr>
+<td>MeeGo</td>
+<td>device.meego()</td>
+</tr>
+<tr>
+<td>Television</td>
+<td>device.television()</td>
+</tr>
+</tbody></table>
+<h1 id="Screen对象"><a href="#Screen对象" class="headerlink" title="Screen对象"></a>Screen对象</h1><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181710773.png" alt="image-20211218171025740"></p>
 
       <div class="tags">
           <a href="/tags/JavaScript/" rel="tag"><i class="ic i-tag"></i> JavaScript</a>
@@ -183,7 +290,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-01-10 19:31:39" itemprop="dateModified" datetime="2022-01-10T19:31:39+08:00">2022-01-10</time>
+    <time title="Modified: 2022-04-03 15:47:53" itemprop="dateModified" datetime="2022-04-03T15:47:53+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript中的浏览器对象模型（BOM）" class="item leancloud_visitors" data-flag-title="JavaScript中的浏览器对象模型（BOM）" title="Views">
       <span class="icon">
@@ -223,7 +330,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的变量类型">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的变量类型">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>JavaScript中的变量类型</h3>
@@ -233,7 +340,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器中的客户端存储">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="浏览器中的客户端存储">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>浏览器中的客户端存储</h3>
@@ -255,11 +362,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Window%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">Window对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#History%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">History对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Location%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">Location对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Navigator%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.</span> <span class="toc-text">Navigator对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Screen%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.</span> <span class="toc-text">Screen对象</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Window%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">Window对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#History%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">History对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Location%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.</span> <span class="toc-text">Location对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Location%E5%B1%9E%E6%80%A7"><span class="toc-number">3.1.</span> <span class="toc-text">Location属性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Navigator%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.</span> <span class="toc-text">Navigator对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFNavigator%E5%AF%B9%E8%B1%A1%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">什么是Navigator对象？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%89%8B%E6%9C%BA%E3%80%81%E7%94%B5%E8%84%91%E3%80%81iPad"><span class="toc-number">4.2.</span> <span class="toc-text">判断手机、电脑、iPad</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Screen%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.</span> <span class="toc-text">Screen对象</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" rel="bookmark" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -273,7 +380,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -285,7 +392,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -382,24 +489,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
-</div>
-
-    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
+    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
   </li>
 
       
@@ -411,19 +506,7 @@ Monkey's Blog = </title>
 <a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】HTTP基础知识点">【计网基础】HTTP基础知识点</a></span>
   </li>
 
       
@@ -435,19 +518,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
   </li>
 
       
@@ -459,7 +530,31 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+</div>
+
+    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94webpack%E5%BF%AB" title="Vite为什么比webpack快">Vite为什么比webpack快</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
   </li>
 
       
@@ -478,12 +573,24 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
   </li>
 
   </ul>
@@ -508,13 +615,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

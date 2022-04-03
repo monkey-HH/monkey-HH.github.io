@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>34k</span>
+    <span>32k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>31 mins.</span>
+    <span>29 mins.</span>
   </span>
 </div>
 
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112301958270.jpeg">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112301958270.jpeg">
       </div>
     </header>
     <div id="waves">
@@ -186,143 +186,143 @@ Monkey's Blog = </title>
 <blockquote>
 <p>Linux Distribution= Linux内核+实用工具(GNU)</p>
 </blockquote>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201091732595.png" alt="image-20220109173252292" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201091732595.png" alt="image-20220109173252292" style="zoom:50%;" />
 
 
 
-<h1 id="vmware中安装Linux镜像"><a href="#vmware中安装Linux镜像" class="headerlink" title="vmware中安装Linux镜像"></a>vmware中安装Linux镜像</h1><p>该文章将为大家介绍 Linux 的安装，以centos7为例子，使用的是Windows环境下的vmware workstation pro，不是直接安装在机器上！安装步骤比较繁琐，现在其实云服务器挺普遍的，价格也便宜，如果自己不想搭建，也可以直接买一台学习用用，建议直接拉满买三年，因为那个优惠是一次性的，每个云服务器的优惠只能享受一次。</p>
+<h1 id="虚拟机安装Linux系统"><a href="#虚拟机安装Linux系统" class="headerlink" title="虚拟机安装Linux系统"></a>虚拟机安装Linux系统</h1><p>本章节将为大家介绍 Linux 的安装，以centos7为例子，使用的是Windows环境下的vmware workstation pro，不是直接安装在机器上！安装步骤比较繁琐，现在其实云服务器挺普遍的，价格也便宜，如果自己不想搭建，也可以直接买一台学习用用，建议直接拉满买三年，因为那个优惠是一次性的，每个类型的云服务器的优惠只能享受一次。</p>
 <p>虽然是已CentOS7为例子，但是其实如果要安装别的版本，就下载对应的镜像就可以了。</p>
 <h2 id="第一步：安装vmware-workstation-pro"><a href="#第一步：安装vmware-workstation-pro" class="headerlink" title="第一步：安装vmware workstation pro"></a>第一步：安装vmware workstation pro</h2><p>详细的可以去网上找资源啦，建议支持一下<span class="exturl" data-url="aHR0cHM6Ly93d3cudm13YXJlLmNvbS9jbi9wcm9kdWN0cy93b3Jrc3RhdGlvbi1wcm8vd29ya3N0YXRpb24tcHJvLWV2YWx1YXRpb24uaHRtbA==">官网</span>正版资源哦。</p>
 <h2 id="第二步：下载Linux系统镜像"><a href="#第二步：下载Linux系统镜像" class="headerlink" title="第二步：下载Linux系统镜像"></a>第二步：下载Linux系统镜像</h2><p>通过<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3Iv">阿里巴巴开源镜像站</span>寻找需要的Linux系统镜像，点击对应的版本</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/RLuPvOdZ65MUEnW.png" alt="image-20210825223550566" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/RLuPvOdZ65MUEnW.png" alt="image-20210825223550566" style="zoom:50%;" />
 
 <p>然后往下拉，在相关链接里进入到下载链接</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/bG1KARgi6FvLUor.png" alt="image-20210825223637256" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/bG1KARgi6FvLUor.png" alt="image-20210825223637256" style="zoom: 50%;" />
 
 <p>选择对应版本</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/zMFXHVO3y8YrRPg.png" alt="image-20210825223740321" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/zMFXHVO3y8YrRPg.png" alt="image-20210825223740321" style="zoom:50%;" />
 
 <p>选择isos/  </p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/iYPnDW8Ms2FXCUK.png" alt="image-20210825223811785" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/iYPnDW8Ms2FXCUK.png" alt="image-20210825223811785" style="zoom: 67%;" />
 
 <p>然后再选择对应选项，iso后缀</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/3Rgua6QPHZYizMJ.png" alt="image-20210825223909339" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/3Rgua6QPHZYizMJ.png" alt="image-20210825223909339" style="zoom: 50%;" />
 
 <h2 id="第三步：启动vmware创建虚拟机导向"><a href="#第三步：启动vmware创建虚拟机导向" class="headerlink" title="第三步：启动vmware创建虚拟机导向"></a>第三步：启动vmware创建虚拟机导向</h2><p>启动VMware Workstation Pro, 在主页点击 “创建新的虚拟机”</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/lgM72oyIhas45uP.png" alt="image-20210826113609594"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/lgM72oyIhas45uP.png" alt="image-20210826113609594"></p>
 <p>选择自定义配置</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/MxCIaudBGXJ3sPQ.png" alt="image-20210826113703809" style="zoom: 60%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/MxCIaudBGXJ3sPQ.png" alt="image-20210826113703809" style="zoom: 60%;" />
 
 <p>软件兼容性按默认即可</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/ZAbB4NjUPcaxoDs.png" alt="image-20210826113725378" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/ZAbB4NjUPcaxoDs.png" alt="image-20210826113725378" style="zoom:67%;" />
 
 <p>安装来源 选择 “稍后安装操作系统”。</p>
 <p>请不要使用“简易安装”</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/zdKnjNPoDBvZG6I.png" alt="image-20210826113917704" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/zdKnjNPoDBvZG6I.png" alt="image-20210826113917704" style="zoom:67%;" />
 
 <p>选择操作系统类型(CentOS7 64位)</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/G7X8wW3Plhvqtfy.png" alt="image-20210826114022464" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/G7X8wW3Plhvqtfy.png" alt="image-20210826114022464" style="zoom: 67%;" />
 
 <p>修改虚拟机文件的名称和存放位置；</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/QYR8oSuJC5BInyw.png" alt="image-20210826114152435" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/QYR8oSuJC5BInyw.png" alt="image-20210826114152435" style="zoom:67%;" />
 
 <p>根据电脑配置调整CPU的参数，一般默认配置已经够用，如果宿主机的硬件配置较好，也可以增加CPU的数量和每个CPU的内核数量。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/C1cy2IHjrDaQVdz.png" alt="image-20210826114423055" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/C1cy2IHjrDaQVdz.png" alt="image-20210826114423055" style="zoom:50%;" />
 
 <p>根据宿主机的硬件配置，调整虚拟机内存大小；</p>
 <p>  一般用于学习，1G的内存足够了</p>
 <p>  如果宿主机内存不足，配置512MB也可以运行</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/qHWTShO81QACvaV.png" alt="image-20210826114500129" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/qHWTShO81QACvaV.png" alt="image-20210826114500129" style="zoom:50%;" />
 
 <p> 网络类型选择。默认NAT 即可；</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/4L7wJCaGDbW59Qq.png" alt="image-20210826114535494" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/4L7wJCaGDbW59Qq.png" alt="image-20210826114535494" style="zoom: 67%;" />
 
 <p>I/O控制器类型，默认就好；</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/4rLvwjle5ANDx3J.png" alt="image-20210826114604833" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/4rLvwjle5ANDx3J.png" alt="image-20210826114604833" style="zoom: 67%;" />
 
 
 
 <p>虚拟磁盘类型，默认就好；</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/WRvBIXl9J5bSQ8L.png" alt="image-20210826114641880" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/WRvBIXl9J5bSQ8L.png" alt="image-20210826114641880" style="zoom:67%;" />
 
 <p>选择磁盘，因为我们是新系统安装，默认就行；</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/LzesktbOnxjyK4F.png" alt="image-20210826114723802" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/LzesktbOnxjyK4F.png" alt="image-20210826114723802" style="zoom:67%;" />
 
 <p>磁盘容量，默认20G就足够了，其他的选项也是默认就好；</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826114744918.png" alt="image-20210826114744918" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826114744918.png" alt="image-20210826114744918" style="zoom:67%;" />
 
 <p>指定磁盘文件的名称，默认就好；</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/bgvKd7ElaDNYwzm.png" alt="image-20210826114821568" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/bgvKd7ElaDNYwzm.png" alt="image-20210826114821568" style="zoom:67%;" />
 
 <p>结束，会显示虚拟机详细页。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/lraZhjQ8YCSUIFM.png" alt="image-20210826114841388" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/lraZhjQ8YCSUIFM.png" alt="image-20210826114841388" style="zoom:67%;" />
 
 <p>  可通过这个页面启动虚拟机，或者重新编辑虚拟机配置</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/HYZwp3CmKlJveAc.png" alt="image-20210826114932581"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/HYZwp3CmKlJveAc.png" alt="image-20210826114932581"></p>
 <p>点击“编辑虚拟机设置，选择安装ISO文件路径</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/QCKNq3LUZ6x1Mi7.png" alt="image-20210826115034813" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/QCKNq3LUZ6x1Mi7.png" alt="image-20210826115034813" style="zoom:67%;" />
 
 
 
 <h2 id="第四步：进入系统完成安装"><a href="#第四步：进入系统完成安装" class="headerlink" title="第四步：进入系统完成安装"></a>第四步：进入系统完成安装</h2><p>接着开启虚拟机</p>
 <p>此处我遇到了一个问题</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/eb2hlHXnspDJSI1.png" alt="image-20210826115409147" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/eb2hlHXnspDJSI1.png" alt="image-20210826115409147" style="zoom:50%;" />
 
 <p>此时就得重启进入bios设置，把处理器虚拟化技术打开，每个品牌的主板进入BIOS方式不同，具体可以</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/64be861ac8c29f64488267120203e4b.jpg" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/64be861ac8c29f64488267120203e4b.jpg" style="zoom:50%;" />
 
 
 
 <p>随后重新启动虚拟机，然后默认第一项就行</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/dzA4T6s3tIeNmlL.png" alt="image-20210826120300732"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/dzA4T6s3tIeNmlL.png" alt="image-20210826120300732"></p>
 <p>选择安装时的语言，默认就好</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826120345209.png" alt="image-20210826120345209" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826120345209.png" alt="image-20210826120345209" style="zoom:67%;" />
 
 <p>然后先选择地区和语言</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826120813752.png" alt="image-20210826120813752" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826120813752.png" alt="image-20210826120813752" style="zoom:67%;" />
 
 <p>设置磁盘分区</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121025328.png" alt="image-20210826121025328" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121025328.png" alt="image-20210826121025328" style="zoom:67%;" />
 
 <p>进行如下设置</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121000429.png" alt="image-20210826121000429" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121000429.png" alt="image-20210826121000429" style="zoom:67%;" />
 
 
 
 <p>设置网络</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121108266.png" alt="image-20210826121108266" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121108266.png" alt="image-20210826121108266" style="zoom:67%;" />
 
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121156781.png" alt="image-20210826121156781" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121156781.png" alt="image-20210826121156781" style="zoom:67%;" />
 
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121218605.png" alt="image-20210826121218605" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121218605.png" alt="image-20210826121218605" style="zoom:67%;" />
 
 <p>开始安装系统</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121245410.png" alt="image-20210826121245410" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121245410.png" alt="image-20210826121245410" style="zoom:80%;" />
 
 <p>接着就是点击进去设置密码</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121401243.png" alt="image-20210826121401243" style="zoom:70%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826121401243.png" alt="image-20210826121401243" style="zoom:70%;" />
 
 <p>设置完密码之后就重启</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826122603851.png" alt="image-20210826122603851" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826122603851.png" alt="image-20210826122603851" style="zoom: 67%;" />
 
 <p>然后就进入系统输入密码的界面了，依次输入账号root和前面设置的密码就可以进入系统了，注意此处输入密码是不会回显的。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/3WjyaIiY9CsFdX6.png" alt="image-20210826124848140"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/3WjyaIiY9CsFdX6.png" alt="image-20210826124848140"></p>
 <h2 id="第五步：测试网络连通性"><a href="#第五步：测试网络连通性" class="headerlink" title="第五步：测试网络连通性"></a>第五步：测试网络连通性</h2><p>登陆成功之后输入<strong>ip addr</strong>。</p>
 <p>找到网卡ens32和该网卡的IP信息。注意：你的网卡不一定是叫ens32，下文以ens32为例子。</p>
 <p>lo 网卡为回环地址网卡</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201081253265.png" alt="image-20220108125320226"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201081253265.png" alt="image-20220108125320226"></p>
 <p>ping一下百度，看是否能上外网。看到类似下面的内容，说明虚拟机网络配置成功。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826125548594.png" alt="image-20210826125548594"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826125548594.png" alt="image-20210826125548594"></p>
 <h2 id="额外操作"><a href="#额外操作" class="headerlink" title="额外操作"></a>额外操作</h2><h3 id="快照管理"><a href="#快照管理" class="headerlink" title="快照管理"></a>快照管理</h3><p><strong>虚拟机的快照是虚拟机在某个点及时的副本。</strong></p>
 <p>虚拟机快照是对某一个特定文件系统，在某一个特定时间内的一个具有只读属性的镜像。就是说当用户需要重复的返回到某一系统状态时，又不想创建多个虚拟机的时候，就可以使用虚拟机快照功能。</p>
 <p>系统崩溃或系统异常，可以通过使用恢复到快照来保持磁盘文件系统和系统存储，当升级应用和服务器以及给它们打补丁的时候，快照是相当于救世主一样的存在。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826173759884.png" alt="image-20210826173759884"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826173759884.png" alt="image-20210826173759884"></p>
 <h3 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h3><p>方式1：直接拷贝一份安装好的虚拟机文件</p>
 <p>方式2：使用vmware的克隆操作。</p>
 <h1 id="Linux文件与目录管理"><a href="#Linux文件与目录管理" class="headerlink" title="Linux文件与目录管理"></a>Linux文件与目录管理</h1><blockquote>
 <p>在Linux世界里，一切皆文件。</p>
 </blockquote>
-<h2 id="目录结构介绍"><a href="#目录结构介绍" class="headerlink" title="目录结构介绍"></a>目录结构介绍</h2><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210828175655237.png" alt="image-20210828175655237" style="zoom: 67%;" />
+<h2 id="目录结构与作用介绍"><a href="#目录结构与作用介绍" class="headerlink" title="目录结构与作用介绍"></a>目录结构与作用介绍</h2><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210828175655237.png" alt="image-20210828175655237" style="zoom: 67%;" />
 
 <table>
 <thead>
@@ -473,7 +473,7 @@ Monkey's Blog = </title>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="文件查看与处理"><a href="#文件查看与处理" class="headerlink" title="文件查看与处理"></a>文件查看与处理</h2><table>
+<h2 id="文件查看与基本操作"><a href="#文件查看与基本操作" class="headerlink" title="文件查看与基本操作"></a>文件查看与基本操作</h2><table>
 <thead>
 <tr>
 <th>常用命令</th>
@@ -545,62 +545,6 @@ Monkey's Blog = </title>
 <td></td>
 </tr>
 <tr>
-<td><strong>文本处理：grep/sed/awk</strong></td>
-<td></td>
-</tr>
-<tr>
-<td>grep codesheep hello.txt</td>
-<td>在⽂件hello.txt中查找关键词codesheep</td>
-</tr>
-<tr>
-<td>grep ^sheep hello.txt</td>
-<td>在⽂件hello.txt中查找以sheep开头的内容</td>
-</tr>
-<tr>
-<td>grep [0-9] hello.txt</td>
-<td>选择hello.txt⽂件中所有包含数字的⾏</td>
-</tr>
-<tr>
-<td>sed ‘s/s1/s2/g’ hello.txt</td>
-<td>将hello.txt⽂件中的s1替换成s2</td>
-</tr>
-<tr>
-<td>sed ‘/^$/d’ hello.txt</td>
-<td>从hello.txt⽂件中删除所有空⽩⾏</td>
-</tr>
-<tr>
-<td>sed ‘/ *#/d; /^$/d’ hello.txt</td>
-<td>从hello.txt⽂件中删除所有注释和空⽩⾏</td>
-</tr>
-<tr>
-<td>sed -e ‘1d’ hello.txt</td>
-<td>从⽂件hello.txt 中排除第⼀⾏</td>
-</tr>
-<tr>
-<td>sed -n ‘/s1/p’ hello.txt</td>
-<td>查看只包含关键词”s1”的⾏</td>
-</tr>
-<tr>
-<td>sed -e ‘s/ *$//‘ hello.txt</td>
-<td>删除每⼀⾏最后的空⽩字符</td>
-</tr>
-<tr>
-<td>sed -e ‘s/s1//g’ hello.txt</td>
-<td>从⽂档中只删除词汇s1并保留剩余全部</td>
-</tr>
-<tr>
-<td>sed -n ‘1,5p;5q’ hello.txt</td>
-<td>查看从第⼀⾏到第5⾏内容</td>
-</tr>
-<tr>
-<td>sed -n ‘5p;5q’ hello.txt</td>
-<td>查看第5⾏</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
 <td><strong>排序：sort</strong></td>
 <td></td>
 </tr>
@@ -647,10 +591,6 @@ Monkey's Blog = </title>
 <tr>
 <td>cd ..</td>
 <td>回上级⽬录</td>
-</tr>
-<tr>
-<td>cd ../..</td>
-<td>回上两级⽬录</td>
 </tr>
 <tr>
 <td>cd</td>
@@ -796,21 +736,28 @@ Monkey's Blog = </title>
 <td>mv old_dir new_dir</td>
 <td>重命名/移动⽬录</td>
 </tr>
+</tbody></table>
+<h2 id="文件搜索与查找"><a href="#文件搜索与查找" class="headerlink" title="文件搜索与查找"></a>文件搜索与查找</h2><p>主要有以下的命令：</p>
+<ul>
+<li>find：磁盘搜索，查询速度较慢。可以根据文件名称、类型、大小、日期、深度等进行搜索。</li>
+<li>locate：基于locatedb查询，查询速度比较快，但数据库的更新不是实时的，可能存在新建文件查询不到、查询到已删除文件的问题。</li>
+<li>which：主要用于<code>可执行文件</code>的查询。</li>
+<li>whereis：用于查询可执⾏⽂件、源文件、帮助文件的位置。</li>
+</ul>
+<table>
+<thead>
 <tr>
-<td></td>
-<td></td>
+<th><strong>搜索：find</strong></th>
+<th></th>
 </tr>
-<tr>
-<td><strong>搜索：find</strong></td>
-<td></td>
-</tr>
-<tr>
-<td>find / -name file1</td>
-<td>从跟⽬录开始搜索⽂件/⽬录</td>
+</thead>
+<tbody><tr>
+<td>find 查找目录 -name file1</td>
+<td>在查找⽬录下搜索⽂件</td>
 </tr>
 <tr>
 <td>find / -user user1</td>
-<td>搜索⽤户user1的⽂件/⽬录</td>
+<td>从根目录开始搜索⽤户user1的⽂件/⽬录</td>
 </tr>
 <tr>
 <td>find /dir -name *.bin</td>
@@ -821,28 +768,12 @@ Monkey's Blog = </title>
 <td></td>
 </tr>
 <tr>
-<td><strong>定位文件：locate</strong></td>
+<td><strong>搜索文件：locate</strong></td>
 <td></td>
 </tr>
 <tr>
-<td>locate &lt;关键词&gt;</td>
+<td>locate file</td>
 <td>快速定位⽂件</td>
-</tr>
-<tr>
-<td>locate *.mp4</td>
-<td>寻找.mp4结尾的⽂件</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>查看可执行文件路径：whereis</strong></td>
-<td></td>
-</tr>
-<tr>
-<td>whereis &lt;关键词&gt;</td>
-<td>显示某⼆进制⽂件/可执⾏⽂件的路径</td>
 </tr>
 <tr>
 <td></td>
@@ -854,7 +785,96 @@ Monkey's Blog = </title>
 </tr>
 <tr>
 <td>which &lt;关键词&gt;</td>
-<td>查找系统⽬录下某的⼆进制⽂件</td>
+<td>查找可执行文件的位置</td>
+</tr>
+<tr>
+<td>which cd</td>
+<td>查询cd的位置</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>查看可执行文件路径：whereis</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>whereis &lt;关键词&gt;</td>
+<td>显示某可执⾏⽂件、源文件、帮助文件的位置</td>
+</tr>
+</tbody></table>
+<h2 id="文本处理三剑客（grep、sed、awk）"><a href="#文本处理三剑客（grep、sed、awk）" class="headerlink" title="文本处理三剑客（grep、sed、awk）"></a>文本处理三剑客（grep、sed、awk）</h2><ul>
+<li> grep：更适合单纯的查找或匹配文本</li>
+<li> sed：更适合编辑匹配到的文本</li>
+<li> awk：更适合格式化文本，对文本进行较复杂格式处理</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>文本处理：grep/sed/awk</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>grep “被查找的字符串” 文件名</td>
+<td>从文件内容查找匹配指定字符串的行</td>
+</tr>
+<tr>
+<td>grep -n “被查找的字符串” 文件名</td>
+<td>从文件内容查找匹配指定字符串的行，并显示行数</td>
+</tr>
+<tr>
+<td>grep –i “被查找的字符串” 文件名</td>
+<td>从文件内容查找匹配指定字符串的行，不区分大小写</td>
+</tr>
+<tr>
+<td>grep ^tom  hello.txt</td>
+<td>在⽂件hello.txt中查找以tom 开头的内容</td>
+</tr>
+<tr>
+<td>grep [0-9] hello.txt</td>
+<td>选择hello.txt⽂件中所有包含数字的⾏</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sed ‘s/s1/s2/g’ hello.txt</td>
+<td>将hello.txt⽂件中的s1替换成s2</td>
+</tr>
+<tr>
+<td>sed ‘/^$/d’ hello.txt</td>
+<td>从hello.txt⽂件中删除所有空⽩⾏</td>
+</tr>
+<tr>
+<td>sed ‘/ *#/d; /^$/d’ hello.txt</td>
+<td>从hello.txt⽂件中删除所有注释和空⽩⾏</td>
+</tr>
+<tr>
+<td>sed -e ‘1d’ hello.txt</td>
+<td>从⽂件hello.txt 中排除第⼀⾏</td>
+</tr>
+<tr>
+<td>sed -n ‘/s1/p’ hello.txt</td>
+<td>查看只包含关键词”s1”的⾏</td>
+</tr>
+<tr>
+<td>sed -e ‘s/ *$//‘ hello.txt</td>
+<td>删除每⼀⾏最后的空⽩字符</td>
+</tr>
+<tr>
+<td>sed -e ‘s/s1//g’ hello.txt</td>
+<td>从⽂档中只删除词汇s1并保留剩余全部</td>
+</tr>
+<tr>
+<td>sed -n ‘1,5p;5q’ hello.txt</td>
+<td>查看从第⼀⾏到第5⾏内容</td>
+</tr>
+<tr>
+<td>sed -n ‘5p;5q’ hello.txt</td>
+<td>查看第5⾏</td>
 </tr>
 </tbody></table>
 <h2 id="文件打包、压缩和解压"><a href="#文件打包、压缩和解压" class="headerlink" title="文件打包、压缩和解压"></a>文件打包、压缩和解压</h2><h3 id="文件格式介绍"><a href="#文件格式介绍" class="headerlink" title="文件格式介绍"></a>文件格式介绍</h3><table>
@@ -974,7 +994,7 @@ Monkey's Blog = </title>
 </blockquote>
 <p>基本上 vi/vim 共分为三种模式，分别是<strong>一般指令模式（Command mode）</strong>，<strong>编辑模式（Insert mode）</strong>和<strong>命令行命令模式（command-line mode）</strong>。 这三种模式的作用分别是：</p>
 <p>​           </p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201091343702.png" alt="img" style="zoom:50%;" />        
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201091343702.png" alt="img" style="zoom:50%;" />        
 
 
 
@@ -1243,7 +1263,7 @@ Monkey's Blog = </title>
 <p><code>编译器</code>：将程序码转译成为机器看的懂得语言，就类似翻译者的角色； </p>
 <p><code>二进制码</code>：经过编译器变成二进制程序后，此时的代码称为<code>二进制代码</code>，机器看的懂所以可以执行的文件。</p>
 <p><code>函数库</code>：就类似副程序的角色，可以被调用来执行的一段功能函数。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826211248784.png" alt="image-20210826211248784" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826211248784.png" alt="image-20210826211248784" style="zoom:80%;" />
 
 
 
@@ -1264,14 +1284,14 @@ Monkey's Blog = </title>
 <p>什么情况下推荐用二进制包安装呢？</p>
 </blockquote>
 <p>当该软件需要特定的版本的编译器才能编译源码包，而自己又不想下载或者很难下载，比如我装个nodejs，系统里的gcc-c++是4.x版本的，编译源码包的过程需要6.x才能装，但是自己死活装不上去高版本的c++，此时就可以考虑二进制包了，一步到位。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826230518963.png" alt="image-20210826230518963" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826230518963.png" alt="image-20210826230518963" style="zoom: 67%;" />
 
 <p>rpm格式中的二进制包和源码包很好区分：二进制格式的包名字很长，都带有版本号、适应平台、适应的硬件类型等，而源码格式仅仅就是一个版本号的tar包。<br>mysql-5.0.45.tar.gz 是 源码包  像这样的 mysql-5.0.45-linux-x86_64-glibc23.tar.gz  是二进制包</p>
 <h3 id="tar-gz等形式的源代码包"><a href="#tar-gz等形式的源代码包" class="headerlink" title="*.tar.gz等形式的源代码包"></a>*.tar.gz等形式的源代码包</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 下载：通过wget直接下载软件包 或者 官网下载后使用ssh客户端将其传到服务器，一般放于/usr/<span class="built_in">local</span>/src </span><br><span class="line">2. 解压：通过 tar -zxvf [filename.tar.gz] 等命令解压软件包，确保文件都在/usr/<span class="built_in">local</span>/src/&#123;filename&#125;中</span><br><span class="line">3. 环境准备：根据 INSTALL/README 的内容察看并安装好一些相依的软件 （非必要）；</span><br><span class="line">4. 配置: 进入目录后，通过./configure --prefix=/usr/<span class="built_in">local</span>/&#123;filename&#125;，会根据环境创建一个MakeFile文件</span><br><span class="line">5. 编译：make，原始文件被编译成可执行文件</span><br><span class="line">6. 安装：make install，确保安装后的文件在/usr/<span class="built_in">local</span>/&#123;filename&#125;</span><br><span class="line">7. ...</span><br><span class="line">8. 卸载：rm -rf /usr/<span class="built_in">local</span>/&#123;filename&#125; 或者 make uninstall（记得先进入目录）</span><br></pre></td></tr></table></figure>
 
 
 
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826211627006.png" alt="image-20210826211627006" style="zoom:67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826211627006.png" alt="image-20210826211627006" style="zoom:67%;" />
 
 <p>说明：</p>
 <ul>
@@ -1304,7 +1324,7 @@ Monkey's Blog = </title>
 
 <h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><p>如果/usr/local/{filename}/bin下的可执行文件就是无法直接在任何地方直接执行了，那就要像window一样去将该目录加入到系统的PATH变量当中去，如下图显示的一般，在去改path变量</p>
 <p>PATH变量在/etc/profile文件设置</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826225928354.png" alt="image-20210826225928354"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826225928354.png" alt="image-20210826225928354"></p>
 <p>装完之后要让配置文件生效，可以输入如下命令或者是重启系统</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 
@@ -1361,7 +1381,7 @@ Monkey's Blog = </title>
 <li>dpkg：最早是由 Debian Linux 社群所开发出来的，通过 dpkg 的机制， Debian 提供的软件就能够简单的安装起来，同时还能提供安装后的软件信息，实在非常 不错。 只要是衍生于 Debian 的其他 Linux distributions 大多使用 dpkg 这个机制来管理 软件的， 包括 B2D, Ubuntu 等等。</li>
 <li>RPM： “ RedHat Package Manager，这个机制最早是由 Red Hat 这家公司开发出来的，后来实在很好用，因此很多 distributions 就使用这个机制来作为软件安装的管理方式。包括 Fedora, CentOS, SuSE 等等知名的开发商都是用这咚咚。</li>
 </ul>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826231424494.png" alt="image-20210826231424494"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210826231424494.png" alt="image-20210826231424494"></p>
 <p>注：RPM和YUM方式装的包的后缀都是.rpm，类似于android的.apk。RPM包并不是跨平台的。RedHat的RPM包与SUSE的RPM包不能混用。</p>
 <h3 id="Centos等平台"><a href="#Centos等平台" class="headerlink" title="Centos等平台"></a>Centos等平台</h3><h4 id="RPM（RPM-Package-Manager）"><a href="#RPM（RPM-Package-Manager）" class="headerlink" title="RPM（RPM Package Manager）"></a>RPM（RPM Package Manager）</h4><blockquote>
 <p>最早称为Red Hat Package Manager，这一文件格式名称虽然打上了RedHat的标志，但是其原始设计理念是开放式的，包括OpenLinux、S.u.S.E.以及Turbo Linux等<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS9MaW51eC8yNzA1MA==">Linux</span>的分发版本都有采用，可以算是公认的行业标准了，于是就改名了为RPM Package Manager。</p>
@@ -1593,7 +1613,7 @@ Monkey's Blog = </title>
 <li><strong>command：</strong>要进行的操作。</li>
 <li><strong>package：</strong>安装的包名。</li>
 </ul>
-<h5 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h5><ul>
+<h5 id="YUM常用命令"><a href="#YUM常用命令" class="headerlink" title="YUM常用命令"></a>YUM常用命令</h5><ul>
 <li><p>列出所有可更新的软件清单命令：<strong>yum check-update</strong></p>
 </li>
 <li><p>更新所有软件命令：<strong>yum update</strong></p>
@@ -1603,6 +1623,8 @@ Monkey's Blog = </title>
 <li><p>仅更新指定的软件命令：<strong>yum update <package_name></strong></p>
 </li>
 <li><p>列出所有可安裝的软件清单命令：<strong>yum list</strong></p>
+</li>
+<li><p>列出所有已安装的软件包：<strong>yum list installed</strong></p>
 </li>
 <li><p>删除软件包命令：<strong>yum remove <package_name></strong></p>
 </li>
@@ -1979,7 +2001,7 @@ Monkey's Blog = </title>
 </tr>
 </tbody></table>
 <h2 id="用户配置文件"><a href="#用户配置文件" class="headerlink" title="用户配置文件"></a>用户配置文件</h2><h3 id="用户信息文件-etc-passwd"><a href="#用户信息文件-etc-passwd" class="headerlink" title="用户信息文件/etc/passwd"></a>用户信息文件/etc/passwd</h3><p><code>/etc/passwd</code>：用户的配置文件，记录用户的各种信息。组成为：用户名:密码标志:用户标识号:组标识号:注释性描述:主目录:登录Shell</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201091353515.png" alt="image-20220109135305477"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201091353515.png" alt="image-20220109135305477"></p>
 <p>下面是详细介绍：</p>
 <ul>
 <li><p>第1字段：用户名称</p>
@@ -2055,7 +2077,7 @@ Monkey's Blog = </title>
 <li><p>第9字段：保留</p>
 </li>
 </ul>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201091357040.png" alt="image-20220109135716994"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201091357040.png" alt="image-20220109135716994"></p>
 <p><strong>时间戳换算说明</strong>：</p>
 <ul>
 <li><p>把时间戳换算为日期 </p>
@@ -2090,7 +2112,7 @@ Monkey's Blog = </title>
 <h1 id="Linux文件权限管理"><a href="#Linux文件权限管理" class="headerlink" title="Linux文件权限管理"></a>Linux文件权限管理</h1><p>在上一节，我们介绍了用户和用户组的概念，我们可以利用用户和用户组，设置文件对不同身份的人的权限。</p>
 <p>在普通权限中，用户对文件只有三种身份，就是属主、属组和其他人；每种用户身份拥有读（read）、写（write）和执行（execute）三种权限。</p>
 <h2 id="文件属性总览"><a href="#文件属性总览" class="headerlink" title="文件属性总览"></a>文件属性总览</h2><p>我们直接通过命令ls -al可查看当前目录下所有文件的属性：</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210828205759649.png" alt="image-20210828205759649" style="zoom: 67%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210828205759649.png" alt="image-20210828205759649" style="zoom: 67%;" />
 
 <p>我们可以看到，一个文件/目录有多个属性，包括权限、链接、拥有者（表示该文件/目录的所有人）、群组（表示该文件/目录的所属组）、文件大小、修改日期、文件名，其中后面的三项就字面意思，很容易理解啦，我们讲讲前面的几个属性：</p>
 <p><strong>文件类型：</strong>即权限部分的第一位，表示该文件的类型：</p>
@@ -2102,7 +2124,7 @@ Monkey's Blog = </title>
 <li>[ c ]：设备文件里面的硬件设备，例如键盘、鼠标（一次性读取设 备）。</li>
 </ul>
 <p><strong>文件权限：</strong>即权限部分的后9位，以三个为一组，前三位代表文件拥有者的权限，中间三位代表所属组的权限，后三位代表其他人的权限</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210828205909441.png" alt="image-20210828205909441" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210828205909441.png" alt="image-20210828205909441" style="zoom: 50%;" />
 
 <ul>
 <li>[ r ]代表可读 （read），权重为4</li>
@@ -2172,7 +2194,7 @@ Monkey's Blog = </title>
 </tbody></table>
 <h2 id="ACL权限管理"><a href="#ACL权限管理" class="headerlink" title="ACL权限管理"></a>ACL权限管理</h2><p>ACL 是 Access Control List 的缩写，主要的目的是在提供传统的 owner,group,others 的 read,write,execute 权限之外的细部权限设定。</p>
 <p>ACL 可以<strong>针对单一使用者</strong>，单一文件或目录来进行 r,w,x 的权限规范，对于需要特殊权限的使用状况非常有帮助。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201091515801.png" alt="image-20220109151503737" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201091515801.png" alt="image-20220109151503737" style="zoom:50%;" />
 
 <p>图 1 的根目录中有一个 /project 目录，这是班级的项目目录。班级中的每个学员都可以访问和修改这个目录，老师也需要对这个目录拥有访问和修改权限，其他班级的学员当然不能访问这个目录。需要怎么规划这个目录的权限呢？应该这样：老师使用 root 用户，作为这个目录的属主，权限为 rwx；班级所有的学员都加入 tgroup 组，使 tgroup 组作为 /project 目录的属组，权限是 rwx；其他人的权限设定为 0。这样这个目录的权限就可以符合我们的项目开发要求了。</p>
 <p>有一天，班里来了一位试听的学员 st，她必须能够访问 /project 目录，所以必须对这个目录拥有 r 和 x 权限；但是她又没有学习过以前的课程，所以不能赋予她 w 权限，怕她改错了目录中的内容，所以学员 st 的权限就是 r-x。可是如何分配她的身份呢？变为属主？当然不行，要不 root 该放哪里？加入 tgroup 组 ？也不行，因为 tgroup 组的权限是 rwx，而我们要求学员 st 的权限是 r-x。如果把其他人的权限改为 r-x 呢？这样一来，其他班级的所有学员都可以访问 /project 目录了。</p>
@@ -2189,7 +2211,7 @@ Monkey's Blog = </title>
 <p>那么如何查看service命令管理了哪些服务呢？</p>
 </blockquote>
 <p>service命令管理的服务在/etc/init.d/查看，绿色的</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201071948488.png" alt="image-20220107194843444"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201071948488.png" alt="image-20220107194843444"></p>
 <blockquote>
 <p>systemctl命令兼容了service</p>
 </blockquote>
@@ -2260,7 +2282,7 @@ Monkey's Blog = </title>
 <td>关闭开机⾃启</td>
 </tr>
 </tbody></table>
-<table>
+<h2 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h2><table>
 <thead>
 <tr>
 <th>其他任务管理命令</th>
@@ -2306,6 +2328,15 @@ Monkey's Blog = </title>
 <p>　　–permanent #永久生效，没有此参数重启后失效</p>
 <p>　　<strong>注意：添加端口后，必须用命令firewall-cmd –reload重新加载一遍才会生效</strong>。</p>
 <p>（5）关闭防火墙端口：firewall-cmd –zone=public –remove-port=8888/tcp –permanent</p>
+<p>常见的端口有：</p>
+<ul>
+<li>15672：rabitmq</li>
+<li>3306：MySQL</li>
+<li>6379：Redis</li>
+<li>80：HTTP</li>
+<li>443：HTTPS</li>
+<li>22：SSH</li>
+</ul>
 <h2 id="Linux进程管理"><a href="#Linux进程管理" class="headerlink" title="Linux进程管理"></a>Linux进程管理</h2><p>Linux系统上所有运行的东西都可以称之为一个进程。每个用户任务、每个系统管理任务，都可以称之为进程。进程是一个程序的运行。进程与程序是有区别的。程序只是一个静态的指令集合, 不占系统的运行资源;而进程是一个随时都可能发生变化的、动态的、使用系统运行资源的程序。一个程序可以启动多个进程。例如可以打开多个浏览器窗口,每个就是一个进程。此外，进程和作业的概念也有一定区别。 一个正在执行的进程称为一个作业，而且作业可以包含一-个或多个进程 ,尤其是当使用了管道和重定向命令。</p>
 <p>Linux操作系统包括3种不同类型的进程,每种进程都有自己的特点和属性。</p>
 <ul>
@@ -2343,8 +2374,7 @@ Monkey's Blog = </title>
 </tr>
 </tbody></table>
 <p>linux 的 <strong>kill</strong> 命令是向进程发送信号，<strong>kill</strong> 不是杀死的意思，**-9** 表示无条件退出，但由进程自行决定是否退出，这就是为什么 <strong>kill -9</strong> 终止不了系统进程和守护进程的原因。</p>
-<h1 id="Linux系统管理"><a href="#Linux系统管理" class="headerlink" title="Linux系统管理"></a>Linux系统管理</h1><p>Linux系统管理的范畴很广，主要包括设备管理、用户管理、进程管理、网络管理、系统运行情况监控以及日志查看等内容, 其中部分的内容已经在上面的章节介绍到了，这一节中主要介绍到的是不太常用的部分。</p>
-<h2 id="Linux网络管理"><a href="#Linux网络管理" class="headerlink" title="Linux网络管理"></a>Linux网络管理</h2><h3 id="命令工具介绍"><a href="#命令工具介绍" class="headerlink" title="命令工具介绍"></a>命令工具介绍</h3><p>主要有两个：</p>
+<h1 id="Linux网络管理"><a href="#Linux网络管理" class="headerlink" title="Linux网络管理"></a>Linux网络管理</h1><h3 id="命令工具介绍"><a href="#命令工具介绍" class="headerlink" title="命令工具介绍"></a>命令工具介绍</h3><p>主要有两个：</p>
 <ul>
 <li><code>net-tools</code>：旧！自2001年起，<strong>已停止维护</strong>，CentOS7等新的Linux发行版已经抛弃了该工具，包含ifconfig、route、arp和netstat等命令。</li>
 <li><code>iproute2</code>：新！用于取代net-tools。</li>
@@ -2428,7 +2458,7 @@ Monkey's Blog = </title>
 <li>ss</li>
 </ul>
 <p>我们看一张图看看对比：</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201081352728.jpeg" alt="img" style="zoom: 25%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201081352728.jpeg" alt="img" style="zoom: 25%;" />
 
 
 
@@ -2570,7 +2600,7 @@ Monkey's Blog = </title>
 <li>curl支持HTTPS认证，并且支持HTTP的POST、PUT等方法， FTP上传， kerberos认证，HTTP上传，代理服务器，cookies，用户名/密码认证， 下载文件断点续传，上载文件断点续传, http代理服务器管道（ proxy tunneling）;</li>
 <li>curl还支持IPv6，socks5代理服务器，通过http代理服务器上传文件到FTP服务器等，功能十分强大。</li>
 </ul>
-<h2 id="Linux磁盘设备管理"><a href="#Linux磁盘设备管理" class="headerlink" title="Linux磁盘设备管理"></a>Linux磁盘设备管理</h2><p>Linux系统中设备是由文件来表示的,每种设备都被抽象为设备文件的形式，这样就给应用程序一个一致的文件界面，方便应用程序和操作系统之间的通信。设备文件集中放置在/dev目录下，一般有几千个，都是Linux系统在安装的时候自动创建的。需要说明的是，一台Linux计算机即使安装前在物理上没有安装某一种设备，或者数量只有一个，Linux也会创建该类设备文件,而且数量足够，以备用户使用。例如计算机中最常见的是安装1~3块IDE硬盘，而Linux也会创建出hda、hdb、 hde… ，直至hdz共26个IDE硬盘设备文件，供用户使用。其他类设备也是如此，用户就是通过对这些设备文件进行操作，来对设备进行配置和管理。本节主要描述磁盘存储设备的管理。</p>
+<h1 id="Linux磁盘设备管理"><a href="#Linux磁盘设备管理" class="headerlink" title="Linux磁盘设备管理"></a>Linux磁盘设备管理</h1><p>Linux系统中设备是由文件来表示的,每种设备都被抽象为设备文件的形式，这样就给应用程序一个一致的文件界面，方便应用程序和操作系统之间的通信。设备文件集中放置在/dev目录下，一般有几千个，都是Linux系统在安装的时候自动创建的。需要说明的是，一台Linux计算机即使安装前在物理上没有安装某一种设备，或者数量只有一个，Linux也会创建该类设备文件,而且数量足够，以备用户使用。例如计算机中最常见的是安装1~3块IDE硬盘，而Linux也会创建出hda、hdb、 hde… ，直至hdz共26个IDE硬盘设备文件，供用户使用。其他类设备也是如此，用户就是通过对这些设备文件进行操作，来对设备进行配置和管理。本节主要描述磁盘存储设备的管理。</p>
 <h3 id="硬盘设备概述"><a href="#硬盘设备概述" class="headerlink" title="硬盘设备概述"></a>硬盘设备概述</h3><p>Linux系统磁盘设备命名方式遵循一定的规则。例如，接在IDE1的第一个硬盘(master，主硬盘) ，其设备名称为/dev/hda，也就是说我们可以用“/dev/hda* ‘来代表此硬盘。“hd”即硬盘(Hard Disk) ， 代表IDE设备，“a”则表示第一个硬盘。除了“hd”以外，常用的还有“sd”，代表SCSI硬盘。如果在/dev/hda 硬盘上划了分区,则用数字表示分区的，例如/dew/hdal表示该硬盘上的第一个分区。 关于磁盘存储设备的命名，这里总结如下：</p>
 <ul>
 <li>前两个字母表示分区所在设备的类型<ul>
@@ -2591,7 +2621,7 @@ Monkey's Blog = </title>
 </li>
 </ul>
 <p>每个硬盘可以最多有四个主分区，因此数字1-4的作用是表示硬盘的主分区。逻辑分区是从数字5开始的，每多一个分区，数字加1即可。采用命令fdisk-l查看本机硬盘及分区情况，例如:</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201210001977.png" alt="image-20220121000104905" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201210001977.png" alt="image-20220121000104905" style="zoom:50%;" />
 
 <p>上述的例子说明计算机中只有/dev/sda一个硬盘，且是SCSI硬盘，该硬盘上有两个分区1和2。其中打*号的表示为启动分区。</p>
 <h3 id="常用文件系统"><a href="#常用文件系统" class="headerlink" title="常用文件系统"></a>常用文件系统</h3><p>文件系统是操作系统最为重要的一部分，它定义了磁盘上存储文件的方法和数据结构，文件系统是操作系统组织、存取和保存信息的重要手段,每种操作系统都有自己的文件系统。磁盘被操作系统识别出来以后，需要被格式化成某种格式的文件系统，才可以用于存取文件等操作。例如Windows中 通常就会把磁盘格式化为FAT格式或NTFS格式。</p>
@@ -2605,7 +2635,7 @@ Monkey's Blog = </title>
 <li>涉及针对文件系统的操作时，把他们映射到相关的物理文件系统</li>
 </ul>
 <p>Linux系统可以支持多种文件系统，为此，必须使用一种统一的接口，这就是VFS。通过VFS将不同文件系统的实现细节隐藏起来，因而从外部看上去，所有的文件系统都是一样的，如下图所示。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201210006296.png" alt="image-20220121000658234"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201210006296.png" alt="image-20220121000658234"></p>
 <p>从图看到，当内核要使用文件系统时，都是经由VFS这层接口来使用。当用户去读取一个文件的内容时，它不会因为这个文件位于不同的文件系统就需要使用不同的方式和命令来读取。因为这件事VFS已经帮用户实现了。当用户要读取的文件位于CDROM时，VFS就<br>自动帮用户把这个读取的要求交由iso9660文件系统来做，当用户要读取的文件在FAT里时，VFS则自动调用FAT的函数来帮用户读取。</p>
 <h3 id="硬盘分区"><a href="#硬盘分区" class="headerlink" title="硬盘分区"></a>硬盘分区</h3><p>对硬盘分区采用的是<code>fdisk</code>命令，会进入交互模式，在交互模式中，输入n新建分区。</p>
 <h3 id="硬盘格式化：给磁盘安装文件系统"><a href="#硬盘格式化：给磁盘安装文件系统" class="headerlink" title="硬盘格式化：给磁盘安装文件系统"></a>硬盘格式化：给磁盘安装文件系统</h3><p>格式化的过程就是在特定的分区上建立文件系统，主要的命令为<code>mkfs.xxx</code>，该命令事实上会有很多命令，xxx则是文件系统的格式。</p>
@@ -2688,12 +2718,12 @@ Monkey's Blog = </title>
 <td>从⾼到低依次显示⽂件和⽬录⼤⼩</td>
 </tr>
 </tbody></table>
-<h2 id="Linux驱动管理"><a href="#Linux驱动管理" class="headerlink" title="Linux驱动管理"></a>Linux驱动管理</h2><p>——to be updated</p>
+<h1 id="Linux驱动管理"><a href="#Linux驱动管理" class="headerlink" title="Linux驱动管理"></a>Linux驱动管理</h1><p>——to be updated</p>
 <p>驱动加载</p>
 <p>驱动更新</p>
 <p>网卡</p>
 <p>显卡</p>
-<h2 id="Linux关机-重启"><a href="#Linux关机-重启" class="headerlink" title="Linux关机/重启"></a>Linux关机/重启</h2><p>不管是重启系统还是关闭系统，首先要运行syne命令，把内存中的数据写到磁盘中，不过目前的shutdown/reboot/halt 等命令均已经在关机前进行了syne 。</p>
+<h1 id="Linux关机-重启"><a href="#Linux关机-重启" class="headerlink" title="Linux关机/重启"></a>Linux关机/重启</h1><p>不管是重启系统还是关闭系统，首先要运行syne命令，把内存中的数据写到磁盘中，不过目前的shutdown/reboot/halt 等命令均已经在关机前进行了syne 。</p>
 <table>
 <thead>
 <tr>
@@ -2762,7 +2792,7 @@ Monkey's Blog = </title>
 <td>buff数据同步到磁盘</td>
 </tr>
 </tbody></table>
-<h2 id="Linux系统监视与日志"><a href="#Linux系统监视与日志" class="headerlink" title="Linux系统监视与日志"></a>Linux系统监视与日志</h2><table>
+<h1 id="Linux系统监视与日志"><a href="#Linux系统监视与日志" class="headerlink" title="Linux系统监视与日志"></a>Linux系统监视与日志</h1><table>
 <thead>
 <tr>
 <th>常用命令</th>
@@ -2879,130 +2909,12 @@ Monkey's Blog = </title>
 </tr>
 </tbody></table>
 <p>系统日志是对特定事件的记录。一个系统日志中所记录的事件的类型是由特定的日志的性质以及控制这些被记录事件的任何配置决定的。一般情况下，系统日志是用户可以直接阅读的文本文件，其中包含了一个时间戳和这个消息或者子系统所特有的其他信息。<br>日志对于系统安全来说尤其重要，由于日志记录了系统每天发生的各种各样的事情，用户可以通过他来检查错误发生的原因或者受到攻击时攻击者留下的痕迹。日志可以帮助用户审计和监测，还可以实时地监测系统状态,监测和追踪侵入者等。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201210041527.png" alt="image-20220121004121418"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201210041527.png" alt="image-20220121004121418"></p>
 <h1 id="Linux系统启动过程分析"><a href="#Linux系统启动过程分析" class="headerlink" title="Linux系统启动过程分析"></a>Linux系统启动过程分析</h1><p>——to be updated</p>
-<h1 id="Linux的Shell基础"><a href="#Linux的Shell基础" class="headerlink" title="Linux的Shell基础"></a>Linux的Shell基础</h1><h2 id="什么是Shell？"><a href="#什么是Shell？" class="headerlink" title="什么是Shell？"></a>什么是Shell？</h2><p>Shell是一个<strong>命令解释器</strong>，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序，用户可以用Shell来启动、挂起、停止甚至是编写一些程序。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201181630490.png" alt="image-20220118163023422"></p>
-<p>无论是图形化操作的系统还是命令行的工具，都是让用户能对操作系统下达指令，真正能和计算机硬件通信的，只有操作系统内核。图形界面和命令行只是架设在用户和内核之间的一座桥梁。</p>
-<p>用户无法直接操作硬件，既降低了用户操作的复杂性，降低用户学习成本，从而更好地推广计算机，又可以保证安全性，降低硬件崩溃的可能性。何乐而不为呢。</p>
-<p><strong>Shell本质上是一个应用程序</strong>，通过该程序，我们可以<strong>将我们输入的命令（如mkdir、cd…）“翻译”给Linux内核</strong>，让我们能够高效、安全、低成本地使用Linux内核。</p>
-<p>Shell因此并不是内核的一部分，和普通的应用程序的区别就是这个程序会开机自启动。</p>
-<h2 id="几个概念辨析"><a href="#几个概念辨析" class="headerlink" title="几个概念辨析"></a>几个概念辨析</h2><ul>
-<li>Shell：<ul>
-<li>用户和系统内核之间的接口程序：这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。</li>
-<li>命令解释器</li>
-</ul>
-</li>
-<li>Shell命令：如mkdir等。</li>
-<li>Shell脚本（shell script）：是一种为 shell 编写的脚本程序。业界所说的 shell 通常都是指 shell 脚本，但shell 和 shell script 是两个不同的概念。由于习惯的原因，简洁起见，本文出现的 “shell编程” 都是指 shell 脚本编程，不是指开发 shell 自身（如Windows Explorer扩展开发）。因此我们也会称Shell为一种脚本语言。</li>
-</ul>
-<h2 id="Shell的种类"><a href="#Shell的种类" class="headerlink" title="Shell的种类"></a>Shell的种类</h2><ul>
-<li><p><strong>sh(全称 Bourne Shell)</strong>: 是UNIX最初使用的 shell，而且在每种 UNIX 上都可以使用。</p>
-<p>Bourne Shell 在 shell 编程方面相当优秀，但在处理与用户的交互方面做得不如其他几种 shell。</p>
-</li>
-<li><p><strong>bash（全称 Bourne Again Shell）</strong>: LinuxOS 默认的，它是 Bourne Shell 的扩展。 与 Bourne Shell 完全兼容，并且在 Bourne Shell 的基础上增加了很多特性。可以提供命令补全，命令编辑和命令历史等功能。它还包含了很多 C Shell 和 Korn Shell 中的优点，有灵活和强大的编辑接口，同时又很友好的用户界面。</p>
-</li>
-<li><p><strong>csh(全称 C Shell)</strong>: 是一种比 Bourne Shell更适合的变种 Shell，它的语法与 C 语言很相似。</p>
-</li>
-<li><p><strong>tcsh（Berkeley UNIX C Shell）</strong>: 是 Linux 提供的 C Shell 的一个扩展版本。Tcsh 包括命令行编辑，可编程单词补全，拼写校正，历史命令替换，作业控制和类似 C 语言的语法，他不仅和 Bash Shell 提示符兼容，而且还提供比 Bash Shell 更多的提示符参数。</p>
-</li>
-<li><p><strong>ksh (全称 Korn Shell)</strong>: 集合了 C Shell 和 Bourne Shell 的优点并且和 Bourne Shell 完全兼容。Korn Shell的语法与Bourne Shell相同，同时具备了C Shell的易用特点。</p>
-</li>
-<li><p><strong>pdksh</strong>: 是 Linux 系统提供的 ksh 的扩展。pdksh 支持人物控制，可以在命令行上挂起，后台执行，唤醒或终止程序。</p>
-</li>
-</ul>
-<p>我们一般写的都是Bash脚本。</p>
-<h2 id="用户使用shell的设定"><a href="#用户使用shell的设定" class="headerlink" title="用户使用shell的设定"></a>用户使用shell的设定</h2><p>通过查看/etc/passwd文件可以查看用户使用的shell类型，例如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">webalizer:x:67:67:Webalizer:/var/www/usage:/sbin/nologin</span><br><span class="line">xfs:x:43:43:X Font Server:/etc/X11/fs:/sbin/nologin</span><br><span class="line">ntp:x:38:38::/etc/ntp:/sbin/nologin</span><br><span class="line">gdm:x:42:42::/var/gdm:/sbin/nologin</span><br><span class="line">htt:x:100:101:IIIMF Htt:/usr/lib/im:/sbin/nologin</span><br><span class="line">tom:x:500:500:tom:/home/tom:/bin/bash</span><br><span class="line">#可见，tom用户使用的shell为bash</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看Linux安装的Shell"><a href="#查看Linux安装的Shell" class="headerlink" title="查看Linux安装的Shell"></a>查看Linux安装的Shell</h2><p>通过cat /ect/shells命令查看安装的shell</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201181713038.png" alt="image-20220118171349985" style="zoom:50%;" />
-
-<h1 id="Linux的Shell脚本编程"><a href="#Linux的Shell脚本编程" class="headerlink" title="Linux的Shell脚本编程"></a>Linux的Shell脚本编程</h1><h2 id="基础知识-1"><a href="#基础知识-1" class="headerlink" title="基础知识"></a>基础知识</h2><p>shell脚本写的是<strong>解释型语言</strong>，所以被称为“脚本”，不需要编译生成二进制文件。</p>
-<p>shell程序可以认为是将shell命令按照控制结构组织到一个文本文件中，批量的交给shell去执行。不同的shell解释器使用不同的shell命令语法</p>
-<p>通过写Shell脚本，可以执行相对简单的任务的工具，因为它更强调易于配置、维护和可移植性，不适合用来完成时间紧迫型和处理器忙碌型的任务。</p>
-<blockquote>
-<p>如何执行一个Shell脚本？</p>
-</blockquote>
-<ul>
-<li><p>方式一：添加可执行权限后，再执行</p>
-<ul>
-<li>```sh<br>chmod +x /path/filename<br>./path/filename<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 方式二：不用赋予执行权限，直接执行</span><br><span class="line"></span><br><span class="line">  - ```sh</span><br><span class="line">    sh hello.sh</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Shell脚本的格式要求？</p>
-</blockquote>
-<p>脚本要以这一行作为开头，表示要使用的Shell。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Shell变量"><a href="#Shell变量" class="headerlink" title="Shell变量"></a>Shell变量</h2><p>Shell脚本的变量有如下知识点：</p>
-<ul>
-<li>变量是弱类型的，不用声明类型，可以存储不同类型的内容，区分大小写。</li>
-<li>默认是字符串类型，无论加不加单引号、双引号，但是如果内容有空格，就必须有引号。</li>
-<li><strong>等号两边之间不能有空格！</strong></li>
-<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头。</li>
-<li>不能用标点符号和bash关键字。</li>
-</ul>
-<p>（1）定义变量：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a=hello world</span><br><span class="line">b=<span class="string">&quot;hello world&quot;</span></span><br><span class="line">c=6+6</span><br><span class="line">arr=(</span><br><span class="line">value0</span><br><span class="line">value1</span><br><span class="line">value2</span><br><span class="line">value3</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>如果要定义一个只读的变量，则为：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d=2</span><br><span class="line"><span class="built_in">readonly</span> d</span><br></pre></td></tr></table></figure>
-
-<p>（2）使用变量，在变量名前面加一个美元$符号：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo为打印命令</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$a</span>  <span class="comment"># 结果为hello world</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>  <span class="comment"># 结果为hello world</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$c</span>  <span class="comment"># 结果为6+6</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;arr[0]&#125;</span> <span class="comment"># 结果为value0</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#array_name[@]&#125;</span> <span class="comment"># 获取数组长度</span></span><br></pre></td></tr></table></figure>
-
-<p>（3）删除变量：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> a</span><br></pre></td></tr></table></figure>
-
-<p>（4）获取位置变量</p>
-<p>我们在执行某个脚本的同时，可以在后面同时传递几个参数，例如：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test.sh 1 2 3</span><br></pre></td></tr></table></figure>
-
-<p>那么我们如何获取呢？$n</p>
-<p>例如：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;执行的文件名：<span class="variable">$0</span>&quot;</span>; <span class="comment"># 执行的文件名：test.sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;第一个参数为：<span class="variable">$1</span>&quot;</span>; <span class="comment"># 第一个参数为：1</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;第二个参数为：<span class="variable">$2</span>&quot;</span>; <span class="comment"># 第二个参数为：2</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;第三个参数为：<span class="variable">$3</span>&quot;</span>; <span class="comment"># 第三个参数为：3</span></span><br></pre></td></tr></table></figure>
-
-<p>另外，还有几个特殊字符用来处理参数：</p>
-<table>
-<thead>
-<tr>
-<th align="left">参数处理</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">$#</td>
-<td align="left">传递到脚本的参数个数</td>
-</tr>
-<tr>
-<td align="left">$*</td>
-<td align="left">以一个单字符串显示所有向脚本传递的参数。 如”$*”用「”」括起来的情况、以”$1 $2 … $n”的形式输出所有参数。</td>
-</tr>
-<tr>
-<td align="left">$$</td>
-<td align="left">脚本运行的当前进程ID号</td>
-</tr>
-<tr>
-<td align="left">$!</td>
-<td align="left">后台运行的最后一个进程的ID号</td>
-</tr>
-<tr>
-<td align="left">$@</td>
-<td align="left">与$*相同，但是使用时加引号，并在引号中返回每个参数。 如”$@”用「”」括起来的情况、以”$1” “$2” … “$n” 的形式输出所有参数。</td>
-</tr>
-<tr>
-<td align="left">$-</td>
-<td align="left">显示Shell使用的当前选项，与<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9saW51eC9saW51eC1jb21tLXNldC5odG1s">set命令</span>功能相同。</td>
-</tr>
-<tr>
-<td align="left">$?</td>
-<td align="left">显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</td>
-</tr>
-</tbody></table>
-<p>——to be updated</p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201211849149.png" alt="image-20220121184947012"></p>
+<h1 id="Linux内核"><a href="#Linux内核" class="headerlink" title="Linux内核"></a>Linux内核</h1><p>——to be updated</p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201211850342.png" alt="image-20220121184957734"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201211852624.webp" alt="img"></p>
 <h1 id="x-友情链接"><a href="#x-友情链接" class="headerlink" title="x.友情链接"></a>x.友情链接</h1><ul>
 <li><span class="exturl" data-url="aHR0cDovL2xpbnV4LnZiaXJkLm9yZy9saW51eF9iYXNpYy8=">鸟叔的私房菜</span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9saW51eC5jbi8=">Linux中国</span></li>
@@ -3036,7 +2948,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-01-21 00:46:26" itemprop="dateModified" datetime="2022-01-21T00:46:26+08:00">2022-01-21</time>
+    <time title="Modified: 2022-04-03 15:55:12" itemprop="dateModified" datetime="2022-04-03T15:55:12+08:00">2022-04-03</time>
   </span>
   <span id="BackEnd/Linux/BackEnd/Linux/【Linux】Linux系统必知必会" class="item leancloud_visitors" data-flag-title="【Linux】Linux基础知识" title="Views">
       <span class="icon">
@@ -3076,7 +2988,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="【浏览器工作原理篇】重绘、重排与性能优化">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201014247.png" title="【浏览器工作原理篇】重绘、重排与性能优化">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>【浏览器工作原理篇】重绘、重排与性能优化</h3>
@@ -3086,7 +2998,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301811017.jpeg" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112301811017.jpeg" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Browser</span>
   <h3>接口鉴权方案：Cookie、Session、Token、JWT、单点登录</h3>
@@ -3108,7 +3020,7 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">Linux介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">2.1.</span> <span class="toc-text">发展历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%E5%92%8C%E4%BC%98%E5%8A%BF"><span class="toc-number">2.2.</span> <span class="toc-text">特点和优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">2.3.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81Linux%E5%8F%91%E8%A1%8C%E7%89%88"><span class="toc-number">2.4.</span> <span class="toc-text">常见Linux发行版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E5%BC%80%E6%BA%90%E3%80%81GNU"><span class="toc-number">2.5.</span> <span class="toc-text">何为开源、GNU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vmware%E4%B8%AD%E5%AE%89%E8%A3%85Linux%E9%95%9C%E5%83%8F"><span class="toc-number">3.</span> <span class="toc-text">vmware中安装Linux镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85vmware-workstation-pro"><span class="toc-number">3.1.</span> <span class="toc-text">第一步：安装vmware workstation pro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E4%B8%8B%E8%BD%BDLinux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F"><span class="toc-number">3.2.</span> <span class="toc-text">第二步：下载Linux系统镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%90%AF%E5%8A%A8vmware%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%BC%E5%90%91"><span class="toc-number">3.3.</span> <span class="toc-text">第三步：启动vmware创建虚拟机导向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E5%AE%8C%E6%88%90%E5%AE%89%E8%A3%85"><span class="toc-number">3.4.</span> <span class="toc-text">第四步：进入系统完成安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">3.5.</span> <span class="toc-text">第五步：测试网络连通性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E6%93%8D%E4%BD%9C"><span class="toc-number">3.6.</span> <span class="toc-text">额外操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E7%AE%A1%E7%90%86"><span class="toc-number">3.6.1.</span> <span class="toc-text">快照管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8B%E9%9A%86"><span class="toc-number">3.6.2.</span> <span class="toc-text">克隆</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">Linux文件与目录管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.1.</span> <span class="toc-text">目录结构介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E4%B8%8E%E5%A4%84%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">文件查看与处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B"><span class="toc-number">4.3.</span> <span class="toc-text">文件打包、压缩和解压</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.3.1.</span> <span class="toc-text">文件格式介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar%E5%8C%85%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.3.2.</span> <span class="toc-text">tar包详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5"><span class="toc-number">4.4.</span> <span class="toc-text">软链接和硬链接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E4%B8%AD%E7%9A%84vi%E4%B8%8Evim"><span class="toc-number">5.</span> <span class="toc-text">Linux中的vi与vim</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">命令模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text">编辑模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.3.</span> <span class="toc-text">命令行命令模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Linux软件安装与管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">6.1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar%E5%8C%85%E5%BD%A2%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-number">6.2.</span> <span class="toc-text">tar包形式安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E8%BE%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8C%85%E4%B8%8E%E6%BA%90%E7%A0%81%E5%8C%85%EF%BC%9F"><span class="toc-number">6.2.1.</span> <span class="toc-text">如何分辨二进制包与源码包？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar-gz%E7%AD%89%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E5%8C%85"><span class="toc-number">6.2.2.</span> <span class="toc-text">*.tar.gz等形式的源代码包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar-gz%E7%AD%89%E5%BD%A2%E5%BC%8F%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8C%85"><span class="toc-number">6.2.3.</span> <span class="toc-text">*.tar.gz等形式的二进制包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">6.2.4.</span> <span class="toc-text">设置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E2%AD%90"><span class="toc-number">6.2.5.</span> <span class="toc-text">安装路径注意事项⭐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E5%BD%A2%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-number">6.3.</span> <span class="toc-text">软件包管理器形式安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos%E7%AD%89%E5%B9%B3%E5%8F%B0"><span class="toc-number">6.3.1.</span> <span class="toc-text">Centos等平台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RPM%EF%BC%88RPM-Package-Manager%EF%BC%89"><span class="toc-number">6.3.1.1.</span> <span class="toc-text">RPM（RPM Package Manager）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-RPM%E5%8C%85%E7%BB%9F%E4%B8%80%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">6.3.1.1.1.</span> <span class="toc-text">Linux RPM包统一命名规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-RPM%E5%8C%85%E5%88%86%E7%B1%BB"><span class="toc-number">6.3.1.1.2.</span> <span class="toc-text">Linux  RPM包分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RPM%E5%8C%85%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="toc-number">6.3.1.1.3.</span> <span class="toc-text">RPM包默认安装路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rpm%E5%8C%85%E5%AE%89%E8%A3%85%E3%80%81%E5%8D%B8%E8%BD%BD%E3%80%81%E5%8D%87%E7%BA%A7"><span class="toc-number">6.3.1.1.4.</span> <span class="toc-text">rpm包安装、卸载、升级</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#rpm%E5%BD%A2%E5%BC%8F%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-number">6.3.1.1.4.1.</span> <span class="toc-text">*.rpm形式的二进制软件包</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#src-rpm%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-number">6.3.1.1.4.2.</span> <span class="toc-text">***.src.rpm形式的源代码软件包**</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.1.1.5.</span> <span class="toc-text">常用命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YUM%EF%BC%88Yellow-dog-Updater%EF%BC%89"><span class="toc-number">6.3.1.2.</span> <span class="toc-text">YUM（Yellow dog Updater）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#YUM%E8%AF%AD%E6%B3%95"><span class="toc-number">6.3.1.2.1.</span> <span class="toc-text">YUM语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#yum%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.1.2.2.</span> <span class="toc-text">yum常用命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#YUM%E5%8C%85%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="toc-number">6.3.1.2.3.</span> <span class="toc-text">YUM包默认安装路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu%E7%AD%89%E5%B9%B3%E5%8F%B0"><span class="toc-number">6.3.2.</span> <span class="toc-text">Ubuntu等平台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DPKG"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">DPKG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#APT"><span class="toc-number">6.3.2.2.</span> <span class="toc-text">APT</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.4.</span> <span class="toc-text">不同安装方式的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">Linux用户和群组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%EF%BC%9F"><span class="toc-number">7.1.</span> <span class="toc-text">什么是用户？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%BB%84-%E7%BE%A4%E7%BB%84%EF%BC%9F"><span class="toc-number">7.2.</span> <span class="toc-text">什么是用户组&#x2F;群组？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">7.3.</span> <span class="toc-text">用户配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%96%87%E4%BB%B6-etc-passwd"><span class="toc-number">7.3.1.</span> <span class="toc-text">用户信息文件&#x2F;etc&#x2F;passwd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%AD%90%E6%96%87%E4%BB%B6-etc-shadow"><span class="toc-number">7.3.2.</span> <span class="toc-text">影子文件&#x2F;etc&#x2F;shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BF%A1%E6%81%AF%E6%96%87%E4%BB%B6-etc-group%E5%92%8C%E7%BB%84%E5%AF%86%E7%A0%81%E6%96%87%E4%BB%B6-etc-gshadow"><span class="toc-number">7.3.3.</span> <span class="toc-text">组信息文件&#x2F;etc&#x2F;group和组密码文件 &#x2F;etc&#x2F;gshadow</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">Linux文件权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%80%BB%E8%A7%88"><span class="toc-number">8.1.</span> <span class="toc-text">文件属性总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">8.2.</span> <span class="toc-text">文件权限管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACL%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">8.3.</span> <span class="toc-text">ACL权限管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%9C%8D%E5%8A%A1%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">Linux服务与进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E9%98%B2%E7%81%AB%E5%A2%99%E7%AE%A1%E7%90%86"><span class="toc-number">9.1.</span> <span class="toc-text">Linux防火墙管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">9.2.</span> <span class="toc-text">Linux进程管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">Linux系统管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="toc-number">10.1.</span> <span class="toc-text">Linux网络管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D"><span class="toc-number">10.1.1.</span> <span class="toc-text">命令工具介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#net-tools%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">10.1.1.1.</span> <span class="toc-text">net-tools相关命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iproute2%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7"><span class="toc-number">10.1.1.2.</span> <span class="toc-text">iproute2命令工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">10.1.1.3.</span> <span class="toc-text">其他常用命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD"><span class="toc-number">10.1.2.</span> <span class="toc-text">网络资源下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%A3%81%E7%9B%98%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-number">10.2.</span> <span class="toc-text">Linux磁盘设备管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E8%AE%BE%E5%A4%87%E6%A6%82%E8%BF%B0"><span class="toc-number">10.2.1.</span> <span class="toc-text">硬盘设备概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">10.2.2.</span> <span class="toc-text">常用文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">10.2.3.</span> <span class="toc-text">硬盘分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%9A%E7%BB%99%E7%A3%81%E7%9B%98%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">10.2.4.</span> <span class="toc-text">硬盘格式化：给磁盘安装文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD"><span class="toc-number">10.2.5.</span> <span class="toc-text">挂载与卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA"><span class="toc-number">10.2.6.</span> <span class="toc-text">交换分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD"><span class="toc-number">10.2.7.</span> <span class="toc-text">数据备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-1"><span class="toc-number">10.2.8.</span> <span class="toc-text">其他常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E9%A9%B1%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-number">10.3.</span> <span class="toc-text">Linux驱动管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%85%B3%E6%9C%BA-%E9%87%8D%E5%90%AF"><span class="toc-number">10.4.</span> <span class="toc-text">Linux关机&#x2F;重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E7%9B%91%E8%A7%86%E4%B8%8E%E6%97%A5%E5%BF%97"><span class="toc-number">10.5.</span> <span class="toc-text">Linux系统监视与日志</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90"><span class="toc-number">11.</span> <span class="toc-text">Linux系统启动过程分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%9A%84Shell%E5%9F%BA%E7%A1%80"><span class="toc-number">12.</span> <span class="toc-text">Linux的Shell基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFShell%EF%BC%9F"><span class="toc-number">12.1.</span> <span class="toc-text">什么是Shell？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5%E8%BE%A8%E6%9E%90"><span class="toc-number">12.2.</span> <span class="toc-text">几个概念辨析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">12.3.</span> <span class="toc-text">Shell的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8shell%E7%9A%84%E8%AE%BE%E5%AE%9A"><span class="toc-number">12.4.</span> <span class="toc-text">用户使用shell的设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8BLinux%E5%AE%89%E8%A3%85%E7%9A%84Shell"><span class="toc-number">12.5.</span> <span class="toc-text">查看Linux安装的Shell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%9A%84Shell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B"><span class="toc-number">13.</span> <span class="toc-text">Linux的Shell脚本编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1"><span class="toc-number">13.1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell%E5%8F%98%E9%87%8F"><span class="toc-number">13.2.</span> <span class="toc-text">Shell变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5"><span class="toc-number">14.</span> <span class="toc-text">x.友情链接</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">Linux介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">2.1.</span> <span class="toc-text">发展历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%E5%92%8C%E4%BC%98%E5%8A%BF"><span class="toc-number">2.2.</span> <span class="toc-text">特点和优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">2.3.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81Linux%E5%8F%91%E8%A1%8C%E7%89%88"><span class="toc-number">2.4.</span> <span class="toc-text">常见Linux发行版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E5%BC%80%E6%BA%90%E3%80%81GNU"><span class="toc-number">2.5.</span> <span class="toc-text">何为开源、GNU</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85Linux%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">虚拟机安装Linux系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85vmware-workstation-pro"><span class="toc-number">3.1.</span> <span class="toc-text">第一步：安装vmware workstation pro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E4%B8%8B%E8%BD%BDLinux%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F"><span class="toc-number">3.2.</span> <span class="toc-text">第二步：下载Linux系统镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%90%AF%E5%8A%A8vmware%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%BC%E5%90%91"><span class="toc-number">3.3.</span> <span class="toc-text">第三步：启动vmware创建虚拟机导向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E5%AE%8C%E6%88%90%E5%AE%89%E8%A3%85"><span class="toc-number">3.4.</span> <span class="toc-text">第四步：进入系统完成安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">3.5.</span> <span class="toc-text">第五步：测试网络连通性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E6%93%8D%E4%BD%9C"><span class="toc-number">3.6.</span> <span class="toc-text">额外操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E7%AE%A1%E7%90%86"><span class="toc-number">3.6.1.</span> <span class="toc-text">快照管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8B%E9%9A%86"><span class="toc-number">3.6.2.</span> <span class="toc-text">克隆</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">Linux文件与目录管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BD%9C%E7%94%A8%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.1.</span> <span class="toc-text">目录结构与作用介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E4%B8%8E%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">4.2.</span> <span class="toc-text">文件查看与基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%9F%A5%E6%89%BE"><span class="toc-number">4.3.</span> <span class="toc-text">文件搜索与查找</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E4%B8%89%E5%89%91%E5%AE%A2%EF%BC%88grep%E3%80%81sed%E3%80%81awk%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">文本处理三剑客（grep、sed、awk）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B"><span class="toc-number">4.5.</span> <span class="toc-text">文件打包、压缩和解压</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.5.1.</span> <span class="toc-text">文件格式介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar%E5%8C%85%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.5.2.</span> <span class="toc-text">tar包详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5"><span class="toc-number">4.6.</span> <span class="toc-text">软链接和硬链接</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E4%B8%AD%E7%9A%84vi%E4%B8%8Evim"><span class="toc-number">5.</span> <span class="toc-text">Linux中的vi与vim</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">命令模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text">编辑模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.3.</span> <span class="toc-text">命令行命令模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Linux软件安装与管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">6.1.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tar%E5%8C%85%E5%BD%A2%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-number">6.2.</span> <span class="toc-text">tar包形式安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E8%BE%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8C%85%E4%B8%8E%E6%BA%90%E7%A0%81%E5%8C%85%EF%BC%9F"><span class="toc-number">6.2.1.</span> <span class="toc-text">如何分辨二进制包与源码包？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar-gz%E7%AD%89%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E5%8C%85"><span class="toc-number">6.2.2.</span> <span class="toc-text">*.tar.gz等形式的源代码包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tar-gz%E7%AD%89%E5%BD%A2%E5%BC%8F%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8C%85"><span class="toc-number">6.2.3.</span> <span class="toc-text">*.tar.gz等形式的二进制包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">6.2.4.</span> <span class="toc-text">设置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E2%AD%90"><span class="toc-number">6.2.5.</span> <span class="toc-text">安装路径注意事项⭐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E5%BD%A2%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-number">6.3.</span> <span class="toc-text">软件包管理器形式安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos%E7%AD%89%E5%B9%B3%E5%8F%B0"><span class="toc-number">6.3.1.</span> <span class="toc-text">Centos等平台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RPM%EF%BC%88RPM-Package-Manager%EF%BC%89"><span class="toc-number">6.3.1.1.</span> <span class="toc-text">RPM（RPM Package Manager）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-RPM%E5%8C%85%E7%BB%9F%E4%B8%80%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">6.3.1.1.1.</span> <span class="toc-text">Linux RPM包统一命名规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-RPM%E5%8C%85%E5%88%86%E7%B1%BB"><span class="toc-number">6.3.1.1.2.</span> <span class="toc-text">Linux  RPM包分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RPM%E5%8C%85%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="toc-number">6.3.1.1.3.</span> <span class="toc-text">RPM包默认安装路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rpm%E5%8C%85%E5%AE%89%E8%A3%85%E3%80%81%E5%8D%B8%E8%BD%BD%E3%80%81%E5%8D%87%E7%BA%A7"><span class="toc-number">6.3.1.1.4.</span> <span class="toc-text">rpm包安装、卸载、升级</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#rpm%E5%BD%A2%E5%BC%8F%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-number">6.3.1.1.4.1.</span> <span class="toc-text">*.rpm形式的二进制软件包</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#src-rpm%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-number">6.3.1.1.4.2.</span> <span class="toc-text">***.src.rpm形式的源代码软件包**</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.1.1.5.</span> <span class="toc-text">常用命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YUM%EF%BC%88Yellow-dog-Updater%EF%BC%89"><span class="toc-number">6.3.1.2.</span> <span class="toc-text">YUM（Yellow dog Updater）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#YUM%E8%AF%AD%E6%B3%95"><span class="toc-number">6.3.1.2.1.</span> <span class="toc-text">YUM语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#YUM%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.1.2.2.</span> <span class="toc-text">YUM常用命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#YUM%E5%8C%85%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="toc-number">6.3.1.2.3.</span> <span class="toc-text">YUM包默认安装路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu%E7%AD%89%E5%B9%B3%E5%8F%B0"><span class="toc-number">6.3.2.</span> <span class="toc-text">Ubuntu等平台</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DPKG"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">DPKG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#APT"><span class="toc-number">6.3.2.2.</span> <span class="toc-text">APT</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.4.</span> <span class="toc-text">不同安装方式的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-number">7.</span> <span class="toc-text">Linux用户和群组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%EF%BC%9F"><span class="toc-number">7.1.</span> <span class="toc-text">什么是用户？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%A8%E6%88%B7%E7%BB%84-%E7%BE%A4%E7%BB%84%EF%BC%9F"><span class="toc-number">7.2.</span> <span class="toc-text">什么是用户组&#x2F;群组？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">7.3.</span> <span class="toc-text">用户配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%96%87%E4%BB%B6-etc-passwd"><span class="toc-number">7.3.1.</span> <span class="toc-text">用户信息文件&#x2F;etc&#x2F;passwd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%AD%90%E6%96%87%E4%BB%B6-etc-shadow"><span class="toc-number">7.3.2.</span> <span class="toc-text">影子文件&#x2F;etc&#x2F;shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BF%A1%E6%81%AF%E6%96%87%E4%BB%B6-etc-group%E5%92%8C%E7%BB%84%E5%AF%86%E7%A0%81%E6%96%87%E4%BB%B6-etc-gshadow"><span class="toc-number">7.3.3.</span> <span class="toc-text">组信息文件&#x2F;etc&#x2F;group和组密码文件 &#x2F;etc&#x2F;gshadow</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">Linux文件权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%80%BB%E8%A7%88"><span class="toc-number">8.1.</span> <span class="toc-text">文件属性总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">8.2.</span> <span class="toc-text">文件权限管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACL%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">8.3.</span> <span class="toc-text">ACL权限管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%9C%8D%E5%8A%A1%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">Linux服务与进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="toc-number">9.1.</span> <span class="toc-text">计划任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E9%98%B2%E7%81%AB%E5%A2%99%E7%AE%A1%E7%90%86"><span class="toc-number">9.2.</span> <span class="toc-text">Linux防火墙管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">9.3.</span> <span class="toc-text">Linux进程管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">Linux网络管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D"><span class="toc-number">10.0.1.</span> <span class="toc-text">命令工具介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#net-tools%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">10.0.1.1.</span> <span class="toc-text">net-tools相关命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iproute2%E5%91%BD%E4%BB%A4%E5%B7%A5%E5%85%B7"><span class="toc-number">10.0.1.2.</span> <span class="toc-text">iproute2命令工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">10.0.1.3.</span> <span class="toc-text">其他常用命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD"><span class="toc-number">10.0.2.</span> <span class="toc-text">网络资源下载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%A3%81%E7%9B%98%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-number">11.</span> <span class="toc-text">Linux磁盘设备管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E8%AE%BE%E5%A4%87%E6%A6%82%E8%BF%B0"><span class="toc-number">11.0.1.</span> <span class="toc-text">硬盘设备概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">11.0.2.</span> <span class="toc-text">常用文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">11.0.3.</span> <span class="toc-text">硬盘分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%EF%BC%9A%E7%BB%99%E7%A3%81%E7%9B%98%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">11.0.4.</span> <span class="toc-text">硬盘格式化：给磁盘安装文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E8%BD%BD"><span class="toc-number">11.0.5.</span> <span class="toc-text">挂载与卸载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA"><span class="toc-number">11.0.6.</span> <span class="toc-text">交换分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD"><span class="toc-number">11.0.7.</span> <span class="toc-text">数据备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-1"><span class="toc-number">11.0.8.</span> <span class="toc-text">其他常用命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E9%A9%B1%E5%8A%A8%E7%AE%A1%E7%90%86"><span class="toc-number">12.</span> <span class="toc-text">Linux驱动管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%85%B3%E6%9C%BA-%E9%87%8D%E5%90%AF"><span class="toc-number">13.</span> <span class="toc-text">Linux关机&#x2F;重启</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E7%9B%91%E8%A7%86%E4%B8%8E%E6%97%A5%E5%BF%97"><span class="toc-number">14.</span> <span class="toc-text">Linux系统监视与日志</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90"><span class="toc-number">15.</span> <span class="toc-text">Linux系统启动过程分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%86%85%E6%A0%B8"><span class="toc-number">16.</span> <span class="toc-text">Linux内核</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5"><span class="toc-number">17.</span> <span class="toc-text">x.友情链接</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
@@ -3126,7 +3038,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -3138,7 +3050,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -3225,10 +3137,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Babel/" title="In Babel">Babel</a>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
 </div>
 
-    <span><a href="/FrontEnd/Babel/FrontEnd/Babel/Babel%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="Babel的基本使用与原理介绍">Babel的基本使用与原理介绍</a></span>
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
   </li>
 
       
@@ -3237,22 +3149,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
+<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
 </div>
 
-    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></span>
+    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
   </li>
 
       
@@ -3264,7 +3164,55 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+</div>
+
+    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E7%8A%B6%E6%80%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】状态复用及性能优化方案">【React基础】状态复用及性能优化方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
   </li>
 
       
@@ -3283,12 +3231,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网】HTTP基础知识点">【计网】HTTP基础知识点</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></span>
   </li>
 
       
@@ -3301,42 +3249,6 @@ Monkey's Blog = </title>
 </div>
 
     <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型与原型链">JavaScript原型与原型链</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" title="【React基础】React生命周期">【React基础】React生命周期</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
-</div>
-
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
   </li>
 
   </ul>
@@ -3361,13 +3273,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

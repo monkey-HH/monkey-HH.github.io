@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201018875.jpg">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201018875.jpg">
       </div>
     </header>
     <div id="waves">
@@ -204,7 +204,7 @@ Monkey's Blog = </title>
 <p>从定义上来讲，单线程和异步确实不能同时成为一个语言的特性。</p>
 <p>JavaScript选择了成为单线程的语言，这意味着它一次只能执行一项任务或操作。这意味着它将从头到尾执行整个过程，而不会中断或停止线程。所以它本身不可能是异步的，但JavaScript的宿主环境（比如浏览器）是多线程的，宿主环境通过某种方式（事件驱动，下文会讲）使得JavaScript具备了异步的属性。</p>
 <p>JavaScript是单线程语言，浏览器只分配给JavaScript一个主线程，用来执行JavaScript代码中的任务（函数），但一次只能执行一个任务，这些任务形成一个任务队列排队等候执行，但前端的某些任务是非常耗时的，比如网络请求，定时器和事件监听，如果让他们和别的任务一样，都老老实实的排队等待执行的话，执行效率会非常的低，甚至导致页面的假死。所以，浏览器为这些耗时任务开辟了另外的线程，主要包括HTTP请求线程，浏览器定时触发器，浏览器事件触发线程，这些任务是异步的。下图说明了浏览器的主要线程（注：此处的浏览器GUI渲染线程和JavaScript引擎线程是两个互斥线程）。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910210757108.png" alt="image-20210910210757108"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910210757108.png" alt="image-20210910210757108"></p>
 <p>那么浏览器中是怎么运行JavaScript代码的呢？答案就是V8引擎。</p>
 <h1 id="V8引擎"><a href="#V8引擎" class="headerlink" title="V8引擎"></a>V8引擎</h1><p>V8是 Google 用 C++ 编写的用于 JavaScript 的高性能、开源 Web 程序集运行时引擎。大多数浏览器使用 V8 引擎运行 JavaScript，甚至流行的 Node.js运行时环境也使用它。</p>
 <p>简单来说，V8 是一个 C++ 程序，它接收 JavaScript 代码，编译并执行它。在 JavaScript 运行的时候，JavaScript Engine 会创建和维护相应的堆（Heap）和栈（Stack）</p>
@@ -214,7 +214,7 @@ Monkey's Blog = </title>
 <li>调用堆栈执行上下文</li>
 </ul>
 <p><img data-src="https://geekflare.com/wp-content/uploads/2019/10/v8.png" alt="v8"></p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210911003347660.png" alt="image-20210911003347660"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210911003347660.png" alt="image-20210911003347660"></p>
 <blockquote>
 <p>调用栈是什么?</p>
 <p><strong>一个线程  ===   一个调用栈   ===   同时只能干一件事</strong></p>
@@ -240,21 +240,21 @@ Monkey's Blog = </title>
 <p>堆栈是一种数据结构，其中添加的最后一个元素总是最先从堆栈中移除，您可以将其视为一个盘子的堆栈，其中只有最后添加的第一个盘子才能首先移除。</p>
 <p>调用堆栈只是一个堆栈数据结构，JavaScript任务或代码正在Call Stack相应地执行。</p>
 <p>举个例子，如下图，初始的时候调用栈为空</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910234629043.png" alt="image-20210910234629043" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910234629043.png" alt="image-20210910234629043" style="zoom:50%;" />
 
 <p>当你调用函数时<code>printSquare()</code>，它被压入调用堆栈，<code>printSquare()</code>函数调用 square() 函数。该<code>square()</code>函数被压入堆栈并调用该<code>multiply()</code>函数。乘法函数被压入堆栈。由于乘法函数返回并且是最后一个被压入堆栈的东西，它首先被解析并从堆栈中移除，然后是<code>square()</code>函数，然后是<code>printSquare()</code>函数。于是就变成了下面的样子。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910234748719.png" alt="image-20210910234748719" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910234748719.png" alt="image-20210910234748719" style="zoom:50%;" />
 
 <p>接着就是JavaScript的逐个执行，即逐个弹出栈，先执行<code>multiply()</code>函数，得到返回值，把顶层的<code>multiply()</code>弹出栈，以此类推，最终，Call Stack清空，一切回归安详</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910234629043.png" alt="image-20210910234629043" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910234629043.png" alt="image-20210910234629043" style="zoom:50%;" />
 
 <p>我们再看一个例子</p>
 <p>该例子中，最后foo函数抛出了一个错误，在浏览器中可以看到对应的Call Stack栈的样子，和上面例子是一致的方式。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910235235485.png" alt="image-20210910235235485" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910235235485.png" alt="image-20210910235235485" style="zoom:50%;" />
 
 <p>那么Call Stack会不会导致内存溢出呢？会</p>
 <p>下面的例子中，每个foo都调用一次foo，最后调用栈溢出，直接爆炸。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910235359372.png" alt="image-20210910235359372" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210910235359372.png" alt="image-20210910235359372" style="zoom:50%;" />
 
 <img data-src="C:/Users/monkey/AppData/Roaming/Typora/typora-user-images/image-20210910235447258.png" alt="image-20210910235447258" style="zoom:50%;" />
 
@@ -276,12 +276,12 @@ Monkey's Blog = </title>
 <li>此时就在等webapis完成，当这个timer完成之后，会将回调函数cb放入到回调队列（Callback Queue）中。</li>
 <li>随后，JavaScript的事件循环机制，会检查到任务队列里有活没干完，就会把任务队列里的活压入调用栈，将回调函数执行完毕，输出“there”。</li>
 </ol>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202202281957093.gif" alt="2"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202202281957093.gif" alt="2"></p>
 <p>再来一个例子，加深印象</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">  <span class="built_in">setTimeout</span>(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">display</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;B&#x27;</span>); </span><br><span class="line">    	&#125;,<span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;C&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">main();</span><br><span class="line"><span class="comment">//	Output</span></span><br><span class="line"><span class="comment">//	A</span></span><br><span class="line"><span class="comment">//	C</span></span><br><span class="line"><span class="comment">//  B</span></span><br></pre></td></tr></table></figure>
 
 <p>这里我们有一个 main 函数，它有 2 个 console.log 命令将“A”和“C”记录到控制台。夹在它们之间的是 setTimeout 调用，它以 0 毫秒的等待时间将“B”记录到控制台。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210911003056624.png" alt="image-20210911003056624"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210911003056624.png" alt="image-20210911003056624"></p>
 <ol>
 <li>对 main 函数的调用首先被压入堆栈（作为一个框架）。然后浏览器将主函数中的第一条语句压入栈中，即console.log(‘A’)。执行此语句，并在完成后弹出该帧。字母 A 显示在控制台中。</li>
 <li>下一条语句（带有回调 exec() 和 0ms 等待时间的 setTimeout()）被推入调用堆栈并开始执行。setTimeout 函数使用浏览器 API 来延迟对所提供函数的回调。一旦切换到浏览器完成（对于计时器），框架（带有 setTimeout）就会弹出。</li>
@@ -531,9 +531,9 @@ Monkey's Blog = </title>
 <li>microtask queue，即常说的微任务队列，优先级高于前者</li>
 </ul>
 <h2 id="事件循环的处理模型"><a href="#事件循环的处理模型" class="headerlink" title="事件循环的处理模型"></a>事件循环的处理模型</h2><p>看一下whatwg上面的相关定义</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914110708140.png" alt="image-20210914110708140"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914110708140.png" alt="image-20210914110708140"></p>
 <p>再附上一份机翻</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914110829828.png" alt="image-20210914110829828"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914110829828.png" alt="image-20210914110829828"></p>
 <p>是不是有点长，用一个图来表示，可以看到啊</p>
 <ol>
 <li>JS引擎首先从macrotask queue中取出第一个任务，执行完毕后，将microtask queue中的所有任务取出，按顺序全部执行；</li>
@@ -556,7 +556,7 @@ Monkey's Blog = </title>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第二段代码：</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// 同步</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;start1&#x27;</span>)</span><br><span class="line">	<span class="comment">// 异步宏</span></span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;timer1&#x27;</span>), <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 同步</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&#x27;p1&#x27;</span>)</span><br><span class="line">		resolve()</span><br><span class="line">	&#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 异步微</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&#x27;then1&#x27;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 同步</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;end1&#x27;</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// 同步</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;start2&#x27;</span>)</span><br><span class="line">	<span class="comment">// 异步宏</span></span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;timer2&#x27;</span>), <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 同步</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&#x27;p2&#x27;</span>)</span><br><span class="line">		resolve()</span><br><span class="line">	&#125;).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="comment">// 异步微</span></span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&#x27;then2&#x27;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 同步</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&#x27;end2&#x27;</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>两个例子的结果是一样的，如图：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/20210714231316627.png" alt="在这里插入图片描述"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/20210714231316627.png" alt="在这里插入图片描述"></p>
 <p>两个结果是一样的，所以证实了 <code>&lt;script&gt;&lt;/script&gt;</code> 整体跟 <code>setTimeout</code> 一样是宏任务。</p>
 <blockquote>
 <p>PS：这里笔者没明白一点，任务不应该都是指异步任务吗，script也是异步任务吗？欢迎探讨</p>
@@ -580,10 +580,10 @@ Monkey's Blog = </title>
 <p>举个例子，我们知道，在浏览器想读取一个文件，耗时最长的一定是网络请求所需要的时间；而对于Node.js而言，因为是在本地读取，因此影响最大的因素是硬盘I/O速度。</p>
 <p>很显然像是浏览器的Event Loop，只有两个任务队列，任务只有两个优先级，应用于Node.js就不太合适。</p>
 <h2 id="Event-Loop模型"><a href="#Event-Loop模型" class="headerlink" title="Event Loop模型"></a>Event Loop模型</h2><p>Node.js的Event Loop是基于<code>libuv</code>实现的，而<code>libuv</code>是 <code>Node.js</code> 的新跨平台抽象层，libuv使用异步，事件驱动的编程方式，核心是提供<code>I/O</code>的事件循环和异步回调。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202203081640490.png" alt="Node.js"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202203081640490.png" alt="Node.js"></p>
 <p>当 Node.js 启动后，它会初始化Event Loop，处理已提供的输入脚本，它可能会调用一些异步的 API、调度定时器，或者调用 <code>process.nextTick()</code>，然后开始处理事件循环。</p>
 <p>下面的图表展示了事件循环操作顺序的简化概览，一共分为6个阶段，这六个阶段就对应了六个<strong>宏</strong>任务队列，这六个宏任务队列就代表了宏任务有<strong>六个优先级</strong>：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914160743057.png" alt="image-20210914160743057"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914160743057.png" alt="image-20210914160743057"></p>
 <p>自上而下，优先级依次递减。</p>
 <ul>
 <li><strong>timers</strong>：执行 setTimeout() 和 setInterval() 的回调</li>
@@ -593,7 +593,7 @@ Monkey's Blog = </title>
 <li><strong>check</strong>：执行<code>setImmediate()</code> 的回调</li>
 <li><strong>close callbacks</strong>：执行close回调。</li>
 </ul>
-<h2 id="宏任务介绍"><a href="#宏任务介绍" class="headerlink" title="宏任务介绍"></a>宏任务介绍</h2><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202203081638611.png" style="zoom:50%;" />
+<h2 id="宏任务介绍"><a href="#宏任务介绍" class="headerlink" title="宏任务介绍"></a>宏任务介绍</h2><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202203081638611.png" style="zoom:50%;" />
 
 <p>解释一下这五种宏任务：</p>
 <p><strong>Timers Callback</strong>：涉及到时间，肯定越早执行越准确，所以这个优先级最高很容易理解。</p>
@@ -616,7 +616,7 @@ Monkey's Blog = </title>
 </ul>
 </li>
 </ol>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914164656093.png" alt="image-20210914164656093" style="zoom:80%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210914164656093.png" alt="image-20210914164656093" style="zoom:80%;" />
 
 <h3 id="check（检查阶段）"><a href="#check（检查阶段）" class="headerlink" title="check（检查阶段）"></a>check（检查阶段）</h3><p>check 阶段。这是一个比较简单的阶段，直接执行 setImmediate 的回调。</p>
 <h2 id="小测验"><a href="#小测验" class="headerlink" title="小测验"></a>小测验</h2><p>我们来看以下的代码，看看输出是怎么样的：</p>
@@ -709,7 +709,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-11 16:30:10" itemprop="dateModified" datetime="2022-03-11T16:30:10+08:00">2022-03-11</time>
+    <time title="Modified: 2022-04-03 15:45:20" itemprop="dateModified" datetime="2022-04-03T15:45:20+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/Browser/FrontEnd/Browser/【V8引擎原理篇】Event Loop事件循环机制" class="item leancloud_visitors" data-flag-title="【V8引擎原理篇】Event Loop事件循环机制" title="Views">
       <span class="icon">
@@ -749,7 +749,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>【手撕JavaScript系列】Promise介绍以及实现一个Promise</h3>
@@ -759,10 +759,10 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111012245441.png" title="【计网】HTTP基础知识点">
+  <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111012245441.png" title="【计网基础】HTTP基础知识点">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Computer_Networking</span>
-  <h3>【计网】HTTP基础知识点</h3>
+  <h3>【计网基础】HTTP基础知识点</h3>
   </a>
 
     </div>
@@ -785,7 +785,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="客户端存储">客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
+          <li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" rel="bookmark" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="bookmark" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" rel="bookmark" title="浏览器中的客户端存储">浏览器中的客户端存储</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" rel="bookmark" title="浏览器Web安全攻防">浏览器Web安全攻防</a></li><li class="active"><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" rel="bookmark" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" rel="bookmark" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" rel="bookmark" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" rel="bookmark" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></li><li><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91JavaScript%E4%BB%A3%E7%A0%81%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E8%A7%A3%E6%9E%90" rel="bookmark" title="【V8引擎原理篇】JavaScript代码解释执行解析">【V8引擎原理篇】JavaScript代码解释执行解析</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -799,7 +799,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -811,7 +811,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -874,7 +874,7 @@ Monkey's Blog = </title>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -896,12 +896,60 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
+</div>
+
+    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
+</div>
+
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】TCP和UDP基础知识点">【计网基础】TCP和UDP基础知识点</a></span>
   </li>
 
       
@@ -913,7 +961,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
   </li>
 
       
@@ -932,12 +980,24 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Operating-System/" title="In Operating_System">Operating_System</a>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/ComputerBasics/Operating-System/ComputerBasics/Operating_System/%E7%A3%81%E7%9B%98%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95" title="磁盘与常见磁盘调度算法">磁盘与常见磁盘调度算法</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
+</div>
+
+    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
   </li>
 
       
@@ -949,67 +1009,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/HTTP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="HTTP基础知识点">HTTP基础知识点</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
-</div>
-
-    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
-</div>
-
-    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Vue/" title="In Vue">Vue</a>
-</div>
-
-    <span><a href="/FrontEnd/Vue/FrontEnd/Vue/%E3%80%90Vue%E8%BF%9B%E9%98%B6%E3%80%91%E6%B5%85%E8%B0%88Vue2%E4%B8%8EVue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86" title="【Vue进阶】浅谈Vue2与Vue3响应式原理">【Vue进阶】浅谈Vue2与Vue3响应式原理</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
   </li>
 
   </ul>
@@ -1034,13 +1034,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112281250371.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112281250371.png">
       </div>
     </header>
     <div id="waves">
@@ -163,20 +163,20 @@ Monkey's Blog = </title>
 
     <h1 id="什么是Nginx？"><a href="#什么是Nginx？" class="headerlink" title="什么是Nginx？"></a>什么是Nginx？</h1><p>Nginx是一款轻量级的HTTP服务器，采用事件驱动的异步非阻塞处理方式框架，这让其具有极好的IO性能，时常用于服务端的反向代理和负载均衡。</p>
 <p>Nginx功能丰富，可作为HTTP服务器，也可作为<code>反向代理</code>服务器，邮件服务器。支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等功能。并且支持很多第三方的模块扩展。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051725988.png" alt="image-20211205172524885"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051725988.png" alt="image-20211205172524885"></p>
 <p>通过<span class="exturl" data-url="aHR0cHM6Ly93M3RlY2hzLmNvbS8lRTYlOUYlQTUlRTclOUMlOEJOZ2lueCVFNSU5QyVBOCVFNiU5QyU4RCVFNSU4QSVBMSVFNSU5OSVBOCVFNCVCOCVBRCVFNiU4RSU5MiVFNSU5QyVBOCVFNyVBQyVBQyVFNCVCOCU4MCVFNCVCRCU4RCVFRiVCQyU4QyVFNSU4RCVBMCVFNiU5QyU4OSVFNyU4RSU4NyVFOCVCRSVCRSVFNSU4OCVCMDMxLjYlJUUzJTgwJTgy">https://w3techs.com/查看Nginx在服务器中排在第一位，占有率达到31.6%。</span></p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051730696.png" alt="image-20211205173036668"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051730696.png" alt="image-20211205173036668"></p>
 <p>Nginx 和 Node.js 的很多理念类似，HTTP 服务器、事件驱动、异步非阻塞等，且 Nginx 的大部分功能使用 Node.js 也可以实现，但 Nginx 和 Node.js 并不冲突，都有自己擅长的领域。Nginx 擅长于底层服务器端资源的处理（静态资源处理转发、反向代理，负载均衡等），Node.js 更擅长上层具体业务逻辑的处理，两者可以完美组合，共同助力前端开发。</p>
 <p>说白了：就是拿来部署咱们的项目的。</p>
 <h1 id="Nginx的特点"><a href="#Nginx的特点" class="headerlink" title="Nginx的特点"></a>Nginx的特点</h1><h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>互联网应用基本都基于CS基本结构，即client端和server端。代理其实就是在client端和真正的server端之前增加一层提供特定服务的服务器，即代理服务器。</p>
 <h3 id="正向代理（Forward-Proxy）"><a href="#正向代理（Forward-Proxy）" class="headerlink" title="正向代理（Forward Proxy）"></a>正向代理（Forward Proxy）</h3><p>正向代理：一般的访问流程是客户端直接向目标服务器发送请求并获取内容，使用正向代理后，客户端改为向代理服务器发送请求，并指定目标服务器（原始服务器），然后由代理服务器和原始服务器通信，转交请求并获得的内容，再返回给客户端。正向代理隐藏了真实的客户端，为客户端收发请求，使真实客户端对服务器不可见。</p>
 <p>具体例子：翻墙工具</p>
 <p>判断方式：代理服务器向C端负责</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051739476.png" alt="image-20211205173920422"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051739476.png" alt="image-20211205173920422"></p>
 <h3 id="反向代理（Reverse-Proxy）"><a href="#反向代理（Reverse-Proxy）" class="headerlink" title="反向代理（Reverse Proxy）"></a>反向代理（Reverse Proxy）</h3><p>反向代理：客户端发送的请求，想要访问server服务器上的内容。但将被发送到一个代理服务器proxy，这个代理服务器将把请求代理到和自己属于同一个LAN下的内部服务器上，而用户真正想获得的内容就储存在这些内部服务器上。看到区别了吗，这里proxy服务器代理的并不是客户，而是服务器，即向外部客户端提供了一个统一的代理入口，客户端的请求，都先经过这个proxy服务器，至于在内网真正访问哪台服务器内容，由这个proxy去控制。</p>
 <p>具体例子：Nginx</p>
 <p>判断方式：代理服务器向B端负责</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051739065.png" alt="image-20211205173942018"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051739065.png" alt="image-20211205173942018"></p>
 <h3 id="为什么要用Nginx进行反向代理"><a href="#为什么要用Nginx进行反向代理" class="headerlink" title="为什么要用Nginx进行反向代理"></a>为什么要用Nginx进行反向代理</h3><ul>
 <li>按需转发：Nginx可以根据不同的正则匹配，采取不同的转发策略，比如图片文件结尾的走文件服务器，动态页面走web服务器。</li>
 <li>负载均衡：将对一个<strong>服务器集群</strong>的全部请求进行代理，然后根据设定的规则，<strong>“分发”</strong>请求，使得每台服务器都能高效地运行。</li>
@@ -189,20 +189,20 @@ Monkey's Blog = </title>
 <p>Nginx里的负载均衡策略有三个：</p>
 <ul>
 <li>轮询：雨露均沾<ul>
-<li><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051747998.png" alt="image-20211205174716937"></li>
+<li><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051747998.png" alt="image-20211205174716937"></li>
 </ul>
 </li>
 <li>加权轮询：能者多劳<ul>
-<li><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051747796.png" alt="image-20211205174728734"></li>
+<li><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051747796.png" alt="image-20211205174728734"></li>
 </ul>
 </li>
 <li>Ip hash：专人服务<ul>
-<li><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051748946.png" alt="image-20211205174852894"></li>
+<li><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051748946.png" alt="image-20211205174852894"></li>
 </ul>
 </li>
 </ul>
 <h2 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h2><p>为了加快网站的解析速度，可以把动态页面和静态页面由不同的服务器来解析，加快解析速度，降低原来单个服务器的压力。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051751692.png" alt="动静分离"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051751692.png" alt="动静分离"></p>
 <p>一般来说，都需要将动态资源和静态资源分开，由于 Nginx 的高并发和静态资源缓存等特性，经常将静态资源部署在 Nginx 上。如果请求的是静态资源，直接到静态资源目录获取资源，如果是动态资源的请求，则利用反向代理的原理，把请求转发给对应后台应用去处理，从而实现动静分离。</p>
 <p>使用前后端分离后，可以很大程度提升静态资源的访问速度，即使动态服务不可用，静态资源的访问也不会受到影响。</p>
 <p>简单理解：能同时部署前端与后端项目，并将对应请求进行分发。</p>
@@ -217,7 +217,7 @@ Monkey's Blog = </title>
 <p>按照该方式，我们就将nginx安装在了/usr/local/webserver/nginx当中，我们通过下面命令查看是否安装成功。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/webserver/nginx/sbin/nginx -v</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051839366.png" alt="image-20211205183901335"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051839366.png" alt="image-20211205183901335"></p>
 <p>像这样子，我们就安装成功了。</p>
 <p>主要关注的文件夹有两个：</p>
 <ul>
@@ -253,7 +253,7 @@ Monkey's Blog = </title>
 
 
 <p>随后我们访问我们虚拟机的IP，看到下面的界面就是成功了。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112051854061.png" alt="image-20211205185435021" style="zoom:50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112051854061.png" alt="image-20211205185435021" style="zoom:50%;" />
 
 <h1 id="配置文件nginx-conf"><a href="#配置文件nginx-conf" class="headerlink" title="配置文件nginx.conf"></a>配置文件nginx.conf</h1><h2 id="nginx-文件结构"><a href="#nginx-文件结构" class="headerlink" title="nginx 文件结构"></a>nginx 文件结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">...              #全局块</span><br><span class="line"></span><br><span class="line">events &#123;         #events块</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http      #http块</span><br><span class="line">&#123;</span><br><span class="line">    ...   #http全局块</span><br><span class="line">    </span><br><span class="line">      upstream mysvr  #upstream块，配置负载均衡处</span><br><span class="line">	&#123;   </span><br><span class="line">		server 127.0.0.1:7878;</span><br><span class="line">		server 192.168.10.121:3333 backup;  #热备</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    server        #server块</span><br><span class="line">    &#123; </span><br><span class="line">        ...       #server全局块</span><br><span class="line">        location [PATTERN]   #location块</span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">        location [PATTERN] </span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    server</span><br><span class="line">    &#123;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...     #http全局块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -423,7 +423,7 @@ server &#123;...&#125;
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-03-07 20:11:18" itemprop="dateModified" datetime="2022-03-07T20:11:18+08:00">2022-03-07</time>
+    <time title="Modified: 2022-04-03 15:55:42" itemprop="dateModified" datetime="2022-04-03T15:55:42+08:00">2022-04-03</time>
   </span>
   <span id="Operations/Operations/【Nginx】Nginx基础入门" class="item leancloud_visitors" data-flag-title="【Nginx】Nginx基础入门" title="Views">
       <span class="icon">
@@ -463,7 +463,7 @@ server &#123;...&#125;
     <div class="item left">
       
 
-  <a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111012017215.png" title="Webpack5基础知识点入门">
+  <a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202111012017215.png" title="Webpack5基础知识点入门">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> Module_Bundler</span>
   <h3>Webpack5基础知识点入门</h3>
@@ -473,7 +473,7 @@ server &#123;...&#125;
     <div class="item right">
       
 
-  <a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94webpack%E5%BF%AB" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281037320.jpeg" title="Vite为什么比webpack快">
+  <a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94webpack%E5%BF%AB" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202112281037320.jpeg" title="Vite为什么比webpack快">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> Module_Bundler</span>
   <h3>Vite为什么比webpack快</h3>
@@ -513,7 +513,7 @@ server &#123;...&#125;
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -525,7 +525,7 @@ server &#123;...&#125;
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -612,22 +612,10 @@ server &#123;...&#125;
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
-</div>
-
-    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Vite%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AF%94webpack%E5%BF%AB" title="Vite为什么比webpack快">Vite为什么比webpack快</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
   </li>
 
       
@@ -648,10 +636,10 @@ server &#123;...&#125;
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8" title="客户端存储">客户端存储</a></span>
+    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
   </li>
 
       
@@ -663,7 +651,41 @@ server &#123;...&#125;
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" title="JavaScript原型与原型链">JavaScript原型与原型链</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Operations/" title="In Operations">Operations</a>
+</div>
+
+    <span><a href="/Operations/Operations/%E3%80%90Git%E3%80%91Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E6%93%8D%E4%BD%9C" title="【Git】Git基本使用与操作">【Git】Git基本使用与操作</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E9%80%89%E6%8B%A9%E5%99%A8" title="CSS选择器">CSS选择器</a></span>
   </li>
 
       
@@ -687,7 +709,7 @@ server &#123;...&#125;
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" title="JavaScript执行上下文">JavaScript执行上下文</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
   </li>
 
       
@@ -696,34 +718,10 @@ server &#123;...&#125;
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Virtual%20DOM%E4%B8%8EDiff%E7%AE%97%E6%B3%95%E5%88%9D%E8%AF%86" title="【React基础】Virtual DOM与Diff算法初识">【React基础】Virtual DOM与Diff算法初识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91Redux%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E7%BB%93%E5%90%88%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8E%A2%E7%B4%A2" title="【React基础】Redux介绍以及结合不可变数据的性能优化探索">【React基础】Redux介绍以及结合不可变数据的性能优化探索</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
-</div>
-
-    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="TCP和UDP基础知识点">TCP和UDP基础知识点</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
   </li>
 
   </ul>
@@ -748,13 +746,13 @@ server &#123;...&#125;
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

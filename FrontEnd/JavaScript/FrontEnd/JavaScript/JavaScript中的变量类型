@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>30k</span>
+    <span>31k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
       </div>
     </header>
     <div id="waves">
@@ -277,7 +277,7 @@ Monkey's Blog = </title>
 <h2 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h2><p>ES2020为JavaScript定义了一种新的数值类型BigInt。之所以增 加这个类型，主要是为了表示64位整数。</p>
 <p>BigInt是一种新的数据类型，用于当整数值大于Number数据类型支持的范围时。这种数据类型允许我们安全地对<code>大整数</code>执行算术操作，表示高分辨率的时间戳，使用大整数id，等等，而不需要使用库。</p>
 <h3 id="为什么需要BigInt"><a href="#为什么需要BigInt" class="headerlink" title="为什么需要BigInt"></a>为什么需要BigInt</h3><p>在JS中，所有的数字都以双精度64位浮点格式表示，那这会带来什么问题呢？</p>
-<p>这导致JS中的Number无法精确表示非常大的整数，它会将非常大的整数四舍五入，确切地说，JS中的Number类型只能安全地表示正负(2^53-1)，任何超出此范围的整数值都可能失去精度。</p>
+<p>这导致JS中的Number无法精确表示非常大的整数，它会将非常大的整数四舍五入，确切地说，JS中的Number类型只能安全地表示**正负(2^53-1)**，即<code>Number.MAX_SAFE_INTEGER</code>，任何超出此范围的整数值都可能失去精度。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">999999999999999</span>);  <span class="comment">//=&gt;10000000000000000</span></span><br></pre></td></tr></table></figure>
 
 <p>同时也会有一定的安全性问题:</p>
@@ -369,7 +369,7 @@ Monkey's Blog = </title>
 <blockquote>
 <p>为什么typeof 判断 null  结果是返回object呢？</p>
 </blockquote>
-<p>在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 <code>null</code> 代表的是空指针（大多数平台下值为 0x00），因此，null 的类型标签是 0，<code>typeof null</code> 也因此返回 <code>&quot;object&quot;</code>。</p>
+<p>在 JavaScript 最初的实现中，JavaScript 中的值是由一个“表示类型的标签”+“实际数据值”表示的。对象的类型标签是 0。由于 <code>null</code> 代表的是空指针（大多数平台下值为 0x00），因此，null 的类型标签是 0，<code>typeof null</code> 也因此返回 <code>&quot;object&quot;</code>。</p>
 <p>下面是typeof的一些例子与结果：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数值</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">37</span> === <span class="string">&#x27;number&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="number">3.14</span> === <span class="string">&#x27;number&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span>(<span class="number">42</span>) === <span class="string">&#x27;number&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Math</span>.LN2 === <span class="string">&#x27;number&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">Infinity</span> === <span class="string">&#x27;number&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">NaN</span> === <span class="string">&#x27;number&#x27;</span>; <span class="comment">// 尽管它是 &quot;Not-A-Number&quot; (非数值) 的缩写</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Number</span>(<span class="number">1</span>) === <span class="string">&#x27;number&#x27;</span>; <span class="comment">// Number 会尝试把参数解析成数值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">42n</span> === <span class="string">&#x27;bigint&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&#x27;&#x27;</span> === <span class="string">&#x27;string&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&#x27;bla&#x27;</span> === <span class="string">&#x27;string&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">`template literal`</span> === <span class="string">&#x27;string&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&#x27;1&#x27;</span> === <span class="string">&#x27;string&#x27;</span>; <span class="comment">// 注意内容为数字的字符串仍是字符串</span></span><br><span class="line"><span class="keyword">typeof</span> (<span class="keyword">typeof</span> <span class="number">1</span>) === <span class="string">&#x27;string&#x27;</span>; <span class="comment">// typeof 总是返回一个字符串</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">String</span>(<span class="number">1</span>) === <span class="string">&#x27;string&#x27;</span>; <span class="comment">// String 将任意值转换为字符串，比 toString 更安全</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔值</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span> === <span class="string">&#x27;boolean&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">false</span> === <span class="string">&#x27;boolean&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Boolean</span>(<span class="number">1</span>) === <span class="string">&#x27;boolean&#x27;</span>; <span class="comment">// Boolean() 会基于参数是真值还是虚值进行转换</span></span><br><span class="line"><span class="keyword">typeof</span> !!(<span class="number">1</span>) === <span class="string">&#x27;boolean&#x27;</span>; <span class="comment">// 两次调用 ! (逻辑非) 操作符相当于 Boolean()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Symbols</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>() === <span class="string">&#x27;symbol&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>(<span class="string">&#x27;foo&#x27;</span>) === <span class="string">&#x27;symbol&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Symbol</span>.iterator === <span class="string">&#x27;symbol&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Undefined</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> === <span class="string">&#x27;undefined&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> declaredButUndefinedVariable === <span class="string">&#x27;undefined&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> undeclaredVariable === <span class="string">&#x27;undefined&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;<span class="attr">a</span>: <span class="number">1</span>&#125; === <span class="string">&#x27;object&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 Array.isArray 或者 Object.prototype.toString.call</span></span><br><span class="line"><span class="comment">// 区分数组和普通对象</span></span><br><span class="line"><span class="keyword">typeof</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>] === <span class="string">&#x27;object&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Date</span>() === <span class="string">&#x27;object&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> /regex/ === <span class="string">&#x27;object&#x27;</span>; <span class="comment">// 历史结果请参阅正则表达式部分</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ⭐此区域例子与下面区域代码区分开，没用到new，说明是基本数据类型</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>) === <span class="string">&#x27;boolean&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Number</span>(<span class="number">1</span>) === <span class="string">&#x27;number&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">String</span>(<span class="string">&#x27;abc&#x27;</span>) === <span class="string">&#x27;string&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ⭐下面的例子令人迷惑，非常危险，没有用处。避免使用它们，详情请看引用对象中的“基本数据包装对象”</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>) === <span class="string">&#x27;object&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>) === <span class="string">&#x27;object&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&#x27;abc&#x27;</span>) === <span class="string">&#x27;object&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; === <span class="string">&#x27;function&#x27;</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;&#125; === <span class="string">&#x27;function&#x27;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Math</span>.sin === <span class="string">&#x27;function&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
@@ -424,9 +424,9 @@ Monkey's Blog = </title>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="string">&quot;some text&quot;</span>); </span><br><span class="line"><span class="built_in">console</span>.log(obj <span class="keyword">instanceof</span> <span class="built_in">String</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <p>以下是自己对String对象的一些总结</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181716670.png" alt="image-20211218171640622"></p>
-<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181715986.png" alt="image-20211218171526934"></p>
-<h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181715594.png" alt="image-20211218171556542"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181716670.png" alt="image-20211218171640622"></p>
+<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181715986.png" alt="image-20211218171526934"></p>
+<h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3><p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181715594.png" alt="image-20211218171556542"></p>
 <h2 id="集合引用类型"><a href="#集合引用类型" class="headerlink" title="集合引用类型"></a>集合引用类型</h2><h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>大多数引用值的示例使用的是 Object 类型。</p>
 <p>具体有什么方法可以参考<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvZW4tVVMvZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvT2JqZWN0">Object</span></p>
 <h4 id="创建Object实例形式"><a href="#创建Object实例形式" class="headerlink" title="创建Object实例形式"></a>创建Object实例形式</h4><p>（1）：使用 new 操作符和 Object 构造函数</p>
@@ -741,10 +741,20 @@ Monkey's Blog = </title>
 
 
 
-<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXk=">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array</span></p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202112181715499.png" alt="image-20211218171503420"></p>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><p>栈方法：</p>
+<ul>
+<li>pop</li>
+<li>push</li>
+</ul>
+<p>队列方法：</p>
+<ul>
+<li>shift</li>
+<li>unshift</li>
+</ul>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvQXJyYXk=">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array</span></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202112181715499.png" alt="image-20211218171503420"></p>
 <p>最常见的例如数组的方法Map、Reduce、Filter，这些都是高阶函数（即参数为一个函数）。</p>
-<img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202201130220986.png" alt="image-20220113022024743" style="zoom: 50%;" />
+<img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202201130220986.png" alt="image-20220113022024743" style="zoom: 50%;" />
 
 
 
@@ -918,7 +928,7 @@ Monkey's Blog = </title>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Array</span>; <span class="comment">//true</span></span><br><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>() <span class="keyword">instanceof</span> <span class="built_in">Date</span>;<span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>() <span class="keyword">instanceof</span> <span class="built_in">Object</span>;<span class="comment">//true</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">new</span> Person() <span class="keyword">instanceof</span> Person;<span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> Person() <span class="keyword">instanceof</span> <span class="built_in">Object</span>;<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
 <p>我们发现，虽然 instanceof 能够判断出 [] 是Array的实例，但它认为 [] 也是Object的实例，为什么呢？ 我们来分析一下[]、Array、Object 三者之间的关系: 从instanceof 能够判断出 [].<strong>proto</strong> 指向 Array.prototype， 而 Array.prototype.<strong>proto</strong> 又指向了Object.prototype，Object.prototype.<strong>proto</strong> 指向了null,标志着原型链的结束。因此，[]、Array、Object就形成了如下图所示的一条原型链：</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/image-20210908001635092.png" alt="image-20210908001635092"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/image-20210908001635092.png" alt="image-20210908001635092"></p>
 <p>从原型链可以看出，[] 的 <strong>proto</strong>  直接指向Array.prototype, 间接指向Object.prototype, 所以按照 instanceof 的判断规则，[] 就是Object的实例。</p>
 <p>注意:instanceof运算符只能用于对象，不适用原始类型的值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;hello&#x27;</span> <span class="keyword">instanceof</span> <span class="built_in">String</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">null</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">undefined</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
@@ -937,10 +947,10 @@ Monkey's Blog = </title>
 <li>由系统自动分配存储空间</li>
 </ul>
 <p><code>JavaScript</code>中的原始类型的值被直接存储在栈中，在变量定义时，栈就为其分配好了内存空间。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/16afa4daf89c565e~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/16afa4daf89c565e~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
 <p>由于栈中的内存空间的大小是固定的，那么注定了存储在栈中的变量就是不可变的。</p>
 <p>在上面的代码中，我们执行了<code>str += &#39;6&#39;</code>的操作，实际上是在栈中又开辟了一块内存空间用于存储<code>&#39;ConardLi6&#39;</code>，然后将变量<code>str</code>指向这块空间，所以这并不违背<code>不可变性的</code>特点。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/16afa4dd38de23b8~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/16afa4dd38de23b8~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
 <p>堆内存：</p>
 <ul>
 <li>存储的值大小不定，可动态调整</li>
@@ -953,7 +963,7 @@ Monkey's Blog = </title>
 
 
 
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/16afa4df7faa4630~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/16afa4df7faa4630~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
 <blockquote>
 <p>由于内存是有限的，这些变量不可能一直在内存中占用资源，这里推荐下这篇文章<span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vcG9zdC82ODQ0OTAzODMzMzg3MTU1NDY0">JavaScript中的垃圾回收和内存泄漏</span>，这里告诉你<code>JavaScript</code>是如何进行垃圾回收以及可能会发生内存泄漏的一些场景。</p>
 </blockquote>
@@ -977,7 +987,7 @@ Monkey's Blog = </title>
 <p>简单版本：0.1和0.2在转换成二进制后会无限循环，由于标准位数的限制后面多余的位数会被截掉，此时就已经出现了精度的损失，相加后因浮点数小数位的限制而截断的二进制数字在转换为十进制就会变成0.30000000000000004。</p>
 </blockquote>
 <p>当计算机计算 0.1+0.2 的时候，实际上计算的是这两个数字在计算机里所存储的二进制，0.1 和 0.2 在转换为二进制表示的时候会出现位数无限循环的情况。</p>
-<p><img data-src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109192310285.png" alt="image-20210919231013374"></p>
+<p><img data-src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109192310285.png" alt="image-20210919231013374"></p>
 <p>js 中是以 64 位双精度格式来存储数字的，只有 53 位的有效数字，超过这个长度的位数会被截取掉这样就造成了精度丢失的问题。这是第一个会造成精度丢失的地方。</p>
 <p>在对两个以 64 位双精度格式的数据进行计算的时候，首先会进行对阶的处理，对阶指的是将阶码对齐，也就是将小数点的位置对齐后，再进行计算，一般是小阶向大阶对齐，因此小阶的数在对齐的过程中，有效数字会向右移动，移动后超过有效位数的位会被截取掉，这是第二个可能会出现精度丢失的地方。当两个数据阶码对齐后，进行相加运算后，得到的结果可能会超过 53 位有效数字，因此超过的位数也会被截取掉，这是可能发生精度丢失的第三个地方。</p>
 <p>对于这样的情况，我们可以将其转换为整数后再进行运算，运算后再转换为对应的小数，以这种方式来解决这个问题。</p>
@@ -1008,7 +1018,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-02-17 16:07:25" itemprop="dateModified" datetime="2022-02-17T16:07:25+08:00">2022-02-17</time>
+    <time title="Modified: 2022-04-03 15:47:42" itemprop="dateModified" datetime="2022-04-03T15:47:42+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript中的变量类型" class="item leancloud_visitors" data-flag-title="JavaScript中的变量类型" title="Views">
       <span class="icon">
@@ -1048,17 +1058,17 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript作用域与闭包">
+  <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202202080034272.png" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
-  <h3>JavaScript作用域与闭包</h3>
+  <span class="category"><i class="ic i-flag"></i> Browser</span>
+  <h3>【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的浏览器对象模型（BOM）">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中的浏览器对象模型（BOM）">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>JavaScript中的浏览器对象模型（BOM）</h3>
@@ -1084,7 +1094,7 @@ Monkey's Blog = </title>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" rel="bookmark" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -1098,7 +1108,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -1110,7 +1120,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -1168,7 +1178,7 @@ Monkey's Blog = </title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+        <a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
@@ -1195,54 +1205,6 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/TypeScript/" title="In TypeScript">TypeScript</a>
-</div>
-
-    <span><a href="/FrontEnd/TypeScript/FrontEnd/TypeScript/TypeScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86" title="TypeScript基础知识">TypeScript基础知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/Operations/" title="In Operations">Operations</a>
 </div>
 
@@ -1255,22 +1217,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="同源策略以及如何解决跨域问题">同源策略以及如何解决跨域问题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
-</div>
-
-    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93" title="CSS布局总结">CSS布局总结</a></span>
   </li>
 
       
@@ -1282,7 +1232,7 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91V8%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%88%86%E6%9E%90" title="【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析">【V8引擎原理篇】V8的内存管理与垃圾回收机制及内存泄漏分析</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
   </li>
 
       
@@ -1291,10 +1241,10 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+<a href="/categories/FrontEnd/Package-Manager/" title="In Package_Manager">Package_Manager</a>
 </div>
 
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D" title="【浏览器工作原理篇】浏览器工作基本原理介绍">【浏览器工作原理篇】浏览器工作基本原理介绍</a></span>
+    <span><a href="/FrontEnd/Package-Manager/FrontEnd/Package_Manager/pnpm%E7%9B%B8%E8%BE%83%E4%BA%8Enpm%E5%92%8Cyarn%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9%EF%BC%9F" title="pnpm相较于npm和yarn有什么优点？">pnpm相较于npm和yarn有什么优点？</a></span>
   </li>
 
       
@@ -1306,7 +1256,67 @@ Monkey's Blog = </title>
 <a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="jQuery基础知识入门">jQuery基础知识入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="axios基础知识点入门">axios基础知识点入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/BackEnd/" title="In BackEnd">BackEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/BackEnd/Linux/" title="In Linux">Linux</a>
+</div>
+
+    <span><a href="/BackEnd/Linux/BackEnd/Linux/%E3%80%90Linux%E3%80%91Linux%E7%B3%BB%E7%BB%9F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A" title="【Linux】Linux基础知识">【Linux】Linux基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%8E%A5%E5%8F%A3%E9%89%B4%E6%9D%83%E6%96%B9%E6%A1%88%EF%BC%9ACookie%E3%80%81Session%E3%80%81Token%E3%80%81JWT%E3%80%81%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95" title="接口鉴权方案：Cookie、Session、Token、JWT、单点登录">接口鉴权方案：Cookie、Session、Token、JWT、单点登录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98" title="浏览器的同源策略以及如何解决跨域问题">浏览器的同源策略以及如何解决跨域问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/React/" title="In React">React</a>
+</div>
+
+    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91React%20Hooks%E4%BB%8B%E7%BB%8D%E4%B8%8E%E4%BD%BF%E7%94%A8" title="【React基础】React Hooks介绍与使用">【React基础】React Hooks介绍与使用</a></span>
   </li>
 
   </ul>
@@ -1331,13 +1341,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

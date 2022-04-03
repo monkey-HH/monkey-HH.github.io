@@ -76,7 +76,7 @@ Monkey's Blog = </title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">Symbols count in article</span>
-    <span>7k</span>
+    <span>8.1k</span>
     <span class="text">words</span>
   </span>
   <span class="item" title="Reading time">
@@ -84,7 +84,7 @@ Monkey's Blog = </title>
       <i class="ic i-clock"></i>
     </span>
     <span class="text">Reading time</span>
-    <span>6 mins.</span>
+    <span>7 mins.</span>
   </span>
 </div>
 
@@ -116,7 +116,7 @@ Monkey's Blog = </title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="https://gitee.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
+          <img src="https://github.com/monkey-HH/picBed/raw/master/picbed/img/202109201019726.png">
       </div>
     </header>
     <div id="waves">
@@ -174,7 +174,17 @@ Monkey's Blog = </title>
 </ul>
 <p>历史上，JavaScript 一直没有模块（module）体系，无法将一个大程序拆分成互相依赖的小文件，再用简单的方法拼装起来。其他语言都有这项功能，比如 Ruby 的<code>require</code>、Python 的<code>import</code>，甚至就连 CSS 都有<code>@import</code>，但是 JavaScript 任何这方面的支持都没有，这对开发大型的、复杂的项目形成了巨大障碍。</p>
 <p>在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。</p>
-<h1 id="祖先：通过立即执行函数的闭包实现模块。"><a href="#祖先：通过立即执行函数的闭包实现模块。" class="headerlink" title="祖先：通过立即执行函数的闭包实现模块。"></a>祖先：通过立即执行函数的闭包实现模块。</h1><p>想到模块化的时候，首先应该想到的就是利用闭包和IIFE（立即执行函数）实现的模块化。</p>
+<h1 id="为什么需要模块化？"><a href="#为什么需要模块化？" class="headerlink" title="为什么需要模块化？"></a>为什么需要模块化？</h1><p>最开始，我们这样子写代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br><span class="line">function bar()&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>缺点：Global 被污染，很容易命名冲突</p>
+<h2 id="简单封装：Namespace-模式"><a href="#简单封装：Namespace-模式" class="headerlink" title="简单封装：Namespace 模式"></a>简单封装<em>：Namespace</em> 模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MYAPP = &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    <span class="attr">bar</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MYAPP.foo();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>减少 Global 上的变量数目</li>
+<li>本质是对象，一点都不安全</li>
+</ul>
+<h2 id="闭包模式：IIFE模式"><a href="#闭包模式：IIFE模式" class="headerlink" title="闭包模式：IIFE模式"></a>闭包模式：IIFE模式</h2><p>想到模块化的时候，首先应该想到的就是利用闭包和IIFE（立即执行函数）实现的模块化。</p>
 <ul>
 <li>使用立即执行函数创建定义模块变量的闭包，从外部作用域无法访问这些变量。 </li>
 <li>使用闭包可以使模块变量保持活跃。</li>
@@ -185,7 +195,7 @@ Monkey's Blog = </title>
 <p>通过立即执行函数返回给变量MouseCounterModule一个模块countClicks，然后外界就可以调用该模块了，并且每点击一次界面就会使得numClicks计数值+1。</p>
 <p>以上就是简单的模块封装了。</p>
 <p>具体的原理可以看我的另外一篇文章“JavaScript作用域与闭包”，从0到1讲述如何利用闭包实现模块化。</p>
-<h1 id="CommonJS：服务器端"><a href="#CommonJS：服务器端" class="headerlink" title="CommonJS：服务器端"></a>CommonJS：服务器端</h1><p>AMD的设计明确基于浏览器，而CommonJS 的设计是面向通用JavaScript环境。CommonJS目前在 Node.js社区具有最多的用户。CommonJS 使用基于文件的模块，所以每个文件中只能定义一个模块。 CommonJS提供变量module，该变量具有属性exports，通过exports可以很容易地扩展额外属性。最后， module.exports作为模块的公共接口。</p>
+<h1 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h1><p>AMD的设计明确基于浏览器，而CommonJS 的设计是面向通用JavaScript环境。CommonJS目前在 Node.js社区具有最多的用户。CommonJS 使用基于文件的模块，所以每个文件中只能定义一个模块。 CommonJS提供变量module，该变量具有属性exports，通过exports可以很容易地扩展额外属性。最后， module.exports作为模块的公共接口。</p>
 <p>由于在nodejs的广泛应用，并且！CommonJS最大的缺点是不显式地支持浏览器。浏览器端的JavaScript不支持module变量及export属 性，我们不得不采用浏览器支持的格式打包代码，可以通过Browserify（<span class="exturl" data-url="aHR0cDovL2Jyb3dzZXJpZnkub3JnLyVFRiVCQyU4OSVFNiU4OCU5Ng==">http://browserify.org/）或</span> RequireJS（<span class="exturl" data-url="aHR0cDovL3JlcXVpcmVqcy5vcmcvZG9jcy9jb21tb25qcy5odG1sJUVGJUJDJTg5JUU2JTlEJUE1JUU1JUFFJTlFJUU3JThFJUIwJUUzJTgwJTgyJUU2JTg5JTgwJUU0JUJCJUE1JUU0JUI4JTgwJUU4JTg4JUFDJUU3JUE3JUIwQ29tbW9uSlMlRTYlOTglQUYlRTclOTQlQTglRTQlQkElOEUlRTYlOUMlOEQlRTUlOEElQTElRTUlOTklQTglRTclQUIlQUYlRTMlODAlODI=">http://requirejs.org/docs/commonjs.html）来实现。所以一般称CommonJS是用于服务器端。</span></p>
 <p>CommonJS 在 <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0NvbW1vbkpT">Wikipedia</span> 中是这样描述的：</p>
 <blockquote>
@@ -206,12 +216,6 @@ Monkey's Blog = </title>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example.js</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value + a;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">module</span>.exports.a = a;<span class="comment">//暴露x变量</span></span><br><span class="line"><span class="built_in">module</span>.exports.fun = fun;<span class="comment">//暴露addX方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import.js</span></span><br><span class="line"><span class="keyword">var</span> example = <span class="built_in">require</span>(<span class="string">&#x27;./example.js&#x27;</span>);<span class="comment">//如果参数字符串以“./”开头，则表示加载的是一个位于相对路径</span></span><br><span class="line"><span class="built_in">console</span>.log(example.a); <span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(example.fun(<span class="number">1</span>)); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
 
-
-
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>语法简单。只需定义module.exports属性，剩下的模块代码与标准JavaScript无差异。引用模块的方 法也很简单，只需要使用require函数。</li>
-<li> CommonJS是Node.js默认的模块格式，所以我们可以使用npm上成千上万的包。</li>
-</ul>
 <h2 id="module-exports-与-exports的关系"><a href="#module-exports-与-exports的关系" class="headerlink" title="module.exports 与 exports的关系"></a>module.exports 与 exports的关系</h2><p>结论就是：</p>
 <p>和C语言的引用类型一样</p>
 <p>相当于每个文件头有一句const exports = module.exports，所以指向同一对象的地址，即引用类型，默认为空对象{}</p>
@@ -227,17 +231,22 @@ Monkey's Blog = </title>
 <p>并且如果想带多几个属性的话，得在上面的语句“后面”再module.exports.xxx = value<br>如下方代码，原先是对{}空对象设置了两个值a,b，但是后面又把module.exports 的引用变成了Cat函数的内存空间地址，导致前面暴露的无效</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports.a = <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">&quot;这是module.js&quot;</span>)&#125;</span><br><span class="line"><span class="built_in">module</span>.exports.b =<span class="string">&quot;b&quot;</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　<span class="built_in">this</span>.name = <span class="string">&quot;大毛&quot;</span>;</span><br><span class="line">		<span class="built_in">this</span>.getN = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">this</span>.name</span><br><span class="line">		&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="浏览器兼容CommonJS——Browserify"><a href="#浏览器兼容CommonJS——Browserify" class="headerlink" title="浏览器兼容CommonJS——Browserify"></a>浏览器兼容CommonJS——Browserify</h2><p>借助Browserify将项目进行打包，然后在浏览器端再用script标签引入打包后的文件。</p>
-<h1 id="AMD：浏览器端"><a href="#AMD：浏览器端" class="headerlink" title="AMD：浏览器端"></a>AMD：浏览器端</h1><h2 id="解决了什么问题？"><a href="#解决了什么问题？" class="headerlink" title="解决了什么问题？"></a>解决了什么问题？</h2><blockquote>
-<p>CommonJS适合服务器端，但是，由于一个重大的局限，使得CommonJS规范不适用于浏览器环境。</p>
+
+
+
+
+<h2 id="CommonJS的优点"><a href="#CommonJS的优点" class="headerlink" title="CommonJS的优点"></a>CommonJS的优点</h2><ul>
+<li>语法简单。只需定义module.exports属性，剩下的模块代码与标准JavaScript无差异。引用模块的方法也很简单，只需要使用require函数。</li>
+<li> CommonJS是Node.js默认的模块格式，所以我们可以使用npm上成千上万的包。</li>
+</ul>
+<h2 id="CommonJS的缺点"><a href="#CommonJS的缺点" class="headerlink" title="CommonJS的缺点"></a>CommonJS的缺点</h2><p>CommonJS适合服务器端，但是，由于一个重大的局限，使得CommonJS规范不适用于浏览器环境，即<strong>网络I/O速度远远低于硬盘I/O</strong>。</p>
 <ol>
-<li><p>对于服务器端：因为所有的模块都存放在本地硬盘，可以<code>同步加载</code>完成，等待时间就是硬盘的读取时间。</p>
-</li>
-<li><p>对于浏览器，因为模块都放在服务器端，等待文件加载完成时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态，因此必须<code>异步加载</code>。</p>
-</li>
+<li>对于服务器端：因为所有的模块都存放在本地硬盘，可以<code>同步加载</code>完成，等待时间就是硬盘的读取时间。</li>
+<li>对于浏览器，因为模块都放在服务器端，等待文件加载完成时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态，因此必须<code>异步加载</code>。</li>
 </ol>
-</blockquote>
-<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZGpzL2FtZGpzLWFwaS93aWtpL0FNRA==">AMD</span>是”Asynchronous Module Definition”的缩写，意思就是”异步模块定义”。</p>
+<h2 id="浏览器兼容CommonJS——Browserify"><a href="#浏览器兼容CommonJS——Browserify" class="headerlink" title="浏览器兼容CommonJS——Browserify"></a>浏览器兼容CommonJS——Browserify</h2><p>借助Browserify将项目进行打包，然后在浏览器端再用script标签引入打包后的文件。</p>
+<h1 id="AMD（Async-Module-Definition）"><a href="#AMD（Async-Module-Definition）" class="headerlink" title="AMD（Async Module Definition）"></a>AMD（Async Module Definition）</h1><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZGpzL2FtZGpzLWFwaS93aWtpL0FNRA==">AMD</span>是”Async Module Definition”的缩写，意思就是”异步模块定义”。</p>
+<h2 id="解决了什么问题？"><a href="#解决了什么问题？" class="headerlink" title="解决了什么问题？"></a>解决了什么问题？</h2><p>解决了CMD的缺点，实现了<strong>异步加载</strong>。</p>
 <h2 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h2><p><strong>定义暴露模块</strong>:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义没有依赖的模块</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> 模块</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -251,12 +260,12 @@ Monkey's Blog = </title>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">&#x27;module1&#x27;</span>, <span class="string">&#x27;module2&#x27;</span>], <span class="function"><span class="keyword">function</span>(<span class="params">m1, m2</span>)</span>&#123;</span><br><span class="line">   使用m1/m2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>实现AMD规范的主要是require.js，详细用法可参照<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVhbnlpZmVuZy5jb20vYmxvZy8yMDEyLzExL3JlcXVpcmVfanMuaHRtbA==">Javascript模块化编程（三）：require.js的用法</span></p>
-<h2 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h2><ul>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
 <li>自动处理依赖，我们无需考虑模块引入的顺序。</li>
 <li>异步加载模块，避免阻塞。 </li>
 <li>在同一个文件中可以定义多个模块。</li>
 </ul>
-<h1 id="CMD：浏览器端"><a href="#CMD：浏览器端" class="headerlink" title="CMD：浏览器端"></a>CMD：浏览器端</h1><h2 id="解决了什么问题？-1"><a href="#解决了什么问题？-1" class="headerlink" title="解决了什么问题？"></a>解决了什么问题？</h2><p>为了统一CommonJS和AMD两个生态，CMD横空出世了。UMD可以用于创建两个系统都可以使用的模块代码。</p>
+<h1 id="CMD（Common-Module-Definition）"><a href="#CMD（Common-Module-Definition）" class="headerlink" title="CMD（Common  Module Definition）"></a>CMD（Common  Module Definition）</h1><h2 id="解决了什么问题？-1"><a href="#解决了什么问题？-1" class="headerlink" title="解决了什么问题？"></a>解决了什么问题？</h2><p>为了统一CommonJS和AMD两个生态，CMD横空出世了。CMD可以用于创建两个系统都可以使用的模块代码。</p>
 <p><strong>本质上，UMD定义的模块会在启动时检测要使用哪个模块系统，然后进行适当配置，并把所有逻辑包装在一个IIFE中。</strong></p>
 <p>虽然这种组合并不完美，但在很多场景下足以实现两个生态的共存。</p>
 <p>CMD 全称为 Common Module Definition，它整合了 CommonJS 和 AMD 规范的特点。 <span class="exturl" data-url="aHR0cHM6Ly9saW5rLmp1ZWppbi5jbi8/dGFyZ2V0PWh0dHBzOi8vZ2l0aHViLmNvbS9zZWFqcy9zZWFqcw==">SeaJS</span> 则作为它的具体实现之一</p>
@@ -280,10 +289,8 @@ Monkey's Blog = </title>
 </blockquote>
 <h2 id="解决了什么问题？-2"><a href="#解决了什么问题？-2" class="headerlink" title="解决了什么问题？"></a>解决了什么问题？</h2><p>ES6 在<strong>语言标准</strong>的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。</p>
 <ul>
-<li><p><code>静态加载/编译时加载</code>：ES6 模块的设计思想是<u>尽量的静态化，使得<code>编译时</code>就能确定模块的依赖关系</u>并进行加载，此时就能进行<code>“静态优化”</code>了。</p>
-</li>
-<li><p><code>运行时加载</code>：CommonJS 和 AMD 模块，都只能在<code>运行时</code>确定这些东西。因为只有运行时才能得到这个对象，导致完全没办法在编译时做<code>“静态优化”</code>。</p>
-</li>
+<li><strong><code>静态加载/编译时加载</code><strong>：ESM在编译时就能确定</strong>模块依赖关系</strong>，并进行<strong>静态优化</strong>，在编译时就<strong>完成模块加载</strong>。</li>
+<li><code>运行时加载</code>：CommonJS 和 AMD 模块，都只能在<code>运行时</code>确定这些东西。因为只有运行时才能得到这个对象，导致完全没办法在编译时做<code>“静态优化”</code>。</li>
 </ul>
 <p>而且因为要设计成静态的，所以它的写法也有一定的限制： </p>
 <ul>
@@ -291,21 +298,41 @@ Monkey's Blog = </title>
 <li>导出的变量类型受到严格限制 </li>
 <li>变量不允许被重新绑定，引入的模块名只能是字符串常量</li>
 </ul>
-<h2 id="基本语法-3"><a href="#基本语法-3" class="headerlink" title="基本语法"></a>基本语法</h2><p>可以看阮一峰写的<span class="exturl" data-url="aHR0cHM6Ly9lczYucnVhbnlpZmVuZy5jb20vI2RvY3MvbW9kdWxl">Module 的语法</span></p>
+<h2 id="基本语法-3"><a href="#基本语法-3" class="headerlink" title="基本语法"></a>基本语法</h2><blockquote>
+<p>默认导出</p>
+</blockquote>
+<p>导出模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> math = &#123;</span><br><span class="line">    <span class="attr">PI</span>: <span class="number">3.14</span>,</span><br><span class="line">    <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>导入模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">import</span> math <span class="keyword">from</span> <span class="string">&quot;./math&quot;</span></span><br><span class="line">math.PI</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>命名导出</p>
+</blockquote>
+<p>导出模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// export Declaration</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;I am not bar.&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// export VariableStatement;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> PI = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> bar = foo;   <span class="comment">// function expression</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// export &#123; ExportsList &#125;</span></span><br><span class="line"><span class="keyword">var</span> PI = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; PI, foo &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>导入模块：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import &#123; ImportsList &#125; from &quot;module-name&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; PI &#125; <span class="keyword">from</span> <span class="string">&quot;./math&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; PI, foo &#125; <span class="keyword">from</span> <span class="string">&quot;module-name&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// import IdentifierName as ImportedBinding</span></span><br><span class="line"><span class="keyword">import</span> &#123; foo <span class="keyword">as</span> bar &#125; <span class="keyword">from</span> <span class="string">&quot;./math&quot;</span>;</span><br><span class="line">bar();  <span class="comment">// use alias bar</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import NameSpaceImport</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> math <span class="keyword">from</span> <span class="string">&quot;./math&quot;</span>;</span><br><span class="line">math.PI</span><br><span class="line">math.foo()</span><br></pre></td></tr></table></figure>
+
+
+
 <p>最新的浏览器是支持<code>ES Module</code>规范的，我们可以用浏览器提供的原生模块机制，实现模块的加载：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> &#123;Foo&#125; <span class="keyword">from</span> <span class="string">&#x27;/foo.js&#x27;</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> f = <span class="keyword">new</span> Foo();</span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(f.bar());</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>我们把<code>script</code>标签的<code>type</code>设为<code>module</code>，告诉浏览器这是一段支持<code>ES Module</code>的脚本。这样，在这段脚本中，我们才可以使用<code>import</code>去加载其他模块。这条语句（<code>import &#123;Foo&#125; from &#39;/foo.js&#39;</code>）表示浏览器就会根据网站根目录自动加载对应的<code>/foo.js</code>脚本文件。</p>
-<h2 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h2><p>ES6结合了AMD和CommonJS的特点。</p>
+<h2 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h2><p>ES6结合了AMD和CommonJS的特点。</p>
 <ul>
-<li>ES6模块受CommonJS影响，语法简单，并提供了与AMD类 似的异步模块加载机制。 </li>
+<li>ES6模块受CommonJS影响，语法简单，并提供了与AMD类似的异步模块加载机制。 </li>
 <li>ES6模块基于文件，一个文件是一个模块。</li>
 <li>通过关键字export导出标识符，在其他模块中可引用这些标识符。 在其他模块中通过关键字import导入标识符。 模块可以使用默认导出，通过一个export导出整个模块。 export与import都可以通过关键字as使用别名。</li>
 </ul>
-<h2 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h2><p> 通过这个算法，在模块没有明显被引用的时候，可以对代码进行去冗余。它的目的是减少应用中没有被实际运用的代码，在打包时就会剥离出来这些代码。 非常形象的比喻，摇晃一棵树（把一个大型应用比作一个模块构成的树），使得没有树枝连着的树叶掉落。</p>
+<h3 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h3><p> 通过这个算法，在模块没有明显被引用的时候，可以对代码进行去冗余。它的目的是减少应用中没有被实际运用的代码，在打包时就会剥离出来这些代码。 非常形象的比喻，摇晃一棵树（把一个大型应用比作一个模块构成的树），使得没有树枝连着的树叶掉落。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li>红宝书</li>
 <li>《JavaScript忍者秘籍（第二版）》</li>
+<li><a target="_blank" rel="noopener" href="https://huangxuan.me/js-module-7day/#/">JavaScript 模块化<em>七日谈</em>——黄玄/@huxpro</a></li>
 </ol>
 
       <div class="tags">
@@ -321,7 +348,7 @@ Monkey's Blog = </title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2021-12-28 10:16:42" itemprop="dateModified" datetime="2021-12-28T10:16:42+08:00">2021-12-28</time>
+    <time title="Modified: 2022-04-03 15:47:56" itemprop="dateModified" datetime="2022-04-03T15:47:56+08:00">2022-04-03</time>
   </span>
   <span id="FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript中的前端模块化" class="item leancloud_visitors" data-flag-title="JavaScript中的前端模块化" title="Views">
       <span class="icon">
@@ -361,7 +388,7 @@ Monkey's Blog = </title>
     <div class="item left">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中DOM操作总结">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript中DOM操作总结">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>JavaScript中DOM操作总结</h3>
@@ -371,7 +398,7 @@ Monkey's Blog = </title>
     <div class="item right">
       
 
-  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;gitee.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript执行上下文">
+  <a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;github.com&#x2F;monkey-HH&#x2F;picBed&#x2F;raw&#x2F;master&#x2F;picbed&#x2F;img&#x2F;202109201019726.png" title="JavaScript执行上下文">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> JavaScript</span>
   <h3>JavaScript执行上下文</h3>
@@ -393,11 +420,11 @@ Monkey's Blog = </title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%96%E5%85%88%EF%BC%9A%E9%80%9A%E8%BF%87%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AD%E5%8C%85%E5%AE%9E%E7%8E%B0%E6%A8%A1%E5%9D%97%E3%80%82"><span class="toc-number">2.</span> <span class="toc-text">祖先：通过立即执行函数的闭包实现模块。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF"><span class="toc-number">3.</span> <span class="toc-text">CommonJS：服务器端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#module-exports-%E4%B8%8E-exports%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.3.</span> <span class="toc-text">module.exports 与 exports的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9CommonJS%E2%80%94%E2%80%94Browserify"><span class="toc-number">3.4.</span> <span class="toc-text">浏览器兼容CommonJS——Browserify</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF"><span class="toc-number">4.</span> <span class="toc-text">AMD：浏览器端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-1"><span class="toc-number">4.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-number">4.3.</span> <span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CMD%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF"><span class="toc-number">5.</span> <span class="toc-text">CMD：浏览器端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F-1"><span class="toc-number">5.1.</span> <span class="toc-text">解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-2"><span class="toc-number">5.2.</span> <span class="toc-text">基本语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Module"><span class="toc-number">6.</span> <span class="toc-text">ES6 Module</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F-2"><span class="toc-number">6.1.</span> <span class="toc-text">解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-3"><span class="toc-number">6.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-2"><span class="toc-number">6.3.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree-Shaking"><span class="toc-number">6.4.</span> <span class="toc-text">Tree Shaking</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%A8%A1%E5%9D%97%E5%8C%96%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">为什么需要模块化？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%B0%81%E8%A3%85%EF%BC%9ANamespace-%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">简单封装：Namespace 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E6%A8%A1%E5%BC%8F%EF%BC%9AIIFE%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">闭包模式：IIFE模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS"><span class="toc-number">3.</span> <span class="toc-text">CommonJS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#module-exports-%E4%B8%8E-exports%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.2.</span> <span class="toc-text">module.exports 与 exports的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CommonJS%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">3.3.</span> <span class="toc-text">CommonJS的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CommonJS%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">3.4.</span> <span class="toc-text">CommonJS的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9CommonJS%E2%80%94%E2%80%94Browserify"><span class="toc-number">3.5.</span> <span class="toc-text">浏览器兼容CommonJS——Browserify</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD%EF%BC%88Async-Module-Definition%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">AMD（Async Module Definition）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-1"><span class="toc-number">4.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">4.3.</span> <span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CMD%EF%BC%88Common-Module-Definition%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">CMD（Common  Module Definition）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F-1"><span class="toc-number">5.1.</span> <span class="toc-text">解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-2"><span class="toc-number">5.2.</span> <span class="toc-text">基本语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Module"><span class="toc-number">6.</span> <span class="toc-text">ES6 Module</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F-2"><span class="toc-number">6.1.</span> <span class="toc-text">解决了什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-3"><span class="toc-number">6.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-number">6.3.</span> <span class="toc-text">优点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tree-Shaking"><span class="toc-number">6.3.1.</span> <span class="toc-text">Tree Shaking</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85" rel="bookmark" title="JavaScript作用域与闭包">JavaScript作用域与闭包</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91this%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E6%A8%A1%E6%8B%9F%E5%AE%9E%E7%8E%B0call%E3%80%81bind%E3%80%81apply" rel="bookmark" title="【手撕JavaScript系列】this原理以及模拟实现call、bind、apply">【手撕JavaScript系列】this原理以及模拟实现call、bind、apply</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
+          <li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/jQuery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" rel="bookmark" title="jQuery基础知识入门">jQuery基础知识入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" rel="bookmark" title="JavaScript中的变量类型">JavaScript中的变量类型</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88BOM%EF%BC%89" rel="bookmark" title="JavaScript中的浏览器对象模型（BOM）">JavaScript中的浏览器对象模型（BOM）</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%8E%9F%E5%BD%A2%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE" rel="bookmark" title="JavaScript原型与原型链">JavaScript原型与原型链</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" rel="bookmark" title="JavaScript事件">JavaScript事件</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%ADDOM%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93" rel="bookmark" title="JavaScript中DOM操作总结">JavaScript中DOM操作总结</a></li><li class="active"><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96" rel="bookmark" title="JavaScript中的前端模块化">JavaScript中的前端模块化</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87" rel="bookmark" title="JavaScript执行上下文">JavaScript执行上下文</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript常用继承方案">JavaScript常用继承方案</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/axios%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" rel="bookmark" title="axios基础知识点入门">axios基础知识点入门</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" rel="bookmark" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81" rel="bookmark" title="【手撕JavaScript系列】JavaScript中的防抖与节流">【手撕JavaScript系列】JavaScript中的防抖与节流</a></li><li><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E6%A1%88" rel="bookmark" title="JavaScript中的异步编程方案">JavaScript中的异步编程方案</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -411,7 +438,7 @@ Monkey's Blog = </title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">53</span>
+        <span class="count">48</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -423,7 +450,7 @@ Monkey's Blog = </title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">23</span>
+        <span class="count">21</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -508,84 +535,12 @@ Monkey's Blog = </title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<a href="/categories/ComputerBasics/" title="In ComputerBasics">ComputerBasics</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+<a href="/categories/ComputerBasics/Computer-Networking/" title="In Computer_Networking">Computer_Networking</a>
 </div>
 
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91Promise%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAPromise" title="【手撕JavaScript系列】Promise介绍以及实现一个Promise">【手撕JavaScript系列】Promise介绍以及实现一个Promise</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/HTML/" title="In HTML">HTML</a>
-</div>
-
-    <span><a href="/FrontEnd/HTML/FrontEnd/HTML/HTML%E4%B8%AD%E7%9A%84meta%E6%A0%87%E7%AD%BE%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86" title="HTML中的meta标签相关知识">HTML中的meta标签相关知识</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/%E3%80%90%E6%89%8B%E6%92%95JavaScript%E7%B3%BB%E5%88%97%E3%80%91JavaScript%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D" title="【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝">【手撕JavaScript系列】JavaScript中的浅拷贝和深拷贝</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
-</div>
-
-    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
-</div>
-
-    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E6%B5%8F%E8%A7%88%E5%99%A8Web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2" title="浏览器Web安全攻防">浏览器Web安全攻防</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Node-js/" title="In Node.js">Node.js</a>
-</div>
-
-    <span><a href="/FrontEnd/Node-js/FrontEnd/Node.js/Node.js%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%85%A5%E9%97%A8" title="Node.js基础知识入门">Node.js基础知识入门</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/React/" title="In React">React</a>
-</div>
-
-    <span><a href="/FrontEnd/React/FrontEnd/React/%E3%80%90React%E5%9F%BA%E7%A1%80%E3%80%91%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88" title="【React基础】常用代码复用及性能优化方案">【React基础】常用代码复用及性能优化方案</a></span>
+    <span><a href="/ComputerBasics/Computer-Networking/ComputerBasics/Computer_Networking/%E3%80%90%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80%E3%80%91TCP%E5%92%8CUDP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9" title="【计网基础】TCP和UDP基础知识点">【计网基础】TCP和UDP基础知识点</a></span>
   </li>
 
       
@@ -618,10 +573,82 @@ Monkey's Blog = </title>
 <div class="breadcrumb">
 <a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/FrontEnd/Module-Bundler/" title="In Module_Bundler">Module_Bundler</a>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
 </div>
 
-    <span><a href="/FrontEnd/Module-Bundler/FrontEnd/Module_Bundler/Webpack5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%85%A5%E9%97%A8" title="Webpack5基础知识点入门">Webpack5基础知识点入门</a></span>
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E9%87%8D%E7%BB%98%E3%80%81%E9%87%8D%E6%8E%92%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96" title="【浏览器工作原理篇】重绘、重排与性能优化">【浏览器工作原理篇】重绘、重排与性能优化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/CSS/" title="In CSS">CSS</a>
+</div>
+
+    <span><a href="/FrontEnd/CSS/FrontEnd/CSS/CSS3%E5%8A%A8%E7%94%BB%E5%85%A5%E9%97%A8" title="CSS3动画入门">CSS3动画入门</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%BA%8B%E4%BB%B6" title="JavaScript事件">JavaScript事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E7%9A%84JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%9A%E6%8F%90%E5%8D%87%E6%9C%BA%E5%88%B6%E3%80%81%E8%B0%83%E7%94%A8%E6%A0%88%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this" title="【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this">【V8引擎原理篇】浏览器中的JavaScript执行机制：提升机制、调用栈、作用域、闭包、执行上下文、this</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B" title="JavaScript中的变量类型">JavaScript中的变量类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/JavaScript/" title="In JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/FrontEnd/JavaScript/FrontEnd/JavaScript/JavaScript%E5%B8%B8%E7%94%A8%E7%BB%A7%E6%89%BF%E6%96%B9%E6%A1%88" title="JavaScript常用继承方案">JavaScript常用继承方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/FrontEnd/" title="In FrontEnd">FrontEnd</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/FrontEnd/Browser/" title="In Browser">Browser</a>
+</div>
+
+    <span><a href="/FrontEnd/Browser/FrontEnd/Browser/%E3%80%90V8%E5%BC%95%E6%93%8E%E5%8E%9F%E7%90%86%E7%AF%87%E3%80%91Event%20Loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6" title="【V8引擎原理篇】Event Loop事件循环机制">【V8引擎原理篇】Event Loop事件循环机制</a></span>
   </li>
 
   </ul>
@@ -646,13 +673,13 @@ Monkey's Blog = </title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="Symbols count total">772k words</span>
+    <span title="Symbols count total">728k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="Reading time total">11:42</span>
+    <span title="Reading time total">11:01</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
